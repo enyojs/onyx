@@ -1,4 +1,5 @@
 enyo.depends(
 	"$lib/base-ui",
-	"Button.css"
+	"Button.css",
+	"ButtonDecorator.js"
 );
