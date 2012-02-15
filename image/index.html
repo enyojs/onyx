@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+	<title>Image test</title>
+	<script src="../../../enyo/enyo.js" type="text/javascript"></script>
+	<script src="source/package.js" type="text/javascript"></script>
+</head>
+<body>
+	<script>
+		new (enyo.kind({
+			name: "App",
+			kind: "Control",
+			components: [
+				{kind: "Image", src: "enyo-icon.png", onload: "imageLoaded", onerror: "imageError"},
+				{name: "output"}
+			],
+			imageLoaded: function(inSender) {
+				this.$.output.addContent(inSender.src + " loaded");
+			},
+			imageError: function(inSender) {
+				this.$.output.addContent("Unable to load " + inSender.src);
+			}
+		}))().write();
+	</script>
+</body>
+</html>
