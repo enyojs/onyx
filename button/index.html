@@ -17,7 +17,13 @@
 				]},
 				{tag: "hr"},
 				{content: "ButtonDecorator with some stuff inside it", style: "margin: 10px;"},
-				{kind:"ButtonDecorator", disabled:true, components: [
+				{kind:"ButtonDecorator", components: [
+					{tag:"img", attributes:{src:"favicon.ico"}},
+					{kind:"Button", content:"Button with an image"}
+				]},
+				{tag: "hr"},
+				{content: "ButtonDecorator with some stuff inside it, and disabled", style: "margin: 10px;"},
+				{kind:"ButtonDecorator", disabled: true, components: [
 					{tag:"img", attributes:{src:"favicon.ico"}},
 					{kind:"Button", content:"Button with an image"}
 				]},
