@@ -11,9 +11,16 @@
 			name: "App",
 			kind: "Control",
 			components: [
-				{content: "ButtonDecorator with an button inside it; input styling is auto (how?):", style: "margin: 10px;"},
+				{content: "ButtonDecorator with an button inside it", style: "margin: 10px;"},
+				{kind:"ButtonDecorator", components:[
+					{kind:"Button", content:"I am a button", classes:"enyo-button"}
+				]},
 				{tag: "hr"},
 				{content: "ButtonDecorator with some stuff inside it", style: "margin: 10px;"},
+				{kind:"ButtonDecorator", components: [
+					{tag:"img", attributes:{src:"http://enyojs.com/favicon.ico"}, style:"margin-left: 10px;"},
+					{kind:"Button", content:"Button with an image", classes:"enyo-button"}
+				]},
 				{tag: "hr"}
 			],
 		}))().write();
