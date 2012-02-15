@@ -1,0 +1,22 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title>enyo onyx test</title>
+	<script src="../../../enyo/enyo.js" type="text/javascript"></script>
+	<script src="source/package.js" type="text/javascript"></script>
+</head>
+<body>
+	<script>
+		new (enyo.kind({
+			name: "App",
+			kind: "Control",
+			components: [
+				{content: "ButtonDecorator with an button inside it; input styling is auto (how?):", style: "margin: 10px;"},
+				{tag: "hr"},
+				{content: "ButtonDecorator with some stuff inside it", style: "margin: 10px;"},
+				{tag: "hr"}
+			],
+		}))().write();
+	</script>
+</body>
+</html>
