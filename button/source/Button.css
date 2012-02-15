@@ -1,4 +1,4 @@
-.enyo-button {
+.enyo-button-decorator > button, .enyo-button {
 	font-size: 16px;
 	line-height: 20px;
 	text-align: center;
@@ -13,11 +13,11 @@
 	background-color: rgba(255,255,255,0.8);
 }
 
-.enyo-button.enyo-button-down, .enyo-button.enyo-button-depressed {
+.enyo-button-decorator > button:active:not(:disabled), .enyo-button:active:not(:disabled) {
 	-webkit-border-image: url(../../resources/button-down.png) 4 4 4 4 stretch stretch;
 }
 
-.enyo-button:disabled {
+.enyo-button-decorator > button:disabled, .enyo-button:disabled {
 	opacity: 0.4;
 }
 
