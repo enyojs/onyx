@@ -13,13 +13,13 @@
 			components: [
 				{content: "ButtonDecorator with an button inside it", style: "margin: 10px;"},
 				{kind:"ButtonDecorator", components:[
-					{kind:"Button", content:"I am a button", classes:"enyo-button"}
+					{kind:"Button", content:"I am a button"}
 				]},
 				{tag: "hr"},
 				{content: "ButtonDecorator with some stuff inside it", style: "margin: 10px;"},
-				{kind:"ButtonDecorator", components: [
-					{tag:"img", attributes:{src:"http://enyojs.com/favicon.ico"}, style:"margin-left: 10px;"},
-					{kind:"Button", content:"Button with an image", classes:"enyo-button"}
+				{kind:"ButtonDecorator", disabled:true, components: [
+					{tag:"img", attributes:{src:"favicon.ico"}},
+					{kind:"Button", content:"Button with an image"}
 				]},
 				{tag: "hr"}
 			],

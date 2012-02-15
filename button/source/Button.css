@@ -1,10 +1,11 @@
-.enyo-button-decorator > button, .enyo-button {
+.enyo-button-decorator {
 	font-size: 16px;
 	line-height: 20px;
 	text-align: center;
 	padding: 4px 8px;
 	min-width: 14px;
 	min-height: 20px;
+	-webkit-box-sizing: border-box;
 	-webkit-border-image: url(../../resources/button-up.png) 4 4 4 4 stretch stretch;
 	border-width: 4px;
 	border-radius: 5px;
@@ -13,19 +14,24 @@
 	background-color: rgba(255,255,255,0.8);
 }
 
-.enyo-button-decorator > button:active:not(:disabled), .enyo-button:active:not(:disabled) {
+.enyo-button-decorator > button, .enyo-button {
+	border: none;
+	margin: 0;
+	outline: none;
+	background-color: transparent;
+	padding: 0;
+	-webkit-box-sizing: border-box;
+}
+
+.enyo-button-decorator:active:not([disabled]) {
 	-webkit-border-image: url(../../resources/button-down.png) 4 4 4 4 stretch stretch;
 }
 
-.enyo-button-decorator > button:disabled, .enyo-button:disabled {
+.enyo-button-decorator[disabled] {
 	opacity: 0.4;
 }
 
-.enyo-button-standard-width {
-	min-width: 120px;
-}
-
-.enyo-button img {
+.enyo-button-decorator > img {
 	padding: 0px 3px;
 }
 
