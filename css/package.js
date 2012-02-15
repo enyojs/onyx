@@ -1,1 +1,3 @@
-enyo.depends();
+enyo.depends(
+	"RadioGroup.css"
+	);
