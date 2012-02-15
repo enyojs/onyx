@@ -1,7 +1,5 @@
 .enyo-button-decorator {
 	font-size: 16px;
-	line-height: 20px;
-	text-align: center;
 	padding: 4px 8px;
 	min-width: 14px;
 	min-height: 20px;
@@ -34,46 +32,3 @@
 .enyo-button-decorator > img {
 	padding: 0px 3px;
 }
-
-/* light button (often cancel) */
-
-.enyo-button-light {
-	background-color: rgba(255,255,255,0.8);
-	color: #292929;
-}
-
-/* dark button */
-
-.enyo-button-dark {
-	color: white;
-	background-color: rgba(23,23,23,0.5);
-}
-
-/* affirmative (green) */
-
-.enyo-button-affirmative {
-	color: white;
-	background-color: #2aa100;
-}
-
-/* negative (red) */
-
-.enyo-button-negative {
-	color: white;
-	background-color: #be0003;
-}
-
-/* blue */
-
-.enyo-button-blue {
-	color: white;
-	background-color: #2071bb;
-}
-
-/* gray */
-
-.enyo-button-gray {
-	color: white;
-	background-color: #4b4b4b;
-}
-

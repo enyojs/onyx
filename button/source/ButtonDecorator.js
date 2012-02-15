@@ -1,14 +1,11 @@
 enyo.kind({
 	name: "enyo.ButtonDecorator",
 	kind: "enyo.ToolDecorator",
-	classes: "enyo-button-decorator",
+	classes: "enyo-button-decorator enyo-unselectable",
 	published: {
 		disabled: false
 	},
-	handlers: {
-		ontap: "tapHandler"
-	},
-	tapHandler: function(inSender, inEvent) {
+	tap: function(inSender, inEvent) {
 		if (this.disabled) {
 			return true;
 		}
