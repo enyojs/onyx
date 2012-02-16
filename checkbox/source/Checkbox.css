@@ -1,0 +1,15 @@
+.onyx-checkbox {
+	cursor: pointer;
+	height: 31px;
+	width: 30px;
+	margin: 0px;
+	background: url(../../resources/checkbox.png) -1px -1px;
+}
+
+.onyx-checkbox-checked {
+	background-position: -1px -33px;
+}
+
+.onyx-checkbox[disabled] {
+	opacity: 0.4;
+}
