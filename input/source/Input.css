@@ -1,46 +1,46 @@
-.enyo-input-decorator {
-	border-width: 14px;
-	border-style: solid;
-	border-color: transparent;
-	-webkit-box-sizing: border-box;
-	font-size: .9rem;
+.onyx-input-decorator {
+	border: 14px solid transparent;
+	/**/
+	/* for non-image version */
+	/*
+	padding: 12px;
+	border-radius: 8px;
+	border: 1px solid transparent;
+	*/
 }
 
-.enyo-input-decorator.focused {
+.onyx-input-decorator.onyx-focused {
 	-webkit-border-image: url(../../resources/input-focus.png) 14 14;
+	/**/
+	/* for non-image version */
+	/*
+	box-shadow: inset 0px 2px 4px rgba(0,0,0,0.5);
+	border-color: silver;
+	*/
 }
 
-.enyo-input-decorator > input, .enyo-input {
-	border: none;
+.onyx-input-decorator.onyx-disabled {
+	/* FIXME: test before including: needed to color a disabled input placeholder. */
+	/*-webkit-text-fill-color: #888;*/
+	opacity: 0.3;
+}
+
+.onyx-input-decorator > .onyx-input {
+	/* reset */
 	margin: 0;
-	outline: none;
-	background-color: transparent;
 	padding: 0;
-	-webkit-appearance: caret;
-	-webkit-box-sizing: border-box;
+	border: none;
+	outline: none;
 	cursor: pointer;
-	font-size: .9rem;
-	/*display: block;*/
-	/*width: 100%;*/
+	background-color: transparent;
+	/* FIXME: test before including: hack for styling reset on Android */
+	/* -webkit-appearance: caret;*/
 }
 
-input::-webkit-input-placeholder, isindex::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
-	color: #888;
-}
-
-.enyo-input-disabled {
-	/*color: darkGray;*/
-	/* HACK: this is needed to color a disabled input placeholder.
-	 * Also works for filled inputs as well thankfully */
-	-webkit-text-fill-color: #888;
-	opacity: 0.625;
-}
-
-.enyo-input-input:focus {
+.onyx-input-decorator.onyx-focused > .onyx-input {
 	cursor: text;
 }
 
-
-
-
-
+.onyx-input-decorator.onyx-disabled > .onyx-input {
+	cursor: default;
+}

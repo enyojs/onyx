@@ -1,17 +1,14 @@
 enyo.kind({
-	name: "enyo.InputDecorator",
-	// if we use label, clicking on stuff inside auto-focuses the input.
-	tag: "label",
-	kind: "enyo.ToolDecorator",
-	classes: "enyo-input-decorator",
+	name: "onyx.InputDecorator",
+	kind: "onyx.FocusDecorator",
+	classes: "onyx-input-decorator",
+	published: {
+		disabled: false
+	},
 	handlers: {
-		onfocus: "focus",
-		onblur: "blur"
+		onDisabledChange: "disabledHandler"
 	},
-	focus: function() {
-		this.addClass("focused");
-	},
-	blur: function() {
-		this.removeClass("focused");
+	disabledHandler: function(inSender, inEvent) {
+		this.addRemoveClass("onyx-disabled", inEvent.disabled);
 	}
 });
