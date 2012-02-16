@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+	<title>ToggleButton test</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<script src="../../../enyo/enyo.js" type="text/javascript"></script>
+	<script src="source/package.js" type="text/javascript"></script>
+</head>
+<body>
+	<script>
+		new (enyo.kind({
+			name: "App",
+			classes: "enyo-unselectable",
+			components: [
+				{kind: "onyx.ToggleButton", value: true},
+				{kind: "onyx.ToggleButton", onContent: "Yes", offContent: "No"},
+				{kind: "onyx.ToggleButton", value: true, disabled: true},
+				{kind: "onyx.ToggleButton", disabled: true}
+			]
+		}))().write();
+	</script>
+</body>
+</html>
