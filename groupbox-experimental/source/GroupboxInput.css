@@ -1,0 +1,12 @@
+.onyx-groupbox-item.onyx-input-decorator {
+	display: block;
+}
+
+.onyx-groupbox-item.onyx-input-decorator.onyx-focused {
+	-webkit-border-image: none;
+	background: white;
+	/*box-shadow: inset 0px 2px 4px rgba(0,0,0,0.5);*/
+	/* FIXME: experimental: if items have top and bottom border, customize the top and shadow to make inputs look good */
+	border-top-color: #aaa;
+	box-shadow: inset 0px 1px 4px rgba(0,0,0,0.5);
+}
