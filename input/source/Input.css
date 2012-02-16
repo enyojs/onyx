@@ -1,5 +1,7 @@
 .onyx-input-decorator {
-	border: 14px solid transparent;
+	border-width: 14px;
+	border-style: solid;
+	border-color: transparent;
 	/**/
 	/* for non-image version */
 	/*
