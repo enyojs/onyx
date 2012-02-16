@@ -1,46 +1,37 @@
-.enyo-input-decorator {
-	border-width: 14px;
-	border-style: solid;
-	border-color: transparent;
-	-webkit-box-sizing: border-box;
-	font-size: .9rem;
+.onyx-input-decorator {
+	border-radius: 8px;
+	padding: 12px;
+	border: 1px solid transparent;
 }
 
-.enyo-input-decorator.focused {
-	-webkit-border-image: url(../../resources/input-focus.png) 14 14;
+.onyx-input-decorator.focused {
+	box-shadow: inset 0px 2px 4px rgba(0,0,0,0.5);
+	border-color: silver;
 }
 
-.enyo-input-decorator > input, .enyo-input {
-	border: none;
+.onyx-input-decorator > input, .onyx-input {
 	margin: 0;
-	outline: none;
-	background-color: transparent;
 	padding: 0;
-	-webkit-appearance: caret;
-	-webkit-box-sizing: border-box;
+	border: none;
+	outline: none;
 	cursor: pointer;
-	font-size: .9rem;
-	/*display: block;*/
-	/*width: 100%;*/
+	background-color: transparent;
 }
 
-input::-webkit-input-placeholder, isindex::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+/*
+input::-webkit-input-placeholder {
 	color: #888;
 }
+*/
 
-.enyo-input-disabled {
+.onyx-input-disabled {
 	/*color: darkGray;*/
-	/* HACK: this is needed to color a disabled input placeholder.
-	 * Also works for filled inputs as well thankfully */
+	/*
+		HACK: this is needed to color a disabled input placeholder.
+		Also works for filled inputs as well thankfully 
+	*/
+	/*
 	-webkit-text-fill-color: #888;
+	*/
 	opacity: 0.625;
 }
-
-.enyo-input-input:focus {
-	cursor: text;
-}
-
-
-
-
-
