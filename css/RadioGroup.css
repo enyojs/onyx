@@ -1,13 +1,14 @@
-.enyo-radio-group {
+.enyo-tab-group {
 	display:inline-block;
+	border: 1px solid #A7A7A7;
+	border-width: 0px 1px 0px 1px;
 }
 
-
-.enyo-radio-button {
+.enyo-tab-button {
 	display:inline-block;
-	height:36px;
+	height:50px;
+	line-height:50px;
 	min-width:50px;
-	line-height:36px;
 	padding: 0px 0px;
 	text-align:center;
 	border-width: 0px 16px 0px 16px;
@@ -15,61 +16,43 @@
 	-moz-border-image: url(../images/radiobutton.png) 74 16 482 16 repeat stretch;
 }
 
-.enyo-radio-button.enyo-chosen {
+.enyo-tab-button.enyo-chosen {
 	color:white;
 	-webkit-border-image: url(../images/radiobutton.png) 111 16 445 16;
 	-moz-border-image: url(../images/radiobutton.png) 111 16 445 16 repeat stretch;
 }
 
-.enyo-radio-button:first-child {
-	-webkit-border-image: url(../images/radiobutton.png) 0 16 556 16;
-	-moz-border-image: url(../images/radiobutton.png) 0 16 556 16 repeat stretch;
-}
-.enyo-radio-button.enyo-chosen:first-child {
-	-webkit-border-image: url(../images/radiobutton.png) 37 16 519 16;
-	-moz-border-image: url(../images/radiobutton.png) 37 16 519 16 repeat stretch;
-}
-
-.enyo-radio-button:last-child {
-	-webkit-border-image: url(../images/radiobutton.png) 148 16 408 16;
-	-moz-border-image: url(../images/radiobutton.png) 148 16 408 16 repeat stretch;
-}
-.enyo-radio-button.enyo-chosen:last-child {
-	-webkit-border-image: url(../images/radiobutton.png) 185 16 371 16;
-	-moz-border-image: url(../images/radiobutton.png) 185 16 371 16 repeat stretch;
-}
-
-.enyo-radio-button.enyo-disabled {
+.enyo-tab-button.enyo-disabled {
 	opacity:0.6;
 }
 
 
-/* TabGroup */
+/* RadioGroup */
 
-.enyo-tab-group {
-	border: 1px solid #A7A7A7;
-	border-width: 0px 1px 0px 1px;
-}
-
-.enyo-tab-group > .enyo-radio-button {
-	height: 50px;
-	line-height: 50px;
+.enyo-radio-group {
+	border:none;
 }
 
+.enyo-radio-group > .enyo-tab-button {
+	height: 36px;
+	line-height: 36px;
+}
 
-.enyo-radio-group.enyo-tab-group > .enyo-radio-button:first-child {
-	-webkit-border-image: url(../images/radiobutton.png) 74 16 482 16;
-	-moz-border-image: url(../images/radiobutton.png) 74 16 482 16 repeat stretch;
+/* radio groups have rounded ends */
+.enyo-radio-group > .enyo-tab-button:first-child {
+	-webkit-border-image: url(../images/radiobutton.png) 0 16 556 16;
+	-moz-border-image: url(../images/radiobutton.png) 0 16 556 16 repeat stretch;
 }
-.enyo-radio-group.enyo-tab-group > .enyo-radio-button.enyo-chosen:first-child {
-	-webkit-border-image: url(../images/radiobutton.png) 111 16 445 16;
-	-moz-border-image: url(../images/radiobutton.png) 111 16 445 16 repeat stretch;
+.enyo-radio-group > .enyo-tab-button.enyo-chosen:first-child {
+	-webkit-border-image: url(../images/radiobutton.png) 37 16 519 16;
+	-moz-border-image: url(../images/radiobutton.png) 37 16 519 16 repeat stretch;
 }
-.enyo-radio-group.enyo-tab-group > .enyo-radio-button:last-child {
-	-webkit-border-image: url(../images/radiobutton.png) 74 16 482 16;
-	-moz-border-image: url(../images/radiobutton.png) 74 16 482 16 repeat stretch;
+
+.enyo-radio-group > .enyo-tab-button:last-child {
+	-webkit-border-image: url(../images/radiobutton.png) 148 16 408 16;
+	-moz-border-image: url(../images/radiobutton.png) 148 16 408 16 repeat stretch;
 }
-.enyo-radio-group.enyo-tab-group > .enyo-radio-button.enyo-chosen:last-child {
-	-webkit-border-image: url(../images/radiobutton.png) 111 16 445 16;
-	-moz-border-image: url(../images/radiobutton.png) 111 16 445 16 repeat stretch;
+.enyo-radio-group > .enyo-tab-button.enyo-chosen:last-child {
+	-webkit-border-image: url(../images/radiobutton.png) 185 16 371 16;
+	-moz-border-image: url(../images/radiobutton.png) 185 16 371 16 repeat stretch;
 }

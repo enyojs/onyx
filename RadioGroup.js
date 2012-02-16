@@ -1,7 +1,7 @@
 enyo.kind({
-	name:"enyo.RadioGroup",
-	classes: "enyo-radio-group",
-	defaultKind:"enyo.RadioGroup.RadioButton",
+	name:"enyo.TabGroup",
+	classes: "enyo-tab-group",
+	defaultKind:"enyo.TabGroup.TabButton",
 	published: {
 		value: 0
 	},
@@ -28,8 +28,8 @@ enyo.kind({
 
 
 enyo.kind({
-	name:"enyo.RadioGroup.RadioButton", 
-	classes:"enyo-radio-button",
+	name:"enyo.TabGroup.TabButton", 
+	classes:"enyo-tab-button",
 	published: {
 		disabled:false
 	},
@@ -43,7 +43,7 @@ enyo.kind({
 });
 
 enyo.kind({
-	name:"enyo.TabGroup",
-	kind:"enyo.RadioGroup",
-	classes: "enyo-tab-group"
+	name:"enyo.RadioGroup",
+	kind:"enyo.TabGroup",
+	classes: "enyo-radio-group"
 });
