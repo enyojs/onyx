@@ -1,0 +1,14 @@
+.onyx-button.onyx-toolbar-item {
+	margin: 3px;
+	color: #f2f2f2;
+	background-color: #333;
+	-webkit-border-image: url(../../resources/button-toolbar.png) 4 4 4 4 stretch stretch;
+}
+
+.onyx-button:active:not([disabled]).onyx-toolbar-item, .enyo-button.onyx-depressed.enyo-toolbar-item {
+	-webkit-border-image: url(../../resources/button-down.png) 4 4 4 4 stretch stretch;
+}
+
+.enyo-tool-button-client.enyo-button-disabled {
+	opacity: 0.4;
+}
