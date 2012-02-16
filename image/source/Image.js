@@ -1,9 +1,9 @@
 enyo.kind({
-	name: "Image",
+	name: "onyx.Image",
 	tag: "img",
 	attributes: {
 		onload: enyo.bubbler,
 		onerror: enyo.bubbler,
-		draggable: false
+		draggable: "false"
 	}
 })

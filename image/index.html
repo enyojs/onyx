@@ -9,9 +9,8 @@
 	<script>
 		new (enyo.kind({
 			name: "App",
-			kind: "Control",
 			components: [
-				{kind: "Image", src: "enyo-icon.png", onload: "imageLoaded", onerror: "imageError"},
+				{kind: "onyx.Image", src: "enyo-icon.png", onload: "imageLoaded", onerror: "imageError"},
 				{name: "output"}
 			],
 			imageLoaded: function(inSender) {

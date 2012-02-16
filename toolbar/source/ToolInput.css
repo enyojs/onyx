@@ -1,0 +1,22 @@
+.onyx-input-decorator.onyx-toolbar-item {
+	border: 6px solid transparent;
+	-webkit-border-image: url(../../resources/input-tool.png) 6 6 6 6;
+	margin: 0 3px;
+}
+
+.onyx-input-decorator.onyx-toolbar-item.onyx-focused {
+	-webkit-border-image: url(../../resources/input-tool-focus.png) 6 6 6 6;
+}
+
+.onyx-input-decorator.onyx-toolbar-item > .onyx-input {
+	color: #e5e5e5;
+	font-size: 14px;
+}
+
+.onyx-input-decorator.onyx-toolbar-item > .onyx-input:focus {
+	color: #000;
+}
+
+.onyx-input-decorator.onyx-toolbar-item > .onyx-input:focus::-webkit-input-placeholder {
+	color: #ddd;
+}

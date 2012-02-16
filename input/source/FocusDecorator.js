@@ -1,18 +1,16 @@
 enyo.kind({
 	name: "onyx.FocusDecorator",
-	tag: "label",
 	kind: "enyo.ToolDecorator",
+	tag: "label",
 	classes: "onyx-focus-decorator",
 	handlers: {
 		onfocus: "receiveFocus",
 		onblur: "receiveBlur"
 	},
 	receiveFocus: function() {
-		this.log();
-		this.addClass("focused");
+		this.addClass("onyx-focused");
 	},
 	receiveBlur: function() {
-		this.log();
-		this.removeClass("focused");
+		this.removeClass("onyx-focused");
 	}
 });

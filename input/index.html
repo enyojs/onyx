@@ -3,12 +3,8 @@
 <head>
 	<title>enyo onyx test</title>
 	<script src="../../../enyo/enyo.js" type="text/javascript"></script>
+	<script src="../../base-ui/package.js" type="text/javascript"></script>
 	<script src="source/package.js" type="text/javascript"></script>
-	<style>
-		body {
-			margin: 10px;
-		}
-	</style>
 </head>
 <body>
 	<script>
@@ -16,45 +12,28 @@
 			name: "App",
 			kind: "Control",
 			components: [
-				{content: "InputDecorator with an input inside it:"},
+				{content: "InputDecorator and input with placeholder", style: "margin: 10px;"},
+				{kind: "onyx.InputDecorator", components: [
+					{kind: "onyx.Input", attributes: {placeholder: "Enter text here"}}
+				]},
+				{content: "InputDecorator with a disabled input inside it", style: "margin: 10px;"},
 				{tag: "hr"},
 				{kind: "onyx.InputDecorator", components: [
-					{kind: "Input", placeholder: "Tap here to type"}
+					{kind: "onyx.Input", disabled: true, value: "Hello World"}
 				]},
-				//
-				{tag: "br"},
-				{tag: "br"},
-				//
-				{content: "InputDecorator with an input inside it:"},
+				{content: "InputDecorator with a focused input inside it", style: "margin: 10px;"},
 				{tag: "hr"},
 				{kind: "onyx.InputDecorator", components: [
-					{kind: "Input", disabled: true, placeholder: "Tap here to type"}
+					{kind: "onyx.Input", defaultFocus: true, value: "Hello World"}
 				]},
-				//
-				{tag: "br"},
-				{tag: "br"},
-				//
-				{content: "InputDecorator with an input inside it:"},
-				{tag: "hr"},
-				{kind: "onyx.InputDecorator", components: [
-					{name: "defaultInput", kind: "Input", value: "Hello World"}
-				]},
-				//
-				{tag: "br"},
-				{tag: "br"},
-				//
-				{content: "InputDecorator with some stuff inside it"},
+				{content: "InputDecorator with some stuff inside it", style: "margin: 10px;"},
 				{tag: "hr"},
 				{kind: "onyx.InputDecorator", components: [
 					{content: "Left stuff: "},
-					{kind: "Input", value: "Hello World"},
-					{content: " and right stuff..."}
+					{kind: "onyx.Input", value: "Hello World"},
+					{content: " and right stuff..."},
 				]}
-			],
-			rendered: function() {
-				this.inherited(arguments);
-				this.$.defaultInput.focus();
-			}
+			]
 		}))().write();
 	</script>
 </body>
