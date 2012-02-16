@@ -1,0 +1,9 @@
+.onyx-groupbox-item.onyx-input-decorator {
+	display: block;
+}
+
+.onyx-groupbox-item.onyx-input-decorator.onyx-focused {
+	box-shadow: inset 0px 2px 4px rgba(0,0,0,0.5);
+	-webkit-border-image: none;
+	background: white;
+}
