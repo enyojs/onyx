@@ -1,5 +1,5 @@
 body {
-	background-color: #D8D8D8;
+	background-color: #eaeaea;
 	color: #333;
 	/* remove automatic tap highlight color */
 	-webkit-tap-highlight-color: transparent;
@@ -12,6 +12,6 @@ html, body, input, button {
 }
 
 .enyo-bg {
-	background-color: #d8d8d8;
+	background-color: #eaeaea;
 }
 
