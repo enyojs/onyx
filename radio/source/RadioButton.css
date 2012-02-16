@@ -1,4 +1,4 @@
-.enyo-radiobutton {
+.onyx-radiobutton {
 	/* compatible */
 	padding: 8px;
 	border: 0;
@@ -20,15 +20,15 @@
 	*/
 }
 
-.enyo-radiobutton:first-child {
+.onyx-radiobutton:first-child {
 	border-radius: 3px 0 0 3px;
 }
 
-.enyo-radiobutton:last-child {
+.onyx-radiobutton:last-child {
 	border-radius: 0px 3px 3px 0px;
 }
 
-.enyo-radiobutton.active {
+.onyx-radiobutton.active {
 	background-image: -webkit-linear-gradient(top, #BDBDBD 0%, #E2E2E2 100%);
 	X-webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.20), inset 0px 1px 0px rgba(0,0,0,0.3), inset 0px -1px 0px rgba(0,0,0,0.3);
 }

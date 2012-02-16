@@ -3,6 +3,6 @@
 	kind: "Group",
 	highlander: true,
 	defaultKind: "Button",
-	controlClasses: "enyo-radiobutton"
+	controlClasses: "onyx-radiobutton"
 });
 
