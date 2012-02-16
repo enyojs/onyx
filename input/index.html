@@ -4,6 +4,11 @@
 	<title>enyo onyx test</title>
 	<script src="../../../enyo/enyo.js" type="text/javascript"></script>
 	<script src="source/package.js" type="text/javascript"></script>
+	<style>
+		body {
+			margin: 10px;
+		}
+	</style>
 </head>
 <body>
 	<script>
@@ -11,22 +16,44 @@
 			name: "App",
 			kind: "Control",
 			components: [
-				{content: "InputDecorator with an input inside it; input styling is auto (how?):", style: "margin: 10px;"},
+				{content: "InputDecorator with an input inside it:"},
 				{tag: "hr"},
-				{kind: "InputDecorator", components: [
-					{kind: "Input", value: "Hello World"}
+				{kind: "onyx.InputDecorator", components: [
+					{kind: "Input", placeholder: "Tap here to type"}
 				]},
-				{content: "InputDecorator with some stuff inside it", style: "margin: 10px;"},
+				//
+				{tag: "br"},
+				{tag: "br"},
+				//
+				{content: "InputDecorator with an input inside it:"},
 				{tag: "hr"},
-				{kind: "InputDecorator", components: [
+				{kind: "onyx.InputDecorator", components: [
+					{kind: "Input", disabled: true, placeholder: "Tap here to type"}
+				]},
+				//
+				{tag: "br"},
+				{tag: "br"},
+				//
+				{content: "InputDecorator with an input inside it:"},
+				{tag: "hr"},
+				{kind: "onyx.InputDecorator", components: [
+					{name: "defaultInput", kind: "Input", value: "Hello World"}
+				]},
+				//
+				{tag: "br"},
+				{tag: "br"},
+				//
+				{content: "InputDecorator with some stuff inside it"},
+				{tag: "hr"},
+				{kind: "onyx.InputDecorator", components: [
 					{content: "Left stuff: "},
 					{kind: "Input", value: "Hello World"},
-					{content: " and right stuff..."},
+					{content: " and right stuff..."}
 				]}
 			],
 			rendered: function() {
 				this.inherited(arguments);
-				this.$.input.focus();
+				this.$.defaultInput.focus();
 			}
 		}))().write();
 	</script>
