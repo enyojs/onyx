@@ -15,7 +15,8 @@ enyo.kind({
 	name: "onyx.Checkbox",
 	classes: "onyx-checkbox",
 	published: {
-		value: false // event = {value:}
+		value: false, // event = {value:}
+		disabled: false
 	},
 	events: {
 		/**
@@ -31,8 +32,12 @@ enyo.kind({
 	create: function() {
 		this.inherited(arguments);
 		this.valueChanged();
+		this.disabledChanged();
 	},
 	contentChanged: function() {
+	},
+	disabledChanged: function() {
+		this.setAttribute("disabled", this.disabled);
 	},
 	valueChanged: function() {
 		this.addRemoveClass("onyx-checkbox-checked", this.value);
