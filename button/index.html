@@ -11,21 +11,19 @@
 			name: "App",
 			kind: "Control",
 			components: [
-				{content: "ButtonDecorator with an button inside it", style: "margin: 10px;"},
-				{kind:"ButtonDecorator", components:[
-					{kind:"Button", content:"I am a button"}
+				{content: "Onyx Button", style: "margin: 10px;"},
+				{kind:"onyx.Button", content:"I am an Onyx Button!"},
+				{tag: "hr"},
+				{content: "Onyx Button with some stuff inside it", style: "margin: 10px;"},
+				{kind:"onyx.Button", components: [
+					{tag:"img", attributes:{src:"favicon.ico"}},
+					{content:"There is an image here"}
 				]},
 				{tag: "hr"},
-				{content: "ButtonDecorator with some stuff inside it", style: "margin: 10px;"},
-				{kind:"ButtonDecorator", components: [
+				{content: "Onyx Button with some stuff inside it, and disabled", style: "margin: 10px;"},
+				{kind:"onyx.Button", disabled: true, components: [
 					{tag:"img", attributes:{src:"favicon.ico"}},
-					{kind:"Button", content:"Button with an image"}
-				]},
-				{tag: "hr"},
-				{content: "ButtonDecorator with some stuff inside it, and disabled", style: "margin: 10px;"},
-				{kind:"ButtonDecorator", disabled: true, components: [
-					{tag:"img", attributes:{src:"favicon.ico"}},
-					{kind:"Button", content:"Button with an image"}
+					{content:"There is an image here"}
 				]},
 				{tag: "hr"}
 			],
