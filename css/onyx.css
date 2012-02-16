@@ -1,0 +1,23 @@
+body {
+	/**/
+	background-color: #D8D8D8;
+	color: #333;
+	/* remove automatic tap highlight color */
+	-webkit-tap-highlight-color: transparent;
+}
+
+html, body, input, button {
+	font-family: Prelude, Prelude Medium, Segoe UI, Arial, Helvetica, Sans-Serif;
+	font-size: 20px;
+	cursor: default;
+}
+
+Xbutton {
+	Xborder: 0;
+	Xoutline: none;
+}
+
+.enyo-bg {
+	background-color: #d8d8d8;
+}
+
