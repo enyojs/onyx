@@ -8,11 +8,6 @@
 	background: #E7E7E7 url(../../images/gradient.png) repeat-x bottom;
 	/* fancy */
 	box-shadow: inset 0px 0px 1px 1px #888;
-	/* platform only */
-	/*
-	background-image: -webkit-gradient(linear, left top, left bottom, from(#E2E2E2), to(#BDBDBD));
-	background-image: -ms-linear-gradient(top, #E2E2E2 0%, #BDBDBD 100%);
-	*/
 	/* questionable */
 	/*
 	text-shadow: 0 1px 0 rgba(255, 255, 255, 0.5);
