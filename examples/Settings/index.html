@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+	<title>Onyx Settings</title>
+	<!-- -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+	<!-- -->
+	<script src="../../../../enyo/enyo.js" type="text/javascript"></script>
+	<script src="../../../base-ui/package.js" type="text/javascript"></script>
+	<!-- -->
+	<link href="../../css/onyx.css" rel="stylesheet" type="text/css" />
+	<script src="../../toolbar/source/package.js" type="text/javascript"></script>
+	<script src="../../togglebutton/source/package.js" type="text/javascript"></script>
+	<script src="../../checkbox/source/package.js" type="text/javascript"></script>
+	<script src="../../groupbox/source/package.js" type="text/javascript"></script>
+	<!-- -->
+	<script src="App.js" type="text/javascript"></script>
+	<!-- -->
+	<style>
+		.align-center {
+			text-align: center;
+		}
+		.main {
+			max-width: 600px;
+			margin: 0 auto;
+		}
+		.main > * {
+			padding: 20px;
+		}
+		.onyx-groupbox-item {
+			padding: 10px;
+			min-height: 30px;
+			line-height: 30px;
+		}
+		.onyx-groupbox-item > * {
+			display: inline-block;
+		}
+		/* make the last control inside item to be right-aligned */
+		.onyx-groupbox-item :last-child {
+			float: right;
+		}
+	</style>
+</head>
+<body>
+<script type="text/javascript">
+	new App({classes: "enyo-fit enyo-unselectable"}).write();
+</script>
+</body>
+</html>
