@@ -1,6 +1,8 @@
 ﻿enyo.depends(
 	"Toolbar.css",
+	"Toolbar.js",
 	"ToolInput.css",
 	"ToolButton.css",
-	"Toolbar.js"
+	"Grabber.css",
+	"Grabber.js"
 );

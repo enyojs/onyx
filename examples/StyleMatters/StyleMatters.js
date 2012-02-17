@@ -15,16 +15,16 @@ enyo.kind({
 			{content:"Chocolate"},
 			{content:"Princess"}
 		]},
-		{style:"margin:10px;"},
-		{kind:enyo.RadioGroup, components:[
+		{style: "margin:10px;"},
+		{kind: enyo.RadioGroup, components:[
 			{content:"Foo", disabled:true},
 			{content:"Bar", disabled:true},
 			{content:"Baz", disabled:true}
 			]},
 
-		{style:"margin:10px;"},
+		{style: "margin:10px;"},
 
-		{kind:enyo.TabGroup, components:[
+		{kind: enyo.TabGroup, components:[
 			{content:"Foo"},
 			{content:"Bar"},
 			{content:"Baz"}

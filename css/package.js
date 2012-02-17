@@ -1,4 +1,3 @@
 enyo.depends(
-	"onyx.css",
-	"RadioGroup.css"
+	"onyx.css"
 );

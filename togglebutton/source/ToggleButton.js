@@ -15,9 +15,9 @@ enyo.kind({
 		onChange: ""
 	},
 	handlers: {
-		ondragstart: "dragstartHandler",
-		ondrag: "dragHandler",
-		ondragfinish: "dragfinishHandler"
+		ondragstart: "dragstart",
+		ondrag: "drag",
+		ondragfinish: "dragfinish"
 	},
 	components: [
 		{name: "bar", classes: "onyx-toggle-button-bar", components: [
@@ -56,17 +56,17 @@ enyo.kind({
 	tap: function() {
 		this.updateValue(!this.value);
 	},
-	dragstartHandler: function(inSender, inEvent) {
+	dragstart: function(inSender, inEvent) {
 		this._dx0 = inEvent.dx;
 	},
-	dragHandler: function(inSender, inEvent) {
+	drag: function(inSender, inEvent) {
 		var d = inEvent.dx - this._dx0;
 		if (Math.abs(d) > 15) {
 			this.updateValue(d > 0);
 			this._dx0 = inEvent.dx;
 		}
 	},
-	dragfinishHandler: function(inSender, inEvent) {
+	dragfinish: function(inSender, inEvent) {
 		inEvent.preventTap();
 	}
 })

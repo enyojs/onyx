@@ -2,7 +2,10 @@
 	/* border box so we can set logical height subtracting padding/border */
 	-webkit-box-sizing: border-box;
 	box-sizing: border-box;
+	/**/
 	min-height: 54px;
+	line-height: 54px;
+	/**/
 	background-color: #343434;
 	color: white;
 	/**/
@@ -19,7 +22,8 @@
 }
 
 .onyx-toolbar-item {
-	margin: 10px;
+	Xmargin: 10px 6px;
+	margin: 0 6px;
 }
 
 

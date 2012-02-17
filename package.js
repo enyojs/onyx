@@ -1,5 +1,7 @@
 enyo.depends(
-	"$lib/base-ui",
-	"RadioGroup.js",
-	"css/"
+	"css/onyx.css",
+	"button/source",
+	"toolbar/source",
+	"togglebutton/source",
+	"checkbox/source"
 );
