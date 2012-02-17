@@ -4,15 +4,14 @@
 	border: 0;
 	outline: 0;
 	text-align: center;
-	background-color: #E2E2E2;
+	/**/
+	background: #E7E7E7 url(../../images/gradient.png) repeat-x bottom;
 	/* fancy */
 	box-shadow: inset 0px 0px 1px 1px #888;
 	/* platform only */
-	background-image: -webkit-linear-gradient(top, #E2E2E2 0%, #BDBDBD 100%);
-	background-image: -ms-linear-gradient(top, #E2E2E2 0%, #BDBDBD 100%);
-	/* older webkit syntax */
 	/*
 	background-image: -webkit-gradient(linear, left top, left bottom, from(#E2E2E2), to(#BDBDBD));
+	background-image: -ms-linear-gradient(top, #E2E2E2 0%, #BDBDBD 100%);
 	*/
 	/* questionable */
 	/*
@@ -29,6 +28,8 @@
 }
 
 .onyx-radiobutton.active {
-	background-image: -webkit-linear-gradient(top, #BDBDBD 0%, #E2E2E2 100%);
-	X-webkit-box-shadow: inset 0px 1px 1px rgba(0,0,0,0.20), inset 0px 1px 0px rgba(0,0,0,0.3), inset 0px -1px 0px rgba(0,0,0,0.3);
+	color: White;
+	background: #0091F2 url(../../images/gradient-invert.png) repeat-x top;
 }
+
+

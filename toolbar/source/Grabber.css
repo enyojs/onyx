@@ -1,5 +1,5 @@
 .onyx-grabber {
-	background-image: url(../../resources/grabbutton.png);
+	background: url(../../resources/grabbutton.png) no-repeat center;
 	width: 23px;
 	height: 29px;
 }
