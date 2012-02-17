@@ -1,24 +1,25 @@
 .onyx-input-decorator {
+	/*
 	border-width: 14px;
 	border-style: solid;
 	border-color: transparent;
-	/**/
-	/* for non-image version */
-	/*
-	padding: 12px;
-	border-radius: 8px;
-	border: 1px solid transparent;
 	*/
+	/**/
+	/* non-image version */
+	padding: 12px;
+	border-radius: 3px;
+	border: 1px solid;
+	border-color: rgba(0,0,0,0.1);
+
 }
 
 .onyx-input-decorator.onyx-focused {
-	-webkit-border-image: url(../../resources/input-focus.png) 14 14;
+	/*-webkit-border-image: url(../../resources/input-focus.png) 14 14;*/
 	/**/
-	/* for non-image version */
-	/*
-	box-shadow: inset 0px 2px 4px rgba(0,0,0,0.5);
-	border-color: silver;
-	*/
+	/* non-image version */
+	box-shadow: inset 0px 1px 4px rgba(0,0,0,0.3);
+	border-color: rgba(0,0,0,0.3);
+	background-color: white;
 }
 
 .onyx-input-decorator.onyx-disabled {
@@ -35,6 +36,7 @@
 	outline: none;
 	cursor: pointer;
 	background-color: transparent;
+	font-size: 16px;
 	/* FIXME: test before including: hack for styling reset on Android */
 	/* -webkit-appearance: caret;*/
 }
