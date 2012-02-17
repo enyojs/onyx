@@ -26,3 +26,7 @@ html, body, input, button {
 	cursor: default;
 }
 
+/* prevent IE from inheriting line-height for these elements */
+.onyx button, .onyx label, .onyx input {
+	line-height: normal;
+}
