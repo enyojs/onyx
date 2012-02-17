@@ -1,11 +1,20 @@
 .onyx-input-decorator.onyx-toolbar-item {
+	margin: 0 3px;
+	/* border-image */
+	/*
 	border: 6px solid transparent;
 	-webkit-border-image: url(../../resources/input-tool.png) 6 6 6 6;
-	margin: 0 3px;
+	*/
+	
+	box-shadow: inset 0px 1px 4px rgba(0,0,0,0.3);
+	background-color: rgba(0, 0, 0, 0.1);
+	padding: 6px 6px 5px 6px;
 }
 
 .onyx-input-decorator.onyx-toolbar-item.onyx-focused {
-	-webkit-border-image: url(../../resources/input-tool-focus.png) 6 6 6 6;
+	/*-webkit-border-image: url(../../resources/input-tool-focus.png) 6 6 6 6;*/
+	/* non-image version */
+	background-color: white;
 }
 
 .onyx-input-decorator.onyx-toolbar-item > .onyx-input {
