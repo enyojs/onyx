@@ -32,6 +32,40 @@ enyo.kind({
 			]},
 			{kind: "onyx.Button", content: "Go", style: "position: absolute; right: 0; top: 10px;", ontap: "go", input: "input3"}
 		]},
+		{kind: "onyx.Toolbar", style: "margin-bottom: 2px; overflow: hidden;", components: [
+			{kind: "Image", src: "../../resources/grabbutton.png", style: "float: left; margin-top: 8px;"},
+			{content: "Float", style: "float: left;"},
+			{kind: "onyx.Button", content: "Back", ontap: "back", style: "float: left; margin-top: 8px;"},
+			{kind: "onyx.Button", content: "Forward", ontap: "forward", style: "float: left; margin-top: 8px;"},
+			{kind: "onyx.Button", content: "Go", ontap: "go", input: "input2", style: "float: right; margin-top: 8px;"},
+			{kind: "onyx.InputDecorator", style: "overflow: hidden; display: block; margin-top: 8px;", components: [
+				{kind: "onyx.Input", onchange: "inputChange", value: "http://www.cnn.com"}
+			]}
+		]},
+		{kind: "onyx.Toolbar", style: "margin-bottom: 2px;", components: [
+			{style: "overflow: hidden; width: 100%;", components: [
+				{kind: "Image", src: "../../resources/grabbutton.png", classes: "onyx-toolbar-item", style: "float: left;"},
+				{content: "Float", classes: "onyx-toolbar-item", style: "float: left; line-height: normal;"},
+				{kind: "onyx.Button", content: "Back", ontap: "back", classes: "onyx-toolbar-item", style: "float: left;"},
+				{kind: "onyx.Button", content: "Forward", ontap: "forward", classes: "onyx-toolbar-item", style: "float: left;"},
+				{kind: "onyx.Button", content: "Go", ontap: "go", input: "input2", classes: "onyx-toolbar-item", style: "float: right;"},
+				{kind: "onyx.InputDecorator", classes: "onyx-toolbar-item", style: "overflow: hidden; display: block;", components: [
+					{kind: "onyx.Input", onchange: "inputChange", value: "http://www.cnn.com"}
+				]}
+			]}
+		]},
+
+
+		{kind: "onyx.Toolbar", style: "margin-bottom: 2px; display: table; width: 100%; line-height: normal;", components: [
+			{kind: "Image", src: "../../resources/grabbutton.png", style: "display: table-cell;"},
+			{content: "Table", style: "display: table-cell;"},
+			{kind: "onyx.Button", content: "Back", ontap: "back", style: "display: table-cell;"},
+			{kind: "onyx.Button", content: "Forward", ontap: "forward", style: "display: table-cell;"},
+			{kind: "onyx.InputDecorator", style: "display: table-cell;", components: [
+				{kind: "onyx.Input", onchange: "inputChange", value: "http://www.cnn.com"}
+			]},
+			{kind: "onyx.Button", content: "Go", ontap: "go", input: "input2", style: "display: table-cell;"}
+		]},
 		{classes: "flex1", style: "position: relative;", components: [
 			{name: "iframe", tag: "iframe", classes: "frame"}
 		]}
