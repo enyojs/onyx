@@ -2,6 +2,7 @@ enyo.kind({
 	name: "onyx.ToggleButton",
 	classes: "onyx-toggle-button",
 	published: {
+		active: false,
 		value: false,
 		onContent: "On",
 		offContent: "Off",
@@ -37,6 +38,11 @@ enyo.kind({
 		this.$.bar.removeClass(!this.value ? "on" : "off");
 		this.$.contentOn.setShowing(this.value);
 		this.$.contentOff.setShowing(!this.value);
+		this.setActive(this.value);
+	},
+	activeChanged: function() {
+		this.setValue(this.active);
+		this.bubble("onActivate");
 	},
 	onContentChanged: function() {
 		this.$.contentOn.setContent(this.onContent);

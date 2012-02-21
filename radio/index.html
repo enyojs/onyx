@@ -3,10 +3,11 @@
 <head>
 	<title>enyo onyx test</title>
 	<script src="../../../enyo/enyo.js" type="text/javascript"></script>
+	<!-- -->
 	<script src="../../base-ui/package.js" type="text/javascript"></script>
-	<link href="../css/onyx.css" rel="stylesheet" type="text/css" />
-	<link href="source/RadioButton.css" rel="stylesheet" type="text/css" />
-	<script src="source/RadioGroup.js" type="text/javascript"></script>
+	<!-- -->
+	<script src="../package.js" type="text/javascript"></script>
+	<!-- -->
 	<style>
 		html, body {
 			overflow: hidden;
@@ -36,10 +37,7 @@
 					{content: "Gamma"},
 					{content: "Delta"}
 				]}
-			],
-			rendered: function() {
-				this.inherited(arguments);
-			}
+			]
 		}))().write();
 	</script>
 </body>

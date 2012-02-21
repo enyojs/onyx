@@ -5,5 +5,6 @@ enyo.depends(
 	"toolbar/source",
 	"togglebutton/source",
 	"checkbox/source",
+	"radio/source",
 	"groupbox/source"
 );

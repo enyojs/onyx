@@ -1,6 +1,6 @@
 .onyx-radiobutton {
-	/* compatible */
-	padding: 8px;
+	padding: 0.5em 2em;
+	margin: 0;
 	border: 0;
 	outline: 0;
 	text-align: center;
@@ -26,5 +26,3 @@
 	color: White;
 	background: #0091F2 url(../../images/gradient-invert.png) repeat-x top;
 }
-
-

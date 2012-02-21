@@ -1,18 +1,20 @@
 .onyx-toolbar {
-	/* border box so we can set logical height subtracting padding/border */
-	-webkit-box-sizing: border-box;
-	box-sizing: border-box;
+	/*
+		line-height is unreliable for centering, instead
+		use vertical-align: middle to align
+		elements along a common centerline and use
+		padding to fill out the space.
+	*/
+	padding: 9px 0 10px 0;
 	/**/
-	min-height: 54px;
-	line-height: 54px;
-	/**/
-	background-color: #343434;
+	border: 1px solid black;
+	background: #4C4C4C url(../../images/gradient.png) repeat-x 0 10px;
 	color: white;
-	/**/
-	border-width: 2px 4px;
-	-webkit-border-image: url(../../resources/toolbar.png) 2 4 repeat stretch;
-	/* FIXME: maybe space should be specified by items so it's customizable or maybe flexbox centering */
-	/* padding: 14px; */
+}
+
+.onyx-toolbar > * {
+	display: inline-block;
+	vertical-align: middle;
 }
 
 .onyx-toolbar.onyx-light {
@@ -22,7 +24,6 @@
 }
 
 .onyx-toolbar-item {
-	Xmargin: 10px 6px;
 	margin: 0 6px;
 }
 

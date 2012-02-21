@@ -15,13 +15,14 @@ enyo.kind({
 	name: "onyx.Checkbox",
 	classes: "onyx-checkbox",
 	published: {
-		value: false, // event = {value:}
+		active: false,
+		value: false,
 		disabled: false
 	},
 	events: {
 		/**
-		The onChange event fires when the user checks or unchecks the checkbox,
-		but not when the state is changed programmatically.
+			The onChange event fires when the user checks or unchecks the checkbox,
+			but not when the state is changed programmatically.
 		*/
 		onChange: ''
 	},
@@ -41,6 +42,11 @@ enyo.kind({
 	},
 	valueChanged: function() {
 		this.addRemoveClass("onyx-checkbox-checked", this.value);
+		this.setActive(this.value);
+	},
+	activeChanged: function() {
+		this.setValue(this.active);
+		this.bubble("onActivate");
 	},
 	downHandler: function(inSender, e) {
 		if (!this.disabled) {
