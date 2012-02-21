@@ -1,14 +1,23 @@
 enyo.kind({
 	name: "onyx.InputDecorator",
-	kind: "onyx.FocusDecorator",
-	classes: "onyx-input-decorator",
+	kind: "enyo.ToolDecorator",
 	published: {
 		disabled: false
 	},
+	tag: "label",
+	classes: "onyx-input-decorator",
 	handlers: {
-		onDisabledChange: "disabledHandler"
+		onDisabledChange: "disabledChange",
+		onfocus: "receiveFocus",
+		onblur: "receiveBlur"
 	},
-	disabledHandler: function(inSender, inEvent) {
+	receiveFocus: function() {
+		this.addClass("onyx-focused");
+	},
+	receiveBlur: function() {
+		this.removeClass("onyx-focused");
+	},
+	disabledChange: function(inSender, inEvent) {
 		this.addRemoveClass("onyx-disabled", inEvent.disabled);
 	}
 });

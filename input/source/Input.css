@@ -10,7 +10,8 @@
 	border-radius: 3px;
 	border: 1px solid;
 	border-color: rgba(0,0,0,0.1);
-
+	/* reset bootstrap 'label' styling */
+	margin: 0;
 }
 
 .onyx-input-decorator.onyx-focused {
@@ -28,7 +29,7 @@
 	opacity: 0.3;
 }
 
-.onyx-input-decorator > .onyx-input {
+.onyx-input-decorator > input {
 	/* reset */
 	margin: 0;
 	padding: 0;
@@ -37,14 +38,16 @@
 	cursor: pointer;
 	background-color: transparent;
 	font-size: 16px;
+	/* reset bootstrap 'input' styling */
+	box-shadow: none;
 	/* FIXME: test before including: hack for styling reset on Android */
 	/* -webkit-appearance: caret;*/
 }
 
-.onyx-input-decorator.onyx-focused > .onyx-input {
+.onyx-input-decorator.onyx-focused > input {
 	cursor: text;
 }
 
-.onyx-input-decorator.onyx-disabled > .onyx-input {
+.onyx-input-decorator.onyx-disabled > input {
 	cursor: default;
 }

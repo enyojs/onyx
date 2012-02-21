@@ -1,11 +1,11 @@
 enyo.kind({
 	name: "onyx.Input",
 	kind: "enyo.Input",
-	defaultFocus: false,
 	events: {
 		onDisabledChange: ""
 	},
 	classes: "onyx-input",
+	defaultFocus: false,
 	rendered: function() {
 		this.inherited(arguments);
 		if (this.defaultFocus) {

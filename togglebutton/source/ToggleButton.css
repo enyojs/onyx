@@ -1,11 +1,13 @@
 .onyx-toggle-button {
 	display: inline-block;
-	Xpadding: 10px;
+	vertical-align: middle;
+	Xmargin: 1px 0;
+	padding: 1px 0;
 }
 
 .onyx-toggle-button-bar {
 	height: 30px;
-	line-height: 30px;
+	line-height: 32px;
 	min-width: 36px;
 	text-align: center;
 	display: inline-block;
