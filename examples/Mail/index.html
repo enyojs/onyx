@@ -1,0 +1,282 @@
+<!doctype html>
+<html>
+<head>
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<meta name="viewport" content="width=device-width initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<!-- -->
+	<script src="../../../../enyo/enyo.js" type="text/javascript"></script>
+	<!-- -->
+	<script src="../../../../lib/bootstrap-ui/source/package.js" type="text/javascript"></script>
+	<script src="../../../../lib/onyx/package.js" type="text/javascript"></script>
+	<!-- -->
+	<link href="../../../../lib/layout/Fitable/Fitable.css" rel="stylesheet" type="text/css" />
+	<script src="../../../../lib/layout/Fitable/Fitable.js" type="text/javascript"></script>
+	<!-- -->
+	<link href="mail.css" rel="stylesheet" type="text/css" />
+	<style>
+		body {
+			overflow: hidden;
+		}
+		#app_left {
+			width: 240px;
+			border: 1px solid gray;
+		}
+		#app_left2 {
+			width: 300px;
+			border: 1px solid gray;
+		}
+		#app_body {
+			border: 1px solid gray;
+		}
+	</style>
+</head>
+<body Xclass="onyx">
+	<script>
+		enyo.kind({
+			name: "HeaderItem",
+			published: {
+				item: null
+			},
+			style: "border-bottom: 1px solid #eee; padding: 8px",
+			components: [
+				{name: "flag", classes: "mail-flag-icon"},
+				{name: "status", classes: "mail-status-icon"},
+				{name: "invite", classes: "mail-calendar-icon"},
+				{name: "when", classes: "mail-when"},
+				{name: "attach", classes: "mail-attach-icon"},
+				{name: "from", classes: "mail-from"},
+				{name: "subject", classes: "mail-subject"},
+				{name: "blurb", classes: "mail-blurb"},
+			],
+			create: function() {
+				//this.addClass("enyo-bg");
+				this.inherited(arguments);
+				this.itemChanged();
+			},
+			itemChanged: function() {
+				var m = this.item;
+				if (!m) {
+					return;
+				}
+				m.priority = "high";
+				m.meetingInfo = true;
+				//
+				var flags = m.flags || {read: true, replied: true};
+				//
+				// todo selection
+				//this.domStyles["font-weight"] = flags.read ? null : "bold";
+				this.$.from.content = m.from || "(no sender)";
+				this.$.subject.content = m.subject;
+				this.$.blurb.content = m.blurb || "";
+				this.$.when.setContent(this.item.date ? this.item.date.slice(0, 11) : "(no date)");
+				//
+				// Configure priority/flagged
+				this.$.flag.setShowing(m.priority || flags.flagged);
+				if (this.$.flag.showing) {
+					this.$.flag.addClass("mail-flag-" + (m.priority ? "priority" : ""));
+				}
+				//
+				// Configure send/reply/fwd
+				if (m.sendStatus && m.sendStatus.fatalError) {
+					this.$.status.addClass("mail-status-error");
+				} else if (flags.replied && flags.forwarded) {
+					this.$.status.addClass("mail-status-reply-forward");
+				} else if (flags.replied) {
+					this.$.status.addClass("mail-status-reply");
+				} else if (flags.forwarded) {
+					this.$.status.addClass("mail-status-forward");
+				}
+				this.$.status.setShowing(flags.replied || flags.forwarded || (m.sendStatus && m.sendStatus.fatalError));
+				this.$.invite.setShowing(m.meetingInfo);
+			}
+		});
+		//
+		enyo.kind({
+			name: "App",
+			classes: "enyo-fit enyo-unselectable",
+			components: [
+				{kind: "Rows", classes: "enyo-fit", components: [
+					{kind: "Cols", fit: true, components: [
+						{name: "left", kind: "Rows", components: [
+							{kind: "onyx.Toolbar", content: "Accounts", style: "text-align: center; padding: 16px 0 17px 0;"},
+							{content: "MAILBOXES", style: enyo.path.rewrite("background:#E3E4E6 url($onyx/images/gradient.png) repeat-x 0 25px; color: #3897E9; font-weight: bold; padding: 8px;")},
+							{kind: "Scroller", fit: true, Xstyle: "position: relative; height: 140px;", components: [
+								{kind: "Repeater", rows: 0, onSetupRow: "setupRow", ontap: "mailboxTap", style: "padding-top: 4px;", components: [
+									{name: "item", kind: "ToolDecorator", style: "padding: 8px; border-bottom: 1px solid #eee; display: block;", components: [
+										{kind: "Image", src: "images/mailbox_empty.png"},
+										{tag: "span", name: "caption", style: "padding-left: 8px;"}
+									]}
+								]}
+							]}
+						]},
+						{name: "left2", kind: "Rows", components: [
+							{kind: "onyx.Toolbar", content: "Messages", style: "text-align: center; padding: 16px 0 17px 0;"},
+							{style: "xbackground-color: #E3E4E6; padding: 8px;", components: [
+								{kind: "onyx.InputDecorator", name: "inputDecorator", style: "display: block;", components: [
+									{kind: "Input", placeholder: "search", style: "width: 98%;", name: "input"}
+								]}
+							]},
+							{name: "boxName", content: "(no mailbox)", style: enyo.path.rewrite("background:#E3E4E6 url($onyx/images/gradient.png) repeat-x 0 25px; color: #3897E9; font-weight: bold; padding: 8px;")},
+							{kind: "Scroller", fit: true, components: [
+								{kind: "Repeater", rows: 0, onSetupRow: "setupHeaderRow", ontap: "headerTap", ondown: "headerDown", onclick: "headerClick", style: "padding-top: 4px;", components: [
+									{name: "item", kind: "HeaderItem"}
+								]}
+							]}
+						]},
+						{name: "body", fit: true, kind: "Rows", components: [
+							{kind: "onyx.Toolbar", components: [
+								{kind: "onyx.Button", content: "%"}
+							]},
+							{content: "From", style: "padding: 8px;"},
+							{content: "Subject", style: "padding: 8px;"},
+							{content: "Attachmentes", style: "padding: 8px;"},
+							{fit: true, kind: "Scroller", style: "border: 3px solid orange;", components: [
+								{name: "mailBody", style: "xfont-size: 50px; line-height: normal;"}
+							]}
+						]}
+					]}
+				]}
+			],
+			create: function() {
+				this.inherited(arguments);
+			},
+			rendered: function() {
+				this.inherited(arguments);
+				var url = "php/boxesInfo.php";
+				var url = "cache/boxes.json";
+				new enyo.Ajax({url: url}).response(this, this.receiveBoxes).go();
+			},
+			receiveBoxes: function(inSender, inBoxes) {
+				this.log(inBoxes);
+				this.boxes = inBoxes;
+				this.$.repeater.rows = this.boxes.length;
+				this.$.repeater.build();
+				this.$.repeater.render();
+			},
+			setupRow: function(inSender, inEvent) {
+				var item = this.boxes[inEvent.index];
+				inEvent.row.$.caption.setContent(item.name);
+			},
+			mailboxTap: function(inSender, inEvent) {
+				var o = inEvent.originator.owner;
+				if ("rowIndex" in o) {
+					this.selectMailbox(o);
+				}
+			},
+			selectMailbox: function(inMailbox) {
+				if (this.mailbox) {
+					this.mailbox.$.item.applyStyle("background-color", null);
+				}
+				//
+				this.$.repeater2.rows = 0;
+				this.$.repeater2.build();
+				this.$.repeater2.render();
+				//
+				this.mailbox = inMailbox;
+				if (this.mailbox) {
+					this.mailbox.$.item.applyStyle("background-color", "orange");
+					//
+					var box = this.boxes[this.mailbox.rowIndex];
+					this.$.boxName.setContent(box.name);
+					//
+					var url = "php/headers.php";
+					var url = "cache/" + box.name + "-headers.json";
+					new enyo.Ajax({url: url})
+						.response(this, this.receiveHeaders)
+						.go({box: box.box})
+					;
+				}
+			},
+			receiveHeaders: function(inSender, inResponse) {
+				enyo.asyncMethod(this, "_receiveHeaders", inSender, inResponse);
+			},
+			_receiveHeaders: function(inSender, inResponse) {
+				//this.log(inResponse);
+				this.headers = inResponse;
+				this.$.repeater2.rows = Math.min(this.headers.length, 500);
+				//
+				var box = this.boxes[this.mailbox.rowIndex];
+				this.$.boxName.setContent(box.name + " (" + this.$.repeater2.rows + ")");
+				//
+				//
+				//console.profile();
+				this.$.repeater2.build();
+				//console.profileEnd();
+				//
+				this.$.repeater2.render();
+				/*
+				console.profile();
+				this.$.repeater2.render();
+				console.profileEnd();
+				*/
+				//
+				/*
+				console.profile();
+				var h = this.$.repeater2.generateInnerHtml()
+				console.profileEnd();
+				//
+				console.profile();
+				this.$.repeater2.hasNode().innerHTML = h;
+				console.profileEnd();
+				*/
+			},
+			setupHeaderRow: function(inSender, inEvent) {
+				var item = this.headers[inEvent.index];
+				inEvent.row.$.item.setItem(item);
+				/*
+				if (inEvent.index == 2) {
+					inSender.hasNode().addEventListener("click", enyo.bind(this, function() {
+						this.selectHeader(inEvent.row);
+					}));
+				}
+				*/
+			},
+			//headerClick: function(inSender, inEvent) {
+			//headerDown: function(inSender, inEvent) {
+			headerTap: function(inSender, inEvent) {
+				//console.log("delay between dispatch and handler:", new Date().getTime() - inEvent.time);
+				var o = inEvent.originator.owner;
+				if (!("rowIndex" in o)) {
+					o = inEvent.originator.owner.owner;
+				}
+				if ("rowIndex" in o) {
+					this.selectHeader(o);
+				}
+			},
+			selectHeader: function(inHeader) {
+				if (this.header && this.header.$.item) {
+					//this.header.$.item.hasNode().style.backgroundColor = null;
+					this.header.$.item.applyStyle("background-color", null);
+				}
+				this.header = inHeader;
+				if (this.header) {
+					//this.header.$.item.hasNode().style.backgroundColor = "orange";
+					this.header.$.item.applyStyle("background-color", "orange");
+				}
+				enyo.asyncMethod(this, function() {
+					this.$.mailBody.setContent("");
+					//
+					var box = this.boxes[this.mailbox.rowIndex];
+					var header = this.headers[this.header.rowIndex];
+					this.log(header.msgno);
+					//
+					var url = "php/body.php";
+					//var url = "cache/" + box.name + "-headers.json";
+					new enyo.Ajax({url: url, handleAs: "text"})
+						.response(this, this.receiveBody)
+						.go({box: box.box, msgno: header.msgno})
+					;
+				});
+			},
+			receiveBody: function(inSender, inResponse) {
+				//this.$.mailBody.show();
+				//this.$.bodySpinner.hide();
+				//this.log();
+				this.$.mailBody.setContent("<pre>" + inResponse + "</pre>");
+			}
+		});
+		new App().write();
+	</script>
+</body>
+</html>
+
