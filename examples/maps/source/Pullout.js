@@ -4,7 +4,8 @@ enyo.kind({
 	events: {
 		onDropPin: "",
 		onShowTraffic: "",
-		onMapTypeSelect: ""
+		onMapTypeSelect: "",
+		onBookmarkSelect: ""
 	},
 	components: [
 		{classes: "pullout-shadow"},
@@ -28,7 +29,7 @@ enyo.kind({
 				{content: "Recents"}
 			]},
 			{kind: "Scroller", classes: "enyo-fit", style: "top: 70px;", components: [
-				{kind: "BookmarkList"}
+				{kind: "BookmarkList", onItemSelect: "itemSelect"}
 			]}
 		]}
 	],
@@ -60,5 +61,8 @@ enyo.kind({
 			}
 		});
 		this.doMapTypeSelect({mapType: inSender.mapType});
+	},
+	itemSelect: function(inSender, inItem) {
+		this.doBookmarkSelect(inItem);
 	}
 })

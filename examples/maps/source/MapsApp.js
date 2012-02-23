@@ -16,11 +16,12 @@ enyo.kind({
 			{kind: "IconButton", classes: "menu-button", style: "float: right;", icon: "images/menu-icon-bookmark.png", panel: "bookmark", ontap: "togglePullout"},
 			{kind: "IconButton", classes: "menu-button", style: "float: right;", icon: "images/menu-icon-info.png", panel: "info", ontap: "togglePullout"}
 		]},
-		{name: "map", kind: "BingMap", classes: "enyo-fit", style: "top: 56px;", 
+		{name: "map", kind: "BingMap", classes: "enyo-fit", style: "top: 55px;", 
 			options: {showDashboard: false, showCopyright: false, showScalebar: false},
 			credentials: "Ah2oavKf-raTJYVgMxnxJg9E2E2_53Wb3jz2lD4N415EFSKwFlhlMe9U2dJpMZyJ",
 			onLoaded: "findCurrentLocation"},
-		{kind: "Pullout", max: 100, value: 100, unit: "%", classes: "pullout", onDropPin: "dropPin", onShowTraffic: "showTraffic", onMapTypeSelect: "mapTypeSelect"},
+		{kind: "Pullout", max: 100, value: 100, unit: "%", classes: "pullout",
+			onDropPin: "dropPin", onShowTraffic: "showTraffic", onMapTypeSelect: "mapTypeSelect", onBookmarkSelect: "bookmarkSelect"},
 		{kind: "CurrentLocation", onSuccess: "currentLocationSuccess"}
 	],
 	togglePullout: function(inSender) {
@@ -29,7 +30,11 @@ enyo.kind({
 	mapTypeSelect: function(inSender, inEvent) {
 		this.$.map.setMapType(inEvent.mapType)
 	},
-	dropPin: function(inSender, inEvent) {
+	bookmarkSelect: function(inSender, inItem) {
+		var loc = inItem.location;
+		this.$.map.createPushpin(loc.latitude, loc.longitude, {icon: "images/poi_search.png", height: 48, width: 48});
+	},
+	dropPin: function(inSender, inEvent) { 
 		var loc = this.$.map.hasMap().getCenter();
 		this.$.map.setCenter(loc.latitude, loc.longitude);
 		this.$.map.setShowPin(inEvent.value);

@@ -36,7 +36,7 @@
 
 .pullout {
 	position: absolute;
-	top: 56px;
+	top: 55px;
 	right: 0;
 	bottom: 0;
 	width: 350px;
@@ -61,9 +61,9 @@
 	border: none;
 	border-radius: 10px 0 0 10px;
 	background: #D8D8D8 url(../images/grabbutton.png) no-repeat;
-	-webkit-box-shadow: -2px 5px 8px -5px rgba(0, 0, 0, 0.7);
-	-moz-box-shadow: -2px 5px 8px -5px rgba(0, 0, 0, 0.7);
-	box-shadow: -2px 5px 9px -5px rgba(0, 0, 0, 0.7);
+	-webkit-box-shadow: -6px 8px 9px -5px rgba(0, 0, 0, 0.7);
+	-moz-box-shadow: -6px 8px 9px -5px rgba(0, 0, 0, 0.7);
+	box-shadow: --6px 8px 9px -5px rgba(0, 0, 0, 0.7);
 }
 
 .settings {
