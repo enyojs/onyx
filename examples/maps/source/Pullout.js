@@ -23,7 +23,7 @@ enyo.kind({
 				{kind: "LabeledItem", label: "Bird's Eye", mapType: "birdseye", icon: "images/map-type-bird-eye.png", onChange: "mapTypeChange"}
 			]}
 		]},
-		{name: "bookmark", kind: "Rows", showing: false, classes: "enyo-fit", components: [
+		{name: "bookmark", kind: "FittableRows", showing: false, classes: "enyo-fit", components: [
 			{kind: "onyx.RadioGroup", classes: "bookmark-header", components: [
 				{content: "Saved", active: true},
 				{content: "Recents"}

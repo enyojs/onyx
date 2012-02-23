@@ -1,7 +1,6 @@
 ﻿enyo.depends(
 	"$lib/onyx",
-	"$lib/layout/Fitable/Fitable.css",
-	"$lib/layout/Fitable/Fitable.js",
+	"$lib/layout/fittable",
 	"maps",
 	"source/mockdata.js",
 	"source/CurrentLocation.js",

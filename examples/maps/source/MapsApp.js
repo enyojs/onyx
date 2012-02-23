@@ -2,7 +2,7 @@ enyo.kind({
 	name: "MapsApp",
 	classes: "app onyx enyo-unselectable",
 	components: [
-		{kind: "Rows", classes: "enyo-fit", components: [
+		{kind: "FittableRows", classes: "enyo-fit", components: [
 			{kind: "onyx.Toolbar", classes: "toolbar", components: [
 				{kind: "onyx.RadioGroup", defaultKind: "RadioIconButton", components: [
 					{icon: "images/topbar-search-icon.png", active: true},
