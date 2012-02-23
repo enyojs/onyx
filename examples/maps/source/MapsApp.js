@@ -22,6 +22,7 @@ enyo.kind({
 			onLoaded: "findCurrentLocation"},
 		{kind: "Pullout", max: 100, value: 100, unit: "%", classes: "pullout",
 			onDropPin: "dropPin", onShowTraffic: "showTraffic", onMapTypeSelect: "mapTypeSelect", onBookmarkSelect: "bookmarkSelect"},
+		{kind: "Infobox"},
 		{kind: "CurrentLocation", onSuccess: "currentLocationSuccess"}
 	],
 	togglePullout: function(inSender) {
@@ -32,7 +33,15 @@ enyo.kind({
 	},
 	bookmarkSelect: function(inSender, inItem) {
 		var loc = inItem.location;
-		this.$.map.createPushpin(loc.latitude, loc.longitude, {icon: "images/poi_search.png", height: 48, width: 48});
+		var p = this.$.map.createPushpin(loc.latitude, loc.longitude, {icon: "images/poi_search.png", height: 48, width: 48});
+		Microsoft.Maps.Events.addHandler(p, 'click', enyo.bind(this, "openInfobox", inItem));
+	},
+	openInfobox: function(inItem, e) {
+		var loc = e.target.getLocation();
+		var pix = this.$.map.hasMap().tryLocationToPixel(loc, Microsoft.Maps.PixelReference.control);
+		this.$.infobox.setTitle(inItem.title);
+		this.$.infobox.setDetails(inItem.details);
+		this.$.infobox.openAt(pix.y, pix.x + 18);
 	},
 	dropPin: function(inSender, inEvent) { 
 		var loc = this.$.map.hasMap().getCenter();

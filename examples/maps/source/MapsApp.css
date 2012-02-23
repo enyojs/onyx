@@ -113,3 +113,16 @@
 	font-size: 14px;
 	color: #606060;
 }
+
+.infobox {
+	position: absolute;
+	padding: 10px;
+	border-radius: 10px;
+	background-color: #4C4C4C;
+	color: #fff;
+	font-size: 18px;
+}
+
+.infobox-details {
+	font-size: 14px;
+}
