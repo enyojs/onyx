@@ -1,5 +1,4 @@
 ﻿enyo.depends(
-	"$lib/base-ui",
 	"$lib/onyx",
 	"$lib/layout",
 	"$lib/aura",
