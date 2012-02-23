@@ -3,7 +3,7 @@ enyo.depends(
 	"Button.js",
 	"Checkbox.js",
 	"ModalControl.js",
-	//"Floater.js",
+	"Floater.js",
 	"Popup.js",
 	"Menu.js",
 	"Grabber.js",
