@@ -1,7 +1,5 @@
 ﻿enyo.depends(
 	"$lib/onyx",
-	"$lib/layout",
-	"$lib/aura",
 	"maps",
 	"source/mockdata.js",
 	"source/CurrentLocation.js",

@@ -13,5 +13,9 @@ enyo.depends(
 	"RadioButton.js",
 	"RadioGroup.js",
 	"ToggleButton.js",
-	"Toolbar.js"
+	"Toolbar.js",
+	"transform.js",
+	"Animation.js",
+	"Animator.js",
+	"Slideable.js"
 );
