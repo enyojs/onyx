@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
 <head>
-	<title>Onyx Style Matters</title>
+	<title>Onyx browser example</title>
 	<!-- -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<!-- -->
@@ -13,55 +13,23 @@
 	<script src="../../input/source/package.js" type="text/javascript"></script>
 	<script src="../../toolbar/source/package.js" type="text/javascript"></script>
 	<script src="../../togglebutton/source/package.js" type="text/javascript"></script>
+	<link href="../../../layout/Fitable/Fitable.css" rel="stylesheet" type="text/css" />
+	<script src="../../../layout/Fitable/Fitable.js" type="text/javascript"></script>
 	<!-- -->
 	<script src="App.js" type="text/javascript"></script>
 	<!-- -->
 	<style>
+		body {
+			/* to avoid get incorrect layout due to scrollbar appearing */
+			overflow: hidden;
+		}
+
 		.frame {
 			position: absolute;
 			height: 100%;
 			width: 100%;
 			border: 0;
 		}
-
-		.box.enyo-children-inline > * {
-			display: block;
-		}
-
-		.box {
-			display: -moz-box;
-			display: -webkit-box;
-			display: box;
-		}
-
-		.h {
-			-moz-box-orient: horizontal;
-			-webkit-box-orient: horizontal;
-			box-orient: horizontal;
-		}
-
-		.v {
-			-moz-box-orient: vertical;
-			-webkit-box-orient: vertical;
-			box-orient: vertical;
-		}
-
-		.center {
-			-moz-box-align: center;
-			-webkit-box-align: center;
-			box-align: center;
-		}
-
-		.flex1 {
-			-moz-box-flex: 1;
-			-webkit-box-flex: 1;
-			box-flex: 1;
-		}
-
-		body input {
-			border: 1px solid black;
-		}
-
 	</style>
 </head>
 <body>
