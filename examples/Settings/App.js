@@ -28,6 +28,12 @@ enyo.kind({
 				]}
 			]},
 			{kind: "onyx.Groupbox", components: [
+				{kind: "onyx.GroupboxHeader", content: "Ringtone"},
+				{kind: "onyx.InputDecorator", components: [
+					{kind: "onyx.Input", value: "Marimba"},
+				]}
+			]},
+			{kind: "onyx.Groupbox", components: [
 				{components: [
 					{content: "Vibrate"},
 					{kind: "onyx.ToggleButton"}
