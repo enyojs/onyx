@@ -1,0 +1,115 @@
+.app {
+	overflow: hidden;
+}
+
+.toolbar .onyx-radiobutton {
+	/* onyx-radiobutton has padding: 0.5em 2em; */
+	padding: 1px 10px;
+}
+
+.toolbar .onyx-input-decorator {
+	/* onyx-input-decorator.onyx-toolbar-item has padding: 5px 6px 6px 6px; */
+	padding-top: 0;
+}
+
+.toolbar .menu-button {
+	/* remove shadow and background from onyx-button */
+	background: transparent;
+	box-shadow: none;
+	padding: 0 4px;
+}
+
+.search-input {
+	width: 180px;
+}
+
+.icon {
+	width: 32px;
+	height: 32px;
+	background-size: 32px 64px;
+	background-repeat: no-repeat;
+}
+
+.onyx-button:active:not([disabled]) .icon {
+	background-position: 0 -32px;
+}
+
+.pullout {
+	position: absolute;
+	top: 56px;
+	right: 0;
+	bottom: 0;
+	width: 350px;
+	background: #D8D8D8;
+}
+
+.pullout-shadow {
+	position: absolute;
+	height: 100%;
+	width: 20px;
+	left: -20px;
+	background: url(../images/sliding-shadow.png) repeat-y;
+	background-size: 20px 2px;
+}
+
+.pullout-grapbutton {
+	position: absolute;
+	height: 54px;
+	width: 50px;
+	bottom: 20px;
+	left: -46px;
+	border: none;
+	border-radius: 10px 0 0 10px;
+	background: #D8D8D8 url(../images/grabbutton.png) no-repeat;
+	-webkit-box-shadow: -2px 5px 8px -5px rgba(0, 0, 0, 0.7);
+	-moz-box-shadow: -2px 5px 8px -5px rgba(0, 0, 0, 0.7);
+	box-shadow: -2px 5px 9px -5px rgba(0, 0, 0, 0.7);
+}
+
+.settings {
+	padding: 10px;
+}
+
+.settings > * {
+	padding: 10px;
+	min-height: 30px;
+	line-height: 30px;
+}
+
+.settings > * > * {
+	display: inline-block;
+}
+
+.labeled-item-icon {
+	vertical-align: bottom;
+	padding-right: 5px;
+}
+
+.bookmark-header {
+	text-align: center;
+	padding: 10px 0;
+}
+
+.bookmark-list {
+	background-color: #fff;
+}
+
+.bookmark-item {
+	padding: 10px;
+}	
+
+.bookmark-item-title, .bookmark-item-details {
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+.bookmark-item-title {
+	margin-top: 10px;
+	font-size: 16px;
+}
+
+.bookmark-item-details {
+	font-size: 14px;
+	color: #606060;
+}

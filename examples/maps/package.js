@@ -1,0 +1,15 @@
+﻿enyo.depends(
+	"$lib/base-ui",
+	"$lib/onyx",
+	"$lib/layout",
+	"$lib/aura",
+	"maps",
+	"source/CurrentLocation.js",
+	"source/IconButton.js",
+	"source/RadioIconButton.js",
+	"source/LabeledItem.js",
+	"source/BookmarkList.js",
+	"source/Pullout.js",
+	"source/MapsApp.css",
+	"source/MapsApp.js"
+);
