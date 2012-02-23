@@ -8,8 +8,8 @@ enyo.kind({
 				{icon: "images/topbar-direct-icon.png"}
 			]},
 			{kind: "onyx.InputDecorator", components: [
-				{kind: "onyx.Input", defaultFocus: true, classes: "search-input", placeholder: "Search or Address"},
-				{kind: "Image", src: "images/search-input-search.png"}
+				{name: "searchInput", kind: "onyx.Input", defaultFocus: true, classes: "search-input", placeholder: "Search or Address"},
+				{kind: "Image", src: "images/search-input-search.png", ontap: "search"}
 			]},
 			/* using "float: right" to make menu buttons right-aligned */
 			{kind: "IconButton", classes: "menu-button", style: "float: right;", icon: "images/menu-icon-mylocation.png", ontap: "findCurrentLocation"},
@@ -20,7 +20,7 @@ enyo.kind({
 			options: {showDashboard: false, showCopyright: false, showScalebar: false},
 			credentials: "Ah2oavKf-raTJYVgMxnxJg9E2E2_53Wb3jz2lD4N415EFSKwFlhlMe9U2dJpMZyJ",
 			onLoaded: "findCurrentLocation"},
-		{kind: "Pullout", max: 100, value: 100, unit: "%", classes: "pullout",
+		{kind: "Pullout", classes: "pullout",
 			onDropPin: "dropPin", onShowTraffic: "showTraffic", onMapTypeSelect: "mapTypeSelect", onBookmarkSelect: "bookmarkSelect"},
 		{kind: "Infobox"},
 		{kind: "CurrentLocation", onSuccess: "currentLocationSuccess"}
@@ -33,8 +33,9 @@ enyo.kind({
 	},
 	bookmarkSelect: function(inSender, inItem) {
 		var loc = inItem.location;
-		var p = this.$.map.createPushpin(loc.latitude, loc.longitude, {icon: "images/poi_search.png", height: 48, width: 48});
-		Microsoft.Maps.Events.addHandler(p, 'click', enyo.bind(this, "openInfobox", inItem));
+		this.bookmarkPin = this.$.map.updatePushpin(this.bookmarkPin, loc.latitude, loc.longitude, {icon: "images/poi_search.png", height: 48, width: 48});
+		Microsoft.Maps.Events.addHandler(this.bookmarkPin, 'click', enyo.bind(this, "openInfobox", inItem));
+		this.$.map.setCenter(loc.latitude, loc.longitude);
 	},
 	openInfobox: function(inItem, e) {
 		var loc = e.target.getLocation();
@@ -59,14 +60,18 @@ enyo.kind({
 		this.$.map.setCenter(c.latitude, c.longitude);
 		this.$.map.setZoom(14);
 		inSender.stopTracking();
-		this.showMyLocationPin(c.latitude, c.longitude);
+		this.currentLocationPin = this.$.map.updatePushpin(this.currentLocationPin, c.latitude, c.longitude,
+			{icon: "images/mylocation.png", height: 48, width: 48, anchor: new Microsoft.Maps.Point(24, 24)});
 	},
-	showMyLocationPin: function(inLatitude, inLongitude) {
-		if (this.myLocationPin) {
-			this.myLocationPin.setLocation(new Microsoft.Maps.Location(inLatitude, inLongitude));
-		} else {
-			this.myLocationPin = this.$.map.createPushpin(inLatitude, inLongitude,
-				{icon: "images/mylocation.png", height: 48, width: 48, anchor: new Microsoft.Maps.Point(24, 24)});
+	search: function(inSender) {
+		this.$.map.clearAll([this.currentLocationPin]);
+		if (this.$.searchInput.getValue()) {
+			for (var i=0, item; item=mock_data[i]; i++) {
+				var loc = item.location;
+				var p = this.$.map.createPushpin(loc.latitude, loc.longitude, {icon: "images/poi_search.png", height: 48, width: 48, text: String(i+1), textOffset: new Microsoft.Maps.Point(0, 7)});
+				Microsoft.Maps.Events.addHandler(p, 'click', enyo.bind(this, "openInfobox", item));
+				this.$.map.setCenter(loc.latitude, loc.longitude);
+			}
 		}
 	}
 });

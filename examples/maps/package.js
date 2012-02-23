@@ -5,6 +5,7 @@
 	"$lib/layout",
 	"$lib/aura",
 	"maps",
+	"source/mockdata.js",
 	"source/CurrentLocation.js",
 	"source/IconButton.js",
 	"source/RadioIconButton.js",

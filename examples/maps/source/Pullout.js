@@ -8,7 +8,7 @@ enyo.kind({
 		onBookmarkSelect: ""
 	},
 	components: [
-		{classes: "pullout-shadow"},
+		{name: "shadow", classes: "pullout-shadow"},
 		{classes: "pullout-grapbutton"},
 		{name: "info", classes: "enyo-fit", components: [
 			{kind: "onyx.Groupbox", classes: "settings", components: [
@@ -33,6 +33,9 @@ enyo.kind({
 			]}
 		]}
 	],
+	max: 100,
+	value: 100,
+	unit: "%", 
 	toggle: function(inPanelName) {
 		var t = this.$[inPanelName];
 		if (t.showing && this.isAtMin()) {
@@ -43,6 +46,10 @@ enyo.kind({
 			this.$.bookmark.hide();
 			this.$[inPanelName].show();
 		}
+	},
+	valueChanged: function() {
+		this.inherited(arguments);
+		this.$.shadow.setShowing(this.value !== this.max);
 	},
 	dropPinChange: function(inSender) {
 		this.doDropPin({value: inSender.getValue()});
