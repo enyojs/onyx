@@ -5,12 +5,9 @@
 	<meta name="viewport" content="width=device-width initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<!-- -->
 	<script src="../../../../enyo/enyo.js" type="text/javascript"></script>
-	<!-- -->
 	<script src="../../../../lib/bootstrap-ui/source/package.js" type="text/javascript"></script>
 	<script src="../../../../lib/onyx/package.js" type="text/javascript"></script>
-	<!-- -->
-	<link href="../../../../lib/layout/Fitable/Fitable.css" rel="stylesheet" type="text/css" />
-	<script src="../../../../lib/layout/Fitable/Fitable.js" type="text/javascript"></script>
+	<script src="../../../../lib/layout/fittable/package.js" type="text/javascript"></script>
 	<!-- -->
 	<link href="mail.css" rel="stylesheet" type="text/css" />
 	<style>
@@ -95,9 +92,9 @@
 			name: "App",
 			classes: "enyo-fit enyo-unselectable",
 			components: [
-				{kind: "Rows", classes: "enyo-fit", components: [
-					{kind: "Cols", fit: true, components: [
-						{name: "left", kind: "Rows", components: [
+				{kind: "FittableRows", classes: "enyo-fit", components: [
+					{kind: "FittableColumns", fit: true, components: [
+						{name: "left", kind: "FittableRows", components: [
 							{kind: "onyx.Toolbar", content: "Accounts", style: "text-align: center; padding: 16px 0 17px 0;"},
 							{content: "MAILBOXES", style: enyo.path.rewrite("background:#E3E4E6 url($onyx/images/gradient.png) repeat-x 0 25px; color: #3897E9; font-weight: bold; padding: 8px;")},
 							{kind: "Scroller", fit: true, Xstyle: "position: relative; height: 140px;", components: [
@@ -109,7 +106,7 @@
 								]}
 							]}
 						]},
-						{name: "left2", kind: "Rows", components: [
+						{name: "left2", kind: "FittableRows", components: [
 							{kind: "onyx.Toolbar", content: "Messages", style: "text-align: center; padding: 16px 0 17px 0;"},
 							{style: "xbackground-color: #E3E4E6; padding: 8px;", components: [
 								{kind: "onyx.InputDecorator", name: "inputDecorator", style: "display: block;", components: [
@@ -123,7 +120,7 @@
 								]}
 							]}
 						]},
-						{name: "body", fit: true, kind: "Rows", components: [
+						{name: "body", fit: true, kind: "FittableRows", components: [
 							{kind: "onyx.Toolbar", components: [
 								{kind: "onyx.Button", content: "%"}
 							]},
