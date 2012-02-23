@@ -2,7 +2,7 @@ enyo.kind({
 	name: "App",
 	components: [
 		{kind: "onyx.Toolbar", components: [
-			{kind: "Image", src: "../../resources/grabbutton.png"},
+			{kind: "Grabber"},
 			{content: "Header"},
 			{kind: "onyx.Button", content: "Label"},
 			{kind: "onyx.Button", content: "Label", classes: "active"}

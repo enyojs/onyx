@@ -18,7 +18,7 @@
 }
 
 .onyx-toolbar.onyx-light {
-	-webkit-border-image: url(../../resources/toolbar-light.png) 2 4 repeat stretch;
+	-webkit-border-image: url(../../images/toolbar-light.png) 2 4 repeat stretch;
 	background-color: #a9a9a9;
 	color: black;
 }
@@ -31,7 +31,7 @@
 /* FIXME: basically superfluous */
 /*
 .onyx-header {
-	-webkit-border-image: url(../../resources/header.png) 2 0;
+	-webkit-border-image: url(../../images/header.png) 2 0;
 	min-height: 50px;
 	padding: 12px;
 	border-width: 2px 0;
@@ -40,7 +40,7 @@
 }
 
 .onyx-header.onyx-dark {
-	-webkit-border-image: url(../../resources/toolbar.png) 2 4 repeat stretch;
+	-webkit-border-image: url(../../images/toolbar.png) 2 4 repeat stretch;
 	background-color: #343434;
 	color: #fff;
 }

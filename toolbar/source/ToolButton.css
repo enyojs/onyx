@@ -5,7 +5,7 @@
 
 /*
 .onyx-button:active:not([disabled]).onyx-toolbar-item, .enyo-button.onyx-depressed.enyo-toolbar-item {
-	x-webkit-border-image: url(../../resources/button-down.png) 4 4 4 4 stretch stretch;
+	x-webkit-border-image: url(../../images/button-down.png) 4 4 4 4 stretch stretch;
 }
 
 .enyo-tool-button-client.enyo-button-disabled {

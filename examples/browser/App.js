@@ -12,7 +12,7 @@ enyo.kind({
 	components: [
 		{kind: "Rows", classes: "enyo-fit", components: [
 			{kind: "onyx.Toolbar", components: [
-				{kind: "Image", style: "height: 29px;", src: "../../resources/grabbutton.png", style: "float: left"},
+				{kind: "GrabberImage", style: "float: left"},
 				{name: "bookmarksButton", kind: "onyx.Button", content: "B", ontap: "toggleBookmarks", style: "float: left;"},
 				{kind: "onyx.Button", content: "&laquo;", ontap: "back", style: "float: left;"},
 				{kind: "onyx.Button", content: "&raquo;", ontap: "forward", style: "float: left;"},

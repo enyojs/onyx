@@ -3,7 +3,7 @@
 	/* border-image */
 	/*
 	border: 6px solid transparent;
-	-webkit-border-image: url(../../resources/input-tool.png) 6 6 6 6;
+	-webkit-border-image: url(../../images/input-tool.png) 6 6 6 6;
 	*/
 	
 	box-shadow: inset 0px 1px 4px rgba(0,0,0,0.1);
@@ -12,7 +12,7 @@
 }
 
 .onyx-input-decorator.onyx-toolbar-item.onyx-focused {
-	/*-webkit-border-image: url(../../resources/input-tool-focus.png) 6 6 6 6;*/
+	/*-webkit-border-image: url(../../images/input-tool-focus.png) 6 6 6 6;*/
 	/* non-image version */
 	box-shadow: inset 0px 1px 4px rgba(0,0,0,0.3);
 	background-color: white;
