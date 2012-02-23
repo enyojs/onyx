@@ -36,7 +36,7 @@
 
 .pullout {
 	position: absolute;
-	top: 55px;
+	top: 56px;
 	right: 0;
 	bottom: 0;
 	width: 350px;
@@ -52,7 +52,7 @@
 	background-size: 20px 2px;
 }
 
-.pullout-grapbutton {
+.pullout-grabbutton {
 	position: absolute;
 	height: 54px;
 	width: 50px;
