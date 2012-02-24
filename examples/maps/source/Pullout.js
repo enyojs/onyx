@@ -13,14 +13,14 @@ enyo.kind({
 		{name: "info", classes: "enyo-fit", components: [
 			{kind: "onyx.Groupbox", classes: "settings", components: [
 				{kind: "onyx.GroupboxHeader", content: "General"},
-				{kind: "LabeledItem", label: "Drop Pin", icon: "images/icon-dropPin.png", defaultKind: "onyx.ToggleButton", onChange: "dropPinChange"},
+				{kind: "LabeledItem", label: "Show Drop Pin", icon: "images/icon-dropPin.png", defaultKind: "onyx.ToggleButton", onChange: "dropPinChange"},
 				{kind: "LabeledItem", label: "Show Traffic", icon: "images/icon-traffic.png", defaultKind: "onyx.ToggleButton", onChange: "showTrafficChange"}
 			]},
-			{name: "mapType", kind: "onyx.Groupbox", classes: "settings", components: [
+			{name: "mapType", kind: "Group", classes: "onyx-groupbox settings", controlClasses: "onyx-groupbox-item", highlander: true, onChange: "mapTypeChange", components: [
 				{kind: "onyx.GroupboxHeader", content: "Map Type"},
-				{kind: "LabeledItem", label: "Road", mapType: "road", icon: "images/map-type-road.png", value: true, onChange: "mapTypeChange"},
-				{kind: "LabeledItem", label: "Satellite", mapType: "aerial", icon: "images/map-type-satellite.png", onChange: "mapTypeChange"},
-				{kind: "LabeledItem", label: "Bird's Eye", mapType: "birdseye", icon: "images/map-type-bird-eye.png", onChange: "mapTypeChange"}
+				{kind: "LabeledItem", label: "Road", mapType: "road", icon: "images/map-type-road.png", value: true},
+				{kind: "LabeledItem", label: "Satellite", mapType: "aerial", icon: "images/map-type-satellite.png"},
+				{kind: "LabeledItem", label: "Bird's Eye", mapType: "birdseye", icon: "images/map-type-bird-eye.png"}
 			]}
 		]},
 		{name: "bookmark", kind: "FittableRows", showing: false, classes: "enyo-fit", components: [
@@ -59,17 +59,9 @@ enyo.kind({
 	showTrafficChange: function(inSender) {
 		this.doShowTraffic({value: inSender.getValue()});
 	},
-	mapTypeChange: function(inSender) {
-		if (!inSender.getValue()) {
-			inSender.setValue(true);
-			return;
-		}
-		enyo.forEach(this.$.mapType.children, function(inC) {
-			if (inSender !== inC) {
-				enyo.call(inC, "setValue", false);
-			}
-		});
-		this.doMapTypeSelect({mapType: inSender.mapType});
+	mapTypeChange: function(inSender, inEvent) {
+		var o = inEvent.originator;
+		this.doMapTypeSelect({mapType: o.parent.mapType});
 	},
 	itemSelect: function(inSender, inItem) {
 		this.doBookmarkSelect(inItem);
