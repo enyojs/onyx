@@ -3,6 +3,7 @@
 
 .onyx-groupbox > * {
 	display: block;
+	/*box-shadow: inset 0px 1px 1px rgba(255,255,255,0.5);*/
 	border-color: #aaaaaa;
 	border-style: solid;
 	border-width: 0 1px 1px 1px;
@@ -28,18 +29,13 @@
 
 .onyx-groupbox-header {
 	padding: 2px 10px;
-	/**/
 	color: white;
 	font-size: 0.9em;
 	font-weight: bold;
 	text-transform: uppercase;
 	/**/
 	background-color: #343434;
-	/**/
 	border: none;
-	/*border-width: 2px 4px;*/
-	/**/
-	/*-webkit-border-image: url(../../images/toolbar.png) 2 4 repeat stretch;*/
 	background: #4c4c4c url(../../images/gradient.png) repeat-x 0 10px;
 }
 
