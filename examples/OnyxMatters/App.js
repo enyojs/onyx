@@ -79,15 +79,25 @@ enyo.kind({
 			]},
 			{tag: "br"},
 			{kind: "onyx.Groupbox", components: [
+				{content: "I'm a group item!", style: "padding: 8px;"}
+			]},
+			{tag: "br"},
+			{kind: "onyx.Groupbox", components: [
 				{kind: "onyx.GroupboxHeader", content: "Header"},
 				{kind: "onyx.InputDecorator", components: [
-					{kind: "onyx.Input", placeholder: "Enter text here"},
+					{kind: "onyx.Input", placeholder: "Enter text here"}
 				]},
 				{kind: "onyx.InputDecorator", components: [
-					{kind: "onyx.Input", value: "Middle"},
+					{kind: "onyx.Input", value: "Middle"}
 				]},
 				{kind: "onyx.InputDecorator", components: [
 					{kind: "onyx.Input", value: "Last"}
+				]}
+			]},
+			{tag: "br"},
+			{kind: "onyx.Groupbox", components: [
+				{kind: "onyx.InputDecorator", components: [
+					{kind: "onyx.Input", placeholder: "Enter text here"}
 				]}
 			]}
 		]}
