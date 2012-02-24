@@ -1,5 +1,4 @@
 .onyx-groupbox {
-	/*margin: 4px;*/
 }
 
 .onyx-groupbox-header {
@@ -20,9 +19,10 @@
 
 .onyx-groupbox > * {
 	display: block;
-	border-color: #AAAAAA;
+	border-color: #aaaaaa;
+	border-top-color: transparent;
 	border-style: solid;
-	border-width: 0 1px 1px 1px;
+	border-width: 1px;
 	/*padding: 10px;*/
 	/* reset styles that make 'item' look bad if they happen to be there */
 	border-radius: 0;
@@ -30,7 +30,7 @@
 }
 
 .onyx-groupbox > *:first-child {
-	border-width: 1px;
+	border-top-color: #aaaaaa;
 	border-radius: 4px 4px 0 0;
 }
 
@@ -47,12 +47,13 @@
 }
 
 .onyx-groupbox > .onyx-input-decorator {
+	border-color: #aaaaaa;
+	border-top-color: transparent;
 	border-radius: 0;
-	border-width: 0 1px 1px 1px;
 }
 
 .onyx-groupbox > .onyx-input-decorator:first-child {
-	border-width: 1px;
+	border-top-color: #aaaaaa;
 	border-radius: 4px 4px 0 0;
 }
 
