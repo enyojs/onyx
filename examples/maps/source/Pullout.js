@@ -9,7 +9,7 @@ enyo.kind({
 	},
 	components: [
 		{name: "shadow", classes: "pullout-shadow"},
-		{classes: "pullout-grapbutton"},
+		{classes: "pullout-grabbutton"},
 		{name: "info", classes: "enyo-fit", components: [
 			{kind: "onyx.Groupbox", classes: "settings", components: [
 				{kind: "onyx.GroupboxHeader", content: "General"},
@@ -23,12 +23,12 @@ enyo.kind({
 				{kind: "LabeledItem", label: "Bird's Eye", mapType: "birdseye", icon: "images/map-type-bird-eye.png", onChange: "mapTypeChange"}
 			]}
 		]},
-		{name: "bookmark", showing: false, classes: "enyo-fit", components: [
+		{name: "bookmark", kind: "FittableRows", showing: false, classes: "enyo-fit", components: [
 			{kind: "onyx.RadioGroup", classes: "bookmark-header", components: [
 				{content: "Saved", active: true},
 				{content: "Recents"}
 			]},
-			{kind: "Scroller", classes: "enyo-fit", style: "top: 70px;", components: [
+			{fit: true, kind: "Scroller", ondragfinish: "preventDragTap", components: [
 				{kind: "BookmarkList", onItemSelect: "itemSelect"}
 			]}
 		]}
@@ -44,7 +44,9 @@ enyo.kind({
 			this.animateToMin();
 			this.$.info.hide();
 			this.$.bookmark.hide();
-			this.$[inPanelName].show();
+			t.show();
+			// need to call resized() for bookmark since it is a Rows and it was hidden initially.
+			t.resized();
 		}
 	},
 	valueChanged: function() {
@@ -71,5 +73,8 @@ enyo.kind({
 	},
 	itemSelect: function(inSender, inItem) {
 		this.doBookmarkSelect(inItem);
+	},
+	preventDragTap: function(inSender, inEvent) {
+		inEvent.preventTap();
 	}
 })

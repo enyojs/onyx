@@ -1,0 +1,39 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title>onyx input sample</title>
+	<script src="../../../../enyo/enyo.js" type="text/javascript"></script>
+	<script src="../../../onyx/package.js" type="text/javascript"></script>
+</head>
+<body>
+	<script>
+		new (enyo.kind({
+			name: "App",
+			kind: "Control",
+			components: [
+				{content: "InputDecorator and input with placeholder", style: "margin: 10px;"},
+				{kind: "onyx.InputDecorator", components: [
+					{kind: "onyx.Input", placeholder: "Enter text here"}
+				]},
+				{content: "InputDecorator with a disabled input inside it", style: "margin: 10px;"},
+				{tag: "hr"},
+				{kind: "onyx.InputDecorator", components: [
+					{kind: "onyx.Input", disabled: true, value: "Hello World"}
+				]},
+				{content: "InputDecorator with a focused input inside it", style: "margin: 10px;"},
+				{tag: "hr"},
+				{kind: "onyx.InputDecorator", components: [
+					{kind: "onyx.Input", defaultFocus: true, value: "Hello World"}
+				]},
+				{content: "InputDecorator with some stuff inside it", style: "margin: 10px;"},
+				{tag: "hr"},
+				{kind: "onyx.InputDecorator", components: [
+					{content: "Left stuff: "},
+					{kind: "onyx.Input", value: "Hello World"},
+					{content: " and right stuff..."},
+				]}
+			]
+		}))().write();
+	</script>
+</body>
+</html>

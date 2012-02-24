@@ -1,0 +1,50 @@
+.onyx-toolbar {
+	/*
+		line-height is unreliable for centering, instead
+		use vertical-align: middle to align
+		elements along a common centerline and use
+		padding to fill out the space.
+	*/
+	padding: 9px 8px 10px 8px;
+	/**/
+	border: 1px solid black;
+	background: #4C4C4C url(../../images/gradient.png) repeat-x 0 10px;
+	color: white;
+}
+
+.onyx-toolbar > * {
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.onyx-toolbar.onyx-light {
+	-webkit-border-image: url(../../images/toolbar-light.png) 2 4 repeat stretch;
+	background-color: #a9a9a9;
+	color: black;
+}
+
+.onyx-toolbar-item {
+	margin: 0 6px;
+	/*
+	min-height: 32px;
+	line-height: 32px;
+	*/
+}
+
+/* FIXME: basically superfluous */
+/*
+.onyx-header {
+	-webkit-border-image: url(../../images/header.png) 2 0;
+	min-height: 50px;
+	padding: 12px;
+	border-width: 2px 0;
+	background-color: #ccc;
+	color: #444;
+}
+
+.onyx-header.onyx-dark {
+	-webkit-border-image: url(../../images/toolbar.png) 2 4 repeat stretch;
+	background-color: #343434;
+	color: #fff;
+}
+*/

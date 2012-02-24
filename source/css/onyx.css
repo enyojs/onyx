@@ -1,0 +1,31 @@
+/*
+body {
+	background-color: #eaeaea;
+	color: #333;
+}
+
+html, body, input, button {
+	font-family: Prelude, Prelude Medium, Segoe UI, Arial, Helvetica, Sans-Serif;
+	font-size: 20px;
+	cursor: default;
+}
+
+.enyo-bg {
+	background-color: #eaeaea;
+}
+*/
+
+
+.onyx {
+	font-family: Prelude, Prelude Medium, Segoe UI, Arial, Helvetica, Sans-Serif;
+	font-size: 20px;
+	cursor: default;
+	background-color: #eaeaea;
+	/* remove automatic tap highlight color */
+	-webkit-tap-highlight-color: transparent;
+}
+
+/* prevent IE from inheriting line-height for these elements */
+.onyx button, .onyx label, .onyx input {
+	line-height: normal;
+}

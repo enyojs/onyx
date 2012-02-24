@@ -1,9 +1,6 @@
 ﻿enyo.depends(
-	"$lib/base-ui",
 	"$lib/onyx",
-	"$lib/onyx/popup/source",
-	"$lib/layout",
-	"$lib/aura",
+	"$lib/layout/fittable",
 	"maps",
 	"source/mockdata.js",
 	"source/CurrentLocation.js",

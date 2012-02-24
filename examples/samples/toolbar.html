@@ -1,0 +1,43 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title>onyx toolbar sample</title>
+	<script src="../../../../enyo/enyo.js" type="text/javascript"></script>
+	<script src="../../../onyx/package.js" type="text/javascript"></script>
+</head>
+<body>
+	<script>
+		new (enyo.kind({
+			name: "App",
+			kind: "Control",
+			components: [
+				{kind: "onyx.Toolbar", components: [
+					{content: "I'm a toolbar!"}
+				]},
+				{tag: "br"},{tag: "br"},
+				//
+				{kind: "onyx.Toolbar", classes: "onyx-light", components: [
+					{content: "and I'm a light toolbar"}
+				]},
+				{tag: "br"},{tag: "br"},
+				//
+				{kind: "onyx.Toolbar", components: [
+					{content: "Toolbar with stuff in it: &nbsp;"},
+					{kind: "onyx.InputDecorator", components: [
+						{kind: "onyx.Input", value: "Hi"}
+					]},
+					{kind: "onyx.Button", content: "Bahtun"}
+				]},
+				{tag: "br"},{tag: "br"},
+				{kind: "onyx.Toolbar", classes: "onyx-light", components: [
+					{content: "Toolbar with stuff in it: &nbsp;"},
+					{kind: "onyx.InputDecorator", components: [
+						{kind: "onyx.Input", value: "Hi"}
+					]},
+					{kind: "onyx.Button", content: "Bahtun"}
+				]},
+			]
+		}))().write();
+	</script>
+</body>
+</html>

@@ -1,0 +1,7 @@
+﻿[
+	{"name": "Drafts", "box": "{imap.1and1.com:143}Drafts"},
+	{"name": "INBOX", "box": "{imap.1and1.com:143}INBOX"},
+	{"name": "Sent Items", "box": "{imap.1and1.com:143}Sent Items"},
+	{"name": "Spam", "box": "{imap.1and1.com:143}Spam"},
+	{"name": "Trash", "box": "{imap.1and1.com:143}Trash"}
+]

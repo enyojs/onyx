@@ -1,0 +1,41 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title>onyx radio sample</title>
+	<script src="../../../../enyo/enyo.js" type="text/javascript"></script>
+	<script src="../../../onyx/package.js" type="text/javascript"></script>
+	<!-- -->
+	<style>
+		html, body {
+			overflow: hidden;
+		}
+		body {
+			padding: 10px;
+		}
+		#app_radioGroup {
+			width: 100%;
+		}
+		#app_radioGroup button {
+			width: 25%;
+			box-sizing: border-box;
+		}
+	</style>
+</head>
+<body class="onyx">
+	<script>
+		new (enyo.kind({
+			name: "App",
+			kind: "Control",
+			classes: "enyo-unselectable",
+			components: [
+				{kind: "onyx.RadioGroup", components: [
+					{content: "Alpha"},
+					{content: "Beta"},
+					{content: "Gamma"},
+					{content: "Delta"}
+				]}
+			]
+		}))().write();
+	</script>
+</body>
+</html>

@@ -10,9 +10,9 @@ enyo.kind({
 	classes: "onyx",
 	style: "background-color: #eaeaea;",
 	components: [
-		{kind: "Rows", classes: "enyo-fit", components: [
+		{kind: "FittableRows", classes: "enyo-fit", components: [
 			{kind: "onyx.Toolbar", components: [
-				{kind: "Image", style: "height: 29px;", src: "../../resources/grabbutton.png", style: "float: left"},
+				{kind: "onyx.Grabber", style: "float: left"},
 				{name: "bookmarksButton", kind: "onyx.Button", content: "B", ontap: "toggleBookmarks", style: "float: left;"},
 				{kind: "onyx.Button", content: "&laquo;", ontap: "back", style: "float: left;"},
 				{kind: "onyx.Button", content: "&raquo;", ontap: "forward", style: "float: left;"},
@@ -21,8 +21,8 @@ enyo.kind({
 					{kind: "onyx.Input", style: "width: 100%;", onchange: "inputChange", placeholder: "Enter a url", onfocus: "inputFocus"}
 				]}
 			]},
-			{fit: true, kind: "Cols", components: [
-				{name: "bookmarks", kind: "Rows", style: "width: 300px; border-right: 1px solid silver;", components: [
+			{fit: true, kind: "FittableColumns", components: [
+				{name: "bookmarks", kind: "FittableRows", style: "width: 300px; border-right: 1px solid silver;", components: [
 					{name: "titleDecorator", kind: "onyx.InputDecorator", style: "display: block; margin: 4px; padding: 8px;", components: [
 						{name: "titleInput", kind: "onyx.Input", placeholder: "Enter a title", style: "width: 220px; margin-right: 4px;"},
 						{kind: "onyx.Button", content: "+", ontap: "addBookmark", style: "background-color: lightgreen; color: white; font-weight: bold;"},
@@ -64,10 +64,14 @@ enyo.kind({
 		this.goto(this.$.input.getValue());
 	},
 	back: function() {
-		this.$.iframe.hasNode().contentWindow.history.back();
+		if (this.$.iframe.hasNode()) {
+			this.$.iframe.node.contentWindow.history.back();
+		}
 	},
 	forward: function() {
-		this.$.iframe.hasNode().contentWindow.history.forward();
+		if (this.$.iframe.hasNode()) {
+			this.$.iframe.node.contentWindow.history.forward();
+		}
 	},
 	setBookmarksShowing: function(inShow) {
 		this.$.bookmarks.setShowing(inShow);
