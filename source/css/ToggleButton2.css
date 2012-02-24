@@ -1,0 +1,68 @@
+.onyx-toggle-button {
+	display: inline-block;
+	vertical-align: middle;
+	padding: 1px 0;
+}
+
+.onyx-toggle-button-bar {
+	height: 30px;
+	line-height: 32px;
+	min-width: 74px;
+	text-align: center;
+	display: inline-block;
+	border-radius: 3px;
+	box-shadow: inset 0px 1px 3px rgba(0,0,0,0.4);
+}
+
+.onyx-toggle-button-bar.on {
+	/*background-image: -webkit-linear-gradient(top, #57932E, #8BBA3D);*/
+	background: #8BBA3D url(../../images/gradient-invert.png) repeat-x bottom;
+	background-size: auto 100%;
+}
+
+.onyx-toggle-button-bar.off {
+	/*background-image: -webkit-linear-gradient(top, #868686, #B1B1B1);*/
+	background: #B1B1B1 url(../../images/gradient-invert.png) repeat-x bottom;
+	background-size: auto 100%;
+}
+
+.onyx-toggle-button-bar::after {
+	content: "";
+	display: inline-block;
+	width: 28px;
+	height: 28px;
+	margin: 1px;
+	border-radius: 3px;
+	/*background-image: -webkit-linear-gradient(top, #F6F6F6, #B6B6B6);*/
+	background: #F6F6F6 url(../../images/gradient.png) repeat-x;
+	background-size: auto 100%;
+}
+
+.onyx-toggle-button-bar.on::after {
+	box-shadow: -1px 0px 4px rgba(0,0,0,0.35), inset 0 -1px 0 rgba(0,0,0,0.4);
+}
+
+.onyx-toggle-button-bar.off::after {
+	box-shadow: 1px 0px 4px rgba(0,0,0,0.35), inset 0 -1px 0 rgba(0,0,0,0.4);
+}
+
+.onyx-toggle-button-bar.disabled {
+	opacity: 0.4;
+}
+
+.onyx-toggle-content-off, .onyx-toggle-content-on {
+	min-width: 32px;
+	padding: 0 6px;
+	color: white;
+	font-size: 14px;
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.onyx-toggle-content-off {
+	float: right;
+}
+
+.onyx-toggle-content-on {
+	float: left;
+}
