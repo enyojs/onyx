@@ -18,6 +18,6 @@ enyo.kind({
 		this.removeClass("onyx-focused");
 	},
 	disabledChange: function(inSender, inEvent) {
-		this.addRemoveClass("onyx-disabled", inEvent.disabled);
+		this.addRemoveClass("onyx-disabled", inEvent.originator.disabled);
 	}
 });
