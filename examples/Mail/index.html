@@ -43,7 +43,7 @@
 				{name: "attach", classes: "mail-attach-icon"},
 				{name: "from", classes: "mail-from"},
 				{name: "subject", classes: "mail-subject"},
-				{name: "blurb", classes: "mail-blurb"},
+				{name: "blurb", classes: "mail-blurb"}
 			],
 			create: function() {
 				//this.addClass("enyo-bg");
@@ -98,7 +98,7 @@
 							{kind: "onyx.Toolbar", content: "Accounts", style: "text-align: center; padding: 16px 0 17px 0;"},
 							{content: "MAILBOXES", style: enyo.path.rewrite("background:#E3E4E6 url($onyx/images/gradient.png) repeat-x 0 25px; color: #3897E9; font-weight: bold; padding: 8px;")},
 							{kind: "Scroller", fit: true, Xstyle: "position: relative; height: 140px;", components: [
-								{kind: "Repeater", rows: 0, onSetupRow: "setupRow", ontap: "mailboxTap", style: "padding-top: 4px;", components: [
+								{kind: "Repeater", rows: 0, onSetupRow: "setupRow", ontap: "mailboxTap", components: [
 									{name: "item", kind: "ToolDecorator", style: "padding: 8px; border-bottom: 1px solid #eee; display: block;", components: [
 										{kind: "Image", src: "images/mailbox_empty.png"},
 										{tag: "span", name: "caption", style: "padding-left: 8px;"}
@@ -108,14 +108,15 @@
 						]},
 						{name: "left2", kind: "FittableRows", components: [
 							{kind: "onyx.Toolbar", content: "Messages", style: "text-align: center; padding: 16px 0 17px 0;"},
-							{style: "xbackground-color: #E3E4E6; padding: 8px;", components: [
+							//{components: [
 								{kind: "onyx.InputDecorator", name: "inputDecorator", style: "display: block;", components: [
-									{kind: "Input", placeholder: "search", style: "width: 98%;", name: "input"}
-								]}
+									{kind: "Input", placeholder: "search", style: "width: 90%;", name: "input"},
+									{kind: "Image", src: "images/search.png"}
+								//]}
 							]},
 							{name: "boxName", content: "(no mailbox)", style: enyo.path.rewrite("background:#E3E4E6 url($onyx/images/gradient.png) repeat-x 0 25px; color: #3897E9; font-weight: bold; padding: 8px;")},
 							{kind: "Scroller", fit: true, components: [
-								{kind: "Repeater", rows: 0, onSetupRow: "setupHeaderRow", ontap: "headerTap", ondown: "headerDown", onclick: "headerClick", style: "padding-top: 4px;", components: [
+								{kind: "Repeater", rows: 0, onSetupRow: "setupHeaderRow", ontap: "headerTap", ondown: "headerDown", onclick: "headerClick", components: [
 									{name: "item", kind: "HeaderItem"}
 								]}
 							]}

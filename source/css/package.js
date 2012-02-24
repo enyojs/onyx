@@ -9,7 +9,5 @@ enyo.depends(
 	"Menu.css",
 	"RadioButton.css",
 	"ToggleButton.css",
-	"Toolbar.css",
-	"ToolButton.css",
-	"ToolInput.css"
+	"Toolbar.css"
 );

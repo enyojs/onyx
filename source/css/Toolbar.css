@@ -15,8 +15,10 @@
 .onyx-toolbar > * {
 	display: inline-block;
 	vertical-align: middle;
+	margin: 0 6px;
 }
 
+/*
 .onyx-toolbar.onyx-light {
 	-webkit-border-image: url(../../images/toolbar-light.png) 2 4 repeat stretch;
 	background-color: #a9a9a9;
@@ -25,10 +27,46 @@
 
 .onyx-toolbar-item {
 	margin: 0 6px;
-	/*
 	min-height: 32px;
 	line-height: 32px;
+}
+*/
+
+.onyx-toolbar .onyx-button {
+	color: #F2F2F2;
+	background-color: #555656;
+	border-color: rgba(15, 15, 15, 0.5);
+}
+
+.onyx-toolbar .onyx-input-decorator {
+	margin: 0 3px;
+	/*
+	border: 6px solid transparent;
+	-webkit-border-image: url(../../images/input-tool.png) 6 6 6 6;
 	*/
+	box-shadow: inset 0px 1px 4px rgba(0,0,0,0.1);
+	background-color: rgba(0, 0, 0, 0.1);
+	padding: 2px 6px 3px 6px;
+}
+
+.onyx-toolbar .onyx-input-decorator.onyx-focused {
+	/*-webkit-border-image: url(../../images/input-tool-focus.png) 6 6 6 6;*/
+	/* non-image version */
+	box-shadow: inset 0px 1px 4px rgba(0,0,0,0.3);
+	background-color: white;
+}
+
+.onyx-toolbar .onyx-input-decorator .onyx-input {
+	color: #e5e5e5;
+	font-size: 14px;
+}
+
+.onyx-toolbar .onyx-input-decorator .onyx-input:focus {
+	color: #000;
+}
+
+.onyx-toolbar .onyx-input-decorator .onyx-input:focus::-webkit-input-placeholder {
+	color: #ddd;
 }
 
 /* FIXME: basically superfluous */
