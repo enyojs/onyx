@@ -14,6 +14,6 @@ enyo.kind({
 	},
 	disabledChanged: function() {
 		this.setAttribute("disabled", this.disabled);
-		this.bubble("onDisabledChange", this);
+		this.bubble("onDisabledChange");
 	}
 });
