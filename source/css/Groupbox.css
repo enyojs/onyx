@@ -18,7 +18,7 @@
 	-webkit-border-image: url(../../images/toolbar.png) 2 4 repeat stretch;
 }
 
-.onyx-groupbox-item {
+.onyx-groupbox > * {
 	display: block;
 	border-color: #AAAAAA;
 	border-style: solid;
@@ -29,11 +29,37 @@
 	margin: 0;
 }
 
-.onyx-groupbox-item:first-child {
+.onyx-groupbox > *:first-child {
 	border-width: 1px;
 	border-radius: 4px 4px 0 0;
 }
 
-.onyx-groupbox-item:last-child {
+.onyx-groupbox > *:last-child {
 	border-radius: 0 0 4px 4px;
+}
+
+.onyx-groupbox > *:first-child:last-child {
+	border-radius: 4px;
+}
+
+.onyx-groupbox .onyx-input-decorator {
+	display: block;
+}
+
+.onyx-groupbox > .onyx-input-decorator {
+	border-radius: 0;
+	border-width: 0 1px 1px 1px;
+}
+
+.onyx-groupbox > .onyx-input-decorator:first-child {
+	border-width: 1px;
+	border-radius: 4px 4px 0 0;
+}
+
+.onyx-groupbox > .onyx-input-decorator:last-child {
+	border-radius: 0 0 4px 4px;
+}
+
+.onyx-groupbox > .onyx-input-decorator:first-child:last-child {
+	border-radius: 4px;
 }
