@@ -5,7 +5,7 @@
 		elements along a common centerline and use
 		padding to fill out the space.
 	*/
-	padding: 9px 0 10px 0;
+	padding: 9px 8px 10px 8px;
 	/**/
 	border: 1px solid black;
 	background: #4C4C4C url(../../images/gradient.png) repeat-x 0 10px;
@@ -25,8 +25,11 @@
 
 .onyx-toolbar-item {
 	margin: 0 6px;
+	/*
+	min-height: 32px;
+	line-height: 32px;
+	*/
 }
-
 
 /* FIXME: basically superfluous */
 /*
