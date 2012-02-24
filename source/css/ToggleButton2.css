@@ -26,8 +26,7 @@
 	background-size: auto 100%;
 }
 
-.onyx-toggle-button-bar::after {
-	content: "";
+.onyx-toggle-button-button {
 	display: inline-block;
 	width: 28px;
 	height: 28px;
@@ -38,11 +37,11 @@
 	background-size: auto 100%;
 }
 
-.onyx-toggle-button-bar.on::after {
+.onyx-toggle-button-bar.on .onyx-toggle-button-button {
 	box-shadow: -1px 0px 4px rgba(0,0,0,0.35), inset 0 -1px 0 rgba(0,0,0,0.4);
 }
 
-.onyx-toggle-button-bar.off::after {
+.onyx-toggle-button-bar.off .onyx-toggle-button-button {
 	box-shadow: 1px 0px 4px rgba(0,0,0,0.35), inset 0 -1px 0 rgba(0,0,0,0.4);
 }
 

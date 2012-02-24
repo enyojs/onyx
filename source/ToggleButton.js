@@ -23,7 +23,8 @@ enyo.kind({
 	components: [
 		{name: "bar", classes: "onyx-toggle-button-bar", components: [
 			{name: "contentOn", classes: "onyx-toggle-content-on"},
-			{name: "contentOff", classes: "onyx-toggle-content-off"}
+			{name: "contentOff", classes: "onyx-toggle-content-off"},
+			{classes: "onyx-toggle-button-button"}
 		]}
 	],
 	create: function() {
