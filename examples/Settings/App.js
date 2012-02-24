@@ -7,22 +7,22 @@ enyo.kind({
 		]},
 		{classes: "main", components: [
 			{kind: "onyx.Groupbox", components: [
-				{components: [
+				{classes: "groupbox-item", components: [
 					{content: "Sounds"},
 					{kind: "onyx.ToggleButton", value: true}
 				]}
 			]},
 			{kind: "onyx.Groupbox", components: [
 				{kind: "onyx.GroupboxHeader", content: "SOUNDS"},
-				{components: [
+				{classes: "groupbox-item", components: [
 					{content: "System Sounds"},
 					{kind: "onyx.ToggleButton", value: true}
 				]},
-				{components: [
+				{classes: "groupbox-item",components: [
 					{content: "Keyboard Clicks"},
 					{kind: "onyx.ToggleButton"}
 				]},
-				{components: [
+				{classes: "groupbox-item",components: [
 					{content: "Ringtone"},
 					{kind: "onyx.Checkbox", value: true}
 				]}
@@ -34,13 +34,13 @@ enyo.kind({
 				]}
 			]},
 			{kind: "onyx.Groupbox", components: [
-				{components: [
+				{classes: "groupbox-item", components: [
 					{content: "Vibrate"},
 					{kind: "onyx.ToggleButton"}
 				]}
 			]},
 			{kind: "onyx.Groupbox", components: [
-				{components: [
+				{classes: "groupbox-item", components: [
 					{content: "Beats Audio"},
 					{kind: "onyx.ToggleButton", value: true}
 				]}
