@@ -59,13 +59,13 @@ enyo.kind({
 	axisChanged: function() {
 		var h = this.axis == "h";
 		this.dragMoveProp = h ? "dx" : "dy";
-		this.dragShouldProp = h ? "horizontal" : "vertical";
+		this.shouldDragProp = h ? "horizontal" : "vertical";
 		this.transform = h ? "translateX" : "translateY";
-		this.dimension = h ? "height" : "width";
+		this.dimension = h ? "width" : "height";
 	},
 	valueChanged: function() {
 		var v = this.value;
-		if (this.isOob(v)) {
+		if (this.isOob(v) && !this.isAnimating()) {
 				this.value = this.overMoving ? this.dampValue(v) : this.clampValue(v);
 		}
 		enyo.Layout.transformValue(this, this.transform, this.value + this.unit);
@@ -102,7 +102,7 @@ enyo.kind({
 	},
 	// dragging
 	shouldDrag: function(inEvent) {
-		return this.draggable && inEvent[this.dragShouldProp];
+		return this.draggable && inEvent[this.shouldDragProp];
 	},
 	isOob: function(inValue) {
 		return inValue > this.calcMax() || inValue < this.calcMin();
@@ -144,6 +144,9 @@ enyo.kind({
 		}
 	},
 	// animation
+	isAnimating: function() {
+		return this.animation;
+	},
 	play: function(inStart, inEnd) {
 		this.animation = new enyo.Animation({
 			startValue: inStart,
