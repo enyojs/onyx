@@ -63,7 +63,7 @@ enyo.kind({
 			{tag: "br"},
 			{content: "Inputs"},
 			{kind: "onyx.InputDecorator", components: [
-				{kind: "onyx.Input", defaultFocus: true, placeholder: "Enter text here"}
+				{kind: "onyx.Input", defaultFocus: false, placeholder: "Enter text here"}
 			]},
 			{kind: "onyx.InputDecorator", components: [
 				{kind: "onyx.Input", placeholder: "Search term"},
