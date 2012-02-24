@@ -15,15 +15,12 @@ html, body, input, button {
 }
 */
 
-/*body {*/
-	/* remove automatic tap highlight color */
-/*	-webkit-tap-highlight-color: transparent;
-}*/
-
 .onyx {
 	font-family: Prelude, Prelude Medium, Segoe UI, Arial, Helvetica, Sans-Serif;
 	font-size: 20px;
 	cursor: default;
+	/* remove automatic tap highlight color */
+	-webkit-tap-highlight-color: transparent;
 }
 
 /* prevent IE from inheriting line-height for these elements */
