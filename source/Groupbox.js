@@ -1,7 +1,6 @@
 enyo.kind({
 	name: "onyx.Groupbox",
-	classes: "onyx-groupbox",
-	controlClasses: "onyx-groupbox-item",
+	classes: "onyx-groupbox"
 });
 
 enyo.kind({
