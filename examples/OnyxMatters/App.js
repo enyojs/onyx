@@ -74,8 +74,8 @@ enyo.kind({
 			{content: "Groupboxes"},
 			{kind: "onyx.Groupbox", components: [
 				{kind: "onyx.GroupboxHeader", content: "Header"},
-				{content: "I'm a group item!"},
-				{content: "I'm a group item!"}
+				{content: "I'm a group item!", style: "padding: 8px;"},
+				{content: "I'm a group item!", style: "padding: 8px;"}
 			]},
 			{tag: "br"},
 			{kind: "onyx.Groupbox", components: [
