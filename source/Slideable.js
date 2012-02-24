@@ -18,6 +18,9 @@ enyo.kind({
 	events: {
 		onAnimateFinish: ""
 	},
+	tools: [
+		{kind: "Animator", onStep: "animatorStep", onEnd: "animatorComplete"}
+	],
 	handlers: {
 		ondragstart: "dragstartHandler",
 		ondrag: "dragHandler",
@@ -33,15 +36,13 @@ enyo.kind({
 		this.valueChanged();
 		this.addClass("enyo-slideable");
 	},
+	initComponents: function() {
+		this.createComponents(this.tools);
+		this.inherited(arguments);
+	},
 	rendered: function() {
 		this.inherited(arguments);
 		this.updateDragScalar();
-	},
-	teardownRender: function() {
-		this.inherited(arguments);
-		if (this.animation) {
-			this.animator.node = null;
-		}
 	},
 	resizeHandler: function() {
 		this.inherited(arguments);
@@ -109,7 +110,7 @@ enyo.kind({
 	},
 	dragstartHandler: function(inSender, inEvent) {
 		if (this.shouldDrag(inEvent)) {
-			this.stop();
+			this.$.animator.stop();
 			inEvent.dragInfo = {};
 			this.dragging = true;
 			this.drag0 = this.value;
@@ -145,25 +146,14 @@ enyo.kind({
 	},
 	// animation
 	isAnimating: function() {
-		return this.animation;
+		return this.$.animator.isAnimating();
 	},
 	play: function(inStart, inEnd) {
-		this.animation = new enyo.Animation({
+		this.$.animator.play({
 			startValue: inStart,
 			endValue: inEnd,
-			node: this.hasNode(),
-			context: this,
-			onStep: function(inEvent) {
-				this.setValue(inEvent.value);
-			},
-			onEnd: this.animationComplete
-		}).play();
-	},
-	stop: function() {
-		if (this.animation) {
-			this.animation.stop();
-			this.animation = null;
-		}
+			node: this.hasNode()
+		});
 	},
 	animateTo: function(inValue) {
 		this.play(this.value, inValue);
@@ -181,8 +171,13 @@ enyo.kind({
 			this.animateToMax();
 		}
 	},
-	animationComplete: function(inEvent) {
-		this.doAnimateFinish(inEvent);
+	animatorStep: function(inSender) {
+		this.setValue(inSender.value);
+		return true;
+	},
+	animatorComplete: function(inSender) {
+		this.doAnimateFinish(inSender);
+		return true;
 	},
 	toggleMinMax: function() {
 		this.animateToMinMax(!this.isAtMin());

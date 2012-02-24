@@ -15,7 +15,6 @@ enyo.depends(
 	"ToggleButton.js",
 	"Toolbar.js",
 	"transform.js",
-	"Animation.js",
 	"Animator.js",
 	"Slideable.js"
 );
