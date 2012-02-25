@@ -9,13 +9,14 @@ enyo.kind({
 					{kind: "onyx.IconButton", src: "images/topbar-direct-icon.png"}
 				]},
 				{kind: "onyx.InputDecorator", components: [
-					{name: "searchInput", kind: "onyx.Input", defaultFocus: true, classes: "search-input", placeholder: "Search or Address"},
+					{name: "searchInput", kind: "onyx.Input", defaultFocus: true, placeholder: "Search or Address"},
 					{kind: "Image", src: "images/search-input-search.png", ontap: "search"}
 				]},
-				/* using "float: right" to make menu buttons right-aligned */
-				{kind: "onyx.IconButton", style: "float: right;", src: "images/menu-icon-mylocation.png", ontap: "findCurrentLocation"},
-				{kind: "onyx.IconButton", style: "float: right;", src: "images/menu-icon-bookmark.png", panel: "bookmark", ontap: "togglePullout"},
-				{kind: "onyx.IconButton", style: "float: right;", src: "images/menu-icon-info.png", panel: "info", ontap: "togglePullout"}
+				{name: "menu", classes: "menu", defaultKind: "onyx.IconButton", components: [
+					{src: "images/menu-icon-info.png", panel: "info", ontap: "togglePullout"},
+					{src: "images/menu-icon-bookmark.png", panel: "bookmark", ontap: "togglePullout"},
+					{src: "images/menu-icon-mylocation.png", ontap: "findCurrentLocation"}
+				]}
 			]},
 			{name: "map", kind: "BingMap", fit: true,
 				options: {showDashboard: false, showCopyright: false, showScalebar: false},
@@ -27,6 +28,22 @@ enyo.kind({
 		{kind: "Infobox"},
 		{kind: "CurrentLocation", onSuccess: "currentLocationSuccess"}
 	],
+	smallifyWidth: 480,
+	rendered: function() {
+		this.adjustLayout();
+		this.inherited(arguments);
+	},
+	resizeHandler: function() {
+		this.adjustLayout();
+	},
+	adjustLayout: function() {
+		var smallify = this.getBounds().width <= this.smallifyWidth;
+		this.$.menu.setContainer(smallify ? this.$.pullout : this.$.toolbar);
+		this.$.menu.applyStyle("float", smallify ? null : "right");
+		this.$.searchInput.applyStyle("width", smallify ? "140px" : "180px");
+		this.$.toolbar.render();
+		this.$.pullout.render();
+	},
 	togglePullout: function(inSender) {
 		this.$.pullout.toggle(inSender.panel);
 	},

@@ -1,8 +1,8 @@
 var bookmarks = [
 	{title: "Enyo", url: "http://www.enyojs.com"},
 	{title: "TheVerge", url: "http://www.theverge.com"},
-	{title: "Engadget", url: "http://www.endgadget.com"},
-	{title: "Ars Technica", url: "http://www.arstechnica.com"},
+	{title: "Engadget", url: "http://www.engadget.com"},
+	{title: "Ars Technica", url: "http://www.arstechnica.com"}
 ];
 
 enyo.kind({
@@ -25,7 +25,7 @@ enyo.kind({
 				{name: "bookmarks", kind: "FittableRows", style: "width: 300px; border-right: 1px solid silver;", components: [
 					{name: "titleDecorator", kind: "onyx.InputDecorator", style: "display: block; margin: 4px; padding: 8px;", components: [
 						{name: "titleInput", kind: "onyx.Input", placeholder: "Enter a title", style: "width: 220px; margin-right: 4px;"},
-						{kind: "onyx.Button", content: "+", ontap: "addBookmark", style: "background-color: lightgreen; color: white; font-weight: bold;"},
+						{kind: "onyx.Button", content: "+", ontap: "addBookmark", style: "background-color: lightgreen; color: white; font-weight: bold;"}
 						
 					]},
 					{fit: true, kind: "Scroller", name: "list"},

@@ -4,8 +4,8 @@ enyo.depends(
 	"Button.js",
 	"IconButton.js",
 	"Checkbox.js",
+	"FloatingLayer.js",
 	"ModalControl.js",
-	"Floater.js",
 	"Popup.js",
 	"Menu.js",
 	"Grabber.js",
@@ -17,7 +17,6 @@ enyo.depends(
 	"ToggleButton.js",
 	"Toolbar.js",
 	"transform.js",
-	"Animation.js",
 	"Animator.js",
 	"Slideable.js"
 );

@@ -7,6 +7,7 @@ enyo.kind({
 	classes: "onyx-popup",
 	showing: false,
 	published: {
+		modal: false,
 		autoDismiss: true,
 		floating: false
 	},
@@ -28,9 +29,10 @@ enyo.kind({
 	create: function() {
 		this.inherited(arguments);
 		if (this.floating) {
-			this.setParent(onyx.modalLayer);
+			this.setParent(onyx.floatingLayer);
 		}
 	},
+		// bubble events to owner when floating
 	getBubbleTarget: function() {
 		return this.floating ? this.owner : this.inherited(arguments);
 	},

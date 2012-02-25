@@ -6,13 +6,13 @@ enyo.kind({
 		icon: ""
 	},
 	components: [
-		{name: "icon", classes: "icon"}
+		{kind: "IconImage"}
 	],
 	create: function() {
 		this.inherited(arguments);
 		this.iconChanged();
 	},
 	iconChanged: function() {
-		this.$.icon.applyStyle("background-image", "url(" + this.icon + ")");
+		this.$.iconImage.setSrc(this.icon);
 	}
 });
