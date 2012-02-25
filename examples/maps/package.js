@@ -4,6 +4,7 @@
 	"maps",
 	"source/mockdata.js",
 	"source/CurrentLocation.js",
+	"source/IconImage.js",
 	"source/IconButton.js",
 	"source/RadioIconButton.js",
 	"source/LabeledItem.js",

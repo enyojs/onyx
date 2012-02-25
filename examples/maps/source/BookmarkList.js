@@ -9,9 +9,17 @@ enyo.kind({
 		for (var i=0; i<100; i++) {
 			var b = mock_data[i % mock_data.length];
 			this.createComponent({kind: "BookmarkItem",
-				ontap: "doItemSelect",
+				ontap: "itemTap",
 				}, b);
 		}
+	},
+	itemTap: function(inSender) {
+		if (this.activated) {
+			this.activated.applyStyle("background", null);
+		}
+		this.activated = inSender;
+		this.activated.applyStyle("background", "lightblue");
+		this.doItemSelect(inSender);
 	}
 });
 
