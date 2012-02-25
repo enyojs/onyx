@@ -26,5 +26,10 @@ enyo.kind({
 		this.applyStyle("top", inTop + "px");
 		this.applyStyle("left", inLeft + "px");
 		this.show();
+	},
+	openWithItem: function(inItem, inTop, inLeft) {
+		this.setTitle(inItem.title);
+		this.setDetails(inItem.details);
+		this.openAt(inTop, inLeft);
 	}
 })

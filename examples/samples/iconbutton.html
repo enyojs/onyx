@@ -1,0 +1,50 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title>onyx icon button sample</title>
+	<script src="../../../../enyo/enyo.js" type="text/javascript"></script>
+	<script src="../../../onyx/package.js" type="text/javascript"></script>
+	<style>
+		body {
+			margin: 10px;
+		}
+		p {
+			color: #F49200;
+			text-transform: uppercase;
+			font-family: Segoe UI, Prelude Medium, sans;
+			font-size: 14px;
+			font-weight: bold;
+			margin-bottom: 8px;
+		}
+	</style>
+</head>
+<body class="enyo-unselectable">
+	<script>
+		new (enyo.kind({
+			name: "App",
+			components: [
+				{tag: "p", content: "Onyx Icon Button"},
+				{kind: "onyx.IconButton", src: "menu-icon-bookmark.png"},
+				{tag: "p", content: "Grouped Onyx Icon Buttons"},
+				{kind: "Group", components: [
+					{kind: "onyx.IconButton", active: true, src: "menu-icon-bookmark.png"},
+					{kind: "onyx.IconButton", src: "menu-icon-bookmark.png"},
+					{kind: "onyx.IconButton", src: "menu-icon-bookmark.png"}
+				]},
+				{tag: "p", content: "Onyx Icon Buttons in Toolbar"},
+				{kind: "onyx.Toolbar", components: [
+					{kind: "onyx.IconButton", src: "menu-icon-bookmark.png"},
+					{kind: "onyx.IconButton", src: "menu-icon-bookmark.png"},
+					{kind: "onyx.IconButton", src: "menu-icon-bookmark.png"},
+					{},
+					{kind: "Group", noDom: true, components: [
+						{kind: "onyx.IconButton", active: true, src: "menu-icon-bookmark.png"},
+						{kind: "onyx.IconButton", src: "menu-icon-bookmark.png"},
+						{kind: "onyx.IconButton", src: "menu-icon-bookmark.png"}
+					]}
+				]}
+			]
+		}))().write();
+	</script>
+</body>
+</html>

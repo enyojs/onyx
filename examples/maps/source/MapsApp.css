@@ -2,17 +2,17 @@
 	overflow: hidden;
 }
 
-.toolbar .onyx-radiobutton {
+.Xtoolbar .onyx-radiobutton {
 	/* onyx-radiobutton has padding: 0.5em 2em; */
 	padding: 1px 10px;
 }
 
-.toolbar .onyx-input-decorator {
+.Xtoolbar .onyx-input-decorator {
 	/* onyx-input-decorator.onyx-toolbar-item has padding: 5px 6px 6px 6px; */
 	padding-top: 0;
 }
 
-.toolbar .menu-button {
+.Xtoolbar .menu-button {
 	/* remove shadow and background from onyx-button */
 	background: transparent;
 	box-shadow: none;

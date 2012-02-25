@@ -4,26 +4,26 @@ enyo.kind({
 	components: [
 		{kind: "FittableRows", classes: "enyo-fit", components: [
 			{kind: "onyx.Toolbar", classes: "toolbar", components: [
-				{kind: "onyx.RadioGroup", defaultKind: "RadioIconButton", components: [
-					{icon: "images/topbar-search-icon.png", active: true},
-					{icon: "images/topbar-direct-icon.png"}
+				{kind: "Group", noDom: true, components: [
+					{kind: "onyx.IconButton", src: "images/topbar-search-icon.png", active: true},
+					{kind: "onyx.IconButton", src: "images/topbar-direct-icon.png"}
 				]},
 				{kind: "onyx.InputDecorator", components: [
 					{name: "searchInput", kind: "onyx.Input", defaultFocus: true, classes: "search-input", placeholder: "Search or Address"},
 					{kind: "Image", src: "images/search-input-search.png", ontap: "search"}
 				]},
 				/* using "float: right" to make menu buttons right-aligned */
-				{kind: "IconButton", classes: "menu-button", style: "float: right;", icon: "images/menu-icon-mylocation.png", ontap: "findCurrentLocation"},
-				{kind: "IconButton", classes: "menu-button", style: "float: right;", icon: "images/menu-icon-bookmark.png", panel: "bookmark", ontap: "togglePullout"},
-				{kind: "IconButton", classes: "menu-button", style: "float: right;", icon: "images/menu-icon-info.png", panel: "info", ontap: "togglePullout"}
+				{kind: "onyx.IconButton", style: "float: right;", src: "images/menu-icon-mylocation.png", ontap: "findCurrentLocation"},
+				{kind: "onyx.IconButton", style: "float: right;", src: "images/menu-icon-bookmark.png", panel: "bookmark", ontap: "togglePullout"},
+				{kind: "onyx.IconButton", style: "float: right;", src: "images/menu-icon-info.png", panel: "info", ontap: "togglePullout"}
 			]},
 			{name: "map", kind: "BingMap", fit: true,
 				options: {showDashboard: false, showCopyright: false, showScalebar: false},
 				credentials: "Ah2oavKf-raTJYVgMxnxJg9E2E2_53Wb3jz2lD4N415EFSKwFlhlMe9U2dJpMZyJ",
-				onLoaded: "findCurrentLocation"}
+				onLoaded: "findCurrentLocation"
+			}
 		]},
-		{kind: "Pullout", classes: "pullout",
-			onDropPin: "dropPin", onShowTraffic: "showTraffic", onMapTypeSelect: "mapTypeSelect", onBookmarkSelect: "bookmarkSelect"},
+		{kind: "Pullout", classes: "pullout", onDropPin: "dropPin", onShowTraffic: "showTraffic", onMapTypeSelect: "mapTypeSelect", onBookmarkSelect: "bookmarkSelect"},
 		{kind: "Infobox"},
 		{kind: "CurrentLocation", onSuccess: "currentLocationSuccess"}
 	],
@@ -36,15 +36,12 @@ enyo.kind({
 	bookmarkSelect: function(inSender, inItem) {
 		var loc = inItem.location;
 		this.bookmarkPin = this.$.map.updatePushpin(this.bookmarkPin, loc.latitude, loc.longitude, {icon: "images/poi_search.png", height: 48, width: 48});
-		Microsoft.Maps.Events.addHandler(this.bookmarkPin, 'click', enyo.bind(this, "openInfobox", inItem));
+		Microsoft.Maps.Events.addHandler(this.bookmarkPin, "click", enyo.bind(this, "openInfobox", inItem));
 		this.$.map.setCenter(loc.latitude, loc.longitude);
 	},
 	openInfobox: function(inItem, e) {
-		var loc = e.target.getLocation();
-		var pix = this.$.map.hasMap().tryLocationToPixel(loc, Microsoft.Maps.PixelReference.control);
-		this.$.infobox.setTitle(inItem.title);
-		this.$.infobox.setDetails(inItem.details);
-		this.$.infobox.openAt(pix.y, pix.x + 18);
+		var pix = this.$.map.hasMap().tryLocationToPixel(e.target.getLocation(), Microsoft.Maps.PixelReference.control);
+		this.$.infobox.openWithItem(inItem, pix.y, pix.x + 18);
 	},
 	dropPin: function(inSender, inEvent) { 
 		var loc = this.$.map.hasMap().getCenter();

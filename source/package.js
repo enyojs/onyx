@@ -1,6 +1,8 @@
 enyo.depends(
 	"css/",
+	"Icon.js",
 	"Button.js",
+	"IconButton.js",
 	"Checkbox.js",
 	"ModalControl.js",
 	"Floater.js",

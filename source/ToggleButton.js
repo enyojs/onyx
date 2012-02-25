@@ -10,8 +10,8 @@ enyo.kind({
 	},
 	events: {
 		/**
-		The onChange event fires when the user changes the value of the toggle button, 
-		but not when the value is changed programmatically.
+			The onChange event fires when the user changes the value of the toggle button, 
+			but not when the value is changed programmatically.
 		*/
 		onChange: ""
 	},

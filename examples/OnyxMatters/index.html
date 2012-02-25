@@ -7,6 +7,7 @@
 	<!-- -->
 	<script src="../../../../enyo/enyo.js" type="text/javascript"></script>
 	<script src="../../../onyx/package.js" type="text/javascript"></script>
+	<script src="../../../layout/fittable/package.js" type="text/javascript"></script>
 	<!-- -->
 	<script src="App.js" type="text/javascript"></script>
 	<!-- -->
@@ -14,11 +15,42 @@
 		.tools > * {
 			margin: 3px;
 		}
+		.group {
+			/*
+			margin: 8px;
+			padding: 4px;
+			border: 1px solid lightblue;
+			*/
+		}
+		.divider {
+			color: #F49200;
+			text-transform: uppercase;
+			font-family: Segoe UI, Prelude Medium, sans;
+			font-size: 14px;
+			font-weight: bold;
+			Xborder-bottom: 1px solid #F49200;
+			margin-bottom: 8px;
+		}
+		.XXbar {
+			padding: 9px 8px 10px 8px;
+			border: 1px solid black;
+			background: #4C4C4C url(../../images/gradient.png) repeat-x 0 10px;
+			color: white;
+		}
+		/*
+		.bar .enyo-fittable-flex {
+			height: 100%;
+		}
+		*/
+		.bar > div > div > * {
+			vertical-align: middle;
+			margin: 0 6px;
+		}
 	</style>
 </head>
 <body>
 <script type="text/javascript">
-	new App({classes: "enyo-fit enyo-unselectable"}).write();
+	new App({classes: "enyo-unselectable"}).write();
 </script>
 </body>
 </html>

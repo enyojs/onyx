@@ -29,8 +29,10 @@
 
 .onyx-groupbox-header {
 	padding: 2px 10px;
+	/**/
 	color: white;
-	font-size: 0.9em;
+	font-family: Segoe UI;
+	font-size: 14px;
 	font-weight: bold;
 	text-transform: uppercase;
 	/**/

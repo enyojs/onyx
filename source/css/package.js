@@ -1,5 +1,6 @@
 enyo.depends(
 	"onyx.css",
+	"Icon.css",
 	"Button.css",
 	"Checkbox.css",
 	"Grabber.css",
@@ -7,6 +8,7 @@ enyo.depends(
 	"Input.css",
 	"Menu.css",
 	"RadioButton.css",
+	"TabButton.css",
 	"ToggleButton.css",
 	"Toolbar.css"
 );

@@ -1,10 +1,11 @@
 .onyx-radiobutton {
-	padding: 0.5em 2em;
+	padding: 8px 12px;
 	margin: 0;
 	border: 0;
 	outline: 0;
 	text-align: center;
 	/**/
+	font-size: 16px;
 	background: #E7E7E7 url(../../images/gradient.png) repeat-x bottom;
 	/* fancy */
 	box-shadow: inset 0px 0px 1px 1px #888;
