@@ -3,7 +3,33 @@
 }
 
 .menu {
+	display: block;
 	margin: 0;
+	float: right;
+}
+
+.pullout-menu {
+	display: none;
+}
+
+.search-input {
+	width: 180px;
+}
+
+/* adapt to smaller displays */
+@media (max-width: 480px) {
+	.menu {
+		display: none;
+	}
+
+	.pullout-menu {
+		display: block;
+		margin: 0;
+	}
+
+	.search-input {
+		width: 140px;
+	}
 }
 
 .pullout {

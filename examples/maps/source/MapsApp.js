@@ -4,12 +4,12 @@ enyo.kind({
 	components: [
 		{kind: "FittableRows", classes: "enyo-fit", components: [
 			{kind: "onyx.Toolbar", classes: "toolbar", components: [
-				{kind: "Group", noDom: true, components: [
-					{kind: "onyx.IconButton", src: "images/topbar-search-icon.png", active: true},
-					{kind: "onyx.IconButton", src: "images/topbar-direct-icon.png"}
+				{kind: "Group", defaultKind: "onyx.IconButton", noDom: true, components: [
+					{src: "images/topbar-search-icon.png", active: true},
+					{src: "images/topbar-direct-icon.png"}
 				]},
 				{kind: "onyx.InputDecorator", components: [
-					{name: "searchInput", kind: "onyx.Input", defaultFocus: true, placeholder: "Search or Address"},
+					{name: "searchInput", classes: "search-input", kind: "onyx.Input", defaultFocus: true, placeholder: "Search or Address"},
 					{kind: "Image", src: "images/search-input-search.png", ontap: "search"}
 				]},
 				{name: "menu", classes: "menu", defaultKind: "onyx.IconButton", components: [
@@ -18,32 +18,21 @@ enyo.kind({
 					{src: "images/menu-icon-mylocation.png", ontap: "findCurrentLocation"}
 				]}
 			]},
-			{name: "map", kind: "BingMap", fit: true,
+			{name: "map", kind: "BingMap", fit: true, onLoaded: "findCurrentLocation",
 				options: {showDashboard: false, showCopyright: false, showScalebar: false},
-				credentials: "Ah2oavKf-raTJYVgMxnxJg9E2E2_53Wb3jz2lD4N415EFSKwFlhlMe9U2dJpMZyJ",
-				onLoaded: "findCurrentLocation"
+					credentials: "Ah2oavKf-raTJYVgMxnxJg9E2E2_53Wb3jz2lD4N415EFSKwFlhlMe9U2dJpMZyJ"
 			}
 		]},
-		{kind: "Pullout", classes: "pullout", onDropPin: "dropPin", onShowTraffic: "showTraffic", onMapTypeSelect: "mapTypeSelect", onBookmarkSelect: "bookmarkSelect"},
+		{kind: "Pullout", classes: "pullout", onDropPin: "dropPin", onShowTraffic: "showTraffic", onMapTypeSelect: "mapTypeSelect", onBookmarkSelect: "bookmarkSelect", components: [
+			{classes: "pullout-menu", defaultKind: "onyx.IconButton", components: [
+				{src: "images/menu-icon-info.png", panel: "info", ontap: "togglePullout"},
+				{src: "images/menu-icon-bookmark.png", panel: "bookmark", ontap: "togglePullout"},
+				{src: "images/menu-icon-mylocation.png", ontap: "findCurrentLocation"}
+			]}
+		]},
 		{kind: "Infobox"},
 		{kind: "CurrentLocation", onSuccess: "currentLocationSuccess"}
 	],
-	smallifyWidth: 480,
-	rendered: function() {
-		this.adjustLayout();
-		this.inherited(arguments);
-	},
-	resizeHandler: function() {
-		this.adjustLayout();
-	},
-	adjustLayout: function() {
-		var smallify = this.getBounds().width <= this.smallifyWidth;
-		this.$.menu.setContainer(smallify ? this.$.pullout : this.$.toolbar);
-		this.$.menu.applyStyle("float", smallify ? null : "right");
-		this.$.searchInput.applyStyle("width", smallify ? "140px" : "180px");
-		this.$.toolbar.render();
-		this.$.pullout.render();
-	},
 	togglePullout: function(inSender) {
 		this.$.pullout.toggle(inSender.panel);
 	},
