@@ -12,10 +12,10 @@ enyo.kind({
 	components: [
 		{kind: "FittableRows", classes: "enyo-fit", components: [
 			{kind: "onyx.Toolbar", components: [
-				{kind: "onyx.Grabber", style: "float: left"},
-				{name: "bookmarksButton", kind: "onyx.Button", content: "B", ontap: "toggleBookmarks", style: "float: left;"},
-				{kind: "onyx.Button", content: "&laquo;", ontap: "back", style: "float: left;"},
-				{kind: "onyx.Button", content: "&raquo;", ontap: "forward", style: "float: left;"},
+				//{kind: "onyx.Grabber", style: "float: left"},
+				{name: "bookmarksButton", kind: "onyx.IconButton", src: "images/menu-icon-bookmark.png", ontap: "toggleBookmarks", style: "float: left;"},
+				{kind: "onyx.IconButton", src: "images/menu-icon-back.png", ontap: "back", style: "float: left;"},
+				{kind: "onyx.IconButton", src: "images/menu-icon-forward.png", ontap: "forward", style: "float: left; margin-right: 8px;"},
 				{kind: "onyx.Button", content: "Go", ontap: "goTap", input: "input2", style: "float: right;"},
 				{kind: "onyx.InputDecorator", style: "overflow: hidden; display: block;", components: [
 					{kind: "onyx.Input", style: "width: 100%;", onchange: "inputChange", placeholder: "Enter a url", onfocus: "inputFocus"}

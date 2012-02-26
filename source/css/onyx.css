@@ -1,26 +1,8 @@
-/*
-body {
-	background-color: #eaeaea;
-	color: #333;
-}
-
-html, body, input, button {
-	font-family: Prelude, Prelude Medium, Segoe UI, Arial, Helvetica, Sans-Serif;
-	font-size: 20px;
-	cursor: default;
-}
-
-.enyo-bg {
-	background-color: #eaeaea;
-}
-*/
-
-
 .onyx {
 	font-family: Prelude, Prelude Medium, Segoe UI, Neue Helvetica, Arial, Helvetica, Sans-Serif;
 	font-size: 20px;
 	cursor: default;
-	background-color: #eaeaea;
+	background-color: #EAEAEA;
 	/* remove automatic tap highlight color */
 	-webkit-tap-highlight-color: transparent;
 }
