@@ -21,11 +21,9 @@ enyo.kind({
 		ondragfinish: "dragfinish"
 	},
 	components: [
-		{name: "bar", classes: "onyx-toggle-button-bar", components: [
-			{name: "contentOn", classes: "onyx-toggle-content-on"},
-			{name: "contentOff", classes: "onyx-toggle-content-off"},
-			{classes: "onyx-toggle-button-knob"}
-		]}
+		{name: "contentOn", classes: "onyx-toggle-content on"},
+		{name: "contentOff", classes: "onyx-toggle-content off"},
+		{classes: "onyx-toggle-button-knob"}
 	],
 	create: function() {
 		this.inherited(arguments);
@@ -35,8 +33,7 @@ enyo.kind({
 		this.disabledChanged();
 	},
 	valueChanged: function() {
-		this.$.bar.addClass(this.value ? "on" : "off");
-		this.$.bar.removeClass(!this.value ? "on" : "off");
+		this.addRemoveClass("off", !this.value);
 		this.$.contentOn.setShowing(this.value);
 		this.$.contentOff.setShowing(!this.value);
 		this.setActive(this.value);
@@ -46,13 +43,15 @@ enyo.kind({
 		this.bubble("onActivate");
 	},
 	onContentChanged: function() {
-		this.$.contentOn.setContent(this.onContent);
+		this.$.contentOn.setContent(this.onContent || "&nbsp");
+		this.$.contentOn.addRemoveClass("empty", !this.onContent);
 	},
 	offContentChanged: function() {
-		this.$.contentOff.setContent(this.offContent);
+		this.$.contentOff.setContent(this.offContent || "&nbsp");
+		this.$.contentOff.addRemoveClass("empty", !this.onContent);
 	},
 	disabledChanged: function() {
-		this.$.bar.addRemoveClass("disabled", this.disabled);
+		this.addRemoveClass("disabled", this.disabled);
 	},
 	updateValue: function(inValue) {
 		if (!this.disabled) {
