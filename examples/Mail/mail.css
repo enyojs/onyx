@@ -1,3 +1,10 @@
+.selected-item {
+	padding-top: 7px !important;
+	border-top: 1px solid #88C7FD;
+	border-bottom: 1px solid #88C7FD !important;
+	background: #CDE8FE url(images/gradient-invert.png) repeat-x;
+}
+
 .mail-folder-name {
 	display: inline-block;
 	white-space: nowrap;

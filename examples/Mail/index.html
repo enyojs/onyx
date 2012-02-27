@@ -1,6 +1,8 @@
 <!doctype html>
 <html>
 <head>
+	<title>Onyx Mail</title>
+	<!-- -->
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 	<meta name="viewport" content="width=device-width initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<!-- -->
@@ -16,14 +18,13 @@
 		}
 		#app_left {
 			width: 240px;
-			border: 1px solid gray;
 		}
 		#app_left2 {
 			width: 300px;
-			border: 1px solid gray;
+			box-shadow: -3px 0px 12px rgba(96, 96, 96, 0.3);
 		}
 		#app_body {
-			border: 1px solid gray;
+			box-shadow: -3px 0px 12px rgba(96, 96, 96, 0.3);
 		}
 	</style>
 </head>
@@ -95,7 +96,7 @@
 				{kind: "FittableRows", classes: "enyo-fit", components: [
 					{kind: "FittableColumns", fit: true, components: [
 						{name: "left", kind: "FittableRows", components: [
-							{kind: "onyx.Toolbar", content: "Accounts", style: "text-align: center; padding: 16px 0 17px 0;"},
+							{kind: "onyx.Toolbar", content: "Accounts", style: "text-align: center; padding: 17px 0 17px 0;"},
 							{content: "MAILBOXES", style: enyo.path.rewrite("background:#E3E4E6 url($onyx/images/gradient.png) repeat-x 0 25px; color: #3897E9; font-weight: bold; padding: 8px;")},
 							{kind: "Scroller", fit: true, Xstyle: "position: relative; height: 140px;", components: [
 								{kind: "Repeater", rows: 0, onSetupRow: "setupRow", ontap: "mailboxTap", components: [
@@ -107,7 +108,7 @@
 							]}
 						]},
 						{name: "left2", kind: "FittableRows", components: [
-							{kind: "onyx.Toolbar", content: "Messages", style: "text-align: center; padding: 16px 0 17px 0;"},
+							{kind: "onyx.Toolbar", content: "Messages", style: "text-align: center; padding: 17px 0 17px 0;"},
 							//{components: [
 								{kind: "onyx.InputDecorator", name: "inputDecorator", style: "display: block;", components: [
 									{kind: "Input", placeholder: "search", style: "width: 90%;", name: "input"},
@@ -128,7 +129,7 @@
 							{content: "From", style: "padding: 8px;"},
 							{content: "Subject", style: "padding: 8px;"},
 							{content: "Attachments", style: "padding: 8px;"},
-							{fit: true, kind: "Scroller", style: "border: 3px solid orange;", components: [
+							{fit: true, kind: "Scroller", Xstyle: "border: 3px solid orange;", components: [
 								{name: "mailBody", style: "xfont-size: 50px; line-height: normal;"}
 							]}
 						]}
@@ -163,7 +164,8 @@
 			},
 			selectMailbox: function(inMailbox) {
 				if (this.mailbox) {
-					this.mailbox.$.item.applyStyle("background-color", null);
+					this.mailbox.$.item.removeClass("selected-item");
+					//this.mailbox.$.item.applyStyle("background-color", null);
 				}
 				//
 				this.$.repeater2.rows = 0;
@@ -172,7 +174,8 @@
 				//
 				this.mailbox = inMailbox;
 				if (this.mailbox) {
-					this.mailbox.$.item.applyStyle("background-color", "orange");
+					this.mailbox.$.item.addClass("selected-item");
+					//this.mailbox.$.item.applyStyle("background-color", "orange");
 					//
 					var box = this.boxes[this.mailbox.rowIndex];
 					this.$.boxName.setContent(box.name);
@@ -244,12 +247,16 @@
 			selectHeader: function(inHeader) {
 				if (this.header && this.header.$.item) {
 					//this.header.$.item.hasNode().style.backgroundColor = null;
-					this.header.$.item.applyStyle("background-color", null);
+					//this.header.$.item.applyStyle("background-color", null);
+					//this.header.$.item.applyStyle("background", null);
+					this.header.$.item.removeClass("selected-item");
 				}
 				this.header = inHeader;
 				if (this.header) {
 					//this.header.$.item.hasNode().style.backgroundColor = "orange";
-					this.header.$.item.applyStyle("background-color", "orange");
+					//this.header.$.item.applyStyle("background:-color", "orange");
+					//this.header.$.item.applyStyle("background", "#91CFFF url(" + enyo.path.rewrite("$onyx/images/gradient-invert.png") + ") 0 -10px repeat-x");
+					this.header.$.item.addClass("selected-item");
 				}
 				enyo.asyncMethod(this, function() {
 					this.$.mailBody.setContent("");
