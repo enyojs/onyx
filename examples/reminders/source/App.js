@@ -6,7 +6,7 @@ var mock_reminders = [
 
 enyo.kind({
 	name: "App",
-	classes: "onyx enyo-unselectable",
+	classes: "enyo-unselectable",
 	components: [
 		{name: "list", classes: "enyo-fit", components: [
 			{kind: "FittableRows", classes: "enyo-fit", components: [
@@ -47,6 +47,8 @@ enyo.kind({
 		this.$.list.hide();
 		this.$.details.hide();
 		this.$[inPanel].show();
+		// need to call resized to force Fittable to re-flow the layout
+		this.$[inPanel].resized();
 	},
 	deleteReminder: function(inSender) {
 		var r = inSender.reminder;
@@ -79,7 +81,7 @@ enyo.kind({
 			]},
 			{fit: true, components: [
 				{kind: "onyx.InputDecorator", style: "width: 100%; border: 0; margin-left: 5px;", components: [
-					{kind: "onyx.Input", onblur: "titleUpdated", onInputChange: "inputChange"}
+					{kind: "onyx.Input", style: "width: 100%;", onblur: "titleUpdated", onInputChange: "inputChange"}
 				]}
 			]},
 			{style: "width: 80px; text-align: center;", components: [
