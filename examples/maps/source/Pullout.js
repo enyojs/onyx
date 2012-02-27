@@ -12,8 +12,8 @@ enyo.kind({
 		{classes: "pullout-grabbutton"},
 		{kind: "FittableRows", classes: "enyo-fit", components: [
 			{name: "client", classes: "pullout-toolbar"},
-			{fit: true, kind: "Scroller", components: [
-				{name: "info", classes: "enyo-fit", components: [
+			{fit: true, components: [
+				{name: "info", kind: "Scroller", classes: "enyo-fit", components: [
 					{kind: "onyx.Groupbox", classes: "settings", components: [
 						{kind: "onyx.GroupboxHeader", content: "General"},
 						{kind: "LabeledItem", label: "Show Drop Pin", icon: "images/icon-dropPin.png", defaultKind: "onyx.ToggleButton", onChange: "dropPinChange"},
