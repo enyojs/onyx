@@ -59,7 +59,7 @@
 	border: none;
 	border-radius: 10px 0 0 10px;
 	background: #D8D8D8 url(../images/grabbutton.png) no-repeat;
-	box-shadow: -6px 8px 9px -5px rgba(0, 0, 0, 0.7);
+	box-shadow: -4px 4px 4px rgba(0,0,0,0.3);
 }
 
 .pullout-toolbar {

@@ -12,6 +12,7 @@ You can get a handle to the actual Bing map control uisng hasMap(), like this:
 */
 enyo.kind({
 	name: "enyo.BingMap",
+	classes: "enyo-bingmap",
 	published: {
 		/**
 		  The latitude of the location.
