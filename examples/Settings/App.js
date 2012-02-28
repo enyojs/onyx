@@ -1,3 +1,5 @@
+enyo.preventDocumentScrolling = true;
+
 enyo.kind({
 	name: "App",
 	components: [
