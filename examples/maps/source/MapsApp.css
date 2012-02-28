@@ -56,9 +56,8 @@
 	width: 50px;
 	bottom: 20px;
 	left: -46px;
-	border: none;
 	border-radius: 10px 0 0 10px;
-	background: #D8D8D8 url(../images/grabbutton.png) no-repeat;
+	background-color: #D8D8D8;
 	box-shadow: -4px 4px 4px rgba(0,0,0,0.3);
 }
 

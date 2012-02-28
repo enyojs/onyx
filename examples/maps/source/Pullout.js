@@ -9,7 +9,7 @@ enyo.kind({
 	},
 	components: [
 		{name: "shadow", classes: "pullout-shadow"},
-		{classes: "pullout-grabbutton"},
+		{kind: "onyx.Grabber", classes: "pullout-grabbutton"},
 		{kind: "FittableRows", classes: "enyo-fit", components: [
 			{name: "client", classes: "pullout-toolbar"},
 			{fit: true, components: [
