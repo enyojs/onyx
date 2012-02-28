@@ -1354,13 +1354,15 @@ return this.findByProperty(this.objects, "name", a);
 findByTopic: function(a) {
 return this.findByProperty(this.objects, "topic", a);
 },
-unmap: function(a, b) {
-var c = [];
-for (var d in a) {
-var e = a[d];
-e.key = d, b && (e[b] = !0), c.push(e);
+unmap: function(a) {
+var b = [];
+for (var c in a) {
+var d = a[c];
+d.key = c;
+for (var e = 1, f; f = arguments[e]; e++) d[f] = !0;
+b.push(d);
 }
-return c;
+return b;
 },
 buildModuleList: function(a) {
 return this.unmap(a);
@@ -1586,7 +1588,7 @@ return "" + this.formatTypeIcon(a) + '<span class="name">' + a.name + "</span>";
 },
 formatKind: function(a, b, c, d) {
 var e = this.formatKindTree(a), f = d ? [] : [ "public" ], g = c ? a.allProperties : a.properties;
-return "" + this.formatTitle(a) + '<div class="path">' + this.formatLink(a.module.rawPath) + "</div>" + (e == "" ? "" : "<h2>Extends</h2>" + e) + "<h2>Properties</h2>" + this.formatKindProperties(a, this.filterProperties(g, [ "property" ].concat(f))) + "<h2>Methods</h2>" + this.formatKindProperties(a, this.filterProperties(g, [ "method" ].concat(f))) + (a.comment ? "<h2>Summary</h2><p>" + this.markupToHtml(a.comment) + "</p>" : "");
+return "" + this.formatTitle(a) + '<div class="path">' + this.formatLink(a.module.rawPath) + "</div>" + (e == "" ? "" : "<h2>Extends</h2>" + e) + "<h2>Published</h2>" + this.formatKindProperties(a, this.filterProperties(g, [ "published" ].concat(f))) + "<h2>Properties</h2>" + this.formatKindProperties(a, this.filterProperties(g, [ "property" ].concat(f))) + "<h2>Methods</h2>" + this.formatKindProperties(a, this.filterProperties(g, [ "method" ].concat(f))) + (a.comment ? "<h2>Summary</h2><p>" + this.markupToHtml(a.comment) + "</p>" : "");
 },
 formatKindTree: function(a) {
 var b = "", c = "";
@@ -1602,7 +1604,7 @@ formatKindMethod: function(a, b) {
 return '<div><a href="#' + b.topic + '">' + this.formatSmallTypeIcon(b) + b.name + enyo.macroize(': <em style="color: black;">function</em>(<code>{$args}</code>)', b) + "</a>" + (b.protected ? '<span class="protected" title="protected"></span>' : "") + (b.kind && b.kind !== a ? '<span style="color:#6070FF; font-size: 80%; padding-left: 4px;">' + this.formatLink(b.kind.name) + "</span>" : "") + (b.kind == a && b.overrides ? '<span style="color:#FF7060; font-size: 80%;"> ' + this.formatLink(b.overrides.kind.name) + " override</span>" : "") + "</div>";
 },
 formatKindProperty: function(a, b) {
-return '<div><a href="#' + b.topic + '">' + this.formatSmallTypeIcon(b) + b.name + (b.property ? ': <span style="color: black;">' + b.value + "</span>" : "") + "</a>" + (!b.kind || b.kind == a ? "" : '<span style="color:#6070FF; font-size: 80%; padding-left: 8px;">' + this.formatLink(b.kind.name) + "</span >") + (b.protected ? '<span class="protected" title="protected"></span>' : "") + "</div>";
+return '<div><a href="#' + b.topic + '">' + this.formatSmallTypeIcon(b) + b.name + (!b.property && !b.published ? "" : ': <span style="color: black;">' + b.value + "</span>") + "</a>" + (!b.kind || b.kind == a ? "" : '<span style="color:#6070FF; font-size: 80%; padding-left: 8px;">' + this.formatLink(b.kind.name) + "</span >") + (b.protected ? '<span class="protected" title="protected"></span>' : "") + "</div>";
 },
 formatObject: function(a, b, c) {
 var d = c ? [] : [ "public" ], e = a.properties;
@@ -1773,7 +1775,10 @@ allowHtml: !0
 } ]
 } ],
 filterChange: function() {
-this.showInherited = this.$.inheritedOption.hasNode().checked, this.showProtected = this.$.protectedOption.hasNode().checked, this.doFilterChange(this.showInherited, this.showProtected);
+this.doFilterChange({
+showInherited: this.$.inheritedOption.hasNode().checked,
+showProtected: this.$.protectedOption.hasNode().checked
+});
 },
 setTopic: function(a) {
 if (!a) return;
@@ -1884,7 +1889,7 @@ onFilterChange: "filterChange"
 } ]
 } ],
 create: function() {
-this.inherited(arguments), this.topic = this.getHashTopic(), window.onhashchange = enyo.bind(this, "hashChange"), this.$.db.walk(enyo.path.rewrite(this.target));
+this.inherited(arguments), this.topic = this.getHashTopic() || this.topic, window.onhashchange = enyo.bind(this, "hashChange"), this.$.db.walk(enyo.path.rewrite(this.target));
 },
 dbReady: function() {
 this.refresh();
@@ -1892,8 +1897,8 @@ this.refresh();
 refresh: function() {
 this.selectIndex(this.$.indexTabs.index), this.selectTopic(this.topic), this.selectSearchString(this.searchString);
 },
-filterChange: function(a, b, c) {
-this.showInherited = b, this.showProtected = c, this.refresh();
+filterChange: function(a, b) {
+this.showInherited = b.showInherited, this.showProtected = b.showProtected, this.refresh();
 },
 indexTabsSelect: function(a, b) {
 this.selectIndex(b);
