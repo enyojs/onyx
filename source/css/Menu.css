@@ -1,28 +1,24 @@
-/*
-	FIXME: when floating the menu does not have the onyx class
-	if it's applied to a parent. If we apply it to the menu, 
-	font-size was overridden. Should we apply the theme class to the
-	modal layer?
-*/
 .onyx-menu, .onyx.onyx-menu {
-	font-size: 16px;
 	min-width: 160px;
-	position: absolute;
 	top: 100%;
 	left: 0;
 	margin-top: 2px;
-	box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
-	border: 1px solid rgba(0,0,0,0.2);
+	padding: 3px 0;
 	border-radius: 3px;
-	text-align: right;
+}
+
+.onyx-toolbar .onyx-menu {
+	margin-top: 16px;
+	border-radius: 0 0 3px 3px;
 }
 
 .onyx-menu-item {
+	display: block;
 	padding: 10px;
 }
 
 .onyx-menu-item:hover {
-	background: lightblue;
+	background: #284152;
 }
 
 .onyx-menu-divider, .onyx-menu-divider:hover {
@@ -31,7 +27,9 @@
 	border-bottom: 1px solid #aaa;
 }
 
-.onyx-menu-decorator {
-	display: inline-block;
+/* customize a toolbar to support menus */
+.onyx-menu-toolbar, .onyx-toolbar.onyx-menu-toolbar {
+	z-index: 10; 
+	overflow: visible;
 	position: relative;
 }

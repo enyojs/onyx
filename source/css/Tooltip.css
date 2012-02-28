@@ -1,0 +1,23 @@
+.onyx-tooltip {
+	z-index: 20;
+	top: 100%;
+	left: 0;
+	padding: 4px 6px;
+	margin-top: 4px;
+	margin-left: -6px;
+	box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(0,0,0,0.2);
+	color: white;
+	background: #216593 url(../../images/gradient.png) repeat-x 0 bottom;
+	border-radius: 3px;
+}
+
+.onyx-tooltip::before {
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-bottom: 6px solid #1D587F;
+	position: absolute;
+	top: -6px;
+	left: 16px;
+}

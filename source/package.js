@@ -1,12 +1,18 @@
 enyo.depends(
 	"css/",
+	"Animator.js",
+	"transform.js",
 	"Icon.js",
 	"Button.js",
 	"IconButton.js",
 	"Checkbox.js",
 	"FloatingLayer.js",
 	"Popup.js",
+	"Tooltip.js",
+	"TooltipDecorator.js",
 	"Menu.js",
+	"MenuItem.js",
+	"MenuDecorator.js",
 	"Grabber.js",
 	"Groupbox.js",
 	"Input.js",
@@ -15,7 +21,5 @@ enyo.depends(
 	"RadioGroup.js",
 	"ToggleButton.js",
 	"Toolbar.js",
-	"transform.js",
-	"Animator.js",
 	"Slideable.js"
 );

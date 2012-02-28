@@ -8,11 +8,16 @@ enyo.kind({
 	published: {
 		modal: false,
 		autoDismiss: true,
-		floating: false
+		floating: false,
+		centered: false
 	},
 	handlers: {
 		ondown: "down",
-		onkeydown: "keydown"
+		onkeydown: "keydown",
+		onfocus: "focus",
+		onblur: "blur",
+		onRequestShow: "requestShow",
+		onRequestHide: "requestHide"
 		
 	},
 	events: {
@@ -20,9 +25,6 @@ enyo.kind({
 		onHide: ""
 	},
 	//* @protected
-	statics: {
-		count: 0
-	},
 	tools: [
 		{kind: "Signals", onKeydown: "keydown"},
 	],
@@ -36,6 +38,31 @@ enyo.kind({
 	getBubbleTarget: function() {
 		return this.floating ? this.owner : this.inherited(arguments);
 	},
+	reflow: function() {
+		this.updatePosition();
+		this.inherited(arguments);
+	},
+	calcViewportSize: function() {
+		if (window.innerWidth) {
+			return {
+				width: window.innerWidth,
+				height: window.innerHeight
+			}
+		} else {
+			var e = document.documentElement;
+			return {
+				width: e.offsetWidth, 
+				height: e.offsetHeight
+			}
+		}
+	},
+	updatePosition: function() {
+		if (this.centered) {
+			var d = this.calcViewportSize();
+			var b = this.getBounds();
+			this.addStyles("top: " + ((d.height-b.height)/2) + "px; left: " + ((d.width-b.width)/2) + "px;");
+		}
+	},
 	showingChanged: function() {
 		// auto render when shown.
 		if (this.floating && this.showing && !this.hasNode()) {
@@ -45,11 +72,20 @@ enyo.kind({
 		if (this.hasNode()) {
 			this[this.showing ? "doShow" : "doHide"]();
 		}
+		// hide while sizing
+		if (this.centered) {
+			this.applyStyle("visibility", "hidden");
+		}
 		this.inherited(arguments);
 		if (this.showing) {
+			this.reflow();
 			this.capture();
 		} else {
 			this.release();
+		}
+		// show after sizing
+		if (this.centered) {
+			this.applyStyle("visibility", null);
 		}
 	},
 	capture: function() {
@@ -60,7 +96,7 @@ enyo.kind({
 	},
 	down: function(inSender, inEvent) {
 		// prevent focus shifting outside the poup when modal.
-		if (this.modal && !inEvent.originator.isDescendantOf(this)) {
+		if (this.modal && !inEvent.dispatchTarget.isDescendantOf(this)) {
 			inEvent.preventNativeDefault();
 		}
 	},
@@ -84,11 +120,23 @@ enyo.kind({
 	},
 	// when something outside the popup focuses (e.g. due to tab key), focus our last focused control.
 	focus: function(inSender, inEvent) {
-		if (this.modal && !inEvent.dispatchTarget.isDescendantOf(this)) {
+		var dt = inEvent.dispatchTarget;
+		if (this.modal && !dt.isDescendantOf(this)) {
+			if (dt.hasNode()) {
+				dt.node.blur();
+			}
 			var n = (this.lastFocus && this.lastFocus.hasNode()) || this.hasNode();
 			if (n) {
 				n.focus();
 			}
 		}
+	},
+	requestShow: function(inSender, inEvent) {
+		this.show();
+		return true;
+	},
+	requestHide: function(inSender, inEvent) {
+		this.hide();
+		return true;
 	}
 });
