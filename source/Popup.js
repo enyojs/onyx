@@ -3,7 +3,6 @@
  */
 enyo.kind({
 	name: "onyx.Popup",
-	kind: "onyx.ModalControl",
 	classes: "onyx-popup",
 	showing: false,
 	published: {
@@ -12,6 +11,7 @@ enyo.kind({
 		floating: false
 	},
 	handlers: {
+		ondown: "down",
 		onkeydown: "keydown"
 		
 	},
@@ -52,20 +52,43 @@ enyo.kind({
 			this.release();
 		}
 	},
-		//* @public
-	// open / close events
+	capture: function() {
+		enyo.dispatcher.capture(this, !this.modal);
+	},
+	release: function() {
+		enyo.dispatcher.release();
+	},
+	down: function(inSender, inEvent) {
+		// prevent focus shifting outside the poup when modal.
+		if (this.modal && !inEvent.originator.isDescendantOf(this)) {
+			inEvent.preventNativeDefault();
+		}
+	},
 	tap: function(inSender, inEvent) {
-		this.log();
 		// dismiss on tap if property is set and click was outside the popup
-		if (this.autoDismiss && (!inEvent.dispatchTarget.isDescendantOf || !inEvent.dispatchTarget.isDescendantOf(this))) {
-			this.log();
+		if (this.autoDismiss && (!inEvent.dispatchTarget.isDescendantOf(this))) {
 			this.hide();
 			return true;
 		}
 	},
-	keydown: function(inSender, e) {
-		if (this.showing && this.autoDismiss && e.keyCode == 27 /* escape */) {
+	keydown: function(inSender, inEvent) {
+		if (this.showing && this.autoDismiss && inEvent.keyCode == 27 /* escape */) {
 			this.hide();
+		}
+	},
+	// if something inside the popup blurred, keep track of it
+	blur: function(inSender, inEvent) {
+		if (inEvent.dispatchTarget.isDescendantOf(this)) {
+			this.lastFocus = inEvent.originator;
+		}
+	},
+	// when something outside the popup focuses (e.g. due to tab key), focus our last focused control.
+	focus: function(inSender, inEvent) {
+		if (this.modal && !inEvent.dispatchTarget.isDescendantOf(this)) {
+			var n = (this.lastFocus && this.lastFocus.hasNode()) || this.hasNode();
+			if (n) {
+				n.focus();
+			}
 		}
 	}
 });
