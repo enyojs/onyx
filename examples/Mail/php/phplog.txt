@@ -20,3 +20,14 @@
 [22-Feb-2012 13:02:09] PHP Warning:  imap_open(): Couldn't open stream  in E:\www\enyojs\internal\testapps\onyx-mail\php\body.php on line 14
 [22-Feb-2012 21:55:18] PHP Warning:  imap_body(): Bad message number in E:\www\enyojs\internal\testapps\onyx-mail\php\body.php on line 19
 [22-Feb-2012 21:55:24] PHP Warning:  imap_body(): Bad message number in E:\www\enyojs\internal\testapps\onyx-mail\php\body.php on line 19
+[27-Feb-2012 13:37:48] PHP Warning:  imap_body(): Bad message number in E:\www\enyojs\lib\onyx\examples\Mail\php\body.php on line 19
+[27-Feb-2012 13:53:45] PHP Warning:  imap_body(): Bad message number in E:\www\enyojs\lib\onyx\examples\Mail\php\body.php on line 19
+[27-Feb-2012 14:00:50] PHP Warning:  imap_open(): Couldn't open stream {imap.1and1.com:143}INBOX in E:\www\enyojs\lib\onyx\examples\Mail\php\body.php on line 14
+[27-Feb-2012 14:00:50] PHP Warning:  imap_open(): Couldn't open stream {imap.1and1.com:143}INBOX in E:\www\enyojs\lib\onyx\examples\Mail\php\body.php on line 14
+[27-Feb-2012 14:00:50] PHP Warning:  imap_open(): Couldn't open stream {imap.1and1.com:143}INBOX in E:\www\enyojs\lib\onyx\examples\Mail\php\body.php on line 14
+[27-Feb-2012 14:00:50] PHP Warning:  imap_open(): Couldn't open stream {imap.1and1.com:143}INBOX in E:\www\enyojs\lib\onyx\examples\Mail\php\body.php on line 14
+[27-Feb-2012 14:00:50] PHP Warning:  imap_open(): Couldn't open stream {imap.1and1.com:143}INBOX in E:\www\enyojs\lib\onyx\examples\Mail\php\body.php on line 14
+[27-Feb-2012 14:01:06] PHP Warning:  imap_open(): Couldn't open stream {imap.1and1.com:143}INBOX in E:\www\enyojs\lib\onyx\examples\Mail\php\body.php on line 14
+[27-Feb-2012 14:01:33] PHP Warning:  imap_open(): Couldn't open stream {imap.1and1.com:143}INBOX in E:\www\enyojs\lib\onyx\examples\Mail\php\body.php on line 14
+[27-Feb-2012 14:01:37] PHP Warning:  imap_open(): Couldn't open stream {imap.1and1.com:143}INBOX in E:\www\enyojs\lib\onyx\examples\Mail\php\body.php on line 14
+[27-Feb-2012 14:01:37] PHP Warning:  imap_open(): Couldn't open stream {imap.1and1.com:143}INBOX in E:\www\enyojs\lib\onyx\examples\Mail\php\body.php on line 14

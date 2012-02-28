@@ -64,16 +64,20 @@ enyo.kind({
 		this.updateValue(!this.value);
 	},
 	dragstart: function(inSender, inEvent) {
-		this._dx0 = inEvent.dx;
+		//this._dx0 = inEvent.dx;
+		this.dragged = false;
 	},
 	drag: function(inSender, inEvent) {
-		var d = inEvent.dx - this._dx0;
+		//var d = inEvent.dx - this._dx0;
+		var d = inEvent.dx;
 		if (Math.abs(d) > 15) {
 			this.updateValue(d > 0);
-			this._dx0 = inEvent.dx;
+			this.dragged = true;
 		}
 	},
 	dragfinish: function(inSender, inEvent) {
-		inEvent.preventTap();
+		if (this.dragged) {
+			inEvent.preventTap();
+		}
 	}
 })

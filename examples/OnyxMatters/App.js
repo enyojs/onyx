@@ -38,22 +38,57 @@ enyo.kind({
 			{classes: "divider", content: "Buttons"},
 			{classes: "tools", defaultKind: "onyx.Button", components: [
 				{content: "Button"},
-				{content: "Affirmative", style: "background-color: #91BA07; color: #F1F1F1;"},
-				{content: "Negative", style: "background-color: #C51616; color: #F1F1F1;"},
-				{content: "Blue", style: "background-color: #35A8EE; color: #F1F1F1;"}
+			]},
+			{classes: "tools", defaultKind: "onyx.Button", components: [
+				{content: "Affirmative", classes: "onyx-affirmative"},
+				{content: "Negative", classes: "onyx-negative"},
+				{content: "Blue", classes: "onyx-blue"},
+				{content: "Custom", style: "background-color: purple; color: #F1F1F1;"},
+			]},
+			{classes: "tools", defaultKind: "onyx.Button", components: [
+				{content: "Active", classes: "active"},
+				{content: "Disabled", disabled: true},
+				{content: "Active Disabled", classes: "active", disabled: true}
+			]},
+			{classes: "tools", defaultKind: "onyx.Button", components: [
+				{content: "Tall Button", style: "height: 70px;"}
 			]},
 			{tag: "br"},
 			{classes: "divider", content: "Button Group"},
 			{kind: "Group", classes: "tools group", defaultKind: "onyx.Button", highlander: true, components: [
-				{content: "Button A", style: "background-color: #35A8EE; color: #F1F1F1;"},
-				{content: "Button B", style: "background-color: #C51616; color: #F1F1F1;"},
-				{content: "Button C", style: "background-color: #91BA07; color: #F1F1F1;"}
+				{content: "Button A", active: true, classes: "onyx-affirmative"},
+				{content: "Button B", classes: "onyx-negative"},
+				{content: "Button C", classes: "onyx-blue"}
+			]},
+			{tag: "br"},
+			{classes: "divider", content: "Icon Button"},
+			{kind: "onyx.IconButton", src: "images/menu-icon-bookmark.png"},
+			{tag: "br"},
+			{tag: "br"},
+			{classes: "divider", content: "Grouped Icon Buttons"},
+			{kind: "Group", components: [
+				{kind: "onyx.IconButton", active: true, src: "images/menu-icon-bookmark.png"},
+				{kind: "onyx.IconButton", src: "images/menu-icon-bookmark.png"},
+				{kind: "onyx.IconButton", src: "images/menu-icon-bookmark.png"}
+			]},
+			{tag: "br"},
+			{classes: "divider", content: "Icon Buttons in Toolbar"},
+			{kind: "onyx.Toolbar", defaultKind: "onyx.IconButton", components: [
+				{src: "images/menu-icon-bookmark.png"},
+				{src: "images/menu-icon-bookmark.png"},
+				{src: "images/menu-icon-bookmark.png"},
+				{kind: "Control"},
+				{kind: "Group", noDom: true, defaultKind: "onyx.IconButton", components: [
+					{active: true, src: "images/menu-icon-bookmark.png"},
+					{src: "images/menu-icon-bookmark.png"},
+					{src: "images/menu-icon-bookmark.png"}
+				]}
 			]},
 			{tag: "br"},
 			{classes: "divider", content: "Toggle Buttons"},
 			{classes: "tools", defaultKind: "onyx.ToggleButton", components: [
-				{},
 				{value: true},
+				{},
 				{}
 			]},
 			{tag: "br"},
@@ -67,14 +102,14 @@ enyo.kind({
 			{classes: "divider", content: "Checkboxes"},
 			{classes: "tools", defaultKind: "onyx.Checkbox", components: [
 				{},
-				{value: true},
-				{}
+				{},
+				{value: true}
 			]},
 			{tag: "br"},
 			{classes: "divider", content: "Checkboxes Group"},
 			{kind: "Group", classes: "tools group", defaultKind: "onyx.Checkbox", highlander: true, components: [
-				{},
 				{value: true},
+				{},
 				{}
 			]},
 			{tag: "br"},
