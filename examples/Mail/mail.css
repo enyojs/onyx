@@ -1,10 +1,3 @@
-.selected-item {
-	padding-top: 7px !important;
-	border-top: 1px solid #88C7FD;
-	border-bottom: 1px solid #88C7FD !important;
-	background: #CDE8FE url(images/gradient-invert.png) repeat-x;
-}
-
 .mail-folder-name {
 	display: inline-block;
 	white-space: nowrap;
@@ -23,10 +16,7 @@
 	font-weight: bold;
 }
 
-.mail-item {
-	padding: 8px 8px 8px 30px;
-	border-bottom: 1px solid gray;
-}
+/**/
 
 .mail-from, .mail-subject, .mail-blurb {
 	overflow: hidden;
@@ -34,27 +24,50 @@
 	text-overflow: ellipsis;
 }
 
+.mail-flag-icon {
+	float: left;
+	width: 24px;
+	height: 24px;
+	vertical-align: middle;
+}
+
 .mail-from {
-	display: inline-block;
+	font-weight: bold;
+	font-size: 16px;
+	padding: 0px;
+	vertical-align: middle;
 }
 
 .mail-when {
-	padding-top: 4px;
+	vertical-align: middle;
 	float: right;
+	font-weight: bold;
+	font-size: 10px;
+	text-align: right;
+	color: #777;
 }
 
+/**/
+
+.mail-subject {
+	clear: both;
+	margin-left: 24px;
+	font-size: 17px;
+	color: #2d6c94;
+	padding-bottom: 3px;
+}
+
+/**/
+
 .mail-blurb {
+	margin-left: 24px;
 	font-size: 12pt;
 }
 
+/**/ 
+
 .mail-status-icon {
 	display: inline-block;
-}
-
-.mail-flag-icon {
-	display: inline-block;
-	width: 24px;
-	height: 24px;
 }
 
 .mail-calendar-icon, .mail-status-reply {
@@ -93,26 +106,6 @@
 	margin: -1px 0px;
 	padding: 4px 0 0 24px;
 	background: #e4e4e2 url(../images/palm-divider-collapse-left.png) repeat-x;
-}
-
-/* lifted from Palm Email reference app */
-
-.mail-from {
-	overflow: hidden;
-	Xwidth: 40%;
-	padding: 0px;
-	font-size: 16px;
-}
-
-.mail-when {
-	text-align: right;
-	font-size: 15px;
-	color: #777;
-}
-
-.mail-subject {
-	font-size: 17px;
-	color: #2d6c94;
 }
 
 /* Body */
