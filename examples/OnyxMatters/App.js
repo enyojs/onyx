@@ -153,12 +153,5 @@ enyo.kind({
 				]}
 			]}
 		]}
-	],
-	handlers: {
-		onmove: "moveHandler"
-	},
-	// allow touch move
-	moveHandler: function(inSender, inEvent) {
-		inEvent.allowTouchmove = true;
-	}
+	]
 });

@@ -110,6 +110,7 @@ enyo.kind({
 	},
 	dragstartHandler: function(inSender, inEvent) {
 		if (this.shouldDrag(inEvent)) {
+			inEvent.preventNativeDefault();
 			this.$.animator.stop();
 			inEvent.dragInfo = {};
 			this.dragging = true;
@@ -120,6 +121,7 @@ enyo.kind({
 	},
 	dragHandler: function(inSender, inEvent) {
 		if (this.dragging) {
+			inEvent.preventNativeDefault();
 			var d = inEvent[this.dragMoveProp] * this.kDragScalar;
 			var v = this.drag0 + d;
 			var dd = d - this.dragd0;
