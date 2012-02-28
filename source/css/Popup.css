@@ -1,0 +1,21 @@
+/*
+	FIXME: when floating the menu does not have the onyx class
+	if it's applied to a parent. If we apply it to the menu, 
+	font-size was overridden. Should we apply the theme class to the
+	modal layer?
+*/
+.onyx-popup, .onyx.onyx-popup {
+	position: absolute;
+	z-index: 10;
+	font-size: 16px;
+	box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+	border: 1px solid rgba(0,0,0,0.2);
+	border-radius: 8px;
+	padding: 6px;
+	color: white;
+	background: #4C4C4C url(../../images/gradient.png) repeat-x 0 bottom;
+}
+
+.onyx-popup-decorator {
+	position: relative;
+}
