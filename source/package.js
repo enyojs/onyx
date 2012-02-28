@@ -5,7 +5,6 @@ enyo.depends(
 	"IconButton.js",
 	"Checkbox.js",
 	"FloatingLayer.js",
-	"ModalControl.js",
 	"Popup.js",
 	"Menu.js",
 	"Grabber.js",
