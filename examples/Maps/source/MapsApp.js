@@ -11,7 +11,7 @@ enyo.kind({
 					{src: "images/topbar-direct-icon.png"}
 				]},
 				{kind: "onyx.InputDecorator", components: [
-					{name: "searchInput", classes: "search-input", kind: "onyx.Input", defaultFocus: true, placeholder: "Search or Address"},
+					{name: "searchInput", classes: "search-input", kind: "onyx.Input", defaultFocus: true, placeholder: "Search or Address", onkeypress: "searchInputKeypress"},
 					{kind: "Image", src: "images/search-input-search.png", ontap: "search"}
 				]},
 				{name: "menu", classes: "menu", defaultKind: "onyx.IconButton", components: [
@@ -69,6 +69,11 @@ enyo.kind({
 		inSender.stopTracking();
 		this.currentLocationPin = this.$.map.updatePushpin(this.currentLocationPin, c.latitude, c.longitude,
 			{icon: "images/mylocation.png", height: 48, width: 48, anchor: new Microsoft.Maps.Point(24, 24)});
+	},
+	searchInputKeypress: function(inSender, inEvent) {
+		if (inEvent.keyCode == 13) {
+			this.search();
+		}
 	},
 	search: function(inSender) {
 		this.$.map.clearAll([this.currentLocationPin]);
