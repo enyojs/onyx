@@ -1,2 +1,2 @@
 #!/bin/sh
-../../../enyo/tools/minify.sh package.js -output build/onyx
+../../../enyo/tools/minify.sh package.js -output ../build/onyx
