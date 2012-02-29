@@ -12,7 +12,6 @@ enyo.kind({
 	components: [
 		{kind: "FittableRows", classes: "enyo-fit", components: [
 			{kind: "onyx.Toolbar", components: [
-				//{kind: "onyx.Grabber", style: "float: left"},
 				{name: "bookmarksButton", kind: "onyx.IconButton", src: "images/menu-icon-bookmark.png", ontap: "toggleBookmarks", style: "float: left;"},
 				{kind: "onyx.IconButton", src: "images/menu-icon-back.png", ontap: "back", style: "float: left;"},
 				{kind: "onyx.IconButton", src: "images/menu-icon-forward.png", ontap: "forward", style: "float: left; margin-right: 8px;"},
@@ -24,13 +23,13 @@ enyo.kind({
 			{fit: true, kind: "FittableColumns", components: [
 				{name: "bookmarks", kind: "FittableRows", style: "width: 300px; border-right: 1px solid silver;", components: [
 					{name: "titleDecorator", kind: "onyx.InputDecorator", style: "display: block; margin: 4px; padding: 8px;", components: [
-						{name: "titleInput", kind: "onyx.Input", placeholder: "Enter a title", style: "width: 220px; margin-right: 4px;"},
-						{kind: "onyx.Button", content: "+", ontap: "addBookmark", style: "background-color: lightgreen; color: white; font-weight: bold;"}
+						{name: "titleInput", kind: "onyx.Input", placeholder: "Enter a title", style: "width: 210px; margin-right: 4px;"},
+						{kind: "onyx.IconButton", src: "images/menu-icon-add.png", ontap: "addBookmark", style: "float: right;"}
 						
 					]},
 					{fit: true, kind: "Scroller", name: "list"},
-					{style: "text-align: right;", components: [
-						{kind: "onyx.Button", content: "-", ontap: "deleteBookmark", style: "margin: 4px; background-color: #ff3333; color: white; font-weight: bold;"}
+					{style: "text-align: right;", classes: "onyx-toolbar-inline", components: [
+						{kind: "onyx.Button", ontap: "deleteBookmark", content: "Delete Selected"}
 					]}
 				]},
 				{fit: true, name: "iframe", tag: "iframe", classes: "frame", onload: "frameload", attributes: {onload: enyo.bubbler}, style: "background: white;"}
@@ -40,7 +39,6 @@ enyo.kind({
 	rowItem: {kind: "Control", style: "border-bottom: 1px solid silver; padding: 10px;", ontap: "rowTap"},
 	create: function() {
 		this.inherited(arguments);
-		// FIXME: label gotcha with button
 		this.$.titleDecorator.setAttribute("for", this.$.titleInput.getId());
 		//
 		this.setBookmarksShowing(this.$.bookmarksButton.active);
@@ -58,7 +56,6 @@ enyo.kind({
 		this.$.iframe.setSrc(inUrl);
 	},
 	frameload: function(inSender) {
-		this.log();
 	},
 	goTap: function() {
 		this.goto(this.$.input.getValue());
@@ -79,10 +76,9 @@ enyo.kind({
 	},
 	toggleBookmarks: function(inSender) {
 		inSender.down = !inSender.down;
-		inSender.setActive(inSender.down);
-		inSender.addRemoveClass("active", inSender.active);
+		inSender.addRemoveClass("active", inSender.down);
 		this.renderBookmarks();
-		this.setBookmarksShowing(inSender.active);
+		this.setBookmarksShowing(inSender.down);
 	},
 	storageItemName: "browser_bookmarks",
 	renderBookmarks: function() {
