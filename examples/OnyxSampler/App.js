@@ -2,7 +2,7 @@ enyo.kind({
 	name: "App",
 	classes: "onyx",
 	components: [
-		{kind: "onyx.Toolbar", content: "Onyx Style Matters"},
+		{kind: "onyx.Toolbar", content: "Onyx Widget Sampler"},
 		{style: "padding: 10px;", components: [
 			{classes: "divider", content: "Header"},
 			{kind: "onyx.Toolbar", components: [
