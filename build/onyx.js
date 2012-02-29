@@ -3,6 +3,95 @@
 
 enyo.path.addPaths({css: "../source/css/"});
 
+// Animator.js
+
+enyo.kind({
+name: "enyo.Animator",
+kind: "Component",
+published: {
+duration: 350,
+startValue: 0,
+endValue: 1,
+node: null,
+easingFunction: enyo.easing.cubicOut
+},
+events: {
+onStep: "",
+onEnd: "",
+onStop: ""
+},
+constructed: function() {
+this.inherited(arguments), this._next = enyo.bind(this, "next");
+},
+play: function(a) {
+return this.stop(), a && enyo.mixin(this, a), this.t0 = this.t1 = (new Date).getTime(), this.value = this.startValue, this.job = !0, this.requestNext(), this;
+},
+stop: function() {
+if (this.isAnimating()) return this.cancel(), this.fire("onStop"), this;
+},
+isAnimating: function() {
+return Boolean(this.job);
+},
+requestNext: function() {
+this.job = enyo.requestAnimationFrame(this._next, this.node);
+},
+cancel: function() {
+enyo.cancelRequestAnimationFrame(this.job), this.node = null, this.job = null;
+},
+shouldEnd: function() {
+return this.dt >= this.duration;
+},
+next: function() {
+this.t1 = (new Date).getTime(), this.dt = this.t1 - this.t0;
+var a = this.fraction = enyo.easedLerp(this.t0, this.duration, this.easingFunction);
+this.value = this.startValue + a * (this.endValue - this.startValue), a >= 1 || this.shouldEnd() ? (this.value = this.endValue, this.fraction = 1, this.fire("onStep"), this.fire("onEnd"), this.cancel()) : (this.fire("onStep"), this.requestNext());
+},
+fire: function(a) {
+var b = this[a];
+enyo.isString(b) ? this.bubble(a) : b && b.call(this.context || window, this);
+}
+});
+
+// transform.js
+
+enyo.mixin(enyo.Layout, {
+canAccelerate: function() {
+return this.accelerando !== undefined ? this.accelerando : document.body && (this.accelerando = this.calcCanAccelerate());
+},
+calcCanAccelerate: function() {
+var a = document.body, b = [ "perspective", "msPerspective", "MozPerspective", "WebkitPerspective", "OPerspective" ];
+for (var c = 0, d; d = b[c]; c++) if (typeof document.body.style[d] != "undefined") return !0;
+return !1;
+},
+domTransformProps: [ "-webkit-transform", "-moz-transform", "-ms-transform", "-o-transform", "transform" ],
+cssTransformProps: [ "webkitTransform", "MozTransform", "msTransform", "OTransform", "transform" ],
+transformValue: function(a, b, c) {
+var d = a.domTransforms = a.domTransforms || {};
+d[b] = c, this.transformsToDom(a);
+},
+accelerate: function(a, b) {
+var c = b == "auto" ? this.canAccelerate() : b;
+c && this.transformValue(a, "translateZ", 0);
+},
+transform: function(a, b) {
+var c = a.domTransforms = a.domTransforms || {};
+enyo.mixin(c, b), this.transformsToDom(a);
+},
+domTransformsToCss: function(a) {
+var b, c, d = "";
+for (b in a) c = a[b], c !== null && c !== undefined && c !== "" && (d += b + "(" + c + ") ");
+return d;
+},
+transformsToDom: function(a) {
+var b = this.domTransformsToCss(a.domTransforms), c = a.domStyles;
+for (var d = 0, e; e = this.domTransformProps[d]; d++) c[e] = b;
+if (a.hasNode()) {
+var f = a.node.style;
+for (var d = 0, e; e = this.cssTransformProps[d]; d++) f[e] = b;
+} else a.domStylesChanged();
+}
+});
+
 // Icon.js
 
 enyo.kind({
@@ -24,6 +113,7 @@ this.applyStyle("background-image", "url(" + this.src + ")");
 enyo.kind({
 name: "onyx.Button",
 kind: "enyo.Button",
+Xtag: "a",
 classes: "onyx-button enyo-unselectable"
 });
 
@@ -103,53 +193,33 @@ beforeChildRender: function() {
 this.hasNode() || this.render();
 },
 teardownChildren: function() {}
-}), onyx.floatingLayer = new onyx.FloatingLayer;
-
-// ModalControl.js
-
-enyo.kind({
-name: "onyx.ModalControl",
-published: {
-modal: !1
-},
-handlers: {
-onmousedown: "nativeDownHandler",
-ontouchstart: "nativeDownHandler",
-onblur: "blurHandler",
-onfocus: "focusHandler"
-},
-capture: function() {
-enyo.dispatcher.capture(this, !this.modal);
-},
-release: function() {
-enyo.dispatcher.release();
-},
-nativeDownHandler: function(a, b) {
-this.modal && !b.dispatchTarget.isDescendantOf(this) && b.preventDefault();
-}
+}), onyx.floatingLayer = new onyx.FloatingLayer({
+classes: "onyx"
 });
 
 // Popup.js
 
 enyo.kind({
 name: "onyx.Popup",
-kind: "onyx.ModalControl",
 classes: "onyx-popup",
 showing: !1,
 published: {
 modal: !1,
 autoDismiss: !0,
-floating: !1
+floating: !1,
+centered: !1
 },
 handlers: {
-onkeydown: "keydown"
+ondown: "down",
+onkeydown: "keydown",
+onfocus: "focus",
+onblur: "blur",
+onRequestShow: "requestShow",
+onRequestHide: "requestHide"
 },
 events: {
 onShow: "",
 onHide: ""
-},
-statics: {
-count: 0
 },
 tools: [ {
 kind: "Signals",
@@ -161,61 +231,60 @@ this.inherited(arguments), this.floating && this.setParent(onyx.floatingLayer);
 getBubbleTarget: function() {
 return this.floating ? this.owner : this.inherited(arguments);
 },
+reflow: function() {
+this.updatePosition(), this.inherited(arguments);
+},
+calcViewportSize: function() {
+if (window.innerWidth) return {
+width: window.innerWidth,
+height: window.innerHeight
+};
+var a = document.documentElement;
+return {
+width: a.offsetWidth,
+height: a.offsetHeight
+};
+},
+updatePosition: function() {
+if (this.centered) {
+var a = this.calcViewportSize(), b = this.getBounds();
+this.addStyles("top: " + (a.height - b.height) / 2 + "px; left: " + (a.width - b.width) / 2 + "px;");
+}
+},
 showingChanged: function() {
-this.floating && this.showing && !this.hasNode() && this.render(), this.hasNode() && this[this.showing ? "doShow" : "doHide"](), this.inherited(arguments), this.showing ? this.capture() : this.release();
+this.floating && this.showing && !this.hasNode() && this.render(), this.hasNode() && this[this.showing ? "doShow" : "doHide"](), this.centered && this.applyStyle("visibility", "hidden"), this.inherited(arguments), this.showing ? (this.reflow(), this.capture()) : this.release(), this.centered && this.applyStyle("visibility", null);
+},
+capture: function() {
+enyo.dispatcher.capture(this, !this.modal);
+},
+release: function() {
+enyo.dispatcher.release();
+},
+down: function(a, b) {
+this.modal && !b.dispatchTarget.isDescendantOf(this) && b.preventNativeDefault();
 },
 tap: function(a, b) {
-this.log();
-if (this.autoDismiss && (!b.dispatchTarget.isDescendantOf || !b.dispatchTarget.isDescendantOf(this))) return this.log(), this.hide(), !0;
+if (this.autoDismiss && !b.dispatchTarget.isDescendantOf(this)) return this.hide(), !0;
 },
 keydown: function(a, b) {
 this.showing && this.autoDismiss && b.keyCode == 27 && this.hide();
+},
+blur: function(a, b) {
+b.dispatchTarget.isDescendantOf(this) && (this.lastFocus = b.originator);
+},
+focus: function(a, b) {
+var c = b.dispatchTarget;
+if (this.modal && !c.isDescendantOf(this)) {
+c.hasNode() && c.node.blur();
+var d = this.lastFocus && this.lastFocus.hasNode() || this.hasNode();
+d && d.focus();
 }
-});
-
-// Menu.js
-
-enyo.kind({
-name: "onyx.Menu",
-kind: "onyx.Popup",
-handlers: {
-onRequestOpen: "requestOpen",
-onActivate: "activated"
 },
-defaultKind: "onyx.MenuItem",
-classes: "onyx-menu",
-activated: function(a, b) {
-return b.originator.setActive(!1), this.hide(), !0;
-},
-requestOpen: function(a, b) {
+requestShow: function(a, b) {
 return this.show(), !0;
-}
-}), enyo.kind({
-name: "onyx.MenuDecorator",
-defaultKind: "onyx.MenuButton",
-classes: "onyx-menu-decorator",
-handlers: {
-onActivate: "activated",
-onHide: "menuHidden"
 },
-activated: function(a, b) {
-b.originator.active && (this.activator = a, this.waterfallDown("onRequestOpen", b));
-},
-menuHidden: function() {
-this.activator && this.activator.setActive(!1);
-}
-}), enyo.kind({
-name: "onyx.MenuButton",
-kind: "onyx.Button",
-activeChanged: function() {
-this.inherited(arguments), this.addRemoveClass("active", this.active);
-}
-}), enyo.kind({
-name: "onyx.MenuItem",
-kind: "enyo.GroupItem",
-classes: "onyx-menu-item",
-tap: function() {
-this.setActive(!0);
+requestHide: function(a, b) {
+return this.hide(), !0;
 }
 });
 
@@ -318,51 +387,51 @@ ondrag: "drag",
 ondragfinish: "dragfinish"
 },
 components: [ {
-name: "bar",
-classes: "onyx-toggle-button-bar",
-components: [ {
 name: "contentOn",
-classes: "onyx-toggle-content-on"
+classes: "onyx-toggle-content on"
 }, {
 name: "contentOff",
-classes: "onyx-toggle-content-off"
+classes: "onyx-toggle-content off"
 }, {
 classes: "onyx-toggle-button-knob"
-} ]
 } ],
 create: function() {
 this.inherited(arguments), this.valueChanged(), this.onContentChanged(), this.offContentChanged(), this.disabledChanged();
 },
 valueChanged: function() {
-this.$.bar.addClass(this.value ? "on" : "off"), this.$.bar.removeClass(this.value ? "off" : "on"), this.$.contentOn.setShowing(this.value), this.$.contentOff.setShowing(!this.value), this.setActive(this.value);
+this.addRemoveClass("off", !this.value), this.$.contentOn.setShowing(this.value), this.$.contentOff.setShowing(!this.value), this.setActive(this.value);
 },
 activeChanged: function() {
 this.setValue(this.active), this.bubble("onActivate");
 },
 onContentChanged: function() {
-this.$.contentOn.setContent(this.onContent);
+this.$.contentOn.setContent(this.onContent || "&nbsp"), this.$.contentOn.addRemoveClass("empty", !this.onContent);
 },
 offContentChanged: function() {
-this.$.contentOff.setContent(this.offContent);
+this.$.contentOff.setContent(this.offContent || "&nbsp"), this.$.contentOff.addRemoveClass("empty", !this.onContent);
 },
 disabledChanged: function() {
-this.$.bar.addRemoveClass("disabled", this.disabled);
+this.addRemoveClass("disabled", this.disabled);
 },
 updateValue: function(a) {
-this.disabled || (this.setValue(a), this.doChange(this.value));
+this.disabled || (this.setValue(a), this.doChange({
+value: this.value
+}));
 },
 tap: function() {
 this.updateValue(!this.value);
 },
 dragstart: function(a, b) {
-this._dx0 = b.dx;
+b.preventNativeDefault(), this.dragging = !0, this.dragged = !1;
 },
 drag: function(a, b) {
-var c = b.dx - this._dx0;
-Math.abs(c) > 15 && (this.updateValue(c > 0), this._dx0 = b.dx);
+if (this.dragging) {
+var c = b.dx;
+Math.abs(c) > 10 && (this.updateValue(c > 0), this.dragged = !0);
+}
 },
 dragfinish: function(a, b) {
-b.preventTap();
+this.dragging = !1, this.dragged && b.preventTap();
 }
 });
 
@@ -371,95 +440,6 @@ b.preventTap();
 enyo.kind({
 name: "onyx.Toolbar",
 classes: "onyx onyx-toolbar onyx-toolbar-inline"
-});
-
-// transform.js
-
-enyo.mixin(enyo.Layout, {
-canAccelerate: function() {
-return this.accelerando !== undefined ? this.accelerando : document.body && (this.accelerando = this.calcCanAccelerate());
-},
-calcCanAccelerate: function() {
-var a = document.body, b = [ "perspective", "msPerspective", "MozPerspective", "WebkitPerspective", "OPerspective" ];
-for (var c = 0, d; d = b[c]; c++) if (typeof document.body.style[d] != "undefined") return !0;
-return !1;
-},
-domTransformProps: [ "-webkit-transform", "-moz-transform", "-ms-transform", "-o-transform", "transform" ],
-cssTransformProps: [ "webkitTransform", "MozTransform", "msTransform", "OTransform", "transform" ],
-transformValue: function(a, b, c) {
-var d = a.domTransforms = a.domTransforms || {};
-d[b] = c, this.transformsToDom(a);
-},
-accelerate: function(a, b) {
-var c = b == "auto" ? this.canAccelerate() : b;
-c && this.transformValue(a, "translateZ", 0);
-},
-transform: function(a, b) {
-var c = a.domTransforms = a.domTransforms || {};
-enyo.mixin(c, b), this.transformsToDom(a);
-},
-domTransformsToCss: function(a) {
-var b, c, d = "";
-for (b in a) c = a[b], c !== null && c !== undefined && c !== "" && (d += b + "(" + c + ") ");
-return d;
-},
-transformsToDom: function(a) {
-var b = this.domTransformsToCss(a.domTransforms), c = a.domStyles;
-for (var d = 0, e; e = this.domTransformProps[d]; d++) c[e] = b;
-if (a.hasNode()) {
-var f = a.node.style;
-for (var d = 0, e; e = this.cssTransformProps[d]; d++) f[e] = b;
-} else a.domStylesChanged();
-}
-});
-
-// Animator.js
-
-enyo.kind({
-name: "enyo.Animator",
-kind: "Component",
-published: {
-duration: 350,
-startValue: 0,
-endValue: 1,
-node: null,
-easingFunction: enyo.easing.cubicOut
-},
-events: {
-onStep: "",
-onEnd: "",
-onStop: ""
-},
-constructed: function() {
-this.inherited(arguments), this._next = enyo.bind(this, "next");
-},
-play: function(a) {
-return this.stop(), a && enyo.mixin(this, a), this.t0 = this.t1 = (new Date).getTime(), this.value = this.startValue, this.job = !0, this.requestNext(), this;
-},
-stop: function() {
-if (this.isAnimating()) return this.cancel(), this.fire("onStop"), this;
-},
-isAnimating: function() {
-return Boolean(this.job);
-},
-requestNext: function() {
-this.job = enyo.requestAnimationFrame(this._next, this.node);
-},
-cancel: function() {
-enyo.cancelRequestAnimationFrame(this.job), this.node = null, this.job = null;
-},
-shouldEnd: function() {
-return this.dt >= this.duration;
-},
-next: function() {
-this.t1 = (new Date).getTime(), this.dt = this.t1 - this.t0;
-var a = this.fraction = enyo.easedLerp(this.t0, this.duration, this.easingFunction);
-this.value = this.startValue + a * (this.endValue - this.startValue), a >= 1 || this.shouldEnd() ? (this.value = this.endValue, this.fraction = 1, this.fire("onStep"), this.fire("onEnd"), this.cancel()) : (this.fire("onStep"), this.requestNext());
-},
-fire: function(a) {
-var b = this[a];
-enyo.isString(b) ? this.bubble(a) : b && b.call(this.context || window, this);
-}
 });
 
 // Slideable.js
@@ -555,10 +535,11 @@ isOob: function(a) {
 return a > this.calcMax() || a < this.calcMin();
 },
 dragstartHandler: function(a, b) {
-if (this.shouldDrag(b)) return this.$.animator.stop(), b.dragInfo = {}, this.dragging = !0, this.drag0 = this.value, this.dragd0 = 0, this.preventDragPropagation;
+if (this.shouldDrag(b)) return b.preventNativeDefault(), this.$.animator.stop(), b.dragInfo = {}, this.dragging = !0, this.drag0 = this.value, this.dragd0 = 0, this.preventDragPropagation;
 },
 dragHandler: function(a, b) {
 if (this.dragging) {
+b.preventNativeDefault();
 var c = b[this.dragMoveProp] * this.kDragScalar, d = this.drag0 + c, e = c - this.dragd0;
 return this.dragd0 = c, e && (b.dragInfo.minimizing = e < 0), this.setValue(d), this.preventDragPropagation;
 }
