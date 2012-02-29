@@ -1,3 +1,19 @@
+/**
+A control that looks like a switch with labels for two states. Each time a ToggleButton is tapped,
+it switches its value and fires an onChange event.
+
+	{kind: "onyx.ToggleButton", onContent: "foo", offContent: "bar", onChange: "buttonToggle"}
+
+	buttonToggle: function(inSender, inEvent) {
+		this.log("Toggled to value " + inEvent.value);
+	}
+
+To find out the value of the button, use getValue:
+
+	queryToggleValue: function() {
+		return this.$.toggleButton.getValue();
+	}
+*/
 enyo.kind({
 	name: "onyx.ToggleButton",
 	classes: "onyx-toggle-button",
@@ -56,7 +72,7 @@ enyo.kind({
 	updateValue: function(inValue) {
 		if (!this.disabled) {
 			this.setValue(inValue);
-			this.doChange(this.value);
+			this.doChange({value: this.value});
 		}
 	},
 	tap: function() {
