@@ -114,12 +114,14 @@ enyo.kind({
 			]},
 			{tag: "br"},
 			{classes: "divider", content: "Inputs"},
-			{kind: "onyx.InputDecorator", components: [
-				{kind: "onyx.Input", defaultFocus: false, placeholder: "Enter text here"}
-			]},
-			{kind: "onyx.InputDecorator", components: [
-				{kind: "onyx.Input", placeholder: "Search term"},
-				{kind: "Image", src: "images/search-input-search.png"}
+			{classes: "onyx-toolbar-inline", components: [
+				{kind: "onyx.InputDecorator", components: [
+					{kind: "onyx.Input", defaultFocus: false, placeholder: "Enter text here"}
+				]},
+				{kind: "onyx.InputDecorator", components: [
+					{kind: "onyx.Input", placeholder: "Search term"},
+					{kind: "Image", src: "images/search-input-search.png"}
+				]}
 			]},
 			{tag: "br"},
 			{tag: "br"},
