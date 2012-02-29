@@ -113,7 +113,6 @@ this.applyStyle("background-image", "url(" + this.src + ")");
 enyo.kind({
 name: "onyx.Button",
 kind: "enyo.Button",
-Xtag: "a",
 classes: "onyx-button enyo-unselectable"
 });
 
@@ -252,7 +251,7 @@ this.addStyles("top: " + (a.height - b.height) / 2 + "px; left: " + (a.width - b
 }
 },
 showingChanged: function() {
-this.floating && this.showing && !this.hasNode() && this.render(), this.hasNode() && this[this.showing ? "doShow" : "doHide"](), this.centered && this.applyStyle("visibility", "hidden"), this.inherited(arguments), this.showing ? (this.reflow(), this.capture()) : this.release(), this.centered && this.applyStyle("visibility", null);
+this.floating && this.showing && !this.hasNode() && this.render(), this.centered && this.applyStyle("visibility", "hidden"), this.inherited(arguments), this.showing ? (this.reflow(), this.capture()) : this.release(), this.centered && this.applyStyle("visibility", null), this.hasNode() && this[this.showing ? "doShow" : "doHide"]();
 },
 capture: function() {
 enyo.dispatcher.capture(this, !this.modal);
@@ -310,16 +309,10 @@ classes: "onyx-groupbox-header"
 enyo.kind({
 name: "onyx.Input",
 kind: "enyo.Input",
-events: {
-onDisabledChange: ""
-},
 classes: "onyx-input",
 defaultFocus: !1,
 rendered: function() {
 this.inherited(arguments), this.defaultFocus && this.focus();
-},
-disabledChanged: function() {
-this.setAttribute("disabled", this.disabled), this.bubble("onDisabledChange");
 }
 });
 
@@ -328,9 +321,6 @@ this.setAttribute("disabled", this.disabled), this.bubble("onDisabledChange");
 enyo.kind({
 name: "onyx.InputDecorator",
 kind: "enyo.ToolDecorator",
-published: {
-disabled: !1
-},
 tag: "label",
 classes: "onyx-input-decorator",
 handlers: {
@@ -445,8 +435,8 @@ classes: "onyx onyx-toolbar onyx-toolbar-inline"
 // Slideable.js
 
 enyo.kind({
-name: "enyo.Slideable",
-kind: enyo.Control,
+name: "onyx.Slideable",
+kind: "Control",
 published: {
 axis: "h",
 value: 0,
@@ -457,10 +447,10 @@ accelerated: "auto",
 overMoving: !0,
 draggable: !0
 },
-preventDragPropagation: !1,
 events: {
 onAnimateFinish: ""
 },
+preventDragPropagation: !1,
 tools: [ {
 kind: "Animator",
 onStep: "animatorStep",
