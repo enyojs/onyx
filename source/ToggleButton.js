@@ -63,18 +63,21 @@ enyo.kind({
 		this.updateValue(!this.value);
 	},
 	dragstart: function(inSender, inEvent) {
-		//this._dx0 = inEvent.dx;
+		inEvent.preventNativeDefault();
+		this.dragging = true;
 		this.dragged = false;
 	},
 	drag: function(inSender, inEvent) {
-		//var d = inEvent.dx - this._dx0;
-		var d = inEvent.dx;
-		if (Math.abs(d) > 15) {
-			this.updateValue(d > 0);
-			this.dragged = true;
+		if (this.dragging) {
+			var d = inEvent.dx;
+			if (Math.abs(d) > 10) {
+				this.updateValue(d > 0);
+				this.dragged = true;
+			}
 		}
 	},
 	dragfinish: function(inSender, inEvent) {
+		this.dragging = false;
 		if (this.dragged) {
 			inEvent.preventTap();
 		}
