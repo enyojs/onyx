@@ -85,7 +85,7 @@ enyo.kind({
 				]}
 			]},
 			{style: "width: 80px; text-align: center;", components: [
-				{kind: "Image", src: "images/right-arrow.png", ontap: "doDetails"}
+				{name: "image", kind: "onyx.Icon", src: "images/arrow-icon.png", ontap: "doDetails"}
 			]}
 		]}
 	],
