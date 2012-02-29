@@ -140,11 +140,9 @@ enyo.kind({
 				{name: "datetime", kind: "onyx.Input", style: "width: 100%;", placeholder: "Enter Date & Time Here...", attributes: {type: "datetime"}}
 			]}
 		]},
-		{components: [
-			{kind: "onyx.Button", style: "width: 100%;", content: "Done", ontap: "doDone"},
-			{tag: "br"},
-			{tag: "br"},
-			{kind: "onyx.Button", style: "width: 100%; background-color: #FAF5F7; color: #FA1672;", content: "Delete", ontap: "doDelete"}
+		{classes: "onyx-toolbar-inline", style: "float: right;", components: [
+			{kind: "onyx.Button", content: "Done", ontap: "doDone"},
+			{kind: "onyx.Button", style: "background-color: #FAF5F7; color: #FA1672;", content: "Delete", ontap: "doDelete"}
 		]}
 	],
 	setReminder: function(inReminder) {
