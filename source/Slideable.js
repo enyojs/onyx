@@ -11,7 +11,7 @@
 
 	The following control is placed 90% off the screen to the right and slides to its natural position.
 
-		{kind: "onyx.Slideable", value: -90, min: -90, unit: "%", classes: "enyo-fit", style: width: 300px;", components: [
+		{kind: "onyx.Slideable", value: -90, min: -90, unit: "%", classes: "enyo-fit", style: "width: 300px;", components: [
 			{content: "stuff"}
 		]}
 */
@@ -36,7 +36,7 @@ enyo.kind({
 		draggable: true
 	},
 	events: {
-		// Event which fires when the Slideable finishes animating.
+		//* Event which fires when the Slideable finishes animating.
 		onAnimateFinish: ""
 	},
 	// Set to true to prevent a drag from bubbling beyond the Slideable.

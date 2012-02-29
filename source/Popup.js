@@ -1,16 +1,37 @@
 /**
- A popup control.
+	A popup is used to display content which should be displayed on top of other content.
+
+	It's initially hidden and can be shown by calling the show method and hidden with the hide method.
+	A popup can be centered with the centered property; otherwise, it should be given a specific position.
+
+	A popup may be optionally floated above all application content by setting the floating property to true. This
+	has the advantage of guaranteeing the popup is displayed overtop of other content. This is appropriate when the
+	popup does not need to scroll with other content.
+
+	The autoDismiss property controls how a popup may be dismissed. If true, the default, then tapping outside the popup
+	or pressing the ESC key will dismiss the popup. The modal property may be set to true to prevent any controls outside 
+	the popup from responding to events while the popup is showing.
+
+		{kind: "onyx.Popup", centered: true, modal: true, floating: true, components: [
+			{content: "Here's some information..."}
+		]}
  */
 enyo.kind({
 	name: "onyx.Popup",
 	classes: "onyx-popup",
-	showing: false,
 	published: {
+		//* Set to true to prevent controls outside the popup from receiving events while the popup is showing
 		modal: false,
+		//* By default the popup will hide when the user taps outside it or presses ESC. Set to false to prevent this.
 		autoDismiss: true,
+		//* If true, the popup will be rendered in a floating layer outside other controls. This can be used to
+		//* guarantee the popup will be shown on top of other controls.
 		floating: false,
+		//* Set to true to automatically center the popup in the middle of the viewport.
 		centered: false
 	},
+	//* @protected
+	showing: false,
 	handlers: {
 		ondown: "down",
 		onkeydown: "keydown",
@@ -20,8 +41,11 @@ enyo.kind({
 		onRequestHide: "requestHide"
 		
 	},
+	//* @public
 	events: {
+		//@ Event that fires after the popup is shown.
 		onShow: "",
+		//@ Event that fires after the popup is hidden.
 		onHide: ""
 	},
 	//* @protected
