@@ -7,8 +7,6 @@ enyo.depends(
 	"Groupbox.css",
 	"Input.css",
 	"Popup.css",
-	"Tooltip.css",
-	"Menu.css",
 	"RadioButton.css",
 	"TabButton.css",
 	"ToggleButton.css",

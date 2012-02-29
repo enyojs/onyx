@@ -21,4 +21,4 @@ enyo.kind({
 	}
 });
 
-onyx.floatingLayer = new onyx.FloatingLayer();
+onyx.floatingLayer = new onyx.FloatingLayer({classes: "onyx"});
