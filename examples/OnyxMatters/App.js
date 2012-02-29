@@ -124,7 +124,6 @@ enyo.kind({
 				]}
 			]},
 			{tag: "br"},
-			{tag: "br"},
 			{classes: "divider", content: "Groupboxes"},
 			{kind: "onyx.Groupbox", components: [
 				{kind: "onyx.GroupboxHeader", content: "Header"},
@@ -152,6 +151,16 @@ enyo.kind({
 			{kind: "onyx.Groupbox", components: [
 				{kind: "onyx.InputDecorator", components: [
 					{kind: "onyx.Input", placeholder: "Enter text here"}
+				]}
+			]},
+			{tag: "br"},
+			{classes: "divider", content: "Slideable"},
+			{style: "border: 1px solid silver; height: 200px; position: relative; overflow: hidden; margin: 10px;", components: [
+				{kind: "Slideable", value: -60, min: -60, unit: "%", classes: "enyo-fit", style: "width: 200px; background: #404040;", components: [
+					{kind: "onyx.Grabber", style: "position: absolute; bottom: 14px; right: 14px;"}
+				]},
+				{kind: "Slideable", value: 60, max: 60, unit: "%", classes: "enyo-fit", style: "left: auto; width: 200px; background: #1E5D89;", components: [
+					{kind: "onyx.Grabber", style: "position: absolute; bottom: 14px; left: 14px;"}
 				]}
 			]}
 		]}
