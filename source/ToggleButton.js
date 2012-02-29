@@ -31,6 +31,7 @@ enyo.kind({
 		*/
 		onChange: ""
 	},
+	//* @protected
 	handlers: {
 		ondragstart: "dragstart",
 		ondrag: "drag",
