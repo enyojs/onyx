@@ -1,3 +1,4 @@
+//@ protected
 enyo.kind({
 	name: "onyx.FloatingLayer",
 	//* @protected

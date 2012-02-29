@@ -1,3 +1,4 @@
+//@ protected
 // add some useful static methods to enyo.Layout as statics
 enyo.mixin(enyo.Layout, {
 	canAccelerate: function() {
