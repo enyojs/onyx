@@ -68,10 +68,6 @@ enyo.kind({
 		if (this.floating && this.showing && !this.hasNode()) {
 			this.render();
 		}
-		// events desired due to programmatic show/hide
-		if (this.hasNode()) {
-			this[this.showing ? "doShow" : "doHide"]();
-		}
 		// hide while sizing
 		if (this.centered) {
 			this.applyStyle("visibility", "hidden");
@@ -86,6 +82,10 @@ enyo.kind({
 		// show after sizing
 		if (this.centered) {
 			this.applyStyle("visibility", null);
+		}
+		// events desired due to programmatic show/hide
+		if (this.hasNode()) {
+			this[this.showing ? "doShow" : "doHide"]();
 		}
 	},
 	capture: function() {
