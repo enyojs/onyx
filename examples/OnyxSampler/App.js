@@ -138,19 +138,19 @@ enyo.kind({
 			{kind: "onyx.Groupbox", components: [
 				{kind: "onyx.GroupboxHeader", content: "Header"},
 				{kind: "onyx.InputDecorator", components: [
-					{kind: "onyx.Input", placeholder: "Enter text here"}
+					{kind: "onyx.Input", style: "width: 100%", placeholder: "Enter text here"}
 				]},
 				{kind: "onyx.InputDecorator", components: [
-					{kind: "onyx.Input", value: "Middle"}
+					{kind: "onyx.Input", style: "width: 100%", value: "Middle"}
 				]},
 				{kind: "onyx.InputDecorator", components: [
-					{kind: "onyx.Input", value: "Last"}
+					{kind: "onyx.Input", style: "width: 100%", value: "Last"}
 				]}
 			]},
 			{tag: "br"},
 			{kind: "onyx.Groupbox", components: [
 				{kind: "onyx.InputDecorator", components: [
-					{kind: "onyx.Input", placeholder: "Enter text here"}
+					{kind: "onyx.Input", style: "width: 100%", placeholder: "Enter text here"}
 				]}
 			]},
 			{tag: "br"},
