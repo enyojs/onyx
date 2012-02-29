@@ -1,6 +1,6 @@
 enyo.kind({
 	name: "Pullout",
-	kind: "Slideable",
+	kind: "onyx.Slideable",
 	events: {
 		onDropPin: "",
 		onShowTraffic: "",

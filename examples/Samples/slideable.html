@@ -15,10 +15,10 @@
 			classes: "enyo-unselectable enyo-fit",
 			style: "overflow: hidden;",
 			components: [
-				{kind: "Slideable", axis: "h", unit: "%", min: -80, overMoving: false, classes: "enyo-fit", style: "background: red;", components: [
+				{kind: "onyx.Slideable", axis: "h", unit: "%", min: -80, overMoving: false, classes: "enyo-fit", style: "background: red;", components: [
 					{content: "drag left - right"}
 				]},
-				{name: "card", kind: "Slideable", axis: "v", unit: "%", max: 90, value: 90, classes: "enyo-fit rotated", style: "background: blue;", onAnimateFinish: "animateFinish", components: [
+				{name: "card", kind: "onyx.Slideable", axis: "v", unit: "%", max: 90, value: 90, classes: "enyo-fit rotated", style: "background: blue;", onAnimateFinish: "animateFinish", components: [
 					{content: "drag up - down"}
 				]}
 			],
