@@ -1,11 +1,14 @@
-enyo.preventDocumentScrolling = true;
-
 enyo.kind({
 	name: "MapsApp",
 	classes: "app onyx enyo-unselectable",
 	components: [
 		{kind: "FittableRows", classes: "enyo-fit", components: [
 			{kind: "onyx.Toolbar", classes: "toolbar", components: [
+				{name: "menu", classes: "menu", defaultKind: "onyx.IconButton", components: [
+					{src: "images/menu-icon-info.png", panel: "info", ontap: "togglePullout"},
+					{src: "images/menu-icon-bookmark.png", panel: "bookmark", ontap: "togglePullout"},
+					{src: "images/menu-icon-mylocation.png", ontap: "findCurrentLocation"}
+				]},
 				{kind: "Group", defaultKind: "onyx.IconButton", noDom: true, components: [
 					{src: "images/topbar-search-icon.png", active: true},
 					{src: "images/topbar-direct-icon.png"}
@@ -13,11 +16,6 @@ enyo.kind({
 				{kind: "onyx.InputDecorator", components: [
 					{name: "searchInput", classes: "search-input", kind: "onyx.Input", defaultFocus: true, placeholder: "Search or Address", onkeypress: "searchInputKeypress"},
 					{kind: "Image", src: "images/search-input-search.png", ontap: "search"}
-				]},
-				{name: "menu", classes: "menu", defaultKind: "onyx.IconButton", components: [
-					{src: "images/menu-icon-info.png", panel: "info", ontap: "togglePullout"},
-					{src: "images/menu-icon-bookmark.png", panel: "bookmark", ontap: "togglePullout"},
-					{src: "images/menu-icon-mylocation.png", ontap: "findCurrentLocation"}
 				]}
 			]},
 			{name: "map", kind: "BingMap", fit: true, onLoaded: "findCurrentLocation",
