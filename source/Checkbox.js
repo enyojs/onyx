@@ -3,7 +3,7 @@ A box that shows or hides a check mark when clicked.
 The onChange event is fired when it is clicked. Use getValue() to fetch
 the checked status.
 
-	{kind: "CheckBox", onChange: "checkboxClicked"}
+	{kind: "onyx.Checkbox", onChange: "checkboxClicked"}
 
 	checkboxClicked: function(inSender) {
 		if (inSender.getValue()) {
