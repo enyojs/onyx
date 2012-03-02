@@ -37,7 +37,7 @@ enyo.kind({
 					{content: "Subject", style: "padding: 8px;"},
 					{content: "Attachments", style: "padding: 8px;"},
 					{fit: true, kind: "Scroller", components: [
-						{name: "mailBody", style: "padding: 8px;"}
+						{name: "mailBody", allowHtml: true, style: "padding: 8px;"}
 					]}
 				]}
 			]}
