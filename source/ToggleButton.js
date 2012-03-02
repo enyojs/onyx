@@ -60,11 +60,11 @@ enyo.kind({
 		this.bubble("onActivate");
 	},
 	onContentChanged: function() {
-		this.$.contentOn.setContent(this.onContent || "&nbsp");
+		this.$.contentOn.setContent(this.onContent || "");
 		this.$.contentOn.addRemoveClass("empty", !this.onContent);
 	},
 	offContentChanged: function() {
-		this.$.contentOff.setContent(this.offContent || "&nbsp");
+		this.$.contentOff.setContent(this.offContent || "");
 		this.$.contentOff.addRemoveClass("empty", !this.onContent);
 	},
 	disabledChanged: function() {
