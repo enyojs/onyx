@@ -19,7 +19,7 @@ enyo.kind({
 						{kind: "LabeledItem", label: "Show Drop Pin", icon: "images/icon-dropPin.png", defaultKind: "onyx.ToggleButton", onChange: "dropPinChange"},
 						{kind: "LabeledItem", label: "Show Traffic", icon: "images/icon-traffic.png", defaultKind: "onyx.ToggleButton", onChange: "showTrafficChange"}
 					]},
-					{name: "mapType", kind: "Group", classes: "onyx-groupbox settings", controlClasses: "onyx-groupbox-item", highlander: true, onChange: "mapTypeChange", components: [
+					{name: "mapType", kind: "Group", classes: "onyx-groupbox settings", highlander: true, onChange: "mapTypeChange", components: [
 						{kind: "onyx.GroupboxHeader", content: "Map Type"},
 						{kind: "LabeledItem", label: "Road", mapType: "road", icon: "images/map-type-road.png", value: true},
 						{kind: "LabeledItem", label: "Satellite", mapType: "aerial", icon: "images/map-type-satellite.png"},
@@ -31,7 +31,7 @@ enyo.kind({
 						{content: "Saved", active: true},
 						{content: "Recents"}
 					]},
-					{fit: true, kind: "Scroller", ondragfinish: "preventDragTap", components: [
+					{fit: true, kind: "Scroller", classes: "bookmark-scroller", ondragfinish: "preventDragTap", components: [
 						{kind: "BookmarkList", onItemSelect: "itemSelect"}
 					]}
 				]}
@@ -50,7 +50,6 @@ enyo.kind({
 			this.$.info.hide();
 			this.$.bookmark.hide();
 			t.show();
-			// need to call resized() for bookmark since it is a Rows and it was hidden initially.
 			t.resized();
 		}
 	},

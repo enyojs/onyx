@@ -28,8 +28,8 @@ enyo.kind({
 		this.show();
 	},
 	openWithItem: function(inItem, inTop, inLeft) {
-		this.setTitle(inItem.title);
-		this.setDetails(inItem.details);
+		this.setTitle(inItem.Title);
+		this.setDetails(inItem.Address);
 		this.openAt(inTop, inLeft);
 	}
 })

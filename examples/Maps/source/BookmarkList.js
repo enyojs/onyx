@@ -1,16 +1,16 @@
 enyo.kind({
 	name: "BookmarkList",
-	classes: "bookmark-list",
 	events: {
 		onItemSelect: ""
 	},
 	create: function() {
 		this.inherited(arguments);
-		for (var i=0; i<100; i++) {
-			var b = mock_data[i % mock_data.length];
-			this.createComponent({kind: "BookmarkItem",
+		for (var i=0, b; b=mock_bookmarks[i]; i++) {
+			var c = this.createComponent({kind: "BookmarkItem",
 				ontap: "itemTap",
 				}, b);
+			c.setTitle(b.Title);
+			c.setDetails(b.Address);
 		}
 	},
 	itemTap: function(inSender) {
