@@ -125,6 +125,11 @@ enyo.kind({
 				this.dragged = true;
 			}
 		}
+
+		// Don't bubble dragging if the control is enabled
+		if (!this.disabled) {
+			return true;
+		}
 	},
 	dragfinish: function(inSender, inEvent) {
 		this.dragging = false;
