@@ -61,3 +61,22 @@
 .onyx-toggle-content.on {
 	float: left;
 }
+
+.onyx-toggle-button.onyx-toggle-button-animated {
+	/* We need this so that the knob is positioned relatively to the toggle button */
+	position: relative;
+}
+
+.onyx-toggle-button.onyx-toggle-button-animated .onyx-toggle-button-knob {
+	display: block;
+	position: absolute;
+}
+
+.onyx-toggle-button.onyx-toggle-button-animated .onyx-toggle-content.off {
+	margin-left: 30px;
+}
+
+.onyx-toggle-button.onyx-toggle-button-animated .onyx-toggle-content.on {
+	margin-right: 30px;
+}
+
