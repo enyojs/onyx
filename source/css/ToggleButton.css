@@ -65,6 +65,10 @@
 .onyx-toggle-button.onyx-toggle-button-animated {
 	/* We need this so that the knob is positioned relatively to the toggle button */
 	position: relative;
+    -webkit-transition: background-color 0.5s linear;
+    -moz-transition: background-color 0.5s linear;
+    -o-transition: background-color 0.5s linear;
+    -ms-transition: background-color 0.5s linear;
 }
 
 .onyx-toggle-button.onyx-toggle-button-animated .onyx-toggle-button-knob {
