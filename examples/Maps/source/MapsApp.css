@@ -85,12 +85,16 @@
 	padding-right: 5px;
 }
 
+.label-item-input {
+	float: right;
+}
+
 .bookmark-header {
 	text-align: center;
 	padding: 10px 0;
 }
 
-.bookmark-list {
+.bookmark-scroller {
 	background-color: #fff;
 }
 
