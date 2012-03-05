@@ -58,6 +58,12 @@ enyo.kind({
 			this.setParent(onyx.floatingLayer);
 		}
 	},
+	destroy: function() {
+		if (this.showing) {
+			this.release();
+		}
+		this.inherited(arguments);
+	},
 		// bubble events to owner when floating
 	getBubbleTarget: function() {
 		return this.floating ? this.owner : this.inherited(arguments);
