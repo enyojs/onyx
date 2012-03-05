@@ -37,6 +37,10 @@ enyo.kind({
 		this.inherited(arguments);
 		this._next = enyo.bind(this, "next");
 	},
+	destroy: function() {
+		this.stop();
+		this.inherited(arguments);
+	},
 	//* @public
 	//* Play the animation
 	//* inProps {Object} for convenience inProps will be mixed directly into this object.
