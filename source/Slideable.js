@@ -46,9 +46,9 @@ enyo.kind({
 		{kind: "Animator", onStep: "animatorStep", onEnd: "animatorComplete"}
 	],
 	handlers: {
-		ondragstart: "dragstartHandler",
-		ondrag: "dragHandler",
-		ondragfinish: "dragfinishHandler"
+		ondragstart: "dragstart",
+		ondrag: "drag",
+		ondragfinish: "dragfinish"
 	},
 	kDragScalar: 1,
 	dragEventProp: "dx",
@@ -132,7 +132,7 @@ enyo.kind({
 	isOob: function(inValue) {
 		return inValue > this.calcMax() || inValue < this.calcMin();
 	},
-	dragstartHandler: function(inSender, inEvent) {
+	dragstart: function(inSender, inEvent) {
 		if (this.shouldDrag(inEvent)) {
 			inEvent.preventNativeDefault();
 			this.$.animator.stop();
@@ -143,7 +143,7 @@ enyo.kind({
 			return this.preventDragPropagation;
 		}
 	},
-	dragHandler: function(inSender, inEvent) {
+	drag: function(inSender, inEvent) {
 		if (this.dragging) {
 			inEvent.preventNativeDefault();
 			var d = inEvent[this.dragMoveProp] * this.kDragScalar;
@@ -157,7 +157,7 @@ enyo.kind({
 			return this.preventDragPropagation;
 		}
 	},
-	dragfinishHandler: function(inSender, inEvent) {
+	dragfinish: function(inSender, inEvent) {
 		if (this.dragging) {
 			this.dragging = false;
 			this.completeDrag(inEvent);
