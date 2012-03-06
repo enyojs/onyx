@@ -13,7 +13,9 @@ enyo.kind({
 	published: {
 		progress: 0,
 		min: 0,
-		max: 100
+		max: 100,
+		showStripes: true,
+		animateStripes: true
 	},
 	events: {
 		onAnimateProgressFinish: ""
@@ -25,6 +27,14 @@ enyo.kind({
 	create: function() {
 		this.inherited(arguments);
 		this.progressChanged();
+		this.showStripesChanged();
+		this.animateStripesChanged();
+	},
+	showStripesChanged: function() {
+		this.$.bar.addRemoveClass("striped", this.showStripes);
+	},
+	animateStripesChanged: function() {
+		this.$.bar.addRemoveClass("animated", this.animateStripes);
 	},
 	progressChanged: function() {
 		this.progress = this.clampValue(this.min, this.max, this.progress);

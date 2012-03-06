@@ -22,6 +22,7 @@ enyo.kind({
 		onChanging: "",
 		onAnimateFinish: ""
 	},
+	showStripes: false,
 	handlers: {
 		ondragstart: "dragstart",
 		ondrag: "drag",

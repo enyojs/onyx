@@ -24,6 +24,6 @@ enyo.kind({
 		}
 	},
 	srcChanged: function() {
-		this.applyStyle("background-image", "url(" + this.src + ")");
+		this.applyStyle("background-image", "url(" + enyo.path.rewrite(this.src) + ")");
 	}
 });
