@@ -1,0 +1,14 @@
+.onyx-progress-bar {
+	margin: 8px;
+	height: 8px;
+	border-radius: 4px;
+	background: #B8B8B8 url(../../images/gradient-invert.png) repeat-x;
+	background-size: auto 100%;
+}
+
+.onyx-progress-bar-bar {
+	height: 8px;
+	border-radius: 4px;
+	background: #58ABEF url(../../images/gradient.png) repeat-x;
+	background-size: auto 100%;
+}

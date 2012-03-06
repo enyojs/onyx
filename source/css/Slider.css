@@ -1,0 +1,15 @@
+.onyx-slider {
+	margin: 8px 20px;
+} 
+
+.onyx-slider-knob {
+	position: relative;
+	height: 40px;
+	width: 40px;
+	background: url(../../images/slider-handle.png) left top no-repeat;
+	margin: -23px -20px;
+}
+
+.onyx-slider-knob.active, .onyx-slider-knob:active {
+	background-position-y: -40px;
+}
