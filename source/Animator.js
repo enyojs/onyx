@@ -37,6 +37,10 @@ enyo.kind({
 		this.inherited(arguments);
 		this._next = enyo.bind(this, "next");
 	},
+	destroy: function() {
+		this.stop();
+		this.inherited(arguments);
+	},
 	//* @public
 	//* Play the animation
 	//* inProps {Object} for convenience inProps will be mixed directly into this object.
@@ -45,7 +49,7 @@ enyo.kind({
 		if (inProps) {
 			enyo.mixin(this, inProps);
 		}
-		this.t0 = this.t1 = new Date().getTime();
+		this.t0 = this.t1 = enyo.now();
 		this.value = this.startValue;
 		this.job = true;
 		this.requestNext();
@@ -76,7 +80,7 @@ enyo.kind({
 		return (this.dt >= this.duration);
 	},
 	next: function() {
-		this.t1 = new Date().getTime();
+		this.t1 = enyo.now();
 		this.dt = this.t1 - this.t0;
 		// time independent
 		var f = this.fraction = enyo.easedLerp(this.t0, this.duration, this.easingFunction);
