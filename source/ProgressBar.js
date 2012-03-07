@@ -6,6 +6,10 @@ A control that shows the current progress of a process in a horizontal bar.
 To animate progress changes, use animateProgressTo:
 
 	this.$.progressBar.animateProgressTo(50);
+	
+The properties showStripes and animateStripes can be used to show the stripes and make them animated. The animated
+stripes use CSS3 gradients and animation to produce the effects.  For browsers that don't support these features
+the effects will not be visible.
 */
 enyo.kind({
 	name: "onyx.ProgressBar",

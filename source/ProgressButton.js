@@ -1,7 +1,11 @@
 /**
-A progress bar that looks like a list item.
+A progress bar that can have controls inside of it and has a cancel button on the right.
 
-	{kind: "onyx.ProgressButton"}
+	{kind: "onyx.ProgressButton"},
+	{kind: "onyx.ProgressButton", classes: "light", progress: 20, components: [
+		{content: "0"},
+		{content: "100", style: "float: right;"}
+	]}
 
 */
 enyo.kind({
