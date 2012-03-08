@@ -37,13 +37,13 @@ enyo.kind({
 			{tag: "br"},
 			{classes: "divider", content: "Buttons"},
 			{classes: "tools", defaultKind: "onyx.Button", components: [
-				{content: "Button"},
+				{content: "Button"}
 			]},
 			{classes: "tools", defaultKind: "onyx.Button", components: [
 				{content: "Affirmative", classes: "onyx-affirmative"},
 				{content: "Negative", classes: "onyx-negative"},
 				{content: "Blue", classes: "onyx-blue"},
-				{content: "Custom", style: "background-color: purple; color: #F1F1F1;"},
+				{content: "Custom", style: "background-color: purple; color: #F1F1F1;"}
 			]},
 			{classes: "tools", defaultKind: "onyx.Button", components: [
 				{content: "Active", classes: "active"},
