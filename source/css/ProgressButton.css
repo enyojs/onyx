@@ -8,7 +8,7 @@
 }
 
 .onyx-progress-button-bar {
-	height: 34px;
+	height: 36px;
 }
 
 .onyx-progress-button-icon {
@@ -29,12 +29,4 @@
 
 .onyx-progress-button-client > * {
 	display: inline-block;
-}
-
-.onyx-progress-button.dark .onyx-progress-bar-bar {
-	background-color: #626368;
-}
-
-.onyx-progress-button.light .onyx-progress-bar-bar {
-	background-color: #cacaca;
 }

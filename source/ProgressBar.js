@@ -18,6 +18,7 @@ enyo.kind({
 		progress: 0,
 		min: 0,
 		max: 100,
+		barClasses: "",
 		showStripes: true,
 		animateStripes: true
 	},
@@ -31,8 +32,13 @@ enyo.kind({
 	create: function() {
 		this.inherited(arguments);
 		this.progressChanged();
+		this.barClassesChanged();
 		this.showStripesChanged();
 		this.animateStripesChanged();
+	},
+	barClassesChanged: function(inOld) {
+		this.$.bar.removeClass(inOld);
+		this.$.bar.addClass(this.barClasses);
 	},
 	showStripesChanged: function() {
 		this.$.bar.addRemoveClass("striped", this.showStripes);

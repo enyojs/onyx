@@ -7,8 +7,7 @@
 }
 
 .onyx-progress-bar-bar {
-	height: 6px;
-	border: 1px solid rgba(15, 15, 15, 0.2);
+	height: 8px;
 	border-radius: 4px;
 	background: #58ABEF url(../../images/gradient.png) repeat-x;
 	background-size: auto 100%;
