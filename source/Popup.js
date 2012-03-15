@@ -39,8 +39,8 @@ enyo.kind({
 		onblur: "blur",
 		onRequestShow: "requestShow",
 		onRequestHide: "requestHide"
-		
 	},
+	captureEvents: true,
 	//* @public
 	events: {
 		//@ Event that fires after the popup is shown.
@@ -105,9 +105,13 @@ enyo.kind({
 		this.inherited(arguments);
 		if (this.showing) {
 			this.reflow();
-			this.capture();
+			if (this.captureEvents) {
+				this.capture();
+			}
 		} else {
-			this.release();
+			if (this.captureEvents) {
+				this.release();
+			}
 		}
 		// show after sizing
 		if (this.centered) {
