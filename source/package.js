@@ -11,6 +11,7 @@ enyo.depends(
 	"Grabber.js",
 	"Groupbox.js",
 	"Input.js",
+	"RichText.js",
 	"InputDecorator.js",
 	"RadioButton.js",
 	"RadioGroup.js",

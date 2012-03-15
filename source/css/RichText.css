@@ -1,0 +1,21 @@
+.onyx-input-decorator > .onyx-richtext {
+	/* reset */
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	background-color: transparent;
+	font-size: 16px;
+	box-shadow: none;
+	/* FIXME: hack for styling reset on Android */
+	/* -webkit-appearance: caret;*/
+}
+
+.onyx-input-decorator.onyx-focused > .onyx-richtext {
+	cursor: text;
+}
+
+.onyx-input-decorator.onyx-disabled > .onyx-richtext {
+	cursor: default;
+}
