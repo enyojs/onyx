@@ -8,7 +8,7 @@
 			{kind: "onyx.RichText", style: "width: 100px;", onchange: "inputChange"}
 		]}
 
-	**Note**: RichTexts need to be explicitly sized for width.
+	**Note**: RichTexts need to be explicitly sized for width. RichText is not supported on Android < 3.
 
 */
 enyo.kind({
