@@ -15,7 +15,7 @@
 .onyx-input-decorator.onyx-disabled {
 	/* FIXME: needed to color a disabled input placeholder. */
 	/*-webkit-text-fill-color: #888;*/
-	opacity: 0.3;
+	opacity: 0.4;
 }
 
 .onyx-input-decorator > input {
