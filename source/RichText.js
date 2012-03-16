@@ -5,8 +5,10 @@
 	Typically an RichText is surrounded with an <a href="#onyx.InputDecorator">onyx.InputDecorator</a> which provides styling.
 
 		{kind: "onyx.InputDecorator", components: [
-			{kind: "onyx.RichText", onchange: "inputChange"}
+			{kind: "onyx.RichText", style: "width: 100px;", onchange: "inputChange"}
 		]}
+
+	**Note**: RichTexts need to be explicitly sized for width.
 
 */
 enyo.kind({
