@@ -123,6 +123,26 @@ enyo.kind({
 					{kind: "Image", src: "images/search-input-search.png"}
 				]}
 			]},
+			{classes: "divider", content: "RichTexts"},
+			{classes: "onyx-toolbar-inline", components: [
+				{kind: "onyx.InputDecorator", components: [
+					{kind: "onyx.RichText", style: "width: 200px;", defaultFocus: false, placeholder: "Enter text here"}
+				]},
+				{kind: "onyx.InputDecorator", components: [
+					{kind: "onyx.RichText", style: "width: 200px;", placeholder: "Search term"},
+					{kind: "Image", src: "images/search-input-search.png"}
+				]}
+			]},
+			{classes: "divider", content: "TextAreas"},
+			{classes: "onyx-toolbar-inline", components: [
+				{kind: "onyx.InputDecorator", components: [
+					{kind: "onyx.TextArea", defaultFocus: false, placeholder: "Enter text here"}
+				]},
+				{kind: "onyx.InputDecorator", components: [
+					{kind: "onyx.TextArea", placeholder: "Search term"},
+					{kind: "Image", src: "images/search-input-search.png"}
+				]}
+			]},
 			{tag: "br"},
 			{classes: "divider", content: "Groupboxes"},
 			{kind: "onyx.Groupbox", components: [
