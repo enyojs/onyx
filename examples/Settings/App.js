@@ -1,11 +1,9 @@
-enyo.preventDocumentScrolling = true;
-
 enyo.kind({
 	name: "App",
 	components: [
 		{kind: "FittableRows", classes: "enyo-fit", components: [
 			{kind: "onyx.Toolbar", classes: "align-center", components: [
-				{kind: "Image", src: "soundsandalerts_48x48.png"},
+				{kind: "Image", src: "soundsandalerts_48x48.png", style: "width: 48px; height: 48px;"},
 				{content: "Sounds & Ringtones"}
 			]},
 			{kind: "Scroller", fit: true, components: [
