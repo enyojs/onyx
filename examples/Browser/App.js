@@ -40,7 +40,9 @@ enyo.kind({
 	create: function() {
 		this.inherited(arguments);
 		this.$.titleDecorator.setAttribute("for", this.$.titleInput.getId());
-		//
+	},
+	rendered: function() {
+		this.inherited(arguments);
 		this.setBookmarksShowing(this.$.bookmarksButton.active);
 	},
 	inputChange: function(inSender) {
