@@ -174,6 +174,24 @@ enyo.kind({
 				]}
 			]},
 			{tag: "br"},
+			{classes: "divider", content: "Progress Bars"},
+			{kind: "onyx.ProgressBar", progress: 25},
+			{kind: "onyx.ProgressBar", animateStripes: false, barClasses: "onyx-light", progress: 50},
+			{kind: "onyx.ProgressBar", showStripes: false, progress: 75},
+			{tag: "br"},
+			{classes: "divider", content: "Progress Buttons"},
+			{kind: "onyx.ProgressButton", progress: 25, components: [
+				{content: "0"},
+				{content: "100", style: "float: right;"}
+			]},
+			{kind: "onyx.ProgressButton", animateStripes: false, barClasses: "onyx-dark", progress: 50},
+			{kind: "onyx.ProgressButton", showStripes: false, progress: 75},
+			{tag: "br"},
+			{classes: "divider", content: "Sliders"},
+			{kind: "onyx.Slider", value: 50},
+			{tag: "br"},
+			{kind: "onyx.Slider", lockBar: false, value: 50, style: "width: 200px;"},
+			{tag: "br"},
 			{classes: "divider", content: "Slideable"},
 			{style: "border: 1px solid silver; height: 200px; position: relative; overflow: hidden; margin: 10px;", components: [
 				{kind: "onyx.Slideable", value: -60, min: -60, unit: "%", classes: "enyo-fit", style: "width: 200px; background: #404040;", components: [

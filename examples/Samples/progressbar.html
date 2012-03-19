@@ -5,12 +5,6 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<script src="../../../../enyo/enyo.js" type="text/javascript"></script>
 	<script src="../../../onyx/package.js" type="text/javascript"></script>
-	<script src="../../../onyx/source/ProgressBar.js" type="text/javascript"></script>
-	<script src="../../../onyx/source/Slider.js" type="text/javascript"></script>
-	<script src="../../../onyx/source/ProgressButton.js" type="text/javascript"></script>
-	<link href="../../../onyx/source/css/ProgressBar.css" rel="stylesheet" type="text/css" />
-	<link href="../../../onyx/source/css/Slider.css" rel="stylesheet" type="text/css" />
-	<link href="../../../onyx/source/css/ProgressButton.css" rel="stylesheet" type="text/css" />
 	<style>
 		.tools > * {
 			margin: 8px 20px;
@@ -35,6 +29,8 @@
 			name: "App",
 			classes: "enyo-unselectable tools",
 			components: [
+				{tag: "br"},
+				{kind: "onyx.ProgressBar", showStripes: false, progress: 30},
 				{tag: "br"},
 				{kind: "onyx.ProgressBar", progress: 30},
 				{tag: "br"},

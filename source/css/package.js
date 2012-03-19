@@ -12,5 +12,8 @@ enyo.depends(
 	"RadioButton.css",
 	"TabButton.css",
 	"ToggleButton.css",
-	"Toolbar.css"
+	"Toolbar.css",
+	"ProgressBar.css",
+	"ProgressButton.css",
+	"Slider.css"
 );
