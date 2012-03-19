@@ -1,3 +1,4 @@
 .enyo-bingmap {
 	overflow: hidden;
+	position: relative;
 }
