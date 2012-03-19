@@ -11,10 +11,15 @@ enyo.depends(
 	"Grabber.js",
 	"Groupbox.js",
 	"Input.js",
+	"TextArea.js",
+	"RichText.js",
 	"InputDecorator.js",
 	"RadioButton.js",
 	"RadioGroup.js",
 	"ToggleButton.js",
 	"Toolbar.js",
+	"ProgressBar.js",
+	"ProgressButton.js",
+	"Slider.js",
 	"Slideable.js"
 );

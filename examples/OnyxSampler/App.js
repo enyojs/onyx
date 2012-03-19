@@ -123,6 +123,26 @@ enyo.kind({
 					{kind: "Image", src: "images/search-input-search.png"}
 				]}
 			]},
+			{classes: "divider", content: "RichTexts"},
+			{classes: "onyx-toolbar-inline", components: [
+				{kind: "onyx.InputDecorator", components: [
+					{kind: "onyx.RichText", style: "width: 200px;", defaultFocus: false, placeholder: "Enter text here"}
+				]},
+				{kind: "onyx.InputDecorator", components: [
+					{kind: "onyx.RichText", style: "width: 200px;", placeholder: "Search term"},
+					{kind: "Image", src: "images/search-input-search.png"}
+				]}
+			]},
+			{classes: "divider", content: "TextAreas"},
+			{classes: "onyx-toolbar-inline", components: [
+				{kind: "onyx.InputDecorator", components: [
+					{kind: "onyx.TextArea", defaultFocus: false, placeholder: "Enter text here"}
+				]},
+				{kind: "onyx.InputDecorator", components: [
+					{kind: "onyx.TextArea", placeholder: "Search term"},
+					{kind: "Image", src: "images/search-input-search.png"}
+				]}
+			]},
 			{tag: "br"},
 			{classes: "divider", content: "Groupboxes"},
 			{kind: "onyx.Groupbox", components: [
@@ -153,6 +173,24 @@ enyo.kind({
 					{kind: "onyx.Input", style: "width: 100%", placeholder: "Enter text here"}
 				]}
 			]},
+			{tag: "br"},
+			{classes: "divider", content: "Progress Bars"},
+			{kind: "onyx.ProgressBar", progress: 25},
+			{kind: "onyx.ProgressBar", animateStripes: false, barClasses: "onyx-light", progress: 50},
+			{kind: "onyx.ProgressBar", showStripes: false, progress: 75},
+			{tag: "br"},
+			{classes: "divider", content: "Progress Buttons"},
+			{kind: "onyx.ProgressButton", progress: 25, components: [
+				{content: "0"},
+				{content: "100", style: "float: right;"}
+			]},
+			{kind: "onyx.ProgressButton", animateStripes: false, barClasses: "onyx-dark", progress: 50},
+			{kind: "onyx.ProgressButton", showStripes: false, progress: 75},
+			{tag: "br"},
+			{classes: "divider", content: "Sliders"},
+			{kind: "onyx.Slider", value: 50},
+			{tag: "br"},
+			{kind: "onyx.Slider", lockBar: false, value: 50, style: "width: 200px;"},
 			{tag: "br"},
 			{classes: "divider", content: "Slideable"},
 			{style: "border: 1px solid silver; height: 200px; position: relative; overflow: hidden; margin: 10px;", components: [

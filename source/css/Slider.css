@@ -10,6 +10,6 @@
 	margin: -23px -20px;
 }
 
-.onyx-slider-knob.active, .onyx-slider-knob:active {
+.onyx-slider-knob.active, .onyx-slider-knob:active:hover {
 	background-position-y: -40px;
 }

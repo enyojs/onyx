@@ -6,9 +6,14 @@ enyo.depends(
 	"Grabber.css",
 	"Groupbox.css",
 	"Input.css",
+	"TextArea.css",
+	"RichText.css",
 	"Popup.css",
 	"RadioButton.css",
 	"TabButton.css",
 	"ToggleButton.css",
-	"Toolbar.css"
+	"Toolbar.css",
+	"ProgressBar.css",
+	"ProgressButton.css",
+	"Slider.css"
 );

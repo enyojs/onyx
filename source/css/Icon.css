@@ -6,6 +6,6 @@
 	vertical-align: middle;
 }
 
-.onyx-icon.active, .onyx-icon:active {
+.onyx-icon.active, .onyx-icon:active:hover {
 	background-position: 0 -32px;
 }
