@@ -37,7 +37,8 @@ enyo.kind({
 	},
 	events: {
 		//* Event which fires when the Slideable finishes animating.
-		onAnimateFinish: ""
+		onAnimateFinish: "",
+		onChange: ""
 	},
 	// Set to true to prevent a drag from bubbling beyond the Slideable.
 	preventDragPropagation: false,
@@ -94,6 +95,7 @@ enyo.kind({
 				this.value = this.overMoving ? this.dampValue(v) : this.clampValue(v);
 		}
 		enyo.Layout.transformValue(this, this.transform, this.value + this.unit);
+		this.doChange();
 	},
 	getAnimator: function() {
 		return this.$.animator;
