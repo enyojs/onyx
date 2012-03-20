@@ -21,6 +21,14 @@ enyo.kind({
 				{kind: "onyx.Button", content: "More Right"}
 			]},
 			{tag: "br"},
+			{classes: "divider", content: "Popups"},
+			{classes: "tools", defaultKind: "onyx.Button", components: [
+				{kind: "onyx.Button", content: "Popup...", ontap: "showPopup", popup: "popup"},
+				{kind: "onyx.Button", content: "Modal Popup...", ontap: "showPopup", popup: "modalPopup"}
+			]},
+			{name: "popup", kind: "onyx.Popup", centered: true, floating: true, style: "padding: 10px; font-size: 30px;", content: "Popup..."},
+			{name: "modalPopup", kind: "onyx.Popup", centered: true, modal: true, floating: true, style: "padding: 10px; font-size: 30px;", content: "Modal Popup..."},
+			{tag: "br"},
 			{classes: "divider", content: "RadioGroup"},
 			{kind: "onyx.RadioGroup", components: [
 				{content: "Alpha", active: true},
@@ -202,5 +210,11 @@ enyo.kind({
 				]}
 			]}
 		]}
-	]
+	],
+	showPopup: function(inSender) {
+		var p = this.$[inSender.popup];
+		if (p) {
+			p.show();
+		}
+	}
 });
