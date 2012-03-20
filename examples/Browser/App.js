@@ -40,9 +40,6 @@ enyo.kind({
 	create: function() {
 		this.inherited(arguments);
 		this.$.titleDecorator.setAttribute("for", this.$.titleInput.getId());
-	},
-	rendered: function() {
-		this.inherited(arguments);
 		this.setBookmarksShowing(this.$.bookmarksButton.active);
 	},
 	inputChange: function(inSender) {
@@ -73,8 +70,10 @@ enyo.kind({
 		}
 	},
 	setBookmarksShowing: function(inShow) {
-		this.$.bookmarks.setShowing(inShow);
-		this.resized();
+		this.$.bookmarks.setShowing(inShow)
+		if (this.hasNode()) {
+			this.resized();
+		}
 	},
 	toggleBookmarks: function(inSender) {
 		inSender.down = !inSender.down;
