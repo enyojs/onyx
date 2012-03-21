@@ -22,3 +22,8 @@
 .onyx-input-decorator.onyx-disabled > .onyx-textarea {
 	cursor: default;
 }
+
+.onyx-textarea {
+	/* need >=50px for scrollbar to be usable on mac */
+	min-height: 50px;
+}
