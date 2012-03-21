@@ -1,4 +1,4 @@
-.onyx-input-decorator > .onyx-textarea {
+.onyx-input-decorator > textarea {
 	/* reset */
 	margin: 0;
 	padding: 0;
@@ -15,11 +15,11 @@
 	/* -webkit-appearance: caret;*/
 }
 
-.onyx-input-decorator.onyx-focused > .onyx-textarea {
+.onyx-input-decorator.onyx-focused > textarea {
 	cursor: text;
 }
 
-.onyx-input-decorator.onyx-disabled > .onyx-textarea {
+.onyx-input-decorator.onyx-disabled > textarea {
 	cursor: default;
 }
 
