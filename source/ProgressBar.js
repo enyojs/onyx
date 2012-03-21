@@ -1,15 +1,19 @@
 /**
-A control that shows the current progress of a process in a horizontal bar.
-
-	{kind: "onyx.ProgressBar", progress: 10}
-
-To animate progress changes, use animateProgressTo:
-
-	this.$.progressBar.animateProgressTo(50);
+	A control that shows the current progress of a process in a horizontal bar.
 	
-The properties showStripes and animateStripes can be used to show the stripes and make them animated. The animated
-stripes use CSS3 gradients and animation to produce the effects.  For browsers that don't support these features
-the effects will not be visible.
+		{kind: "onyx.ProgressBar", progress: 10}
+	
+	To animate progress changes, use animateProgressTo:
+	
+		this.$.progressBar.animateProgressTo(50);
+		
+	The color of the bar can be customized by applying a background color to the bar via barClasses property:
+	
+		{kind: "onyx.ProgressBar", barClasses: "onyx-dark"}
+		
+	The properties showStripes and animateStripes can be used to show the stripes and make them animated. The animated
+	stripes use CSS3 gradients and animation to produce the effects.  For browsers that don't support these features
+	the effects will not be visible.
 */
 enyo.kind({
 	name: "onyx.ProgressBar",
@@ -29,6 +33,7 @@ enyo.kind({
 		{name: "progressAnimator", kind: "Animator", onStep: "progressAnimatorStep", onEnd: "progressAnimatorComplete"},
 		{name: "bar", classes: "onyx-progress-bar-bar"}
 	],
+	//* @protected
 	create: function() {
 		this.inherited(arguments);
 		this.progressChanged();
@@ -63,6 +68,8 @@ enyo.kind({
 	updateBarPosition: function(inPercent) {
 		this.$.bar.applyStyle("width", inPercent + "%");
 	},
+	//* @public
+	//* Animate progress to the given value.
 	animateProgressTo: function(inValue) {
 		this.$.progressAnimator.play({
 			startValue: this.progress,
@@ -70,6 +77,7 @@ enyo.kind({
 			node: this.hasNode()
 		});
 	},
+	//* @protected
 	progressAnimatorStep: function(inSender) {
 		this.setProgress(inSender.value);
 		return true;
