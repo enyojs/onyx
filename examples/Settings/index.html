@@ -31,8 +31,12 @@
 			display: inline-block;
 		}
 		/* right-align the last control inside item */
-		.groupbox-item :last-child {
+		.groupbox-item > :last-child {
 			float: right;
+		}
+		.groupbox-item > :only-child {
+			display: block;
+			float: none;
 		}
 	</style>
 </head>

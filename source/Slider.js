@@ -49,13 +49,15 @@ enyo.kind({
 		this.$.knob.applyStyle("left", inPercent + "%");
 	},
 	calcKnobPosition: function(inEvent) {
-		var x = inEvent.pageX - this.hasNode().getBoundingClientRect().left;
+		var x = inEvent.clientX - this.hasNode().getBoundingClientRect().left;
 		return (x / this.getBounds().width) * (this.max - this.min) + this.min;
 	},
 	dragstart: function(inSender, inEvent) {
-		inEvent.preventNativeDefault();
-		this.dragging = true;
-		return true;
+		if (inEvent.horizontal) {
+			inEvent.preventNativeDefault();
+			this.dragging = true;
+			return true;
+		}
 	},
 	drag: function(inSender, inEvent) {
 		if (this.dragging) {
