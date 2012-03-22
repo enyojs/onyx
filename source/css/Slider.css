@@ -11,5 +11,5 @@
 }
 
 .onyx-slider-knob.active, .onyx-slider-knob:active:hover {
-	background-position-y: -40px;
+	background-position: 0 -40px;
 }
