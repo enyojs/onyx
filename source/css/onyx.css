@@ -1,5 +1,7 @@
 .onyx {
-	font-family: Prelude, Prelude Medium, Segoe UI, Neue Helvetica, Arial, Helvetica, Sans-Serif;
+	color: #333333;
+	font-family: 'Helvetica Neue', 'Nimbus Sans L', Arial, sans-serif;
+	/*font-family: Prelude, Prelude Medium, Segoe UI, Neue Helvetica, Arial, Helvetica, Sans-Serif;**/
 	font-size: 20px;
 	cursor: default;
 	background-color: #EAEAEA;
