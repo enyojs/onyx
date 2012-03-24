@@ -6,6 +6,7 @@ enyo.kind({
 		onFailure: "doFailure"
     },
 	doFailure: function(error) {
+        // error 2 is "POSITION_UNAVAILABLE"; may happen on desktop if wifi is off or n/a
         console.log("Geolocation error #" + error.code + ": " + error.message);
     },
     destroy: function() {
