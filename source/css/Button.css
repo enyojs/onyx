@@ -30,6 +30,7 @@
 	*/
 	/**/
 	background: #E1E1E1 url(../../images/gradient.png) repeat-x bottom;
+	background-size: contain;
 	/**/
 	text-overflow: ellipsis;
 	/* the following cause arcane problems on IE */
