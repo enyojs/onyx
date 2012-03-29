@@ -94,7 +94,7 @@ enyo.kind({
 		if (this.isOob(v) && !this.isAnimating()) {
 				this.value = this.overMoving ? this.dampValue(v) : this.clampValue(v);
 		}
-		enyo.Layout.transformValue(this, this.transform, this.value + this.unit);
+		enyo.dom.transformValue(this, this.transform, this.value + this.unit);
 		this.doChange();
 	},
 	getAnimator: function() {
