@@ -1,7 +1,6 @@
 enyo.depends(
 	"css/",
 	"Animator.js",
-	"transform.js",
 	"Icon.js",
 	"Button.js",
 	"IconButton.js",

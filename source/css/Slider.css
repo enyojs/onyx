@@ -1,6 +1,14 @@
 .onyx-slider {
+	position: relative;
 	margin: 8px 20px;
-} 
+}
+
+.onyx-slider-taparea {
+	position: absolute;
+	top: -11px;
+	height: 28px;
+	width: 100%;
+}
 
 .onyx-slider-knob {
 	position: relative;
