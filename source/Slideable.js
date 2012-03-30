@@ -80,7 +80,7 @@ enyo.kind({
 		}
 	},
 	acceleratedChanged: function() {
-		enyo.Layout.accelerate(this, this.accelerated);
+		enyo.dom.accelerate(this, this.accelerated);
 	},
 	axisChanged: function() {
 		var h = this.axis == "h";
