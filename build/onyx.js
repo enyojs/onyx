@@ -260,7 +260,7 @@ release: function() {
 enyo.dispatcher.release();
 },
 down: function(a, b) {
-this.modal && !b.dispatchTarget.isDescendantOf(this) && b.preventNativeDefault();
+this.modal && !b.dispatchTarget.isDescendantOf(this) && b.preventDefault();
 },
 tap: function(a, b) {
 if (this.autoDismiss && !b.dispatchTarget.isDescendantOf(this)) return this.hide(), !0;
@@ -412,7 +412,7 @@ tap: function() {
 this.updateValue(!this.value);
 },
 dragstart: function(a, b) {
-b.preventNativeDefault(), this.dragging = !0, this.dragged = !1;
+b.preventDefault(), this.dragging = !0, this.dragged = !1;
 },
 drag: function(a, b) {
 if (this.dragging) {
@@ -525,11 +525,11 @@ isOob: function(a) {
 return a > this.calcMax() || a < this.calcMin();
 },
 dragstartHandler: function(a, b) {
-if (this.shouldDrag(b)) return b.preventNativeDefault(), this.$.animator.stop(), b.dragInfo = {}, this.dragging = !0, this.drag0 = this.value, this.dragd0 = 0, this.preventDragPropagation;
+if (this.shouldDrag(b)) return b.preventDefault(), this.$.animator.stop(), b.dragInfo = {}, this.dragging = !0, this.drag0 = this.value, this.dragd0 = 0, this.preventDragPropagation;
 },
 dragHandler: function(a, b) {
 if (this.dragging) {
-b.preventNativeDefault();
+b.preventDefault();
 var c = b[this.dragMoveProp] * this.kDragScalar, d = this.drag0 + c, e = c - this.dragd0;
 return this.dragd0 = c, e && (b.dragInfo.minimizing = e < 0), this.setValue(d), this.preventDragPropagation;
 }

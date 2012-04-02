@@ -131,7 +131,7 @@ enyo.kind({
 	down: function(inSender, inEvent) {
 		// prevent focus shifting outside the poup when modal.
 		if (this.modal && !inEvent.dispatchTarget.isDescendantOf(this)) {
-			inEvent.preventNativeDefault();
+			inEvent.preventDefault();
 		}
 	},
 	tap: function(inSender, inEvent) {

@@ -57,7 +57,7 @@ enyo.kind({
 	},
 	dragstart: function(inSender, inEvent) {
 		if (inEvent.horizontal) {
-			inEvent.preventNativeDefault();
+			inEvent.preventDefault();
 			this.dragging = true;
 			return true;
 		}
