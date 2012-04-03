@@ -84,9 +84,12 @@ enyo.kind({
 		this.updateValue(!this.value);
 	},
 	dragstart: function(inSender, inEvent) {
-		inEvent.preventNativeDefault();
-		this.dragging = true;
-		this.dragged = false;
+		if (inEvent.horizontal) {
+			inEvent.preventDefault();
+			this.dragging = true;
+			this.dragged = false;
+			return true;
+		}
 	},
 	drag: function(inSender, inEvent) {
 		if (this.dragging) {
@@ -95,6 +98,7 @@ enyo.kind({
 				this.updateValue(d > 0);
 				this.dragged = true;
 			}
+			return true;
 		}
 	},
 	dragfinish: function(inSender, inEvent) {

@@ -31,7 +31,7 @@ enyo.kind({
 						{content: "Saved", active: true},
 						{content: "Recents"}
 					]},
-					{fit: true, kind: "Scroller", classes: "bookmark-scroller", ondragfinish: "preventDragTap", components: [
+					{fit: true, kind: "Scroller", classes: "bookmark-scroller", components: [
 						{kind: "BookmarkList", onItemSelect: "itemSelect"}
 					]}
 				]}
@@ -69,8 +69,5 @@ enyo.kind({
 	},
 	itemSelect: function(inSender, inItem) {
 		this.doBookmarkSelect(inItem);
-	},
-	preventDragTap: function(inSender, inEvent) {
-		inEvent.preventTap();
 	}
 })

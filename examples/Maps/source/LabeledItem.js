@@ -9,7 +9,7 @@ enyo.kind({
 	components: [
 		{name: "icon", kind: "Image", classes: "labeled-item-icon"},
 		{name: "label", kind: "Control"},
-		{name: "input", classes: "label-item-input", ondragstart: "dragstart"}
+		{name: "input", classes: "label-item-input"}
 	],
 	defaultKind: "onyx.Checkbox",
 	create: function() {
@@ -29,8 +29,5 @@ enyo.kind({
 	},
 	valueChanged: function() {
 		this.$.input.setValue(this.value);
-	},
-	dragstart: function() {
-		return true;
 	}
 });
