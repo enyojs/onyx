@@ -1,6 +1,6 @@
 enyo.kind({
 	name: "MapsApp",
-	classes: "app onyx",
+	classes: "app",
 	components: [
 		{kind: "FittableRows", classes: "enyo-fit", components: [
 			{kind: "onyx.Toolbar", components: [
