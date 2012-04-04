@@ -9,10 +9,6 @@
 		p {
 			padding: 8px;
 		}
-		.onyx-toolbar-fittable > div > div > * {
-			vertical-align: middle;
-			margin: 0 6px;
-		}
 	</style>
 </head>
 <body class="onyx enyo-unselectable">
@@ -21,7 +17,7 @@
 			name: "App",
 			kind: "Control",
 			components: [
-				{tag: "p", content: "This is a plain control with <code>onyx-toolbar</code> class which does no layout work, but sets up basic toolbar styling, including styles for children (in particular <code>onyx.Button</code> and <code>onyx.InputDecorator</code>.)"},
+				{tag: "p", allowHtml: true, content: "This is a plain control with <code>onyx-toolbar</code> class which does no layout work, but sets up basic toolbar styling, including styles for children (in particular <code>onyx.Button</code> and <code>onyx.InputDecorator</code>.)"},
 				{classes: "onyx-toolbar", components: [
 					{kind: "onyx.Grabber", style: "display: inline-block;"},
 					{tag: "span", content: "Hello World"},
@@ -33,7 +29,7 @@
 					]}
 				]},
 				//
-				{tag: "p", content: "Adding the <code>onyx-toolbar-inline</code> class provides a simple layout strategy (items are made inline and given horizontal margin)."},
+				{tag: "p", allowHtml: true, content: "Adding the <code>onyx-toolbar-inline</code> class provides a simple layout strategy (items are made inline and given horizontal margin)."},
 				{classes: "onyx-toolbar onyx-toolbar-inline", components: [
 					{kind: "onyx.Grabber"},
 					{content: "Hello World"},
@@ -45,7 +41,7 @@
 					]}
 				]},
 				//
-				{tag: "p", content: "This is an instance of <code>onyx.Toolbar</code> kind, it's really just a Control with <code>onyx-toolbar</code> and <code>onyx-toolbar-inline</code> classes by default."},
+				{tag: "p", allowHtml: true, content: "This is an instance of <code>onyx.Toolbar</code> kind, it's really just a Control with <code>onyx-toolbar</code> and <code>onyx-toolbar-inline</code> classes by default."},
 				{kind: "onyx.Toolbar", components: [
 					{kind: "onyx.Grabber"},
 					{content: "Hello World"},
@@ -57,7 +53,7 @@
 					]}
 				]},
 				//
-				{tag: "p", content: "Sizing Test: toolbars adapt to content height, but we want our standard toolbar controls to result in consistent toolbar heights. Visible red color above or below one of these toolbars represents a sizing problem."},
+				{tag: "p", allowHtml: true, content: "Sizing Test: toolbars adapt to content height, but we want our standard toolbar controls to result in consistent toolbar heights. Visible red color above or below one of these toolbars represents a sizing problem."},
 				{style: "background-color: red; white-space: nowrap;", components: [
 					{kind: "onyx.Toolbar", style: "display: inline-block; width: 40px; margin-right: 8px;", components: [
 						{kind: "onyx.Grabber"}
@@ -86,12 +82,12 @@
 					]}
 				]},
 				//
-				{tag: "p", content: "Experimental toolbar based on <code>FittableColumns</code>, has scrollable middle region."},
-				{kind: "FittableColumns", stretch: false, classes: "onyx-toolbar onyx-toolbar-fittable", style: "overflow: hidden;", components: [
+				{tag: "p", allowHtml: true, content: "Experimental toolbar based on <code>FittableColumns</code>, has scrollable middle region."},
+				{kind: "FittableColumns", noStretch: true, classes: "onyx-toolbar onyx-toolbar-inline", components: [
 					{kind: "onyx.Grabber"},
 					{content: "Header"},
-					{kind: "Scroller", fit: true, strategyKind: "TouchScrollStrategy", vertical: false, classes: "bar", style: "height: 500px;", components: [
-						{style: "white-space: nowrap;", components: [
+					{kind: "Scroller", thumb: false, fit: true, touch: true, vertical: "hidden", style: "margin: 0;", components: [
+						{classes: "onyx-toolbar-inline", style: "white-space: nowrap;", components: [
 							{kind: "onyx.Button", content: "Button"},
 							{kind: "onyx.Button", content: "Down", classes: "active"},
 							{kind: "onyx.Button", content: "Button"},
