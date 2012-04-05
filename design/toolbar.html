@@ -1,0 +1,83 @@
+﻿<!doctype html>
+<html>
+<head>
+	<title>onyx toolbar sample</title>
+	<style>
+		.big {
+			font-size: 48px;
+		}
+		.toolbar, .inline {
+			white-space: nowrap;
+		}
+		.toolbar { 
+			line-height: 0px;
+			line-height: 50%;
+			padding: 4px;
+		}
+		.toolbar > *, .inline > * { 
+			display: inline-block;
+			vertical-align: middle;
+		}
+		.toolbar > div, .inline > div { 
+			Xline-height: normal;
+			Xvertical-align: bottom;
+		}
+		.bord {
+			border: 1px solid lightblue;
+		}
+		button {
+			line-height: normal !important;
+			Xfont-size: inherit;
+		}
+		.icon {
+			width: 32px;
+			height: 32px;
+			background-image: url(menu-icon-bookmark.png);
+			Xline-height: 0px;
+		}
+		.lh0 {
+			line-height: 0px;
+		}
+	</style>
+</head>
+<body>
+	<div class="bord toolbar">
+		<div class="bord">div</div>
+		<input class="bord" />
+		<div class="bord icon"></div>
+	</div>
+	<br />
+	<div class="bord toolbar big">
+		<div class="bord">div</div>
+		<input class="bord" />
+		<div class="bord icon"></div>
+	</div>
+	<br />
+	<br />
+	<div class="toolbar bord">
+		<div class="bord">div</div>
+		<input class="bord" />
+		<div class="bord inline">
+			<div class="bord">div</div>
+			<input class="bord" />
+			<div class="bord icon"></div>
+		</div>
+		<button>Button</button>
+		<div class="bord icon"></div>
+		<img class="bord" src="menu-icon-bookmark.png" height="32"/>
+	</div>
+	<br />
+	<div class="toolbar bord big">
+		<div class="bord">div</div>
+		<input class="bord" />
+		<div class="bord inline">
+			<div class="bord">div</div>
+			<input class="bord" />
+			<div class="bord icon"></div>
+		</div>
+		<button>Button</button>
+		<div class="bord icon"></div>
+		<img class="bord"src="menu-icon-bookmark.png" height="32"/>
+	</div>
+</body>
+</html>
