@@ -1,42 +1,92 @@
-﻿<!doctype html>
+﻿
+<!doctype html>
 <html>
 <head>
-	<title>onyx toolbar sample</title>
+	<title>onyx toolbar design</title>
 	<style>
 		.big {
-			font-size: 48px;
+			font-size: 42px;
 		}
 		.toolbar, .inline {
 			white-space: nowrap;
+			/*
+				We want to control line-height so that vertical-align: middle 
+				becomes true center. Otherwise, when line-height is in effect
+				(i.e. if the actual height is less than line height), 
+				user agents pad the line unevenly.
+			*/
+			line-height: 0;
+			/* below seems wrong on 2nd look: centering seems busted on with line-height 0 */
+			/*
+				Setting line-height: 0 has a side-effect that causes nodes that
+				contain only text to be 0 height. On most browsers, the text simply
+				overflows and renders properly in spite of this height. However
+				on Opera 11.62.1347 Windows, text is centered improperly if
+				the line-height is below some threshold (a few pixels?) Setting
+				line-height to 10% seems to solve both problems: it forces
+				the line-height to always be less then the actual height, but also
+				allows Opera to center the text properly.
+			*/
 		}
-		.toolbar { 
+		.toolbar > *, .inline > * {
+			/*
+				Defeat line-height control above for children
+			*/
+			line-height: normal;
+		}
+		.toolbar .inline {
+			/*
+				Enforce line-height 0 for an inline child of a toolbar
+			*/
 			line-height: 0px;
-			line-height: 50%;
+		}
+		.toolbar {
 			padding: 4px;
+			/*
+				It's useful to be able to abut toolbars in an inline context
+				and not worry about varying heights.
+				Generally icons are the largest elements in a toolbar, and will
+				drive the height to this size.
+				For some scenarios a developer may need to override this value.
+			*/
+			Xmin-height: 1en;
+			Xmin-height: 47px;
+			/**/
+			box-sizing: border-box;
+			-webkit-box-sizing: border-box;
+			-moz-box-sizing: border-box;
+			-ms-box-sizing: border-box;
 		}
 		.toolbar > *, .inline > * { 
 			display: inline-block;
 			vertical-align: middle;
 		}
-		.toolbar > div, .inline > div { 
-			Xline-height: normal;
-			Xvertical-align: bottom;
-		}
-		.bord {
-			border: 1px solid lightblue;
-		}
 		button {
+			/* only needed for IE */
 			line-height: normal !important;
-			Xfont-size: inherit;
 		}
 		.icon {
 			width: 32px;
 			height: 32px;
 			background-image: url(menu-icon-bookmark.png);
-			Xline-height: 0px;
+		}
+		/*
+			for display/debug only, not part of the design 
+		*/
+		.bord {
+			border: 1px solid lightblue;
+		}
+		.bg {
+			background-color: Red;
+		}
+		.bg .toolbar {
+			background-color: white;
 		}
 		.lh0 {
 			line-height: 0px;
+		}
+		.lhn {
+			line-height: normal;
 		}
 	</style>
 </head>
@@ -51,6 +101,17 @@
 		<div class="bord">div</div>
 		<input class="bord" />
 		<div class="bord icon"></div>
+	</div>
+	<br />
+	<div class="bord toolbar big lh0">
+		<div class="bord lhn">div</div>
+		<input class="bord" />
+		<div class="bord icon"></div>
+	</div>
+	<br />
+	<div class="bord toolbar big lh0">
+		<div class="bord lhn">div</div>
+		<input class="bord" />
 	</div>
 	<br />
 	<br />
@@ -69,7 +130,6 @@
 	<br />
 	<div class="toolbar bord big">
 		<div class="bord">div</div>
-		<input class="bord" />
 		<div class="bord inline">
 			<div class="bord">div</div>
 			<input class="bord" />
@@ -78,6 +138,36 @@
 		<button>Button</button>
 		<div class="bord icon"></div>
 		<img class="bord"src="menu-icon-bookmark.png" height="32"/>
+	</div>
+	<br />
+	<div class="toolbar big bord">
+		<div class="bord">div</div>
+	</div>
+	<br />
+	<div class="inline bord big bg">
+		<div class="toolbar bord">
+			<div class="bord">div</div>
+		</div>
+		<div class="toolbar bord">
+			<div class="icon"></div>
+		</div>
+		<div class="toolbar bord">
+			<div class="inline">
+				<div class="icon"></div>
+			</div>
+		</div>
+		<div class="toolbar bord">
+			<div class="bord">div</div>
+			<input class="bord" />
+			<div class="inline">
+				<div class="bord">div</div>
+				<input class="bord" />
+				<div class="icon"></div>
+			</div>
+			<button>Button</button>
+			<div class="icon"></div>
+			<img src="menu-icon-bookmark.png" height="32"/>
+		</div>
 	</div>
 </body>
 </html>
