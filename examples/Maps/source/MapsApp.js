@@ -9,7 +9,7 @@ enyo.kind({
 					{src: "images/menu-icon-bookmark.png", panel: "bookmark", ontap: "togglePullout"},
 					{src: "images/menu-icon-mylocation.png", ontap: "findCurrentLocation"}
 				]},
-				{kind: "Group", defaultKind: "onyx.IconButton", noDom: true, components: [
+				{kind: "Group", defaultKind: "onyx.IconButton", tag: null, components: [
 					{src: "images/topbar-search-icon.png", active: true},
 					{src: "images/topbar-direct-icon.png"}
 				]},
