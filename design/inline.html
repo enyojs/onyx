@@ -14,14 +14,6 @@
 			display: inline-block;
 			vertical-align: middle;
 		}
-		/**/
-		.toolbar {
-			padding: 8px;
-			border: 1px solid #3A3A3A;
-			background: #4C4C4C url(../images/gradient.png) repeat-x 0 bottom;
-			color: white;
-		}
-		/**/
 		.icon {
 			width: 32px;
 			height: 32px;
@@ -45,37 +37,37 @@
 	</style>
 </head>
 <body>
-	<label>"toolbar" tests</label>
+	<label>"inline" tests</label>
 	<br /><br />
 	<div>
 		<label>no content</label>
-		<div class="inline toolbar"></div>
+		<div class="inline bord"></div>
 		<br />
 
 		<label>text only content</label>
-		<div class="inline toolbar">Text</div>
+		<div class="inline bord">Text</div>
 		<br />
 
 		<label>div content</label>
-		<div class="inline toolbar">
+		<div class="inline bord">
 			<div>Text in Div</div>
 		</div>
 		<br />
 
 		<label>input content</label>
-		<div class="inline toolbar">
+		<div class="inline bord">
 			<input class="" />
 		</div>
 		<br />
 
 		<label>icon content</label>
-		<div class="inline toolbar">
+		<div class="inline bord">
 			<div class="icon"></div>
 		</div>
 		<br />
 
 		<label>combo content</label>
-		<div class="inline toolbar">
+		<div class="inline bord">
 			<div>Text in Div</div>
 			<input class="" />
 			<div class="icon"></div>
@@ -83,7 +75,7 @@
 		<br />
 
 		<label>combo content: when the text is larger than non-text objects, vertical centering goes wonky</label>
-		<div class="inline toolbar big">
+		<div class="inline bord big">
 			<div>Text in Div</div>
 			<input class="" />
 			<div class="icon"></div>
@@ -91,7 +83,7 @@
 		<br />
 
 		<label>controlling height</label>
-		<div class="inline toolbar big mh">
+		<div class="inline bord big mh">
 			<div>Text in Div</div>
 			<input class="" />
 			<div class="icon"></div>
@@ -99,7 +91,7 @@
 		<br />
 
 		<label>controlling line-height</label>
-		<div class="inline toolbar big lh pad">
+		<div class="inline bord big lh pad">
 			<div>Text in Div</div>
 			<input class="" />
 			<div class="icon"></div>
