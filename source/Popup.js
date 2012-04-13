@@ -9,7 +9,7 @@
 	popup does not need to scroll with other content.
 
 	The autoDismiss property controls how a popup may be dismissed. If true, the default, then tapping outside the popup
-	or pressing the ESC key will dismiss the popup. The modal property may be set to true to prevent any controls outside 
+	or pressing the ESC key will dismiss the popup. The modal property may be set to true to prevent any controls outside
 	the popup from responding to events while the popup is showing.
 
 		{kind: "onyx.Popup", centered: true, modal: true, floating: true, components: [
@@ -50,7 +50,7 @@ enyo.kind({
 	},
 	//* @protected
 	tools: [
-		{kind: "Signals", onKeydown: "keydown"},
+		{kind: "Signals", onKeydown: "keydown"}
 	],
 	create: function() {
 		this.inherited(arguments);
@@ -64,7 +64,7 @@ enyo.kind({
 		}
 		this.inherited(arguments);
 	},
-		// bubble events to owner when floating
+	// bubble events to owner when floating
 	getBubbleTarget: function() {
 		return this.floating ? this.owner : this.inherited(arguments);
 	},
@@ -77,13 +77,13 @@ enyo.kind({
 			return {
 				width: window.innerWidth,
 				height: window.innerHeight
-			}
+			};
 		} else {
 			var e = document.documentElement;
 			return {
-				width: e.offsetWidth, 
+				width: e.offsetWidth,
 				height: e.offsetHeight
-			}
+			};
 		}
 	},
 	updatePosition: function() {
