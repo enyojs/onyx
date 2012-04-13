@@ -1,3 +1,3 @@
-﻿enyo.depends(
-	"../source"
+enyo.depends(
+        "../source"
 );
