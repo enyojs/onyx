@@ -2,18 +2,21 @@
 /* ../source/css/onyx.css */
 
 .onyx {
-	font-family: Prelude, Prelude Medium, Segoe UI, Neue Helvetica, Arial, Helvetica, Sans-Serif;
+	color: #333333;
+	font-family: 'Helvetica Neue', 'Nimbus Sans L', Arial, sans-serif;
+	/*font-family: Prelude, Prelude Medium, Segoe UI, Neue Helvetica, Arial, Helvetica, Sans-Serif;**/
 	font-size: 20px;
 	cursor: default;
 	background-color: #EAEAEA;
 	/* remove automatic tap highlight color */
-	-webkit-tap-highlight-color: transparent;
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
 /* prevent IE from inheriting line-height for these elements */
 .onyx button, .onyx label, .onyx input {
 	line-height: normal;
 }
+
 
 /* ../source/css/Icon.css */
 
@@ -25,7 +28,7 @@
 	vertical-align: middle;
 }
 
-.onyx-icon.active, .onyx-icon:active {
+.onyx-icon.active, .onyx-icon:active:hover {
 	background-position: 0 -32px;
 }
 
@@ -86,7 +89,7 @@
 	box-shadow: inset 0px 1px 0px rgba(0,0,0,0.1);
 }
 
-.onyx-button:active:not([disabled]) {
+.onyx-button:active:hover:not([disabled]) {
 	background-image: url(../images/gradient-invert.png);
 	background-position: top;
 	border-top: 1px solid rgba(15, 15, 15, 0.6);
@@ -239,7 +242,7 @@
 .onyx-input-decorator.onyx-disabled {
 	/* FIXME: needed to color a disabled input placeholder. */
 	/*-webkit-text-fill-color: #888;*/
-	opacity: 0.3;
+	opacity: 0.4;
 }
 
 .onyx-input-decorator > input {
@@ -263,6 +266,67 @@
 .onyx-input-decorator.onyx-disabled > input {
 	cursor: default;
 }
+
+
+/* ../source/css/TextArea.css */
+
+.onyx-input-decorator > textarea {
+	/* reset */
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	background-color: transparent;
+	font-size: 16px;
+	box-shadow: none;
+	/* Remove scrollbars and resize handle */
+	resize: none;
+	overflow: auto;
+	/* FIXME: hack for styling reset on Android */
+	/* -webkit-appearance: caret;*/
+}
+
+.onyx-input-decorator.onyx-focused > textarea {
+	cursor: text;
+}
+
+.onyx-input-decorator.onyx-disabled > textarea {
+	cursor: default;
+}
+
+.onyx-textarea {
+	/* need >=50px for scrollbar to be usable on mac */
+	min-height: 50px;
+}
+
+
+/* ../source/css/RichText.css */
+
+.onyx-input-decorator > .onyx-richtext {
+	/* reset */
+	margin: 0;
+	padding: 0;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	background-color: transparent;
+	font-size: 16px;
+	min-height: 20px;
+	min-width: 100px;
+	box-shadow: none;
+	/* FIXME: hack for styling reset on Android */
+	/* -webkit-appearance: caret;*/
+}
+
+.onyx-input-decorator.onyx-focused > .onyx-richtext {
+	cursor: text;
+}
+
+.onyx-input-decorator.onyx-disabled > .onyx-richtext {
+	cursor: default;
+}
+
 
 /* ../source/css/Popup.css */
 
@@ -426,6 +490,7 @@
 	display: inline-block;
 	vertical-align: middle;
 	margin: 4px 6px 5px;
+	box-sizing: border-box;
 }
 
 .onyx-toolbar .onyx-icon-button {
@@ -438,6 +503,7 @@
 	border-color: rgba(15, 15, 15, 0.5);
 	margin-top: 0;
 	margin-bottom: 0;
+	height: 36px;
 }
 
 .onyx-toolbar .onyx-input-decorator {
@@ -463,5 +529,140 @@
 
 .onyx-toolbar .onyx-input-decorator .onyx-input:focus::-webkit-input-placeholder {
 	color: #ddd;
+}
+
+
+/* ../source/css/ProgressBar.css */
+
+.onyx-progress-bar {
+	margin: 8px;
+	height: 8px;
+	border: 1px solid rgba(15, 15, 15, 0.2);
+	border-radius: 3px;
+	background: #B8B8B8 url(../images/gradient-invert.png) repeat-x;
+	background-size: auto 100%;
+}
+
+.onyx-progress-bar-bar {
+	height: 100%;
+	border-radius: 3px;
+	background: #58ABEF url(../images/gradient.png) repeat-x;
+	background-size: auto 100%;
+}
+
+.onyx-progress-bar-bar.striped {
+	background-image: -webkit-gradient(linear, 0 100%, 100% 0, color-stop(0.25, rgba(255, 255, 255, 0.15)), color-stop(0.25, transparent), color-stop(0.5, transparent), color-stop(0.5, rgba(255, 255, 255, 0.15)), color-stop(0.75, rgba(255, 255, 255, 0.15)), color-stop(0.75, transparent), to(transparent));
+	background-image: -webkit-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+	background-image: -moz-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+	background-image: -ms-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+	background-image: -o-linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+	background-image: linear-gradient(-45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+	background-size: 40px 40px;
+}
+
+.onyx-progress-bar-bar.striped.animated {
+	-webkit-animation: progress-bar-stripes 2s linear infinite;
+	-moz-animation: progress-bar-stripes 2s linear infinite;
+	animation: progress-bar-stripes 2s linear infinite;
+}
+
+@-webkit-keyframes progress-bar-stripes {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 40px 0;
+  }
+}
+
+@-moz-keyframes progress-bar-stripes {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 40px 0;
+  }
+}
+
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 40px 0;
+  }
+}
+
+/* optional */
+
+.onyx-dark {
+	background-color: #626368;
+}
+
+.onyx-light {
+	background-color: #cacaca;
+}
+
+
+/* ../source/css/ProgressButton.css */
+
+.onyx-progress-button {
+	position: relative;
+	height: 36px;
+	line-height: 36px;
+	color: #F1F1F1;
+	font-size: 16px;
+	text-overflow: ellipsis;
+}
+
+.onyx-progress-button-bar {
+	height: 36px;
+}
+
+.onyx-progress-button-icon {
+	display: inline-block;
+	position: absolute;
+	top: 2px;
+	right: 0;
+}
+
+.onyx-progress-button-client {
+	display: inline-block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 36px;
+	margin-left: 8px;
+}
+
+.onyx-progress-button-client > * {
+	display: inline-block;
+}
+
+
+/* ../source/css/Slider.css */
+
+.onyx-slider {
+	position: relative;
+	margin: 8px 20px;
+}
+
+.onyx-slider-taparea {
+	position: absolute;
+	top: -11px;
+	height: 28px;
+	width: 100%;
+}
+
+.onyx-slider-knob {
+	position: relative;
+	height: 40px;
+	width: 40px;
+	background: url(../images/slider-handle.png) left top no-repeat;
+	margin: -23px -20px;
+}
+
+.onyx-slider-knob.active, .onyx-slider-knob:active:hover {
+	background-position: 0 -40px;
 }
 

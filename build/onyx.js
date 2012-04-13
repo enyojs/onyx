@@ -23,8 +23,11 @@ onStop: ""
 constructed: function() {
 this.inherited(arguments), this._next = enyo.bind(this, "next");
 },
+destroy: function() {
+this.stop(), this.inherited(arguments);
+},
 play: function(a) {
-return this.stop(), a && enyo.mixin(this, a), this.t0 = this.t1 = (new Date).getTime(), this.value = this.startValue, this.job = !0, this.requestNext(), this;
+return this.stop(), a && enyo.mixin(this, a), this.t0 = this.t1 = enyo.now(), this.value = this.startValue, this.job = !0, this.requestNext(), this;
 },
 stop: function() {
 if (this.isAnimating()) return this.cancel(), this.fire("onStop"), this;
@@ -42,53 +45,13 @@ shouldEnd: function() {
 return this.dt >= this.duration;
 },
 next: function() {
-this.t1 = (new Date).getTime(), this.dt = this.t1 - this.t0;
+this.t1 = enyo.now(), this.dt = this.t1 - this.t0;
 var a = this.fraction = enyo.easedLerp(this.t0, this.duration, this.easingFunction);
 this.value = this.startValue + a * (this.endValue - this.startValue), a >= 1 || this.shouldEnd() ? (this.value = this.endValue, this.fraction = 1, this.fire("onStep"), this.fire("onEnd"), this.cancel()) : (this.fire("onStep"), this.requestNext());
 },
 fire: function(a) {
 var b = this[a];
 enyo.isString(b) ? this.bubble(a) : b && b.call(this.context || window, this);
-}
-});
-
-// transform.js
-
-enyo.mixin(enyo.Layout, {
-canAccelerate: function() {
-return this.accelerando !== undefined ? this.accelerando : document.body && (this.accelerando = this.calcCanAccelerate());
-},
-calcCanAccelerate: function() {
-var a = document.body, b = [ "perspective", "msPerspective", "MozPerspective", "WebkitPerspective", "OPerspective" ];
-for (var c = 0, d; d = b[c]; c++) if (typeof document.body.style[d] != "undefined") return !0;
-return !1;
-},
-domTransformProps: [ "-webkit-transform", "-moz-transform", "-ms-transform", "-o-transform", "transform" ],
-cssTransformProps: [ "webkitTransform", "MozTransform", "msTransform", "OTransform", "transform" ],
-transformValue: function(a, b, c) {
-var d = a.domTransforms = a.domTransforms || {};
-d[b] = c, this.transformsToDom(a);
-},
-accelerate: function(a, b) {
-var c = b == "auto" ? this.canAccelerate() : b;
-c && this.transformValue(a, "translateZ", 0);
-},
-transform: function(a, b) {
-var c = a.domTransforms = a.domTransforms || {};
-enyo.mixin(c, b), this.transformsToDom(a);
-},
-domTransformsToCss: function(a) {
-var b, c, d = "";
-for (b in a) c = a[b], c !== null && c !== undefined && c !== "" && (d += b + "(" + c + ") ");
-return d;
-},
-transformsToDom: function(a) {
-var b = this.domTransformsToCss(a.domTransforms), c = a.domStyles;
-for (var d = 0, e; e = this.domTransformProps[d]; d++) c[e] = b;
-if (a.hasNode()) {
-var f = a.node.style;
-for (var d = 0, e; e = this.cssTransformProps[d]; d++) f[e] = b;
-} else a.domStylesChanged();
 }
 });
 
@@ -104,7 +67,7 @@ create: function() {
 this.inherited(arguments), this.src && this.srcChanged();
 },
 srcChanged: function() {
-this.applyStyle("background-image", "url(" + this.src + ")");
+this.applyStyle("background-image", "url(" + enyo.path.rewrite(this.src) + ")");
 }
 });
 
@@ -201,13 +164,13 @@ classes: "onyx"
 enyo.kind({
 name: "onyx.Popup",
 classes: "onyx-popup",
-showing: !1,
 published: {
 modal: !1,
 autoDismiss: !0,
 floating: !1,
 centered: !1
 },
+showing: !1,
 handlers: {
 ondown: "down",
 onkeydown: "keydown",
@@ -216,6 +179,7 @@ onblur: "blur",
 onRequestShow: "requestShow",
 onRequestHide: "requestHide"
 },
+captureEvents: !0,
 events: {
 onShow: "",
 onHide: ""
@@ -226,6 +190,9 @@ onKeydown: "keydown"
 } ],
 create: function() {
 this.inherited(arguments), this.floating && this.setParent(onyx.floatingLayer);
+},
+destroy: function() {
+this.showing && this.release(), this.inherited(arguments);
 },
 getBubbleTarget: function() {
 return this.floating ? this.owner : this.inherited(arguments);
@@ -251,7 +218,7 @@ this.addStyles("top: " + (a.height - b.height) / 2 + "px; left: " + (a.width - b
 }
 },
 showingChanged: function() {
-this.floating && this.showing && !this.hasNode() && this.render(), this.centered && this.applyStyle("visibility", "hidden"), this.inherited(arguments), this.showing ? (this.reflow(), this.capture()) : this.release(), this.centered && this.applyStyle("visibility", null), this.hasNode() && this[this.showing ? "doShow" : "doHide"]();
+this.floating && this.showing && !this.hasNode() && this.render(), this.centered && this.applyStyle("visibility", "hidden"), this.inherited(arguments), this.showing ? (this.reflow(), this.captureEvents && this.capture()) : this.captureEvents && this.release(), this.centered && this.applyStyle("visibility", null), this.hasNode() && this[this.showing ? "doShow" : "doHide"]();
 },
 capture: function() {
 enyo.dispatcher.capture(this, !this.modal);
@@ -310,6 +277,30 @@ enyo.kind({
 name: "onyx.Input",
 kind: "enyo.Input",
 classes: "onyx-input",
+defaultFocus: !1,
+rendered: function() {
+this.inherited(arguments), this.defaultFocus && this.focus();
+}
+});
+
+// TextArea.js
+
+enyo.kind({
+name: "onyx.TextArea",
+kind: "enyo.TextArea",
+classes: "onyx-textarea",
+defaultFocus: !1,
+rendered: function() {
+this.inherited(arguments), this.defaultFocus && this.focus();
+}
+});
+
+// RichText.js
+
+enyo.kind({
+name: "onyx.RichText",
+kind: "enyo.RichText",
+classes: "onyx-richtext",
 defaultFocus: !1,
 rendered: function() {
 this.inherited(arguments), this.defaultFocus && this.focus();
@@ -395,10 +386,10 @@ activeChanged: function() {
 this.setValue(this.active), this.bubble("onActivate");
 },
 onContentChanged: function() {
-this.$.contentOn.setContent(this.onContent || "&nbsp"), this.$.contentOn.addRemoveClass("empty", !this.onContent);
+this.$.contentOn.setContent(this.onContent || ""), this.$.contentOn.addRemoveClass("empty", !this.onContent);
 },
 offContentChanged: function() {
-this.$.contentOff.setContent(this.offContent || "&nbsp"), this.$.contentOff.addRemoveClass("empty", !this.onContent);
+this.$.contentOff.setContent(this.offContent || ""), this.$.contentOff.addRemoveClass("empty", !this.onContent);
 },
 disabledChanged: function() {
 this.addRemoveClass("disabled", this.disabled);
@@ -412,12 +403,12 @@ tap: function() {
 this.updateValue(!this.value);
 },
 dragstart: function(a, b) {
-b.preventDefault(), this.dragging = !0, this.dragged = !1;
+if (b.horizontal) return b.preventDefault(), this.dragging = !0, this.dragged = !1, !0;
 },
 drag: function(a, b) {
 if (this.dragging) {
 var c = b.dx;
-Math.abs(c) > 10 && (this.updateValue(c > 0), this.dragged = !0);
+return Math.abs(c) > 10 && (this.updateValue(c > 0), this.dragged = !0), !0;
 }
 },
 dragfinish: function(a, b) {
@@ -430,6 +421,192 @@ this.dragging = !1, this.dragged && b.preventTap();
 enyo.kind({
 name: "onyx.Toolbar",
 classes: "onyx onyx-toolbar onyx-toolbar-inline"
+});
+
+// ProgressBar.js
+
+enyo.kind({
+name: "onyx.ProgressBar",
+classes: "onyx-progress-bar",
+published: {
+progress: 0,
+min: 0,
+max: 100,
+barClasses: "",
+showStripes: !0,
+animateStripes: !0
+},
+events: {
+onAnimateProgressFinish: ""
+},
+components: [ {
+name: "progressAnimator",
+kind: "Animator",
+onStep: "progressAnimatorStep",
+onEnd: "progressAnimatorComplete"
+}, {
+name: "bar",
+classes: "onyx-progress-bar-bar"
+} ],
+create: function() {
+this.inherited(arguments), this.progressChanged(), this.barClassesChanged(), this.showStripesChanged(), this.animateStripesChanged();
+},
+barClassesChanged: function(a) {
+this.$.bar.removeClass(a), this.$.bar.addClass(this.barClasses);
+},
+showStripesChanged: function() {
+this.$.bar.addRemoveClass("striped", this.showStripes);
+},
+animateStripesChanged: function() {
+this.$.bar.addRemoveClass("animated", this.animateStripes);
+},
+progressChanged: function() {
+this.progress = this.clampValue(this.min, this.max, this.progress);
+var a = this.calcPercent(this.progress);
+this.updateBarPosition(a);
+},
+clampValue: function(a, b, c) {
+return Math.max(a, Math.min(c, b));
+},
+calcRatio: function(a) {
+return (a - this.min) / (this.max - this.min);
+},
+calcPercent: function(a) {
+return this.calcRatio(a) * 100;
+},
+updateBarPosition: function(a) {
+this.$.bar.applyStyle("width", a + "%");
+},
+animateProgressTo: function(a) {
+this.$.progressAnimator.play({
+startValue: this.progress,
+endValue: a,
+node: this.hasNode()
+});
+},
+progressAnimatorStep: function(a) {
+return this.setProgress(a.value), !0;
+},
+progressAnimatorComplete: function(a) {
+return this.doAnimateProgressFinish(a), !0;
+}
+});
+
+// ProgressButton.js
+
+enyo.kind({
+name: "onyx.ProgressButton",
+kind: "onyx.ProgressBar",
+classes: "onyx-progress-button",
+events: {
+onCancel: ""
+},
+components: [ {
+name: "progressAnimator",
+kind: "Animator",
+onStep: "progressAnimatorStep",
+onEnd: "progressAnimatorComplete"
+}, {
+name: "bar",
+classes: "onyx-progress-bar-bar onyx-progress-button-bar"
+}, {
+name: "client",
+classes: "onyx-progress-button-client"
+}, {
+kind: "onyx.Icon",
+src: "$lib/onyx/images/progress-button-cancel.png",
+classes: "onyx-progress-button-icon",
+ontap: "cancelTap"
+} ],
+cancelTap: function() {
+this.doCancel();
+}
+});
+
+// Slider.js
+
+enyo.kind({
+name: "onyx.Slider",
+kind: "onyx.ProgressBar",
+classes: "onyx-slider",
+published: {
+value: 0,
+lockBar: !0,
+tappable: !0
+},
+events: {
+onChange: "",
+onChanging: "",
+onAnimateFinish: ""
+},
+showStripes: !1,
+handlers: {
+ondragstart: "dragstart",
+ondrag: "drag",
+ondragfinish: "dragfinish"
+},
+moreComponents: [ {
+kind: "Animator",
+onStep: "animatorStep",
+onEnd: "animatorComplete"
+}, {
+classes: "onyx-slider-taparea"
+}, {
+name: "knob",
+classes: "onyx-slider-knob"
+} ],
+create: function() {
+this.inherited(arguments), this.createComponents(this.moreComponents), this.valueChanged();
+},
+valueChanged: function() {
+this.value = this.clampValue(this.min, this.max, this.value);
+var a = this.calcPercent(this.value);
+this.updateKnobPosition(a), this.lockBar && this.setProgress(this.value);
+},
+updateKnobPosition: function(a) {
+this.$.knob.applyStyle("left", a + "%");
+},
+calcKnobPosition: function(a) {
+var b = a.clientX - this.hasNode().getBoundingClientRect().left;
+return b / this.getBounds().width * (this.max - this.min) + this.min;
+},
+dragstart: function(a, b) {
+if (b.horizontal) return b.preventDefault(), this.dragging = !0, !0;
+},
+drag: function(a, b) {
+if (this.dragging) {
+var c = this.calcKnobPosition(b);
+return this.setValue(c), this.doChanging({
+value: this.value
+}), !0;
+}
+},
+dragfinish: function(a, b) {
+return this.dragging = !1, b.preventTap(), this.doChange({
+value: this.value
+}), !0;
+},
+tap: function(a, b) {
+if (this.tappable) {
+var c = this.calcKnobPosition(b);
+return this.tapped = !0, this.animateTo(c), !0;
+}
+},
+animateTo: function(a) {
+this.$.animator.play({
+startValue: this.value,
+endValue: a,
+node: this.hasNode()
+});
+},
+animatorStep: function(a) {
+return this.setValue(a.value), !0;
+},
+animatorComplete: function(a) {
+return this.tapped && (this.tapped = !1, this.doChange({
+value: this.value
+})), this.doAnimateFinish(a), !0;
+}
 });
 
 // Slideable.js
@@ -448,7 +625,8 @@ overMoving: !0,
 draggable: !0
 },
 events: {
-onAnimateFinish: ""
+onAnimateFinish: "",
+onChange: ""
 },
 preventDragPropagation: !1,
 tools: [ {
@@ -457,9 +635,9 @@ onStep: "animatorStep",
 onEnd: "animatorComplete"
 } ],
 handlers: {
-ondragstart: "dragstartHandler",
-ondrag: "dragHandler",
-ondragfinish: "dragfinishHandler"
+ondragstart: "dragstart",
+ondrag: "drag",
+ondragfinish: "dragfinish"
 },
 kDragScalar: 1,
 dragEventProp: "dx",
@@ -482,7 +660,7 @@ this.kDragScalar = a ? 100 / a : 1;
 }
 },
 acceleratedChanged: function() {
-enyo.Layout.accelerate(this, this.accelerated);
+enyo.dom.accelerate(this, this.accelerated);
 },
 axisChanged: function() {
 var a = this.axis == "h";
@@ -490,7 +668,7 @@ this.dragMoveProp = a ? "dx" : "dy", this.shouldDragProp = a ? "horizontal" : "v
 },
 valueChanged: function() {
 var a = this.value;
-this.isOob(a) && !this.isAnimating() && (this.value = this.overMoving ? this.dampValue(a) : this.clampValue(a)), enyo.Layout.transformValue(this, this.transform, this.value + this.unit);
+this.isOob(a) && !this.isAnimating() && (this.value = this.overMoving ? this.dampValue(a) : this.clampValue(a)), enyo.dom.transformValue(this, this.transform, this.value + this.unit), this.doChange();
 },
 getAnimator: function() {
 return this.$.animator;
@@ -524,17 +702,17 @@ return this.draggable && a[this.shouldDragProp];
 isOob: function(a) {
 return a > this.calcMax() || a < this.calcMin();
 },
-dragstartHandler: function(a, b) {
+dragstart: function(a, b) {
 if (this.shouldDrag(b)) return b.preventDefault(), this.$.animator.stop(), b.dragInfo = {}, this.dragging = !0, this.drag0 = this.value, this.dragd0 = 0, this.preventDragPropagation;
 },
-dragHandler: function(a, b) {
+drag: function(a, b) {
 if (this.dragging) {
 b.preventDefault();
 var c = b[this.dragMoveProp] * this.kDragScalar, d = this.drag0 + c, e = c - this.dragd0;
 return this.dragd0 = c, e && (b.dragInfo.minimizing = e < 0), this.setValue(d), this.preventDragPropagation;
 }
 },
-dragfinishHandler: function(a, b) {
+dragfinish: function(a, b) {
 if (this.dragging) return this.dragging = !1, this.completeDrag(b), b.preventTap(), this.preventDragPropagation;
 },
 completeDrag: function(a) {
