@@ -13,3 +13,7 @@
 .onyx button, .onyx label, .onyx input {
 	line-height: normal;
 }
+
+.onyx-selected {
+	background-color: #C4E3FE;
+}
