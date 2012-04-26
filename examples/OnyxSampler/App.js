@@ -181,6 +181,11 @@ enyo.kind({
 					{kind: "onyx.Input", style: "width: 100%", placeholder: "Enter text here"}
 				]}
 			]},
+			{kind: "onyx.Groupbox", components: [
+				{kind: "onyx.InputDecorator", components: [
+					{kind: "onyx.Input", attributes: { type: "password" }, style: "width: 100%", placeholder: "Enter Password"}
+				]}
+			]},
 			{tag: "br"},
 			{classes: "divider", content: "Progress Bars"},
 			{kind: "onyx.ProgressBar", progress: 25},
