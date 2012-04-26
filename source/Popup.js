@@ -104,7 +104,7 @@ enyo.kind({
 		}
 		this.inherited(arguments);
 		if (this.showing) {
-			this.reflow();
+			this.resized();
 			if (this.captureEvents) {
 				this.capture();
 			}
