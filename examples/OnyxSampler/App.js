@@ -183,7 +183,7 @@ enyo.kind({
 			]},
 			{kind: "onyx.Groupbox", components: [
 				{kind: "onyx.InputDecorator", components: [
-					{kind: "onyx.Input", attributes: { type: "password" }, style: "width: 100%", placeholder: "Enter Password"}
+					{kind: "onyx.Input", type: "password", style: "width: 100%", placeholder: "Enter Password"}
 				]}
 			]},
 			{tag: "br"},
