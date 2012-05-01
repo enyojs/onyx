@@ -14,14 +14,5 @@
 enyo.kind({
 	name: "onyx.RichText",
 	kind: "enyo.RichText",
-	classes: "onyx-richtext",
-	//* Set to true to focus this control when it is rendered.
-	defaultFocus: false,
-	//* @protected
-	rendered: function() {
-		this.inherited(arguments);
-		if (this.defaultFocus) {
-			this.focus();
-		}
-	}
+	classes: "onyx-richtext"
 });

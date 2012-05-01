@@ -124,7 +124,7 @@ enyo.kind({
 			{classes: "divider", content: "Inputs"},
 			{classes: "onyx-toolbar-inline", components: [
 				{kind: "onyx.InputDecorator", components: [
-					{kind: "onyx.Input", defaultFocus: false, placeholder: "Enter text here"}
+					{kind: "onyx.Input", placeholder: "Enter text here"}
 				]},
 				{kind: "onyx.InputDecorator", components: [
 					{kind: "onyx.Input", placeholder: "Search term"},
@@ -134,7 +134,7 @@ enyo.kind({
 			{classes: "divider", content: "RichTexts"},
 			{classes: "onyx-toolbar-inline", components: [
 				{kind: "onyx.InputDecorator", components: [
-					{kind: "onyx.RichText", style: "width: 200px;", defaultFocus: false, placeholder: "Enter text here"}
+					{kind: "onyx.RichText", style: "width: 200px;", placeholder: "Enter text here"}
 				]},
 				{kind: "onyx.InputDecorator", components: [
 					{kind: "onyx.RichText", style: "width: 200px;", placeholder: "Search term"},
@@ -144,7 +144,7 @@ enyo.kind({
 			{classes: "divider", content: "TextAreas"},
 			{classes: "onyx-toolbar-inline", components: [
 				{kind: "onyx.InputDecorator", components: [
-					{kind: "onyx.TextArea", defaultFocus: false, placeholder: "Enter text here"}
+					{kind: "onyx.TextArea", placeholder: "Enter text here"}
 				]},
 				{kind: "onyx.InputDecorator", components: [
 					{kind: "onyx.TextArea", placeholder: "Search term"},

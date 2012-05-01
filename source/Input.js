@@ -12,14 +12,5 @@
 enyo.kind({
 	name: "onyx.Input",
 	kind: "enyo.Input",
-	classes: "onyx-input",
-	//* Set to true to focus this control when it is rendered.
-	defaultFocus: false,
-	//* @protected
-	rendered: function() {
-		this.inherited(arguments);
-		if (this.defaultFocus) {
-			this.focus();
-		}
-	}
+	classes: "onyx-input"
 });
