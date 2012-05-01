@@ -1,0 +1,10 @@
+.onyx-spinner {
+	width: 58px;
+	height: 59px;
+	display: inline-block;
+	background: url(../../images/spinner-dark.gif) no-repeat 0 0;
+}
+
+.onyx-spinner.onyx-light {
+	background: url(../../images/spinner-light.gif) no-repeat 0 0;
+}
