@@ -21,14 +21,6 @@ enyo.kind({
 				{kind: "onyx.Button", content: "More Right"}
 			]},
 			{tag: "br"},
-			{classes: "divider", content: "Popups"},
-			{classes: "tools", defaultKind: "onyx.Button", components: [
-				{kind: "onyx.Button", content: "Popup...", ontap: "showPopup", popup: "popup"},
-				{kind: "onyx.Button", content: "Modal Popup...", ontap: "showPopup", popup: "modalPopup"}
-			]},
-			{name: "popup", kind: "onyx.Popup", centered: true, floating: true, style: "padding: 10px; font-size: 30px;", content: "Popup..."},
-			{name: "modalPopup", kind: "onyx.Popup", centered: true, modal: true, floating: true, style: "padding: 10px; font-size: 30px;", content: "Modal Popup..."},
-			{tag: "br"},
 			{classes: "divider", content: "RadioGroup"},
 			{kind: "onyx.RadioGroup", components: [
 				{content: "Alpha", active: true},
@@ -203,23 +195,7 @@ enyo.kind({
 			{classes: "divider", content: "Sliders"},
 			{kind: "onyx.Slider", value: 50},
 			{tag: "br"},
-			{kind: "onyx.Slider", lockBar: false, value: 50, style: "width: 200px;"},
-			{tag: "br"},
-			{classes: "divider", content: "Slideable"},
-			{style: "border: 1px solid silver; height: 200px; position: relative; overflow: hidden; margin: 10px;", components: [
-				{kind: "onyx.Slideable", value: -60, min: -60, unit: "%", classes: "enyo-fit", style: "width: 200px; background: #404040;", components: [
-					{kind: "onyx.Grabber", style: "position: absolute; bottom: 14px; right: 14px;"}
-				]},
-				{kind: "onyx.Slideable", value: 60, max: 60, unit: "%", classes: "enyo-fit", style: "left: auto; width: 200px; background: #1E5D89;", components: [
-					{kind: "onyx.Grabber", style: "position: absolute; bottom: 14px; left: 14px;"}
-				]}
-			]}
+			{kind: "onyx.Slider", lockBar: false, value: 50, style: "width: 200px;"}
 		]}
-	],
-	showPopup: function(inSender) {
-		var p = this.$[inSender.popup];
-		if (p) {
-			p.show();
-		}
-	}
+	]
 });

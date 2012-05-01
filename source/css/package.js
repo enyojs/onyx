@@ -8,7 +8,6 @@ enyo.depends(
 	"Input.css",
 	"TextArea.css",
 	"RichText.css",
-	"Popup.css",
 	"RadioButton.css",
 	"TabButton.css",
 	"ToggleButton.css",

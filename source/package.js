@@ -1,12 +1,9 @@
 enyo.depends(
 	"css/",
-	"Animator.js",
 	"Icon.js",
 	"Button.js",
 	"IconButton.js",
 	"Checkbox.js",
-	"FloatingLayer.js",
-	"Popup.js",
 	"Grabber.js",
 	"Groupbox.js",
 	"Input.js",
@@ -19,6 +16,5 @@ enyo.depends(
 	"Toolbar.js",
 	"ProgressBar.js",
 	"ProgressButton.js",
-	"Slider.js",
-	"Slideable.js"
+	"Slider.js"
 );
