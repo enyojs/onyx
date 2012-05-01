@@ -7,6 +7,7 @@ enyo.depends(
 	"Grabber.js",
 	"Groupbox.js",
 	"Input.js",
+	"Popup.js",
 	"TextArea.js",
 	"RichText.js",
 	"InputDecorator.js",

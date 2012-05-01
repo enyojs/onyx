@@ -4,6 +4,7 @@ enyo.depends(
 	"Button.css",
 	"Checkbox.css",
 	"Grabber.css",
+	"Popup.css",
 	"Groupbox.css",
 	"Input.css",
 	"TextArea.css",
