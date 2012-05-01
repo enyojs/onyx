@@ -1,0 +1,23 @@
+.onyx-item {
+	padding: 14px;
+}
+
+.onyx-highlight, .onyx-highlight.onyx-swipeable-item-content {
+	background-color: #DEDFDF;
+}
+
+.enyo-selected, .enyo-selected.onyx-swipeable-item-content {
+	background-color: #C4E3FE;
+}
+
+.onyx-item.onyx-swipeable-item {
+	overflow: hidden;
+	padding: 0;
+}
+
+.onyx-swipeable-item-content {
+	background-color: #EAEAEA;
+	box-sizing: border-box;
+	padding: 18px 6px;
+	min-height: 60px;
+}
