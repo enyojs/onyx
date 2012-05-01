@@ -1,0 +1,17 @@
+enyo.depends(
+	"css/Tooltip.css",
+	"css/Menu.css",
+	"css/MoreToolbar.css",
+	"css/Picker.css",
+	"Tooltip.js",
+	"TooltipDecorator.js",
+	"Menu.js",
+	"MenuItem.js",
+	"MenuDecorator.js",
+	"MoreToolbar.js",
+	"Drawer.js",
+	"PickerDecorator.js",
+	"PickerButton.js",
+	"Picker.js",
+	"FlyweightPicker.js"
+);

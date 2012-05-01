@@ -1,0 +1,25 @@
+.onyx-more-toolbar {
+	overflow: visible;
+	position: relative;
+	z-index: 10;
+}
+
+.onyx-more-menu {
+	left: auto;
+	right: 0px;
+	min-width: 0;
+}
+
+.onyx-more-toolbar .onyx-more-menu > * {
+	/*display: block;*/
+	float: right;
+	clear: both;
+	margin: 5px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.onyx-more-button {
+	background-image: url(../../images/more.png);
+	margin: 4px 6px 5px;
+}
