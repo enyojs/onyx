@@ -27,24 +27,30 @@
 			components: [
 				{classes: "onyx-toolbar-inline", components: [
 					{kind: "onyx.Button", content: "Popup...", ontap: "showPopup", popup: "popup"},
-					{name: "popup", classes: "popup", kind: "onyx.Popup", centered: true, floating: true, components: [
+					{name: "popup", classes: "popup", kind: "onyx.Popup", centered: true, floating: true, onHide: "popupHidden", components: [
 						{kind: "onyx.Spinner"},
 						{content: "Popup"}
 					]},
 					{kind: "onyx.Button", content: "Light Popup...", ontap: "showPopup", popup: "lightPopup"},
-					{name: "lightPopup", classes: "popup light", kind: "onyx.Popup", centered: true, floating: true, components: [
+					{name: "lightPopup", classes: "popup light", kind: "onyx.Popup", centered: true, floating: true, onHide: "popupHidden", components: [
 						{kind: "onyx.Spinner", classes: "onyx-light"},
 						{content: "Popup"}
 					]},
 					{kind: "onyx.Button", content: "Modal Popup...", ontap: "showPopup", popup: "modalPopup"},
-					{name: "modalPopup", classes: "popup", kind: "onyx.Popup", centered: true, modal: true, floating: true, content: "Modal Popup..."}
+					{name: "modalPopup", classes: "popup", kind: "onyx.Popup", centered: true, modal: true, floating: true, onHide: "popupHidden", content: "Modal Popup..."}
 				]}
 			],
 			showPopup: function(inSender) {
 				var p = this.$[inSender.popup];
 				if (p) {
+					onyx.scrim.show();
+					//onyx.scrimTransparent.show();
 					p.show();
 				}
+			},
+			popupHidden: function() {
+				onyx.scrim.hide();
+				//onyx.scrimTransparent.hide();
 			}
 		}))().write();
 	</script>
