@@ -1,6 +1,6 @@
 ﻿enyo.depends(
 	"$lib/onyx",
-	"$lib/layout/fittable",
+	"$lib/layout",
 	"$lib/extra/jsonp",
 	"maps",
 	"source/mockdata.js",
