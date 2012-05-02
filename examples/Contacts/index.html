@@ -7,9 +7,10 @@
 	<meta name="viewport" content="width=device-width initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<!-- -->
 	<script src="../../../../enyo/enyo.js" type="text/javascript"></script>
-	<script src="../../../../lib/layout/package.js" type="text/javascript"></script>
-	<script src="../../../../lib/onyx/package.js" type="text/javascript"></script>
-	<script src="../../../../lib/onyx/source/wip-package.js" type="text/javascript"></script>
+	<!-- -->
+	<script src="../../../layout/package.js" type="text/javascript"></script>
+	<script src="../../../onyx/package.js" type="text/javascript"></script>
+	<script src="../../../onyx/source/wip-package.js" type="text/javascript"></script>
 	<!-- -->
 	<script src="NameGenerator.js" type="text/javascript"></script>
 	<!-- -->
@@ -17,56 +18,244 @@
 		body {
 			color: white;
 		}
-		#app_list {
+		.list {
 			background: url(images/bg.png);
 		}
-		
+		/* item */
 		.item {
+			height: 100px;
 			border-top: 1px solid silver;
-			
-		}
-		
-		.item-content.item-selected {
-			background: #226B9A url(images/item-hilite.png) repeat-x bottom;
-		}
-		
-		.item-content {
 			padding: 12px 16px;
 			background-color: #333333;
-			/**/
-			-webkit-box-sizing: border-box;
-			-ms-box-sizing: border-box;
-			-moz-box-sizing: border-box;
-			box-sizing: border-box;
+		}
+		
+		/*
+			FIXME: this class is not helpful when the 
+			swipeable item contains styled controls
+		*/
+		.onyx-swipeable-item-content {
+			padding: 0;
 		}
 
-		.item-content > * {
+		.item-selected {
+			background: #226B9A url(images/item-hilite.png) repeat-x bottom;
+		}
+		.item > * {
 			display: inline-block;
 			vertical-align: middle;
 		}
-
 		.avatar {
+		    width: 32px;
+		    height: 32px;
 			padding-right: 10px;
 		}
-		.title {
+		.description {
 			font-size: 12px;
 			color: silver;
 		}
+		.remove-button {
+			float: right;
+			display: none;
+		}
+		/* divider */
 		.divider {
 			background-color: #666;
 			font-size: 14px;
 			font-weight: bold;
 			padding: 8px 14px;
 		}
-		.remove-button {
+		/* popup */
+		.popup {
+			width: 280px;
+		}
+		.popup > * {
+			display: block;
+			margin: 10px 10px;
+		}
+		.populate-button {
 			float: right;
-			display: none;
+			margin-top: 25px;
+		}
+		.label {
+			display: inline-block;
+			width: 120px;
+			padding-right: 10px;
 		}
 	</style>
 </head>
 
 <body>
 	<script>
+		enyo.kind({
+			name: "App",
+			kind: "FittableRows",
+			components: [
+				{kind: "FittableColumns", components: [
+					{kind: "onyx.MoreToolbar", fit: true, style: "height: 58px;", components: [
+						{kind: "onyx.Button", content: "setup", ontap: "showSetupPopup"},
+						{kind: "onyx.Button", content: "remove selected", ontap: "removeSelected"},
+						{kind: "onyx.InputDecorator", components: [
+							{name: "newContactInput", kind: "onyx.Input", value: "Frankie Fu"},
+						]},
+						{kind: "onyx.Button", content: "new contact", ontap: "addItem"}
+					]},
+					{kind: "onyx.Toolbar", style: "height: 58px;", components: [
+						{kind: "onyx.InputDecorator", components: [
+							{kind: "onyx.Input", placeholder: "Search...", style: "width: 140px;", oninput: "searchInputChange"},
+							{kind: "Image", src: "images/search-input-search.png", style: "width: 20px;"}
+						]}
+					]}
+				]},
+				{kind: "List", classes: "list", fit: true, multiSelect: true, onSetupRow: "setupRow", components: [
+					{name: "divider", classes: "divider"},
+					{kind: "onyx.SwipeableItem", onDelete: "deleteRow", components: [
+						{name: "item", kind: "ContactItem", classes: "item enyo-border-box"}
+					]}
+				]},
+				{name: "popup", kind: "onyx.Popup", modal: true, centered: true, classes: "popup", components: [
+					{components: [
+						{content: "rows:", classes: "label"},
+						{kind: "onyx.InputDecorator", components: [
+							{name: "rowsInput", kind: "onyx.Input", style: "width: 80px", value: 200}
+						]}
+					]},
+					{components: [
+						{content: "rowsPerPage:", classes: "label"},
+						{kind: "onyx.InputDecorator", components: [
+							{name: "rowsPerPageInput", kind: "onyx.Input", style: "width: 80px", value: 50}
+						]}
+					]},
+					{components: [
+						{content: "hide divider:", classes: "label"},
+						{name: "hideDividerCheckbox", kind: "onyx.Checkbox"}
+					]},
+					{components: [
+						{kind: "onyx.Button", content: "populate list", classes: "populate-button", ontap: "populateList"}
+					]}
+				]}
+			],
+			rendered: function() {
+				this.inherited(arguments);
+				this.populateList();
+			},
+			setupRow: function(inSender, inEvent) {
+				var i = inEvent.index;
+				var data = this.filter ? this.filtered : this.db;
+				var item = data[i];
+				// content
+				this.$.item.setContact(item);
+				// selection
+				this.$.item.setSelected(inSender.isSelected(i));
+				// divider
+				if (!this.hideDivider) {
+					var d = item.name[0];
+					var prev = data[i-1];
+					var showd = d != (prev && prev.name[0]);
+					this.$.divider.setContent(d);
+					this.$.divider.canGenerate = showd;
+					this.$.item.applyStyle("border-top", showd ? "none" : null);
+				}
+			},
+			refreshList: function() {
+				if (this.filter) {
+					this.filtered = this.generateFilteredData(this.filter);
+					this.$.list.setRows(this.filtered.length);
+				} else {
+					this.$.list.setRows(this.db.length);
+				}
+				this.$.list.refresh();
+			},
+			addItem: function() {
+				var item = this.generateItem(enyo.cap(this.$.newContactInput.getValue()));
+				for (var i=0, di; di=this.db[i]; i++) {
+					if (di.name > item.name) {
+						this.db.splice(i, 0, item);
+						break;
+					}
+				}
+				this.refreshList();
+			},
+			removeItem: function(inIndex) {
+				this._removeItem(inIndex);
+				this.refreshList();
+				this.$.list.getSelection().deselect(inIndex);
+			},
+			_removeItem: function(inIndex) {
+				var i = this.filter ? this.filtered[inIndex].dbIndex : inIndex;
+				this.db.splice(i, 1);
+			},
+			deleteRow: function(inSender, inEvent) {
+				this.removeItem(inEvent.index);
+				return true;
+			},
+			removeSelected: function() {
+				for (var l=this.$.list.getSelection().getSelected(), i=l.length-1; i>=0; i--) {
+					if (l[i]) {
+						this._removeItem(i);
+					}
+				}
+				this.$.list.getSelection().clear();
+				this.refreshList();
+			},
+			populateList: function() {
+				this.$.popup.hide();
+				this.createDb(this.$.rowsInput.getValue());
+				this.$.list.setRows(this.db.length);
+				this.$.list.setRowsPerPage(this.$.rowsPerPageInput.getValue());
+				//
+				this.hideDivider = this.$.hideDividerCheckbox.getValue();
+				this.$.divider.canGenerate = !this.hideDivider;
+				//
+				this.$.list.reset();
+			},
+			createDb: function(inRows) {
+				this.db = [];
+				for (var i=0; i<inRows; i++) {
+					this.db.push(this.generateItem(makeName(4, 6) + " " + makeName(5, 10)));
+				}
+				this.sortDb();
+			},
+			generateItem: function(inName) {
+				return {
+					name: inName,
+					avatar: "images/avatars/" + avatars[enyo.irand(avatars.length)],
+					title: titles[enyo.irand(titles.length)]
+				}
+			},
+			sortDb: function() {
+				this.db.sort(function(a, b) {
+					if (a.name < b.name) return -1;
+					else if (a.name > b.name) return 1;
+					else return 0;
+				});
+			},
+			showSetupPopup: function() {
+				this.$.popup.show();
+			},
+			searchInputChange: function(inSender) {
+				enyo.job(this.id + ":search", enyo.bind(this, "filterList", inSender.getValue()), 200);
+			},
+			filterList: function(inFilter) {
+				if (inFilter != this.filter) {
+					this.filter = inFilter;
+					this.filtered = this.generateFilteredData(inFilter);
+					this.$.list.setRows(this.filtered.length);
+					this.$.list.reset();
+				}
+			},
+			generateFilteredData: function(inFilter) {
+				var re = new RegExp("^" + inFilter, "i");
+				var r = [];
+				for (var i=0, d; d=this.db[i]; i++) {
+					if (d.name.match(re)) {
+						d.dbIndex = i;
+						r.push(d);
+					}
+				}
+				return r;
+			}
+		});
+
 		var avatars = [
 			"angel.png",
 			"astrologer.png",
@@ -94,127 +283,36 @@
 			"Central Accountability Director",
 			"Product Web Assistant"
 		];
+
+		// It's convenient to create a kind for the item we'll render in the contacts list.
 		enyo.kind({
-			name: "App",
-			classes: "enyo-unselectable",
-			kind: "FittableRows",
+			name: "ContactItem",
+			events: {
+				onRemove: ""
+			},
 			components: [
-				{kind: "onyx.Toolbar", components: [
-					{kind: "onyx.InputDecorator", components: [
-						{name: "rowsInput", kind: "onyx.Input", value: 200},
-					]},
-					{kind: "onyx.Button", content: "create contacts", ontap: "createList"},
-					{kind: "onyx.InputDecorator", components: [
-						{name: "nameInput", kind: "onyx.Input", value: "Frankie Fu"},
-					]},
-					{kind: "onyx.Button", content: "new contact", ontap: "addItem"},
-					{kind: "onyx.Button", content: "remove selected", ontap: "removeSelected"}
-				]},
-				{name: "list", kind: "List", fit: true, multiSelect: true, onSetupRow: "setupItem", onSelect: "selectItem", components: [
-					{name: "divider", showing: false, classes: "divider"},
-					{name: "item", kind: "onyx.SwipeableItem", classes: "item", XtapHighlight: false, contentClasses: "item-content", onDelete: "removeTap", components: [
-						{name: "avatar", kind: "Image", classes: "avatar"},
-						{components: [
-							{name: "name"},
-							{name: "title", classes: "title"}
-						]}
-					]}
+				{name: "avatar", kind: "Image", classes: "avatar"},
+				{components: [
+					{name: "name"},
+					{name: "title", classes: "description"},
+					{content: "(415) 711-1234", classes: "description"}
 				]}
 			],
-			create: function() {
-				this.inherited(arguments);
-				var rows = this.$.list.rows = 200;
-				this.createDb(rows);
+			setContact: function(inContact) {
+				this.$.name.setContent(inContact.name);
+				this.$.avatar.setSrc(inContact.avatar);
+				this.$.title.setContent(inContact.title);
 			},
-			setupItem: function(inSender, inEvent) {
-				var i = inEvent.index;
-				var item = this.db[i];
-				// item
-				this.$.name.setContent(item.name);
-				this.$.avatar.setSrc(item.avatar);
-				this.$.title.setContent(item.title);
-				this.$.item.applyContentStyle("height", item.height + "px");
-				// selection
-				this.$.item.addRemoveContentClass("item-selected", this.isSelected(i));
-				// divider
-				var d = item.name[0];
-				var prev = this.db[i-1];
-				var showd = d != (prev && prev.name[0]);
-				this.$.divider.setContent(d);
-				this.$.divider.setShowing(showd);
-				this.$.item.applyStyle("border-top", showd ? "none" : null);
-			},
-			createList: function() {
-				this.createDb(this.$.rowsInput.getValue());
-				this.$.list.setRows(this.db.length);
-				this.$.list.reset();
-			},
-			createDb: function(inRows) {
-				this.db = [];
-				for (var i=0; i<inRows; i++) {
-					this.db.push(this.generateItem(makeName(4, 6) + " " + makeName(5, 10)));
-				}
-				this.sortDb();
-			},
-			generateItem: function(inName) {
-				return {
-					name: inName,
-					avatar: "images/avatars/" + avatars[enyo.irand(avatars.length)],
-					title: titles[enyo.irand(titles.length)],
-					//height: 70 + enyo.irand(10) * 4
-					height: 110
-				}
-			},
-			sortDb: function() {
-				this.db.sort(function(a, b) {
-					if (a.name < b.name) return -1;
-					else if (a.name > b.name) return 1;
-					else return 0;
-				});
-			},
-			refreshList: function() {
-				this.$.list.setRows(this.db.length);
-				this.$.list.refresh();
-			},
-			addItem: function() {
-				var item = this.generateItem(enyo.cap(this.$.nameInput.getValue()));
-				for (var i=0, di; di=this.db[i]; i++) {
-					if (di.name > item.name) {
-						this.db.splice(i, 0, item);
-						break;
-					}
-				}
-				this.refreshList();
-			},
-			removeItem: function(inIndex) {
-				this._removeItem(inIndex);
-				this.refreshList();
-			},
-			_removeItem: function(inIndex) {
-				this.db.splice(inIndex, 1);
-				this.selection && this.selection.deselect(inIndex);
-			},
-			selectItem: function(inSender, inEvent) {
-				this.selection = inEvent.originator;
-				this.$.list.refresh();
+			setSelected: function(inSelected) {
+				this.addRemoveClass("item-selected", inSelected);
 			},
 			removeTap: function(inSender, inEvent) {
-				this.removeItem(inEvent.index);
+				this.doRemove(inEvent);
 				return true;
-			},
-			removeSelected: function() {
-				for (var l=this.selection.getSelected(), i=l.length-1; i>=0; i--) {
-					if (l[i]) {
-						this._removeItem(i);
-					}
-				}
-				this.refreshList();
-			},
-			isSelected: function(inIndex) {
-				return this.selection && this.selection.isSelected(inIndex);
 			}
 		});
-		new App({fit: true}).write();
+
+		new App({fit: true, classes: "enyo-unselectable"}).write();
 	</script>
 </body>
 </html>
