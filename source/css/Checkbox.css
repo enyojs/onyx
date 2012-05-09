@@ -10,8 +10,7 @@
 	vertical-align: middle;
 }
 
-.onyx-checkbox-checked {
-	Xbackground-position: -1px -33px;
+.onyx-checkbox[checked] {
 	background-position: 0px -32px;
 }
 
