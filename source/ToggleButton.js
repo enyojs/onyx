@@ -48,10 +48,14 @@ enyo.kind({
 	],
 	create: function() {
 		this.inherited(arguments);
-		this.valueChanged();
+		this.value = Boolean(this.value || this.active);
 		this.onContentChanged();
 		this.offContentChanged();
 		this.disabledChanged();
+	},
+	rendered: function() {
+		this.inherited(arguments);
+		this.valueChanged();
 	},
 	valueChanged: function() {
 		this.addRemoveClass("off", !this.value);

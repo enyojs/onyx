@@ -19,7 +19,7 @@ enyo.kind({
 	},
 	classes: "onyx-icon-button",
 	//* @protected
-	create: function() {
+	rendered: function() {
 		this.inherited(arguments);
 		this.activeChanged();
 	},
