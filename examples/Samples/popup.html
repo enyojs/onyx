@@ -2,6 +2,7 @@
 <html>
 <head>
 	<title>onyx popup sample</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<script src="../../../../enyo/enyo.js" type="text/javascript"></script>
 	<script src="../../../onyx/package.js" type="text/javascript"></script>
 	<script src="../../../onyx/source/wip-package.js" type="text/javascript"></script>
@@ -37,7 +38,13 @@
 						{content: "Popup"}
 					]},
 					{kind: "onyx.Button", content: "Modal Popup...", ontap: "showPopup", popup: "modalPopup"},
-					{name: "modalPopup", classes: "popup", kind: "onyx.Popup", centered: true, modal: true, floating: true, onHide: "popupHidden", content: "Modal Popup..."}
+					{name: "modalPopup", classes: "popup", kind: "onyx.Popup", centered: true, modal: true, floating: true, onShow: "popupShown", onHide: "popupHidden", components: [
+						{kind: "onyx.InputDecorator", components: [
+							{kind: "onyx.Input"}
+						]},
+						{tag: "br"},
+						{kind: "onyx.Button", content: "Close", ontap: "closeModalPopup"}
+					]}
 				]}
 			],
 			showPopup: function(inSender) {
@@ -46,11 +53,22 @@
 					onyx.scrim.show();
 					//onyx.scrimTransparent.show();
 					p.show();
+					//this.$.input.focus();
 				}
 			},
 			popupHidden: function() {
 				onyx.scrim.hide();
-				//onyx.scrimTransparent.hide();
+				// FIXME: needed to hide ios keyboard
+				document.activeElement.blur();
+				
+			},
+			popupShown: function() {
+				// FIXME: does not focus input on android.
+				this.$.input.focus();
+				enyo.job("focus", enyo.bind(this.$.input, "focus"), 500);
+			},
+			closeModalPopup: function() {
+				this.$.modalPopup.hide();
 			}
 		}))().write();
 	</script>
