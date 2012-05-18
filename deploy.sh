@@ -15,5 +15,5 @@ EOF
 else
 	mkdir $TARGET/images/
 	cp -R $SOURCE/images/*.* $TARGET/images/
-	cp $SOURCE/*.txt $TARGET
+	cp -R $SOURCE/*.txt $TARGET
 fi
