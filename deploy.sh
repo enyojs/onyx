@@ -13,6 +13,7 @@ Must supply target folder parameter, e.g.:
   deploy.bat ../deploy/lib/onyx
 EOF
 else
-	cp -r $SOURCE/images $TARGET
-	cp -r $SOURCE/*.txt $TARGET
+	mkdir $TARGET/images/
+	cp -R $SOURCE/images/*.* $TARGET/images/
+	cp $SOURCE/*.txt $TARGET
 fi
