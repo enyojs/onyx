@@ -64,7 +64,6 @@ enyo.kind({
 		this.doShowTraffic({value: inSender.getValue()});
 	},
 	mapTypeChange: function(inSender, inEvent) {
-		this.log();
 		var o = inEvent.originator;
 		this.doMapTypeSelect({mapType: o.parent.mapType});
 	},
