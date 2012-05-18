@@ -19,7 +19,7 @@ enyo.kind({
 						{kind: "LabeledItem", label: "Show Drop Pin", icon: "images/icon-dropPin.png", defaultKind: "onyx.ToggleButton", onChange: "dropPinChange"},
 						{kind: "LabeledItem", label: "Show Traffic", icon: "images/icon-traffic.png", defaultKind: "onyx.ToggleButton", onChange: "showTrafficChange"}
 					]},
-					{name: "mapType", kind: "Group", classes: "onyx-groupbox settings", highlander: true, onChange: "mapTypeChange", components: [
+					{name: "mapType", kind: "Group", classes: "onyx-groupbox settings", highlander: true, onchange: "mapTypeChange", components: [
 						{kind: "onyx.GroupboxHeader", content: "Map Type"},
 						{kind: "LabeledItem", label: "Road", mapType: "road", icon: "images/map-type-road.png", value: true},
 						{kind: "LabeledItem", label: "Satellite", mapType: "aerial", icon: "images/map-type-satellite.png"},
@@ -64,6 +64,7 @@ enyo.kind({
 		this.doShowTraffic({value: inSender.getValue()});
 	},
 	mapTypeChange: function(inSender, inEvent) {
+		this.log();
 		var o = inEvent.originator;
 		this.doMapTypeSelect({mapType: o.parent.mapType});
 	},
