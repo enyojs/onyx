@@ -68,30 +68,30 @@ enyo.kind({
 	},
 	deleteTap: function(inSender, inEvent) {
 		this.reset();
-		this.doDelete({index: inEvent.index});
+		this.doDelete();
 		return true;
 	},
 	cancelTap: function(inSender, inEvent) {
 		this.$.client.animateToMax();
-		this.doCancel({index: inEvent.index});
+		this.doCancel();
 		return true;
 	},
 	down: function(inSender, inEvent) {
 		// on down, remove swiping state
 		var last = this.swiping;
 		this.swiping = inEvent.index;
-		var repeater = inEvent.repeater;
-		if (this.swiping != last && last >= 0 && repeater) {
-			repeater.performOnRow(last, enyo.bind(this, function() {
+		var flyweight = inEvent.flyweight;
+		if (this.swiping != last && last >= 0 && flyweight) {
+			flyweight.performOnRow(last, enyo.bind(this, function() {
 				this.reset();
 			}));
 		}
 	},
 	clientDragStart: function(inSender, inEvent) {
 		if (inSender.dragging) {
-			var repeater = inEvent.repeater;
-			if (repeater) {
-				repeater.prepareRow(inEvent.index);
+			var flyweight = inEvent.flyweight;
+			if (flyweight) {
+				flyweight.prepareRow(inEvent.index);
 				// if needed, render confirm.
 				// NOTE: position relative so can enyo-fit confirm; apply only when confirm needed
 				// because it's a known rendering slowdown.

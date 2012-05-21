@@ -18,10 +18,10 @@ enyo.kind({
 	},
 	statics: {
 		addFlyweightClass: function(inControl, inClass, inEvent, inIndex) {
-			var repeater = inEvent.repeater;
-			if (repeater) {
+			var flyweight = inEvent.flyweight;
+			if (flyweight) {
 				var index = inIndex != undefined ? inIndex : inEvent.index;
-				repeater.performOnRow(index, function() {
+				flyweight.performOnRow(index, function() {
 					if (!inControl.hasClass(inClass)) {
 						inControl.addClass(inClass);
 					} else {
@@ -34,10 +34,10 @@ enyo.kind({
 		},
 		// FIXME: dry
 		removeFlyweightClass: function(inControl, inClass, inEvent, inIndex) {
-			var repeater = inEvent.repeater;
-			if (repeater) {
+			var flyweight = inEvent.flyweight;
+			if (flyweight) {
 				var index = inIndex != undefined ? inIndex : inEvent.index;
-				repeater.performOnRow(index, function() {
+				flyweight.performOnRow(index, function() {
 					if (!inControl.hasClass(inClass)) {
 						inControl.setClassAttribute(inControl.getClassAttribute());
 					} else {
