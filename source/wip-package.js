@@ -20,5 +20,6 @@ enyo.depends(
 	"Item.js",
 	"SwipeableItem.js",
 	"Spinner.js",
-	"Scrim.js"
+	"Scrim.js",
+	"TabPanels.js"
 );
