@@ -35,6 +35,9 @@ enyo.kind({
 		this.item = inItem;
 	},
 	selectedChanged: function(inOld) {
+		if (!this.item) {
+			return;
+		}
 		if (inOld !== undefined) {
 			this.item.removeClass("selected");
 			this.$.client.renderRow(inOld);
