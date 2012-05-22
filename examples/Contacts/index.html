@@ -106,7 +106,7 @@
 						]}
 					]}
 				]},
-				{kind: "List", classes: "list", fit: true, multiSelect: true, onSetupRow: "setupRow", components: [
+				{kind: "List", classes: "list", fit: true, multiSelect: true, onSetupItem: "setupItem", components: [
 					{name: "divider", classes: "divider"},
 					{kind: "onyx.SwipeableItem", onDelete: "deleteRow", components: [
 						{name: "item", kind: "ContactItem", classes: "item enyo-border-box"}
@@ -114,9 +114,9 @@
 				]},
 				{name: "popup", kind: "onyx.Popup", modal: true, centered: true, classes: "popup", components: [
 					{components: [
-						{content: "rows:", classes: "label"},
+						{content: "count:", classes: "label"},
 						{kind: "onyx.InputDecorator", components: [
-							{name: "rowsInput", kind: "onyx.Input", style: "width: 80px", value: 200}
+							{name: "countInput", kind: "onyx.Input", style: "width: 80px", value: 200}
 						]}
 					]},
 					{components: [
@@ -138,7 +138,7 @@
 				this.inherited(arguments);
 				this.populateList();
 			},
-			setupRow: function(inSender, inEvent) {
+			setupItem: function(inSender, inEvent) {
 				var i = inEvent.index;
 				var data = this.filter ? this.filtered : this.db;
 				var item = data[i];
@@ -159,9 +159,9 @@
 			refreshList: function() {
 				if (this.filter) {
 					this.filtered = this.generateFilteredData(this.filter);
-					this.$.list.setRows(this.filtered.length);
+					this.$.list.setCount(this.filtered.length);
 				} else {
-					this.$.list.setRows(this.db.length);
+					this.$.list.setCount(this.db.length);
 				}
 				this.$.list.refresh();
 			},
@@ -199,8 +199,8 @@
 			},
 			populateList: function() {
 				this.$.popup.hide();
-				this.createDb(this.$.rowsInput.getValue());
-				this.$.list.setRows(this.db.length);
+				this.createDb(this.$.countInput.getValue());
+				this.$.list.setCount(this.db.length);
 				this.$.list.setRowsPerPage(this.$.rowsPerPageInput.getValue());
 				//
 				this.hideDivider = this.$.hideDividerCheckbox.getValue();
@@ -208,9 +208,9 @@
 				//
 				this.$.list.reset();
 			},
-			createDb: function(inRows) {
+			createDb: function(inCount) {
 				this.db = [];
-				for (var i=0; i<inRows; i++) {
+				for (var i=0; i<inCount; i++) {
 					this.db.push(this.generateItem(makeName(4, 6) + " " + makeName(5, 10)));
 				}
 				this.sortDb();
@@ -239,7 +239,7 @@
 				if (inFilter != this.filter) {
 					this.filter = inFilter;
 					this.filtered = this.generateFilteredData(inFilter);
-					this.$.list.setRows(this.filtered.length);
+					this.$.list.setCount(this.filtered.length);
 					this.$.list.reset();
 				}
 			},

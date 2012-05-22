@@ -4,11 +4,11 @@ enyo.kind({
 	classes: "onyx-flyweight-picker",
 	published: {
 		//* How many rows to render
-		rows: 0
+		count: 0
 	},
 	events: {
 		//* Sends the row index, and the row control, for decoration
-		onSetupRow: ""
+		onSetupItem: ""
 	},
 	components: [
 		{name: "scroller", kind: "enyo.Scroller", strategyKind: "TouchScrollStrategy", components: [
@@ -18,7 +18,7 @@ enyo.kind({
 	scrollerName: "scroller",
 	create: function() {
 		this.inherited(arguments);
-		this.rowsChanged();
+		this.countChanged();
 	},
 	rendered: function() {
 		this.inherited(arguments);
@@ -28,8 +28,8 @@ enyo.kind({
 		var n = this.$.client.fetchRowNode(this.selected);
 		this.getScroller().scrollToNode(n, !this.menuUp);
 	},
-	rowsChanged: function() {
-		this.$.client.rows = this.rows;
+	countChanged: function() {
+		this.$.client.count = this.count;
 	},
 	processActivatedItem: function(inItem) {
 		this.item = inItem;

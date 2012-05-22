@@ -8,7 +8,7 @@ enyo.kind({
 					{kind: "onyx.Toolbar", content: "Accounts", style: "text-align: center; padding: 13px 0 14px;"},
 					{content: "MAILBOXES", classes: "divider"},
 					{kind: "Scroller", fit: true, components: [
-						{kind: "Repeater", rows: 0, onSetupRow: "setupRow", ontap: "mailboxTap", components: [
+						{kind: "Repeater", count: 0, onSetupItem: "setupItem", ontap: "mailboxTap", components: [
 							{name: "item", kind: "ToolDecorator", classes: "mailbox-item", components: [
 								{kind: "Image", src: "images/mailbox_empty.png"},
 								{tag: "span", name: "caption", style: "padding-left: 8px;"}
@@ -24,7 +24,7 @@ enyo.kind({
 					]},
 					{name: "boxName", content: "(no mailbox)", classes: "divider"},
 					{kind: "Scroller", fit: true, components: [
-						{kind: "Repeater", rows: 0, onSetupRow: "setupHeaderRow", ontap: "headerTap", ondown: "headerDown", onclick: "headerClick", components: [
+						{kind: "Repeater", count: 0, onSetupItem: "setupHeaderItem", ontap: "headerTap", ondown: "headerDown", onclick: "headerClick", components: [
 							{name: "item", kind: "HeaderItem"}
 						]}
 					]}
@@ -55,13 +55,13 @@ enyo.kind({
 	receiveBoxes: function(inSender, inBoxes) {
 		//this.log(inBoxes);
 		this.boxes = inBoxes;
-		this.$.repeater.rows = this.boxes.length;
+		this.$.repeater.count = this.boxes.length;
 		this.$.repeater.build();
 		this.$.repeater.render();
 	},
-	setupRow: function(inSender, inEvent) {
+	setupItem: function(inSender, inEvent) {
 		var item = this.boxes[inEvent.index];
-		inEvent.row.$.caption.setContent(item.name);
+		inEvent.item.$.caption.setContent(item.name);
 	},
 	mailboxTap: function(inSender, inEvent) {
 		var o = inEvent.originator.owner;
@@ -74,7 +74,7 @@ enyo.kind({
 			this.mailbox.$.item.removeClass("selected-item");
 		}
 		//
-		this.$.repeater2.rows = 0;
+		this.$.repeater2.count = 0;
 		this.$.repeater2.build();
 		this.$.repeater2.render();
 		//
@@ -99,16 +99,16 @@ enyo.kind({
 	_receiveHeaders: function(inSender, inResponse) {
 		//this.log(inResponse);
 		this.headers = inResponse;
-		this.$.repeater2.rows = Math.min(this.headers.length, 500);
+		this.$.repeater2.count = Math.min(this.headers.length, 500);
 		//
 		var box = this.boxes[this.mailbox.rowIndex];
-		this.$.boxName.setContent(box.name + " (" + this.$.repeater2.rows + ")");
+		this.$.boxName.setContent(box.name + " (" + this.$.repeater2.count + ")");
 		//
 		this.$.repeater2.build();
 		this.$.repeater2.render();
 	},
-	setupHeaderRow: function(inSender, inEvent) {
-		inEvent.row.$.item.setItem(this.headers[inEvent.index]);
+	setupHeaderItem: function(inSender, inEvent) {
+		inEvent.item.$.item.setItem(this.headers[inEvent.index]);
 	},
 	//headerClick: function(inSender, inEvent) {
 	//headerDown: function(inSender, inEvent) {
