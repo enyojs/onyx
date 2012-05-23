@@ -36,6 +36,8 @@ enyo.kind({
 	reset: function() {
 		this.applyStyle("position", null);
 		this.$.confirm.setShowing(false);
+		// stop animating if we reset.
+		this.$.client.getAnimator().stop();
 		this.$.client.setValue(0);
 	},
 	contentClassesChanged: function() {
