@@ -30,6 +30,7 @@ enyo.kind({
 	},
 	itemActivated: function(inSender, inEvent) {
 		inEvent.originator.setActive(false);
+		return true;
 	},
 	showingChanged: function() {
 		this.inherited(arguments);

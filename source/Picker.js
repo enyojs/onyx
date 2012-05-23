@@ -36,7 +36,7 @@ enyo.kind({
 	},
 	itemActivated: function(inSender, inEvent) {
 		this.processActivatedItem(inEvent.originator)
-		this.inherited(arguments);
+		return this.inherited(arguments);
 	},
 	processActivatedItem: function(inItem) {
 		if (inItem.active) {
