@@ -13,6 +13,7 @@ enyo.kind({
 		{name: "client", kind: "enyo.Scroller", strategyKind: "TouchScrollStrategy"}
 	],
 	floating: true,
+	showOnTop: true,
 	scrollerName: "client",
 	create: function() {
 		this.inherited(arguments);

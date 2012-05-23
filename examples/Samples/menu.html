@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html>
 <head>
 	<title>onyx popup sample</title>
@@ -61,8 +61,8 @@
 						{kind: "onyx.Button", content: "Modal Popup...", ontap: "showPopup", popup: "modalPopup"},
 						{name: "modalPopup", kind: "onyx.Popup", centered: true, modal: true, floating: true, ontap: "floatTap", style: "font-size: 200px;", content: "Popup!!!"},
 						{kind: "onyx.MenuDecorator", components: [
-							{content: "Popup menu"},
-							{kind: "onyx.Menu", components: [
+							{content: "Popup menu (floating)"},
+							{kind: "onyx.Menu", floating: true, components: [
 								{content: "1"},
 								{content: "2"},
 								{classes: "onyx-menu-divider"},
