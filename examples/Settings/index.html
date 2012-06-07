@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Onyx Settings</title>
@@ -32,6 +32,10 @@
 		}
 		/* right-align the last control inside item */
 		.groupbox-item > :last-child {
+			float: right;
+		}
+		/* IE8 */
+		.groupbox-item > :first-child + div {
 			float: right;
 		}
 		.groupbox-item > :only-child {
