@@ -35,6 +35,21 @@
 	height: 36px;
 }
 
+.onyx-toolbar .onyx-button.onyx-affirmative {
+	background-color: #91BA07;
+	color: #F1F1F1;
+}
+
+.onyx-toolbar .onyx-button.onyx-negative {
+	background-color: #C51616;
+	color: #F1F1F1;
+}
+
+.onyx-toolbar .onyx-button.onyx-blue {
+	background-color: #35A8EE;
+	color: #F1F1F1;
+}
+
 .onyx-toolbar .onyx-input-decorator {
 	margin: 1px 3px;
 	box-shadow: inset 0px 1px 4px rgba(0,0,0,0.1);
