@@ -69,17 +69,17 @@
 
 /* optional */
 
-.onyx-affirmative {
+button.onyx-button.onyx-affirmative {
 	background-color: #91BA07;
 	color: #F1F1F1;
 }
 
-.onyx-negative {
+button.onyx-button.onyx-negative {
 	background-color: #C51616;
 	color: #F1F1F1;
 }
 
-.onyx-blue {
+button.onyx-button.onyx-blue {
 	background-color: #35A8EE;
 	color: #F1F1F1;
 }
