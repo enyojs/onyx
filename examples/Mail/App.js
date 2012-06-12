@@ -65,7 +65,7 @@ enyo.kind({
 	},
 	mailboxTap: function(inSender, inEvent) {
 		var o = inEvent.originator.owner;
-		if ("rowIndex" in o) {
+		if ("index" in o) {
 			this.selectMailbox(o);
 		}
 	},
@@ -82,7 +82,7 @@ enyo.kind({
 		if (this.mailbox) {
 			this.mailbox.$.item.addClass("selected-item");
 			//
-			var box = this.boxes[this.mailbox.rowIndex];
+			var box = this.boxes[this.mailbox.index];
 			this.$.boxName.setContent(box.name);
 			//
 			var url = "php/headers.php";
@@ -101,7 +101,7 @@ enyo.kind({
 		this.headers = inResponse;
 		this.$.repeater2.count = Math.min(this.headers.length, 500);
 		//
-		var box = this.boxes[this.mailbox.rowIndex];
+		var box = this.boxes[this.mailbox.index];
 		this.$.boxName.setContent(box.name + " (" + this.$.repeater2.count + ")");
 		//
 		this.$.repeater2.build();
@@ -115,10 +115,10 @@ enyo.kind({
 	headerTap: function(inSender, inEvent) {
 		//console.log("delay between dispatch and handler:", new Date().getTime() - inEvent.time);
 		var o = inEvent.originator.owner;
-		if (!("rowIndex" in o)) {
+		if (!("index" in o)) {
 			o = inEvent.originator.owner.owner;
 		}
-		if ("rowIndex" in o) {
+		if ("index" in o) {
 			this.selectHeader(o);
 		}
 	},
@@ -133,8 +133,8 @@ enyo.kind({
 		enyo.asyncMethod(this, function() {
 			this.$.mailBody.setContent("");
 			//
-			var box = this.boxes[this.mailbox.rowIndex];
-			var header = this.headers[this.header.rowIndex];
+			var box = this.boxes[this.mailbox.index];
+			var header = this.headers[this.header.index];
 			//this.log(header.msgno);
 			//
 			if (this.mail) {
@@ -164,7 +164,7 @@ enyo.kind({
 		this.$.mailBody.setContent("<pre>" + inResponse + "</pre>");
 	},
 	dumpMail: function() {
-		var box = this.boxes[this.mailbox.rowIndex];
+		var box = this.boxes[this.mailbox.index];
 		var h$ = this.headers;
 		var inflight = 0;
 		var data = {};
