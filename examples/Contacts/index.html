@@ -107,7 +107,7 @@
 					]}
 				]},
 				{kind: "List", classes: "list", fit: true, multiSelect: true, onSetupItem: "setupItem", components: [
-					{name: "divider", classes: "divider"},
+					{name: "divider", classes: "divider", ontap: "dividerTap"},
 					{kind: "onyx.SwipeableItem", onDelete: "deleteRow", components: [
 						{name: "item", kind: "ContactItem", classes: "item enyo-border-box"}
 					]}
@@ -253,6 +253,10 @@
 					}
 				}
 				return r;
+			},
+			dividerTap: function(inSender, inEvent) {
+				// Prevent bubbling
+				return true;
 			}
 		});
 
