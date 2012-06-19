@@ -28,7 +28,6 @@ enyo.kind({
 						inControl.setClassAttribute(inControl.getClassAttribute());
 					}
 				});
-				enyo.log(inControl.generated);
 				inControl.removeClass(inClass);
 			}
 		},
