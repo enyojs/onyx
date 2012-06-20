@@ -19,16 +19,7 @@ enyo.kind({
 	},
 	showingChanged: function() {
 		this.inherited(arguments);
-		if (this.showing && this.hasNode()) {
-			this.removeClass("onyx-menu-up");
-			var b = this.node.getBoundingClientRect();
-			this.menuUp = b.top + b.height > window.innerHeight;
-			this.addRemoveClass("onyx-menu-up", this.menuUp);
-			if (this.floating && this.menuUp) {
-				var r = this.activatorOffset;
-				this.applyPosition({top: (r.top - b.height + r.height), bottom: "auto"});
-			}
-		}
+		this.adjustPosition(true);
 	},
 	requestMenuShow: function(inSender, inEvent) {
 		if (this.floating) {
@@ -52,5 +43,36 @@ enyo.kind({
 		// getBoundingClientRect returns top/left values which are relative to the viewport and not absolute
 		var r = inNode.getBoundingClientRect();
 		return {top: r.top + window.pageYOffset, left: r.left + window.pageXOffset, height: r.height, width: r.width};
+	},	
+	//* @protected
+	/* Adjusts the menu position to fit inside the current window size. 
+	   belowActivator determines whether to position the top of the menu below or on top of the activator
+	*/
+	adjustPosition: function(belowActivator) {
+		if (this.showing && this.hasNode()) {
+			this.removeClass("onyx-menu-up");
+			var b = this.node.getBoundingClientRect();
+			this.menuUp = b.top + b.height > window.innerHeight;
+			this.addRemoveClass("onyx-menu-up", this.menuUp);
+			
+			if (this.floating) {
+				var r = this.activatorOffset;
+				//if the menu doesn't fit below the activator, move it up
+				if (this.menuUp) {
+					this.applyPosition({top: (r.top - b.height + r.height), bottom: "auto"});
+				}
+				else {
+					//if the top of the menu is above the top of the activator and there's room to move it down, do so
+					if ((b.top < r.top) && (r.top + (belowActivator ? r.height : 0) + b.height < window.innerHeight))
+					{
+						this.applyPosition({top: r.top + (this.showOnTop ? 0 : r.height), bottom: "auto"});
+					}
+				}
+			}
+		}
+	},
+	resizeHandler: function() {
+		this.inherited(arguments);			
+		this.adjustPosition(true);	
 	}
 });
