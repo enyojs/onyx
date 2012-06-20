@@ -13,6 +13,9 @@
 			name: "App",
 			kind: "Control",
 			classes: "onyx",
+			handlers: {
+				onMenuItemSelected: "menuItemSelected"
+			},
 			components: [
 				{style: "padding: 10px;", content: "Some popups in a toolbar:"},
 				{kind: "onyx.Toolbar", classes: "onyx-menu-toolbar", components: [
@@ -96,6 +99,7 @@
 							]}
 						]}
 					]},
+					{name:"menuSelection", content: "Menu Item: nothing selected", style: "text-align:center; padding-top:50px"},
 					{style: "height: 1000px;"}
 				]}
 			],
@@ -112,6 +116,9 @@
 			},
 			preventMenuActivate: function() {
 				return true;
+			},
+			menuItemSelected: function(inSender, inEvent) {
+				this.$.menuSelection.setContent("Menu Item: " + inEvent.originator.content + " Selected");
 			}
 		}))({fit: true}).write();
 	</script>
