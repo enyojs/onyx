@@ -52,5 +52,9 @@ enyo.kind({
 			this.selected.addClass("selected");
 			this.doSelect({selected: this.selected, content: this.selected.content});
 		}
+	},
+	resizeHandler: function() {
+		this.inherited(arguments);			
+		this.adjustPosition(false);
 	}
 });
