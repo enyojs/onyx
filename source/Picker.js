@@ -7,7 +7,7 @@ enyo.kind({
 		maxHeight: "200px"
 	},
 	events: {
-		onSelect: ""
+		onChange: ""
 	},
 	components: [
 		{name: "client", kind: "enyo.Scroller", strategyKind: "TouchScrollStrategy"}
@@ -50,8 +50,8 @@ enyo.kind({
 		}
 		if (this.selected) {
 			this.selected.addClass("selected");
-			this.doSelect({selected: this.selected, content: this.selected.content});
-		}
+			this.doChange({selected: this.selected, content: this.selected.content});
+		};
 	},
 	resizeHandler: function() {
 		this.inherited(arguments);			

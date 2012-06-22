@@ -8,7 +8,11 @@ enyo.kind({
 	},
 	events: {
 		//* Sends the row index, and the row control, for decoration
-		onSetupItem: ""
+		onSetupItem: "",
+		onSelect: ""
+	},
+	handlers: {
+		onSelect: "itemSelect"
 	},
 	components: [
 		{name: "scroller", kind: "enyo.Scroller", strategyKind: "TouchScrollStrategy", components: [
@@ -47,9 +51,17 @@ enyo.kind({
 		// need to remove the class from control to make sure it won't apply to other rows
 		this.item.removeClass("selected");
 		var n = this.$.client.fetchRowNode(this.selected);
-		this.doSelect({selected: this.selected, content: n && n.textContent || this.item.content});
+		this.doChange({selected: this.selected, content: n && n.textContent || this.item.content});
 	},
 	itemTap: function(inSender, inEvent) {
 		this.setSelected(inEvent.rowIndex);
+		//Send the select event that we want the client to receive.
+		this.doSelect({selected: this.item, content: this.item.content})
+	},
+	itemSelect: function(inSender, inEvent) {
+		//Block all select events that aren't coming from this control. This is to prevent select events from MenuItems since they won't have the correct value in a Flyweight context.
+		if (inEvent.originator != this) {
+			return true;
+		}
 	}
 });

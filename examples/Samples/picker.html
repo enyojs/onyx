@@ -22,7 +22,7 @@
 			kind: "FittableRows",
 			classes: "onyx enyo-unselectable",
 			handlers: {
-				onPickerItemSelected: "pickerItemSelected"
+				onSelect: "itemSelected"
 			},
 			components: [
 				{kind: "onyx.Toolbar", content: "Pickers"},
@@ -111,8 +111,8 @@
 			setupYear: function(inSender, inEvent) {
 				this.$.year.setContent(1900+inEvent.index);
 			},
-			pickerItemSelected: function(inSender, inEvent) {console.log(inEvent)
-				this.$.pickerSelection.setContent("Picker Item: " + inEvent.originator.content + " selected");
+			itemSelected: function(inSender, inEvent) {
+				this.$.pickerSelection.setContent("Picker Item: " + inEvent.selected.content + " selected");
 			}
 		}))({fit: true}).write();
 	</script>

@@ -9,8 +9,7 @@ enyo.kind({
 	classes: "onyx-popup-decorator enyo-unselectable",
 	handlers: {
 		onActivate: "activated",
-		onHide: "menuHidden",
-		onMenuItemSelected: "menuItemSelected"
+		onHide: "menuHidden"
 	},
 	activated: function(inSender, inEvent) {
 		this.requestHideTooltip();
@@ -45,8 +44,5 @@ enyo.kind({
 		if (!this.menuActive) {
 			this.inherited(arguments);
 		}
-	},
-	menuItemSelected: function(inSender, inEvent){
-		this.requestHideMenu();
 	}
 });
