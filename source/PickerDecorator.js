@@ -4,9 +4,9 @@ enyo.kind({
 	classes: "onyx-picker-decorator",
 	defaultKind: "onyx.PickerButton",
 	handlers: {
-		onSelect: "selected"
+		onChange: "change"
 	},
-	selected: function(inSender, inEvent) {
-		this.waterfallDown("onSelect", inEvent);
+	change: function(inSender, inEvent) {
+		this.waterfallDown("onChange", inEvent);
 	}
 });

@@ -21,6 +21,9 @@
 			name: "App",
 			kind: "FittableRows",
 			classes: "onyx enyo-unselectable",
+			handlers: {
+				onSelect: "itemSelected"
+			},
 			components: [
 				{kind: "onyx.Toolbar", content: "Pickers"},
 				{fit: true, classes: "onyx-toolbar-inline", style: "margin: 20px;", components: [
@@ -80,8 +83,9 @@
 							{content: "Outlook"},
 							{content: "Hotmail", active: true}
 						]}
-					]}
-				]}
+					]},
+					{name:"pickerSelection", content:"Picker Item: select something", style:"margin-left:200px"}
+				]},
 			],
 			create: function() {
 				this.inherited(arguments);
@@ -106,6 +110,9 @@
 			},
 			setupYear: function(inSender, inEvent) {
 				this.$.year.setContent(1900+inEvent.index);
+			},
+			itemSelected: function(inSender, inEvent) {
+				this.$.pickerSelection.setContent("Picker Item: " + inEvent.selected.content + " selected");
 			}
 		}))({fit: true}).write();
 	</script>
