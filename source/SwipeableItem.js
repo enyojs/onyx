@@ -11,7 +11,9 @@ enyo.kind({
 	kind: "onyx.Item",
 	classes: "onyx-swipeable-item",
 	published: {
-		contentClasses: ""
+		contentClasses: "",
+		//* Set to true to prevent a drag from bubbling beyond the SwipeableItem.
+		preventDragPropagation: false
 	},
 	defaultContentClasses: "onyx-swipeable-item-content",
 	handlers: {
@@ -108,5 +110,6 @@ enyo.kind({
 				// note: can't teardown.
 			}
 		}
+		return this.preventDragPropagation;
 	}
 });
