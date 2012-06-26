@@ -3,8 +3,6 @@ enyo.depends(
 	"css/Menu.css",
 	"css/MoreToolbar.css",
 	"css/Picker.css",
-	"css/Item.css",
-	"css/Spinner.css",
 	"css/Scrim.css",
 	"Tooltip.js",
 	"TooltipDecorator.js",
@@ -17,9 +15,6 @@ enyo.depends(
 	"PickerButton.js",
 	"Picker.js",
 	"FlyweightPicker.js",
-	"Item.js",
-	"SwipeableItem.js",
-	"Spinner.js",
 	"Scrim.js",
 	"TabPanels.js"
 );

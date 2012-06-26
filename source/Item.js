@@ -1,3 +1,10 @@
+/**
+	A control designed to display a group of stacked items, typically used in lists. Items 
+	have small guide lines between them and, by default, are highlighted when tapped. Set tapHighlight to false to prevent the highlighting.
+	
+		{kind: "onyx.Item", tapHighlight: false}
+	
+*/
 enyo.kind({
 	name: "onyx.Item",
 	classes: "onyx-item",
@@ -6,16 +13,19 @@ enyo.kind({
 		onhold: "hold",
 		onrelease: "release"
 	},
+	//* @public
 	hold: function(inSender, inEvent) {
 		if (this.tapHighlight) {
 			onyx.Item.addFlyweightClass(this.controlParent || this, "onyx-highlight", inEvent);
 		}
 	},
+	//* @public
 	release: function(inSender, inEvent) {
 		if (this.tapHighlight) {
 			onyx.Item.removeFlyweightClass(this.controlParent || this, "onyx-highlight", inEvent);
 		}
 	},
+	//* @protected
 	statics: {
 		addFlyweightClass: function(inControl, inClass, inEvent, inIndex) {
 			var flyweight = inEvent.flyweight;

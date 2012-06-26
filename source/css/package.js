@@ -15,5 +15,7 @@ enyo.depends(
 	"Toolbar.css",
 	"ProgressBar.css",
 	"ProgressButton.css",
-	"Slider.css"
+	"Slider.css",
+	"Item.css",
+	"Spinner.css"
 );
