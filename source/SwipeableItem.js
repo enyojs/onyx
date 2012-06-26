@@ -5,6 +5,8 @@
 	A SwipeableItem contains methods for styling its content and these should be used to effect styling on the row content. Add css classes via
 	the contentClasses property and the methods add|remove|has|addRemove<ContentClass>. Alter css styles via the applyContentStyle method.
 
+		{kind: "onyx.SwipeableItem", onCancel: "canceled", onDelete: "deleted"}
+
 */
 enyo.kind({
 	name: "onyx.SwipeableItem",
@@ -30,6 +32,7 @@ enyo.kind({
 			{kind: "onyx.Button", content: "Cancel", ontap: "cancelTap"}
 		]}
 	],
+	//* @protected
 	swiping: -1,
 	create: function() {
 		this.inherited(arguments);
