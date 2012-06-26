@@ -17,5 +17,8 @@ enyo.depends(
 	"Toolbar.js",
 	"ProgressBar.js",
 	"ProgressButton.js",
-	"Slider.js"
+	"Slider.js",
+	"Item.js",
+	"SwipeableItem.js",
+	"Spinner.js"
 );
