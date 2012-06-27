@@ -10,6 +10,7 @@ enyo.depends(
 	"TextArea.css",
 	"RichText.css",
 	"RadioButton.css",
+	"Scrim.css",
 	"TabButton.css",
 	"ToggleButton.css",
 	"Toolbar.css",
