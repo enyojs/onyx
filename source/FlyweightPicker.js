@@ -1,3 +1,40 @@
+/**
+ 	onyx.FlyweightPicker is a sub-kind of <a href="#onyx.Picker">onyx.Picker</a> and it is a picker
+	that employs the flyweight pattern. It is used to display a large list of selectable items.
+	Similar to FlyweightRepeater, the onSetupItem event allows for customization of item rendering.
+
+	To initialize the FlyweightPicker to a value you can call setSelected with the index of the item
+	you wish to select and the setContent method with the item that should be shown in the activator button.
+	
+	FlyweightPicker will send an onSelect event with a selected items information that can be 
+	received by a client application to determine which item was selected.
+	
+	enyo.kind({
+		handlers: {
+			onSelect: "itemSelected"
+		},
+		components: [
+			{kind: "onyx.PickerDecorator", components: [
+				{},
+				{name: "yearPicker", kind: "onyx.FlyweightPicker", count: 200, onSetupItem: "setupYear", components: [
+					{name: "year"}
+				]}
+			]}
+		],
+		create: function() {
+			var d = new Date();
+			var y = d.getYear();
+			this.$.yearPicker.setSelected(y);
+			this.$.year.setContent(1900+y);
+		},
+		setupYear: function(inSender, inEvent) {
+			this.$.year.setContent(1900+inEvent.index);
+		},
+		itemSelected: function(inSender, inEvent) {
+			enyo.log("Picker Item Selected: " + inEvent.selected.content);
+		}
+	})
+ */
 enyo.kind({
 	name: "onyx.FlyweightPicker",
 	kind: "onyx.Picker",
