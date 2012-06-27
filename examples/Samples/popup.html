@@ -29,12 +29,12 @@
 			components: [
 				{classes: "onyx-toolbar-inline", components: [
 					{kind: "onyx.Button", content: "Popup...", ontap: "showPopup", popup: "popup"},
-					{name: "popup", classes: "popup", kind: "onyx.Popup", centered: true, floating: true, onHide: "popupHidden", components: [
+					{name: "popup", classes: "popup", kind: "onyx.Popup", centered: true, floating: true, onHide: "popupHidden", scrim: true, components: [
 						{kind: "onyx.Spinner"},
 						{content: "Popup"}
 					]},
 					{kind: "onyx.Button", content: "Light Popup...", ontap: "showPopup", popup: "lightPopup"},
-					{name: "lightPopup", classes: "popup light", kind: "onyx.Popup", centered: true, floating: true, onHide: "popupHidden", components: [
+					{name: "lightPopup", classes: "popup light", kind: "onyx.Popup", centered: true, floating: true, onHide: "popupHidden", scrim: true, components: [
 						{kind: "onyx.Spinner", classes: "onyx-light"},
 						{content: "Popup"}
 					]},
@@ -44,25 +44,24 @@
 							{kind: "onyx.Input"}
 						]},
 						{tag: "br"},
-						{kind: "onyx.Button", content: "Close", ontap: "closeModalPopup"}
-					]}
+						{kind: "onyx.Button", content: "Close", ontap: "closeModalPopup"},
+                        {kind: "onyx.Button", content: "Another!", ontap: "showPopup", popup: "lightPopup"}
+                    ]}
 				]}
 			],
 			showPopup: function(inSender) {
 				var p = this.$[inSender.popup];
 				if (p) {
-					onyx.scrim.show();
-					//onyx.scrimTransparent.show();
 					p.show();
 					//this.$.input.focus();
 				}
 			},
 			popupHidden: function() {
-				onyx.scrim.hide();
 				// FIXME: needed to hide ios keyboard
 				document.activeElement.blur();
-				
-			},
+                if(this.$.modalPopup.showing)   // Refocus input on modal
+                    enyo.job("focus", enyo.bind(this.$.input, "focus"), 500);
+            },
 			popupShown: function() {
 				// FIXME: does not focus input on android.
 				this.$.input.focus();
