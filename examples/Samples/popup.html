@@ -45,8 +45,8 @@
 						]},
 						{tag: "br"},
 						{kind: "onyx.Button", content: "Close", ontap: "closeModalPopup"},
-                        {kind: "onyx.Button", content: "Another!", ontap: "showPopup", popup: "lightPopup"}
-                    ]}
+						{kind: "onyx.Button", content: "Another!", ontap: "showPopup", popup: "lightPopup"}
+					]}
 				]}
 			],
 			showPopup: function(inSender) {
@@ -59,9 +59,10 @@
 			popupHidden: function() {
 				// FIXME: needed to hide ios keyboard
 				document.activeElement.blur();
-                if(this.$.modalPopup.showing)   // Refocus input on modal
-                    enyo.job("focus", enyo.bind(this.$.input, "focus"), 500);
-            },
+				if(this.$.modalPopup.showing) {   // Refocus input on modal
+					enyo.job("focus", enyo.bind(this.$.input, "focus"), 500);
+				}
+			},
 			popupShown: function() {
 				// FIXME: does not focus input on android.
 				this.$.input.focus();
