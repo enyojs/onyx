@@ -4,6 +4,7 @@ enyo.depends(
 	"Button.js",
 	"IconButton.js",
 	"Checkbox.js",
+	"Drawer.js",
 	"Grabber.js",
 	"Groupbox.js",
 	"Input.js",
