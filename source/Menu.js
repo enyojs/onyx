@@ -6,15 +6,15 @@
 	together with the menu. When the control is activated the menu will shows itself in the correct 
 	position relative to the activator.
 	
-	{kind: "onyx.MenuDecorator", components: [
-		{content: "Show menu"},
-		{kind: "onyx.Menu", components: [
-			{content: "1"},
-			{content: "2"},
-			{classes: "onyx-menu-divider"},
-			{content: "3"},
+		{kind: "onyx.MenuDecorator", components: [
+			{content: "Show menu"},
+			{kind: "onyx.Menu", components: [
+				{content: "1"},
+				{content: "2"},
+				{classes: "onyx-menu-divider"},
+				{content: "3"},
+			]}
 		]}
-	]}
 	
 	A menu can be floated by setting the _floating_ property to true and by default it is not floating.
 	When a menu is not floating, it will scroll with the activating control, but it may be obscured by 

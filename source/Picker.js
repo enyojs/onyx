@@ -9,15 +9,15 @@
 	To initialize the Picker to a value you can use set the active property on the item that should
 	initially be selected.
 	
-	{kind: "onyx.PickerDecorator", components: [
-		{}, //this uses the defaultKind property of PickerDecorator to inherit from PickerButton
-		{kind: "onyx.Picker", components: [
-			{content: "Gmail", active: true},
-			{content: "Yahoo"},
-			{content: "Outlook"},
-			{content: "Hotmail"}
+		{kind: "onyx.PickerDecorator", components: [
+			{}, //this uses the defaultKind property of PickerDecorator to inherit from PickerButton
+			{kind: "onyx.Picker", components: [
+				{content: "Gmail", active: true},
+				{content: "Yahoo"},
+				{content: "Outlook"},
+				{content: "Hotmail"}
+			]}
 		]}
-	]}
 	
 	Picker uses <a href="#onyx.MenuItems">onyx.MenuItems</a> for each item in the list and so an
 	onSelect event with the item can be received by a client application to determine which picker

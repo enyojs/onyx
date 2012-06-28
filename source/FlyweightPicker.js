@@ -9,31 +9,31 @@
 	FlyweightPicker will send an onSelect event with a selected items information that can be 
 	received by a client application to determine which item was selected.
 	
-	enyo.kind({
-		handlers: {
-			onSelect: "itemSelected"
-		},
-		components: [
-			{kind: "onyx.PickerDecorator", components: [
-				{},
-				{name: "yearPicker", kind: "onyx.FlyweightPicker", count: 200, onSetupItem: "setupYear", components: [
-					{name: "year"}
+		enyo.kind({
+			handlers: {
+				onSelect: "itemSelected"
+			},
+			components: [
+				{kind: "onyx.PickerDecorator", components: [
+					{},
+					{name: "yearPicker", kind: "onyx.FlyweightPicker", count: 200, onSetupItem: "setupYear", components: [
+						{name: "year"}
+					]}
 				]}
-			]}
-		],
-		create: function() {
-			var d = new Date();
-			var y = d.getYear();
-			this.$.yearPicker.setSelected(y);
-			this.$.year.setContent(1900+y);
-		},
-		setupYear: function(inSender, inEvent) {
-			this.$.year.setContent(1900+inEvent.index);
-		},
-		itemSelected: function(inSender, inEvent) {
-			enyo.log("Picker Item Selected: " + inEvent.selected.content);
-		}
-	})
+			],
+			create: function() {
+				var d = new Date();
+				var y = d.getYear();
+				this.$.yearPicker.setSelected(y);
+				this.$.year.setContent(1900+y);
+			},
+			setupYear: function(inSender, inEvent) {
+				this.$.year.setContent(1900+inEvent.index);
+			},
+			itemSelected: function(inSender, inEvent) {
+				enyo.log("Picker Item Selected: " + inEvent.selected.content);
+			}
+		})
  */
 enyo.kind({
 	name: "onyx.FlyweightPicker",
