@@ -1,0 +1,14 @@
+enyo.depends(
+	"sample.css",
+	"ButtonGroupSample.js",
+	"ButtonSample.js",
+	"CheckboxSample.js",
+	"GroupBoxSample.js",
+	"IconButtonSample.js",
+	"InputSample.js",
+	"PopupSample.js",
+	"ProgressSample.js",
+	"SliderSample.js",
+	"ToggleButtonSample.js",
+	"ToolbarSample.js"
+);
