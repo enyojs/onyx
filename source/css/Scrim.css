@@ -10,7 +10,9 @@
 
 .onyx-scrim.onyx-scrim-translucent{
 	pointer-events: auto;
-	background: rgba(0, 0, 0, 0.65);
+	background-color: rgb(0,0,0);
+	opacity: 0.65;
+	filter: alpha(opacity=65);
 }
 
 .onyx-scrim.onyx-scrim-transparent {
