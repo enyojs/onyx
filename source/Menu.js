@@ -1,5 +1,25 @@
 /**
- A menu control.
+ 	onyx.Menu is a sub-kind of <a href="#onyx.Popup">onyx.Popup</a> that displays a list of 
+	<a href="#onyx.MenuItems">onyx.MenuItems</a> and looks like a popup menu. Menu is meant to 
+	be used in conjunction with a <a href="#onyx.MenuDecorator">onyx.MenuDecorator</a>. The 
+	decorator couples an activating control such as a button (or anything with an onActivate event) 
+	together with the menu. When the control is activated the menu will shows itself in the correct 
+	position relative to the activator.
+	
+		{kind: "onyx.MenuDecorator", components: [
+			{content: "Show menu"},
+			{kind: "onyx.Menu", components: [
+				{content: "1"},
+				{content: "2"},
+				{classes: "onyx-menu-divider"},
+				{content: "3"},
+			]}
+		]}
+	
+	A menu can be floated by setting the _floating_ property to true and by default it is not floating.
+	When a menu is not floating, it will scroll with the activating control, but it may be obscured by 
+	surrounding content with a higher z-index. If it is floating, it will never be obscured, but it 
+	will not scroll with the activating button.
  */
 enyo.kind({
 	name: "onyx.Menu",
