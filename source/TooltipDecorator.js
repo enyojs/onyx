@@ -2,19 +2,19 @@
 	A control that activates an <a href="#onyx.Tooltip">onyx.Tooltip</a>. It surrounds a control such as a button
 	or other kind and displays the tooltip when the contained control generates an onEnter event.
 
-	{kind: "onyx.TooltipDecorator", components: [
-		{kind: "onyx.Button", content: "Tooltip"},
-		{kind: "onyx.Tooltip", content: "I'm a tooltip for a button."}
-	]}
+		{kind: "onyx.TooltipDecorator", components: [
+			{kind: "onyx.Button", content: "Tooltip"},
+			{kind: "onyx.Tooltip", content: "I'm a tooltip for a button."}
+		]}
 
 	Or an example with an input control and decorator around the input:
 
-	{kind: "onyx.TooltipDecorator", components: [
-		{kind: "onyx.InputDecorator", components: [
-			{kind: "onyx.Input", placholder: "Just an input..."}
-		]},
-		{kind: "onyx.Tooltip", content: "I'm a tooltip for an input."}
-	]}
+		{kind: "onyx.TooltipDecorator", components: [
+			{kind: "onyx.InputDecorator", components: [
+				{kind: "onyx.Input", placholder: "Just an input..."}
+			]},
+			{kind: "onyx.Tooltip", content: "I'm a tooltip for an input."}
+		]}
 */
 enyo.kind({
 	name: "onyx.TooltipDecorator",
