@@ -1,9 +1,10 @@
 /**
-	A control designed to display a group of stacked items, typically used in lists. Items 
-	have small guide lines between them and, by default, are highlighted when tapped. Set tapHighlight to false to prevent the highlighting.
-	
+	A control designed to display a group of stacked items, typically used in
+	lists. Items are displayed with small guide lines between them; by default,
+	they are highlighted when tapped. Set *tapHighlight* to false to prevent the
+	highlighting.
+
 		{kind: "onyx.Item", tapHighlight: false}
-	
 */
 enyo.kind({
 	name: "onyx.Item",
