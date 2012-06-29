@@ -1,7 +1,8 @@
 ﻿/**
-enyo.TabPanels is a kind of <a href="#enyo.Panels">enyo.Panels</a> which displays a set of tabs
-allowing navigation between the panels. Unlike enyo.Panels, by default, the user cannot drag between panels.
-This can be enabled by setting draggable to true.
+enyo.TabPanels is a subkind of <a href="#enyo.Panels">enyo.Panels</a> that
+displays a set of tabs, which allow navigation between the individual panels.
+Unlike enyo.Panels, by default, the user cannot drag between the panels of a
+TabPanels. This behavior can be enabled by setting *draggable* to true.
 
 Here's an example:
 

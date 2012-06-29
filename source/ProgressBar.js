@@ -3,17 +3,20 @@
 	
 		{kind: "onyx.ProgressBar", progress: 10}
 	
-	To animate progress changes, use animateProgressTo:
+	To animate progress changes, call the *animateProgressTo* method:
 	
 		this.$.progressBar.animateProgressTo(50);
 		
-	The color of the bar can be customized by applying a background color to the bar via barClasses property:
+	You may customize the color of the bar by applying a style via the
+	*barClasses* property, e.g.:
 	
 		{kind: "onyx.ProgressBar", barClasses: "onyx-dark"}
-		
-	The properties showStripes and animateStripes can be used to show the stripes and make them animated. The animated
-	stripes use CSS3 gradients and animation to produce the effects.  For browsers that don't support these features
-	the effects will not be visible.
+	
+	When the *showStripes* property is true (the default), stripes are shown in
+	the progress bar; when *animateStripes* is true (also the default), these
+	stripes are animated. The animated stripes use CSS3 gradients and animation
+	to produce the effects.  In browsers that don't support these features, the
+	effects will not be visible.
 */
 enyo.kind({
 	name: "onyx.ProgressBar",
@@ -69,7 +72,7 @@ enyo.kind({
 		this.$.bar.applyStyle("width", inPercent + "%");
 	},
 	//* @public
-	//* Animate progress to the given value.
+	//* Animates progress to the given value.
 	animateProgressTo: function(inValue) {
 		this.$.progressAnimator.play({
 			startValue: this.progress,
