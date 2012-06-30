@@ -1,7 +1,9 @@
 /**
-	A button in the onyx style. The color of a button may be customized by applying a background color.
+	A button in the onyx style. The color of the button may be customized by
+	applying a background color.
 	
-	The onyx-affirmative, onyx-negative, onyx-blue classes provide some presets.
+	The *onyx-affirmative*, *onyx-negative*, and *onyx-blue* classes provide
+	some built-in presets.
 
 		{kind: "onyx.Button", content: "Button"},
 		{kind: "onyx.Button", content: "Affirmative", classes: "onyx-affirmative"},

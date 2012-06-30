@@ -1,13 +1,13 @@
 /**
-	A control that presents a range of selection options in the form of a horizontal
-	slider with a control knob that can be tapped and dragged to the desired
-	location.
+	A control that presents a range of selection options in the form of a
+	horizontal slider with a control knob.  The knob may be tapped and dragged
+	to the desired location.
 	
 		{kind: "onyx.Slider", value: 30}
 	
-	The onChanging event is fired when dragging the control knob. The onChange
-	event is fired when the position is set, either by finishing a drag or by
-	tapping the bar.
+	The *onChanging* event is fired when dragging the control knob.
+	The *onChange* event is fired when the position is set, either by finishing
+	a drag or by tapping the bar.
 */
 enyo.kind({
 	name: "onyx.Slider",
@@ -85,7 +85,7 @@ enyo.kind({
 		}
 	},
 	//* @public
-	//* Animate to the given value.
+	//* Animates to the given value.
 	animateTo: function(inValue) {
 		this.$.animator.play({
 			startValue: this.value,
