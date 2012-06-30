@@ -62,7 +62,15 @@ enyo.kind({
 	getPageOffset: function(inNode) {
 		// getBoundingClientRect returns top/left values which are relative to the viewport and not absolute
 		var r = inNode.getBoundingClientRect();
-		return {top: r.top + window.pageYOffset, left: r.left + window.pageXOffset, height: r.height, width: r.width};
+
+		// IE8 doesn't return window.page{X/Y}Offset & r.{height/width}
+		// FIXME: Perhaps use an alternate universal method instead of conditionals 
+		var pageYOffset = (window.pageYOffset === undefined) ? document.documentElement.scrollTop : window.pageYOffset;
+		var pageXOffset = (window.pageXOffset === undefined) ? document.documentElement.scrollLeft : window.pageXOffset;
+		var rHeight = (r.height === undefined) ? (r.bottom - r.top) : r.height;
+		var rWidth = (r.width === undefined) ? (r.right - r.left) : r.width;
+
+		return {top: r.top + pageYOffset, left: r.left + pageXOffset, height: rHeight, width: rWidth};
 	},	
 	//* @protected
 	/* Adjusts the menu position to fit inside the current window size. 
@@ -72,18 +80,20 @@ enyo.kind({
 		if (this.showing && this.hasNode()) {
 			this.removeClass("onyx-menu-up");
 			var b = this.node.getBoundingClientRect();
-			this.menuUp = b.top + b.height > window.innerHeight;
+			var bHeight = (b.height === undefined) ? (b.bottom - b.top) : b.height;
+			var innerHeight = (window.innerHeight === undefined) ? document.documentElement.clientHeight : window.innerHeight;
+			this.menuUp = b.top + bHeight > innerHeight;
 			this.addRemoveClass("onyx-menu-up", this.menuUp);
 			
 			if (this.floating) {
 				var r = this.activatorOffset;
 				//if the menu doesn't fit below the activator, move it up
 				if (this.menuUp) {
-					this.applyPosition({top: (r.top - b.height + r.height), bottom: "auto"});
+					this.applyPosition({top: (r.top - bHeight + r.height), bottom: "auto"});
 				}
 				else {
 					//if the top of the menu is above the top of the activator and there's room to move it down, do so
-					if ((b.top < r.top) && (r.top + (belowActivator ? r.height : 0) + b.height < window.innerHeight))
+					if ((b.top < r.top) && (r.top + (belowActivator ? r.height : 0) + bHeight < innerHeight))
 					{
 						this.applyPosition({top: r.top + (this.showOnTop ? 0 : r.height), bottom: "auto"});
 					}
