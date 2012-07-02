@@ -33,5 +33,6 @@ enyo.depends(
 	"Slider.js",
 	"Item.js",
 	"SwipeableItem.js",
-	"Spinner.js"
+	"Spinner.js",
+	"MoreToolbar.js"
 );
