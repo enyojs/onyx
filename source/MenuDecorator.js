@@ -1,9 +1,9 @@
 /**
-	A control that activates a <a href="#onyx.Menu">onyx.Menu</a>. It loosely couples an
-	activating control like a button (or anything with an onActivate event) together with 
-	the menu. The decorator needs to surround both the activating control and the menu itself.
-	When the control is activated the menu will shows itself in the correct 
-	position relative to the activator.
+	A control that activates an <a href="#onyx.Menu">onyx.Menu</a>. It loosely
+	couples the Menu with an activating control, which may be a button or any
+	other control with an _onActivate_ event. The decorator must surround both
+	the	activating control and the menu itself.	When the control is activated,
+	the	menu shows itself in the correct position relative to the activator.
 	
 		{kind: "onyx.MenuDecorator", components: [
 			{content: "Show menu"},

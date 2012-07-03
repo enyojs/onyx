@@ -1,13 +1,15 @@
 /**
- 	onyx.Picker is a sub-kind of <a href="#onyx.Menu">onyx.Menu</a> and it is used to display
- 	a list of items that can be selected. It is meant to be used in conjunction with a 
-	<a href="#onyx.PickerDecorator">onyx.PickerDecorator</a>. The decorator loosely couples a
-	<a href="#onyx.PickerButton">onyx.PickerButton</a> which is a button that when tapped will
-	show the picker. Once an item is selected the list of items will close but the item will stay
-	selected and the PickerButton will display the choice made.
-	
-	To initialize the Picker to a value you can use set the active property on the item that should
-	initially be selected.
+	_onyx.Picker_, a subkind of <a href="#onyx.Menu">onyx.Menu</a>, is used to
+	display	a list of items that can be selected. It is meant to be used in
+	conjunction with an	<a href="#onyx.PickerDecorator">onyx.PickerDecorator</a>.
+	The decorator loosely couples the Picker with an
+	<a href="#onyx.PickerButton">onyx.PickerButton</a>--a button that, when
+	tapped, shows the picker. Once an item is selected, the list of items closes,
+	but the item stays selected and the PickerButton displays the choice that
+	was made.
+
+	To initialize the Picker to a particular value, set the _active_ property to
+	true for the item that should be selected.
 	
 		{kind: "onyx.PickerDecorator", components: [
 			{}, //this uses the defaultKind property of PickerDecorator to inherit from PickerButton
@@ -18,10 +20,10 @@
 				{content: "Hotmail"}
 			]}
 		]}
-	
-	Picker uses <a href="#onyx.MenuItems">onyx.MenuItems</a> for each item in the list and so an
-	onSelect event with the item can be received by a client application to determine which picker
-	item was selected.
+
+	Each item in the list is an <a href="#onyx.MenuItem">onyx.MenuItem</a>, so
+	an _onSelect_ event with the item can be listened to by a client application
+	to determine which picker item was selected.
  */
 enyo.kind({
 	name: "onyx.Picker",
