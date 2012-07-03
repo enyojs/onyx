@@ -3,7 +3,7 @@
 	showing: false,
 	classes: "onyx-scrim enyo-fit",
 	floating: false,
-	//*@ protected
+	//* @protected
 	create: function() {
 		this.inherited(arguments);
 		this.zStack = [];
@@ -48,12 +48,12 @@
 			this.setZIndex(z);
 		}
 	},
-	//* Set scrim to show at `inZIndex`
+	//* @protected
+	// Set scrim to show at `inZIndex`
 	setZIndex: function(inZIndex) {
 		this.zIndex = inZIndex;
 		this.applyStyle("z-index", inZIndex);
 	},
-	//* @protected
 	make: function() {
 		return this;
 	}
