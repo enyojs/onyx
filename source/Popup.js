@@ -1,18 +1,24 @@
 /**
-	An enhanced popup with built-in Scrim and z-Index handling. Modal popups will
-	 get a transparent scrim by default. To get a translucent scrim when modal,
-	 specify scrim: true, scrimWhenModal: false.
-**/
+	An enhanced popup with built-in Scrim and z-Index handling. To prevent obscuring popup contents,
+	 scrims require that the dialog be floating or else they won't render. Modal popups will get a
+	 transparent scrim by default, unless the modal popup isn't floating. To get a translucent scrim
+	 when modal, specify scrim: true, scrimWhenModal: false.
+*/
 enyo.kind({
 	name: "onyx.Popup",
 	kind: "Popup",
 	classes: "onyx-popup",
 	published: {
-		// by default show a transparent scrim when modal
+		//* Determines whether a scrim will appear when the dialog is modal.  Note that
+		//* modal scrims are transparent (you won't see them)
 		scrimWhenModal: true,
+		//* Determines whether to display a scrim or not. Only displays scrims when floating.
 		scrim: false,
+		//* Optional class name to apply to the scrim. Beware that the scrim is a singleton
+		//* and you will be modifying the scrim instance used for other items.
 		scrimClassName: ""
 	},
+	//* @protected
 	statics: { count: 0 },
 	defaultZ: 120,
 	showingChanged: function() {
@@ -29,7 +35,7 @@ enyo.kind({
 		this.inherited(arguments);
 	},
 	showHideScrim: function(inShow) {
-		if (this.scrim || (this.modal && this.scrimWhenModal)) {
+		if (this.floating && (this.scrim || (this.modal && this.scrimWhenModal))) {
 			var scrim = this.getScrim();
 			if (inShow) {
 				// move scrim to just under the popup to obscure rest of screen
