@@ -1,14 +1,14 @@
 /**
-	A control that appears or disappears based on its `open` property. 
-	On appearing or disappearing, it has a sliding animation
-	that has its direction controlled by the `orient` property.
+	A control that appears or disappears based on its _open_ property. 
+	It appears or disappears with a sliding animation whose direction is
+	determined by the _orient_ property.
 */
 enyo.kind({
 	name: "onyx.Drawer",
 	published: {
-		//* the visible state of the drawer's associated control
+		//* The visibility state of the drawer's associated control
 		open: true,
-		//* "v" for vertical animation, "h" for horizontal animation
+		//* "v" for vertical animation; "h" for horizontal animation
 		orient: "v"
 	},
 	style: "overflow: hidden; position: relative;",
