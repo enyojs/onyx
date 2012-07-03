@@ -1,10 +1,10 @@
 /**
-	MenuItem is  a button styled to look like a menu item.  It is meant to be used in a
-	<a href="#onyx.Menu">onyx.Menu</a>. When the MenuItem is tapped, it will request the menu
-	to hide itself and will send an onSelect event with its content and a
-	reference to itself. This event and its properties can be received by a client application
-	to determine which menu item was selected.
-	
+	_MenuItem_ is a button styled to look like a menu item, intended for use in
+	an <a href="#onyx.Menu">onyx.Menu</a>. When the MenuItem is tapped, it
+	tells the menu to hide itself and sends an _onSelect_ event with its
+	content and a reference to itself. This event and its properties may be
+	received by a client application to determine which menu item was selected.
+
 		enyo.kind({
 			handlers: {
 				onSelect: "itemSelected"
