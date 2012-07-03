@@ -5,7 +5,7 @@ enyo.kind({
 		{kind: "onyx.Toolbar", content: "Onyx Widget Sampler"},
 		{style: "padding: 10px;", components: [
 			{classes: "divider", content: "Header"},
-			{kind: "onyx.Toolbar", components: [
+			{kind: "onyx.MoreToolbar", components: [
 				{kind: "onyx.Grabber"},
 				{content: "Header"},
 				{kind: "onyx.Button", content: "Button"},
