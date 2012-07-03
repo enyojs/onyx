@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "GroupboxSample",
+	name: "onyx.sample.GroupboxSample",
 	classes: "onyx onyx-sample",
 	components: [
 		{classes: "onyx-sample-divider", content: "Groupboxes"},

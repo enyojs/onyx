@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "ToggleButtonSample",
+	name: "onyx.sample.ToggleButtonSample",
 	classes: "onyx onyx-sample",
 	components: [
 		{classes: "onyx-sample-divider", content: "Toggle Buttons"},
