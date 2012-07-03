@@ -8,11 +8,14 @@ enyo.kind({
 	kind: "Popup",
 	classes: "onyx-popup",
 	published: {
-		// by default show a transparent scrim when modal
+		//*	When true, show a transparent scrim when modal.
 		scrimWhenModal: true,
+		//* When true, show a standard scrim behind the popup.
 		scrim: false,
+		//* CSS class to apply to a scrim that's shown.
 		scrimClassName: ""
 	},
+	//* @protected
 	statics: { count: 0 },
 	defaultZ: 120,
 	showingChanged: function() {
