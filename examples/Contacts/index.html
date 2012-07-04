@@ -28,9 +28,9 @@
 			padding: 12px 16px;
 			background-color: #333333;
 		}
-		
+
 		/*
-			FIXME: this class is not helpful when the 
+			FIXME: this class is not helpful when the
 			swipeable item contains styled controls
 		*/
 		.onyx-swipeable-item-content {
@@ -90,20 +90,16 @@
 			name: "App",
 			kind: "FittableRows",
 			components: [
-				{kind: "FittableColumns", components: [
-					{kind: "onyx.MoreToolbar", fit: true, style: "height: 58px;", components: [
-						{kind: "onyx.Button", content: "setup", ontap: "showSetupPopup"},
-						{kind: "onyx.Button", content: "remove selected", ontap: "removeSelected"},
-						{kind: "onyx.InputDecorator", components: [
-							{name: "newContactInput", kind: "onyx.Input", value: "Frankie Fu"},
-						]},
-						{kind: "onyx.Button", content: "new contact", ontap: "addItem"}
+				{kind: "onyx.MoreToolbar", fit: true, style: "height: 58px;", components: [
+					{kind: "onyx.Button", content: "setup", ontap: "showSetupPopup"},
+					{kind: "onyx.Button", content: "remove selected", ontap: "removeSelected"},
+					{kind: "onyx.InputDecorator", components: [
+						{name: "newContactInput", kind: "onyx.Input", value: "Frankie Fu"},
 					]},
-					{kind: "onyx.Toolbar", style: "height: 58px;", components: [
-						{kind: "onyx.InputDecorator", components: [
-							{kind: "onyx.Input", placeholder: "Search...", style: "width: 140px;", oninput: "searchInputChange"},
-							{kind: "Image", src: "images/search-input-search.png", style: "width: 20px;"}
-						]}
+					{kind: "onyx.Button", content: "new contact", ontap: "addItem"},
+					{kind: "onyx.InputDecorator", components: [
+						{kind: "onyx.Input", placeholder: "Search...", style: "width: 140px;", oninput: "searchInputChange"},
+						{kind: "Image", src: "images/search-input-search.png", style: "width: 20px;"}
 					]}
 				]},
 				{kind: "List", classes: "list", fit: true, multiSelect: true, onSetupItem: "setupItem", components: [
