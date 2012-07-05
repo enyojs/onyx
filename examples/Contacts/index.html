@@ -173,8 +173,8 @@
 			},
 			removeItem: function(inIndex) {
 				this._removeItem(inIndex);
+				this.$.list.getSelection().remove(inIndex);
 				this.refreshList();
-				this.$.list.getSelection().deselect(inIndex);
 			},
 			_removeItem: function(inIndex) {
 				var i = this.filter ? this.filtered[inIndex].dbIndex : inIndex;
