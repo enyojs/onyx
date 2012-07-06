@@ -1,8 +1,9 @@
 /**
-	A control that activates a <a href="#onyx.Picker">onyx.Picker</a>. It loosely couples an
-	activating <a href="#onyx.PickerButton">onyx.PickerButton</a> together with 
-	the picker. The decorator needs to surround both the activating button and the picker itself.
-	When the button is activated the picker will shows itself in the correct position relative to
+	A control that activates an <a href="#onyx.Picker">onyx.Picker</a>. It
+	loosely couples the Picker with an activating
+	<a href="#onyx.PickerButton">onyx.PickerButton</a>. The decorator must
+	surround both the activating button and the picker itself. When the button
+	is activated, the picker shows itself in the correct position relative to
 	the activator.
 	
 		{kind: "onyx.PickerDecorator", components: [

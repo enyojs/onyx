@@ -1,15 +1,16 @@
 /**
-	onyx.Tooltip is a kind of <a href="#onyx.Popup">onyx.Popup</a> which works with a 
-	<a href="#onyx.TooltipDecorator">onyx.TooltipDecorator</a>. It automatically displays a tooltip 
-	when the user hovers over the decorator. The tooltip is positioned around the decorator where 
-	there is available window space. 
+	_onyx.Tooltip_ is a kind of <a href="#onyx.Popup">onyx.Popup</a> that works
+	with an	<a href="#onyx.TooltipDecorator">onyx.TooltipDecorator</a>. It
+	automatically displays a tooltip when the user hovers over the decorator.
+	The tooltip is positioned around the decorator where there is available
+	window space. 
 
 		{kind: "onyx.TooltipDecorator", components: [
 			{kind: "onyx.Button", content: "Tooltip"},
 			{kind: "onyx.Tooltip", content: "I'm a tooltip for a button."}
 		]}
-		
-	You can manually display the tooltip by calling it's show() method.
+
+	You may manually display the tooltip by calling its _show_ method.
 */
 enyo.kind({
 	name: "onyx.Tooltip",
