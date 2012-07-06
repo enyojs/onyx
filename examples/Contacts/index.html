@@ -185,8 +185,12 @@
 				return true;
 			},
 			removeSelected: function() {
-				for (var i in this.$.list.getSelection().getSelected()) {
-					this._removeItem(i);
+				// Build list of items to remove, then go through in reverse order to
+				// avoid removing anything that changes the index of remaining items.
+				var removedKeys = enyo.keys(this.$.list.getSelection().getSelected());
+				removedKeys.sort();
+				for (var i = removedKeys.length - 1; i >= 0; --i) {
+					this._removeItem(removedKeys[i]);
 				}
 				this.$.list.getSelection().clear();
 				this.refreshList();
