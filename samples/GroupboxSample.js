@@ -21,8 +21,8 @@ enyo.kind({
 			{kind: "onyx.InputDecorator", components: [
 				{kind: "onyx.Input", style: "width: 100%", value: "Middle"}
 			]},
-			{kind: "onyx.InputDecorator", components: [
-				{kind: "onyx.Input", style: "width: 100%", value: "Last"}
+			{kind: "onyx.InputDecorator", style: "background: lightblue;", components: [
+				{kind: "onyx.Input", style: "width: 100%;", value: "Last"}
 			]}
 		]},
 		{tag: "br"},
