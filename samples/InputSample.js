@@ -15,6 +15,19 @@ enyo.kind({
 				{kind: "onyx.Input", type:"password", placeholder: "Enter password", onchange:"inputChanged"}
 			]}
 		]},
+		{classes: "onyx-toolbar-inline", components: [
+			{kind: "onyx.InputDecorator", components: [
+				{kind: "onyx.Input", disabled: true, value: "Disabled input"}
+			]},
+			{kind: "onyx.InputDecorator", components: [
+				{kind: "onyx.Input", defaultFocus: true, value: "Focused input"}
+			]},
+			{kind: "onyx.InputDecorator", components: [
+				{content: "Left:"},
+				{kind: "onyx.Input", value: "Input Area"},
+				{content: " :Right"},
+			]}
+		]},		
 		{tag: "br"},
 		{classes: "onyx-sample-divider", content: "RichTexts"},
 		{classes: "onyx-toolbar-inline", components: [

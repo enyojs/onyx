@@ -1,0 +1,15 @@
+.box {
+	border: 2px solid lightblue;
+	padding: 4px;
+}
+.mtb {
+	margin-top: 3px;
+	margin-bottom: 3px;
+}
+.mlr {
+	margin-left: 6px;
+	margin-right: 6px;
+}
+.o {
+	border-color: orange;
+}
