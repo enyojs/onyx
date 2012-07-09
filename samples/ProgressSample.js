@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "ProgressSample",
+	name: "onyx.sample.ProgressSample",
 	classes: "onyx onyx-sample",
 	components: [
 		{classes: "onyx-sample-divider", content: "Progress Bars"},

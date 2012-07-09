@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "InputSample",
+	name: "onyx.sample.InputSample",
 	classes: "onyx onyx-sample",
 	components: [
 		{classes: "onyx-sample-divider", content: "Inputs"},

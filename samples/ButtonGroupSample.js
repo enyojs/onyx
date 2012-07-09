@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "ButtonGroupSample",
+	name: "onyx.sample.ButtonGroupSample",
 	classes: "onyx onyx-sample",
 	components: [
 		{classes: "onyx-sample-divider", content: "RadioGroup"},

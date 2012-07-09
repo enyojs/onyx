@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "CheckboxSample",
+	name: "onyx.sample.CheckboxSample",
 	classes: "onyx onyx-sample",
 	components: [
 		{classes: "onyx-sample-divider", content: "Checkboxes"},

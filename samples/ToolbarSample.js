@@ -1,29 +1,9 @@
 enyo.kind({
-	name: "ToolbarSample",
+	name: "onyx.sample.ToolbarSample",
 	classes: "onyx onyx-sample",
 	components: [
 		{classes: "onyx-sample-divider", content: "ToolBar"},
 		{kind: "onyx.Toolbar", components: [
-			{kind: "onyx.Grabber"},
-			{content: "Header"},
-			{kind: "onyx.Button", content: "Button"},
-			{kind: "onyx.Button", content: "Down", classes: "active"},
-			{kind: "onyx.Button", content: "Button"},
-			{kind: "onyx.InputDecorator", components: [
-				{kind: "onyx.Input", placeholder: "Input"}
-			]},
-			{kind: "onyx.Button", content: "Right"},
-			{kind: "onyx.InputDecorator", components: [
-				{kind: "onyx.Input", placeholder: "Right Input"}
-			]},
-			{kind: "onyx.Button", content: "More Right"},
-			{content: "There's more"},
-			{kind: "onyx.Button", content: "Far Right"}
-		]},
-		{tag: "br"},
-		
-		{classes: "onyx-sample-divider", content: "MoreToolBar"},
-		{kind: "onyx.MoreToolbar", components: [
 			{kind: "onyx.Grabber"},
 			{content: "Header"},
 			{kind: "onyx.Button", content: "Button"},
@@ -61,6 +41,26 @@ enyo.kind({
 				{content: "There's more"},
 				{kind: "onyx.Button", content: "Far Right"}
 			]}
+		]},
+		{tag: "br"},
+		
+		{classes: "onyx-sample-divider", content: "More ToolBar"},
+		{kind: "onyx.MoreToolbar", components: [
+			{kind: "onyx.Grabber"},
+			{content: "Header"},
+			{kind: "onyx.Button", content: "Button"},
+			{kind: "onyx.Button", content: "Down", classes: "active"},
+			{kind: "onyx.Button", content: "Button"},
+			{kind: "onyx.InputDecorator", components: [
+				{kind: "onyx.Input", placeholder: "Input"}
+			]},
+			{kind: "onyx.Button", content: "Right"},
+			{kind: "onyx.InputDecorator", components: [
+				{kind: "onyx.Input", placeholder: "Right Input"}
+			]},
+			{kind: "onyx.Button", content: "More Right"},
+			{content: "There's more"},
+			{kind: "onyx.Button", content: "Far Right"}
 		]}
 	]
 });

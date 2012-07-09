@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "IconButtonSample",
+	name: "onyx.sample.IconButtonSample",
 	classes: "onyx onyx-sample",
 	components: [
 		{classes: "onyx-sample-divider", content: "Icon Button"},
