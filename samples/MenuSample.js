@@ -8,7 +8,7 @@ enyo.kind({
 	},
 	components: [
 		{style: "padding: 10px;", content: "Some popups in a toolbar:"},
-		{kind: "onyx.Toolbar", classes: "onyx-menu-toolbar", components: [
+		{kind: "onyx.MoreToolbar", classes: "onyx-menu-toolbar", components: [
 			{kind: "onyx.TooltipDecorator", components: [
 				{kind: "onyx.Button", content: "Tooltip"},
 				{kind: "onyx.Tooltip", content: "I'm a tooltip for a button."}
@@ -93,14 +93,11 @@ enyo.kind({
 			{kind: "onyx.Groupbox", classes:"onyx-sample-result-box", components: [
 				{kind: "onyx.GroupboxHeader", content: "Result"},
 				{name:"menuSelection", classes:"onyx-sample-result", content:"No menu selection yet."}
-			]},
-			{style: "height: 1000px;"}
+			]}
 		]}
 	],
 	create: function() {
 		this.inherited(arguments);
-		// FIXME: omg, no
-		this.$.menuScroller.$.strategy.$.client.addStyles("max-height: 200px;");
 	},
 	showPopup: function(inSender) {
 		var p = this.$[inSender.popup];
@@ -112,6 +109,13 @@ enyo.kind({
 		return true;
 	},
 	itemSelected: function(inSender, inEvent) {
-		this.$.menuSelection.setContent(inEvent.originator.content + " Selected");
+		//Menu items send an onSelect event with a reference to themselves & any directly displayed content
+		if (inEvent.originator.content){
+			this.$.menuSelection.setContent(inEvent.originator.content + " Selected");			
+		} else if (inEvent.selected){
+			//	Since some of the menu items do not have directly displayed content (they are kinds with subcomponents),
+			//	we have to handle those items differently here.
+			this.$.menuSelection.setContent(inEvent.selected.controlAtIndex(1).content + " Selected");
+		}
 	}
 });
