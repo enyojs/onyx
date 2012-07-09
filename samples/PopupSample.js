@@ -1,5 +1,5 @@
 enyo.kind({
-	name: "PopupSample",
+	name: "onyx.sample.PopupSample",
 	classes: "onyx onyx-sample",
 	components: [
 		{classes: "onyx-sample-divider", content: "Popups"},
