@@ -80,17 +80,25 @@ enyo.kind({
 	adjustPosition: function(belowActivator) {
 		if (this.showing && this.hasNode()) {
 			this.removeClass("onyx-menu-up");
+						
+			//reset the left position before we get the bounding rect for proper horizontal calculation
+			this.floating ? enyo.noop : this.applyPosition({left: "auto"});
+							
 			var b = this.node.getBoundingClientRect();
 			var bHeight = (b.height === undefined) ? (b.bottom - b.top) : b.height;
 			var innerHeight = (window.innerHeight === undefined) ? document.documentElement.clientHeight : window.innerHeight;
-			this.menuUp = b.top + bHeight > innerHeight;
+			var innerHeight = (window.innerHeight === undefined) ? document.documentElement.clientHeight : window.innerHeight;			
+			
+			//position the menu above the activator if it's getting cut off, but only if there's more room above
+			this.menuUp = (b.top + bHeight > innerHeight) && ((innerHeight - b.bottom) < (b.top - bHeight));
 			this.addRemoveClass("onyx-menu-up", this.menuUp);
 			
+			//if floating, adjust the vertical positioning
 			if (this.floating) {
 				var r = this.activatorOffset;
 				//if the menu doesn't fit below the activator, move it up
 				if (this.menuUp) {
-					this.applyPosition({top: (r.top - bHeight + r.height), bottom: "auto"});
+					this.applyPosition({top: (r.top - bHeight + (this.showOnTop ? r.height : 0)), bottom: "auto"});
 				}
 				else {
 					//if the top of the menu is above the top of the activator and there's room to move it down, do so
@@ -100,6 +108,15 @@ enyo.kind({
 					}
 				}
 			}
+			
+			//adjust the horizontal positioning to keep the menu from being cut off on the right
+			if ((b.right) > innerWidth) {
+				if (this.floating){
+					this.applyPosition({left: r.left-(b.left + b.width - innerWidth)});
+				} else {
+					this.applyPosition({left: -(b.right - innerWidth)});
+				}					
+			}			
 		}
 	},
 	resizeHandler: function() {
