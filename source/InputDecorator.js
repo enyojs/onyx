@@ -1,13 +1,15 @@
 /**
-	A control that provides input styling. Any controls inside the InputDecorator will appear to be inside an area
-	styled as an input. Usually, an InputDecorator surrounds an <a href="#onyx.Input">onyx.Input</a>; and, it's possible to
-	place other controls like buttons to the right or left of the input control.
+	_onyx.InputDecorator_ is a control that provides input styling. Any controls
+	placed inside the InputDecorator will appear to be inside an area styled as
+	an input. Usually,an InputDecorator surrounds an
+	<a href="#onyx.Input">onyx.Input</a>.
 
 		{kind: "onyx.InputDecorator", components: [
 			{kind: "onyx.Input"}
 		]}
 
-	Or with controls around the input:
+	Other controls, such as buttons, may be placed to the right or left of the
+	input control, e.g.:
 
 		{kind: "onyx.InputDecorator", components: [
 			{kind: "onyx.IconButton", src: "search.png"},
@@ -15,8 +17,9 @@
 			{kind: "onyx.IconButton", src: "cancel.png"}
 		]}
 
-	Note that the InputDecorator fits around the content inside it. If the decorator itself is sized, then its contents 
-	will likely need to be sized as well.
+	Note that the InputDecorator fits around the content inside it. If the
+	decorator itself is sized, then its contents will likely need to be sized as
+	well.
 
 		{kind: "onyx.InputDecorator", style: "width: 500px;", components: [
 			{kind: "onyx.Input", style: "width: 100%;"}
