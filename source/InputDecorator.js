@@ -1,8 +1,7 @@
 /**
 	_onyx.InputDecorator_ is a control that provides input styling. Any controls
-	placed inside the InputDecorator will appear to be inside an area styled as
-	an input. Usually,an InputDecorator surrounds an
-	<a href="#onyx.Input">onyx.Input</a>.
+	in the InputDecorator will appear to be inside an area styled as an	input.
+	Usually, an InputDecorator surrounds an	<a href="#onyx.Input">onyx.Input</a>.
 
 		{kind: "onyx.InputDecorator", components: [
 			{kind: "onyx.Input"}
