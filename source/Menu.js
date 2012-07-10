@@ -1,5 +1,27 @@
 /**
- A menu control.
+	_onyx.Menu_ is a subkind of <a href="#onyx.Popup">onyx.Popup</a> that
+	displays a list of <a href="#onyx.MenuItems">onyx.MenuItems</a> and looks
+	like a popup menu. It is meant to be used in conjunction with an
+	<a href="#onyx.MenuDecorator">onyx.MenuDecorator</a>. The decorator couples
+	the menu with an activating control, which may be a button or any other
+	control with an _onActivate_ event. When the control is activated, the menu
+	shows itself in the correct position relative to the activator.
+
+		{kind: "onyx.MenuDecorator", components: [
+			{content: "Show menu"},
+			{kind: "onyx.Menu", components: [
+				{content: "1"},
+				{content: "2"},
+				{classes: "onyx-menu-divider"},
+				{content: "3"},
+			]}
+		]}
+
+	A menu may be floated by setting the _floating_ property to true. When a
+	menu is not floating (the default), it will scroll with the activating
+	control, but may be obscured by surrounding content with a higher z-index.
+	When floating, it will never be obscured, but it will not scroll with the
+	activating button.
  */
 enyo.kind({
 	name: "onyx.Menu",
@@ -7,49 +29,25 @@ enyo.kind({
 	modal: true,
 	defaultKind: "onyx.MenuItem",
 	classes: "onyx-menu",
+	showOnTop: false,
 	handlers: {
 		onActivate: "itemActivated",
 		onRequestShowMenu: "requestMenuShow",
 		onRequestHideMenu: "requestHide"
 	},
-	create: function() {
-		enyo.Control.prototype.create.apply(this, arguments);
-		this.canGenerate = !this.floating;
-	},
-	render: function() {
-		if (this.floating) {
-			if (!enyo.floatingLayer.hasNode()) {
-				enyo.floatingLayer.render();
-			}
-			this.parentNode = enyo.floatingLayer.hasNode();
-		}
-		enyo.Control.prototype.render.apply(this);
-	},
-	getBubbleTarget: function() {
-		return enyo.Control.prototype.getBubbleTarget.apply(this, arguments);
-	},
 	itemActivated: function(inSender, inEvent) {
-		inEvent.originator.setActive(false);
+		return true;
 	},
 	showingChanged: function() {
 		this.inherited(arguments);
-		if (this.showing && this.hasNode()) {
-			this.removeClass("onyx-menu-up");
-			var b = this.node.getBoundingClientRect();
-			this.menuUp = b.top + b.height > window.innerHeight;
-			this.addRemoveClass("onyx-menu-up", this.menuUp);
-			if (this.floating && this.menuUp) {
-				var r = this.activatorOffset;
-				this.applyPosition({top: (r.top - b.height + r.height), bottom: "auto"});
-			}
-		}
+		this.adjustPosition(true);
 	},
 	requestMenuShow: function(inSender, inEvent) {
 		if (this.floating) {
 			var n = inEvent.activator.hasNode();
 			if (n) {
 				var r = this.activatorOffset = this.getPageOffset(n);
-				this.applyPosition({top: r.top, left: r.left, width: r.width});
+				this.applyPosition({top: r.top + (this.showOnTop ? 0 : r.height), left: r.left, width: r.width});
 			}
 		}
 		this.show();
@@ -65,6 +63,50 @@ enyo.kind({
 	getPageOffset: function(inNode) {
 		// getBoundingClientRect returns top/left values which are relative to the viewport and not absolute
 		var r = inNode.getBoundingClientRect();
-		return {top: r.top + window.pageYOffset, left: r.left + window.pageXOffset, height: r.height, width: r.width};
+
+		// IE8 doesn't return window.page{X/Y}Offset & r.{height/width}
+		// FIXME: Perhaps use an alternate universal method instead of conditionals 
+		var pageYOffset = (window.pageYOffset === undefined) ? document.documentElement.scrollTop : window.pageYOffset;
+		var pageXOffset = (window.pageXOffset === undefined) ? document.documentElement.scrollLeft : window.pageXOffset;
+		var rHeight = (r.height === undefined) ? (r.bottom - r.top) : r.height;
+		var rWidth = (r.width === undefined) ? (r.right - r.left) : r.width;
+
+		return {top: r.top + pageYOffset, left: r.left + pageXOffset, height: rHeight, width: rWidth};
+	},	
+	//* @protected
+	/* Adjusts the menu position to fit inside the current window size. 
+	   belowActivator determines whether to position the top of the menu below or on top of the activator
+	*/
+	adjustPosition: function(belowActivator) {
+		if (this.showing && this.hasNode()) {
+			this.removeClass("onyx-menu-up");
+			var b = this.node.getBoundingClientRect();
+			var bHeight = (b.height === undefined) ? (b.bottom - b.top) : b.height;
+			var innerHeight = (window.innerHeight === undefined) ? document.documentElement.clientHeight : window.innerHeight;
+			this.menuUp = b.top + bHeight > innerHeight;
+			this.addRemoveClass("onyx-menu-up", this.menuUp);
+			
+			if (this.floating) {
+				var r = this.activatorOffset;
+				//if the menu doesn't fit below the activator, move it up
+				if (this.menuUp) {
+					this.applyPosition({top: (r.top - bHeight + r.height), bottom: "auto"});
+				}
+				else {
+					//if the top of the menu is above the top of the activator and there's room to move it down, do so
+					if ((b.top < r.top) && (r.top + (belowActivator ? r.height : 0) + bHeight < innerHeight))
+					{
+						this.applyPosition({top: r.top + (this.showOnTop ? 0 : r.height), bottom: "auto"});
+					}
+				}
+			}
+		}
+	},
+	resizeHandler: function() {
+		this.inherited(arguments);			
+		this.adjustPosition(true);	
+	},
+	requestHide: function(){
+		this.setShowing(false);
 	}
 });

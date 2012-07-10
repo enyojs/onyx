@@ -1,3 +1,5 @@
+//* @protected
+// This is an in-progress design description of the Onyx controls for use in the Ares designer tool.
 Palette.model.push(
 	{name: "onyx", items: [
 		{name: "onyx.Button", title: "Foofoofoo", icon: "box_software.png", stars: 4, version: 2.0, blurb: "Use as a simple page header, or add an optional navigation menu.",

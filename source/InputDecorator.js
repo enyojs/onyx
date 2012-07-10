@@ -18,8 +18,7 @@
 		]}
 
 	Note that the InputDecorator fits around the content inside it. If the
-	decorator itself is sized, then its contents will likely need to be sized as
-	well.
+	decorator is sized, then its contents will likely need to be sized as well.
 
 		{kind: "onyx.InputDecorator", style: "width: 500px;", components: [
 			{kind: "onyx.Input", style: "width: 100%;"}

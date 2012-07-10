@@ -1,10 +1,10 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
 	<title>Contacts</title>
 	<!-- -->
 	<meta name="apple-mobile-web-app-capable" content="yes" />
-	<meta name="viewport" content="width=device-width initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 	<!-- -->
 	<script src="../../../../enyo/enyo.js" type="text/javascript"></script>
 	<!-- -->
@@ -28,9 +28,9 @@
 			padding: 12px 16px;
 			background-color: #333333;
 		}
-		
+
 		/*
-			FIXME: this class is not helpful when the 
+			FIXME: this class is not helpful when the
 			swipeable item contains styled controls
 		*/
 		.onyx-swipeable-item-content {
@@ -90,24 +90,20 @@
 			name: "App",
 			kind: "FittableRows",
 			components: [
-				{kind: "FittableColumns", components: [
-					{kind: "onyx.MoreToolbar", fit: true, style: "height: 58px;", components: [
-						{kind: "onyx.Button", content: "setup", ontap: "showSetupPopup"},
-						{kind: "onyx.Button", content: "remove selected", ontap: "removeSelected"},
-						{kind: "onyx.InputDecorator", components: [
-							{name: "newContactInput", kind: "onyx.Input", value: "Frankie Fu"},
-						]},
-						{kind: "onyx.Button", content: "new contact", ontap: "addItem"}
+				{kind: "onyx.MoreToolbar", style: "height: 58px;", components: [
+					{kind: "onyx.Button", content: "setup", ontap: "showSetupPopup"},
+					{kind: "onyx.Button", content: "remove selected", ontap: "removeSelected"},
+					{kind: "onyx.InputDecorator", components: [
+						{name: "newContactInput", kind: "onyx.Input", value: "Frankie Fu"},
 					]},
-					{kind: "onyx.Toolbar", style: "height: 58px;", components: [
-						{kind: "onyx.InputDecorator", components: [
-							{kind: "onyx.Input", placeholder: "Search...", style: "width: 140px;", oninput: "searchInputChange"},
-							{kind: "Image", src: "images/search-input-search.png", style: "width: 20px;"}
-						]}
+					{kind: "onyx.Button", content: "new contact", ontap: "addItem"},
+					{kind: "onyx.InputDecorator", components: [
+						{kind: "onyx.Input", placeholder: "Search...", style: "width: 140px;", oninput: "searchInputChange"},
+						{kind: "Image", src: "images/search-input-search.png", style: "width: 20px;"}
 					]}
 				]},
 				{kind: "List", classes: "list", fit: true, multiSelect: true, onSetupItem: "setupItem", components: [
-					{name: "divider", classes: "divider"},
+					{name: "divider", classes: "divider", ontap: "dividerTap"},
 					{kind: "onyx.SwipeableItem", onDelete: "deleteRow", components: [
 						{name: "item", kind: "ContactItem", classes: "item enyo-border-box"}
 					]}
@@ -177,8 +173,8 @@
 			},
 			removeItem: function(inIndex) {
 				this._removeItem(inIndex);
+				this.$.list.getSelection().remove(inIndex);
 				this.refreshList();
-				this.$.list.getSelection().deselect(inIndex);
 			},
 			_removeItem: function(inIndex) {
 				var i = this.filter ? this.filtered[inIndex].dbIndex : inIndex;
@@ -189,10 +185,12 @@
 				return true;
 			},
 			removeSelected: function() {
-				for (var l=this.$.list.getSelection().getSelected(), i=l.length-1; i>=0; i--) {
-					if (l[i]) {
-						this._removeItem(i);
-					}
+				// Build list of items to remove, then go through in reverse order to
+				// avoid removing anything that changes the index of remaining items.
+				var removedKeys = enyo.keys(this.$.list.getSelection().getSelected());
+				removedKeys.sort();
+				for (var i = removedKeys.length - 1; i >= 0; --i) {
+					this._removeItem(removedKeys[i]);
 				}
 				this.$.list.getSelection().clear();
 				this.refreshList();
@@ -253,6 +251,10 @@
 					}
 				}
 				return r;
+			},
+			dividerTap: function(inSender, inEvent) {
+				// Prevent bubbling
+				return true;
 			}
 		});
 
@@ -291,7 +293,8 @@
 				onRemove: ""
 			},
 			components: [
-				{name: "avatar", kind: "Image", classes: "avatar"},
+				// set noEvents to true to avoid creating lots of event handlers inside a flyweight
+				{kind: "Image", name: "avatar", classes: "avatar", noEvents: true},
 				{components: [
 					{name: "name"},
 					{name: "title", classes: "description"},

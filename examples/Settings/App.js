@@ -32,7 +32,7 @@ enyo.kind({
 					{kind: "onyx.Groupbox", components: [
 						{kind: "onyx.GroupboxHeader", content: "Volume"},
 						{classes: "groupbox-item", components: [
-							{kind: "onyx.Slider", value: 25}
+							{kind: "onyx.Slider", value: 25, style: "display:block; float:none;"}
 						]}
 					]},
 					{kind: "onyx.Groupbox", components: [

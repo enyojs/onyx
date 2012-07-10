@@ -1,4 +1,4 @@
-﻿enyo.depends(
+enyo.depends(
 	"$lib/onyx",
 	"$lib/layout/fittable",
 	"source/App.css",

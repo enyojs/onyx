@@ -1,3 +1,10 @@
+### Looking for the issue tracker?  
+It's moved to [https://enyojs.atlassian.net](https://enyojs.atlassian.net).
+
+---
+
+## Onyx UI Library
+
 Onyx is a UI library for Enyo 2.
 
 We originally set out to adapt the Enyo 1 widgets for use with Enyo 2, but we quickly determined that we could achieve better cross-platform compatibility and build a more solid foundation for the future by starting with a clean slate. The result is a new UI library for Enyo 2 called **Onyx**.

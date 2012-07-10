@@ -1,14 +1,13 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Fittable Examples</title>
+	<title>Drawer Examples</title>
 	<!-- -->
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 	<!-- -->
 	<script src="../../../../enyo/enyo.js" type="text/javascript"></script>
 	<script src="../../../../lib/layout/package.js" type="text/javascript"></script>
 	<script src="../../../../lib/onyx/package.js" type="text/javascript"></script>
-	<script src="../../source/wip-package.js" type="text/javascript"></script>
 	<!-- -->
 	<style>
 		body {
@@ -50,11 +49,11 @@
 		classes: "box",
 		stretch: true,
 		components: [
-			{content: "FOO<br>FOO", allowHtml: true, classes: "box mtb"},
+			{content: "Above Drawer #1", classes: "box mtb"},
 			{name: "drawer", kind: "onyx.Drawer", components: [
-				{content: "Drawer<br>Drawer<br>Drawer<br>Drawer", allowHtml: true, classes: "box mtb"}
+				{content: "Drawer #1<br>Drawer #1<br>Drawer #1<br>Drawer #1", allowHtml: true, classes: "box mtb"}
 			]},
-			{content: "FOO<br>FOO", allowHtml: true, classes: "box mtb"},
+			{content: "Below Drawer #1<br>Below Drawer #1", allowHtml: true, classes: "box mtb"},
 			{kind: "FittableColumns", fit: true, classes: "box mtb o", ontap: "columnsTap", components: [
 				{content: "111111111111111", classes: "box mlr"},
 				{name: "columnsDrawer", orient: "h", kind: "onyx.Drawer", open: false, components: [

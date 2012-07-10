@@ -135,9 +135,6 @@ enyo.kind({
 		{kind: "onyx.Groupbox", components: [
 			{kind: "onyx.InputDecorator", components: [
 				{name: "notesInput", kind: "onyx.Input", style: "width: 100%;", placeholder: "Enter Notes Here...", onInputChange: "notesChange"}
-			]},
-			{kind: "onyx.InputDecorator", components: [
-				{name: "datetime", kind: "onyx.Input", style: "width: 100%;", placeholder: "Enter Date & Time Here...", attributes: {type: "datetime"}}
 			]}
 		]},
 		{classes: "onyx-toolbar-inline", style: "float: right;", components: [

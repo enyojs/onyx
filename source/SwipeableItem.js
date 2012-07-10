@@ -5,13 +5,17 @@
 	A SwipeableItem contains methods for styling its content and these should be used to effect styling on the row content. Add css classes via
 	the contentClasses property and the methods add|remove|has|addRemove<ContentClass>. Alter css styles via the applyContentStyle method.
 
+		{kind: "onyx.SwipeableItem", onCancel: "canceled", onDelete: "deleted"}
+
 */
 enyo.kind({
 	name: "onyx.SwipeableItem",
 	kind: "onyx.Item",
 	classes: "onyx-swipeable-item",
 	published: {
-		contentClasses: ""
+		contentClasses: "",
+		//* Set to true to prevent a drag from bubbling beyond the SwipeableItem.
+		preventDragPropagation: false
 	},
 	defaultContentClasses: "onyx-swipeable-item-content",
 	handlers: {
@@ -28,6 +32,7 @@ enyo.kind({
 			{kind: "onyx.Button", content: "Cancel", ontap: "cancelTap"}
 		]}
 	],
+	//* @protected
 	swiping: -1,
 	create: function() {
 		this.inherited(arguments);
@@ -36,6 +41,8 @@ enyo.kind({
 	reset: function() {
 		this.applyStyle("position", null);
 		this.$.confirm.setShowing(false);
+		// stop animating if we reset.
+		this.$.client.getAnimator().stop();
 		this.$.client.setValue(0);
 	},
 	contentClassesChanged: function() {
@@ -106,5 +113,6 @@ enyo.kind({
 				// note: can't teardown.
 			}
 		}
+		return this.preventDragPropagation;
 	}
 });
