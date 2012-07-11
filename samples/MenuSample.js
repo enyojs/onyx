@@ -1,27 +1,11 @@
 enyo.kind({
 	name: "onyx.sample.MenuSample",
-	kind: "Control",
 	classes: "onyx onyx-sample",
-	fit:true,
-	handlers: {
-		onSelect: "itemSelected"
-	},
 	components: [
-		{style: "padding: 10px;", content: "Some popups in a toolbar:"},
-		{kind: "onyx.MoreToolbar", classes: "onyx-menu-toolbar", components: [
-			{kind: "onyx.TooltipDecorator", components: [
-				{kind: "onyx.Button", content: "Tooltip"},
-				{kind: "onyx.Tooltip", content: "I'm a tooltip for a button."}
-			]},
-			{kind: "onyx.TooltipDecorator", components: [
-				{kind: "onyx.InputDecorator", components: [
-					{kind: "onyx.Input", placholder: "Just an input..."}
-				]},
-				{kind: "onyx.Tooltip", content: "I'm a tooltip for an input."}
-			]},
-			{kind: "onyx.MenuDecorator", components: [
-				{content: "Bookmarks menu"},
-				{kind: "onyx.Tooltip", content: "Tap to open..."},
+		{classes: "onyx-sample-divider", content: "Menus in Toolbars"},
+		{kind: "onyx.Toolbar", classes: "onyx-menu-toolbar", components: [
+			{kind: "onyx.MenuDecorator", onSelect: "itemSelected", components: [
+				{kind: "onyx.IconButton", src: "assets/menu-icon-bookmark.png"},
 				{kind: "onyx.Menu", components: [
 					{components: [
 						{kind: "onyx.IconButton", src: "assets/menu-icon-bookmark.png"},
@@ -32,9 +16,8 @@ enyo.kind({
 					{content: "Recents"},
 				]}
 			]},
-			{kind: "onyx.MenuDecorator", components: [
-				{kind: "onyx.IconButton", src: "assets/menu-icon-bookmark.png"},
-				{kind: "onyx.Tooltip", content: "Bookmarks menu"},
+			{kind: "onyx.MenuDecorator", onSelect: "itemSelected", components: [
+				{content: "Bookmarks menu"},
 				{kind: "onyx.Menu", components: [
 					{components: [
 						{kind: "onyx.IconButton", src: "assets/menu-icon-bookmark.png"},
@@ -46,54 +29,49 @@ enyo.kind({
 				]}
 			]}
 		]},
-		{kind: "Scroller", classes: "enyo-fit", style: "top: 130px;", components: [
-			{style: "height: 100px; padding: 10px;", content: "Some popups in a scrolling region:"},
-			{classes: "onyx-toolbar-inline", components: [
-				{kind: "onyx.Button", content: "Popup...", ontap: "showPopup", popup: "popup"},
-				{name: "popup", kind: "onyx.Popup", centered: true, floating: true, ontap: "floatTap", style: "font-size: 200px;", content: "Popup!!!"},
-				{kind: "onyx.Button", content: "Modal Popup...", ontap: "showPopup", popup: "modalPopup"},
-				{name: "modalPopup", kind: "onyx.Popup", centered: true, modal: true, floating: true, ontap: "floatTap", style: "font-size: 200px;", content: "Popup!!!"},
-				{kind: "onyx.MenuDecorator", components: [
-					{content: "Popup menu (floating)"},
-					{kind: "onyx.Menu", floating: true, components: [
-						{content: "1"},
-						{content: "2"},
-						{classes: "onyx-menu-divider"},
-						{content: "3"},
-					]}
-				]},
-				{kind: "onyx.MenuDecorator", components: [
-					{content: "Scrolling Popup menu"},
-					{kind: "onyx.Menu", components: [
-						{name: "menuScroller", kind: "enyo.Scroller", defaultKind: "onyx.MenuItem", vertical: "auto", classes: "enyo-unselectable", maxHeight: "200px", strategyKind: "TouchScrollStrategy", components: [
-							{content: "1"},
-							{content: "2"},
-							{classes: "onyx-menu-divider"},
-							{content: "3"},
-							{content: "4"},
-							{content: "5"},
-							{classes: "onyx-menu-divider"},
-							{content: "6"},
-							{content: "7"},
-						]}
-					]}
-				]},
-				{kind: "onyx.MenuDecorator", components: [
-					{content: "Split Popup menu", kind: "onyx.Button", onActivate: "preventMenuActivate", style: "border-radius: 3px 0 0 3px;"},
-					{content: "*", style: "border-radius: 0 3px 3px 0;"},
-					{kind: "onyx.Menu", components: [
-						{content: "1"},
-						{content: "2"},
-						{classes: "onyx-menu-divider"},
-						{content: "3"},
-					]}
-				]}
-			]},
-			{tag: "br"},
-			{kind: "onyx.Groupbox", classes:"onyx-sample-result-box", components: [
-				{kind: "onyx.GroupboxHeader", content: "Result"},
-				{name:"menuSelection", classes:"onyx-sample-result", content:"No menu selection yet."}
+		{tag: "br"},
+		{classes: "onyx-sample-divider", content: "Menus from Buttons"},
+		{kind: "onyx.MenuDecorator", onSelect: "itemSelected", components: [
+			{content: "Popup menu (floating)"},
+			{kind: "onyx.Menu", floating: true, components: [
+				{content: "1"},
+				{content: "2"},
+				{classes: "onyx-menu-divider"},
+				{content: "3"},
 			]}
+		]},
+		{tag: "br"},
+		{kind: "onyx.MenuDecorator", onSelect: "itemSelected", components: [
+			{content: "Scrolling Popup menu"},
+			{kind: "onyx.Menu", components: [
+				{name: "menuScroller", kind: "enyo.Scroller", defaultKind: "onyx.MenuItem", vertical: "auto", classes: "enyo-unselectable", maxHeight: "200px", strategyKind: "TouchScrollStrategy", components: [
+					{content: "1"},
+					{content: "2"},
+					{classes: "onyx-menu-divider"},
+					{content: "3"},
+					{content: "4"},
+					{content: "5"},
+					{classes: "onyx-menu-divider"},
+					{content: "6"},
+					{content: "7"},
+				]}
+			]}
+		]},
+		{tag: "br"},
+		{kind: "onyx.MenuDecorator", onSelect: "itemSelected", components: [
+			{content: "Split Popup menu", kind: "onyx.Button", onActivate: "preventMenuActivate", style: "border-radius: 3px 0 0 3px;"},
+			{content: "&#x25BE;", allowHtml:true, style: "border-radius: 0 3px 3px 0;"},
+			{kind: "onyx.Menu", components: [
+				{content: "1"},
+				{content: "2"},
+				{classes: "onyx-menu-divider"},
+				{content: "3"},
+			]}
+		]},
+		{tag: "br"},
+		{kind: "onyx.Groupbox", classes:"onyx-sample-result-box", components: [
+			{kind: "onyx.GroupboxHeader", content: "Result"},
+			{name:"menuSelection", classes:"onyx-sample-result", content:"No menu selection yet."}
 		]}
 	],
 	create: function() {
