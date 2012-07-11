@@ -6,58 +6,56 @@ enyo.kind({
 		onSelect: "itemSelected"
 	},
 	components: [
-		{kind: "onyx.Toolbar", content: "Pickers"},
-		{kind: "Scroller", fit: true, components: [
-			{classes: "onyx-toolbar-inline", style: "margin: 20px;", components: [				
-				{kind: "onyx.PickerDecorator", components: [
-					{},
-					{kind: "onyx.Picker", components: [
-						{content: "Gmail", active: true},
-						{content: "Yahoo"},
-						{content: "Outlook"},
-						{content: "Hotmail"}
-					]}
-				]},
-				{kind: "onyx.PickerDecorator", components: [
-					{kind: "onyx.Button", content: "Pick One...", style: "width: 200px"},
-					{kind: "onyx.Picker", components: [
-						{content: "Hello!"},
-						{content: "I am busy."},
-						{content: "Good Bye."}
-					]}
-				]},
-				{tag: "br"},
-				{style: "display: block; height: 50px;"},
-				{classes: "onyx-toolbar-inline", components: [
-					{content: "Integer", classes: "onyx-sample-label"},
-					{kind: "onyx.PickerDecorator", components: [
-						{style: "min-width: 60px;"},
-						{name: "integerPicker", kind: "onyx.Picker"}
-					]}
-				]},
-				{classes: "onyx-toolbar-inline", components: [
-					{content: "Date", classes: "onyx-sample-label"},
-					{kind: "onyx.PickerDecorator", components: [
-						{},
-						{name: "monthPicker", kind: "onyx.Picker"}
-					]},
-					{kind: "onyx.PickerDecorator", components: [
-						{style: "min-width: 60px;"},
-						{name: "dayPicker", kind: "onyx.Picker"}
-					]}
-				]},
-				{classes: "onyx-toolbar-inline", components: [
-					{content: "Year", classes: "onyx-sample-label"},
-					{kind: "onyx.PickerDecorator", components: [
-						{style: "min-width: 80px;"},
-						{name: "yearPicker", kind: "onyx.FlyweightPicker", count: 200, onSetupItem: "setupYear", components: [
-							{name: "year"}
-						]}
-					]}
+		{content: "Default Picker", classes:"onyx-sample-divider"},
+		{kind: "onyx.PickerDecorator", components: [
+			{},
+			{kind: "onyx.Picker", components: [
+				{content: "Gmail", active: true},
+				{content: "Yahoo"},
+				{content: "Outlook"},
+				{content: "Hotmail"}
+			]}
+		]},
+		{tag: "br"},
+		{content: "Picker with Static Button", classes:"onyx-sample-divider"},
+		{kind: "onyx.PickerDecorator", components: [
+			{kind: "onyx.Button", content: "Pick One...", style: "width: 200px"},
+			{kind: "onyx.Picker", components: [
+				{content: "Hello!"},
+				{content: "I am busy."},
+				{content: "Good Bye."}
+			]}
+		]},
+		{tag: "br"},
+		{content: "Other Pickers", classes:"onyx-sample-divider"},
+		{classes: "onyx-toolbar-inline", components: [
+			{content: "Integer", classes: "onyx-sample-label"},
+			{kind: "onyx.PickerDecorator", components: [
+				{style: "min-width: 60px;"},
+				{name: "integerPicker", kind: "onyx.Picker"}
+			]}
+		]},
+		{tag: "br"},
+		{classes: "onyx-toolbar-inline", components: [
+			{content: "Date", classes: "onyx-sample-label"},
+			{kind: "onyx.PickerDecorator", components: [
+				{},
+				{name: "monthPicker", kind: "onyx.Picker"}
+			]},
+			{kind: "onyx.PickerDecorator", components: [
+				{style: "min-width: 60px;"},
+				{name: "dayPicker", kind: "onyx.Picker"}
+			]},
+			{content: "Year", classes: "onyx-sample-label"},
+			{kind: "onyx.PickerDecorator", components: [
+				{style: "min-width: 80px;"},
+				{name: "yearPicker", kind: "onyx.FlyweightPicker", count: 200, onSetupItem: "setupYear", components: [
+					{name: "year"}
 				]}
 			]}
 		]},
-		{classes: "onyx-toolbar-inline", style: "height: 50px; margin: 20px; padding-bottom:15px;", components: [
+		{tag: "br"},
+		{classes: "onyx-toolbar-inline", components: [
 			{kind: "onyx.PickerDecorator", components: [
 				{},
 				{kind: "onyx.Picker", components: [
@@ -67,11 +65,12 @@ enyo.kind({
 					{content: "Hotmail", active: true}
 				]}
 			]},
-			{kind: "onyx.Groupbox", style:"float:right;padding-left:10px;", components: [
-				{kind: "onyx.GroupboxHeader", content: "Selection"},
-				{name:"pickerSelection", content: "?", style:"text-align:center;"}
-			]}					
 		]},
+		{tag: "br"},
+		{kind: "onyx.Groupbox", classes:"onyx-sample-result-box", components: [
+			{kind: "onyx.GroupboxHeader", content: "Selection"},
+			{name:"pickerSelection", classes:"onyx-sample-result", content: "Nothing picked yet."}
+		]}					
 	],
 	create: function() {
 		this.inherited(arguments);

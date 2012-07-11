@@ -1,27 +1,27 @@
 enyo.kind({
 	name: "onyx.sample.DrawerSample",
-	classes: "onyx onyx-sample box",
-	stretch: true,
+	classes: "onyx drawer-sample",
 	components: [
-		{content: "Above Drawer #1", classes: "box mtb"},
+		{content: "Drawers", classes:"drawer-sample-divider"},
+		{content: "Activate (V)", classes: "drawer-sample-box drawer-sample-mtb", ontap:"activateDrawer"},
 		{name: "drawer", kind: "onyx.Drawer", components: [
-			{content: "Drawer #1<br>Drawer #1<br>Drawer #1<br>Drawer #1", allowHtml: true, classes: "box mtb"}
+			{content: "Vertical Drawer<br>Vertical Drawer<br>Vertical Drawer<br>Vertical Drawer", allowHtml: true, classes: "drawer-sample-box drawer-sample-mtb"}
 		]},
-		{content: "Below Drawer #1<br>Below Drawer #1", allowHtml: true, classes: "box mtb"},
-		{kind: "FittableColumns", fit: true, classes: "box mtb o", ontap: "columnsTap", components: [
-			{content: "111111111111111", classes: "box mlr"},
+		{content: "Foo<br>Foo", allowHtml: true, classes: "drawer-sample-box drawer-sample-mtb"},
+		{kind: "FittableColumns", fit: true, ontap: "activateColumnsDrawer", classes: "drawer-sample-box drawer-sample-mtb drawer-sample-o", components: [
+			{content: "Activate (H)", classes: "drawer-sample-box drawer-sample-mlr"},
 			{name: "columnsDrawer", orient: "h", kind: "onyx.Drawer", open: false, components: [
-				{content: "Drawer", classes: "box mlr"},
+				{content: "H-Drawer", classes: "drawer-sample-box drawer-sample-mlr"},
 			]},
-			{content: "2", fit: true, classes: "box mlr o"},
-			{content: "3333333", classes: "box mlr"}
+			{content: "Foo", fit: true, classes: "drawer-sample-box drawer-sample-mlr drawer-sample-o"},
+			{content: "Foo", classes: "drawer-sample-box drawer-sample-mlr"}
 		]},
-		{content: "Bat", classes: "box mtb"}
+		{content: "Foo", classes: "drawer-sample-box drawer-sample-mtb"}
 	],
-	tap: function() {
+	activateDrawer: function() {
 		this.$.drawer.setOpen(!this.$.drawer.open);
 	},
-	columnsTap: function() {
+	activateColumnsDrawer: function() {
 		this.$.columnsDrawer.setOpen(!this.$.columnsDrawer.open);
 		return true;
 	}
