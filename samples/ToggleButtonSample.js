@@ -6,7 +6,8 @@ enyo.kind({
 		{classes: "onyx-sample-tools", components: [
 			{kind:"onyx.ToggleButton", onChange:"toggleChanged", value: true},
 			{kind:"onyx.ToggleButton", onChange:"toggleChanged"},
-			{kind:"onyx.ToggleButton", onChange:"toggleChanged"}
+			{kind:"onyx.ToggleButton", onChange:"toggleChanged"},
+			{kind:"onyx.ToggleButton", onChange:"toggleChanged", value: true, disabled: true}
 		]},
 		{tag: "br"},
 		{classes: "onyx-sample-divider", content: "Toggle Buttons Group"},
