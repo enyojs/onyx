@@ -87,7 +87,7 @@ enyo.kind({
 			var b = this.node.getBoundingClientRect();
 			var bHeight = (b.height === undefined) ? (b.bottom - b.top) : b.height;
 			var innerHeight = (window.innerHeight === undefined) ? document.documentElement.clientHeight : window.innerHeight;
-			var innerHeight = (window.innerHeight === undefined) ? document.documentElement.clientHeight : window.innerHeight;			
+			var innerWidth = (window.innerWidth === undefined) ? document.documentElement.clientWidth : window.innerWidth;			
 			
 			//position the menu above the activator if it's getting cut off, but only if there's more room above
 			this.menuUp = (b.top + bHeight > innerHeight) && ((innerHeight - b.bottom) < (b.top - bHeight));
