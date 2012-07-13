@@ -25,9 +25,12 @@ enyo.kind({
 	//* @protected
 	layoutKind: "FittableColumnsLayout",
 	noStretch: true,
+	handlers: {
+		onHide: "reflow"
+	},
 	tools: [
 		{name: "client", fit: true, classes: "onyx-toolbar-inline"},
-		{name: "nard", kind: "onyx.MenuDecorator", showing: false, components: [
+		{name: "nard", kind: "onyx.MenuDecorator", showing: false, onActivate: "activated", components: [
 			{kind: "onyx.IconButton", classes: "onyx-more-button"},
 			{name: "menu", kind: "onyx.Menu", classes: "onyx-more-menu", prepend: true}
 		]}
@@ -52,6 +55,9 @@ enyo.kind({
 			this.$.nard.hide();
 			this.$.menu.hide();
 		}
+	},
+	activated: function(inSender, inEvent) {
+		this.addRemoveClass("active",inEvent.originator.active);
 	},
 	popItem: function() {
 		var c = this.findCollapsibleItem();
