@@ -13,6 +13,7 @@ enyo.kind({
 	kind: "onyx.Item",
 	classes: "onyx-swipeable-item",
 	published: {
+		//* Add custom CSS classes via the contentClasses property to style the SwipeableItem's content
 		contentClasses: "",
 		//* Set to true to prevent a drag from bubbling beyond the SwipeableItem.
 		preventDragPropagation: false
@@ -22,7 +23,15 @@ enyo.kind({
 		ondown: "down"
 	},
 	events: {
+		/**
+			Fires when a SwipeableItem's delete button has been triggered
+			This event does not fire when programatically deleting a SwipeableItem instance
+		*/
 		onDelete: "",
+		/**
+			Fires when a SwipeableItem's cancel button has been triggered
+			This event does not fire when selecting a second SwipeableItem, causing the first to cancel itself programatically
+		*/
 		onCancel: ""
 	},
 	components: [
@@ -38,6 +47,8 @@ enyo.kind({
 		this.inherited(arguments);
 		this.contentClassesChanged();
 	},
+	//* @public
+	//* Resets the sliding position of the SwipeableItem currently displaying confirmation options
 	reset: function() {
 		this.applyStyle("position", null);
 		this.$.confirm.setShowing(false);
@@ -45,24 +56,37 @@ enyo.kind({
 		this.$.client.getAnimator().stop();
 		this.$.client.setValue(0);
 	},
+	//* @protected
 	contentClassesChanged: function() {
 		this.$.client.setClasses(this.defaultContentClasses + " " + this.contentClasses);
 	},
+	//* @public
+	//* Applies a single style value to the SwipeableItem
 	applyContentStyle: function(inStyle, inValue) {
 		this.$.client.applyStyle(inStyle, inValue);
 	},
+	//* Applies a CSS class to the SwipeableItem's contentClasses
 	addContentClass: function(inClass) {
 		this.$.client.addClass(inClass);
 	},
+	//* Removes a CSS class to the SwipeableItem's contentClasses
 	removeContentClass: function(inClass) {
 		this.$.client.removeClass(inClass);
 	},
+	//* Returns true if the _class_ attribute contains a substring matching _inClass_
 	hasContentClass: function(inClass) {
 		return this.$.client.hasClass(inClass);
 	},
+	/**
+		Adds or removes substring _inClass_ from the _class_ attribute of this object based
+		on the value of _inTrueToAdd_.
+
+		If _inTrueToAdd_ is truthy, then _inClass_ is added; otherwise, _inClass_ is removed.
+	*/
 	addRemoveContentClass: function(inClass, inAdd) {
 		this.$.client.addRemoveClass(inClass, inAdd);
 	},
+	//* @protected
 	generateHtml: function() {
 		this.reset();
 		return this.inherited(arguments);
