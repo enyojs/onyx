@@ -872,6 +872,10 @@ button.onyx-button.onyx-blue {
 	z-index: 10;
 }
 
+.onyx-more-toolbar.active {
+	z-index:11;
+}
+
 .onyx-more-menu {
 	left: auto;
 	right: 0px;
