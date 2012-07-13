@@ -25,6 +25,9 @@ enyo.kind({
 	//* @protected
 	layoutKind: "FittableColumnsLayout",
 	noStretch: true,
+	handlers: {
+		onHide: "reflow"
+	},
 	tools: [
 		{name: "client", fit: true, classes: "onyx-toolbar-inline"},
 		{name: "nard", kind: "onyx.MenuDecorator", showing: false, components: [
