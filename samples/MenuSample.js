@@ -60,7 +60,7 @@ enyo.kind({
 		{tag: "br"},
 		{kind: "onyx.MenuDecorator", onSelect: "itemSelected", components: [
 			{content: "Split Popup menu", kind: "onyx.Button", onActivate: "preventMenuActivate", style: "border-radius: 3px 0 0 3px;"},
-			{content: "&#x25BE;", allowHtml:true, style: "border-radius: 0 3px 3px 0;"},
+			{content: "v", allowHtml:true, style: "border-radius: 0 3px 3px 0;"},
 			{kind: "onyx.Menu", components: [
 				{content: "1"},
 				{content: "2"},
