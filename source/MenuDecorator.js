@@ -32,8 +32,6 @@ enyo.kind({
 			this.activator = inEvent.originator;
 			this.activator.addClass("active");
 			this.requestShowMenu();
-		} else {
-			this.requestHideMenu();
 		}
 	},
 	requestShowMenu: function() {

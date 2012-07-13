@@ -36,6 +36,7 @@ enyo.kind({
 		onRequestHideMenu: "requestHide"
 	},
 	itemActivated: function(inSender, inEvent) {
+		inEvent.originator.setActive(false);
 		return true;
 	},
 	showingChanged: function() {
