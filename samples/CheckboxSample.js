@@ -6,12 +6,12 @@ enyo.kind({
 		{classes: "onyx-sample-tools", components: [
 			{kind:"onyx.Checkbox", onchange:"checkboxChanged"},
 			{kind:"onyx.Checkbox", onchange:"checkboxChanged"},
-			{kind:"onyx.Checkbox", onchange:"checkboxChanged", value: true}
+			{kind:"onyx.Checkbox", onchange:"checkboxChanged", checked: true}
 		]},
 		{tag: "br"},
 		{classes: "onyx-sample-divider", content: "Checkboxes Group"},
 		{kind: "Group", classes: "onyx-sample-tools group", onActivate:"groupActivated", highlander: true, components: [
-			{kind:"onyx.Checkbox", value: true},
+			{kind:"onyx.Checkbox", checked: true},
 			{kind:"onyx.Checkbox"},
 			{kind:"onyx.Checkbox"}
 		]},
