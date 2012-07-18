@@ -14,38 +14,24 @@ enyo.kind({
 	name: "enyo.BingMap",
 	classes: "enyo-bingmap",
 	published: {
-		/**
-		  The latitude of the location.
-		 */
+		//*	The latitude of the location.
 		latitude: 37.029043436050415,
-		/**
-		  The longitde of the location.
-		 */
+		//*  The longitde of the location.
 		longitude: -101.55550763010979,
-		/**
-		  The zoom level of the map view.
-		 */
+		//* The zoom level of the map view.
 		zoom: 4,
-		/**
-		  Show a pin at the center of the current map view.
-		 */
+		//* Show a pin at the center of the current map view.
 		showPin: false,
-		/**
-		  The map type of the map view.  Valid map types are aerial, auto, birdseye, collinsBart, mercator, ordnanceSurvey and road.
-		 */
+		//* The map type of the map view.  Valid map types are aerial, auto, birdseye, collinsBart, mercator, ordnanceSurvey and road.
 		mapType: "road",
-		/**
-		  The Bing Maps Key used to authenticate the application.
-		 */
+		//* The Bing Maps Key used to authenticate the application.
 		credentials: "",
-		/**
-		  Show traffic info
-		 */
+		//* Show traffic info
 		showTraffic: false,
 		/**
-		  Represents Bing options to customize the map that is displayed.  Can only be set at create time.  For example,
-		  {kind: "enyo.Map", options: {showDashboard: false, showCopyright: false}}
-		 */
+			Represents Bing options to customize the map that is displayed.  Can only be set at create time.  For example,
+				{kind: "enyo.Map", options: {showDashboard: false, showCopyright: false}}
+		*/
 		options: ""
 	},
 	events: {
@@ -80,7 +66,7 @@ enyo.kind({
 		try {
 			this.createMap();
 		} catch (e) {
-			this.doLoadFailure(e);
+			this.doLoadFailure({e: e});
 			return;
 		}
 		this.mapTypeChanged();
@@ -91,21 +77,21 @@ enyo.kind({
 	},
 	//* @public
 	/**
-	  Returns the actual Bing map control.
-	 */
+		Returns the actual Bing map control.
+	*/
 	hasMap: function() {
 		return this.map;
 	},
 	/**
-	  Removes all entities from the map except the dropped pin and the pins in inExcludes.
-	 */
+		Removes all entities from the map except the dropped pin and the pins in inExcludes.
+	*/
 	clearAll: function(inExcludes) {
 		this.map.entities.clear();
 		if (this.showPin && this.pin) {
 			this.map.entities.push(this.pin);
 		}
 		if (inExcludes) {
-			for (var i=0, ex; ex=inExcludes[i]; i++) {
+			for (var i=0, ex; (ex=inExcludes[i]); i++) {
 				if (ex) {
 					this.map.entities.push(ex);
 				}
@@ -113,10 +99,10 @@ enyo.kind({
 		}
 	},
 	/**
-	  Sets the location of the center of the map view.
-	  @param {number} inLatitude The latitude of the location.
-	  @param {number} inLongitude The longitude of the location.
-	 */
+		Sets the location of the center of the map view.
+		@param {number} inLatitude The latitude of the location.
+		@param {number} inLongitude The longitude of the location.
+	*/
 	setCenter: function(inLatitude, inLongitude) {
 		this.latitude = inLatitude;
 		this.longitude = inLongitude;
@@ -179,7 +165,7 @@ enyo.kind({
 			var time = (new Date()).getTime();
 			var tileSource = new Microsoft.Maps.TileSource({uriConstructor: 'http://t0.tiles.virtualearth.net/tiles/t{quadkey}?tc=' + time});
 			// Construct the layer using the tile source
-			this.trafficTileLayer = new Microsoft.Maps.TileLayer({mercator: tileSource, opacity: .7});
+			this.trafficTileLayer = new Microsoft.Maps.TileLayer({mercator: tileSource, opacity: 0.7});
 			this.map.entities.push(this.trafficTileLayer);
 		}
 	},
@@ -206,7 +192,7 @@ enyo.kind({
 		alreadyCalled: false,
 		loadScript: function(inCallback) {
 			if (window["Microsoft"] && window["Microsoft"]["Maps"]) {
-				inCallback && inCallback();
+				if (inCallback) inCallback();
 			} else {
 				this.scriptLoadedCbs.push(inCallback);
 				if (!this.alreadyCalled) {
@@ -217,12 +203,12 @@ enyo.kind({
 		},
 		addScript: function() {
 			var script = document.createElement("script");
-	    	script.type = "text/javascript";
+			script.type = "text/javascript";
 			script.src = "http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0&onscriptload=enyo_BingMap_scriptLoaded";
-	    	document.body.appendChild(script);
+			document.body.appendChild(script);
 		},
 		scriptLoaded: function() {
-			for (var i=0, c; c=enyo.BingMap.scriptLoadedCbs[i]; i++) {
+			for (var i=0, c; (c=enyo.BingMap.scriptLoadedCbs[i]); i++) {
 				c();
 			}
 			enyo.BingMap.scriptLoadedCbs = [];

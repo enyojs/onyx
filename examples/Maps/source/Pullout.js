@@ -67,7 +67,7 @@ enyo.kind({
 		var o = inEvent.originator;
 		this.doMapTypeSelect({mapType: o.parent.mapType});
 	},
-	itemSelect: function(inSender, inItem) {
-		this.doBookmarkSelect(inItem);
+	itemSelect: function(inSender, inEvent) {
+		this.doBookmarkSelect({item: inEvent.item});
 	}
-})
+});
