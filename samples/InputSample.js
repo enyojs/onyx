@@ -20,14 +20,14 @@ enyo.kind({
 				{kind: "onyx.Input", disabled: true, value: "Disabled input"}
 			]},
 			{kind: "onyx.InputDecorator", components: [
-				{kind: "onyx.Input", defaultFocus: true, value: "Focused input"}
+				{kind: "onyx.Input", defaultFocus: true, value: "Focused input", onchange:"inputChanged"}
 			]},
 			{kind: "onyx.InputDecorator", components: [
 				{content: "Left:"},
-				{kind: "onyx.Input", value: "Input Area"},
+				{kind: "onyx.Input", value: "Input Area", onchange:"inputChanged"},
 				{content: " :Right"},
 			]}
-		]},		
+		]},
 		{tag: "br"},
 		{classes: "onyx-sample-divider", content: "RichTexts"},
 		{classes: "onyx-toolbar-inline", components: [
