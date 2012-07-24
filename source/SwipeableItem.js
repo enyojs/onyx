@@ -36,7 +36,7 @@ enyo.kind({
 	},
 	components: [
 		{name: "client", kind: "Slideable", min: -100, unit: "%", ondragstart: "clientDragStart"},
-		{name: "confirm", kind: "onyx.Toolbar", canGenerate: false, classes: "onyx-swipeable-item-confirm enyo-fit", style: "text-align: center;", ontap: "confirmTap", components: [
+		{name: "confirm", kind: "onyx.Toolbar", canGenerate: false, classes: "onyx-swipeable-item-confirm enyo-fit", style: "text-align: center;", ontap: "confirmTap", onhold: "doNothing", onrelease: "doNothing", components: [
 			{kind: "onyx.Button", content: "Delete", ontap: "deleteTap"},
 			{kind: "onyx.Button", content: "Cancel", ontap: "cancelTap"}
 		]}
@@ -117,6 +117,9 @@ enyo.kind({
 				this.reset();
 			}));
 		}
+	},
+	doNothing: function(inSender, inEvent) {
+		return true;
 	},
 	clientDragStart: function(inSender, inEvent) {
 		if (inSender.dragging) {
