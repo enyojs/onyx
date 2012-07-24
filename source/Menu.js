@@ -90,7 +90,7 @@ enyo.kind({
 			var innerHeight = (window.innerHeight === undefined) ? document.documentElement.clientHeight : window.innerHeight;
 			var innerWidth = (window.innerWidth === undefined) ? document.documentElement.clientWidth : window.innerWidth;			
 			
-			//position the menu above the activator if it's getting cut off, but only if there's more room above
+			//position the menu above the activator if it's getting cut off, but only if there's more room above than below
 			this.menuUp = (b.top + bHeight > innerHeight) && ((innerHeight - b.bottom) < (b.top - bHeight));
 			this.addRemoveClass("onyx-menu-up", this.menuUp);
 			
@@ -117,8 +117,24 @@ enyo.kind({
 				} else {
 					this.applyPosition({left: -(b.right - innerWidth)});
 				}					
-			}			
+			}
+			
+			//finally prevent the menu from being cut off on the left
+			if (b.left < 0) {
+				if (this.floating){
+					this.applyPosition({left: 0, right:"auto"});
+				} else {
+					//handle the situation where a non-floating menu is right or left aligned
+					if (this.getComputedStyleValue("right") == "auto"){
+						this.applyPosition({left:-b.left});
+					} else {
+						this.applyPosition({right:b.left});												
+					}
+				}
+			}						
 		}
+		
+
 	},
 	resizeHandler: function() {
 		this.inherited(arguments);			
