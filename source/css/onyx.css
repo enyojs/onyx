@@ -546,6 +546,7 @@ button.onyx-button.onyx-blue {
 
 .onyx-toggle-button.disabled {
 	opacity: 0.4;
+	filter: alpha(opacity=40);
 }
 
 .onyx-toggle-content {
