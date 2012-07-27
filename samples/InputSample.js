@@ -20,9 +20,6 @@ enyo.kind({
 				{kind: "onyx.Input", disabled: true, value: "Disabled input"}
 			]},
 			{kind: "onyx.InputDecorator", components: [
-				{kind: "onyx.Input", defaultFocus: true, value: "Focused input", onchange:"inputChanged"}
-			]},
-			{kind: "onyx.InputDecorator", components: [
 				{content: "Left:"},
 				{kind: "onyx.Input", value: "Input Area", onchange:"inputChanged"},
 				{content: " :Right"},
