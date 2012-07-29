@@ -4,6 +4,10 @@ enyo.kind({
 	components: [
 		{classes: "onyx-sample-divider", content: "Progress Bars"},
 		{kind: "onyx.ProgressBar", progress: 25},
+		{kind: "onyx.ProgressBar", animateStripes: false, progress: 25},
+		{kind: "onyx.ProgressBar", progress: 25, barClasses: "green"},
+		{kind: "onyx.ProgressBar", progress: 25, barClasses: "red"},
+		{kind: "onyx.ProgressBar", progress: 25, barClasses: "onyx-dark"},
 		{kind: "onyx.ProgressBar", animateStripes: false, barClasses: "onyx-light", progress: 50},
 		{kind: "onyx.ProgressBar", showStripes: false, progress: 75},
 		{tag: "br"},
@@ -23,8 +27,17 @@ enyo.kind({
 		{kind: "onyx.Button", content:"+", classes:"onyx-sample-spaced-button", ontap:"incValue"},
 		{tag: "br"},
 		{tag: "br"},
-		{kind: "onyx.Checkbox", name:"animateSetting", value:true},
-		{content:"Animated", classes:"enyo-inline onyx-sample-animate-label"}
+		{kind: "onyx.Checkbox", name:"animateSetting", checked:true},
+		{content:"Animated", classes:"enyo-inline onyx-sample-animate-label"},
+		{tag: "br"},
+		{tag: "br"},
+		{classes: "onyx-sample-divider", content: "Sliders"},
+		{kind: "onyx.Slider", min: 10, max: 50, value: 30},
+		{tag: "br"},
+		{kind: "onyx.Slider", lockBar: false, progress: 20, value: 75},
+		{tag: "br"},
+		{name: "progressSlider", kind: "onyx.Slider", lockBar: false, value: 75},
+		{kind: "onyx.Button", content: "Toggle Progress", ontap: "toggleProgress"}
 	],
 	changeValue: function(inSender, inEvent) {
 		for (var i in this.$) {
@@ -47,5 +60,22 @@ enyo.kind({
 	},
 	clearValue: function(inSender, inEvent) {
 		inSender.setProgress(0);
+	},
+	toggleProgress: function() {
+		this._progressing = !this._progressing;
+		this.nextProgress();
+	},
+	nextProgress: function() {
+		if (this._progressing) {
+			enyo.requestAnimationFrame(enyo.bind(this, function() {
+				this.incrementProgress();
+				setTimeout(enyo.bind(this, "nextProgress"), 500);
+			}), this.hasNode());
+		}
+	},
+	incrementProgress: function() {
+		var p = this.$.progressSlider;
+		var i = p.min + ((p.progress - p.min + 5) % (p.max - p.min + 1));
+		p.animateProgressTo(i);
 	}
 });
