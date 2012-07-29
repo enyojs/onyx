@@ -5,8 +5,13 @@ enyo.kind({
 		{classes: "onyx-sample-divider", content: "Progress Bars"},
 		{kind: "onyx.ProgressBar", progress: 25},
 		{kind: "onyx.ProgressBar", animateStripes: false, progress: 25},
+<<<<<<< HEAD
 		{kind: "onyx.ProgressBar", progress: 25, barClasses: "green"},
 		{kind: "onyx.ProgressBar", progress: 25, barClasses: "red"},
+=======
+		{kind: "onyx.ProgressBar", progress: 25, barClasses: "onyx-green"},
+		{kind: "onyx.ProgressBar", progress: 25, barClasses: "onyx-red"},
+>>>>>>> Fix for ENYO-720
 		{kind: "onyx.ProgressBar", progress: 25, barClasses: "onyx-dark"},
 		{kind: "onyx.ProgressBar", animateStripes: false, barClasses: "onyx-light", progress: 50},
 		{kind: "onyx.ProgressBar", showStripes: false, progress: 75},
