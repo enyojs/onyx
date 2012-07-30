@@ -106,23 +106,6 @@
 	padding: 0px 3px;
 }
 
-/* optional */
-
-/*button.onyx-button.onyx-affirmative {
-	background-color: #91BA07;
-	color: #F1F1F1;
-}
-
-button.onyx-button.onyx-negative {
-	background-color: #C51616;
-	color: #F1F1F1;
-}
-
-button.onyx-button.onyx-blue {
-	background-color: #35A8EE;
-	color: #F1F1F1;
-}*/
-
 /* Checkbox.css */
 .onyx-checkbox {
 	cursor: pointer;
@@ -759,16 +742,6 @@ button.onyx-button.onyx-blue {
   }
 }
 
-/* optional */
-
-.onyx-dark {
-	background-color: #626368;
-}
-
-.onyx-light {
-	background-color: #cacaca;
-}
-
 /* ProgressButton.css */
 .onyx-progress-button {
 	position: relative;
@@ -892,17 +865,33 @@ button.onyx-button.onyx-blue {
 }
 
 /* some default colors */
+.onyx-dark {
+	background-color: #626368;
+}
+
+.onyx-light {
+	background-color: #cacaca;
+}
+
 .onyx-blue {
 	background-color: #35A8EE;
 	color: #F1F1F1;
 }
 
-.onyx-affirmative, .onyx-green {
+.onyx-green {
+	background-color: #91BA07;
+}
+
+.onyx-red {
+	background-color: #C51616;
+}
+
+.onyx-affirmative {
 	background-color: #91BA07;
 	color: #F1F1F1;
 }
 
-.onyx-negative, .onyx-red {
+.onyx-negative {
 	background-color: #C51616;
 	color: #F1F1F1;
 }
