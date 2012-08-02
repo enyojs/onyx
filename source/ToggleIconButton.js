@@ -20,6 +20,7 @@ enyo.kind({
 	classes: "onyx-icon-button onyx-icon-toggle",
 	//* @protected
 	activeChanged: function() {
+		this.addRemoveClass("active", this.value)
 		this.bubble("onActivate");
 	},
 	disabledChanged: function() {
@@ -29,11 +30,9 @@ enyo.kind({
 		if (!this.disabled) {
 			this.setValue(inValue);
 		}
-		this.addRemoveClass("active", this.value)
 	},
 	tap: function() {
 		this.updateValue(!this.value);
-		console.log(this.value, this.active)
 	},
 	valueChanged: function() {
 		this.setActive(this.value);

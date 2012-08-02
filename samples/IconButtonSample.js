@@ -13,6 +13,13 @@ enyo.kind({
 			{kind: "onyx.IconButton", src: "assets/menu-icon-bookmark.png"}
 		]},
 		{tag: "br"},
+		{classes: "onyx-sample-divider", content: "Toggle Icon Buttons"},
+		{kind: "onyx.ToggleIconButton", src: "assets/menu-icon-bookmark.png"},
+		{kind: "onyx.ToggleIconButton", value: true, src: "assets/menu-icon-bookmark.png"},
+		{kind: "onyx.ToggleIconButton", disabled: true, src: "assets/menu-icon-bookmark.png"},
+		{kind: "onyx.ToggleIconButton", value: true, disabled: true, src: "assets/menu-icon-bookmark.png"},
+		{tag: "br"},
+		{tag: "br"},
 		{classes: "onyx-sample-divider", content: "Icon Buttons in Toolbar"},
 		{kind: "onyx.Toolbar", defaultKind: "onyx.IconButton", components: [
 			{src: "assets/menu-icon-bookmark.png", ontap:"iconTapped"},
