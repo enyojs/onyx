@@ -14,10 +14,10 @@ enyo.kind({
 		]},
 		{tag: "br"},
 		{classes: "onyx-sample-divider", content: "Toggle Icon Buttons"},
-		{kind: "onyx.ToggleIconButton", src: "assets/menu-icon-bookmark.png"},
-		{kind: "onyx.ToggleIconButton", value: true, src: "assets/menu-icon-bookmark.png"},
-		{kind: "onyx.ToggleIconButton", disabled: true, src: "assets/menu-icon-bookmark.png"},
-		{kind: "onyx.ToggleIconButton", value: true, disabled: true, src: "assets/menu-icon-bookmark.png"},
+		{kind: "onyx.ToggleIconButton", onChange: "toggleChanged", src: "assets/menu-icon-bookmark.png"},
+		{kind: "onyx.ToggleIconButton", onChange: "toggleChanged", value: true, src: "assets/menu-icon-bookmark.png"},
+		{kind: "onyx.ToggleIconButton", onChange: "toggleChanged", disabled: true, src: "assets/menu-icon-bookmark.png"},
+		{kind: "onyx.ToggleIconButton", onChange: "toggleChanged", value: true, disabled: true, src: "assets/menu-icon-bookmark.png"},
 		{tag: "br"},
 		{tag: "br"},
 		{classes: "onyx-sample-divider", content: "Icon Buttons in Toolbar"},
@@ -42,6 +42,9 @@ enyo.kind({
 	iconTapped: function(inSender, inEvent) {
 		this.iconTappedCounts[inSender.name] = this.iconTappedCounts[inSender.name] || 0;
 		this.$.result.setContent("The icon button was tapped: " + ++this.iconTappedCounts[inSender.name]);
+	},
+	toggleChanged: function(inSender, inEvent) {
+		this.$.result.setContent(inSender.name + " was " + (inSender.getValue() ? " selected." : "deselected."));
 	},
 	ordinals: ["1st", "2nd", "3rd"],
 	iconGroupActivated: function(inSender, inEvent) {

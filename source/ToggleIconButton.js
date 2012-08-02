@@ -17,6 +17,13 @@ enyo.kind({
 		value: false,
 		disabled: false
 	},
+	events: {
+		/**
+			The onChange event fires when the user changes the value of the toggle button, 
+			but not when the value is changed programmatically.
+		*/
+		onChange: ""
+	},
 	classes: "onyx-icon-button onyx-icon-toggle",
 	//* @protected
 	activeChanged: function() {
@@ -29,6 +36,7 @@ enyo.kind({
 	updateValue: function(inValue) {
 		if (!this.disabled) {
 			this.setValue(inValue);
+			this.doChange({value: this.value});
 		}
 	},
 	tap: function() {
