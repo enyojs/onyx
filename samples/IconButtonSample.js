@@ -4,6 +4,7 @@ enyo.kind({
 	components: [
 		{classes: "onyx-sample-divider", content: "Icon Button"},
 		{kind: "onyx.IconButton", src: "assets/menu-icon-bookmark.png", ontap:"iconTapped" },
+		{kind: "onyx.IconButton", disabled: true, src: "assets/menu-icon-bookmark.png", ontap:"iconTapped" },
 		{tag: "br"},
 		{tag: "br"},
 		{classes: "onyx-sample-divider", content: "Grouped Icon Buttons"},

@@ -21,7 +21,8 @@ enyo.kind({
 	name: "onyx.IconButton",
 	kind: "onyx.Icon",
 	published: {
-		active: false
+		active: false,
+		disabled: false
 	},
 	classes: "onyx-icon-button",
 	//* @protected
@@ -29,8 +30,20 @@ enyo.kind({
 		this.inherited(arguments);
 		this.activeChanged();
 	},
+	disabledChanged: function() {
+		this.addRemoveClass("disabled", this.disabled);
+	},
+	create: function() {
+		this.inherited(arguments);
+		this.disabledChanged();
+	},
 	tap: function() {
-		this.setActive(true);
+		if (!this.disabled) {
+			this.setActive(true);
+		}
+		else {
+			return true;
+		}
 	},
 	activeChanged: function() {
 		this.bubble("onActivate");

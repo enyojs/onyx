@@ -35,6 +35,10 @@
 	background-position: 0 -32px;
 }
 
+.onyx-icon.disabled:active:hover {
+	background-position: 0 0px;
+}
+
 /* Button.css */
 .onyx-button {
 	outline: 0;
@@ -544,7 +548,7 @@ button.onyx-button.onyx-blue {
 	float: left;
 }
 
-.onyx-toggle-button.disabled, .onyx-icon-toggle.disabled {
+.onyx-toggle-button.disabled, .onyx-icon-button.disabled {
 	opacity: 0.4;
 	filter: alpha(opacity=40);
 }
