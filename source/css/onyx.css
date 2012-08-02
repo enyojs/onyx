@@ -544,7 +544,7 @@ button.onyx-button.onyx-blue {
 	float: left;
 }
 
-.onyx-toggle-button.disabled {
+.onyx-toggle-button.disabled, .onyx-icon-toggle.disabled {
 	opacity: 0.4;
 	filter: alpha(opacity=40);
 }
