@@ -15,7 +15,8 @@ enyo.kind({
 	name: "onyx.Icon",
 	published: {
 		// url path specifying the icon image
-		src: ""
+		src: "",
+		disabled: false
 	},
 	classes: "onyx-icon",
 	//* @protected
@@ -24,6 +25,10 @@ enyo.kind({
 		if (this.src) {
 			this.srcChanged();
 		}
+		this.disabledChanged();
+	},
+	disabledChanged: function() {
+		this.addRemoveClass("disabled", this.disabled);
 	},
 	srcChanged: function() {
 		this.applyStyle("background-image", "url(" + enyo.path.rewrite(this.src) + ")");
