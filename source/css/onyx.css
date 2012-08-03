@@ -35,6 +35,11 @@
 	background-position: 0 -32px;
 }
 
+.onyx-icon.disabled {
+	opacity: 0.4;
+	filter: alpha(opacity=40);
+}
+
 /* Button.css */
 .onyx-button {
 	outline: 0;
