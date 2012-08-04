@@ -24,38 +24,38 @@
 		]}
 */
 enyo.kind({
-    name: "onyx.InputDecorator",
-    kind: "enyo.ToolDecorator",
-    tag: "label",
-    classes: "onyx-input-decorator",
-    published:{
-        //* Set to true to make the input look focused when it's not.
-        alwaysLooksFocused:false
-    },
-    //* @protected
-    handlers: {
-        onDisabledChange: "disabledChange",
-        onfocus: "receiveFocus",
-        onblur: "receiveBlur"
-    },
-    create:function() {
-        this.inherited(arguments);
-        this.alwaysLooksFocusedChanged();
-    },
-    alwaysLooksFocusedChanged:function() {
-        if(!this.hasClass("onyx-focused") && this.alwaysLooksFocused) {
-            this.addClass("onyx-focused");
-        }
-    },
-    receiveFocus: function() {
-        this.addClass("onyx-focused");
-    },
-    receiveBlur: function() {
-        if(!this.alwaysLooksFocused) {
-            this.removeClass("onyx-focused");
-        }
-    },
-    disabledChange: function(inSender, inEvent) {
-        this.addRemoveClass("onyx-disabled", inEvent.originator.disabled);
-    }
+	name: "onyx.InputDecorator",
+	kind: "enyo.ToolDecorator",
+	tag: "label",
+	classes: "onyx-input-decorator",
+	published:{
+		//* Set to true to make the input look focused when it's not.
+		alwaysLooksFocused:false
+	},
+	//* @protected
+	handlers: {
+		onDisabledChange: "disabledChange",
+		onfocus: "receiveFocus",
+		onblur: "receiveBlur"
+	},
+	create:function() {
+		this.inherited(arguments);
+		this.alwaysLooksFocusedChanged();
+	},
+	alwaysLooksFocusedChanged:function() {
+		if(!this.hasClass("onyx-focused") && this.alwaysLooksFocused) {
+			this.addClass("onyx-focused");
+		}
+	},
+	receiveFocus: function() {
+		this.addClass("onyx-focused");
+	},
+	receiveBlur: function() {
+		if(!this.alwaysLooksFocused) {
+			this.removeClass("onyx-focused");
+		}
+	},
+	disabledChange: function(inSender, inEvent) {
+		this.addRemoveClass("onyx-disabled", inEvent.originator.disabled);
+	}
 });
