@@ -31,7 +31,7 @@
 	vertical-align: middle;
 }
 
-.onyx-icon.active, .onyx-icon:active:hover {
+.onyx-icon.onyx-icon-button.active, .onyx-icon.onyx-icon-button:active:hover {
 	background-position: 0 -32px;
 }
 
