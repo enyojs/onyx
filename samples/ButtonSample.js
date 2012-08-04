@@ -10,6 +10,7 @@ enyo.kind({
 			{kind:"onyx.Button", content: "Affirmative", classes: "onyx-affirmative", ontap:"buttonTapped"},
 			{kind:"onyx.Button", content: "Negative", classes: "onyx-negative", ontap:"buttonTapped"},
 			{kind:"onyx.Button", content: "Blue", classes: "onyx-blue", ontap:"buttonTapped"},
+			{kind:"onyx.Button", content: "Dark", classes: "onyx-dark", ontap:"buttonTapped"},
 			{kind:"onyx.Button", content: "Custom", style: "background-color: purple; color: #F1F1F1;", ontap:"buttonTapped"}
 		]},
 		{classes: "onyx-sample-tools", components: [
