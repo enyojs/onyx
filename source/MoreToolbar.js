@@ -46,8 +46,7 @@ enyo.kind({
 		this.inherited(arguments);
 		this.$.client.setLayoutKind(this.clientLayoutKind);
 	},
-	setClientLayoutKind: function(){
-		this.inherited(arguments);
+	clientLayoutKindChanged: function(){
 		this.$.client.setLayoutKind(this.clientLayoutKind);
 	},
 	reflow: function() {
