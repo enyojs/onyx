@@ -31,6 +31,7 @@ enyo.kind({
 	tag: "div",
 	classes: "onyx-menu-item",
 	events: {
+		//* Fires when the menu item is selected
 		onSelect: ""
 	},
 	tap: function(inSender) {

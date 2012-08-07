@@ -26,6 +26,8 @@
 enyo.kind({
 	name: "onyx.Menu",
 	kind: "onyx.Popup",
+	//* If true, prevents controls outside the menu from receiving events while
+	//* the menu is showing.
 	modal: true,
 	defaultKind: "onyx.MenuItem",
 	classes: "onyx-menu",

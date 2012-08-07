@@ -50,8 +50,9 @@ enyo.kind({
 		count: 0
 	},
 	events: {
-		//* Sends the row index, and the row control, for decoration.
+		//* Sends the row index, and the row control, for decoration
 		onSetupItem: "",
+		//* Fires when an item is selected
 		onSelect: ""
 	},
 	handlers: {

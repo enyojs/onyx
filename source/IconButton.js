@@ -21,6 +21,8 @@ enyo.kind({
 	name: "onyx.IconButton",
 	kind: "onyx.Icon",
 	published: {
+		//* True if the IconButton is in its active state; false if in its
+		//* normal state
 		active: false
 	},
 	classes: "onyx-icon-button",
