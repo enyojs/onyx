@@ -30,10 +30,13 @@ enyo.kind({
 	kind: "onyx.Menu",
 	classes: "onyx-picker enyo-unselectable",
 	published: {
+		//* Currently selected item, if any
 		selected: null,
+		//* Maximum height of Picker control
 		maxHeight: "200px"
 	},
 	events: {
+		//* Fires when the currently selected item changes
 		onChange: ""
 	},
 	components: [

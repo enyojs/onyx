@@ -1,7 +1,13 @@
 ﻿enyo.kind({
 	name: "onyx.Scrim",
+	//* Current visibility state of scrim
 	showing: false,
 	classes: "onyx-scrim enyo-fit",
+	/**
+	    If true, scrim is rendered in a floating layer outside of other
+	    controls. This can be used to guarantee that the scrim will be shown
+	    on top of other controls.
+	*/
 	floating: false,
 	//* @protected
 	create: function() {
@@ -29,8 +35,8 @@
 		enyo.remove(inControl, this.zStack);
 	},
 	//* @public
-	//* Show Scrim at the specified ZIndex.  Note: If you use showAtZIndex you
-	//*  must call hideAtZIndex to properly unwind the zIndex stack
+	//* Shows Scrim at the specified z-index.  Note: If you use showAtZIndex, you
+	//*  must call hideAtZIndex to properly unwind the z-index stack.
 	showAtZIndex: function(inZIndex) {
 		this.addZIndex(inZIndex);
 		if (inZIndex !== undefined) {
@@ -38,7 +44,7 @@
 		}
 		this.show();
 	},
-	//* Hide Scrim at the specified ZIndex
+	//* Hides Scrim at the specified z-Index.
 	hideAtZIndex: function(inZIndex) {
 		this.removeZIndex(inZIndex);
 		if (!this.zStack.length) {
