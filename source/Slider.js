@@ -23,11 +23,11 @@ enyo.kind({
 		tappable: true
 	},
 	events: {
-		//* Fires when bar position is set 
+		//* Fires when bar position is set.
 		onChange: "",
-		//* Fires while control knob is being dragged
+		//* Fires while control knob is being dragged.
 		onChanging: "",
-		//* Fires when animation to a position finishes
+		//* Fires when animation to a position finishes.
 		onAnimateFinish: ""
 	},
 	//* If true, stripes are shown in the slider bar

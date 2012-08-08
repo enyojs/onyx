@@ -13,7 +13,7 @@ enyo.kind({
 	kind: "onyx.ProgressBar",
 	classes: "onyx-progress-button",
 	events: {
-		//* Fires when cancel button is tapped
+		//* Fires when cancel button is tapped.
 		onCancel: ""
 	},
 	components: [

@@ -2,7 +2,7 @@
 	_onyx.Picker_, a subkind of <a href="#onyx.Menu">onyx.Menu</a>, is used to
 	display	a list of items that can be selected. It is meant to be used in
 	conjunction with an	<a href="#onyx.PickerDecorator">onyx.PickerDecorator</a>.
-	The decorator loosely couples the Picker with an
+	The decorator loosely couples the picker with an
 	<a href="#onyx.PickerButton">onyx.PickerButton</a>--a button that, when
 	tapped, shows the picker. Once an item is selected, the list of items closes,
 	but the item stays selected and the PickerButton displays the choice that
@@ -32,16 +32,21 @@ enyo.kind({
 	published: {
 		//* Currently selected item, if any
 		selected: null,
-		//* Maximum height of Picker control
+		//* Maximum height of the picker
 		maxHeight: "200px"
 	},
 	events: {
-		//* Fires when the currently selected item changes
+		//* Fires when the currently selected item changes.
 		onChange: ""
 	},
 	components: [
 		{name: "client", kind: "enyo.Scroller", strategyKind: "TouchScrollStrategy"}
 	],
+	/**
+	    Set to true to render the picker in a floating layer outside of other
+	    controls. This can be used to guarantee that the picker will be shown
+	    on top of other controls.
+	*/
 	floating: true,
 	showOnTop: true,
 	scrollerName: "client",

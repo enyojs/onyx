@@ -37,7 +37,7 @@ enyo.kind({
 		animateStripes: true
 	},
 	events: {
-		//* Fires when progress bar finishes animating to a position
+		//* Fires when progress bar finishes animating to a position.
 		onAnimateProgressFinish: ""
 	},
 	components: [
