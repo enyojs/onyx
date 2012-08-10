@@ -312,7 +312,6 @@
 .onyx-menu-toolbar, .onyx-toolbar.onyx-menu-toolbar {
 	z-index: 10; 
 	overflow: visible;
-	position: relative;
 }
 
 /* Picker.css */
