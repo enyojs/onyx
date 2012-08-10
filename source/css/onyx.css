@@ -876,16 +876,11 @@
 
 /* some default colors */
 .onyx-dark {
-	background-color: #626368;
+	background-color: #555656;
 }
 
 .onyx-light {
 	background-color: #cacaca;
-}
-
-.onyx-blue {
-	background-color: #35A8EE;
-	color: #F1F1F1;
 }
 
 .onyx-green {
@@ -896,17 +891,31 @@
 	background-color: #C51616;
 }
 
-.onyx-affirmative {
-	background-color: #91BA07;
-	color: #F1F1F1;
+.onyx-blue {
+	background-color: #35A8EE;
 }
 
-.onyx-negative {
+.onyx-button.onyx-blue {
+	background-color: #35A8EE;
+	color: #F2F2F2;
+}
+
+.onyx-button.onyx-affirmative {
+	background-color: #91BA07;
+	color: #F2F2F2;
+}
+
+.onyx-button.onyx-negative {
 	background-color: #C51616;
-	color: #F1F1F1;
+	color: #F2F2F2;
 }
 
 .onyx-button.onyx-dark {
 	background-color: #555656;
 	color: #F2F2F2;
+}
+
+.onyx-button.onyx-light {
+	background-color: #cacaca;
+	color: #2F2F2F;
 }
