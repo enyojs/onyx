@@ -40,20 +40,20 @@ enyo.kind({
 	},
 	create:function() {
 		this.inherited(arguments);
-		this.alwaysLooksFocusedChanged();
+		this.updateFocus(false);
 	},
-	alwaysLooksFocusedChanged:function() {
-		if(!this.hasClass("onyx-focused") && this.alwaysLooksFocused) {
-			this.addClass("onyx-focused");
-		}
+	alwaysLooksFocusedChanged:function(oldValue) {
+		this.updateFocus(this.focus);
+	},
+	updateFocus:function(focus) {
+		this.focused = focus;
+		this.addRemoveClass("onyx-focused", this.alwaysLooksFocused || this.focused);
 	},
 	receiveFocus: function() {
-		this.addClass("onyx-focused");
+		this.updateFocus(true);
 	},
 	receiveBlur: function() {
-		if(!this.alwaysLooksFocused) {
-			this.removeClass("onyx-focused");
-		}
+		this.updateFocus(false);
 	},
 	disabledChange: function(inSender, inEvent) {
 		this.addRemoveClass("onyx-disabled", inEvent.originator.disabled);
