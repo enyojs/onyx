@@ -717,6 +717,7 @@
 .onyx-progress-bar-bar.striped.animated {
 	-webkit-animation: progress-bar-stripes 2s linear infinite;
 	-moz-animation: progress-bar-stripes 2s linear infinite;
+	-o-animation: progress-bar-stripes 2s linear infinite;
 	animation: progress-bar-stripes 2s linear infinite;
 }
 
@@ -730,6 +731,15 @@
 }
 
 @-moz-keyframes progress-bar-stripes {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 40px 0;
+  }
+}
+
+@-o-keyframes progress-bar-stripes {
   from {
     background-position: 0 0;
   }
