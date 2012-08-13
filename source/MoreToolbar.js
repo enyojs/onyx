@@ -29,6 +29,7 @@ enyo.kind({
 		onHide: "reflow"
 	},
 	published: {
+		//* Layout kind that will be applied to the client controls.
 		clientLayoutKind: "FittableColumnsLayout"
 	},
 	tools: [
