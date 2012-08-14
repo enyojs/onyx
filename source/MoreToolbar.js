@@ -34,6 +34,10 @@ enyo.kind({
 	handlers: {
 		onHide: "reflow"
 	},
+	published: {
+		//* Layout kind that will be applied to the client controls.
+		clientLayoutKind: "FittableColumnsLayout"
+	},
 	tools: [
 		{name: "client", fit: true, classes: "onyx-toolbar-inline"},
 		{name: "nard", kind: "onyx.MenuDecorator", showing: false, onActivate: "activated", components: [
@@ -47,6 +51,10 @@ enyo.kind({
 		}
 		this.createChrome(this.tools);
 		this.inherited(arguments);
+		this.$.client.setLayoutKind(this.clientLayoutKind);
+	},
+	clientLayoutKindChanged: function(){
+		this.$.client.setLayoutKind(this.clientLayoutKind);
 	},
 	reflow: function() {
 		this.inherited(arguments);
@@ -126,6 +134,7 @@ enyo.kind({
 			var c$ = this.$.client.children;
 			var n = c$[c$.length-1].hasNode();
 			if(n) {
+				this.$.client.reflow();
 				//Workaround: scrollWidth value not working in Firefox, so manually compute
 				//return (this.$.client.node.scrollWidth > this.$.client.node.clientWidth);
 				return ((n.offsetLeft + n.offsetWidth) > this.$.client.node.clientWidth);
