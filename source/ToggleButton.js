@@ -43,7 +43,8 @@ enyo.kind({
 	events: {
 		/**
 			Fires when the user changes the value of the toggle button,	but not
-			when the value is changed programmatically.
+			when the value is changed programmatically.  The _value_ property
+			contains the value of the toggle button.
 		*/
 		onChange: ""
 	},

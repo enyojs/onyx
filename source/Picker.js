@@ -36,7 +36,11 @@ enyo.kind({
 		maxHeight: "200px"
 	},
 	events: {
-		//* Fires when the currently selected item changes.
+		/**
+			Fires when the currently selected item changes.  The _selected_
+			property contains the currently selected item; the _content_
+			property contains the content from the current selected item.
+		*/
 		onChange: ""
 	},
 	components: [
