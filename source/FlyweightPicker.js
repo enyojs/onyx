@@ -50,9 +50,17 @@ enyo.kind({
 		count: 0
 	},
 	events: {
-		//* Sends the row index, and the row control, for decoration
+		/**
+			Fires when a row is being initialized. The _index_ property contains
+			the row index, while the _flyweight_ property contains the row
+			control, for decoration.
+		*/
 		onSetupItem: "",
-		//* Fires when an item is selected
+		/**
+			Fires when an item is selected. The _content_ property contains the
+			content of the selected item, while the _index_ property contains
+			its row index.
+		*/
 		onSelect: ""
 	},
 	handlers: {
