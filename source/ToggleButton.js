@@ -28,9 +28,10 @@ enyo.kind({
 	classes: "onyx-toggle-button",
 	published: {
 		//* True if the toggle button is currently activated (i.e., a tap is
-		//* currently in progress)
+		//* in progress)
 		active: false,
-		//* Boolean representing current on/off state of toggle button
+		//* Boolean indicating whether toggle button is currently in the "on"
+		//* state
 		value: false,
 		//* Label for toggle button's "on" state
 		onContent: "On",
@@ -43,8 +44,9 @@ enyo.kind({
 	events: {
 		/**
 			Fires when the user changes the value of the toggle button,	but not
-			when the value is changed programmatically.  The _value_ property
-			contains the value of the toggle button.
+			when the value is changed programmatically.
+			
+			_inEvent.value_ contains the value of the toggle button.
 		*/
 		onChange: ""
 	},

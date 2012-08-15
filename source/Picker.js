@@ -37,9 +37,11 @@ enyo.kind({
 	},
 	events: {
 		/**
-			Fires when the currently selected item changes.  The _selected_
-			property contains the currently selected item; the _content_
-			property contains the content from the current selected item.
+			Fires when the currently selected item changes.
+			
+			_inEvent.selected_ contains the currently selected item.
+			
+			_inEvent.content_ contains the content of the currently selected item.
 		*/
 		onChange: ""
 	},

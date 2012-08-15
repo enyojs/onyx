@@ -32,9 +32,11 @@ enyo.kind({
 	classes: "onyx-menu-item",
 	events: {
 		/**
-			Fires when the menu item is selected. The _selected_ property
-			contains a reference to the menu item, while the _content_ property
-			contains its content.
+			Fires when the menu item is selected.
+			
+			_inEvent.selected_ contains a reference to the menu item.
+			
+			_inEvent.content_ contains the menu item's content.
 		*/
 		onSelect: ""
 	},
