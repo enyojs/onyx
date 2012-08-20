@@ -1,4 +1,18 @@
-﻿enyo.kind({
+﻿/**
+	_onyx.Scrim_ provides an overlay that will prevent taps from propagating to
+	controls that it covers.  A Scrim can be "floating" or not.  Floating Scrims
+	will fill the entire viewport, while non-floating Scrims will be constrained
+	by their container.
+
+	The Scrim should have a CSS class of "onyx-scrim-transparent", "onyx-scrim-translucent",
+	or any other class that has pointer-events: auto in its style properties.
+
+	You may specify at which Z-index you want the Scrim to occupy with the _showAtZIndex_
+	method, but you will need to use _hideAtZIndex_  with the same value when you want to
+	hide it again.
+*/
+
+enyo.kind({
 	name: "onyx.Scrim",
 	//* Current visibility state of scrim
 	showing: false,
