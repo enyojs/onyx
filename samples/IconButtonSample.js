@@ -2,6 +2,10 @@ enyo.kind({
 	name: "onyx.sample.IconButtonSample",
 	classes: "onyx onyx-sample",
 	components: [
+		{classes: "onyx-sample-divider", content: "Icon"},
+		{kind: "onyx.Icon", src: "assets/menu-icon-bookmark.png" },
+		{tag: "br"},
+		{tag: "br"},
 		{classes: "onyx-sample-divider", content: "Icon Button"},
 		{kind: "onyx.IconButton", src: "assets/menu-icon-bookmark.png", ontap:"iconTapped"},
 		{kind: "onyx.IconButton", src: "assets/menu-icon-bookmark.png", disabled: true, ontap:"iconTapped"},
