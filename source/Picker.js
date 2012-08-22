@@ -31,9 +31,7 @@ enyo.kind({
 	classes: "onyx-picker enyo-unselectable",
 	published: {
 		//* Currently selected item, if any
-		selected: null,
-		//* Maximum height of the picker
-		maxHeight: "200px"
+		selected: null
 	},
 	events: {
 		/**
@@ -45,9 +43,6 @@ enyo.kind({
 		*/
 		onChange: ""
 	},
-	components: [
-		{name: "client", kind: "enyo.Scroller", strategyKind: "TouchScrollStrategy"}
-	],
 	/**
 	    Set to true to render the picker in a floating layer outside of other
 	    controls. This can be used to guarantee that the picker will be shown
@@ -55,17 +50,10 @@ enyo.kind({
 	*/
 	floating: true,
 	showOnTop: true,
-	scrollerName: "client",
-	create: function() {
-		this.inherited(arguments);
-		this.maxHeightChanged();
-	},
-	getScroller: function() {
-		return this.$[this.scrollerName];
-	},
-	maxHeightChanged: function() {
-		this.getScroller().setMaxHeight(this.maxHeight);
-	},
+	initComponents: function() {
+	    this.setScrolling(true);
+        this.inherited(arguments);
+    },
 	showingChanged: function() {
 		this.getScroller().setShowing(this.showing);
 		this.inherited(arguments);
@@ -96,6 +84,6 @@ enyo.kind({
 	},
 	resizeHandler: function() {
 		this.inherited(arguments);			
-		this.adjustPosition(false);
+		this.adjustPosition();
 	}
 });
