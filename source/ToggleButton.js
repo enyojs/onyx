@@ -77,6 +77,7 @@ enyo.kind({
 		this.$.contentOn.setShowing(this.value);
 		this.$.contentOff.setShowing(!this.value);
 		this.setActive(this.value);
+		this.doChange({value: this.value});
 	},
 	activeChanged: function() {
 		this.setValue(this.active);
@@ -96,7 +97,6 @@ enyo.kind({
 	updateValue: function(inValue) {
 		if (!this.disabled) {
 			this.setValue(inValue);
-			this.doChange({value: this.value});
 		}
 	},
 	tap: function() {
