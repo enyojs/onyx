@@ -1,5 +1,6 @@
 /**
-	A horizontal bar containing controls used to perform common UI actions.
+	_onyx.Toolbar_ is a horizontal bar containing controls used to perform
+	common UI actions.
 	
 	A Toolbar customizes the styling of the controls it hosts, including
 	buttons, icons, and inputs.
@@ -12,10 +13,9 @@
 			{kind: "onyx.IconButton", src: "go.png"}
 		]}
 	
-	Note that it's possible to style a set of controls to look like they are in
-	a toolbar without having the container itself look like a toolbar. To do so,
-	apply the "onyx-toolbar-inline"	CSS class to the container that houses the
-	controls.
+	For more information, see the documentation on
+	<a href="https://github.com/enyojs/enyo/wiki/Toolbars">Toolbars</a>	in the
+	Enyo Developer Guide.
 */
 enyo.kind({
 	name: "onyx.Toolbar",

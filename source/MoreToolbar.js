@@ -14,10 +14,9 @@
 	You may prevent a control from being moved into the menu by setting its
 	_unmoveable_ property to true (the default is false).
 
-	In addition, you may customize the menu's visual styling by specifying
-	values for the _menuClass_ and _movedClass_ properties. The former is a CSS
-	class applied to the menu as a whole, while the latter is a class applied to
-	individual controls that are moved to the menu.
+	For more information, see the documentation on
+	<a href="https://github.com/enyojs/enyo/wiki/Toolbars">Toolbars</a> in the
+	Enyo Developer Guide.
 */
 
 enyo.kind({
