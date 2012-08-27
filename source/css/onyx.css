@@ -31,8 +31,13 @@
 	vertical-align: middle;
 }
 
-.onyx-icon.active, .onyx-icon-toggle.active, .onyx-icon:active:hover {
+.onyx-icon.onyx-icon-button.active, .onyx-icon.onyx-icon-button:active:hover, .onyx-icon-toggle.active {
 	background-position: 0 -32px;
+}
+
+.onyx-icon.disabled {
+	opacity: 0.4;
+	filter: alpha(opacity=40);
 }
 
 .onyx-icon.disabled:active:hover {
@@ -108,23 +113,6 @@
 
 .onyx-button > img {
 	padding: 0px 3px;
-}
-
-/* optional */
-
-button.onyx-button.onyx-affirmative {
-	background-color: #91BA07;
-	color: #F1F1F1;
-}
-
-button.onyx-button.onyx-negative {
-	background-color: #C51616;
-	color: #F1F1F1;
-}
-
-button.onyx-button.onyx-blue {
-	background-color: #35A8EE;
-	color: #F1F1F1;
 }
 
 /* Checkbox.css */
@@ -328,7 +316,6 @@ button.onyx-button.onyx-blue {
 .onyx-menu-toolbar, .onyx-toolbar.onyx-menu-toolbar {
 	z-index: 10; 
 	overflow: visible;
-	position: relative;
 }
 
 /* Picker.css */
@@ -734,6 +721,7 @@ button.onyx-button.onyx-blue {
 .onyx-progress-bar-bar.striped.animated {
 	-webkit-animation: progress-bar-stripes 2s linear infinite;
 	-moz-animation: progress-bar-stripes 2s linear infinite;
+	-o-animation: progress-bar-stripes 2s linear infinite;
 	animation: progress-bar-stripes 2s linear infinite;
 }
 
@@ -755,7 +743,7 @@ button.onyx-button.onyx-blue {
   }
 }
 
-@keyframes progress-bar-stripes {
+@-o-keyframes progress-bar-stripes {
   from {
     background-position: 0 0;
   }
@@ -764,14 +752,13 @@ button.onyx-button.onyx-blue {
   }
 }
 
-/* optional */
-
-.onyx-dark {
-	background-color: #626368;
-}
-
-.onyx-light {
-	background-color: #cacaca;
+@keyframes progress-bar-stripes {
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 40px 0;
+  }
 }
 
 /* ProgressButton.css */
@@ -898,4 +885,50 @@ button.onyx-button.onyx-blue {
 .onyx-more-button {
 	background-image: url(../../images/more.png);
 	margin: 4px 6px 5px;
+}
+
+/* some default colors */
+.onyx-dark {
+	background-color: #555656;
+}
+
+.onyx-light {
+	background-color: #cacaca;
+}
+
+.onyx-green {
+	background-color: #91BA07;
+}
+
+.onyx-red {
+	background-color: #C51616;
+}
+
+.onyx-blue {
+	background-color: #35A8EE;
+}
+
+.onyx-button.onyx-blue {
+	background-color: #35A8EE;
+	color: #F2F2F2;
+}
+
+.onyx-button.onyx-affirmative {
+	background-color: #91BA07;
+	color: #F2F2F2;
+}
+
+.onyx-button.onyx-negative {
+	background-color: #C51616;
+	color: #F2F2F2;
+}
+
+.onyx-button.onyx-dark {
+	background-color: #555656;
+	color: #F2F2F2;
+}
+
+.onyx-button.onyx-light {
+	background-color: #cacaca;
+	color: #2F2F2F;
 }

@@ -1,28 +1,38 @@
 /**
-	A control that presents a range of selection options in the form of a
-	horizontal slider with a control knob.  The knob may be tapped and dragged
-	to the desired location.
+	_onyx.Slider_ is a control that presents a range of selection options in the
+	form of a horizontal slider with a control knob. The knob may be tapped and
+	dragged	to the desired location.
 	
 		{kind: "onyx.Slider", value: 30}
 	
-	The *onChanging* event is fired when dragging the control knob.
-	The *onChange* event is fired when the position is set, either by finishing
-	a drag or by tapping the bar.
+	_onChanging_ events are fired while the control knob is being dragged, and
+	an _onChange_ event is fired when the position is set, either by finishing a
+	drag or by tapping the bar.
 */
 enyo.kind({
 	name: "onyx.Slider",
 	kind: "onyx.ProgressBar",
 	classes: "onyx-slider",
 	published: {
+		//* Position of slider, expressed as an integer between 0 and 100,
+		//* inclusive
 		value: 0,
+		//* If true, current progress will be styled differently from rest of bar
 		lockBar: true,
+		//* If true, tapping on bar will change current position
 		tappable: true
 	},
 	events: {
+		//* Fires when bar position is set. The _value_ property contains the
+		//* new position.
 		onChange: "",
+		//* Fires while control knob is being dragged. The _value_ property
+		//* contains the current position.
 		onChanging: "",
+		//* Fires when animation to a position finishes.
 		onAnimateFinish: ""
 	},
+	//* If true, stripes are shown in the slider bar
 	showStripes: false,
 	//* @protected
 	handlers: {

@@ -1,37 +1,52 @@
 /**
-	A control that looks like a switch with labels for two states. Each time a ToggleButton is tapped,
-	it switches its value and fires an onChange event.
-	
-		{kind: "onyx.ToggleButton", onContent: "foo", offContent: "bar", onChange: "buttonToggle"}
-	
+	_onyx.ToggleButton_ is a control that looks like a switch with labels for
+	two states. Each time a	ToggleButton is tapped, it switches its value and
+	fires an _onChange_ event.
+
+		{kind: "onyx.ToggleButton", onContent: "foo", offContent: "bar",
+			onChange: "buttonToggle"},
+
+		...
+
 		buttonToggle: function(inSender, inEvent) {
 			this.log("Toggled to value " + inEvent.value);
 		}
-	
-	To find out the value of the button, use getValue:
-	
+
+	To get the value of the button, call _getValue_:
+
 		queryToggleValue: function() {
 			return this.$.toggleButton.getValue();
 		}
-		
-	The color of the toggle button can be customized by applying a background color:
-	
+
+	The color of the toggle button may be customized by applying a background
+	color:
+
 		{kind: "onyx.ToggleButton", style: "background-color: #35A8EE;"}
 */
 enyo.kind({
 	name: "onyx.ToggleButton",
 	classes: "onyx-toggle-button",
 	published: {
+		//* True if the toggle button is currently activated (i.e., a tap is
+		//* in progress)
 		active: false,
+		//* Boolean indicating whether toggle button is currently in the "on"
+		//* state
 		value: false,
+		//* Label for toggle button's "on" state
 		onContent: "On",
+		//* Label for toggle button's "off" state
 		offContent: "Off",
+		//* If true, toggle button cannot be tapped and thus will not generate
+		//* any events
 		disabled: false
 	},
 	events: {
 		/**
-			The onChange event fires when the user changes the value of the toggle button, 
-			but not when the value is changed programmatically.
+			Fires when the user changes the value of the toggle button,	but not
+			when the value is changed programmatically.
+			
+			_inEvent.value_ contains the value of the toggle button.
 		*/
 		onChange: ""
 	},
@@ -62,6 +77,7 @@ enyo.kind({
 		this.$.contentOn.setShowing(this.value);
 		this.$.contentOff.setShowing(!this.value);
 		this.setActive(this.value);
+		this.doChange({value: this.value});
 	},
 	activeChanged: function() {
 		this.setValue(this.active);
@@ -81,7 +97,6 @@ enyo.kind({
 	updateValue: function(inValue) {
 		if (!this.disabled) {
 			this.setValue(inValue);
-			this.doChange({value: this.value});
 		}
 	},
 	tap: function() {

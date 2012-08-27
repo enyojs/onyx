@@ -22,26 +22,57 @@
 	control, but may be obscured by surrounding content with a higher z-index.
 	When floating, it will never be obscured, but it will not scroll with the
 	activating button.
+	
+	By default menus are placed in a scroller and will attempt to size the scroller
+	so that the full menu can be used at any screen height. Set the published scrolling 
+	property to false during instantiation to use a static menu instead.
  */
 enyo.kind({
 	name: "onyx.Menu",
 	kind: "onyx.Popup",
+	//* If true, prevents controls outside the menu from receiving events while
+	//* the menu is showing.
 	modal: true,
 	defaultKind: "onyx.MenuItem",
 	classes: "onyx-menu",
-	showOnTop: false,
+	published: {
+		//* Maximum height of the menu
+		maxHeight: 200,
+		//* Toggle scrolling
+		scrolling: true
+	},	
 	handlers: {
 		onActivate: "itemActivated",
 		onRequestShowMenu: "requestMenuShow",
 		onRequestHideMenu: "requestHide"
 	},
+	childComponents: [
+		{name: "client", kind: "enyo.Scroller", strategyKind: "TouchScrollStrategy"}
+	],	
+	showOnTop: false,	
+	scrollerName: "client",
+	create: function() {
+		this.inherited(arguments);
+	    this.maxHeightChanged();	
+	},
+	initComponents: function() {
+	    this.scrolling ? this.createComponents(this.childComponents) : enyo.nop;	
+        this.inherited(arguments);
+    },
+	getScroller: function() {
+		return this.$[this.scrollerName];
+	},
+	maxHeightChanged: function() {
+	    this.scrolling ? this.getScroller().setMaxHeight(this.maxHeight + "px") : enyo.nop;	
+	},		
 	itemActivated: function(inSender, inEvent) {
-		inEvent.originator.setActive(false);
+		inEvent.originator.setActive(false);		
 		return true;
 	},
 	showingChanged: function() {
 		this.inherited(arguments);
-		this.adjustPosition(true);
+		this.scrolling ? this.getScroller().setShowing(this.showing) : enyo.nop;
+		this.adjustPosition(true);		
 	},
 	requestMenuShow: function(inSender, inEvent) {
 		if (this.floating) {
@@ -76,10 +107,11 @@ enyo.kind({
 	},	
 	//* @protected
 	/* Adjusts the menu position to fit inside the current window size. 
-	   belowActivator determines whether to position the top of the menu below or on top of the activator
+	/* Note that we aren't adjusting picker scroller heights currently
 	*/
-	adjustPosition: function(belowActivator) {
+	adjustPosition: function() {
 		if (this.showing && this.hasNode()) {
+			(this.scrolling && !this.showOnTop) ? this.getScroller().setMaxHeight(this.maxHeight+"px") : enyo.nop;	
 			this.removeClass("onyx-menu-up");
 						
 			//reset the left position before we get the bounding rect for proper horizontal calculation
@@ -103,7 +135,7 @@ enyo.kind({
 				}
 				else {
 					//if the top of the menu is above the top of the activator and there's room to move it down, do so
-					if ((b.top < r.top) && (r.top + (belowActivator ? r.height : 0) + bHeight < innerHeight))
+					if ((b.top < r.top) && (r.top + (this.showOnTop ? 0 : r.height) + bHeight < innerHeight))
 					{
 						this.applyPosition({top: r.top + (this.showOnTop ? 0 : r.height), bottom: "auto"});
 					}
@@ -131,14 +163,24 @@ enyo.kind({
 						this.applyPosition({right:b.left});												
 					}
 				}
-			}						
+			}
+								
+			//adjust the scroller height based on room available - only doing this for menus currently
+			if (this.scrolling && !this.showOnTop){
+				b = this.node.getBoundingClientRect(); //update to the current menu position
+				var scrollerHeight;
+				if (this.menuUp){
+					scrollerHeight = (this.maxHeight < b.bottom) ? this.maxHeight : b.bottom;
+				} else {
+					scrollerHeight = ((b.top + this.maxHeight) < innerHeight) ? this.maxHeight : (innerHeight - b.top);
+				}
+				this.getScroller().setMaxHeight(scrollerHeight+"px");	
+			}					
 		}
-		
-
 	},
 	resizeHandler: function() {
 		this.inherited(arguments);			
-		this.adjustPosition(true);	
+		this.adjustPosition();	
 	},
 	requestHide: function(){
 		this.setShowing(false);

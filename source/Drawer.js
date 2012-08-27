@@ -68,6 +68,14 @@ enyo.kind({
 		if (!this.open) {
 			this.$.client.hide();
 		}
+		else {
+			// at end of open animation, clean limit on height/width
+			var p = (this.orient == "v") ? "height" : "width";
+			var cn = this.hasNode();
+			if (cn) {
+				cn.style[p] = this.$.client.domStyles[p] = null;
+			}
+		}
 		if (this.container) {
 			this.container.resized();
 		}

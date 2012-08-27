@@ -1,5 +1,7 @@
 /**
-	onyx.MoreToolbar is a kind of <a href="#onyx.Toolbar">onyx.Toolbar</a> that can adapt to different screen sizes by moving overflowing controls and content into an <a href="#onyx.Menu">onyx.Menu</a>
+	_onyx.MoreToolbar_ extends <a href="#enyo.Control">enyo.Control</a>,
+	providing a toolbar that can adapt to different screen sizes by moving
+	overflowing controls and content into an <a href="#onyx.Menu">onyx.Menu</a>.
 
 		{kind: "onyx.MoreToolbar", components: [
 			{content: "More Toolbar", unmoveable: true},
@@ -8,19 +10,23 @@
 			{kind: "onyx.Button", content: "Gamma", unmoveable: true},
 			{kind: "onyx.Button", content: "Epsilon"}
 		]},
-		
-	A control can be forced to never move to the menu by setting the optional unmovable property to true (default is false).
-	
-	Optionally you can specify a class to be applied to the menu via the menuClass property. You can also specify a class for items that have been moved via the the movedClass property.
+
+	You may prevent a control from being moved into the menu by setting its
+	_unmoveable_ property to true (the default is false).
+
+	In addition, you may customize the menu's visual styling by specifying
+	values for the _menuClass_ and _movedClass_ properties. The former is a CSS
+	class applied to the menu as a whole, while the latter is a class applied to
+	individual controls that are moved to the menu.
 */
 
 enyo.kind({
 	name: "onyx.MoreToolbar",
 	//* @public
 	classes: "onyx-toolbar onyx-more-toolbar",
-	//* style class to be applied to the menu
+	//* Style class to be applied to the menu
 	menuClass: "",
-	//* style class to be applied to individual controls moved from the toolbar to the menu
+	//* Style class to be applied to individual controls moved from the toolbar to the menu
 	movedClass: "",
 	//* @protected
 	layoutKind: "FittableColumnsLayout",
@@ -28,11 +34,15 @@ enyo.kind({
 	handlers: {
 		onHide: "reflow"
 	},
+	published: {
+		//* Layout kind that will be applied to the client controls.
+		clientLayoutKind: "FittableColumnsLayout"
+	},
 	tools: [
 		{name: "client", fit: true, classes: "onyx-toolbar-inline"},
 		{name: "nard", kind: "onyx.MenuDecorator", showing: false, onActivate: "activated", components: [
 			{kind: "onyx.IconButton", classes: "onyx-more-button"},
-			{name: "menu", kind: "onyx.Menu", classes: "onyx-more-menu", prepend: true}
+			{name: "menu", kind: "onyx.Menu", scrolling:false, classes: "onyx-more-menu", prepend: true}
 		]}
 	],
 	initComponents: function() {
@@ -41,6 +51,10 @@ enyo.kind({
 		}
 		this.createChrome(this.tools);
 		this.inherited(arguments);
+		this.$.client.setLayoutKind(this.clientLayoutKind);
+	},
+	clientLayoutKindChanged: function(){
+		this.$.client.setLayoutKind(this.clientLayoutKind);
 	},
 	reflow: function() {
 		this.inherited(arguments);
@@ -120,6 +134,7 @@ enyo.kind({
 			var c$ = this.$.client.children;
 			var n = c$[c$.length-1].hasNode();
 			if(n) {
+				this.$.client.reflow();
 				//Workaround: scrollWidth value not working in Firefox, so manually compute
 				//return (this.$.client.node.scrollWidth > this.$.client.node.clientWidth);
 				return ((n.offsetLeft + n.offsetWidth) > this.$.client.node.clientWidth);

@@ -2,7 +2,7 @@
 	_onyx.Picker_, a subkind of <a href="#onyx.Menu">onyx.Menu</a>, is used to
 	display	a list of items that can be selected. It is meant to be used in
 	conjunction with an	<a href="#onyx.PickerDecorator">onyx.PickerDecorator</a>.
-	The decorator loosely couples the Picker with an
+	The decorator loosely couples the picker with an
 	<a href="#onyx.PickerButton">onyx.PickerButton</a>--a button that, when
 	tapped, shows the picker. Once an item is selected, the list of items closes,
 	but the item stays selected and the PickerButton displays the choice that
@@ -30,28 +30,30 @@ enyo.kind({
 	kind: "onyx.Menu",
 	classes: "onyx-picker enyo-unselectable",
 	published: {
-		selected: null,
-		maxHeight: "200px"
+		//* Currently selected item, if any
+		selected: null
 	},
 	events: {
+		/**
+			Fires when the currently selected item changes.
+			
+			_inEvent.selected_ contains the currently selected item.
+			
+			_inEvent.content_ contains the content of the currently selected item.
+		*/
 		onChange: ""
 	},
-	components: [
-		{name: "client", kind: "enyo.Scroller", strategyKind: "TouchScrollStrategy"}
-	],
+	/**
+	    Set to true to render the picker in a floating layer outside of other
+	    controls. This can be used to guarantee that the picker will be shown
+	    on top of other controls.
+	*/
 	floating: true,
 	showOnTop: true,
-	scrollerName: "client",
-	create: function() {
-		this.inherited(arguments);
-		this.maxHeightChanged();
-	},
-	getScroller: function() {
-		return this.$[this.scrollerName];
-	},
-	maxHeightChanged: function() {
-		this.getScroller().setMaxHeight(this.maxHeight);
-	},
+	initComponents: function() {
+	    this.setScrolling(true);
+        this.inherited(arguments);
+    },
 	showingChanged: function() {
 		this.getScroller().setShowing(this.showing);
 		this.inherited(arguments);
@@ -82,6 +84,6 @@ enyo.kind({
 	},
 	resizeHandler: function() {
 		this.inherited(arguments);			
-		this.adjustPosition(false);
+		this.adjustPosition();
 	}
 });

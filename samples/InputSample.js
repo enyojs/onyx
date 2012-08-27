@@ -13,6 +13,10 @@ enyo.kind({
 			]},
 			{kind: "onyx.InputDecorator", components: [
 				{kind: "onyx.Input", type:"password", placeholder: "Enter password", onchange:"inputChanged"}
+			]},
+			{kind: "onyx.InputDecorator", components: [
+				{content: "alwaysLookFocused:"},
+				{kind: "onyx.Checkbox", onchange: "changeFocus"}
 			]}
 		]},
 		{classes: "onyx-toolbar-inline", components: [
@@ -55,5 +59,10 @@ enyo.kind({
 	],
 	inputChanged: function(inSender, inEvent) {
 		this.$.result.setContent("Input: " + inSender.getValue());
+	},
+	changeFocus: function(inSender, inEvent) {
+		this.$.inputDecorator.setAlwaysLooksFocused(inSender.getValue());
+		this.$.inputDecorator2.setAlwaysLooksFocused(inSender.getValue());
+		this.$.inputDecorator3.setAlwaysLooksFocused(inSender.getValue());
 	}
 });

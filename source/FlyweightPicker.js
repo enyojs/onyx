@@ -50,8 +50,17 @@ enyo.kind({
 		count: 0
 	},
 	events: {
-		//* Sends the row index, and the row control, for decoration.
+		/**
+			Fires when a row is being initialized. The _index_ property contains
+			the row index, while the _flyweight_ property contains the row
+			control, for decoration.
+		*/
 		onSetupItem: "",
+		/**
+			Fires when an item is selected. The _content_ property contains the
+			content of the selected item, while the _index_ property contains
+			its row index.
+		*/
 		onSelect: ""
 	},
 	handlers: {
@@ -59,10 +68,14 @@ enyo.kind({
 	},
 	components: [
 		{name: "scroller", kind: "enyo.Scroller", strategyKind: "TouchScrollStrategy", components: [
-			{name: "client", kind: "FlyweightRepeater", ontap: "itemTap"}
+			{name: "flyweight", kind: "FlyweightRepeater", ontap: "itemTap"}
 		]}
 	],
 	scrollerName: "scroller",
+	initComponents: function() {
+		this.controlParentName = 'flyweight';
+        this.inherited(arguments);
+    },
 	create: function() {
 		this.inherited(arguments);
 		this.countChanged();
@@ -72,11 +85,11 @@ enyo.kind({
 		this.selectedChanged();
 	},
 	scrollToSelected: function() {
-		var n = this.$.client.fetchRowNode(this.selected);
+		var n = this.$.flyweight.fetchRowNode(this.selected);
 		this.getScroller().scrollToNode(n, !this.menuUp);
 	},
 	countChanged: function() {
-		this.$.client.count = this.count;
+		this.$.flyweight.count = this.count;
 	},
 	processActivatedItem: function(inItem) {
 		this.item = inItem;
@@ -87,13 +100,13 @@ enyo.kind({
 		}
 		if (inOld !== undefined) {
 			this.item.removeClass("selected");
-			this.$.client.renderRow(inOld);
+			this.$.flyweight.renderRow(inOld);
 		}
 		this.item.addClass("selected");
-		this.$.client.renderRow(this.selected);
+		this.$.flyweight.renderRow(this.selected);
 		// need to remove the class from control to make sure it won't apply to other rows
 		this.item.removeClass("selected");
-		var n = this.$.client.fetchRowNode(this.selected);
+		var n = this.$.flyweight.fetchRowNode(this.selected);
 		this.doChange({selected: this.selected, content: n && n.textContent || this.item.content});
 	},
 	itemTap: function(inSender, inEvent) {

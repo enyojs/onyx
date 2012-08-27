@@ -31,6 +31,13 @@ enyo.kind({
 	tag: "div",
 	classes: "onyx-menu-item",
 	events: {
+		/**
+			Fires when the menu item is selected.
+			
+			_inEvent.selected_ contains a reference to the menu item.
+			
+			_inEvent.content_ contains the menu item's content.
+		*/
 		onSelect: ""
 	},
 	tap: function(inSender) {

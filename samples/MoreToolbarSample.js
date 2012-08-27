@@ -17,7 +17,7 @@ enyo.kind({
 			{kind: "onyx.Button", content: "Maxizon"},
 		]},
 		{fit: true, style: "background: lightpurple;padding:25px;", components: [
-			{content: "The \"More Toolbar\" label and the Gamma button have the unmovable property set to true."}
+			{content: "The \"More Toolbar\" label and the Gamma button have the unmoveable property set to true."}
 		]},
 		{kind: "onyx.MoreToolbar", components: [
 			{content: "More Toolbar", unmoveable: true},

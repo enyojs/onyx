@@ -16,9 +16,14 @@ enyo.kind({
 	name: "onyx.Tooltip",
 	kind: "onyx.Popup",
 	classes: "onyx-tooltip below left-arrow",
+	//* If true, tooltip is automatically dismissed when user stops hovering
+	//* over the decorator
 	autoDismiss: false,
+	//* Hovering over the decorator for this length of time (in milliseconds)
+	//* causes the tooltip to appear.  
 	showDelay: 500,
-	defaultLeft: -6, //default margin-left value
+	//* Default margin-left value
+	defaultLeft: -6,
 	handlers: {
 		onRequestShowTooltip: "requestShow",
 		onRequestHideTooltip: "requestHide"
@@ -59,7 +64,7 @@ enyo.kind({
 				this.addRemoveClass("below", true);	
 			}
 			
-			//when the tooltip's right edge is out of the window, align it's right edge with the decorator left edge (approx)
+			//when the tooltip's right edge is out of the window, align its right edge with the decorator left edge (approx)
 			if (b.left + b.width > window.innerWidth){
 				this.applyPosition({'margin-left': -b.width, bottom: "auto"});	
 				//use the right-arrow
@@ -69,7 +74,7 @@ enyo.kind({
 		}
 	},
 	resizeHandler: function() {
-		//reset the tooltip to align it's left edge with the decorator
+		//reset the tooltip to align its left edge with the decorator
 		this.applyPosition({'margin-left': this.defaultLeft, bottom: "auto"});
 		this.addRemoveClass("left-arrow", true);
 		this.addRemoveClass("right-arrow", false);
