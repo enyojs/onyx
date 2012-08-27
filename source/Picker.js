@@ -24,6 +24,10 @@
 	Each item in the list is an <a href="#onyx.MenuItem">onyx.MenuItem</a>, so
 	an _onSelect_ event with the item can be listened to by a client application
 	to determine which picker item was selected.
+	
+	For more information, see the documentation on
+	<a href="https://github.com/enyojs/enyo/wiki/Pickers">Pickers</a> in the
+	Enyo Developer Guide.
  */
 enyo.kind({
 	name: "onyx.Picker",
