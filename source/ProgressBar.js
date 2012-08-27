@@ -1,5 +1,6 @@
 /**
-	A control that shows the current progress of a process in a horizontal bar.
+	_onyx.ProgressBar_ is a  control that shows the current progress of a
+	process in a horizontal bar.
 	
 		{kind: "onyx.ProgressBar", progress: 10}
 	
@@ -12,11 +13,9 @@
 	
 		{kind: "onyx.ProgressBar", barClasses: "onyx-dark"}
 	
-	When the _showStripes_ property is true (the default), stripes are shown in
-	the progress bar; when *animateStripes* is true (also the default), these
-	stripes are animated. The animated stripes use CSS3 gradients and animation
-	to produce the effects.  In browsers that don't support these features, the
-	effects will not be visible.
+	For more information, see the documentation on
+	<a href="https://github.com/enyojs/enyo/wiki/Progress-Indicators">Progress Indicators</a>
+	in the Enyo Developer Guide.
 */
 enyo.kind({
 	name: "onyx.ProgressBar",
