@@ -1,5 +1,5 @@
 /**
-	An icon that acts like a toggle switch. The icon image is specified by setting 
+	An icon that acts like a toggle switch. The icon image is specified by setting
 	the *src* property to a URL.
 
 		{kind: "onyx.ToggleIconButton", src: "images/search.png", ontap: "buttonTap"}
@@ -13,13 +13,16 @@ enyo.kind({
 	name: "onyx.ToggleIconButton",
 	kind: "onyx.Icon",
 	published: {
+		//* True if the IconButton is in its active state; false if in its
+		//* normal state
 		active: false,
-		value: false,
-		disabled: false
+		//* Boolean indicating whether toggle button is currently in the "on"
+		//* state
+		value: false
 	},
 	events: {
 		/**
-			The onChange event fires when the user changes the value of the toggle button, 
+			The onChange event fires when the user changes the value of the toggle button,
 			but not when the value is changed programmatically.
 		*/
 		onChange: ""
@@ -27,11 +30,8 @@ enyo.kind({
 	classes: "onyx-icon-button onyx-icon-toggle",
 	//* @protected
 	activeChanged: function() {
-		this.addRemoveClass("active", this.value)
+		this.addRemoveClass("active", this.value);
 		this.bubble("onActivate");
-	},
-	disabledChanged: function() {
-		this.addRemoveClass("disabled", this.disabled);
 	},
 	updateValue: function(inValue) {
 		if (!this.disabled) {
@@ -48,11 +48,10 @@ enyo.kind({
 	create: function() {
 		this.inherited(arguments);
 		this.value = Boolean(this.value || this.active);
-		this.disabledChanged();
 	},
 	rendered: function() {
 		this.inherited(arguments);
 		this.valueChanged();
-		this.removeClass('onyx-icon')
-	},
+		this.removeClass('onyx-icon');
+	}
 });
