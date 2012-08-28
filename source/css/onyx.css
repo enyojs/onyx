@@ -305,6 +305,7 @@
 
 /* customize a toolbar to support menus */
 .onyx-menu-toolbar, .onyx-toolbar.onyx-menu-toolbar {
+	position: relative;
 	z-index: 10; 
 	overflow: visible;
 }
