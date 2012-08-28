@@ -1,7 +1,7 @@
 /**
 	_onyx.Menu_ is a subkind of <a href="#onyx.Popup">onyx.Popup</a> that
-	displays a list of <a href="#onyx.MenuItems">onyx.MenuItems</a> and looks
-	like a popup menu. It is meant to be used in conjunction with an
+	displays a list of <a href="#onyx.MenuItem">onyx.MenuItem</a> objects and
+	looks like a popup menu. It is meant to be used in conjunction with an
 	<a href="#onyx.MenuDecorator">onyx.MenuDecorator</a>. The decorator couples
 	the menu with an activating control, which may be a button or any other
 	control with an _onActivate_ event. When the control is activated, the menu
@@ -17,21 +17,15 @@
 			]}
 		]}
 
-	A menu may be floated by setting the _floating_ property to true. When a
-	menu is not floating (the default), it will scroll with the activating
-	control, but may be obscured by surrounding content with a higher z-index.
-	When floating, it will never be obscured, but it will not scroll with the
-	activating button.
-	
-	By default menus are placed in a scroller and will attempt to size the scroller
-	so that the full menu can be used at any screen height. Set the published scrolling 
-	property to false during instantiation to use a static menu instead.
+	For more information, see the documentation on
+	<a href="https://github.com/enyojs/enyo/wiki/Menus">Menus</a> in the Enyo
+	Developer Guide.
  */
 enyo.kind({
 	name: "onyx.Menu",
 	kind: "onyx.Popup",
 	//* If true, prevents controls outside the menu from receiving events while
-	//* the menu is showing.
+	//* the menu is showing
 	modal: true,
 	defaultKind: "onyx.MenuItem",
 	classes: "onyx-menu",
@@ -107,7 +101,7 @@ enyo.kind({
 	},	
 	//* @protected
 	/* Adjusts the menu position to fit inside the current window size. 
-	/* Note that we aren't adjusting picker scroller heights currently
+	/* Note that we aren't currently adjusting picker scroller heights. 
 	*/
 	adjustPosition: function() {
 		if (this.showing && this.hasNode()) {

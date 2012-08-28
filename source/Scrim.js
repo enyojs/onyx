@@ -1,15 +1,16 @@
 ﻿/**
 	_onyx.Scrim_ provides an overlay that will prevent taps from propagating to
-	controls that it covers.  A Scrim can be "floating" or not.  Floating Scrims
-	will fill the entire viewport, while non-floating Scrims will be constrained
-	by their container.
+	the controls that it covers.  A scrim may be "floating" or "non-floating". A
+	floating scrim will fill the entire viewport, while a non-floating scrim
+	will be constrained	by the dimensions of its container.
 
-	The Scrim should have a CSS class of "onyx-scrim-transparent", "onyx-scrim-translucent",
-	or any other class that has pointer-events: auto in its style properties.
+	The scrim should have a CSS class of _"onyx-scrim-transparent"_,
+	_"onyx-scrim-translucent"_,	or any other class that has
+	_"pointer-events: auto"_ in its style properties.
 
-	You may specify at which Z-index you want the Scrim to occupy with the _showAtZIndex_
-	method, but you will need to use _hideAtZIndex_  with the same value when you want to
-	hide it again.
+	You may specify the z-index at which you want the scrim to appear by calling
+	_showAtZIndex_; if you do so, you must call _hideAtZIndex_ with the same
+	value to hide the scrim.
 */
 
 enyo.kind({
@@ -49,8 +50,8 @@ enyo.kind({
 		enyo.remove(inControl, this.zStack);
 	},
 	//* @public
-	//* Shows Scrim at the specified z-index.  Note: If you use showAtZIndex, you
-	//*  must call hideAtZIndex to properly unwind the z-index stack.
+	//* Shows scrim at the specified z-index. Note: If you use _showAtZIndex_,
+	//* you must call _hideAtZIndex_ to properly unwind the z-index stack.
 	showAtZIndex: function(inZIndex) {
 		this.addZIndex(inZIndex);
 		if (inZIndex !== undefined) {
@@ -58,7 +59,7 @@ enyo.kind({
 		}
 		this.show();
 	},
-	//* Hides Scrim at the specified z-Index.
+	//* Hides scrim at the specified z-index.
 	hideAtZIndex: function(inZIndex) {
 		this.removeZIndex(inZIndex);
 		if (!this.zStack.length) {
@@ -81,7 +82,7 @@ enyo.kind({
 
 //* @protected
 //
-// Scrim singleton exposing a subset of Scrim API. 
+// Scrim singleton exposing a subset of Scrim API;
 // is replaced with a proper enyo.Scrim instance.
 //
 enyo.kind({
