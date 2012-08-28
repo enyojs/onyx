@@ -19,5 +19,13 @@
 */
 enyo.kind({
 	name: "onyx.Toolbar",
-	classes: "onyx onyx-toolbar onyx-toolbar-inline"
+	classes: "onyx onyx-toolbar onyx-toolbar-inline",
+	create: function(){
+		this.inherited(arguments);
+	
+		//workaround for android 4.0.3 rendering glitch (ENYO-674)
+		if (this.hasClass('onyx-menu-toolbar') && (enyo.platform.android >= 4)){
+			this.applyStyle("position", "static");
+		}
+	}
 });
