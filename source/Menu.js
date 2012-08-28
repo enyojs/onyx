@@ -50,7 +50,7 @@ enyo.kind({
 	    this.maxHeightChanged();	
 	},
 	initComponents: function() {
-	    this.scrolling ? this.createComponents(this.childComponents) : enyo.nop;	
+	    this.scrolling ? this.createComponents(this.childComponents, {isChrome: true}) : enyo.nop;	
         this.inherited(arguments);
     },
 	getScroller: function() {
