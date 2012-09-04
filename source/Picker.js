@@ -48,14 +48,16 @@ enyo.kind({
 		onChange: ""
 	},
 	/**
-	    Set to true to render the picker in a floating layer outside of other
-	    controls. This can be used to guarantee that the picker will be shown
-	    on top of other controls.
+		Set to true to render the picker in a floating layer outside of other
+		controls. This can be used to guarantee that the picker will be shown
+		on top of other controls.
 	*/
 	floating: true,
+	//* @protected
+	// overrides default value from onyx.Menu
 	showOnTop: true,
 	initComponents: function() {
-	    this.setScrolling(true);
+		this.setScrolling(true);
         this.inherited(arguments);
     },
 	showingChanged: function() {
@@ -69,7 +71,7 @@ enyo.kind({
 		this.getScroller().scrollToControl(this.selected, !this.menuUp);
 	},
 	itemActivated: function(inSender, inEvent) {
-		this.processActivatedItem(inEvent.originator)
+		this.processActivatedItem(inEvent.originator);
 		return this.inherited(arguments);
 	},
 	processActivatedItem: function(inItem) {
@@ -84,7 +86,7 @@ enyo.kind({
 		if (this.selected) {
 			this.selected.addClass("selected");
 			this.doChange({selected: this.selected, content: this.selected.content});
-		};
+		}
 	},
 	resizeHandler: function() {
 		this.inherited(arguments);			
