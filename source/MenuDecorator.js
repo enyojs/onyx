@@ -21,6 +21,7 @@ enyo.kind({
 	defaultKind: "onyx.Button",
 	// selection on ios prevents tap events, so avoid.
 	classes: "onyx-popup-decorator enyo-unselectable",
+	//* @protected
 	handlers: {
 		onActivate: "activated",
 		onHide: "menuHidden"

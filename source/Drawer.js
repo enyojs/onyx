@@ -15,6 +15,7 @@ enyo.kind({
 		//* "v" for vertical animation; "h" for horizontal animation
 		orient: "v"
 	},
+	//* @protected
 	style: "overflow: hidden; position: relative;",
 	tools: [
 		{kind: "Animator", onStep: "animatorStep", onEnd: "animatorEnd"},
