@@ -46,11 +46,13 @@ enyo.kind({
 				{style: "min-width: 60px;"},
 				{name: "dayPicker", kind: "onyx.Picker"}
 			]},
-			{content: "Year", classes: "onyx-sample-label"},
-			{kind: "onyx.PickerDecorator", components: [
-				{style: "min-width: 80px;"},
-				{name: "yearPicker", kind: "onyx.FlyweightPicker", count: 200, onSetupItem: "setupYear", components: [
-					{name: "year"}
+			{classes: "onyx-toolbar-inline", style:"margin: 0px;", components: [
+				{content: "Year", classes: "onyx-sample-label"},
+				{kind: "onyx.PickerDecorator", components: [
+					{style: "min-width: 80px;"},
+					{name: "yearPicker", kind: "onyx.FlyweightPicker", count: 200, onSetupItem: "setupYear", components: [
+						{name: "year"}
+					]}
 				]}
 			]}
 		]},
