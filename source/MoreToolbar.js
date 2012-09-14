@@ -47,9 +47,11 @@ enyo.kind({
 	create: function() {
 		this.inherited(arguments);
 		this.$.client.addStyles(this.style);
-	},
-	styleChanged: function() {
-		this.$.client.addStyles(this.style);
+		this.applyStyle = enyo.bind(this.$.client, "applyStyle");
+		this.addStyles = enyo.bind(this.$.client, "addStyles");
+		this.addClass = enyo.bind(this.$.client, "addClass");
+		this.removeClass = enyo.bind(this.$.client, "removeClass");
+		this.addRemoveClass = enyo.bind(this.$.client, "addRemoveClass");
 	},
 	initComponents: function() {
 		if(this.menuClass && this.menuClass.length>0 && !this.$.menu.hasClass(this.menuClass)) {
