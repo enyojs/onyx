@@ -23,7 +23,7 @@
 }
 
 /* Icon.css */
-.onyx-icon {
+.onyx-icon, .onyx-icon-toggle {
 	width: 32px;
 	height: 32px;
 	background-repeat: no-repeat;
@@ -31,13 +31,17 @@
 	vertical-align: middle;
 }
 
-.onyx-icon.onyx-icon-button.active, .onyx-icon.onyx-icon-button:active:hover {
+.onyx-icon.onyx-icon-button.active, .onyx-icon.onyx-icon-button:active:hover, .onyx-icon-toggle.active {
 	background-position: 0 -32px;
 }
 
 .onyx-icon.disabled {
 	opacity: 0.4;
 	filter: alpha(opacity=40);
+}
+
+.onyx-icon.disabled:active:hover {
+	background-position: 0 0px;
 }
 
 /* Button.css */
@@ -532,7 +536,7 @@
 	float: left;
 }
 
-.onyx-toggle-button.disabled {
+.onyx-toggle-button.disabled, .onyx-icon-button.disabled {
 	opacity: 0.4;
 	filter: alpha(opacity=40);
 }
