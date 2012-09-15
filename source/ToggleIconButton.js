@@ -13,8 +13,8 @@ enyo.kind({
 	name: "onyx.ToggleIconButton",
 	kind: "onyx.Icon",
 	published: {
-		//* True if the IconButton is in its active state; false if in its
-		//* normal state
+		//* Used when the ToggleIconButton is part of a <a href="#enyo.Group">enyo.Group</a>, 
+		//* true to indicate that this is the active button of the group, false otherwise.
 		active: false,
 		//* Boolean indicating whether toggle button is currently in the "on"
 		//* state

@@ -21,8 +21,8 @@ enyo.kind({
 	name: "onyx.IconButton",
 	kind: "onyx.Icon",
 	published: {
-		//* True if the IconButton is in its active state; false if in its
-		//* normal state
+		//* Used when the IconButton is part of a <a href="#enyo.Group">enyo.Group</a>, true 
+		//* to indicate that this is the active button of the group, false otherwise.
 		active: false
 	},
 	classes: "onyx-icon-button",
