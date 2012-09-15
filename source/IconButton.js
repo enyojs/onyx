@@ -35,9 +35,10 @@ enyo.kind({
 		if (this.disabled) {
 			return true;
 		}
-		this.setActive(true);
+		this.setActive(!this.active);
 	},
 	activeChanged: function() {
+		this.addRemoveClass("active", this.active);
 		this.bubble("onActivate");
 	}
 });
