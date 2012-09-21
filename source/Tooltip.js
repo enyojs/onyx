@@ -24,6 +24,7 @@ enyo.kind({
 	showDelay: 500,
 	//* Default margin-left value
 	defaultLeft: -6,
+	//* @protected
 	handlers: {
 		onRequestShowTooltip: "requestShow",
 		onRequestHideTooltip: "requestHide"
@@ -45,8 +46,8 @@ enyo.kind({
 		this.inherited(arguments);
 	},
 	applyPosition: function(inRect) {
-		var s = ""
-		for (n in inRect) {
+		var s = "";
+		for (var n in inRect) {
 			s += (n + ":" + inRect[n] + (isNaN(inRect[n]) ? "; " : "px; "));
 		}
 		this.addStyles(s);
@@ -59,7 +60,7 @@ enyo.kind({
 			if (b.top + b.height > window.innerHeight) {
 				this.addRemoveClass("below", false);
 				this.addRemoveClass("above", true);	
-			} else 	{
+			} else {
 				this.addRemoveClass("above", false);
 				this.addRemoveClass("below", true);	
 			}

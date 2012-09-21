@@ -12,8 +12,9 @@
 enyo.kind({
 	name: "onyx.RadioGroup",
 	kind: "Group",
-	//* If true (the default), only one radio button may be active at a time.
-	highlander: true,
-	defaultKind: "onyx.RadioButton"
+	defaultKind: "onyx.RadioButton",
+	//* @protected
+	// set to true to provide radio button behavior
+	highlander: true
 });
 

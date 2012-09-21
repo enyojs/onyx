@@ -6,8 +6,12 @@ enyo.kind({
 		{content: "Activate (V)", classes: "drawer-sample-box drawer-sample-mtb", ontap:"activateDrawer"},
 		{name: "drawer", kind: "onyx.Drawer", components: [
 			{content: "Vertical Drawer<br>Vertical Drawer<br>Vertical Drawer<br>Vertical Drawer", allowHtml: true, classes: "drawer-sample-box drawer-sample-mtb"},
-			{content: "Activate (V)", classes: "drawer-sample-box drawer-sample-mtb", ontap:"activateDrawer2"},
-			{name: "drawer2", kind: "onyx.Drawer", components: [
+			{components: [
+				{kind: "onyx.Checkbox", name: "animateSetting", value: true},
+				{content:"Animated", classes:"enyo-inline onyx-sample-animate-label"}
+			]},
+			{content: "Activate (V) (Toggled Animation)", classes: "drawer-sample-box drawer-sample-mtb", ontap:"activateDrawer2"},
+			{name: "drawer2", kind: "onyx.Drawer", animated: true, components: [
 				{content: "Vertical Drawer<br>Vertical Drawer<br>Vertical Drawer<br>Vertical Drawer", allowHtml: true, classes: "drawer-sample-box drawer-sample-mtb"}
 			]},
 			{content: "Vertical Drawer<br>Vertical Drawer<br>Vertical Drawer<br>Vertical Drawer", allowHtml: true, classes: "drawer-sample-box drawer-sample-mtb"}
@@ -27,6 +31,7 @@ enyo.kind({
 		this.$.drawer.setOpen(!this.$.drawer.open);
 	},
 	activateDrawer2: function() {
+		this.$.drawer2.setAnimated(this.$.animateSetting.getValue());
 		this.$.drawer2.setOpen(!this.$.drawer2.open);
 	},
 	activateColumnsDrawer: function() {

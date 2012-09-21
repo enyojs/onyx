@@ -13,8 +13,11 @@ enyo.kind({
 		//* The visibility state of the drawer's associated control
 		open: true,
 		//* "v" for vertical animation; "h" for horizontal animation
-		orient: "v"
+		orient: "v",
+		//* When true, animate the opening/closing transition
+		animated: true
 	},
+	//* @protected
 	style: "overflow: hidden; position: relative;",
 	tools: [
 		{kind: "Animator", onStep: "animatorStep", onEnd: "animatorEnd"},
@@ -22,11 +25,18 @@ enyo.kind({
 	],
 	create: function() {
 		this.inherited(arguments);
+		this.animatedChanged();
 		this.openChanged();
 	},
 	initComponents: function() {
 		this.createChrome(this.tools);
 		this.inherited(arguments);
+	},
+	animatedChanged: function() {
+		if (!this.animated && this.hasNode() && this.$.animator.isAnimating()) {
+			this.$.animator.stop();
+			this.animatorEnd();
+		}
 	},
 	openChanged: function() {
 		this.$.client.show();
@@ -42,22 +52,29 @@ enyo.kind({
 				// can cause a momentary flash of content on some browsers
 				this.applyStyle(d, null);
 				var s = this.hasNode()[v ? "scrollHeight" : "scrollWidth"];
-				this.$.animator.play({
-					startValue: this.open ? 0 : s,
-					endValue: this.open ? s : 0,
-					dimension: d,
-					position: p
-				});
+				if (this.animated) {
+					this.$.animator.play({
+						startValue: this.open ? 0 : s,
+						endValue: this.open ? s : 0,
+						dimension: d,
+						position: p
+					});
+				} else {
+					// directly run last frame if not animating
+					this.animatorEnd();
+				}
 			}
 		} else {
 			this.$.client.setShowing(this.open);
 		}
 	},
 	animatorStep: function(inSender) {
+		// the actual drawer DOM node adjusts its height
 		if (this.hasNode()) {
 			var d = inSender.dimension;
 			this.node.style[d] = this.domStyles[d] = inSender.value + "px";
 		}
+		// while the client inside the drawer adjusts its position to move out of the visible area
 		var cn = this.$.client.hasNode();
 		if (cn) {
 			var p = inSender.position;
@@ -74,10 +91,16 @@ enyo.kind({
 		}
 		else {
 			// at end of open animation, clean limit on height/width
-			var p = (this.orient == "v") ? "height" : "width";
-			var cn = this.hasNode();
+			var v = (this.orient == "v");
+			var d = v ? "height" : "width";
+			var p = v ? "top" : "left";
+			var cn = this.$.client.hasNode();
+			// clear out changes to container position & node dimension
 			if (cn) {
 				cn.style[p] = this.$.client.domStyles[p] = null;
+			}
+			if (this.node) {
+				this.node.style[d] = this.domStyles[d] = null;
 			}
 		}
 		if (this.container) {

@@ -21,6 +21,7 @@
 enyo.kind({
 	name: "onyx.TooltipDecorator",
 	defaultKind: "onyx.Button",
+	//* @protected
 	classes: "onyx-popup-decorator",
 	handlers: {
 		onenter: "enter",

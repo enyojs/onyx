@@ -39,11 +39,11 @@ enyo.kind({
 		//* Fires when progress bar finishes animating to a position.
 		onAnimateProgressFinish: ""
 	},
+	//* @protected
 	components: [
 		{name: "progressAnimator", kind: "Animator", onStep: "progressAnimatorStep", onEnd: "progressAnimatorComplete"},
 		{name: "bar", classes: "onyx-progress-bar-bar"}
 	],
-	//* @protected
 	create: function() {
 		this.inherited(arguments);
 		this.progressChanged();

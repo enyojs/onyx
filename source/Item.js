@@ -9,7 +9,10 @@
 enyo.kind({
 	name: "onyx.Item",
 	classes: "onyx-item",
+	//* When true, the item will automatically highlight (by application of the onyx-highlight 
+	//* CSS class) when tapped. Set to false to disable this behavior.
 	tapHighlight: true,
+	//* @protected
 	handlers: {
 		onhold: "hold",
 		onrelease: "release"
@@ -20,7 +23,6 @@ enyo.kind({
 			onyx.Item.addFlyweightClass(this.controlParent || this, "onyx-highlight", inEvent);
 		}
 	},
-	//* @public
 	release: function(inSender, inEvent) {
 		if (this.tapHighlight) {
 			onyx.Item.removeFlyweightClass(this.controlParent || this, "onyx-highlight", inEvent);
@@ -31,7 +33,7 @@ enyo.kind({
 		addFlyweightClass: function(inControl, inClass, inEvent, inIndex) {
 			var flyweight = inEvent.flyweight;
 			if (flyweight) {
-				var index = inIndex != undefined ? inIndex : inEvent.index;
+				var index = inIndex !== undefined ? inIndex : inEvent.index;
 				flyweight.performOnRow(index, function() {
 					if (!inControl.hasClass(inClass)) {
 						inControl.addClass(inClass);
@@ -46,7 +48,7 @@ enyo.kind({
 		removeFlyweightClass: function(inControl, inClass, inEvent, inIndex) {
 			var flyweight = inEvent.flyweight;
 			if (flyweight) {
-				var index = inIndex != undefined ? inIndex : inEvent.index;
+				var index = inIndex !== undefined ? inIndex : inEvent.index;
 				flyweight.performOnRow(index, function() {
 					if (!inControl.hasClass(inClass)) {
 						inControl.setClassAttribute(inControl.getClassAttribute());

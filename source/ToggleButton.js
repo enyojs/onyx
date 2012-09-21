@@ -13,8 +13,8 @@ enyo.kind({
 	name: "onyx.ToggleButton",
 	classes: "onyx-toggle-button",
 	published: {
-		//* True if the toggle button is currently activated (i.e., a tap is
-		//* in progress)
+		//* Used when the ToggleButton is part of a <a href="#enyo.Group">enyo.Group</a>, true 
+		//* to indicate that this is the active button of the group, false otherwise.
 		active: false,
 		//* Boolean indicating whether toggle button is currently in the "on"
 		//* state
