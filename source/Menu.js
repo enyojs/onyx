@@ -139,7 +139,7 @@ enyo.kind({
 			//adjust the horizontal positioning to keep the menu from being cut off on the right
 			if ((b.right) > innerWidth) {
 				if (this.floating){
-					this.applyPosition({left: r.left-(b.left + b.width - innerWidth)});
+					this.applyPosition({left:innerWidth-b.width});
 				} else {
 					this.applyPosition({left: -(b.right - innerWidth)});
 				}					
