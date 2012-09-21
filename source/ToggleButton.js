@@ -3,25 +3,11 @@
 	two states. Each time a	ToggleButton is tapped, it switches its value and
 	fires an _onChange_ event.
 
-		{kind: "onyx.ToggleButton", onContent: "foo", offContent: "bar",
-			onChange: "buttonToggle"},
+	To get the value of the button, call _getValue_.
 
-		...
-
-		buttonToggle: function(inSender, inEvent) {
-			this.log("Toggled to value " + inEvent.value);
-		}
-
-	To get the value of the button, call _getValue_:
-
-		queryToggleValue: function() {
-			return this.$.toggleButton.getValue();
-		}
-
-	The color of the toggle button may be customized by applying a background
-	color:
-
-		{kind: "onyx.ToggleButton", style: "background-color: #35A8EE;"}
+	For more information, see the documentation on
+	[Buttons](https://github.com/enyojs/enyo/wiki/Buttons) in the Enyo Developer
+	Guide.
 */
 enyo.kind({
 	name: "onyx.ToggleButton",
