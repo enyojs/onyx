@@ -41,7 +41,7 @@ enyo.kind({
 		{name: "client", fit: true, classes: "onyx-toolbar-inline"},
 		{name: "nard", kind: "onyx.MenuDecorator", showing: false, onActivate: "activated", components: [
 			{kind: "onyx.IconButton", classes: "onyx-more-button"},
-			{name: "menu", kind: "onyx.Menu", scrolling:false, classes: "onyx-more-menu", prepend: true}
+			{name: "menu", kind: "onyx.Menu", scrolling:false, classes: "onyx-more-menu"}
 		]}
 	],
 	initComponents: function() {
@@ -79,7 +79,8 @@ enyo.kind({
 			if(this.movedClass && this.movedClass.length>0 && !c.hasClass(this.movedClass)) {
 				c.addClass(this.movedClass);
 			}
-			this.$.menu.addChild(c);
+			// passing null to add child to the front of the control list
+			this.$.menu.addChild(c, null);
 			var p = this.$.menu.hasNode();
 			if (p && c.hasNode()) {
 				c.insertNodeInParent(p);
@@ -98,11 +99,11 @@ enyo.kind({
 			this.$.client.addChild(c);
 			var p = this.$.client.hasNode();
 			if (p && c.hasNode()) {
-				var nextChild = undefined;
+				var nextChild;
 				var currIndex;
 				for(var i=0; i<this.$.client.children.length; i++) {
 					var curr = this.$.client.children[i];
-					if(curr.toolbarIndex!=undefined && curr.toolbarIndex!=i) {
+					if(curr.toolbarIndex !== undefined && curr.toolbarIndex != i) {
 						nextChild = curr;
 						currIndex = i;
 						break;
@@ -142,11 +143,11 @@ enyo.kind({
 	},
 	findCollapsibleItem: function() {
 		var c$ = this.$.client.children;
-		for (var i=c$.length-1; c=c$[i]; i--) {
+		for (var i=c$.length-1; (c=c$[i]); i--) {
 			if (!c.unmoveable) {
 				return c;
 			} else {
-				if(c.toolbarIndex==undefined) {
+				if(c.toolbarIndex===undefined) {
 					c.toolbarIndex = i;
 				}
 			}
