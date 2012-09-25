@@ -36,11 +36,12 @@ enyo.kind({
 	},
 	components: [
 		{name: "client", kind: "Slideable", min: -100, unit: "%", ondragstart: "clientDragStart"},
-		{name: "confirm", kind: "onyx.Toolbar", canGenerate: false, classes: "onyx-swipeable-item-confirm enyo-fit", style: "text-align: center;", ontap: "confirmTap", onhold: "doNothing", onrelease: "doNothing", components: [
-			{kind: "onyx.Button", content: "Delete", ontap: "deleteTap"},
-			{kind: "onyx.Button", content: "Cancel", ontap: "cancelTap"}
-		]}
-	],
+		{name: "confirm", kind: "onyx.Toolbar", addBefore: null, canGenerate: false, 
+			classes: "onyx-swipeable-item-confirm enyo-fit", style: "text-align: center;", 
+			ontap: "confirmTap", onhold: "doNothing", onrelease: "doNothing", 
+			components: [
+				{kind: "onyx.Button", content: "Delete", ontap: "deleteTap"},
+				{kind: "onyx.Button", content: "Cancel", ontap: "cancelTap"} ] } ],
 	//* @protected
 	swiping: -1,
 	create: function() {
@@ -127,12 +128,10 @@ enyo.kind({
 				// NOTE: position relative so can enyo-fit confirm; apply only when confirm needed
 				// because it's a known rendering slowdown.
 				this.applyStyle("position", "relative");
+				// move confirm to front of child list
 				this.$.confirm.setShowing(true);
 				if (!this.$.confirm.hasNode()) {
-					// NOTE: prepend so Slideable will be on top.
-					this.$.confirm.prepend = true;
 					this.$.confirm.render();
-					this.$.confirm.prepend = false;
 				}
 				// note: can't teardown.
 			}
