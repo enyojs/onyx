@@ -821,6 +821,10 @@
 	background-position: 0 -40px;
 }
 
+.onyx-range-slider-knob {
+	top: -17px;
+}
+
 /* Item.css */
 .onyx-item {
 	padding: 14px;
