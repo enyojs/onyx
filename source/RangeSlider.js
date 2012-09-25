@@ -33,7 +33,8 @@ enyo.kind({
 	//* @public
 	events: {
 		//* Fires when bar position is set. The _value_ property contains the
-		//* new position.
+		//* new position. The _startChanged_ property is a boolean value that
+		//* indicates whether the 1st slider (rangeStart) triggered this event 
 		onChange: "",
 		//* Fires while control knob is being dragged. The _value_ property
 		//* contains the current position.
@@ -166,10 +167,10 @@ enyo.kind({
 
 		if (inSender.name === "startKnob") {
 			var val = this.calcRangeRatio(this.beginValue);
-			this.doChange({value: val});
+			this.doChange({value: val, startChanged: true});
 		} else if (inSender.name === "endKnob") {
 			var val = this.calcRangeRatio(this.endValue);
-			this.doChange({value: val});
+			this.doChange({value: val, startChanged: false});
 		}
 		return true;
 	},
