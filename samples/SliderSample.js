@@ -23,6 +23,25 @@ enyo.kind({
 		{kind: "onyx.Groupbox", classes:"onyx-sample-result-box", components: [
 			{kind: "onyx.GroupboxHeader", content: "Result"},
 			{name:"result", classes:"onyx-sample-result", content:"No slider moved yet."}
+		]},
+		{tag: "br"},
+		{tag: "br"},
+		{tag: "br"},
+		{classes: "onyx-sample-divider", content: "RangeSlider"},
+		{kind: "onyx.RangeSlider", rangeMin: 100, rangeMax: 500, rangeStart: 200, rangeEnd: 400, increment: 20, onChanging: "rangeSliderChanging", onChange: "rangeSliderChanged"},
+		{components: [
+			{style: "width:20%; display:inline-block; text-align:left;", content: "$100"},
+			{style: "width:60%; display:inline-block; text-align:center;", content: "$300"},
+			{style: "width:20%; display:inline-block; text-align:right;", content: "$500"}
+		]},
+		{tag: "br"},
+		{kind: "onyx.Checkbox", onchange: "incrementChanged", checked: true},
+		{content: "increment by 20", classes:"enyo-inline"},
+		{tag: "br"},
+		{tag: "br"},
+		{kind: "onyx.Groupbox", classes:"onyx-sample-result-box", components: [
+			{kind: "onyx.GroupboxHeader", content: "Result"},
+			{name:"rangeSliderResult", classes:"onyx-sample-result", content:"RangeSlider not moved yet."}
 		]}
 	],
 	changeValue: function(inSender, inEvent) {
@@ -49,5 +68,18 @@ enyo.kind({
 	},
 	sliderChanged: function(inSender, inEvent) {
 		this.$.result.setContent(inSender.name + " changed to " + Math.round(inSender.getValue()) + ".");
+	},
+	incrementChanged: function(inSender, inEvent) {
+		if (inSender.getValue()) {
+			this.$.rangeSlider.setIncrement(20);
+		} else {
+			this.$.rangeSlider.setIncrement(0);
+		}
+	},
+	rangeSliderChanging: function(inSender, inEvent) {
+		this.$.rangeSliderResult.setContent("Range changing: $" + Math.round(inSender.getRangeStart()) + " - $" + Math.round(inSender.getRangeEnd()));
+	},
+	rangeSliderChanged: function(inSender, inEvent) {
+		this.$.rangeSliderResult.setContent("Range changed to $" + Math.round(inSender.getRangeStart()) + " - $" + Math.round(inSender.getRangeEnd()) + ".");
 	}
 });
