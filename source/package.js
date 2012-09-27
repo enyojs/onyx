@@ -32,6 +32,7 @@ enyo.depends(
 	"ProgressButton.js",
 	"Scrim.js",
 	"Slider.js",
+	"RangeSlider.js",
 	"Item.js",
 	"Spinner.js",
 	"MoreToolbar.js"
