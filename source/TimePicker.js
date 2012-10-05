@@ -142,10 +142,12 @@ enyo.kind({
 		}
 		this.value = this.calcTime(h, this.value.getMinutes());				
 		this.doSelect({name:this.name, value:this.value});		
+		return true;		
 	},
 	updateMinute: function(inSender, inEvent){
 		this.value = this.calcTime(this.value.getHours(), inEvent.selected.value);		
 		this.doSelect({name:this.name, value:this.value});		
+		return true;		
 	},
 	updateAmPm: function(inSender, inEvent){
 		var h = this.value.getHours();
@@ -154,6 +156,7 @@ enyo.kind({
 		}		
 		this.value = this.calcTime(h, this.value.getMinutes());
 		this.doSelect({name:this.name, value:this.value});
+		return true;		
 	},
 	calcTime: function(hour, minute){
 		return new Date(this.value.getFullYear(), 
