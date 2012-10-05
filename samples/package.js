@@ -16,5 +16,7 @@ enyo.depends(
 	"MenuSample.js",
 	"TooltipSample.js",
 	"SpinnerSample.js",
-	"PickerSample.js"	
+	"PickerSample.js",
+	"DatePickerSample.js",
+	"TimePickerSample.js"	
 );
