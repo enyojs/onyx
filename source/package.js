@@ -21,6 +21,8 @@ enyo.depends(
 	"PickerButton.js",
 	"Picker.js",
 	"FlyweightPicker.js",	
+	"DatePicker.js",
+	"TimePicker.js",	
 	"RadioButton.js",
 	"RadioGroup.js",
 	"ToggleButton.js",

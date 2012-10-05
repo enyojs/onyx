@@ -937,3 +937,28 @@
 	background-color: #cacaca;
 	color: #2F2F2F;
 }
+
+/* date & time picker widths */
+.onyx-datetime-day {
+	min-width: 60px;
+}
+
+.onyx-datetime-month {
+	min-width: 75px;
+}
+
+.onyx-datetime-year {
+	min-width: 70px;
+}
+
+.onyx-datetime-hour {
+	min-width: 60px;
+}
+
+.onyx-datetime-minute {
+	min-width: 60px;
+}
+
+.onyx-datetime-ampm {
+	min-width: 60px;
+}
