@@ -102,7 +102,7 @@ enyo.kind({
 	createHour: function() {
 		this.createComponent(
 			{kind: "onyx.PickerDecorator", onSelect: "updateHour", components: [
-				{classes:"onyx-datetime-hour"},
+				{classes:"onyx-timepicker-hour"},
 				{name: "hourPicker", kind: "onyx.Picker"}
 			]}
 		);		
@@ -110,7 +110,7 @@ enyo.kind({
 	createMinute: function() {
 		this.createComponent(
 			{kind: "onyx.PickerDecorator", onSelect: "updateMinute", components: [
-				{classes:"onyx-datetime-minute"},
+				{classes:"onyx-timepicker-minute"},
 				{name: "minutePicker", kind: "onyx.Picker"}
 			]}
 		);		
@@ -118,7 +118,7 @@ enyo.kind({
 	createAmPm: function() {
 		this.createComponent(
 			{kind: "onyx.PickerDecorator", onSelect: "updateAmPm", components: [
-				{classes:"onyx-datetime-ampm"},
+				{classes:"onyx-timepicker-ampm"},
 				{name: "ampmPicker", kind: "onyx.Picker"}
 			]}
 		);		
