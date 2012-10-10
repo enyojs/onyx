@@ -1,13 +1,13 @@
 enyo.kind({
 	name: "onyx.sample.TimePickerSample",
 	kind: "FittableRows",
-	classes: "onyx onyx-sample",	
+	classes: "onyx enyo-fit",	
 	handlers: {
 		onSelect: "updateTimeValues"
 	},
 	components: [
 		{kind: "onyx.Toolbar", content:$L("Times")},
-		{kind: "FittableColumns", components:[
+		{kind: "FittableColumns", style: "padding: 10px", components:[
 			{components: [
 				{content:$L("Choose Locale:"), classes:"onyx-sample-divider"},		
 				{kind: "onyx.PickerDecorator", style:"padding:10px;", onSelect: "pickerHandler", components: [
@@ -34,7 +34,7 @@ enyo.kind({
 		{kind:"onyx.Button",content:"Reset Times", ontap:"resetTimes"},
 
 		{style:"width:100%;height:5px;background-color:black;margin-bottom:5px;"},
-		{caption: "Dates", components: [
+		{caption: "Dates", style: "padding: 10px", components: [
 				{content:"TIME",classes:"onyx-sample-divider"},			
 			{classes: "onyx-toolbar-inline", components: [
 				{name:"timePicker1", kind:"onyx.TimePicker"}			
