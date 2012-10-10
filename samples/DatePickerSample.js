@@ -1,13 +1,13 @@
 enyo.kind({
 	name: "onyx.sample.DatePickerSample",
 	kind: "FittableRows",
-	classes: "onyx onyx-sample",	
+	classes: "onyx enyo-fit",
 	handlers: {
 		onSelect: "updateDateValues"
 	},
 	components: [
 		{kind: "onyx.Toolbar", content:$L("Dates")},
-		{kind: "FittableColumns", components:[
+		{kind: "FittableColumns", style: "padding: 10px", components:[
 			{components: [
 				{content:$L("Choose Locale:"), classes:"onyx-sample-divider"},		
 				{kind: "onyx.PickerDecorator", style:"padding:10px;", onSelect: "pickerHandler", components: [
@@ -32,7 +32,7 @@ enyo.kind({
 		{kind:"onyx.Button",content:"Get Dates", style:"margin:10px;", ontap:"getDates"},
 		{kind:"onyx.Button",content:"Reset Dates", ontap:"resetDates"},
 		{style:"width:100%;height:5px;background-color:black;margin-bottom:5px;"},
-		{caption: "Dates", components: [
+		{caption: "Dates", style: "padding: 10px", components: [
 			{content:"DATE",classes:"onyx-sample-divider"},
 			{classes: "onyx-toolbar-inline", components: [
 				{name:"datePicker1", kind:"onyx.DatePicker"}
