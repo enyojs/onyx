@@ -56,13 +56,16 @@ enyo.kind({
 	},
 	rendered: function() {
 		this.inherited(arguments);
-		this.valueChanged();
+		this.updateVisualState();
 	},
-	valueChanged: function() {
+	updateVisualState: function() {
 		this.addRemoveClass("off", !this.value);
 		this.$.contentOn.setShowing(this.value);
 		this.$.contentOff.setShowing(!this.value);
 		this.setActive(this.value);
+	},
+	valueChanged: function() {
+		this.updateVisualState();
 		this.doChange({value: this.value});
 	},
 	activeChanged: function() {
