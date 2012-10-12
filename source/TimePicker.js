@@ -124,8 +124,6 @@ enyo.kind({
 		);		
 	},	
 	localeChanged: function() {
-		//reset 24 hour mode when changing locales
-		this.is24HrMode = null;
 		this.refresh();
 	},
 	is24HrModeChanged: function() {
