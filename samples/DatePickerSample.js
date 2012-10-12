@@ -89,13 +89,18 @@ enyo.kind({
 			
 		this.$.datePicker1Value.setContent(fmt.format(this.$.datePicker1.getValue()));
 		this.$.datePicker2Value.setContent(fmt.format(this.$.datePicker2.getValue()));
-		this.$.datePicker3Value.setContent(fmt.format(this.$.datePicker3.getValue()));
+		this.$.datePicker3Value.setContent(this.$.datePicker3.getValue().getFullYear() + "-" + (this.$.datePicker3.getValue().getMonth() + 1));
 	},
 	updateDateValues: function(inSender, inEvent){
 		var fmt = new enyo.g11n.DateFmt({
 		     date: "short",
 		     locale: new enyo.g11n.Locale(this.locale)
 		});
-		this.$[inEvent.name + "Value"].setContent(fmt.format(inEvent.value));
+		
+		if (inEvent.name == "datePicker3") {
+			this.$.datePicker3Value.setContent(inEvent.value.getFullYear() + "-" + (inEvent.value.getMonth() + 1));
+		} else {
+			this.$[inEvent.name + "Value"].setContent(fmt.format(inEvent.value));			
+		}
 	}
 });
