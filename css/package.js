@@ -1,3 +1,3 @@
 enyo.depends(
-	"onyx.css"
+	"onyx.less"
 );

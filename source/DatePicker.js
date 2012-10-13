@@ -98,8 +98,8 @@ enyo.kind({
 	createYear: function() {
 		var yearCount = this.maxYear - this.minYear;
 		this.createComponent(				
-			{kind: "onyx.PickerDecorator",	onSelect: "updateYear", components: [
-				{classes:"onyx-datetime-year"},
+			{kind: "onyx.PickerDecorator", onSelect: "updateYear", components: [
+				{classes:"onyx-datepicker-year"},
 				{name: "yearPicker", kind: "onyx.FlyweightPicker", count: ++yearCount, onSetupItem: "setupYear", components: [
 					{name: "year"}
 				]}
@@ -108,8 +108,8 @@ enyo.kind({
 	},
 	createMonth: function() {
 		this.createComponent(
-			{kind: "onyx.PickerDecorator",	onSelect: "updateMonth", components: [
-				{classes:"onyx-datetime-month"},
+			{kind: "onyx.PickerDecorator", onSelect: "updateMonth", components: [
+				{classes:"onyx-datepicker-month"},
 				{name: "monthPicker", kind: "onyx.Picker"}
 			]}
 		);		
@@ -117,7 +117,7 @@ enyo.kind({
 	createDay: function() {
 		this.createComponent(		
 			{kind: "onyx.PickerDecorator", onSelect: "updateDay", components: [
-				{classes:"onyx-datetime-day"},
+				{classes:"onyx-datepicker-day"},
 				{name: "dayPicker", kind: "onyx.Picker"}
 			]}
 		);		

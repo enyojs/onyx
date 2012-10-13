@@ -1,5 +1,4 @@
 enyo.depends(
-	"css/",
 	"Icon.js",
 	"Button.js",
 	"IconButton.js",
