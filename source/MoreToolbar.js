@@ -38,7 +38,7 @@ enyo.kind({
 		clientLayoutKind: "FittableColumnsLayout"
 	},
 	tools: [
-		{name: "client", fit: true, classes: "onyx-toolbar-inline"},
+		{name: "client", noStretch:true, fit: true, classes: "onyx-toolbar-inline"},
 		{name: "nard", kind: "onyx.MenuDecorator", showing: false, onActivate: "activated", components: [
 			{kind: "onyx.IconButton", classes: "onyx-more-button"},
 			{name: "menu", kind: "onyx.Menu", scrolling:false, classes: "onyx-more-menu"}
