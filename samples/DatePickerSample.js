@@ -1,7 +1,7 @@
 enyo.kind({
 	name: "onyx.sample.DatePickerSample",
 	kind: "FittableRows",
-	classes: "onyx enyo-fit",
+	classes: "onyx",	
 	handlers: {
 		onSelect: "updateDateValues"
 	},
@@ -82,25 +82,22 @@ enyo.kind({
 		this.getDates();	
 	},
 	getDates: function(){		
-		var fmt = new enyo.g11n.DateFmt({
-		     date: "short",
-		     locale: new enyo.g11n.Locale(this.locale)
-		});
-			
+		var fmt = this.format();
 		this.$.datePicker1Value.setContent(fmt.format(this.$.datePicker1.getValue()));
 		this.$.datePicker2Value.setContent(fmt.format(this.$.datePicker2.getValue()));
-		this.$.datePicker3Value.setContent(this.$.datePicker3.getValue().getFullYear() + "-" + (this.$.datePicker3.getValue().getMonth() + 1));
+		// reformat the formatter to display the Date wiht only Month and year
+		fmt = this.format('my');
+		this.$.datePicker3Value.setContent(fmt.format(this.$.datePicker3.getValue()));
 	},
 	updateDateValues: function(inSender, inEvent){
-		var fmt = new enyo.g11n.DateFmt({
-		     date: "short",
+		var fmt = inEvent.name != "datePicker3" ? this.format() :  this.format('my');
+		this.$[inEvent.name + "Value"].setContent(fmt.format(inEvent.value));
+	},
+	format: function(dateComponents) {
+	    return  fmt = new enyo.g11n.DateFmt({
+		     dateComponents: dateComponents || undefined,
+		     date: 'short',
 		     locale: new enyo.g11n.Locale(this.locale)
 		});
-		
-		if (inEvent.name == "datePicker3") {
-			this.$.datePicker3Value.setContent(inEvent.value.getFullYear() + "-" + (inEvent.value.getMonth() + 1));
-		} else {
-			this.$[inEvent.name + "Value"].setContent(fmt.format(inEvent.value));			
-		}
 	}
 });
