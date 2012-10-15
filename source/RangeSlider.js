@@ -1,12 +1,13 @@
 /**
-	_onyx.RangeSlider_ is a control that presents a range of selection values in the
-	form of a horizontal slider with two control knobs. The knobs may be dragged	
-	to the desired location.
-	
-		{kind: "onyx.RangeSlider", rangeMin: 100, rangeMax: 500, rangeStart: 200, rangeEnd: 400, interval: 20}
-	
-	_onChanging_ events are fired while the control knobs are being dragged, and
-	an _onChange_ event is fired when the position is set, by finishing a drag.
+    _onyx.RangeSlider_ is a control that combines a horizontal slider with two
+    control knobs. The user may drag the knobs to select a desired range of
+    values.
+
+        {kind: "onyx.RangeSlider", rangeMin: 100, rangeMax: 500,
+            rangeStart: 200, rangeEnd: 400, interval: 20}
+
+    _onChanging_ events are fired while the control knobs are being dragged, and
+    an _onChange_ event is fired when the position is set by finishing a drag.
 */
 enyo.kind({
 	name: "onyx.RangeSlider",
@@ -14,30 +15,44 @@ enyo.kind({
 	classes: "onyx-slider",
 	published: {
 		//* @public
-		//* Minimum value sliders can be positioned
+		//* Minimum slider value
 		rangeMin: 0,
-		//* Maximum value sliders can be positioned
+		//* Maximum slider value
 		rangeMax: 100,
-		//* Value of 1st slider, expressed as an integer between rangeMin and rangeMax,
+		/**
+		    Value of first slider, expressed as an integer between _rangeMin_
+		    and _rangeMax_
+		*/
 		rangeStart: 0,
-		//* Value of 2nd slider, expressed as an integer between rangeMin and rangeMax,
+		/**
+		    Value of second slider, expressed as an integer between _rangeMin_
+		    and _rangeMax_
+		*/
 		rangeEnd: 100,
-		//* Value range increment that the sliders can be "snapped to" in either direction,
+		//* Value range increment that the sliders can be "snapped to" in either direction
 		increment: 0,
 		//* @protected
-		// Position of 1st slider, expressed as an integer between 0 and 100 (percentage),
+		// Position of first slider, expressed as an integer between 0 and 100 (percentage)
 		beginValue: 0,
-		// Position of 2nd slider, expressed as an integer between 0 and 100 (percentage),
+		// Position of second slider, expressed as an integer between 0 and 100 (percentage)
 		endValue: 0
 	},
 	//* @public
 	events: {
-		//* Fires when bar position is set. The _value_ property contains the
-		//* new position. The _startChanged_ property is a boolean value that
-		//* indicates whether the 1st slider (rangeStart) triggered this event 
+		/**
+		    Fires when bar position is set.
+
+		    _inEvent.value_ contains the new position.
+		    
+		    _inEvent.startChanged_ is a boolean value indicating whether the
+		    first slider (_rangeStart_) triggered the event.
+		*/
 		onChange: "",
-		//* Fires while control knob is being dragged. The _value_ property
-		//* contains the current position.
+		/**
+		    Fires while control knob is being dragged.
+
+		    _inEvent.value_ contains the current position.
+		*/
 		onChanging: ""
 	},
 	//* If true, stripes are shown in the slider bar
