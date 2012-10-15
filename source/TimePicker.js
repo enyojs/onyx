@@ -1,24 +1,41 @@
 /**
-	_onyx.TimePicker_ is a group of <a href="#onyx.Picker">onyx.Picker</a>
-	controls that displays the current time and allows a user to change
-	the hour, minute and AM/PM values. By default the control attempts to
-	get the current locale & formats the time accordingly, including AM/PM formatting.
-	The g11n library must be loaded to retrieve and format by locale, however if it
-	is not loaded the control will default to standard US time format.
+    _onyx.TimePicker_ is a group of <a href="#onyx.Picker">onyx.Picker</a>
+    controls displaying the current time. The user may change the hour, minute,
+    and AM/PM values.
+    
+    By default, _TimePicker_ tries to determine the current locale and use its
+    rules to format the time (including AM/PM). In order to do this
+    successfully, the _g11n_ library must be loaded; if it is not loaded, the
+    control defaults to using standard U.S. time format.
  */
 enyo.kind({
 	name: "onyx.TimePicker",
 	classes: "onyx-toolbar-inline",
 	published: {
-		//* Current locale used for formatting. Can be set after control creation and control will reformat accordingly. 		
+		/**
+		    Current locale used for formatting. Can be set after control
+		    creation, in which case the control will be updated to reflect the
+		    new value.
+		*/ 		
 		locale: null,
-		//* Option to use 24 hour time		
+		//* If true, 24-hour time is used.		
 		is24HrMode: null,
-		//* The current Date object. Passing a Date object to setValue will update the control accordingly & getValue returns a Date object				
-		value: null,		
+		/**
+		    The current Date object. When a Date object is passed to _setValue_,
+		    the control is updated to reflect the new value. _getValue_ returns
+		    a Date object.
+		*/				
+		value: null,
 	},
 	events: {
-		//* When a TimePicker field is selected an onSelect event is generated. It includes a name field specifying the name of the TimePicker that generated the event & a value field with the current Date value of the control.		
+		/**
+		    Fires when one of the TimePicker's fields is selected.
+
+		    _inEvent.name_ contains the name of the TimePicker that generated
+		    the event.
+		    
+		    _inEvent.value_ contains the current Date value of the control.
+		*/
 		onSelect: ""
 	},	
 	create: function() {

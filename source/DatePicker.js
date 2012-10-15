@@ -1,31 +1,52 @@
 /**
-	_onyx.DatePicker_ is a group of <a href="#onyx.Picker">onyx.Picker</a>
-	controls that displays the current date and allows a user to change
-	the day, month and year values. By default the control attempts to
-	get the current locale & formats the date accordingly, including month names.
-	The g11n library must be loaded to retrieve and format by locale, however if it
-	is not loaded the control will default to standard US date format. The control
-	also populates the day field with the proper number of days for the corresponding
-	month & year displayed.
+    _onyx.DatePicker_ is a group of <a href="#onyx.Picker">onyx.Picker</a>
+    controls displaying the current date. The user may change the _day_,
+    _month_, and _year_ values.
+
+    By default, _DatePicker_ tries to determine the current locale and use its
+    rules to format the date (including the month name). In order to do this
+    successfully, the _g11n_ library must be loaded; if it is not loaded, the
+    control defaults to using standard U.S. date format.
+
+    The _day_ field is automatically populated with the proper number of days
+    for the selected month and year.
  */
 enyo.kind({
 	name: "onyx.DatePicker",
 	classes: "onyx-toolbar-inline",
 	published: {
-		//* Current locale used for formatting. Can be set after control creation and control will reformat accordingly. 
+		/**
+		    Current locale used for formatting. Can be set after control
+		    creation, in which case the control will be updated to reflect the
+		    new value.
+		*/ 
 		locale: null,
-		//* Option to hide day, month or year fields		
+		//* If true, the day field is hidden		
 		hideDay: false,
+		//* If true, the month field is hidden
 		hideMonth: false,
+		//* If true, the year field is hidden
 		hideYear: false,
-		//* Option to specify the minimum & maximum year values		
+		//* Optional minimum year value		
 		minYear: 1900,
+		//* Optional maximum year value
 		maxYear: 2099,
-		//* The current Date object. Passing a Date object to setValue will update the control accordingly & getValue returns a Date object		
+		/**
+		    The current Date object. When a Date object is passed to _setValue_,
+		    the control is updated to reflect the new value. _getValue_ returns
+		    a Date object.		
+		*/
 		value: null
 	},
 	events: {
-		//* When a DatePicker field is selected an onSelect event is generated. It includes a name field specifying the name of the DatePicker that generated the event & a value field with the current Date value of the control.
+		/**
+		    Fires when one of the DatePicker's fields is selected.
+		    
+		    _inEvent.name_ contains the name of the DatePicker that generated
+		     the event.
+		    
+		    _inEvent.value_ contains the current Date value of the control.
+		*/
 		onSelect: ""
 	},
 	create: function() {
