@@ -1,29 +1,30 @@
 /**
-	An icon that acts like a toggle switch. The icon image is specified by setting
-	the *src* property to a URL.
+	_onyx.ToggleIconButton_ is an icon that acts like a toggle switch. The icon
+	image is specified by setting the _src_ property to a URL.
 
 		{kind: "onyx.ToggleIconButton", src: "images/search.png", ontap: "buttonTap"}
-	
-	The image associated with the *src* property of the ToggleIconButton is assumed
-	to be 32x64-pixel strip with the top half showing the button's normal state
-	and the bottom half showing its state when hovered-over or active.
+
+	The image associated with the _src_ property is assumed	to be a 32x64-pixel
+	strip, with the top half showing the button's normal state and the bottom
+	half showing its state when hovered-over or active.
 */
 
 enyo.kind({
 	name: "onyx.ToggleIconButton",
 	kind: "onyx.Icon",
 	published: {
-		//* Used when the ToggleIconButton is part of a <a href="#enyo.Group">enyo.Group</a>, 
-		//* true to indicate that this is the active button of the group, false otherwise.
+		/**
+		    Used when the ToggleIconButton is part of an enyo.Group; set to true
+		    to indicate that this is the active button in the group.
+		*/
 		active: false,
-		//* Boolean indicating whether toggle button is currently in the "on"
-		//* state
+		//* Boolean indicating whether the button is currently in the "on" state
 		value: false
 	},
 	events: {
 		/**
-			The onChange event fires when the user changes the value of the toggle button,
-			but not when the value is changed programmatically.
+			Fires when the user changes the value of the toggle button, but not
+			when the value is changed programmatically.
 		*/
 		onChange: ""
 	},
