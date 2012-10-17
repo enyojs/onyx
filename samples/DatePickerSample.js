@@ -51,7 +51,7 @@ enyo.kind({
 			]},			
 			{content:"DATE W/DAYS HIDDEN",classes:"onyx-sample-divider"},			
 			{classes: "onyx-toolbar-inline", components: [
-				{name:"datePicker3", kind:"onyx.DatePicker", hideDay:true}
+				{name:"datePicker3", kind:"onyx.DatePicker", dayHidden:true}
 			]},
 			{kind: "onyx.Groupbox", style:"padding:5px;", components: [
 				{kind: "onyx.GroupboxHeader", content: "Value"},			

@@ -65,6 +65,7 @@ enyo.kind({
 	formatTime: function(){				
 		this.$.timePicker1.setLocale(this.locale);
 		this.$.timePicker2.setLocale(this.locale);
+		this.$.timePicker2.setIs24HrMode(true);
 	},
 	resetTimes: function(date) {
 		var d = new Date();

@@ -12,7 +12,7 @@ enyo.kind({
 	published: {
 		//* Current locale used for formatting. Can be set after control creation and control will reformat accordingly. 		
 		locale: null,
-		//* Option to use 24 hour time		
+		//* Option to use 24 hour time, this is reset when locale is changed	
 		is24HrMode: null,
 		//* The current Date object. Passing a Date object to setValue will update the control accordingly & getValue returns a Date object				
 		value: null,		
@@ -74,7 +74,7 @@ enyo.kind({
             this.$.minutePicker.createComponent({content: (i < 10) ? ("0"+i):i, value:i, active: i == d.getMinutes()});
         }
 
-        // create am pm
+        // create am/pm
         if (d.getHours() >= 12) {
             this.$.ampmPicker.createComponents([{content: am},{content:pm, active: true}]);
         }
@@ -124,6 +124,8 @@ enyo.kind({
 		);		
 	},	
 	localeChanged: function() {
+		//reset 24 hour mode when changing locales
+		this.is24HrMode = null;
 		this.refresh();
 	},
 	is24HrModeChanged: function() {

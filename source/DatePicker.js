@@ -15,9 +15,9 @@ enyo.kind({
 		//* Current locale used for formatting. Can be set after control creation and control will reformat accordingly. 
 		locale: null,
 		//* Option to hide day, month or year fields		
-		hideDay: false,
-		hideMonth: false,
-		hideYear: false,
+		dayHidden: false,
+		monthHidden: false,
+		yearHidden: false,
 		//* Option to specify the minimum & maximum year values		
 		minYear: 1900,
 		maxYear: 2099,
@@ -54,9 +54,9 @@ enyo.kind({
 	
 		this.setupPickers(this._tf ? this._tf.getDateFieldOrder() : 'mdy');
 		
-		this.hideDayChanged();
-		this.hideMonthChanged();
-		this.hideYearChanged();
+		this.dayHiddenChanged();
+		this.monthHiddenChanged();
+		this.yearHiddenChanged();
 			
 		//Fill month, year & day pickers with values					
 		var d = this.value = this.value || new Date();
@@ -125,14 +125,14 @@ enyo.kind({
 	localeChanged: function() {
 		this.refresh();
 	},
-	hideDayChanged: function() {
-		this.$.dayPicker.getParent().setShowing(this.hideDay ? false : true);		
+	dayHiddenChanged: function() {
+		this.$.dayPicker.getParent().setShowing(this.dayHidden ? false : true);		
 	},
-	hideMonthChanged: function() {
-		this.$.monthPicker.getParent().setShowing(this.hideMonth ? false : true);
+	monthHiddenChanged: function() {
+		this.$.monthPicker.getParent().setShowing(this.monthHidden ? false : true);
 	},
-	hideYearChanged: function() {
-		this.$.yearPicker.getParent().setShowing(this.hideYear ? false : true);
+	yearHiddenChanged: function() {
+		this.$.yearPicker.getParent().setShowing(this.yearHidden ? false : true);
 	},
 	minYearChanged: function() {
 		this.refresh();		
