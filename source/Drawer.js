@@ -1,8 +1,8 @@
 /**
 	_onyx.Drawer_ is a control that appears or disappears based on its _open_
-	property. It appears or disappears with a sliding animation whose direction
-	is determined by the _orient_ property.
-	
+	property. By default, the drawer appears or disappears with a sliding
+	animation whose direction is determined by the _orient_ property.
+
 	For more information, see the documentation on
 	<a href="https://github.com/enyojs/enyo/wiki/Drawers">Drawers</a> in the
 	Enyo Developer Guide.
@@ -12,9 +12,12 @@ enyo.kind({
 	published: {
 		//* The visibility state of the drawer's associated control
 		open: true,
-		//* "v" for vertical animation; "h" for horizontal animation
+		/**
+		    Direction of the opening/closing animation--either "v" for vertical
+		    or "h" for horizontal
+		*/
 		orient: "v",
-		//* When true, animate the opening/closing transition
+		//* If true, the opening/closing transition will be animated.
 		animated: true
 	},
 	//* @protected
