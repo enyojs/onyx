@@ -56,6 +56,10 @@ enyo.kind({
 			{kind: "onyx.Groupbox", style:"padding:5px;", components: [
 				{kind: "onyx.GroupboxHeader", content: "Value"},			
 				{name:"datePicker3Value", style:"padding:15px;"}
+			]},
+			{content:"DISABLED",classes:"onyx-sample-divider"},
+			{classes: "onyx-toolbar-inline", components: [
+				{name:"datePicker4", kind:"onyx.DatePicker", disabled: true}
 			]}
 		]}
 	],
@@ -71,14 +75,15 @@ enyo.kind({
 	formatDate: function(){		
 		this.$.datePicker1.setLocale(this.locale);
 		this.$.datePicker2.setLocale(this.locale);
-		this.$.datePicker3.setLocale(this.locale);				
+		this.$.datePicker3.setLocale(this.locale);	
+		this.$.datePicker4.setLocale(this.locale);			
 	},
 	resetDates: function(date) {
 		var d = new Date();
 		this.$.datePicker1.setValue(d)
 		this.$.datePicker2.setValue(d)		
 		this.$.datePicker3.setValue(d)	
-		
+		this.$.datePicker4.setValue(d)	
 		this.getDates();	
 	},
 	getDates: function(){		
