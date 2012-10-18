@@ -1,40 +1,40 @@
 /**
-    _onyx.TimePicker_ is a group of <a href="#onyx.Picker">onyx.Picker</a>
-    controls displaying the current time. The user may change the hour, minute,
-    and AM/PM values.
-    
-    By default, _TimePicker_ tries to determine the current locale and use its
-    rules to format the time (including AM/PM). In order to do this
-    successfully, the _g11n_ library must be loaded; if it is not loaded, the
-    control defaults to using standard U.S. time format.
+	_onyx.TimePicker_ is a group of <a href="#onyx.Picker">onyx.Picker</a>
+	controls displaying the current time. The user may change the hour, minute,
+	and AM/PM values.
+	
+	By default, _TimePicker_ tries to determine the current locale and use its
+	rules to format the time (including AM/PM). In order to do this
+	successfully, the _g11n_ library must be loaded; if it is not loaded, the
+	control defaults to using standard U.S. time format.
  */
 enyo.kind({
 	name: "onyx.TimePicker",
 	classes: "onyx-toolbar-inline",
 	published: {
 		/**
-		    Current locale used for formatting. Can be set after control
-		    creation, in which case the control will be updated to reflect the
-		    new value.
-		*/ 		
+			Current locale used for formatting. Can be set after control
+			creation, in which case the control will be updated to reflect the
+			new value.
+		*/
 		locale: null,
-		//* If true, 24-hour time is used.		
+		//* If true, 24-hour time is used. This is reset when locale is changed.
 		is24HrMode: null,
 		/**
-		    The current Date object. When a Date object is passed to _setValue_,
-		    the control is updated to reflect the new value. _getValue_ returns
-		    a Date object.
-		*/				
-		value: null,
+			The current Date object. When a Date object is passed to _setValue_,
+			the control is updated to reflect the new value. _getValue_ returns
+			a Date object.
+		*/
+		value: null
 	},
 	events: {
 		/**
-		    Fires when one of the TimePicker's fields is selected.
+			Fires when one of the TimePicker's fields is selected.
 
-		    _inEvent.name_ contains the name of the TimePicker that generated
-		    the event.
-		    
-		    _inEvent.value_ contains the current Date value of the control.
+			_inEvent.name_ contains the name of the TimePicker that generated
+			the event.
+			
+			_inEvent.value_ contains the current Date value of the control.
 		*/
 		onSelect: ""
 	},	
@@ -44,61 +44,62 @@ enyo.kind({
 			try {
 				this.locale = enyo.g11n.currentLocale().getLocale();
 			}
-		    catch(err) {
+			catch(err) {
 				this.locale = "en_us";
-		    }	
+			}	
 		}		
 		this.initDefaults();
 	},
 	initDefaults: function() {
-        var am, pm;
+		var am, pm;
 		//Attempt to use the g11n lib (ie assume it is loaded)
 		try {
 			this._tf = new enyo.g11n.Fmts({locale:this.locale});
-		    am = this._tf.getAmCaption();
-		    pm = this._tf.getPmCaption();
+			am = this._tf.getAmCaption();
+			pm = this._tf.getPmCaption();
 		
 			if (this.is24HrMode == null) {
 				this.is24HrMode = !this._tf.isAmPm();				
 			}
 		}
-	    catch(err) {
-	        //fall back to en_us as default
-	        am = "AM";
-	        pm = "PM";
+		catch(err) {
+			//fall back to en_us as default
+			am = "AM";
+			pm = "PM";
 			this.is24HrMode = false;
-	    }	
+		}	
 	
 		this.setupPickers(this._tf ? this._tf.getTimeFieldOrder() : 'hma');
 							
 		var d = this.value = this.value || new Date();
 
 		// create hours
+		var i;
 		if (!this.is24HrMode){
 			var h = d.getHours();
-			h = (h == 0) ? 12 : h;
-	        for (var i=1; i<=12; i++) {
-	            this.$.hourPicker.createComponent({content: i, value:i, active: (i == (h>12 ? h%12 : h))});
-	        }			
+			h = (h === 0) ? 12 : h;
+			for (i=1; i<=12; i++) {
+				this.$.hourPicker.createComponent({content: i, value:i, active: (i == (h>12 ? h%12 : h))});
+			}			
 		} else {
-		    for (var i=0; i<24; i++) {
-                this.$.hourPicker.createComponent({content: i, value:i, active: (i == d.getHours())});
-            }
+			for (i=0; i<24; i++) {
+				this.$.hourPicker.createComponent({content: i, value:i, active: (i == d.getHours())});
+			}
 		}
 		
 		// create minutes
-        for (var i=0; i<=59; i++) {
-            this.$.minutePicker.createComponent({content: (i < 10) ? ("0"+i):i, value:i, active: i == d.getMinutes()});
-        }
+		for (i=0; i<=59; i++) {
+			this.$.minutePicker.createComponent({content: (i < 10) ? ("0"+i):i, value:i, active: i == d.getMinutes()});
+		}
 
-        // create am pm
-        if (d.getHours() >= 12) {
-            this.$.ampmPicker.createComponents([{content: am},{content:pm, active: true}]);
-        }
-        else {
-            this.$.ampmPicker.createComponents([{content: am, active: true},{content:pm}]);
-        }
-        this.$.ampmPicker.getParent().setShowing(!this.is24HrMode);
+		// create am/pm
+		if (d.getHours() >= 12) {
+			this.$.ampmPicker.createComponents([{content: am},{content:pm, active: true}]);
+		}
+		else {
+			this.$.ampmPicker.createComponents([{content: am, active: true},{content:pm}]);
+		}
+		this.$.ampmPicker.getParent().setShowing(!this.is24HrMode);
 	},
 	setupPickers: function(ordering) {
 		var orderingArr = ordering.split("");
@@ -141,6 +142,8 @@ enyo.kind({
 		);		
 	},	
 	localeChanged: function() {
+		//reset 24 hour mode when changing locales
+		this.is24HrMode = null;
 		this.refresh();
 	},
 	is24HrModeChanged: function() {
@@ -186,8 +189,8 @@ enyo.kind({
 		//Workaround for pickers not having directly retrievable active item. Using it to find whether
 		//picker is on AM or PM (& have to check localized spelling as well)
 		try {
-		    am = this._tf.getAmCaption();
-		    pm = this._tf.getPmCaption();
+			am = this._tf.getAmCaption();
+			pm = this._tf.getPmCaption();
 		} catch (err) {
 			am = "AM";
 			pm = "PM";
@@ -202,6 +205,6 @@ enyo.kind({
 	refresh: function(){
 		this.destroyClientControls();
 		this.initDefaults();
-        this.render();
+		this.render();
 	}
 });

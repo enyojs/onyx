@@ -1,51 +1,51 @@
 /**
-    _onyx.DatePicker_ is a group of <a href="#onyx.Picker">onyx.Picker</a>
-    controls displaying the current date. The user may change the _day_,
-    _month_, and _year_ values.
+	_onyx.DatePicker_ is a group of <a href="#onyx.Picker">onyx.Picker</a>
+	controls displaying the current date. The user may change the _day_,
+	_month_, and _year_ values.
 
-    By default, _DatePicker_ tries to determine the current locale and use its
-    rules to format the date (including the month name). In order to do this
-    successfully, the _g11n_ library must be loaded; if it is not loaded, the
-    control defaults to using standard U.S. date format.
+	By default, _DatePicker_ tries to determine the current locale and use its
+	rules to format the date (including the month name). In order to do this
+	successfully, the _g11n_ library must be loaded; if it is not loaded, the
+	control defaults to using standard U.S. date format.
 
-    The _day_ field is automatically populated with the proper number of days
-    for the selected month and year.
+	The _day_ field is automatically populated with the proper number of days
+	for the selected month and year.
  */
 enyo.kind({
 	name: "onyx.DatePicker",
 	classes: "onyx-toolbar-inline",
 	published: {
 		/**
-		    Current locale used for formatting. Can be set after control
-		    creation, in which case the control will be updated to reflect the
-		    new value.
+			Current locale used for formatting. Can be set after control
+			creation, in which case the control will be updated to reflect the
+			new value.
 		*/ 
 		locale: null,
 		//* If true, the day field is hidden		
-		hideDay: false,
+		dayHidden: false,
 		//* If true, the month field is hidden
-		hideMonth: false,
+		monthHidden: false,
 		//* If true, the year field is hidden
-		hideYear: false,
+		yearHidden: false,
 		//* Optional minimum year value		
 		minYear: 1900,
 		//* Optional maximum year value
 		maxYear: 2099,
 		/**
-		    The current Date object. When a Date object is passed to _setValue_,
-		    the control is updated to reflect the new value. _getValue_ returns
-		    a Date object.		
+			The current Date object. When a Date object is passed to _setValue_,
+			the control is updated to reflect the new value. _getValue_ returns
+			a Date object.		
 		*/
 		value: null
 	},
 	events: {
 		/**
-		    Fires when one of the DatePicker's fields is selected.
-		    
-		    _inEvent.name_ contains the name of the DatePicker that generated
-		     the event.
-		    
-		    _inEvent.value_ contains the current Date value of the control.
+			Fires when one of the DatePicker's fields is selected.
+
+			_inEvent.name_ contains the name of the DatePicker that generated
+			the event.
+
+			_inEvent.value_ contains the current Date value of the control.
 		*/
 		onSelect: ""
 	},
@@ -55,33 +55,33 @@ enyo.kind({
 			try {
 				this.locale = enyo.g11n.currentLocale().getLocale();
 			}
-		    catch(err) {
+			catch(err) {
 				this.locale = "en_us";
-		    }	
+			}	
 		}
 		this.initDefaults();
 	},
 	initDefaults: function() {
-        var months;
+		var months;
 		//Attempt to use the g11n lib (ie assume it is loaded)
 		try {
 			this._tf = new enyo.g11n.Fmts({locale:this.locale});
-		    months = this._tf.getMonthFields();
+			months = this._tf.getMonthFields();
 		}
-	    catch(err) {
-	        //Fall back to en_us as default
-		    months = ["Jan", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-	    }	
+		catch(err) {
+			//Fall back to en_us as default
+			months = ["Jan", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+		}	
 	
 		this.setupPickers(this._tf ? this._tf.getDateFieldOrder() : 'mdy');
 		
-		this.hideDayChanged();
-		this.hideMonthChanged();
-		this.hideYearChanged();
+		this.dayHiddenChanged();
+		this.monthHiddenChanged();
+		this.yearHiddenChanged();
 			
 		//Fill month, year & day pickers with values					
 		var d = this.value = this.value || new Date();
-		for (var i=0,m; m=months[i]; i++) {
+		for (var i=0,m; (m=months[i]); i++) {
 			this.$.monthPicker.createComponent({content: m, value:i, active: i==d.getMonth()});
 		}
 
@@ -89,7 +89,7 @@ enyo.kind({
 		this.$.yearPicker.setSelected(y-this.minYear);
 		this.$.year.setContent(y);
 		
-		for (var i=1; i<=this.monthLength(d.getYear(), d.getMonth()); i++) {
+		for (i=1; i<=this.monthLength(d.getYear(), d.getMonth()); i++) {
 			this.$.dayPicker.createComponent({content:i, value:i, active: i==d.getDate()});			
 		}	
 	},
@@ -97,7 +97,7 @@ enyo.kind({
 		// determine number of days in a particular month/year
 		return 32 - new Date(inYear, inMonth, 32).getDate();
 	},
-    setupYear: function(inSender, inEvent) {
+	setupYear: function(inSender, inEvent) {
 		this.$.year.setContent(this.minYear+inEvent.index);
 	},
 	setupPickers: function(ordering) {
@@ -146,14 +146,14 @@ enyo.kind({
 	localeChanged: function() {
 		this.refresh();
 	},
-	hideDayChanged: function() {
-		this.$.dayPicker.getParent().setShowing(this.hideDay ? false : true);		
+	dayHiddenChanged: function() {
+		this.$.dayPicker.getParent().setShowing(this.dayHidden ? false : true);		
 	},
-	hideMonthChanged: function() {
-		this.$.monthPicker.getParent().setShowing(this.hideMonth ? false : true);
+	monthHiddenChanged: function() {
+		this.$.monthPicker.getParent().setShowing(this.monthHidden ? false : true);
 	},
-	hideYearChanged: function() {
-		this.$.yearPicker.getParent().setShowing(this.hideYear ? false : true);
+	yearHiddenChanged: function() {
+		this.$.yearPicker.getParent().setShowing(this.yearHidden ? false : true);
 	},
 	minYearChanged: function() {
 		this.refresh();		
@@ -166,22 +166,22 @@ enyo.kind({
 	},
 	updateDay: function(inSender, inEvent){
 		var date = this.calcDate(this.value.getFullYear(),
-								 this.value.getMonth(),
-								 inEvent.selected.value);
+								this.value.getMonth(),
+								inEvent.selected.value);
 		this.doSelect({name:this.name, value:date});
 		this.setValue(date);
 	},
 	updateMonth: function(inSender, inEvent){
 		var date = this.calcDate(this.value.getFullYear(), 
-								 inEvent.selected.value, 
-								 this.value.getDate());
+								inEvent.selected.value, 
+								this.value.getDate());
 		this.doSelect({name:this.name, value:date});
 		this.setValue(date);
 	},
 	updateYear: function(inSender, inEvent){
 		var date = this.calcDate(this.minYear + inEvent.originator.selected, 
-								 this.value.getMonth(), 
-								 this.value.getDate());
+								this.value.getMonth(), 
+								this.value.getDate());
 		this.doSelect({name:this.name, value:date});
 		this.setValue(date);
 	},
@@ -195,6 +195,6 @@ enyo.kind({
 	refresh: function(){
 		this.destroyClientControls();
 		this.initDefaults();
-        this.render();
+		this.render();
 	}
 });
