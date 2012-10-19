@@ -15,6 +15,8 @@ enyo.kind({
 	name: "onyx.DatePicker",
 	classes: "onyx-toolbar-inline",
 	published: {
+		//* If true, control is shown as disabled, and user can't select new values
+		disabled: false,
 		/**
 			Current locale used for formatting. Can be set after control
 			creation, in which case the control will be updated to reflect the
@@ -120,7 +122,7 @@ enyo.kind({
 		var yearCount = this.maxYear - this.minYear;
 		this.createComponent(				
 			{kind: "onyx.PickerDecorator", onSelect: "updateYear", components: [
-				{classes:"onyx-datepicker-year"},
+				{classes:"onyx-datepicker-year", name: "yearPickerButton",  disabled: this.disabled},
 				{name: "yearPicker", kind: "onyx.FlyweightPicker", count: ++yearCount, onSetupItem: "setupYear", components: [
 					{name: "year"}
 				]}
@@ -130,7 +132,7 @@ enyo.kind({
 	createMonth: function() {
 		this.createComponent(
 			{kind: "onyx.PickerDecorator", onSelect: "updateMonth", components: [
-				{classes:"onyx-datepicker-month"},
+				{classes:"onyx-datepicker-month", name: "monthPickerButton",  disabled: this.disabled},
 				{name: "monthPicker", kind: "onyx.Picker"}
 			]}
 		);		
@@ -138,7 +140,7 @@ enyo.kind({
 	createDay: function() {
 		this.createComponent(		
 			{kind: "onyx.PickerDecorator", onSelect: "updateDay", components: [
-				{classes:"onyx-datepicker-day"},
+				{classes:"onyx-datepicker-day", name: "dayPickerButton",  disabled: this.disabled},
 				{name: "dayPicker", kind: "onyx.Picker"}
 			]}
 		);		
@@ -163,6 +165,11 @@ enyo.kind({
 	},
 	valueChanged: function(){
 		this.refresh();
+	},
+	disabledChanged: function() {
+		this.yearPickerButton.setDisabled(this.disabled);
+		this.monthPickerButton.setDisabled(this.disabled);
+		this.dayPickerButton.setDisabled(this.disabled);
 	},
 	updateDay: function(inSender, inEvent){
 		var date = this.calcDate(this.value.getFullYear(),
