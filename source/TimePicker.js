@@ -138,15 +138,15 @@ enyo.kind({
 	createAmPm: function() {
 		this.createComponent(
 			{kind: "onyx.PickerDecorator", onSelect: "updateAmPm", components: [
-				{classes:"onyx-timepicker-ampm", name: "secondPickerButton", disabled: this.disabled},
+				{classes:"onyx-timepicker-ampm", name: "ampmPickerButton", disabled: this.disabled},
 				{name: "ampmPicker", kind: "onyx.Picker"}
 			]}
 		);		
 	},
 	disabledChanged: function() {
-		this.hourPickerButton.setDisabled(this.disabled);
-		this.minutePickerButton.setDisabled(this.disabled);
-		this.secondPickerButton.setDisabled(this.disabled);
+		this.$.hourPickerButton.setDisabled(this.disabled);
+		this.$.minutePickerButton.setDisabled(this.disabled);
+		this.$.ampmPickerButton.setDisabled(this.disabled);
 	},	
 	localeChanged: function() {
 		//reset 24 hour mode when changing locales
