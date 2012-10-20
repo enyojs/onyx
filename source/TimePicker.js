@@ -12,6 +12,7 @@ enyo.kind({
 	name: "onyx.TimePicker",
 	classes: "onyx-toolbar-inline",
 	published: {
+		disabled: false,
 		/**
 			Current locale used for formatting. Can be set after control
 			creation, in which case the control will be updated to reflect the
@@ -120,7 +121,7 @@ enyo.kind({
 	createHour: function() {
 		this.createComponent(
 			{kind: "onyx.PickerDecorator", onSelect: "updateHour", components: [
-				{classes:"onyx-timepicker-hour"},
+				{classes:"onyx-timepicker-hour", name: "hourPickerButton", disabled: this.disabled},
 				{name: "hourPicker", kind: "onyx.Picker"}
 			]}
 		);		
@@ -128,7 +129,7 @@ enyo.kind({
 	createMinute: function() {
 		this.createComponent(
 			{kind: "onyx.PickerDecorator", onSelect: "updateMinute", components: [
-				{classes:"onyx-timepicker-minute"},
+				{classes:"onyx-timepicker-minute", name: "minutePickerButton", disabled: this.disabled},
 				{name: "minutePicker", kind: "onyx.Picker"}
 			]}
 		);		
@@ -136,10 +137,15 @@ enyo.kind({
 	createAmPm: function() {
 		this.createComponent(
 			{kind: "onyx.PickerDecorator", onSelect: "updateAmPm", components: [
-				{classes:"onyx-timepicker-ampm"},
+				{classes:"onyx-timepicker-ampm", name: "secondPickerButton", disabled: this.disabled},
 				{name: "ampmPicker", kind: "onyx.Picker"}
 			]}
 		);		
+	},
+	disabledChanged: function() {
+		this.hourPickerButton.setDisabled(this.disabled);
+		this.minutePickerButton.setDisabled(this.disabled);
+		this.secondPickerButton.setDisabled(this.disabled);
 	},	
 	localeChanged: function() {
 		//reset 24 hour mode when changing locales

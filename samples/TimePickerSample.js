@@ -50,7 +50,11 @@ enyo.kind({
 			{kind: "onyx.Groupbox", style:"padding:5px;", components: [
 				{kind: "onyx.GroupboxHeader", content: "Value"},			
 				{name:"timePicker2Value", style:"padding:15px;"}
-			]}		
+			]},
+			{content:"DISABLED",classes:"onyx-sample-divider"},			
+			{classes: "onyx-toolbar-inline", components: [
+				{name:"timePicker3", kind:"onyx.TimePicker", disabled: true}			
+			]},	
 		]}
 	],
 	initComponents: function() {
@@ -66,11 +70,13 @@ enyo.kind({
 		this.$.timePicker1.setLocale(this.locale);
 		this.$.timePicker2.setLocale(this.locale);
 		this.$.timePicker2.setIs24HrMode(true);
+		this.$.timePicker3.setLocale(this.locale);			
 	},
 	resetTimes: function(date) {
 		var d = new Date();
 		this.$.timePicker1.setValue(d)
 		this.$.timePicker2.setValue(d)	
+		this.$.timePicker3.setValue(d)	
 		
 		this.getTimes();		
 	},
