@@ -12,6 +12,7 @@ enyo.kind({
 	name: "onyx.TimePicker",
 	classes: "onyx-toolbar-inline",
 	published: {
+		//* If true, control is shown as disabled, and user can't select new values
 		disabled: false,
 		/**
 			Current locale used for formatting. Can be set after control
