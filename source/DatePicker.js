@@ -177,6 +177,7 @@ enyo.kind({
 								inEvent.selected.value);
 		this.doSelect({name:this.name, value:date});
 		this.setValue(date);
+		return true;		
 	},
 	updateMonth: function(inSender, inEvent){
 		var date = this.calcDate(this.value.getFullYear(), 
@@ -184,13 +185,18 @@ enyo.kind({
 								this.value.getDate());
 		this.doSelect({name:this.name, value:date});
 		this.setValue(date);
+		return true;		
 	},
 	updateYear: function(inSender, inEvent){
-		var date = this.calcDate(this.minYear + inEvent.originator.selected, 
-								this.value.getMonth(), 
-								this.value.getDate());
-		this.doSelect({name:this.name, value:date});
-		this.setValue(date);
+		//if the node wasn't found (issue around FlyWeightRepeater/Picker) don't update the picker
+		if (inEvent.originator.selected != -1) {		
+			var date = this.calcDate(this.minYear + inEvent.originator.selected, 
+									this.value.getMonth(), 
+									this.value.getDate());
+			this.doSelect({name:this.name, value:date});
+			this.setValue(date);
+		}
+		return true;
 	},
 	calcDate: function(year, month, day){
 		return new Date(year,month,day,
