@@ -57,6 +57,8 @@ enyo.kind({
 	},
 	//* If true, stripes are shown in the slider bar
 	showStripes: false,
+	//* If true, labels are shown above each slider knob
+	showLabels: false,
 	//* @protected
 	handlers: {
 		ondragstart: "dragstart",
@@ -81,6 +83,12 @@ enyo.kind({
 	initControls: function() {
 		this.$.bar.applyStyle("position", "relative");
 		this.refreshRangeSlider();
+		if (this.showLabels) {
+			this.$.startKnob.createComponent({name: "startLabel", kind: "onyx.RangeSliderKnobLabel"});
+			this.$.endKnob.createComponent({name: "endLabel", kind: "onyx.RangeSliderKnobLabel"});
+			this.setStartLabel(this.rangeStart);
+			this.setEndLabel(this.rangeEnd);
+		}
 	},
 	refreshRangeSlider: function() {
 		// Calculate range percentages, in order to position sliders
@@ -200,5 +208,22 @@ enyo.kind({
 	},
 	rangeEndChanged: function() {
 		this.refreshRangeSlider();
+	},
+	setStartLabel: function(inContent) {
+		this.$.startKnob.waterfallDown("onSetLabel", inContent);
+	},
+	setEndLabel: function(inContent) {
+		this.$.endKnob.waterfallDown("onSetLabel", inContent);
 	}
+});
+
+enyo.kind({
+	name: "onyx.RangeSliderKnobLabel",
+	classes: "onyx-range-slider-label",
+	handlers: {
+		onSetLabel: "setLabel"
+	},
+	setLabel: function(inSender, inContent) {
+		this.setContent(inContent);
+	},
 });
