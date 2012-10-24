@@ -86,8 +86,6 @@ enyo.kind({
 		if (this.showLabels) {
 			this.$.startKnob.createComponent({name: "startLabel", kind: "onyx.RangeSliderKnobLabel"});
 			this.$.endKnob.createComponent({name: "endLabel", kind: "onyx.RangeSliderKnobLabel"});
-			this.setStartLabel(this.rangeStart);
-			this.setEndLabel(this.rangeEnd);
 		}
 	},
 	refreshRangeSlider: function() {
