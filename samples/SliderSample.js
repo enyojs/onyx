@@ -57,11 +57,11 @@ enyo.kind({
 		}
 	},
 	incValue: function() {
-		this.$.input.setValue(Math.min(parseInt(this.$.input.getValue() || 0) + 10, 100));
+		this.$.input.setValue(Math.min(parseInt(this.$.input.getValue() || 0, 10) + 10, 100));
 		this.changeValue();
 	},
 	decValue: function() {
-		this.$.input.setValue(Math.max(parseInt(this.$.input.getValue() || 0) - 10, 0));
+		this.$.input.setValue(Math.max(parseInt(this.$.input.getValue() || 0, 10) - 10, 0));
 		this.changeValue();
 	},
 	sliderChanging: function(inSender, inEvent) {
@@ -77,10 +77,20 @@ enyo.kind({
 			this.$.rangeSlider.setIncrement(0);
 		}
 	},
+	updateRangeLabels: function(slider) {
+		slider.setStartLabel("--> " + slider.getRangeStart());
+		slider.setEndLabel(slider.getRangeEnd() + "<--");
+	},
 	rangeSliderChanging: function(inSender, inEvent) {
+		this.updateRangeLabels(inSender);
 		this.$.rangeSliderResult.setContent("Range changing: $" + Math.round(inSender.getRangeStart()) + " - $" + Math.round(inSender.getRangeEnd()));
 	},
 	rangeSliderChanged: function(inSender, inEvent) {
+		this.updateRangeLabels(inSender);
 		this.$.rangeSliderResult.setContent("Range changed to $" + Math.round(inSender.getRangeStart()) + " - $" + Math.round(inSender.getRangeEnd()) + ".");
+	},
+	create: function() {
+		this.inherited(arguments);
+		this.updateRangeLabels(this.$.rangeSlider);
 	}
 });
