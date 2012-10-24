@@ -28,7 +28,8 @@ enyo.kind({
 		{tag: "br"},
 		{tag: "br"},
 		{classes: "onyx-sample-divider", content: "RangeSlider"},
-		{kind: "onyx.RangeSlider", rangeMin: 100, rangeMax: 500, rangeStart: 200, rangeEnd: 400, increment: 20, onChanging: "rangeSliderChanging", onChange: "rangeSliderChanged"},
+		{tag: "br"},
+		{kind: "onyx.RangeSlider", rangeMin: 100, rangeMax: 500, rangeStart: 200, rangeEnd: 400, increment: 20, showLabels: true, onChanging: "rangeSliderChanging", onChange: "rangeSliderChanged"},
 		{components: [
 			{style: "width:20%; display:inline-block; text-align:left;", content: "$100"},
 			{style: "width:60%; display:inline-block; text-align:center;", content: "$300"},
