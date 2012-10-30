@@ -167,9 +167,9 @@ enyo.kind({
 		this.refresh();
 	},
 	disabledChanged: function() {
-		this.yearPickerButton.setDisabled(this.disabled);
-		this.monthPickerButton.setDisabled(this.disabled);
-		this.dayPickerButton.setDisabled(this.disabled);
+		this.$.yearPickerButton.setDisabled(this.disabled);
+		this.$.monthPickerButton.setDisabled(this.disabled);
+		this.$.dayPickerButton.setDisabled(this.disabled);
 	},
 	updateDay: function(inSender, inEvent){
 		var date = this.calcDate(this.value.getFullYear(),
