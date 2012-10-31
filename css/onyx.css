@@ -143,26 +143,6 @@
 .onyx-button > img {
   padding: 0px 3px;
 }
-.onyx-button.onyx-blue {
-  background-color: #35A8EE;
-  color: #F2F2F2;
-}
-.onyx-button.onyx-affirmative {
-  background-color: #91BA07;
-  color: #F2F2F2;
-}
-.onyx-button.onyx-negative {
-  background-color: #C51616;
-  color: #F2F2F2;
-}
-.onyx-button.onyx-dark {
-  background-color: #555656;
-  color: #F2F2F2;
-}
-.onyx-button.onyx-light {
-  background-color: #cacaca;
-  color: #2F2F2F;
-}
 /* Checkbox.css */
 .onyx-checkbox {
   cursor: pointer;
@@ -894,6 +874,27 @@
 }
 .onyx-timepicker-ampm {
   min-width: 60px;
+}
+/* ButtonColors.css */
+.onyx-button.onyx-blue {
+  background-color: #35A8EE;
+  color: #F2F2F2;
+}
+.onyx-button.onyx-affirmative {
+  background-color: #91BA07;
+  color: #F2F2F2;
+}
+.onyx-button.onyx-negative {
+  background-color: #C51616;
+  color: #F2F2F2;
+}
+.onyx-button.onyx-dark {
+  background-color: #555656;
+  color: #F2F2F2;
+}
+.onyx-button.onyx-light {
+  background-color: #cacaca;
+  color: #2F2F2F;
 }
 /* some default colors */
 .onyx-dark {
