@@ -19,7 +19,7 @@ enyo.kind({
 			creation, in which case the control will be updated to reflect the
 			new value.
 		*/
-		locale: null,
+		locale: "en_us",
 		//* If true, 24-hour time is used. This is reset when locale is changed.
 		is24HrMode: null,
 		/**
@@ -42,20 +42,16 @@ enyo.kind({
 	},	
 	create: function() {
 		this.inherited(arguments);
-		if (!this.locale){
-			try {
-				this.locale = enyo.g11n.currentLocale().getLocale();
-			}
-			catch(err) {
-				this.locale = "en_us";
-			}	
+		if (enyo.g11n) {
+			this.locale = enyo.g11n.currentLocale().getLocale();
 		}		
 		this.initDefaults();
 	},
 	initDefaults: function() {
-		var am, pm;
-		//Attempt to use the g11n lib (ie assume it is loaded)
-		try {
+		var am = "AM", pm = "PM";
+		this.is24HrMode = false;
+		// Attempt to use the g11n lib (ie assume it is loaded)
+		if (enyo.g11n) {
 			this._tf = new enyo.g11n.Fmts({locale:this.locale});
 			am = this._tf.getAmCaption();
 			pm = this._tf.getPmCaption();
@@ -63,12 +59,6 @@ enyo.kind({
 			if (this.is24HrMode == null) {
 				this.is24HrMode = !this._tf.isAmPm();				
 			}
-		}
-		catch(err) {
-			//fall back to en_us as default
-			am = "AM";
-			pm = "PM";
-			this.is24HrMode = false;
 		}	
 	
 		this.setupPickers(this._tf ? this._tf.getTimeFieldOrder() : 'hma');

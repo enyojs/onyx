@@ -22,7 +22,7 @@ enyo.kind({
 			creation, in which case the control will be updated to reflect the
 			new value.
 		*/ 
-		locale: null,
+		locale: "en_us",
 		//* If true, the day field is hidden		
 		dayHidden: false,
 		//* If true, the month field is hidden
@@ -53,28 +53,21 @@ enyo.kind({
 	},
 	create: function() {
 		this.inherited(arguments);
-		if (!this.locale){
-			try {
-				this.locale = enyo.g11n.currentLocale().getLocale();
-			}
-			catch(err) {
-				this.locale = "en_us";
-			}	
+		if (enyo.g11n) {
+			this.locale = enyo.g11n.currentLocale().getLocale();
 		}
 		this.initDefaults();
 	},
 	initDefaults: function() {
-		var months;
+		// Fall back to en_us as default
+		var months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+
 		//Attempt to use the g11n lib (ie assume it is loaded)
-		try {
+		if (enyo.g11n) {
 			this._tf = new enyo.g11n.Fmts({locale:this.locale});
 			months = this._tf.getMonthFields();
 		}
-		catch(err) {
-			//Fall back to en_us as default
-			months = ["Jan", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-		}	
-	
+
 		this.setupPickers(this._tf ? this._tf.getDateFieldOrder() : 'mdy');
 		
 		this.dayHiddenChanged();
