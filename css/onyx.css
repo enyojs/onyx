@@ -578,7 +578,8 @@
   overflow: hidden;
   font-size: 20px;
 }
-.onyx-toolbar-inline > * {
+.onyx-toolbar-inline > *,
+.enyo-fittable-columns-layout.onyx-toolbar-inline > * {
   display: inline-block;
   vertical-align: middle;
   margin: 4px 6px 5px;
