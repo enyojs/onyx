@@ -15,6 +15,8 @@ enyo.kind({
 		onChange: "change"
 	},
 	change: function(inSender, inEvent) {
-		this.setContent(inEvent.content);
+		if (inEvent.content !== undefined){
+			this.setContent(inEvent.content);	
+		}
 	}
 });
