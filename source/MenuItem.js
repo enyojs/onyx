@@ -16,6 +16,7 @@
 						{content: "1"},
 						{content: "2"},
 						{classes: "onyx-menu-divider"},
+						{content: "Label", classes: "onyx-menu-label"},
 						{content: "3"},
 					]}
 				]}
