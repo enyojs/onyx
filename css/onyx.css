@@ -74,19 +74,13 @@
 /* Button.css */
 .onyx-button {
   outline: 0;
-  /**/
-
   color: #292929;
   font-size: 16px;
   text-align: center;
   white-space: nowrap;
-  /**/
-
   margin: 0;
   padding: 6px 18px;
   overflow: hidden;
-  /**/
-
   border-radius: 3px;
   /* for IE8 */
 
@@ -103,8 +97,6 @@
   /* border-bottom: 1px solid rgba(15, 15, 15, 0.5); */
 
   box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.2);
-  /**/
-
   background: #e1e1e1 url(../images/gradient.png) repeat-x bottom;
   background-size: contain;
   /**/
@@ -215,8 +207,6 @@
 }
 .onyx-groupbox-header {
   padding: 2px 10px;
-  /**/
-
   color: #ffffff;
   font-size: 14px;
   font-weight: bold;
@@ -325,6 +315,17 @@
   margin: 6px 0;
   padding: 0;
   border-bottom: 1px solid #aaa;
+}
+.onyx-menu-label {
+  cursor: default;
+  -webkit-user-select: none;
+  -moz-user-select: -moz-none;
+  user-select: none;
+  opacity: 0.4;
+  filter: alpha(opacity=40);
+}
+.onyx-menu-label:hover {
+  background: none;
 }
 /* customize a toolbar to support menus */
 .onyx-menu-toolbar,
@@ -440,8 +441,6 @@
   padding: 8px 12px;
   margin: 0;
   outline: 0;
-  /**/
-
   font-size: 16px;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
   text-align: center;
@@ -569,8 +568,6 @@
 	*/
 
   padding: 9px 8px 10px 8px;
-  /**/
-
   border: 1px solid #3A3A3A;
   background: #4c4c4c url(../images/gradient.png) repeat-x 0 bottom;
   background-size: contain;

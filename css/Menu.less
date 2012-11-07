@@ -42,6 +42,19 @@
 	border-bottom: 1px solid #aaa;
 }
 
+.onyx-menu-label {
+	cursor: default;
+	-webkit-user-select: none;
+	-moz-user-select: -moz-none;
+	user-select: none;
+	opacity: @onyx-disabled-opacity;
+	filter: alpha(opacity=@onyx-disabled-opacity-ie);
+}
+
+.onyx-menu-label:hover {
+	background: none;
+}
+
 /* customize a toolbar to support menus */
 .onyx-menu-toolbar, .onyx-toolbar.onyx-menu-toolbar {
 	position: relative;
