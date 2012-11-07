@@ -1,7 +1,11 @@
 /**
-	A Groupbox displays controls as a vertically stacked group.
+	_onyx.Groupbox_ displays rows of controls as a vertically-stacked group. It
+	is designed to have container controls as its children, with each container
+	representing a row in the Groupbox. 
 
-	A header may be added by placing an <a href="#onyx.GroupboxHeader">onyx.GroupboxHeader</a> as the first control in the Groupbox.
+	A header may be added by specifying an
+	<a href="#onyx.GroupboxHeader">onyx.GroupboxHeader</a> as the first control
+	in the Groupbox, e.g.:
 
 		{kind: "onyx.Groupbox", components: [
 			{kind: "onyx.GroupboxHeader", content: "Sounds"},
