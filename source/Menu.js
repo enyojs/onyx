@@ -110,7 +110,7 @@ enyo.kind({
 			this.removeClass("onyx-menu-up");
 						
 			//reset the left position before we get the bounding rect for proper horizontal calculation
-			this.floating ? enyo.noop : this.applyPosition({left: "auto"});
+			this.floating ? enyo.nop : this.applyPosition({left: "auto"});
 							
 			var b = this.node.getBoundingClientRect();
 			var bHeight = (b.height === undefined) ? (b.bottom - b.top) : b.height;
