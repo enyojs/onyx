@@ -2,7 +2,7 @@
 	_onyx.TimePicker_ is a group of <a href="#onyx.Picker">onyx.Picker</a>
 	controls displaying the current time. The user may change the hour, minute,
 	and AM/PM values.
-	
+
 	By default, _TimePicker_ tries to determine the current locale and use its
 	rules to format the time (including AM/PM). In order to do this
 	successfully, the _g11n_ library must be loaded; if it is not loaded, the
@@ -35,34 +35,37 @@ enyo.kind({
 
 			_inEvent.name_ contains the name of the TimePicker that generated
 			the event.
-			
+
 			_inEvent.value_ contains the current Date value of the control.
 		*/
 		onSelect: ""
-	},	
+	},
 	create: function() {
 		this.inherited(arguments);
 		if (enyo.g11n) {
 			this.locale = enyo.g11n.currentLocale().getLocale();
-		}		
+		}
 		this.initDefaults();
 	},
 	initDefaults: function() {
+		// defaults that match en_US for when g11n isn't loaded
 		var am = "AM", pm = "PM";
-		this.is24HrMode = false;
+		if (this.is24HrMode == null) {
+			this.is24HrMode = false;
+		}
 		// Attempt to use the g11n lib (ie assume it is loaded)
 		if (enyo.g11n) {
 			this._tf = new enyo.g11n.Fmts({locale:this.locale});
 			am = this._tf.getAmCaption();
 			pm = this._tf.getPmCaption();
-		
+
 			if (this.is24HrMode == null) {
-				this.is24HrMode = !this._tf.isAmPm();				
+				this.is24HrMode = !this._tf.isAmPm();
 			}
-		}	
-	
+		}
+
 		this.setupPickers(this._tf ? this._tf.getTimeFieldOrder() : 'hma');
-							
+
 		var d = this.value = this.value || new Date();
 
 		// create hours
@@ -72,13 +75,13 @@ enyo.kind({
 			h = (h === 0) ? 12 : h;
 			for (i=1; i<=12; i++) {
 				this.$.hourPicker.createComponent({content: i, value:i, active: (i == (h>12 ? h%12 : h))});
-			}			
+			}
 		} else {
 			for (i=0; i<24; i++) {
 				this.$.hourPicker.createComponent({content: i, value:i, active: (i == d.getHours())});
 			}
 		}
-		
+
 		// create minutes
 		for (i=0; i<=59; i++) {
 			this.$.minutePicker.createComponent({content: (i < 10) ? ("0"+i):i, value:i, active: i == d.getMinutes()});
@@ -115,7 +118,7 @@ enyo.kind({
 				{classes:"onyx-timepicker-hour", name: "hourPickerButton", disabled: this.disabled},
 				{name: "hourPicker", kind: "onyx.Picker"}
 			]}
-		);		
+		);
 	},
 	createMinute: function() {
 		this.createComponent(
@@ -123,7 +126,7 @@ enyo.kind({
 				{classes:"onyx-timepicker-minute", name: "minutePickerButton", disabled: this.disabled},
 				{name: "minutePicker", kind: "onyx.Picker"}
 			]}
-		);		
+		);
 	},
 	createAmPm: function() {
 		this.createComponent(
@@ -131,13 +134,13 @@ enyo.kind({
 				{classes:"onyx-timepicker-ampm", name: "ampmPickerButton", disabled: this.disabled},
 				{name: "ampmPicker", kind: "onyx.Picker"}
 			]}
-		);		
+		);
 	},
 	disabledChanged: function() {
 		this.$.hourPickerButton.setDisabled(this.disabled);
 		this.$.minutePickerButton.setDisabled(this.disabled);
 		this.$.ampmPickerButton.setDisabled(this.disabled);
-	},	
+	},
 	localeChanged: function() {
 		//reset 24 hour mode when changing locales
 		this.is24HrMode = null;
@@ -149,33 +152,33 @@ enyo.kind({
 	valueChanged: function(){
 		this.refresh();
 	},
-	updateHour: function(inSender, inEvent){		
+	updateHour: function(inSender, inEvent){
 		var h = inEvent.selected.value;
 		if (!this.is24HrMode){
 			var ampm = this.$.ampmPicker.getParent().controlAtIndex(0).content;
 			h = h + (h == 12 ? -12 : 0) + (this.isAm(ampm) ? 0 : 12);
 		}
-		this.value = this.calcTime(h, this.value.getMinutes());				
-		this.doSelect({name:this.name, value:this.value});		
-		return true;		
+		this.value = this.calcTime(h, this.value.getMinutes());
+		this.doSelect({name:this.name, value:this.value});
+		return true;
 	},
 	updateMinute: function(inSender, inEvent){
-		this.value = this.calcTime(this.value.getHours(), inEvent.selected.value);		
-		this.doSelect({name:this.name, value:this.value});		
-		return true;		
+		this.value = this.calcTime(this.value.getHours(), inEvent.selected.value);
+		this.doSelect({name:this.name, value:this.value});
+		return true;
 	},
 	updateAmPm: function(inSender, inEvent){
 		var h = this.value.getHours();
 		if (!this.is24HrMode){
 			h = h + (h > 11 ? (this.isAm(inEvent.content) ? -12 : 0) : (this.isAm(inEvent.content) ? 0 : 12));
-		}		
+		}
 		this.value = this.calcTime(h, this.value.getMinutes());
 		this.doSelect({name:this.name, value:this.value});
-		return true;		
+		return true;
 	},
 	calcTime: function(hour, minute){
-		return new Date(this.value.getFullYear(), 
-						this.value.getMonth(), 
+		return new Date(this.value.getFullYear(),
+						this.value.getMonth(),
 						this.value.getDate(),
 						hour, minute,
 						this.value.getSeconds(),
@@ -192,12 +195,12 @@ enyo.kind({
 			am = "AM";
 			pm = "PM";
 		}
-		
+
 		if (value == am){
 			return true;
 		} else {
 			return false;
-		}		
+		}
 	},
 	refresh: function(){
 		this.destroyClientControls();
