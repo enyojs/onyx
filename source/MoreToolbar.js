@@ -44,6 +44,15 @@ enyo.kind({
 			{name: "menu", kind: "onyx.Menu", scrolling:false, classes: "onyx-more-menu"}
 		]}
 	],
+	create: function() {
+		this.inherited(arguments);
+		this.$.client.addStyles(this.style);
+		this.applyStyle = enyo.bind(this.$.client, "applyStyle");
+		this.addStyles = enyo.bind(this.$.client, "addStyles");
+		this.addClass = enyo.bind(this.$.client, "addClass");
+		this.removeClass = enyo.bind(this.$.client, "removeClass");
+		this.addRemoveClass = enyo.bind(this.$.client, "addRemoveClass");
+	},
 	initComponents: function() {
 		if(this.menuClass && this.menuClass.length>0 && !this.$.menu.hasClass(this.menuClass)) {
 			this.$.menu.addClass(this.menuClass);
