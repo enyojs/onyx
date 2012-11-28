@@ -27,13 +27,24 @@ enyo.kind({
 				{tag: "br"},
 				{kind: "onyx.Button", content: "Close", ontap: "closeModalPopup"},
 				{kind: "onyx.Button", content: "Another!", ontap: "showPopup", popup: "lightPopup"}
-			]}
+			]},
+			{tag: "br"},
+			{kind: "onyx.Button", content: "Popup at Event (right)", ontap: "showPopupAtEvent", popup: "rightEventPopup", style: "float: right;"},
+			{kind: "onyx.Button", content: "Popup at Event", ontap: "showPopupAtEvent", popup: "leftEventPopup"},
+			{name: "leftEventPopup", classes: "onyx-sample-popup", kind: "onyx.Popup", modal: true, floating: true, content: "Anchor defaults<br/>to top left corner", allowHtml: true},
+			{name: "rightEventPopup", classes: "onyx-sample-popup", kind: "onyx.Popup", modal: true, floating: true, content: "Adjusts anchor to<br/>stay in viewport", allowHtml: true}
 		]}
 	],
 	showPopup: function(inSender) {
 		var p = this.$[inSender.popup];
 		if (p) {
 			p.show();
+		}
+	},
+	showPopupAtEvent: function(inSender, inEvent) {
+		var p = this.$[inSender.popup];
+		if (p) {
+			p.showAtEvent(inEvent);
 		}
 	},
 	popupHidden: function() {
