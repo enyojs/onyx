@@ -37,7 +37,13 @@ enyo.kind({
 			
 			_inEvent.content_ contains the menu item's content.
 		*/
-		onSelect: ""
+		onSelect: "",
+		/**
+			Fires when the menu items content has changed.
+
+			_inEvent.content_ contains the menu item's content.
+		*/
+		onChange: ""
 	},
 	//* @protected
 	classes: "onyx-menu-item",
@@ -46,5 +52,8 @@ enyo.kind({
 		this.inherited(arguments);
 		this.bubble("onRequestHideMenu");
 		this.doSelect({selected:this, content:this.content});
+	},
+	contentChanged: function(inOld){
+		this.doChange({content: this.content});
 	}
 });
