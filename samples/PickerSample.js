@@ -27,15 +27,15 @@ enyo.kind({
 			]}
 		]},
 		{tag: "br"},
-		{content: "Other Pickers", classes:"onyx-sample-divider"},
+		{content: "Integer Picker", classes:"onyx-sample-divider"},
 		{classes: "onyx-toolbar-inline", components: [
-			{content: "Integer", classes: "onyx-sample-label"},
 			{kind: "onyx.PickerDecorator", components: [
 				{style: "min-width: 60px;"},
-				{name: "integerPicker", kind: "onyx.Picker"}
+				{kind: "onyx.IntegerPicker", min: 0, max: 25, value: 5}
 			]}
 		]},
 		{tag: "br"},
+		{content: "Other Pickers", classes:"onyx-sample-divider"},
 		{classes: "onyx-toolbar-inline", components: [
 			{content: "Date", classes: "onyx-sample-label"},
 			{kind: "onyx.PickerDecorator", components: [
@@ -76,10 +76,6 @@ enyo.kind({
 	],
 	create: function() {
 		this.inherited(arguments);
-		// integer
-		for (var i=0; i<10; i++) {
-			this.$.integerPicker.createComponent({content: i, active: !i});
-		}
 		// month
 		var months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 		var d = new Date();
