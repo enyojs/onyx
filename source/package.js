@@ -36,5 +36,6 @@ enyo.depends(
 	"RangeSlider.js",
 	"Item.js",
 	"Spinner.js",
-	"MoreToolbar.js"
+	"MoreToolbar.js",
+	"IntegerPicker.js"
 );
