@@ -94,6 +94,7 @@ enyo.kind({
 	tap: function(inSender, inEvent) {
 		if (this.tappable) {
 			var v = this.calcKnobPosition(inEvent);
+			v = (this.increment) ? this.calcIncrement(v) : v;
 			this.tapped = true;
 			this.animateTo(v);
 			return true;

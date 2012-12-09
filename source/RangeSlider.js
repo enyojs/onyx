@@ -157,7 +157,7 @@ enyo.kind({
 				if (((knobPos <= this.endValue) && (inEvent.xDirection === -1)) || (knobPos <= this.endValue)) {
 					this.setBeginValue(knobPos);
 					var _val = this.calcRangeRatio(this.beginValue);
-					var val = (this.increment) ? this.calcIncrement(_val) : _val;
+					var val = (this.increment) ? this.calcIncrement(_val+.5*this.increment) : _val;
 					var p = this.calcKnobPercent(val);
 					this.updateKnobPosition(p, this.$.startKnob);
 					this.setRangeStart(val);
@@ -167,7 +167,7 @@ enyo.kind({
 				if (((knobPos >= this.beginValue) && (inEvent.xDirection === 1)) || (knobPos >= this.beginValue)) {
 					this.setEndValue(knobPos);
 					var _val = this.calcRangeRatio(this.endValue);
-					var val = (this.increment) ? this.calcIncrement(_val) : _val;
+					var val = (this.increment) ? this.calcIncrement(_val+.5*this.increment) : _val;
 					var p = this.calcKnobPercent(val);
 					this.updateKnobPosition(p, this.$.endKnob);
 					this.setRangeEnd(val);

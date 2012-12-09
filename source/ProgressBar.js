@@ -69,7 +69,7 @@ enyo.kind({
 		this.updateBarPosition(p);
 	},
 	calcIncrement: function(inValue) {
-    	return (Math.ceil(inValue / this.increment) * this.increment);
+		return (Math.round(inValue / this.increment) * this.increment);
 	},
 	clampValue: function(inMin, inMax, inValue) {
 		return Math.max(inMin, Math.min(inValue, inMax));
