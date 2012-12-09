@@ -29,8 +29,6 @@ enyo.kind({
 		    and _rangeMax_
 		*/
 		rangeEnd: 100,
-		//* Value range increment that the sliders can be "snapped to" in either direction
-		increment: 0,
 		//* @protected
 		// Position of first slider, expressed as an integer between 0 and 100 (percentage)
 		beginValue: 0,
@@ -128,9 +126,6 @@ enyo.kind({
 			this.$.bar.applyStyle("left", barStart + "%");
 			this.$.bar.applyStyle("width", barWidth + "%");
 		}
-	},
-	calcIncrement: function(inValue) {
-    	return (Math.ceil(inValue / this.increment) * this.increment);
 	},
 	calcRangeRatio: function(inValue) {
 		return ((inValue / 100) * (this.rangeMax - this.rangeMin) + this.rangeMin) - (this.increment/2);
