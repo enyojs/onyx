@@ -167,6 +167,8 @@ enyo.kind({
 					this.updateKnobPosition(p, this.$.startKnob);
 					this.setRangeStart(val);
 					this.doChanging({value: val});
+				} else {
+				    return this.drag(this.$.endKnob, inEvent);
 				}
 			} else if ((inSender.name === "endKnob") && (knobPos <= 100)) {
 				if (((knobPos >= this.beginValue) && (inEvent.xDirection === 1)) || (knobPos >= this.beginValue)) {
@@ -177,6 +179,8 @@ enyo.kind({
 					this.updateKnobPosition(p, this.$.endKnob);
 					this.setRangeEnd(val);
 					this.doChanging({value: val});
+				} else {
+				    return this.drag(this.$.startKnob, inEvent);
 				}
 			}
 			return true;
