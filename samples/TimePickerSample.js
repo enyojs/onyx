@@ -48,7 +48,7 @@ enyo.kind({
 				{name:"timePicker2", kind:"onyx.TimePicker", is24HrMode:true}
 			]},
 			{kind: "onyx.Groupbox", style:"padding:5px;", components: [
-				{kind: "onyx.GroupboxHeader", content: "Value"},			
+				{kind: "onyx.GroupboxHeader", content: "Localized Value"},			
 				{name:"timePicker2Value", style:"padding:15px;"}
 			]},
 			{content:"DISABLED",classes:"onyx-sample-divider"},			
