@@ -18,18 +18,17 @@ enyo.kind({
 	kind: enyo.Checkbox,
 	tag: "div",
 	handlers: {
-		ondown:"downHandler",
 		// prevent double onchange bubble in IE
 		onclick: ""
 	},
-	downHandler: function(inSender, e) {
+	tap: function(inSender, e) {
 		if (!this.disabled) {
 			this.setChecked(!this.getChecked());
 			this.bubble("onchange");
 		}
-		return true;
-	},
-	tap: function(inSender, e) {
 		return !this.disabled;
+	},
+	dragstart: function() {
+		// Override enyo.Input dragstart handler, to allow drags to propagate for Checkbox
 	}
 });
