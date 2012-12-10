@@ -37,5 +37,6 @@ enyo.depends(
 	"Item.js",
 	"Spinner.js",
 	"MoreToolbar.js",
-	"IntegerPicker.js"
+	"IntegerPicker.js",
+	"ContextualPopup.js"
 );
