@@ -35,7 +35,7 @@ enyo.kind({
 		//* are animated
 		animateStripes: true,
 		//* Value increment that a sliders can be "snapped to" in either direction
-		increment: 0,
+		increment: 0
 	},
 	events: {
 		//* Fires when progress bar finishes animating to a position.
