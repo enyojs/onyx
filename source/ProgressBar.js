@@ -33,7 +33,9 @@ enyo.kind({
 		showStripes: true,
 		//* If true (and _showStripes_ is true), stripes shown in progress bar
 		//* are animated
-		animateStripes: true
+		animateStripes: true,
+		//* Value increment that a sliders can be "snapped to" in either direction
+		increment: 0
 	},
 	events: {
 		//* Fires when progress bar finishes animating to a position.
@@ -65,6 +67,9 @@ enyo.kind({
 		this.progress = this.clampValue(this.min, this.max, this.progress);
 		var p = this.calcPercent(this.progress);
 		this.updateBarPosition(p);
+	},
+	calcIncrement: function(inValue) {
+		return (Math.round(inValue / this.increment) * this.increment);
 	},
 	clampValue: function(inMin, inMax, inValue) {
 		return Math.max(inMin, Math.min(inValue, inMax));

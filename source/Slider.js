@@ -79,6 +79,7 @@ enyo.kind({
 	drag: function(inSender, inEvent) {
 		if (this.dragging) {
 			var v = this.calcKnobPosition(inEvent);
+			v = (this.increment) ? this.calcIncrement(v) : v;
 			this.setValue(v);
 			this.doChanging({value: this.value});
 			return true;
@@ -93,6 +94,7 @@ enyo.kind({
 	tap: function(inSender, inEvent) {
 		if (this.tappable) {
 			var v = this.calcKnobPosition(inEvent);
+			v = (this.increment) ? this.calcIncrement(v) : v;
 			this.tapped = true;
 			this.animateTo(v);
 			return true;
