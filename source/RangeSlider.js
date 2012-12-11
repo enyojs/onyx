@@ -29,8 +29,6 @@ enyo.kind({
 		    and _rangeMax_
 		*/
 		rangeEnd: 100,
-		//* Value range increment that the sliders can be "snapped to" in either direction
-		increment: 0,
 		//* @protected
 		// Position of first slider, expressed as an integer between 0 and 100 (percentage)
 		beginValue: 0,
@@ -129,9 +127,6 @@ enyo.kind({
 			this.$.bar.applyStyle("width", barWidth + "%");
 		}
 	},
-	calcIncrement: function(inValue) {
-    	return (Math.ceil(inValue / this.increment) * this.increment);
-	},
 	calcRangeRatio: function(inValue) {
 		return ((inValue / 100) * (this.rangeMax - this.rangeMin) + this.rangeMin) - (this.increment/2);
 	},
@@ -162,7 +157,7 @@ enyo.kind({
 				if (((knobPos <= this.endValue) && (inEvent.xDirection === -1)) || (knobPos <= this.endValue)) {
 					this.setBeginValue(knobPos);
 					var _val = this.calcRangeRatio(this.beginValue);
-					var val = (this.increment) ? this.calcIncrement(_val) : _val;
+					var val = (this.increment) ? this.calcIncrement(_val+.5*this.increment) : _val;
 					var p = this.calcKnobPercent(val);
 					this.updateKnobPosition(p, this.$.startKnob);
 					this.setRangeStart(val);
@@ -174,7 +169,7 @@ enyo.kind({
 				if (((knobPos >= this.beginValue) && (inEvent.xDirection === 1)) || (knobPos >= this.beginValue)) {
 					this.setEndValue(knobPos);
 					var _val = this.calcRangeRatio(this.endValue);
-					var val = (this.increment) ? this.calcIncrement(_val) : _val;
+					var val = (this.increment) ? this.calcIncrement(_val+.5*this.increment) : _val;
 					var p = this.calcKnobPercent(val);
 					this.updateKnobPosition(p, this.$.endKnob);
 					this.setRangeEnd(val);
