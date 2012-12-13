@@ -76,6 +76,10 @@ enyo.kind({
 	initComponents: function() {
 		this.controlParentName = 'flyweight';
         this.inherited(arguments);
+		//Force the flyweight's client control (MenuItem is default) to activate. This will
+		//result in a call to processActivatedItem which preps our picker selection logic.
+		//This is a workaround for changes caused by ENYO-1609 which resulted in ENYO-1611.
+		this.$.flyweight.$.client.children[0].setActive(true);
     },
 	create: function() {
 		this.inherited(arguments);
