@@ -4,32 +4,31 @@ enyo.kind({
 	classes: "onyx onyx-sample enyo-fit",
 	handlers: {
 		ontap: "tapHandler"
-	},	
+	},
 	components: [
 		{kind: "onyx.Toolbar", name:"topToolbar", classes: "onyx-menu-toolbar", style:"background-color:lightgray", components: [
 			{kind: "onyx.MenuDecorator", components: [
 				{kind:onyx.Button, content:"Back"},
-				{kind: "onyx.ContextualPopup", 
-					title:"Back", 
+				{kind: "onyx.ContextualPopup",
+					title:"Back",
 					actionButtons:[
 						{content:"test1", classes: "onyx-button-warning"},
-						{content:"test2"},					
-					], 
+						{content:"test2"}
+					],
 					components: [
 						{content:"testing 1"},
 						{content:"testing 2"}
 					]
 				}
 			]},
-
 			{kind: "onyx.MenuDecorator", style:"float:right;", components: [
 			{kind:onyx.Button, content:"Facebook +"},
-				{kind: "onyx.ContextualPopup", 
-					title:"Facebook +", 
+				{kind: "onyx.ContextualPopup",
+					title:"Facebook +",
 					actionButtons:[
 						{content:"test1", classes: "onyx-button-warning"},
 						{content:"test2"}
-					], 
+					],
 					components: [
 						{content:"testing 1"},
 						{content:"testing 2"},
@@ -39,12 +38,12 @@ enyo.kind({
 						{content:"testing 6"}
 					]
 				}
-			]},
+			]}
 		]},
 		{classes:"onyx-contextualpopup-toolbarcheck", components:[
-			{kind: "onyx.Checkbox", style:"margin-top:-20px", onchange: "topToolbarChecked"},		
-			{content:"Hide/Show Toolbars", classes:"onyx-contextualpopup-toolbarcheck-label"},			
-		]},	
+			{kind: "onyx.Checkbox", style:"margin-top:-20px", onchange: "topToolbarChecked"},
+			{content:"Hide/Show Toolbars", classes:"onyx-contextualpopup-toolbarcheck-label"}
+		]},
 		{kind: "Scroller", fit: true, thumb:false, components:[{
 			classes:"onyx-contextualpopup-scroller-content",
 			components:[
@@ -53,44 +52,43 @@ enyo.kind({
 				{components:[
 					{kind: "onyx.MenuDecorator", style:"display:inline-block", components: [
 						{content: "Average"},
-						{kind: "onyx.ContextualPopup", 
-							title:"Average", 
+						{kind: "onyx.ContextualPopup",
+							title:"Average",
 							floating:true,
 							actionButtons:[
 								{content:"Press Me"}
-							], 
+							],
 							components: [
 								{content:"Item 1"},
 								{content:"Item 2"},
 								{content:"Item 3"},
 								{content:"Item 4"},
-								{content:"Item 5"}										
+								{content:"Item 5"}
 							]
 						}
 					]},
-					
+
 					{kind: "onyx.MenuDecorator", style:"display:inline-block;float:right", components: [
 						{content:"Small"},
-						{kind: "onyx.ContextualPopup", 
+						{kind: "onyx.ContextualPopup",
 							title:"Small",
-							floating:true, 
+							floating:true
 						}
 					]}
 				]},
-
 				//Center row of buttons
 				{fit:true, style:"padding-top:15%;padding-bottom:15%;", components:[
 					{kind: "onyx.MenuDecorator", style:"display:inline-block;", components: [
-						{content: "Wide",},
-						{kind: "onyx.ContextualPopup", 
-							title:"Wide", 
+						{content: "Wide"},
+						{kind: "onyx.ContextualPopup",
+							title:"Wide",
 							floating:true,
 							actionButtons:[
 								{content:"test1", classes: "onyx-button-warning"},
 								{content:"test2"},
-								{content:"test2"},							
-								{content:"test3"}							
-							], 
+								{content:"test2"},
+								{content:"test3"}
+							],
 							components: [
 								{content:"testing 1"},
 								{content:"testing 2"},
@@ -98,19 +96,18 @@ enyo.kind({
 								{content:"testing 4"},
 								{content:"testing 5"},
 								{content:"testing 6"}
-							],
+							]
 						}
 					]},
-
 					{kind: "onyx.MenuDecorator", style:"display:inline-block;float:right", components: [
 						{content:"Long"},
-						{kind: "onyx.ContextualPopup", 
+						{kind: "onyx.ContextualPopup",
 							maxHeight: "300",
-							title:"Long", 
+							title:"Long",
 							floating:true,
 							actionButtons:[
 								{content:"Press Me"}
-							], 
+							],
 							components: [
 								{content:"testing 1"},
 								{content:"testing 2"},
@@ -141,35 +138,33 @@ enyo.kind({
 								{content:"testing 28"},
 								{content:"testing 29"},
 								{content:"testing 30"}
-							],
+							]
 						}
 					]}
 				]},
-
-				//Bottom row of buttons			
+				//Bottom row of buttons
 				{components:[
 					{kind: "onyx.MenuDecorator", style:"display:inline-block;", components: [
 						{content: "Non-floating"},
-						{kind: "onyx.ContextualPopup", 
+						{kind: "onyx.ContextualPopup",
 							title:"Bottom Left",
 							style:"width:200px",
 							actionButtons:[
 								{content:"test1", classes: "onyx-button-warning"},
 								{content:"test2"}
-							], 
+							],
 							components: [
 								{content:"This popup"},
 								{content:"will scroll"},
 								{content:"with the page"},
 								{content:"and will be"},
-								{content:"obscured by toolbars."},
+								{content:"obscured by toolbars."}
 							]
 						}
 					]},
-
 					{kind: "onyx.MenuDecorator", style:"display:inline-block;float:right", components: [
 						{content:"Modal"},
-						{kind: "onyx.ContextualPopup", 
+						{kind: "onyx.ContextualPopup",
 							style:"width:250px",
 							title:"Modal",
 							floating:true,
@@ -183,23 +178,23 @@ enyo.kind({
 								{content:"Item 2"},
 								{content:"Item 3"},
 								{content:"Item 4"},
-								{content:"Item 5"}										
+								{content:"Item 5"}
 							]
 						}
 					]}
-				]}			
-			]},
+				]}
+			]}
 			]
 		}]},
 		{kind: "onyx.Toolbar", name:"bottomToolbar", classes: "onyx-menu-toolbar", style:"background-color:lightgray", components: [
 			{kind: "onyx.MenuDecorator", components: [
 				{content:"Back"},
-				{kind: "onyx.ContextualPopup", 
-					title:"Back", 
+				{kind: "onyx.ContextualPopup",
+					title:"Back",
 					actionButtons:[
 						{content:"test1", classes: "onyx-button-warning"},
 						{content:"test2"}
-					], 
+					],
 					components: [
 						{content:"testing 1"},
 						{content:"testing 2"},
@@ -210,7 +205,6 @@ enyo.kind({
 					]
 				}
 			]},
-						
 			{kind: "onyx.MenuDecorator", style:"float:right;", components: [
 			{kind:onyx.Button, content:"Facebook +"},
 				{kind: "onyx.ContextualPopup", name:"facebook",
@@ -219,7 +213,7 @@ enyo.kind({
 					actionButtons:[
 						{content:"test1", classes: "onyx-button-warning"},
 						{content:"Dismiss", name:"dismiss_button"}
-					], 
+					],
 					components: [
 						{content:"This"},
 						{content:"popup"},
@@ -231,8 +225,8 @@ enyo.kind({
 						{content:"Press Dismiss!"}
 					]
 				}
-			]},
-		]}	
+			]}
+		]}
 	],
 	create:function(){
 		this.inherited(arguments);
@@ -242,7 +236,7 @@ enyo.kind({
 		var client = this.$.scroller.hasNode().getBoundingClientRect();
 		//set the size of the button container area (so we get buttons spread evenly)
 		this.$.buttonContainer.addStyles("width:" + client.width + "px");
-		this.$.buttonContainer.addStyles("height:"+ client.height + "px");		
+		this.$.buttonContainer.addStyles("height:"+ client.height + "px");
 		this.$.buttonContainer.resized();
 
 		this.$.scroller.setScrollLeft(1500);
@@ -261,8 +255,8 @@ enyo.kind({
 	tapHandler: function(inSender, inEvent) {
 		if (inEvent.actionButton) {
 			enyo.log(inEvent.popup);	//info about popup it's coming from
-			enyo.log("action button index: " + inEvent.originator.index); //index of action button			
-			enyo.log("action button name: " + inEvent.originator.name); //name of action button (you can set this - see example use below)			
+			enyo.log("action button index: " + inEvent.originator.index); //index of action button
+			enyo.log("action button name: " + inEvent.originator.name); //name of action button (you can set this - see example use below)
 
 			if (inEvent.originator.name == "dismiss_button"){
 				inEvent.popup.hide();

@@ -16,7 +16,7 @@ enyo.kind({
 					{kind: "onyx.Input", style:"width:130px;", placholder: "Just an input..."}
 				]},
 				{kind: "onyx.Tooltip", content: "I'm a tooltip for an input."}
-			]},
+			]}
 		]},
 		{tag: "br"},
 		{kind: "onyx.Toolbar", classes: "onyx-menu-toolbar", components: [
@@ -30,7 +30,7 @@ enyo.kind({
 					]},
 					{content: "Favorites"},
 					{classes: "onyx-menu-divider"},
-					{content: "Recents"},
+					{content: "Recents"}
 				]}
 			]},
 			{kind: "onyx.MenuDecorator", components: [
@@ -43,7 +43,7 @@ enyo.kind({
 					]},
 					{content: "Favorites"},
 					{classes: "onyx-menu-divider"},
-					{content: "Recents"},
+					{content: "Recents"}
 				]}
 			]}
 		]},
@@ -71,7 +71,7 @@ enyo.kind({
 				]},
 				{content: "Favorites"},
 				{classes: "onyx-menu-divider"},
-				{content: "Recents"},
+				{content: "Recents"}
 			]}
 		]},
 		{tag: "br"},
@@ -85,7 +85,7 @@ enyo.kind({
 				]},
 				{content: "Favorites"},
 				{classes: "onyx-menu-divider"},
-				{content: "Recents"},
+				{content: "Recents"}
 			]}
 		]}
 	]

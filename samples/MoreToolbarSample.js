@@ -14,7 +14,7 @@ enyo.kind({
 			{kind: "onyx.InputDecorator", components: [
 				{kind: "onyx.Input", placeholder: "pulez"}
 			]},
-			{kind: "onyx.Button", content: "Maxizon"},
+			{kind: "onyx.Button", content: "Maxizon"}
 		]},
 		{fit: true, style: "background: lightpurple;padding:25px;", components: [
 			{content: "The \"More Toolbar\" label and the Gamma button have the unmoveable property set to true."}
@@ -29,7 +29,7 @@ enyo.kind({
 			{kind: "onyx.InputDecorator", components: [
 				{kind: "onyx.Input", placeholder: "pulez"}
 			]},
-			{kind: "onyx.Button", content: "Maxizon"},
+			{kind: "onyx.Button", content: "Maxizon"}
 		]}
 	]
-})
+});

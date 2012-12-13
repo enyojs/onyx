@@ -62,5 +62,4 @@ enyo.kind({
 	closeModalPopup: function() {
 		this.$.modalPopup.hide();
 	}
-	
 });

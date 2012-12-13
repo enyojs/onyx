@@ -66,24 +66,25 @@ enyo.kind({
 					{content: "Outlook"},
 					{content: "Hotmail", active: true}
 				]}
-			]},
+			]}
 		]},
 		{tag: "br"},
 		{kind: "onyx.Groupbox", classes:"onyx-sample-result-box", components: [
 			{kind: "onyx.GroupboxHeader", content: "Selection"},
 			{name:"pickerSelection", classes:"onyx-sample-result", content: "Nothing picked yet."}
-		]}					
+		]}
 	],
 	create: function() {
 		this.inherited(arguments);
 		// month
 		var months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 		var d = new Date();
-		for (var i=0,m; m=months[i]; i++) {
+		var i, m;
+		for (i=0; (m=months[i]); i++) {
 			this.$.monthPicker.createComponent({content: m, active: i==d.getMonth()});
 		}
 		// day
-		for (var i=0; i<30; i++) {
+		for (i=0; i<30; i++) {
 			this.$.dayPicker.createComponent({content: i+1, active: i==d.getDate()-1});
 		}
 		// year

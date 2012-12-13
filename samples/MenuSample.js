@@ -13,7 +13,7 @@ enyo.kind({
 					]},
 					{content: "Favorites"},
 					{classes: "onyx-menu-divider"},
-					{content: "Recents"},
+					{content: "Recents"}
 				]}
 			]},
 			{kind: "onyx.MenuDecorator", onSelect: "itemSelected", components: [
@@ -25,7 +25,7 @@ enyo.kind({
 					]},
 					{content: "Favorites"},
 					{classes: "onyx-menu-divider"},
-					{content: "Recents"},
+					{content: "Recents"}
 				]}
 			]}
 		]},
@@ -37,7 +37,7 @@ enyo.kind({
 				{content: "1"},
 				{content: "2"},
 				{classes: "onyx-menu-divider"},
-				{content: "3"},
+				{content: "3"}
 			]}
 		]},
 		{tag: "br"},
@@ -53,7 +53,7 @@ enyo.kind({
 					{content: "5"},
 					{classes: "onyx-menu-divider"},
 					{content: "6"},
-					{content: "7"},
+					{content: "7"}
 				]}
 			]}
 		]},
@@ -65,7 +65,7 @@ enyo.kind({
 				{content: "1"},
 				{content: "2"},
 				{classes: "onyx-menu-divider"},
-				{content: "3"},
+				{content: "3"}
 			]}
 		]},
 		{tag: "br"},
@@ -89,7 +89,7 @@ enyo.kind({
 	itemSelected: function(inSender, inEvent) {
 		//Menu items send an onSelect event with a reference to themselves & any directly displayed content
 		if (inEvent.originator.content){
-			this.$.menuSelection.setContent(inEvent.originator.content + " Selected");			
+			this.$.menuSelection.setContent(inEvent.originator.content + " Selected");
 		} else if (inEvent.selected){
 			//	Since some of the menu items do not have directly displayed content (they are kinds with subcomponents),
 			//	we have to handle those items differently here.

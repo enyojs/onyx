@@ -26,7 +26,7 @@ enyo.kind({
 			{kind: "onyx.InputDecorator", components: [
 				{content: "Left:"},
 				{kind: "onyx.Input", value: "Input Area", onchange:"inputChanged"},
-				{content: " :Right"},
+				{content: " :Right"}
 			]}
 		]},
 		{tag: "br"},

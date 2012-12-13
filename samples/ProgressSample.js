@@ -51,11 +51,11 @@ enyo.kind({
 		}
 	},
 	incValue: function() {
-		this.$.input.setValue(Math.min(parseInt(this.$.input.getValue() || 0) + 10, 100));
+		this.$.input.setValue(Math.min(parseInt(this.$.input.getValue() || 0, 10) + 10, 100));
 		this.changeValue();
 	},
 	decValue: function() {
-		this.$.input.setValue(Math.max(parseInt(this.$.input.getValue() || 0) - 10, 0));
+		this.$.input.setValue(Math.max(parseInt(this.$.input.getValue() || 0, 10) - 10, 0));
 		this.changeValue();
 	},
 	clearValue: function(inSender, inEvent) {

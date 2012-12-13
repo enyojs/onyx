@@ -30,7 +30,7 @@ enyo.kind({
 			{kind: "onyx.Button", name:"Fishbowl Button", ontap:"buttonTapped", components: [
 				{kind: "onyx.Icon", src: "assets/fish_bowl.png"}
 			]}
-		]},		
+		]},
 		{kind: "onyx.Groupbox", classes:"onyx-sample-result-box", components: [
 			{kind: "onyx.GroupboxHeader", content: "Result"},
 			{name:"result", classes:"onyx-sample-result", content:"No button tapped yet."}
@@ -38,9 +38,9 @@ enyo.kind({
 	],
 	buttonTapped: function(inSender, inEvent) {
 		if (inSender.content){
-			this.$.result.setContent("The \"" + inSender.getContent() + "\" button was tapped");			
+			this.$.result.setContent("The \"" + inSender.getContent() + "\" button was tapped");
 		} else {
-			this.$.result.setContent("The \"" + inSender.getName() + "\" button was tapped");						
+			this.$.result.setContent("The \"" + inSender.getName() + "\" button was tapped");
 		}
 	}
 });

@@ -46,7 +46,7 @@ enyo.kind({
 	iconTappedCounts: {},
 	iconTapped: function(inSender, inEvent) {
 		this.iconTappedCounts[inSender.name] = this.iconTappedCounts[inSender.name] || 0;
-		this.$.result.setContent("The icon button was tapped: " + ++this.iconTappedCounts[inSender.name]);
+		this.$.result.setContent("The icon button was tapped: " + (++this.iconTappedCounts[inSender.name]));
 	},
 	toggleChanged: function(inSender, inEvent) {
 		this.$.result.setContent(inSender.name + " was " + (inSender.getValue() ? " selected." : "deselected."));
