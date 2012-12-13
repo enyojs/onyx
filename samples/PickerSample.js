@@ -49,7 +49,7 @@ enyo.kind({
 			{classes: "onyx-toolbar-inline", style:"margin: 0px;", components: [
 				{content: "Year", classes: "onyx-sample-label"},
 				{kind: "onyx.PickerDecorator", components: [
-					{style: "min-width: 80px;"},
+					{name:"yearPickerButton", style: "min-width: 80px;"},
 					{name: "yearPicker", kind: "onyx.FlyweightPicker", count: 200, onSetupItem: "setupYear", components: [
 						{name: "year"}
 					]}
@@ -89,7 +89,7 @@ enyo.kind({
 		// year
 		var y = d.getYear();
 		this.$.yearPicker.setSelected(y);
-		this.$.year.setContent(1900+y);
+		this.$.yearPickerButton.setContent(1900+y);
 	},
 	setupYear: function(inSender, inEvent) {
 		this.$.year.setContent(1900+inEvent.index);

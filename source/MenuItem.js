@@ -42,6 +42,12 @@ enyo.kind({
 	//* @protected
 	classes: "onyx-menu-item",
 	tag: "div",
+	create: function(){
+		this.inherited(arguments);
+		if (this.active){
+			this.bubble("onActivate");
+		}
+	},
 	tap: function(inSender) {
 		this.inherited(arguments);
 		this.bubble("onRequestHideMenu");
