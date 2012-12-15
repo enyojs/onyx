@@ -22,7 +22,7 @@ enyo.kind({
 				}
 			]},
 			{kind: "onyx.MenuDecorator", style:"float:right;", components: [
-			{kind:onyx.Button, content:"Facebook +"},
+				{kind:onyx.Button, content:"Facebook +"},
 				{kind: "onyx.ContextualPopup",
 					title:"Facebook +",
 					actionButtons:[
@@ -206,7 +206,7 @@ enyo.kind({
 				}
 			]},
 			{kind: "onyx.MenuDecorator", style:"float:right;", components: [
-			{kind:onyx.Button, content:"Facebook +"},
+				{kind:onyx.Button, content:"Facebook +"},
 				{kind: "onyx.ContextualPopup", name:"facebook",
 					title:"Facebook +",
 					autoDismiss: false,
