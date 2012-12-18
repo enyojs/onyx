@@ -49,8 +49,8 @@ enyo.kind({
 	},
 	
 	//layout parameters
-	vertFlushMargin:100, //vertical flush layout margin
-	horizFlushMargin:100, //horizontal flush layout margin
+	vertFlushMargin:60, //vertical flush layout margin
+	horizFlushMargin:50, //horizontal flush layout margin
 	widePopup:200, //popups wider than this value are considered wide (for layout purposes)
 	longPopup:200, //popups longer than this value are considered long (for layout purposes)
 	horizBuffer:16, //do not allow horizontal flush popups past spec'd amount of buffer space on left/right screen edge
@@ -301,7 +301,7 @@ enyo.kind({
 			//Get the left edge delta to horizontally center the popup
 			var centeredLeftDelta = this.activatorOffset.left + this.activatorOffset.width/2 - clientRect.left - clientRect.width/2;
 			if (clientRect.right + centeredLeftDelta > innerWidth) {//popup goes off right edge of the screen if centered
-				this.applyPosition({left: -(clientRect.right - (this.activatorOffset.left + this.activatorOffset.width))});
+				this.applyPosition({left: this.activatorOffset.left + this.activatorOffset.width - clientRect.right});
 				this.addRemoveClass("left", true);											
 			} else if (clientRect.left + centeredLeftDelta < 0) {//popup goes off left edge of the screen if centered
 				this.addRemoveClass("right", true);
@@ -309,6 +309,7 @@ enyo.kind({
 				this.applyPosition({left: centeredLeftDelta});
 			}	
 		}
+		
 		return true;
 	},
 	applyVerticalFlushPositioning: function(leftFlushPt, rightFlushPt) {
@@ -371,8 +372,8 @@ enyo.kind({
 				this.applyPosition({left: this.activatorOffset.width});										
 				this.addRemoveClass("left", true);			
 			}
-			
 		}
+		this.addRemoveClass("horizontal", true);
 		
 		//if moving the popup left or right of the activator puts it past the edge of the screen then horizontal won't work
 		clientRect = this.node.getBoundingClientRect();
@@ -475,6 +476,7 @@ enyo.kind({
 		this.removeClass("below");
 		this.removeClass("above");		
 		this.removeClass("vertical");
+		this.removeClass("horizontal");
 
 		this.applyPosition({left: "auto"});
 		this.applyPosition({top: "auto"});
