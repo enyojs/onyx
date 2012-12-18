@@ -1,33 +1,40 @@
 /**
-	_onyx.ContextualPopup_ is a subkind of <a href="#enyo.Popup">enyo.Popup</a>. 
-	Contextual pop-ups serve as child windows that appear near the point of initiation. 
-	Use them for:
-	- Selection from a discreet set of values
-	- Quick, single step interactions where context should be maintained 
-	- Simple views (such as previews)
-	
-	They are meant to be used in conjunction with a
-	<a href="#onyx.ContextualPopupDecorator">onyx.ContextualPopupDecorator</a>. The decorator 
-	couples the popup with an activating control, which may be a button or any other
-	control with an _onActivate_ event. When the control is activated, the popup
-	shows itself in the correct position relative to the activator. Note that by default
-	the popup is not floating, so toolbars & high z-index controls may obscure it. You may
-	set floating to true to have the popup always on top, however the popup will not be in the
-	containing document flow and will not scroll with the document.
+    _onyx.ContextualPopup_ is a subkind of <a href="#enyo.Popup">enyo.Popup</a>. 
+    Contextual popups serve as child windows that appear near the point of
+    initiation. Use them for prompting users to select from a defined set of
+    options; for conducting other quick, single-step interactions in which
+    context should be maintained; and for presenting simple views, such as
+    previews.
 
-		{kind: "onyx.ContextualPopupDecorator", components: [
-			{content: "Show Popup"},
-			{kind: "onyx.ContextualPopup",
-				title:"Sample Popup",
-				actionButtons:[
-					{content:"Button 1", classes: "onyx-button-warning"},
-					{content:"Button 2"}
-				],
-				components: [
-					{content:"Sample component in popup"}
-				]
-			}
-		]}
+    A contextual popup is meant to be used in conjunction with a decorator, such
+    as an <a href="#onyx.MenuDecorator">onyx.MenuDecorator</a>. The decorator
+    couples the popup with an activating control, which may be a button or any
+    other control with an _onActivate_ event. When the control is activated, the
+    popup shows itself in the correct position relative to the activator.
+
+    Note that, by default, the popup is not floating, so toolbars and controls
+    with high z-index values may obscure it. You may set the _floating_ property
+    to true to have the popup always appear on top; however, the popup will not
+    be in the containing document's flow and so will not scroll with the
+    document.
+
+    In addition, while contextual popups have their own positioning logic, they
+    do not currently have their own sizing logic, so be sure to take this into
+    account when using them.
+
+        {kind: "onyx.MenuDecorator", components: [
+            {content: "Show Popup"},
+            {kind: "onyx.ContextualPopup",
+                title: "Sample Popup",
+                actionButtons: [
+                    {content:"Button 1", classes: "onyx-button-warning"},
+                    {content:"Button 2"}
+                ],
+                components: [
+                    {content:"Sample component in popup"}
+                ]
+            }
+        ]}
 */
 
 enyo.kind({
