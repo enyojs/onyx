@@ -963,11 +963,11 @@
   margin-top:10px;
 }
 /*for popups on the left of the activator*/
-.onyx-contextual-popup.right {
+.onyx-contextual-popup.right.horizontal {
   margin-left: -11px;
 }
 /*for popups on the right of the activator*/
-.onyx-contextual-popup.left {
+.onyx-contextual-popup.left.horizontal {
   margin-left: 10px;
 }
 /*nub positioning*/

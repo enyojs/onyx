@@ -1,16 +1,17 @@
 enyo.kind({
 	name: "onyx.sample.ContextualPopupSample",
 	kind: "FittableRows",
-	classes: "onyx onyx-sample enyo-fit",
+	classes: "onyx enyo-fit",
 	handlers: {
 		ontap: "tapHandler"
 	},
 	components: [
 		{kind: "onyx.Toolbar", name:"topToolbar", classes: "onyx-menu-toolbar", style:"background-color:lightgray", components: [
 			{kind: "onyx.MenuDecorator", components: [
-				{kind:onyx.Button, content:"Back"},
+				{kind:onyx.IconButton, src: "assets/menu-icon-bookmark.png"},
 				{kind: "onyx.ContextualPopup",
-					title:"Back",
+					title:"Toolbar Button",
+					floating:true,					
 					actionButtons:[
 						{content:"test1", classes: "onyx-button-warning"},
 						{content:"test2"}
@@ -22,9 +23,10 @@ enyo.kind({
 				}
 			]},
 			{kind: "onyx.MenuDecorator", style:"float:right;", components: [
-				{kind:onyx.Button, content:"Facebook +"},
+				{kind:onyx.IconButton, src: "assets/menu-icon-bookmark.png"},
 				{kind: "onyx.ContextualPopup",
-					title:"Facebook +",
+					title:"Toolbar Button",
+					floating:true,					
 					actionButtons:[
 						{content:"test1", classes: "onyx-button-warning"},
 						{content:"test2"}
@@ -40,14 +42,8 @@ enyo.kind({
 				}
 			]}
 		]},
-		{classes:"onyx-contextualpopup-toolbarcheck", components:[
-			{kind: "onyx.Checkbox", style:"margin-top:-20px", onchange: "topToolbarChecked"},
-			{content:"Hide/Show Toolbars", classes:"onyx-contextualpopup-toolbarcheck-label"}
-		]},
-		{kind: "Scroller", fit: true, thumb:false, components:[{
-			classes:"onyx-contextualpopup-scroller-content",
-			components:[
-			{name:"buttonContainer", kind:"FittableRows", fit:true, classes:"onyx-contextualpopup-button-container", components:[
+		{kind: "Scroller", fit: true, thumb:false, components:[
+			{name:"buttonContainer", kind:"FittableRows", classes:"onyx-contextualpopup-button-container enyo-fit", components:[
 				//Top row of buttons
 				{components:[
 					{kind: "onyx.MenuDecorator", style:"display:inline-block", components: [
@@ -81,28 +77,24 @@ enyo.kind({
 					{kind: "onyx.MenuDecorator", style:"display:inline-block;", components: [
 						{content: "Wide"},
 						{kind: "onyx.ContextualPopup",
-							title:"Wide",
+							style:"width:300px",
 							floating:true,
 							actionButtons:[
 								{content:"test1", classes: "onyx-button-warning"},
-								{content:"test2"},
-								{content:"test2"},
-								{content:"test3"}
+								{content:"test2"}
 							],
 							components: [
-								{content:"testing 1"},
-								{content:"testing 2"},
-								{content:"testing 3"},
-								{content:"testing 4"},
-								{content:"testing 5"},
-								{content:"testing 6"}
+								{kind: "Scroller", style:"min-width:150px;", horizontal:"auto",  touch:true, thumb:false,  components:[							
+									{content:"testing 1"},
+									{content:"testing 2"}
+								]}
 							]
 						}
 					]},
 					{kind: "onyx.MenuDecorator", style:"display:inline-block;float:right", components: [
 						{content:"Long"},
 						{kind: "onyx.ContextualPopup",
-							maxHeight: "300",
+							maxHeight: "200",
 							title:"Long",
 							floating:true,
 							actionButtons:[
@@ -145,30 +137,34 @@ enyo.kind({
 				//Bottom row of buttons
 				{components:[
 					{kind: "onyx.MenuDecorator", style:"display:inline-block;", components: [
-						{content: "Non-floating"},
+						{content: "Press Me"},
 						{kind: "onyx.ContextualPopup",
-							title:"Bottom Left",
+							title:"Press Me",
+							floating:true,							
 							style:"width:200px",
 							actionButtons:[
 								{content:"test1", classes: "onyx-button-warning"},
 								{content:"test2"}
 							],
 							components: [
-								{content:"This popup"},
-								{content:"will scroll"},
-								{content:"with the page"},
-								{content:"and will be"},
-								{content:"obscured by toolbars."}
+								{content:"testing 1"},
+								{content:"testing 2"},
+								{content:"testing 3"},
+								{content:"testing 4"},
+								{content:"testing 5"},
+								{content:"testing 6"},
+								{content:"testing 7"},
+								{content:"testing 9"},
+								{content:"testing 10"}
 							]
 						}
 					]},
 					{kind: "onyx.MenuDecorator", style:"display:inline-block;float:right", components: [
-						{content:"Modal"},
+						{content:"Try Me"},
 						{kind: "onyx.ContextualPopup",
 							style:"width:250px",
-							title:"Modal",
+							title:"Try Me",
 							floating:true,
-							autoDismiss: false,
 							actionButtons:[
 								{content:"Do Nothing", classes: "onyx-button-warning"},
 								{content:"Dismiss", name:"dismiss_button"}
@@ -183,14 +179,13 @@ enyo.kind({
 						}
 					]}
 				]}
-			]}
-			]
-		}]},
+			]},
+		]},
 		{kind: "onyx.Toolbar", name:"bottomToolbar", classes: "onyx-menu-toolbar", style:"background-color:lightgray", components: [
 			{kind: "onyx.MenuDecorator", components: [
-				{content:"Back"},
+				{kind:onyx.IconButton, src: "assets/menu-icon-bookmark.png"},
 				{kind: "onyx.ContextualPopup",
-					title:"Back",
+					title:"Toolbar Button",
 					actionButtons:[
 						{content:"test1", classes: "onyx-button-warning"},
 						{content:"test2"}
@@ -206,52 +201,25 @@ enyo.kind({
 				}
 			]},
 			{kind: "onyx.MenuDecorator", style:"float:right;", components: [
-				{kind:onyx.Button, content:"Facebook +"},
+				{kind:onyx.IconButton, src: "assets/menu-icon-bookmark.png"},
 				{kind: "onyx.ContextualPopup", name:"facebook",
-					title:"Facebook +",
-					autoDismiss: false,
+					title:"Toolbar Button",
 					actionButtons:[
 						{content:"test1", classes: "onyx-button-warning"},
 						{content:"Dismiss", name:"dismiss_button"}
 					],
 					components: [
-						{content:"This"},
-						{content:"popup"},
-						{content:"has"},
-						{content:"autoDismiss"},
-						{content:"set"},
-						{content:"to"},
-						{content:"true."},
-						{content:"Press Dismiss!"}
+						{content:"testing 1"},
+						{content:"testing 2"},
+						{content:"testing 3"},
+						{content:"testing 4"},
+						{content:"testing 5"},
+						{content:"testing 6"}
 					]
 				}
 			]}
 		]}
 	],
-	create:function(){
-		this.inherited(arguments);
-		enyo.asyncMethod(this,this.initializeView);
-	},
-	initializeView: function(){
-		var client = this.$.scroller.hasNode().getBoundingClientRect();
-		//set the size of the button container area (so we get buttons spread evenly)
-		this.$.buttonContainer.addStyles("width:" + client.width + "px");
-		this.$.buttonContainer.addStyles("height:"+ client.height + "px");
-		this.$.buttonContainer.resized();
-
-		this.$.scroller.setScrollLeft(1500);
-		this.$.scroller.setScrollTop(1000);
-
-	},
-	resizeHandler:function(){
-		this.inherited(arguments);
-		this.initializeView();
-	},
-	topToolbarChecked: function(inSender, inEvent) {
-		this.$.topToolbar.setShowing(!inSender.getValue());
-		this.$.bottomToolbar.setShowing(!inSender.getValue());
-		this.resized();
-	},
 	tapHandler: function(inSender, inEvent) {
 		if (inEvent.actionButton) {
 			enyo.log(inEvent.popup);	//info about popup it's coming from
