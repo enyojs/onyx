@@ -38,22 +38,7 @@
 	font-size: 30px;
 	text-align: center;
 }
-.onyx-contextualpopup-toolbarcheck {
-	position:absolute;
-	z-index:200;
-	margin-left:35%	
-}
-.onyx-contextualpopup-toolbarcheck-label {
-	display: inline-block;
-	padding-left:10px; 
-	width: 120px;
-	padding-right: 10px;"
-}
-.onyx-contextualpopup-scroller-content {
-	width:5000px;
-	height:2000px;
-}
 .onyx-contextualpopup-button-container{
-	margin-left:1500px;
-	margin-top:1000px;
+	padding-left:5px;
+	padding-right:5px;
 }
