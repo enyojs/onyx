@@ -37,15 +37,20 @@ enyo.kind({
 		//* Currently selected item, if any
 		selected: null
 	},
+	handlers: {
+		onChange: 'change'
+	},
 	events: {
 		/**
-			Fires when the currently selected item changes.
+			Fires when either:
+			- the currently selected item changes.
+			- the content of the currently selected item changes.
 			
 			_inEvent.selected_ contains the currently selected item.
 			
 			_inEvent.content_ contains the content of the currently selected item.
 		*/
-		onChange: ""
+		onSelectedContentChange: ""
 	},
 	/**
 		Set to true to render the picker in a floating layer outside of other
@@ -85,7 +90,18 @@ enyo.kind({
 		}
 		if (this.selected) {
 			this.selected.addClass("selected");
-			this.doChange({selected: this.selected, content: this.selected.content});
+			this.doSelectedContentChange({selected: this.selected, content: this.selected.content});
+		}
+	},
+	/** 
+		Handler for when children components fire change events (MenuItem for example).
+		Since this Picker is the highest level component that has knowledge
+		of which MenuItem is selected we fire the onSelectedContentChange event
+		when the selected MenuItems content has changed.
+	*/
+	change: function(inSender, inEvent){
+		if(inEvent.originator == this.selected){
+			this.doSelectedContentChange({selected: this.selected, content: this.selected.content});
 		}
 	},
 	resizeHandler: function() {

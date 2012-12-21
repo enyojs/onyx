@@ -22,9 +22,9 @@ enyo.kind({
 	classes: "onyx-picker-decorator",
 	defaultKind: "onyx.PickerButton",
 	handlers: {
-		onChange: "change"
+		onSelectedContentChange: "selectedContentChange"
 	},
-	change: function(inSender, inEvent) {
-		this.waterfallDown("onChange", inEvent);
+	selectedContentChange: function(inSender, inEvent) {
+		this.waterfallDown("onSelectedContentChange", inEvent);
 	}
 });

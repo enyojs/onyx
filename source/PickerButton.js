@@ -12,7 +12,7 @@ enyo.kind({
 	name: "onyx.PickerButton",
 	kind: "onyx.Button",
 	handlers: {
-		onChange: "change"
+		onSelectedContentChange: "change"
 	},
 	change: function(inSender, inEvent) {
 		if (inEvent.content !== undefined){
