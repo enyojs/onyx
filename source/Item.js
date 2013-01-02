@@ -19,41 +19,22 @@ enyo.kind({
 	//* @public
 	hold: function(inSender, inEvent) {
 		if (this.tapHighlight) {
-			onyx.Item.addFlyweightClass(this.controlParent || this, "onyx-highlight", inEvent);
+			onyx.Item.addRemoveFlyweightClass(this.controlParent || this, "onyx-highlight", true, inEvent);
 		}
 	},
 	release: function(inSender, inEvent) {
 		if (this.tapHighlight) {
-			onyx.Item.removeFlyweightClass(this.controlParent || this, "onyx-highlight", inEvent);
+			onyx.Item.addRemoveFlyweightClass(this.controlParent || this, "onyx-highlight", false, inEvent);
 		}
 	},
 	//* @protected
 	statics: {
-		addFlyweightClass: function(inControl, inClass, inEvent, inIndex) {
+		addRemoveFlyweightClass: function(inControl, inClass, inTrueToAdd, inEvent, inIndex) {
 			var flyweight = inEvent.flyweight;
 			if (flyweight) {
 				var index = inIndex !== undefined ? inIndex : inEvent.index;
 				flyweight.performOnRow(index, function() {
-					if (!inControl.hasClass(inClass)) {
-						inControl.addClass(inClass);
-					} else {
-						inControl.setClassAttribute(inControl.getClassAttribute());
-					}
-				});
-				inControl.removeClass(inClass);
-			}
-		},
-		// FIXME: dry
-		removeFlyweightClass: function(inControl, inClass, inEvent, inIndex) {
-			var flyweight = inEvent.flyweight;
-			if (flyweight) {
-				var index = inIndex !== undefined ? inIndex : inEvent.index;
-				flyweight.performOnRow(index, function() {
-					if (!inControl.hasClass(inClass)) {
-						inControl.setClassAttribute(inControl.getClassAttribute());
-					} else {
-						inControl.removeClass(inClass);
-					}
+					inControl.addRemoveClass(inClass, inTrueToAdd);
 				});
 			}
 		}
