@@ -1,13 +1,13 @@
 /**
-    _onyx.RangeSlider_ is a control that combines a horizontal slider with two
-    control knobs. The user may drag the knobs to select a desired range of
-    values.
+	_onyx.RangeSlider_ is a control that combines a horizontal slider with two
+	control knobs. The user may drag the knobs to select a desired range of
+	values.
 
-        {kind: "onyx.RangeSlider", rangeMin: 100, rangeMax: 500,
-            rangeStart: 200, rangeEnd: 400, interval: 20}
+		{kind: "onyx.RangeSlider", rangeMin: 100, rangeMax: 500,
+			rangeStart: 200, rangeEnd: 400, interval: 20}
 
-    _onChanging_ events are fired while the control knobs are being dragged, and
-    an _onChange_ event is fired when the position is set by finishing a drag.
+	_onChanging_ events are fired while the control knobs are being dragged, and
+	an _onChange_ event is fired when the position is set by finishing a drag.
 */
 enyo.kind({
 	name: "onyx.RangeSlider",
@@ -20,13 +20,13 @@ enyo.kind({
 		//* Maximum slider value
 		rangeMax: 100,
 		/**
-		    Value of first slider, expressed as an integer between _rangeMin_
-		    and _rangeMax_
+			Value of first slider, expressed as an integer between _rangeMin_
+			and _rangeMax_
 		*/
 		rangeStart: 0,
 		/**
-		    Value of second slider, expressed as an integer between _rangeMin_
-		    and _rangeMax_
+			Value of second slider, expressed as an integer between _rangeMin_
+			and _rangeMax_
 		*/
 		rangeEnd: 100,
 		//* @protected
@@ -38,18 +38,18 @@ enyo.kind({
 	//* @public
 	events: {
 		/**
-		    Fires when bar position is set.
+			Fires when bar position is set.
 
-		    _inEvent.value_ contains the new position.
-		    
-		    _inEvent.startChanged_ is a boolean value indicating whether the
-		    first slider (_rangeStart_) triggered the event.
+			_inEvent.value_ contains the new position.
+
+			_inEvent.startChanged_ is a boolean value indicating whether the
+			first slider (_rangeStart_) triggered the event.
 		*/
 		onChange: "",
 		/**
-		    Fires while control knob is being dragged.
+			Fires while control knob is being dragged.
 
-		    _inEvent.value_ contains the current position.
+			_inEvent.value_ contains the current position.
 		*/
 		onChanging: ""
 	},
@@ -152,30 +152,31 @@ enyo.kind({
 	drag: function(inSender, inEvent) {
 		if (this.dragging) {
 			var knobPos = this.calcKnobPosition(inEvent);
+			var _val, val, p;
 
 			if ((inSender.name === "startKnob") && (knobPos >= 0)) {
 				if (((knobPos <= this.endValue) && (inEvent.xDirection === -1)) || (knobPos <= this.endValue)) {
 					this.setBeginValue(knobPos);
-					var _val = this.calcRangeRatio(this.beginValue);
-					var val = (this.increment) ? this.calcIncrement(_val+.5*this.increment) : _val;
-					var p = this.calcKnobPercent(val);
+					_val = this.calcRangeRatio(this.beginValue);
+					val = (this.increment) ? this.calcIncrement(_val+0.5*this.increment) : _val;
+					p = this.calcKnobPercent(val);
 					this.updateKnobPosition(p, this.$.startKnob);
 					this.setRangeStart(val);
 					this.doChanging({value: val});
 				} else {
-				    return this.drag(this.$.endKnob, inEvent);
+					return this.drag(this.$.endKnob, inEvent);
 				}
 			} else if ((inSender.name === "endKnob") && (knobPos <= 100)) {
 				if (((knobPos >= this.beginValue) && (inEvent.xDirection === 1)) || (knobPos >= this.beginValue)) {
 					this.setEndValue(knobPos);
-					var _val = this.calcRangeRatio(this.endValue);
-					var val = (this.increment) ? this.calcIncrement(_val+.5*this.increment) : _val;
-					var p = this.calcKnobPercent(val);
+					_val = this.calcRangeRatio(this.endValue);
+					val = (this.increment) ? this.calcIncrement(_val+0.5*this.increment) : _val;
+					p = this.calcKnobPercent(val);
 					this.updateKnobPosition(p, this.$.endKnob);
 					this.setRangeEnd(val);
 					this.doChanging({value: val});
 				} else {
-				    return this.drag(this.$.startKnob, inEvent);
+					return this.drag(this.$.startKnob, inEvent);
 				}
 			}
 			return true;
@@ -184,12 +185,12 @@ enyo.kind({
 	dragfinish: function(inSender, inEvent) {
 		this.dragging = false;
 		inEvent.preventTap();
-
+		var val;
 		if (inSender.name === "startKnob") {
-			var val = this.calcRangeRatio(this.beginValue);
+			val = this.calcRangeRatio(this.beginValue);
 			this.doChange({value: val, startChanged: true});
 		} else if (inSender.name === "endKnob") {
-			var val = this.calcRangeRatio(this.endValue);
+			val = this.calcRangeRatio(this.endValue);
 			this.doChange({value: val, startChanged: false});
 		}
 		return true;
@@ -222,5 +223,5 @@ enyo.kind({
 	},
 	setLabel: function(inSender, inContent) {
 		this.setContent(inContent);
-	},
+	}
 });

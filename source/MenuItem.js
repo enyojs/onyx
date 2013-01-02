@@ -32,9 +32,9 @@ enyo.kind({
 	events: {
 		/**
 			Fires when the menu item is selected.
-			
+
 			_inEvent.selected_ contains a reference to the menu item.
-			
+
 			_inEvent.content_ contains the menu item's content.
 		*/
 		onSelect: ""

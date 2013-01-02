@@ -36,9 +36,9 @@ enyo.kind({
 	},
 	components: [
 		{name: "client", kind: "Slideable", min: -100, unit: "%", ondragstart: "clientDragStart"},
-		{name: "confirm", kind: "onyx.Toolbar", addBefore: null, canGenerate: false, 
-			classes: "onyx-swipeable-item-confirm enyo-fit", style: "text-align: center;", 
-			ontap: "confirmTap", onhold: "doNothing", onrelease: "doNothing", 
+		{name: "confirm", kind: "onyx.Toolbar", addBefore: null, canGenerate: false,
+			classes: "onyx-swipeable-item-confirm enyo-fit", style: "text-align: center;",
+			ontap: "confirmTap", onhold: "doNothing", onrelease: "doNothing",
 			components: [
 				{kind: "onyx.Button", content: "Delete", ontap: "deleteTap"},
 				{kind: "onyx.Button", content: "Cancel", ontap: "cancelTap"} ] } ],

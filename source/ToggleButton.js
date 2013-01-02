@@ -13,7 +13,7 @@ enyo.kind({
 	name: "onyx.ToggleButton",
 	classes: "onyx-toggle-button",
 	published: {
-		//* Used when the ToggleButton is part of a <a href="#enyo.Group">enyo.Group</a>, true 
+		//* Used when the ToggleButton is part of a <a href="#enyo.Group">enyo.Group</a>, true
 		//* to indicate that this is the active button of the group, false otherwise.
 		active: false,
 		//* Boolean indicating whether toggle button is currently in the "on"
@@ -31,7 +31,7 @@ enyo.kind({
 		/**
 			Fires when the user changes the value of the toggle button,	but not
 			when the value is changed programmatically.
-			
+
 			_inEvent.value_ contains the value of the toggle button.
 		*/
 		onChange: ""
@@ -115,4 +115,4 @@ enyo.kind({
 			inEvent.preventTap();
 		}
 	}
-})
+});

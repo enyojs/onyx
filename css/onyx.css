@@ -26,7 +26,7 @@
 /* Images */
 /* ---------------------------------------*/
 /* Onyx rules defined here */
-/* onyx-classes.less - combined CSS (less) files for all released Onyx controls 
+/* onyx-classes.less - combined CSS (less) files for all released Onyx controls
    into single onyx.less file to avoid IE bug that allows
    a maximum of 31 style sheets to be loaded before silently failing */
 .onyx {
@@ -945,7 +945,7 @@
 .onyx-contextual-popup::after{
   content: '';
   position: absolute;
-  top: -10px;	
+  top: -10px;
   border-left: 10px solid transparent;
   border-right: 10px solid transparent;
   border-top: 10px solid transparent;
@@ -973,7 +973,7 @@
 /*nub positioning*/
 /*horizontally centered nub*/
 .onyx-contextual-popup.vertical::after {
-  position:absolute;  
+  position:absolute;
   left:45%;
   border-bottom: 10px solid #4c4c4c;
   border-top: none;
@@ -982,7 +982,7 @@
 }
 /*nub near horizontal left*/
 .onyx-contextual-popup.vertical.right::after {
-  left:0%;  
+  left:0%;
   margin-left:20px;
 }
 /*nub near horizontal right*/
@@ -992,7 +992,7 @@
 }
 /*downward facing nub*/
 .onyx-contextual-popup.vertical.above::after {
-  top:100%;  
+  top:100%;
   border-top: 10px solid #4c4c4c;
   border-bottom: none;
   border-left: 10px solid transparent;
@@ -1001,7 +1001,7 @@
 .onyx-contextual-popup.vertical.below.right::after {
   top:0%;
   margin-top:-10px;
-  border-bottom: 10px solid #4c4c4c;  
+  border-bottom: 10px solid #4c4c4c;
   border-left: 10px solid transparent;
 }
 .onyx-contextual-popup.vertical.below.left::after {
@@ -1063,15 +1063,15 @@
   border-top-left-radius: 0px;
 }
 .onyx-contextual-popup.vertical.below.left.corner::after {
-  top:0%;  
+  top:0%;
   left:100%;
   margin-top:-10px;
-  margin-left:-19px;  
+  margin-left:-19px;
   border-right: 10px solid #4c4c4c;
   border-top: 10px solid transparent;
 }
 .onyx-contextual-popup.vertical.below.right.corner::after {
-  top:0%;  
+  top:0%;
   left:0%;
   margin-left: -1px;
   border-left: 10px solid #4c4c4c;
@@ -1085,14 +1085,14 @@
   border-bottom-left-radius: 0px;
 }
 .onyx-contextual-popup.vertical.left.above.corner::after {
-  top:100%;  
-  margin-left:-19px;  
+  top:100%;
+  margin-left:-19px;
   border-right: 10px solid #4C4C4C;
   border-bottom: 10px solid transparent;
   border-top: none;
 }
 .onyx-contextual-popup.vertical.right.above.corner::after {
-  top:100%;  
+  top:100%;
   left:0%;
   margin-left: -1px;
   border-left: 10px solid #4c4c4c;
@@ -1107,7 +1107,7 @@
   border-bottom-right-radius: 0px;
 }
 .onyx-contextual-popup.left.low.corner::after {
-  top:100%;  
+  top:100%;
   left:0%;
   margin-top: -19px;
   margin-left: -12px;
@@ -1115,9 +1115,9 @@
   border-right: 10px solid #4c4c4c;
 }
 .onyx-contextual-popup.right.low.corner::after {
-  top:100%;  
+  top:100%;
   left:100%;
-  margin-top: -19px;  
+  margin-top: -19px;
   border-bottom: 10px solid#4c4c4c;
   border-left: none;
 }
@@ -1129,7 +1129,7 @@
   border-top-right-radius: 0px;
 }
 .onyx-contextual-popup.left.high.corner::after {
-  top:0%;  
+  top:0%;
   left:0%;
   margin-top: -1px;
   margin-left: -12px;
@@ -1137,10 +1137,10 @@
   border-bottom: none;
 }
 .onyx-contextual-popup.right.high.corner::after {
-  top:0%;  
+  top:0%;
   left:100%;
   margin-top:-1px;
-  margin-left:-9px;  
+  margin-left:-9px;
   border-top: 10px solid #4C4C4C;
   border-bottom: none;
 }

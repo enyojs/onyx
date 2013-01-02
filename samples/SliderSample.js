@@ -6,7 +6,7 @@ enyo.kind({
 		{kind: "onyx.Slider", value: 50, onChanging:"sliderChanging", onChange:"sliderChanged"},
 		{tag: "br"},
 		{kind: "onyx.Slider", lockBar: false, value: 50, onChanging:"sliderChanging", onChange:"sliderChanged"},
-		
+
 		{tag: "br"},
 		{kind: "onyx.InputDecorator", style:"margin-right:10px;", components: [
 			{kind: "onyx.Input", placeholder: "Value", style:"width:50px;"}

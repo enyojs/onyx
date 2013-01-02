@@ -4,9 +4,9 @@
 	suitable for displaying against a dark background. To render a dark spinner
 	to be shown on a lighter background, add the "onyx-light" class to the
 	spinner:
-	
+
 		{kind: "onyx.Spinner", classes: "onyx-light"}
-	
+
 	Typically, a spinner is shown to indicate activity and hidden to indicate
 	that the activity has ended. The spinner animation will automatically start
 	when a spinner is shown. If you wish, you may control the animation directly

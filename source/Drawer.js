@@ -13,8 +13,8 @@ enyo.kind({
 		//* The visibility state of the drawer's associated control
 		open: true,
 		/**
-		    Direction of the opening/closing animation--either "v" for vertical
-		    or "h" for horizontal
+			Direction of the opening/closing animation--either "v" for vertical
+			or "h" for horizontal
 		*/
 		orient: "v",
 		//* If true, the opening/closing transition will be animated.
@@ -50,7 +50,7 @@ enyo.kind({
 				var v = this.orient == "v";
 				var d = v ? "height" : "width";
 				var p = v ? "top" : "left";
-				// unfixing the height/width is needed to properly 
+				// unfixing the height/width is needed to properly
 				// measure the scrollHeight/Width DOM property, but
 				// can cause a momentary flash of content on some browsers
 				this.applyStyle(d, null);

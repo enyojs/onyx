@@ -19,9 +19,9 @@ enyo.kind({
 	showing: false,
 	classes: "onyx-scrim enyo-fit",
 	/**
-	    If true, scrim is rendered in a floating layer outside of other
-	    controls. This can be used to guarantee that the scrim will be shown
-	    on top of other controls.
+		If true, scrim is rendered in a floating layer outside of other
+		controls. This can be used to guarantee that the scrim will be shown
+		on top of other controls.
 	*/
 	floating: false,
 	//* @protected

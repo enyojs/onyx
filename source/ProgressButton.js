@@ -1,7 +1,7 @@
 /**
 	_onyx.ProgressButton_ is a progress bar that has a cancel button on the
 	right and may have other controls inside of it.
-	
+
 		{kind: "onyx.ProgressButton"},
 		{kind: "onyx.ProgressButton", barClasses: "onyx-light", progress: 20, components: [
 			{content: "0"},

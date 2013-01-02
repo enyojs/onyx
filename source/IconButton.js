@@ -2,7 +2,7 @@
 	_onyx.IconButton_ is an icon that acts like a button. The icon image is
 	specified by setting the _src_ property to a URL.
 
-	If you want to combine an icon with text inside a button, use an 
+	If you want to combine an icon with text inside a button, use an
 	<a href="#onyx.Icon">onyx.Icon</a> inside an
 	<a href="#onyx.Button">onyx.Button</a>.
 
@@ -18,7 +18,7 @@ enyo.kind({
 	name: "onyx.IconButton",
 	kind: "onyx.Icon",
 	published: {
-		//* Used when the IconButton is part of a <a href="#enyo.Group">enyo.Group</a>, true 
+		//* Used when the IconButton is part of a <a href="#enyo.Group">enyo.Group</a>, true
 		//* to indicate that this is the active button of the group, false otherwise.
 		active: false
 	},

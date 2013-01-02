@@ -3,7 +3,7 @@
 	with an	<a href="#onyx.TooltipDecorator">onyx.TooltipDecorator</a>. It
 	automatically displays a tooltip when the user hovers over the decorator.
 	The tooltip is positioned around the decorator where there is available
-	window space. 
+	window space.
 
 		{kind: "onyx.TooltipDecorator", components: [
 			{kind: "onyx.Button", content: "Tooltip"},
@@ -20,7 +20,7 @@ enyo.kind({
 	//* over the decorator
 	autoDismiss: false,
 	//* Hovering over the decorator for this length of time (in milliseconds)
-	//* causes the tooltip to appear.  
+	//* causes the tooltip to appear.
 	showDelay: 500,
 	//* Default margin-left value
 	defaultLeft: -6,
@@ -51,7 +51,7 @@ enyo.kind({
 			s += (n + ":" + inRect[n] + (isNaN(inRect[n]) ? "; " : "px; "));
 		}
 		this.addStyles(s);
-	},	
+	},
 	adjustPosition: function(belowActivator) {
 		if (this.showing && this.hasNode()) {
 			var b = this.node.getBoundingClientRect();
@@ -59,18 +59,18 @@ enyo.kind({
 			//when the tooltip bottom goes below the window height move it above the decorator
 			if (b.top + b.height > window.innerHeight) {
 				this.addRemoveClass("below", false);
-				this.addRemoveClass("above", true);	
+				this.addRemoveClass("above", true);
 			} else {
 				this.addRemoveClass("above", false);
-				this.addRemoveClass("below", true);	
+				this.addRemoveClass("below", true);
 			}
-			
+
 			//when the tooltip's right edge is out of the window, align its right edge with the decorator left edge (approx)
 			if (b.left + b.width > window.innerWidth){
-				this.applyPosition({'margin-left': -b.width, bottom: "auto"});	
+				this.applyPosition({'margin-left': -b.width, bottom: "auto"});
 				//use the right-arrow
 				this.addRemoveClass("left-arrow", false);
-				this.addRemoveClass("right-arrow", true);						
+				this.addRemoveClass("right-arrow", true);
 			}
 		}
 	},
@@ -79,8 +79,8 @@ enyo.kind({
 		this.applyPosition({'margin-left': this.defaultLeft, bottom: "auto"});
 		this.addRemoveClass("left-arrow", true);
 		this.addRemoveClass("right-arrow", false);
-		
+
 		this.adjustPosition(true);
-		this.inherited(arguments);			
+		this.inherited(arguments);
 	}
 });

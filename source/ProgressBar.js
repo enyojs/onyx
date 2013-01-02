@@ -1,18 +1,18 @@
 /**
 	_onyx.ProgressBar_ is a  control that shows the current progress of a
 	process in a horizontal bar.
-	
+
 		{kind: "onyx.ProgressBar", progress: 10}
-	
+
 	To animate progress changes, call the _animateProgressTo_ method:
-	
+
 		this.$.progressBar.animateProgressTo(50);
-		
+
 	You may customize the color of the bar by applying a style via the
 	_barClasses_ property, e.g.:
-	
+
 		{kind: "onyx.ProgressBar", barClasses: "onyx-dark"}
-	
+
 	For more information, see the documentation on
 	<a href="https://github.com/enyojs/enyo/wiki/Progress-Indicators">Progress Indicators</a>
 	in the Enyo Developer Guide.

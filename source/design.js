@@ -26,7 +26,7 @@ Palette.model.push(
 			inline: {kind: "onyx.Checkbox"},
 			config: {kind: "onyx.Checkbox"}
 		},
-		{name: "onyx.RadioGroup", 
+		{name: "onyx.RadioGroup",
 			inline: {kind: "onyx.RadioGroup", components: [
 				{content: "A"},
 				{content: "B"},
@@ -36,7 +36,7 @@ Palette.model.push(
 				{content: "RadioButton"}
 			]}
 		},
-		{name: "onyx.RadioButton", 
+		{name: "onyx.RadioButton",
 			inline: {content: "RadioButton", kind: "onyx.RadioButton"},
 			config: {content: "$name", kind: "onyx.RadioButton"}
 		},
@@ -50,11 +50,11 @@ Palette.model.push(
 		},
 		{name: "onyx.Groupbox", title: "Foofoofoo", icon: "box_software.png", stars: 4, version: 2.0, blurb: "Use as a simple page header, or add an optional navigation menu.",
 			inline: {kind: "onyx.Groupbox", components: [
-				{content: "Header", kind: "onyx.GroupboxHeader"}, 
+				{content: "Header", kind: "onyx.GroupboxHeader"},
 				{content: "Item", style: "padding: 10px;"}
 			]},
 			config: {kind: "onyx.Groupbox", isContainer: true, components: [
-				{content: "Header", kind: "onyx.GroupboxHeader", isContainer: true}, 
+				{content: "Header", kind: "onyx.GroupboxHeader", isContainer: true},
 				{content: "Item", style: "padding: 10px;"}
 			]}
 		},

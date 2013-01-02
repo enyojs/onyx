@@ -12,7 +12,7 @@ enyo.kind({
 					{kind:onyx.IconButton, src: "assets/menu-icon-bookmark.png"},
 					{kind: "onyx.ContextualPopup",
 						title:"Toolbar Button",
-						floating:true,					
+						floating:true,
 						actionButtons:[
 							{content:"test1", classes: "onyx-button-warning"},
 							{content:"test2"}
@@ -27,7 +27,7 @@ enyo.kind({
 					{kind:onyx.IconButton, src: "assets/menu-icon-bookmark.png"},
 					{kind: "onyx.ContextualPopup",
 						title:"Toolbar Button",
-						floating:true,					
+						floating:true,
 						actionButtons:[
 							{content:"test1", classes: "onyx-button-warning"},
 							{content:"test2"}
@@ -86,7 +86,7 @@ enyo.kind({
 								{content:"test2"}
 							],
 							components: [
-								{kind: "Scroller", style:"min-width:150px;", horizontal:"auto",  touch:true, thumb:false,  components:[							
+								{kind: "Scroller", style:"min-width:150px;", horizontal:"auto",  touch:true, thumb:false,  components:[
 									{content:"testing 1"},
 									{content:"testing 2"}
 								]}
@@ -142,7 +142,7 @@ enyo.kind({
 						{content: "Press Me"},
 						{kind: "onyx.ContextualPopup",
 							title:"Press Me",
-							floating:true,							
+							floating:true,
 							style:"width:200px",
 							actionButtons:[
 								{content:"test1", classes: "onyx-button-warning"},
@@ -181,15 +181,15 @@ enyo.kind({
 						}
 					]}
 				]}
-			]},
+			]}
 		]},
 		{kind: "onyx.Toolbar", name:"bottomToolbar", classes: "onyx-menu-toolbar", style:"background-color:lightgray", components: [
-			{kind:"FittableColumns", style:"width:100%;", components:[		
+			{kind:"FittableColumns", style:"width:100%;", components:[
 				{kind: "onyx.MenuDecorator", components: [
 					{kind:onyx.IconButton, src: "assets/menu-icon-bookmark.png"},
 					{kind: "onyx.ContextualPopup",
 						title:"Toolbar Button",
-						floating:true,						
+						floating:true,
 						actionButtons:[
 							{content:"test1", classes: "onyx-button-warning"},
 							{content:"test2"}
@@ -208,7 +208,7 @@ enyo.kind({
 					{kind:onyx.IconButton, src: "assets/menu-icon-bookmark.png"},
 					{kind: "onyx.ContextualPopup", name:"facebook",
 						title:"Toolbar Button",
-						floating:true,						
+						floating:true,
 						actionButtons:[
 							{content:"test1", classes: "onyx-button-warning"},
 							{content:"Dismiss", name:"dismiss_button"}

@@ -8,16 +8,16 @@
 		/*
 			the 'inline' class attempts to setup a left-to-right container, with vertically centered children
 		*/
-		.toolbar > *, .inline > * { 
+		.toolbar > *, .inline > * {
 			display: inline-block;
 			vertical-align: middle;
 		}
 		.toolbar, .inline {
 			white-space: nowrap;
 			/*
-				We want to control line-height so that vertical-align: middle 
+				We want to control line-height so that vertical-align: middle
 				becomes true center. Otherwise, when line-height is in effect
-				(i.e. if the actual height is less than line height), 
+				(i.e. if the actual height is less than line height),
 				user agents pad the line unevenly.
 			*/
 			line-height: 0;
@@ -79,7 +79,7 @@
 		}
 		/* */
 		/*
-			for display/debug only, not part of the design 
+			for display/debug only, not part of the design
 		*/
 		.big {
 			font-size: 42px;

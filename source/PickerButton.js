@@ -16,7 +16,7 @@ enyo.kind({
 	},
 	change: function(inSender, inEvent) {
 		if (inEvent.content !== undefined){
-			this.setContent(inEvent.content);	
+			this.setContent(inEvent.content);
 		}
 	}
 });
