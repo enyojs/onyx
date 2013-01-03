@@ -10,7 +10,7 @@
 
 	To initialize the Picker to a particular value, set the _active_ property to
 	true for the item that should be selected.
-
+	
 		{kind: "onyx.PickerDecorator", components: [
 			{}, //this uses the defaultKind property of PickerDecorator to inherit from PickerButton
 			{kind: "onyx.Picker", components: [
@@ -24,7 +24,7 @@
 	Each item in the list is an <a href="#onyx.MenuItem">onyx.MenuItem</a>, so
 	an _onSelect_ event with the item can be listened to by a client application
 	to determine which picker item was selected.
-
+	
 	For more information, see the documentation on
 	<a href="https://github.com/enyojs/enyo/wiki/Pickers">Pickers</a> in the
 	Enyo Developer Guide.
@@ -40,12 +40,15 @@ enyo.kind({
 	events: {
 		/**
 			Fires when the currently selected item changes.
-
+			
 			_inEvent.selected_ contains the currently selected item.
-
+			
 			_inEvent.content_ contains the content of the currently selected item.
 		*/
 		onChange: ""
+	},
+	handlers: {
+		onItemContentChange: 'itemContentChange'
 	},
 	/**
 		Set to true to render the picker in a floating layer outside of other
@@ -88,8 +91,13 @@ enyo.kind({
 			this.doChange({selected: this.selected, content: this.selected.content});
 		}
 	},
+	itemContentChange: function(inSender, inEvent){
+		if(inEvent.originator == this.selected){
+			this.doChange({selected: this.selected, content: this.selected.content});
+		}
+	},
 	resizeHandler: function() {
-		this.inherited(arguments);
+		this.inherited(arguments);			
 		this.adjustPosition();
 	}
 });
