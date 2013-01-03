@@ -41,8 +41,6 @@ enyo.kind({
 		/**
 			Fires when the content of an item changes.
 			
-			_inEvent.selected_ contains the item.
-			
 			_inEvent.content_ contains the content of the item.
 		*/
 		onItemContentChange: ""
