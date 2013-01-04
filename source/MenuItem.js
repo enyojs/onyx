@@ -32,15 +32,15 @@ enyo.kind({
 	events: {
 		/**
 			Fires when the menu item is selected.
-			
+
 			_inEvent.selected_ contains a reference to the menu item.
-			
+
 			_inEvent.content_ contains the menu item's content.
 		*/
 		onSelect: "",
 		/**
 			Fires when the content of an item changes.
-			
+
 			_inEvent.content_ contains the content of the item.
 		*/
 		onItemContentChange: ""
@@ -60,7 +60,7 @@ enyo.kind({
 		this.doSelect({selected:this, content:this.content});
 	},
 	contentChanged: function(inOld){
-		this.inherited(arguments);		
+		this.inherited(arguments);
 		this.doItemContentChange({content: this.content});
 	}
 });
