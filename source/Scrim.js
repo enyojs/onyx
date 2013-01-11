@@ -90,12 +90,12 @@ enyo.kind({
 	kind: null,
 	constructor: function(inName, inProps) {
 		this.instanceName = inName;
-		enyo.setObject(this.instanceName, this);
+		enyo.setPath(this.instanceName, this);
 		this.props = inProps || {};
 	},
 	make: function() {
 		var s = new onyx.Scrim(this.props);
-		enyo.setObject(this.instanceName, s);
+		enyo.setPath(this.instanceName, s);
 		return s;
 	},
 	showAtZIndex: function(inZIndex) {
