@@ -54,7 +54,7 @@ enyo.kind({
 		//workaround for FirefoxOS which doesn't support :active:hover css selectors
 		if(enyo.platform.firefox && enyo.platform.touch) {
 			this.moreComponents[2].ondown = "down";
-			this.moreComponents[2].onup = "up";
+			this.moreComponents[2].onleave = "leave";
 		}
 		this.createComponents(this.moreComponents);
 		this.valueChanged();
@@ -108,7 +108,7 @@ enyo.kind({
 	down: function(inSender, inEvent) {
 		this.addClass("pressed");
 	},
-	up: function(inSender, inEvent) {
+	leave: function(inSender, inEvent) {
 		this.removeClass("pressed");
 	},
 	//* @public
