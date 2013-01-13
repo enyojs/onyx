@@ -51,6 +51,11 @@ enyo.kind({
 	],
 	create: function() {
 		this.inherited(arguments);
+		//workaround for FirefoxOS which doesn't support :active:hover css selectors
+		if(enyo.platform.firefox && enyo.platform.touch) {
+			this.moreComponents[2].ondown = "down";
+			this.moreComponents[2].onup = "up";
+		}
 		this.createComponents(this.moreComponents);
 		this.valueChanged();
 	},
@@ -99,6 +104,12 @@ enyo.kind({
 			this.animateTo(v);
 			return true;
 		}
+	},
+	down: function(inSender, inEvent) {
+		this.addClass("pressed");
+	},
+	up: function(inSender, inEvent) {
+		this.removeClass("pressed");
 	},
 	//* @public
 	//* Animates to the given value.
