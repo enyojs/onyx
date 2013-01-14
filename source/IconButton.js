@@ -26,7 +26,7 @@ enyo.kind({
 	//* @protected
 	create: function() {
 		//workaround for FirefoxOS which doesn't support :active:hover css selectors
-		if(enyo.platform.firefox && enyo.platform.touch) {
+		if(enyo.platform.firefoxOS) {
 			this.handlers.ondown = "down";
 			this.handlers.onleave = "leave";
 		}

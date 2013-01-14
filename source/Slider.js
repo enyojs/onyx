@@ -52,7 +52,7 @@ enyo.kind({
 	create: function() {
 		this.inherited(arguments);
 		//workaround for FirefoxOS which doesn't support :active:hover css selectors
-		if(enyo.platform.firefox && enyo.platform.touch) {
+		if(enyo.platform.firefoxOS) {
 			this.moreComponents[2].ondown = "down";
 			this.moreComponents[2].onleave = "leave";
 		}
