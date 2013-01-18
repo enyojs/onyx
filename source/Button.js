@@ -19,5 +19,20 @@
 enyo.kind({
 	name: "onyx.Button",
 	kind: "enyo.Button",
-	classes: "onyx-button enyo-unselectable"
+	classes: "onyx-button enyo-unselectable",
+	//* @protected
+	create: function() {
+		//workaround for FirefoxOS which doesn't support :active:hover css selectors
+		if(enyo.platform.firefoxOS) {
+			this.handlers.ondown = "down";
+			this.handlers.onleave = "leave";
+		}
+		this.inherited(arguments);
+	},
+	down: function(inSender, inEvent) {
+		this.addClass("pressed");
+	},
+	leave: function(inSender, inEvent) {
+		this.removeClass("pressed");
+	}
 });
