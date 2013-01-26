@@ -60,6 +60,7 @@
   vertical-align: middle;
 }
 .onyx-icon.onyx-icon-button.active,
+.onyx-icon.onyx-icon-button.pressed,
 .onyx-icon.onyx-icon-button:active:hover,
 .onyx-icon-toggle.active {
   background-position: 0 -32px;
@@ -116,7 +117,8 @@
 
 	the effect is as if .onyx-button.active doesn't exist
 */
-.onyx-button.active {
+.onyx-button.active,
+.onyx-button.pressed {
   background-image: url(./../images/gradient-invert.png);
   background-position: top;
   border-top: 1px solid rgba(15, 15, 15, 0.6);
@@ -265,6 +267,7 @@
   outline: none;
   cursor: pointer;
   background-color: transparent;
+  background-image: none;
   font-size: 16px;
   box-shadow: none;
   /* FIXME: hack for styling reset on Android */
@@ -389,6 +392,7 @@
   outline: none;
   cursor: pointer;
   background-color: transparent;
+  background-image: none;
   font-size: 16px;
   box-shadow: none;
   /* Remove scrollbars and resize handle */
@@ -421,6 +425,7 @@
   outline: none;
   cursor: pointer;
   background-color: transparent;
+  background-image: none;
   font-size: 16px;
   min-height: 20px;
   min-width: 100px;
@@ -787,6 +792,7 @@
   margin: -23px -20px;
 }
 .onyx-slider-knob.active,
+.onyx-slider-knob.pressed,
 .onyx-slider-knob:active:hover {
   background-position: 0 -40px;
 }

@@ -24,6 +24,20 @@ enyo.kind({
 	},
 	classes: "onyx-icon-button",
 	//* @protected
+	create: function() {
+		//workaround for FirefoxOS which doesn't support :active:hover css selectors
+		if(enyo.platform.firefoxOS) {
+			this.handlers.ondown = "down";
+			this.handlers.onleave = "leave";
+		}
+		this.inherited(arguments);
+	},
+	down: function(inSender, inEvent) {
+		this.addClass("pressed");
+	},
+	leave: function(inSender, inEvent) {
+		this.removeClass("pressed");
+	},
 	rendered: function() {
 		this.inherited(arguments);
 		this.activeChanged();
