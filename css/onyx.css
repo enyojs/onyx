@@ -581,7 +581,6 @@
 
   white-space: nowrap;
   overflow-y: visible;
-  overflow-x: hidden;
   font-size: 20px;
 }
 .onyx-toolbar-inline > *,
