@@ -103,15 +103,18 @@ enyo.kind({
 		if (!this.item) {
 			return;
 		}
-		if (inOld !== undefined) {
+		if (inOld != null) {
 			this.item.removeClass("selected");
 			this.$.flyweight.renderRow(inOld);
 		}
-		this.item.addClass("selected");
-		this.$.flyweight.renderRow(this.selected);
-		// need to remove the class from control to make sure it won't apply to other rows
-		this.item.removeClass("selected");
-		var n = this.$.flyweight.fetchRowNode(this.selected);
+		var n;
+		if (this.selected != null) {
+			this.item.addClass("selected");
+			this.$.flyweight.renderRow(this.selected);
+			// need to remove the class from control to make sure it won't apply to other rows
+			this.item.removeClass("selected");
+			n = this.$.flyweight.fetchRowNode(this.selected);
+		}
 		this.doChange({selected: this.selected, content: n && n.textContent || this.item.content});
 	},
 	itemTap: function(inSender, inEvent) {
