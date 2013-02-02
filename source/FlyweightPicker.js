@@ -58,7 +58,7 @@ enyo.kind({
 		onSetupItem: "",
 		/**
 			Fires when an item is selected. The _content_ property contains the
-			content of the selected item, while the _index_ property contains
+			content of the selected item, while the _selected_ property contains
 			its row index.
 		*/
 		onSelect: ""
@@ -69,7 +69,7 @@ enyo.kind({
 	},
 	components: [
 		{name: "scroller", kind: "enyo.Scroller", strategyKind: "TouchScrollStrategy", components: [
-			{name: "flyweight", kind: "FlyweightRepeater", ontap: "itemTap"}
+			{name: "flyweight", kind: "FlyweightRepeater", noSelect: true, ontap: "itemTap"}
 		]}
 	],
 	scrollerName: "scroller",
