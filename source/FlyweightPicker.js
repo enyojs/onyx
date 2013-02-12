@@ -58,7 +58,7 @@ enyo.kind({
 		onSetupItem: "",
 		/**
 			Fires when an item is selected. The _content_ property contains the
-			content of the selected item, while the _index_ property contains
+			content of the selected item, while the _selected_ property contains
 			its row index.
 		*/
 		onSelect: ""
@@ -69,7 +69,7 @@ enyo.kind({
 	},
 	components: [
 		{name: "scroller", kind: "enyo.Scroller", strategyKind: "TouchScrollStrategy", components: [
-			{name: "flyweight", kind: "FlyweightRepeater", ontap: "itemTap"}
+			{name: "flyweight", kind: "FlyweightRepeater", noSelect: true, ontap: "itemTap"}
 		]}
 	],
 	scrollerName: "scroller",
@@ -103,15 +103,18 @@ enyo.kind({
 		if (!this.item) {
 			return;
 		}
-		if (inOld !== undefined) {
+		if (inOld != null) {
 			this.item.removeClass("selected");
 			this.$.flyweight.renderRow(inOld);
 		}
-		this.item.addClass("selected");
-		this.$.flyweight.renderRow(this.selected);
-		// need to remove the class from control to make sure it won't apply to other rows
-		this.item.removeClass("selected");
-		var n = this.$.flyweight.fetchRowNode(this.selected);
+		var n;
+		if (this.selected != null) {
+			this.item.addClass("selected");
+			this.$.flyweight.renderRow(this.selected);
+			// need to remove the class from control to make sure it won't apply to other rows
+			this.item.removeClass("selected");
+			n = this.$.flyweight.fetchRowNode(this.selected);
+		}
 		this.doChange({selected: this.selected, content: n && n.textContent || this.item.content});
 	},
 	itemTap: function(inSender, inEvent) {
