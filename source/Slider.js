@@ -53,7 +53,7 @@ enyo.kind({
 		this.inherited(arguments);
 		//workaround for FirefoxOS which doesn't support :active:hover css selectors
 		if(enyo.platform.firefoxOS) {
-			this.moreComponents[2].ondown = "down";
+			this.moreComponents[2].onenter = "enter";
 			this.moreComponents[2].onleave = "leave";
 		}
 		this.createComponents(this.moreComponents);
@@ -105,7 +105,7 @@ enyo.kind({
 			return true;
 		}
 	},
-	down: function(inSender, inEvent) {
+	enter: function(inSender, inEvent) {
 		this.addClass("pressed");
 	},
 	leave: function(inSender, inEvent) {
