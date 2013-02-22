@@ -26,6 +26,7 @@ enyo.kind({
 	//* @protected
 	create: function() {
 		//workaround for FirefoxOS which doesn't support :active:hover css selectors
+		//FirefoxOS simulator does :active:hover css selectors, so do additional srcEvent check
 		if(enyo.platform.firefoxOS) {
 			this.handlers.onenter = "enter";
 			this.handlers.onleave = "leave";
@@ -33,10 +34,12 @@ enyo.kind({
 		this.inherited(arguments);
 	},
 	enter: function(inSender, inEvent) {
-		this.addClass("pressed");
+		if(inEvent.srcEvent.type!="mouseover")
+			this.addClass("pressed");
 	},
 	leave: function(inSender, inEvent) {
-		this.removeClass("pressed");
+		if(inEvent.srcEvent.type!="mouseout")
+			this.removeClass("pressed");
 	},
 	rendered: function() {
 		this.inherited(arguments);

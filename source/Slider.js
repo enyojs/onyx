@@ -52,6 +52,7 @@ enyo.kind({
 	create: function() {
 		this.inherited(arguments);
 		//workaround for FirefoxOS which doesn't support :active:hover css selectors
+		//FirefoxOS simulator does :active:hover css selectors, so do additional srcEvent check
 		if(enyo.platform.firefoxOS) {
 			this.moreComponents[2].onenter = "enter";
 			this.moreComponents[2].onleave = "leave";
@@ -106,10 +107,12 @@ enyo.kind({
 		}
 	},
 	enter: function(inSender, inEvent) {
-		this.addClass("pressed");
+		if(inEvent.srcEvent.type!="mouseover")
+			this.$.knob.addClass("pressed");
 	},
 	leave: function(inSender, inEvent) {
-		this.removeClass("pressed");
+		if(inEvent.srcEvent.type!="mouseout")
+			this.$.knob.removeClass("pressed");
 	},
 	//* @public
 	//* Animates to the given value.
