@@ -66,7 +66,6 @@ enyo.kind({
 		onTap: ""
 	},
 	handlers: {
-		onActivate: "itemActivated",
 		onRequestShowMenu: "requestShow",
 		onRequestHideMenu: "requestHide"
 	},
@@ -113,10 +112,6 @@ enyo.kind({
 		if (this.scrolling) {
 			this.getScroller().setMaxHeight(this.maxHeight + "px");
 		}
-	},
-	itemActivated: function(inSender, inEvent) {
-		inEvent.originator.setActive(false);
-		return true;
 	},
 	showingChanged: function() {
 		this.inherited(arguments);
