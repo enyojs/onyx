@@ -1,0 +1,54 @@
+.onyx-table {
+    *border-collapse: collapse;
+    border-spacing: 0;
+    border: solid #aaaaaa 1px;
+    border-radius: @onyx-table-border-radius;
+    margin: 0;
+    font-size: @onyx-table-font-size;
+}
+    
+.onyx-table td, .onyx-table th {
+    border-left: 1px solid #aaaaaa;
+    border-top: 1px solid #aaaaaa;
+    padding: 10px;
+    text-align: left;
+}
+
+.onyx-table th {
+    background-color: @onyx-table-background;
+	background: @onyx-table-background @onyx-table-gradient repeat-x 0 10px;
+    border-top: none;
+    border-color: @onyx-table-background;
+    color: @onyx-table-header-text-color;
+	font-weight: bold;
+	text-transform: uppercase;
+	font-size: @onyx-table-header-font-size;
+	padding: 2px 10px;
+}
+
+.onyx-table td:first-child, .onyx-table th:first-child {
+    border-left: none;
+}
+
+.onyx-table tr:first-child * {
+	border-top: none;
+}
+.onyx-table tr:first-child *:first-child {
+    border-radius: @onyx-table-border-radius 0 0 0;
+}
+
+.onyx-table tr:first-child *:last-child {
+    border-radius: 0 @onyx-table-border-radius 0 0;
+}
+
+.onyx-table tr:first-child *:only-child{
+    border-radius: @onyx-table-border-radius @onyx-table-border-radius 0 0;
+}
+
+.onyx-table tr:last-child td:first-child {
+    border-radius: 0 0 0 @onyx-table-border-radius;
+}
+
+.onyx-table tr:last-child td:last-child {
+    border-radius: 0 0 @onyx-table-border-radius 0;
+}
