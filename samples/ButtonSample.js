@@ -24,7 +24,7 @@ enyo.kind({
 		{classes: "onyx-sample-divider", content: "Buttons with images"},
 		{classes: "onyx-sample-tools", components: [
 			{kind: "onyx.Button", name:"Image Button", ontap:"buttonTapped", components: [
-				{tag: "img", attributes: {src: "assets/favicon.ico"}},
+				{tag: "img", attributes: {src: "assets/enyo-logo-small.png"}},
 				{content: "There is an image here"}
 			]},
 			{kind: "onyx.Button", name:"Fishbowl Button", ontap:"buttonTapped", components: [

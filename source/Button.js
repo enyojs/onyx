@@ -23,16 +23,31 @@ enyo.kind({
 	//* @protected
 	create: function() {
 		//workaround for FirefoxOS which doesn't support :active:hover css selectors
+		//FirefoxOS simulator does :active:hover css selectors, so do additional srcEvent check
 		if(enyo.platform.firefoxOS) {
-			this.handlers.ondown = "down";
-			this.handlers.onleave = "leave";
+			this.handlers.ondown = "fxosDown";
+			this.handlers.onenter = "fxosEnter";
+			this.handlers.ondrag = "fxosDrag";
+			this.handlers.onleave = "fxosLeave";
+			this.handlers.onup = "fxosUp";
 		}
 		this.inherited(arguments);
 	},
-	down: function(inSender, inEvent) {
+	fxosDown: function(inSender, inEvent) {
 		this.addClass("pressed");
+		this._isInControl = true;
 	},
-	leave: function(inSender, inEvent) {
+	fxosEnter: function(inSender, inEvent) {
+		this._isInControl = true;
+	},
+	fxosDrag: function(inSender, inEvent) {
+		this.addRemoveClass("pressed", this._isInControl);
+	},
+	fxosLeave: function(inSender, inEvent) {
+		this._isInControl = false;
+	},
+	fxosUp: function(inSender, inEvent) {
 		this.removeClass("pressed");
+		this._isInControl = false;
 	}
 });
