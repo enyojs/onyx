@@ -1,4 +1,5 @@
 enyo.depends(
 	"source",
-	"css"
+	"css",
+	"onyx.design"
 );
