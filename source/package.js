@@ -6,6 +6,7 @@ enyo.depends(
 	"Drawer.js",
 	"Grabber.js",
 	"Groupbox.js",
+	"Table.js",
 	"Input.js",
 	"Popup.js",
 	"TextArea.js",
