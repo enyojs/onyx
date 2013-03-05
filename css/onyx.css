@@ -279,11 +279,20 @@
 .onyx-table tr:first-child *:only-child {
   border-radius: 4px 4px 0 0;
 }
-.onyx-table tr:last-child td:first-child {
+.onyx-table tr:last-child *:first-child {
   border-radius: 0 0 0 4px;
 }
-.onyx-table tr:last-child td:last-child {
+.onyx-table tr:last-child *:last-child {
   border-radius: 0 0 4px 0;
+}
+.onyx-table tr:last-child *:only-child {
+  border-radius: 0 0 4px 4px;
+}
+.onyx-table tr:only-child *:first-child {
+  border-radius: 4px 0 0 4px;
+}
+.onyx-table tr:only-child *:last-child {
+  border-radius: 0 4px 4px 0;
 }
 /* Input.css */
 .onyx-input-decorator {

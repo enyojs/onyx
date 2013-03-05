@@ -45,10 +45,23 @@
     border-radius: @onyx-table-border-radius @onyx-table-border-radius 0 0;
 }
 
-.onyx-table tr:last-child td:first-child {
+.onyx-table tr:last-child *:first-child {
     border-radius: 0 0 0 @onyx-table-border-radius;
 }
 
-.onyx-table tr:last-child td:last-child {
+.onyx-table tr:last-child *:last-child {
     border-radius: 0 0 @onyx-table-border-radius 0;
 }
+
+.onyx-table tr:last-child *:only-child{
+    border-radius: 0 0 @onyx-table-border-radius @onyx-table-border-radius;
+}
+
+.onyx-table tr:only-child *:first-child {
+    border-radius: @onyx-table-border-radius 0 0 @onyx-table-border-radius;
+}
+
+.onyx-table tr:only-child *:last-child {
+    border-radius: 0 @onyx-table-border-radius @onyx-table-border-radius 0;
+}
+
