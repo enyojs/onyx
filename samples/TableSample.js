@@ -36,12 +36,12 @@ enyo.kind({
 			genRow: function(inRowCount) {
 				var rowData = this.rowData[inRowCount];
 				// set a negative class on any cell containing a negative number.
-				var out = enyo.map(rowData, function(cell) { return (cell < 0) ? { classes: "negative", content: cell } : cell; });
+				var out = enyo.map(rowData, function(cell) { return (cell < 0) ? { classes: "onyx-sample-negative-cell", content: cell } : cell; });
 				console.log(rowData);
 				// calculate the yearly income
 				var year = rowData[1] + rowData[2] + rowData[3] + rowData[4];
 				year = Math.round(year*100)/100;
-				out.push((year < 0) ? { classes: "negative", content: year } : year);
+				out.push((year < 0) ? { classes: "onyx-sample-negative-cell", content: year } : year);
 				return out;
 			},
 			genFooter: function() {
@@ -52,7 +52,7 @@ enyo.kind({
 					// calculate a sum for all offices in each column.
 					var total = this.getCol(i).reduce(sum);
 					total = Math.round(total*100)/100;
-					out.push({ tag: "th", classes: (total < 0) ? "negative" : "", content: total });
+					out.push({ tag: "th", classes: (total < 0) ? "onyx-sample-negative-cell" : "", content: total });
 				}
 				return out;
 			}

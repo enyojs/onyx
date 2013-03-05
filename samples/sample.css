@@ -41,3 +41,6 @@
 .onyx-contextualpopup-button-container{
 	padding:10px;
 }
+td.onyx-sample-negative-cell, th.onyx-sample-negative-cell {
+	color: red;
+}
