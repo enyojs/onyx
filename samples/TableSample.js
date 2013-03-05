@@ -37,7 +37,6 @@ enyo.kind({
 				var rowData = this.rowData[inRowCount];
 				// set a negative class on any cell containing a negative number.
 				var out = enyo.map(rowData, function(cell) { return (cell < 0) ? { classes: "onyx-sample-negative-cell", content: cell } : cell; });
-				console.log(rowData);
 				// calculate the yearly income
 				var year = rowData[1] + rowData[2] + rowData[3] + rowData[4];
 				year = Math.round(year*100)/100;
