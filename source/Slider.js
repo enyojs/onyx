@@ -120,6 +120,7 @@ enyo.kind({
 		this.$.knob.addRemoveClass("pressed", this._isInControl);
 	},
 	fxosLeave: function(inSender, inEvent) {
+		this.$.knob.removeClass("pressed");
 		this._isInControl = false;
 	},
 	fxosUp: function(inSender, inEvent) {
