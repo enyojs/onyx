@@ -93,6 +93,7 @@ enyo.kind({
 	},
 	setupYear: function(inSender, inEvent) {
 		this.$.year.setContent(this.minYear+inEvent.index);
+		return true;
 	},
 	setupPickers: function(ordering) {
 		var orderingArr = ordering.split("");
