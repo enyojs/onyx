@@ -1,6 +1,5 @@
 enyo.depends(
 	"sample.css",
-	"DrawerSample.css",
 	"ButtonGroupSample.js",
 	"ButtonSample.js",
 	"CheckboxSample.js",
@@ -12,7 +11,6 @@ enyo.depends(
 	"SliderSample.js",
 	"ToggleButtonSample.js",
 	"ToolbarSample.js",
-	"DrawerSample.js",
 	"MenuSample.js",
 	"TooltipSample.js",
 	"SpinnerSample.js",
