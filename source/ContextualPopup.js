@@ -97,7 +97,7 @@ enyo.kind({
 				classes: this.actionButtons[i].classes + " onyx-contextual-popup-action-button",
 				name: this.actionButtons[i].name ? this.actionButtons[i].name : "ActionButton"+i,
 				index: i,
-				tap: enyo.bind(this,this.tapHandler)
+				tap: this.actionButtons[i].ontap ? enyo.bind(this.owner, this.actionButtons[i].ontap) : enyo.bind(this, this.tapHandler)
 			});
 		}
 	},
