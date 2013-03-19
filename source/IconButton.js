@@ -47,6 +47,7 @@ enyo.kind({
 		this.addRemoveClass("pressed", this._isInControl);
 	},
 	fxosLeave: function(inSender, inEvent) {
+		this.removeClass("pressed");
 		this._isInControl = false;
 	},
 	fxosUp: function(inSender, inEvent) {
