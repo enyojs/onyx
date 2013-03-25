@@ -27,8 +27,6 @@ enyo.depends(
 	"ToggleButton.js",
 	"ToggleIconButton.js",
 	"Toolbar.js",
-	"Tooltip.js",
-	"TooltipDecorator.js",
 	"ProgressBar.js",
 	"ProgressButton.js",
 	"Scrim.js",
