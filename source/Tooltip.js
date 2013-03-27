@@ -30,7 +30,7 @@ enyo.kind({
 		onRequestHideTooltip: "requestHide"
 	},
 	requestShow: function() {
-		this.showJob = setTimeout(enyo.bind(this, "show"), this.showDelay);
+		this.showJob = setTimeout(this.bindSafely("show"), this.showDelay);
 		return true;
 	},
 	cancelShow: function() {

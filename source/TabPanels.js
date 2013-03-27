@@ -31,7 +31,7 @@ enyo.kind({
 	],
 	create: function() {
 		this.inherited(arguments);
-		this.$.client.getPanels = enyo.bind(this, "getClientPanels");
+		this.$.client.getPanels = this.bindSafely("getClientPanels");
 		this.draggableChanged();
 		this.animateChanged();
 		this.wrapChanged();
