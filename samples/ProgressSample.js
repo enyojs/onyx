@@ -67,9 +67,9 @@ enyo.kind({
 	},
 	nextProgress: function() {
 		if (this._progressing) {
-			enyo.requestAnimationFrame(enyo.bind(this, function() {
+			enyo.requestAnimationFrame(this.bindSafely(function() {
 				this.incrementProgress();
-				setTimeout(enyo.bind(this, "nextProgress"), 500);
+				setTimeout(this.bindSafely("nextProgress"), 500);
 			}), this.hasNode());
 		}
 	},

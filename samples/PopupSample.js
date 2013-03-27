@@ -51,13 +51,13 @@ enyo.kind({
 		// FIXME: needed to hide ios keyboard
 		document.activeElement.blur();
 		if(this.$.modalPopup.showing) {   // Refocus input on modal
-			enyo.job("focus", enyo.bind(this.$.input, "focus"), 500);
+			enyo.job("focus", this.$.input.bindSafely("focus"), 500);
 		}
 	},
 	popupShown: function() {
 		// FIXME: does not focus input on android.
 		this.$.input.focus();
-		enyo.job("focus", enyo.bind(this.$.input, "focus"), 500);
+		enyo.job("focus", this.$.input.bindSafely("focus"), 500);
 	},
 	closeModalPopup: function() {
 		this.$.modalPopup.hide();
