@@ -21,7 +21,6 @@ enyo.kind({
 	name: "onyx.Submenu",
 	defaultKind: "onyx.MenuItem",
 	initComponents: function() {
-		var owner = this.getInstanceOwner();
 		this.createChrome([
 			{
 				name: "label",
@@ -31,7 +30,7 @@ enyo.kind({
 				isChrome: true,
 				ontap: "toggleOpen"
 			},
-			{kind: "onyx.Drawer", name: "client", classes: "client onyx-submenu", isChrome: true, open: false},
+			{kind: "onyx.Drawer", name: "client", classes: "client onyx-submenu", isChrome: true, open: false}
 		]);
 
 		this.inherited(arguments);
