@@ -337,6 +337,11 @@
   z-index: 10;
   overflow: visible;
 }
+/* Submenu.css */
+.onyx-menu .onyx-submenu {
+  background: rgba(0, 0, 0, 0.25) url(./../images/gradient-invert.png) repeat-x 0 top;
+  border: 0 1px;
+}
 /* Picker.css */
 .onyx-picker-decorator .onyx-button {
   padding: 10px 18px;
