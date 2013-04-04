@@ -11,11 +11,11 @@
 				{kind: "onyx.Submenu", content: "Sort by...", components: [
 					{content: "A"},
 					{content: "B"},
-					{content: "C"},
+					{content: "C"}
 				]},
-				{content: "Three"},
-			]},
-		]},
+				{content: "Three"}
+			]}
+		]}
  */
 enyo.kind({
 	name: "onyx.Submenu",
