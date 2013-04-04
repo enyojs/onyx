@@ -101,13 +101,17 @@ enyo.kind({
 		for(f = 0, l = orderingArr.length; f < l; f++) {
 			o = orderingArr[f];
 			switch (o){
-				case 'd': this.createDay();
+			case 'd':
+				this.createDay();
 				break;
-				case 'm': this.createMonth();
+			case 'm':
+				this.createMonth();
 				break;
-				case 'y': this.createYear();
+			case 'y':
+				this.createYear();
 				break;
-				default: break;
+			default:
+				break;
 			}
 		}
 	},

@@ -59,7 +59,7 @@ enyo.kind({
 		// Validate our value
 		this.value = this.value >= this.min && this.value <= this.max ? this.value : this.min;
 		for (var i=0; i<len; i++) {
-			if (this.value === parseInt(controls[i].content)) {
+			if (this.value === parseInt(controls[i].content, 10)) {
 				this.setSelected(controls[i]);
 				break;
 			}
@@ -73,6 +73,6 @@ enyo.kind({
 			this.selected.addClass("selected");
 			this.doChange({selected: this.selected, content: this.selected.content});
 		}
-		this.value = parseInt(this.selected.content);
+		this.value = parseInt(this.selected.content, 10);
 	}
 });

@@ -99,10 +99,11 @@ enyo.kind({
 		this.$[inEvent.name + "Value"].setContent(fmt.format(inEvent.value));
 	},
 	format: function(dateComponents) {
-		return (fmt = new enyo.g11n.DateFmt({
+		var fmt = new enyo.g11n.DateFmt({
 			dateComponents: dateComponents || undefined,
 			date: 'short',
 			locale: new enyo.g11n.Locale(this.locale)
-		}));
+		});
+		return fmt;
 	}
 });

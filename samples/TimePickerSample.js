@@ -34,8 +34,9 @@ enyo.kind({
 		{kind:"onyx.Button",content:"Reset Times", ontap:"resetTimes"},
 
 		{style:"width:100%;height:5px;background-color:black;margin-bottom:5px;"},
-		{caption: "Dates", style: "padding: 10px", components: [
-				{content:"TIME",classes:"onyx-sample-divider"},
+		{caption: "Dates", style: "padding: 10px", components:
+		[
+			{content:"TIME",classes:"onyx-sample-divider"},
 			{classes: "onyx-toolbar-inline", components: [
 				{name:"timePicker1", kind:"onyx.TimePicker"}
 			]},

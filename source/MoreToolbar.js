@@ -143,6 +143,7 @@ enyo.kind({
 	},
 	findCollapsibleItem: function() {
 		var c$ = this.$.client.children;
+		var c;
 		for (var i=c$.length-1; (c=c$[i]); i--) {
 			if (!c.unmoveable) {
 				return c;

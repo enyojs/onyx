@@ -123,7 +123,8 @@ enyo.kind({
 		this.doSelect({selected: this.item, content: this.item.content});
 	},
 	itemSelect: function(inSender, inEvent) {
-		//Block all select events that aren't coming from this control. This is to prevent select events from MenuItems since they won't have the correct value in a Flyweight context.
+		//Block all select events that aren't coming from this control. This is to prevent
+		// select events from MenuItems since they won't have the correct value in a Flyweight context.
 		if (inEvent.originator != this) {
 			return true;
 		}

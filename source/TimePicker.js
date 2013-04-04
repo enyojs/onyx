@@ -102,13 +102,17 @@ enyo.kind({
 		for(f = 0, l = orderingArr.length; f < l; f++) {
 			o = orderingArr[f];
 			switch (o){
-				case 'h': this.createHour();
+			case 'h':
+				this.createHour();
 				break;
-				case 'm': this.createMinute();
+			case 'm':
+				this.createMinute();
 				break;
-				case 'a': this.createAmPm();
+			case 'a':
+				this.createAmPm();
 				break;
-				default: break;
+			default:
+				break;
 			}
 		}
 	},
@@ -185,7 +189,7 @@ enyo.kind({
 						this.value.getMilliseconds());
 	},
 	isAm: function(value){
-		var am, pm, isAm;
+		var am, pm;
 		//Workaround for pickers not having directly retrievable active item. Using it to find whether
 		//picker is on AM or PM (& have to check localized spelling as well)
 		try {
