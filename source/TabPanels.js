@@ -29,7 +29,7 @@ enyo.kind(
 			{
 				kind: "Scroller",
 				maxHeight: "100px",
-				strategyKind: "TranslateScrollStrategy",
+				strategyKind: "TranslateScrollStrategy", // FIXME: may need to be revisited for desktop
 				thumb: false,
 				vertical: "hidden",
 				horizontal: "auto",
