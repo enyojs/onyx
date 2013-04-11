@@ -27,6 +27,7 @@ enyo.kind(
 
 		tabTools: [
 			{
+				name: "scroller",
 				kind: "Scroller",
 				maxHeight: "100px",
 				strategyKind: "TranslateScrollStrategy", // FIXME: may need to be revisited for desktop
