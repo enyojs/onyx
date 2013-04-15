@@ -27,20 +27,54 @@ enyo.kind(
 
 		tabTools: [
 			{
-				name: "scroller",
-				kind: "Scroller",
-				maxHeight: "100px",
-				strategyKind: "TranslateScrollStrategy", // FIXME: may need to be revisited for desktop
-				thumb: false,
-				vertical: "hidden",
-				horizontal: "auto",
+				kind: "FittableColumns",
+				isPanel: true,
+				name: 'wrapper',
 				components: [
 					{
-						name: "tabs",
-						kind: "onyx.RadioGroup",
-						style: "text-align: left; white-space: nowrap",
-						controlClasses: "onyx-tabbutton",
-						onActivate: "tabActivate"
+						name: "scroller",
+						isPanel: true,
+						kind: "Scroller",
+						fit:true,
+						maxHeight: "100px",
+
+						// FIXME: may need to be revisited for desktop
+						strategyKind: "TranslateScrollStrategy",
+
+						thumb: false,
+						vertical: "hidden",
+						horizontal: "auto",
+						classes: "onyx-tab-panel-scroller",
+						components: [
+							{
+								name: "tabs",
+								isPanel: true,
+								kind: "onyx.RadioGroup",
+								style: "text-align: left; white-space: nowrap;",
+								controlClasses: "onyx-tabbutton",
+								onActivate: "tabActivate"
+							}
+						]
+					},
+					{
+						kind: "onyx.MenuDecorator",
+						isPanel: true,
+						components: [
+							{
+								kind: "onyx.Button",
+								isPanel: true,
+								content: "\\/" // FIXME: is ugly
+							},
+							{
+								name: "picker",
+								kind: "onyx.ContextualPopup",
+								isPanel: true,
+								actionButtons: [
+									{content:"Button 1", classes: "onyx-button-warning"},
+									{content:"Button 2"}
+								]
+							}
+						]
 					}
 				]
 			},
@@ -98,16 +132,16 @@ enyo.kind(
 			this.$.client.setWrap(this.wrap);
 			this.wrap = false;
 		},
-		isPanel: function(inControl) {
-			var n = inControl.name;
-			return !(n == "tabs" || n == "client" || n == "scroller");
+		isClient: function(inControl) {
+			return ! inControl.isPanel ;
 		},
 		addControl: function(inControl) {
 			this.dlog("addControl called on name "+ inControl.name + " content "+inControl.content , inControl);
 			this.inherited(arguments);
-			if (this.isPanel(inControl)) {
+			if (this.isClient(inControl)) {
 				var c = inControl.caption || ("Tab " + this.$.tabs.controls.length);
 				var t = inControl._tab = this.$.tabs.createComponent({content: c});
+				this.dlog("addControl add tab " + c);
 				if (this.hasNode()) {
 					t.render();
 				}
@@ -115,7 +149,7 @@ enyo.kind(
 			this.dlog("addControl done");
 		},
 		removeControl: function(inControl) {
-			if (this.isPanel(inControl) && inControl._tab) {
+			if (this.isClient(inControl) && inControl._tab) {
 				inControl._tab.destroy();
 			}
 			this.inherited(arguments);
