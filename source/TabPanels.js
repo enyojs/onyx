@@ -52,8 +52,16 @@ enyo.kind(
 				onTransitionStart: "clientTransitionStart"
 			}
 		],
+
+		dlog: function () {
+			if (this.debug) {
+				this.log(arguments) ;
+			}
+		},
+
 		create: function() {
 			this.inherited(arguments);
+			this.dlog("create called");
 			this.$.client.getPanels = this.bindSafely("getClientPanels");
 
 			// basically, set all these Panel parameters to false
@@ -62,8 +70,10 @@ enyo.kind(
 			this.wrapChanged();
 		},
 		initComponents: function() {
+			this.dlog("initComponents called");
 			this.createChrome(this.tabTools);
 			this.inherited(arguments);
+			this.dlog("initComponents done");
 		},
 		getClientPanels: function() {
 			return this.getPanels();
@@ -93,6 +103,7 @@ enyo.kind(
 			return !(n == "tabs" || n == "client" || n == "scroller");
 		},
 		addControl: function(inControl) {
+			this.dlog("addControl called on name "+ inControl.name + " content "+inControl.content , inControl);
 			this.inherited(arguments);
 			if (this.isPanel(inControl)) {
 				var c = inControl.caption || ("Tab " + this.$.tabs.controls.length);
@@ -101,6 +112,7 @@ enyo.kind(
 					t.render();
 				}
 			}
+			this.dlog("addControl done");
 		},
 		removeControl: function(inControl) {
 			if (this.isPanel(inControl) && inControl._tab) {
@@ -124,6 +136,7 @@ enyo.kind(
 			this.index = this.$.client.getIndex();
 		},
 		tabActivate: function(inSender, inEvent) {
+			this.dlog("tabActivate called") ;
 			if (this.hasNode()) {
 				if (inEvent.originator.active) {
 					var i = inEvent.originator.indexInContainer();
