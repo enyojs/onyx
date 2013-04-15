@@ -55,6 +55,8 @@ enyo.kind(
 		create: function() {
 			this.inherited(arguments);
 			this.$.client.getPanels = this.bindSafely("getClientPanels");
+
+			// basically, set all these Panel parameters to false
 			this.draggableChanged();
 			this.animateChanged();
 			this.wrapChanged();
@@ -106,6 +108,8 @@ enyo.kind(
 			}
 			this.inherited(arguments);
 		},
+
+		// layout is a property of inherited UiComponent
 		layoutKindChanged: function() {
 			if (!this.layout) {
 				this.layout = enyo.createFromKind("FittableRowsLayout", this);
