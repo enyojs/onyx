@@ -32,7 +32,11 @@ enyo.kind({
 			{kind: "onyx.Button", content: "Popup at Event (right)", ontap: "showPopupAtEvent", popup: "rightEventPopup", style: "float: right;"},
 			{kind: "onyx.Button", content: "Popup at Event", ontap: "showPopupAtEvent", popup: "leftEventPopup"},
 			{name: "leftEventPopup", classes: "onyx-sample-popup", kind: "onyx.Popup", modal: true, floating: true, content: "Anchor defaults<br/>to top left corner", allowHtml: true},
-			{name: "rightEventPopup", classes: "onyx-sample-popup", kind: "onyx.Popup", modal: true, floating: true, content: "Adjusts anchor to<br/>stay in viewport", allowHtml: true}
+			{name: "rightEventPopup", classes: "onyx-sample-popup", kind: "onyx.Popup", modal: true, floating: true, content: "Adjusts anchor to<br/>stay in viewport", allowHtml: true},
+			{tag: "br"},
+			{kind: "onyx.Button", content: "Two Popups", ontap: "showTwoPopups"},
+			{name: "firstPopup", classes: "onyx-sample-popup", kind: "onyx.Popup", modal: false, floating: true, content: "Popup 1", style: "top: 20px; left: 20px"},
+			{name: "secondPopup", classes: "onyx-sample-popup", kind: "onyx.Popup", modal: false, floating: true, content: "Popup 2", style: "top: 20px; left: 200px"}
 		]}
 	],
 	showPopup: function(inSender) {
@@ -51,15 +55,20 @@ enyo.kind({
 		// FIXME: needed to hide ios keyboard
 		document.activeElement.blur();
 		if(this.$.modalPopup.showing) {   // Refocus input on modal
-			enyo.job("focus", this.$.input.bindSafely("focus"), 500);
+			this.startJob("focus", function() { this.$.input.focus(); }, 500);
 		}
 	},
 	popupShown: function() {
 		// FIXME: does not focus input on android.
 		this.$.input.focus();
-		enyo.job("focus", this.$.input.bindSafely("focus"), 500);
+		this.startJob("focus", function() { this.$.input.focus(); }, 500);
 	},
 	closeModalPopup: function() {
 		this.$.modalPopup.hide();
+	},
+	showTwoPopups: function() {
+		this.$.firstPopup.show();
+		this.$.secondPopup.show();
+		this.startJob("clearSecond", function() { this.$.secondPopup.hide(); }, 2000);
 	}
 });
