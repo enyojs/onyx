@@ -18,6 +18,7 @@ Here's an example:
 		});
 		new App().write();
 */
+
 enyo.kind(
 	{
 		name: "enyo.TabPanels",
@@ -25,61 +26,19 @@ enyo.kind(
 		//* @protected
 		draggable: false,
 
+		handlers  : {
+			onActivate: 'tabActivate' ,
+		},
+
 		tabTools: [
 			{
-				kind: "FittableColumns",
+				kind: 'onyx.TabBar',
 				isPanel: true,
-				name: 'wrapper',
-				components: [
-					{
-						name: "scroller",
-						isPanel: true,
-						kind: "Scroller",
-						fit:true,
-						maxHeight: "100px",
-
-						// FIXME: may need to be revisited for desktop
-						strategyKind: "TranslateScrollStrategy",
-
-						thumb: false,
-						vertical: "hidden",
-						horizontal: "auto",
-						classes: "onyx-tab-panel-scroller",
-						components: [
-							{
-								name: "tabs",
-								isPanel: true,
-								kind: "onyx.RadioGroup",
-								style: "text-align: left; white-space: nowrap;",
-								controlClasses: "onyx-tabbutton",
-								onActivate: "tabActivate"
-							}
-						]
-					},
-					{
-						kind: "onyx.MenuDecorator",
-						isPanel: true,
-						components: [
-							{
-								kind: "onyx.Button",
-								isPanel: true,
-								content: "\\/" // FIXME: is ugly
-							},
-							{
-								name: "picker",
-								kind: "onyx.ContextualPopup",
-								isPanel: true,
-								actionButtons: [
-									{content:"Button 1", classes: "onyx-button-warning"},
-									{content:"Button 2"}
-								]
-							}
-						]
-					}
-				]
+				name: 'bar'
 			},
 			{
 				name: "client",
+				isPanel: true,
 				fit: true,
 				kind: "Panels",
 				classes: "enyo-tab-panels",
@@ -96,6 +55,7 @@ enyo.kind(
 		create: function() {
 			this.inherited(arguments);
 			this.dlog("create called");
+			// getPanels called on client will return panels of *this* kind
 			this.$.client.getPanels = this.bindSafely("getClientPanels");
 
 			// basically, set all these Panel parameters to false
@@ -112,6 +72,7 @@ enyo.kind(
 		getClientPanels: function() {
 			return this.getPanels();
 		},
+
 		flow: function() {
 			this.inherited(arguments);
 			this.$.client.flow();
@@ -132,6 +93,7 @@ enyo.kind(
 			this.$.client.setWrap(this.wrap);
 			this.wrap = false;
 		},
+
 		isClient: function(inControl) {
 			return ! inControl.isPanel ;
 		},
@@ -139,12 +101,7 @@ enyo.kind(
 			this.dlog("addControl called on name "+ inControl.name + " content "+inControl.content , inControl);
 			this.inherited(arguments);
 			if (this.isClient(inControl)) {
-				var c = inControl.caption || ("Tab " + this.$.tabs.controls.length);
-				var t = inControl._tab = this.$.tabs.createComponent({content: c});
-				this.dlog("addControl add tab " + c);
-				if (this.hasNode()) {
-					t.render();
-				}
+				inControl._tab = this.$.bar.addTab(inControl) ;
 			}
 			this.dlog("addControl done");
 		},
@@ -179,21 +136,6 @@ enyo.kind(
 					}
 				}
 			}
-		},
-		clientTransitionStart: function(inSender, inEvent) {
-			var i = inEvent.toIndex;
-			var t = this.$.tabs.getClientControls()[i];
-			if (t && t.hasNode()) {
-				this.$.tabs.setActive(t);
-				var tn = t.node;
-				var tl = tn.offsetLeft;
-				var tr = tl + tn.offsetWidth;
-				var sb = this.$.scroller.getScrollBounds();
-				if (tr < sb.left || tr > sb.left + sb.clientWidth) {
-					this.$.scroller.scrollToControl(t);
-				}
-			}
-			return true;
 		},
 		startTransition: enyo.nop,
 		finishTransition: enyo.nop,
