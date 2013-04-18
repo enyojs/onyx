@@ -27,7 +27,7 @@ enyo.kind(
 		draggable: false,
 
 		handlers  : {
-			onActivate: 'tabActivate' ,
+			onTabChanged: 'switchPanel'
 		},
 
 		tabTools: [
@@ -126,14 +126,12 @@ enyo.kind(
 			}
 			this.index = this.$.client.getIndex();
 		},
-		tabActivate: function(inSender, inEvent) {
-			this.dlog("tabActivate called") ;
+		switchPanel: function(inSender, inEvent) {
 			if (this.hasNode()) {
-				if (inEvent.originator.active) {
-					var i = inEvent.originator.indexInContainer();
-					if (this.getIndex() != i) {
-						this.setIndex(i);
-					}
+				var i = inEvent.index;
+				this.dlog("switchPanel called with caption "+ inEvent.caption) ;
+				if (this.getIndex() != i) {
+					this.setIndex(i);
 				}
 			}
 		},
