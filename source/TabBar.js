@@ -158,23 +158,51 @@ enyo.kind (
 		 */
 
 		removeTab: function(target) {
+			var tab = this.resolveTab(target,'removeTab');
+			tab && tab.destroy();
+		},
+
+		//@ protected
+		resolveTab: function(target,action_name){
+			var targetTab ;
 			if (target.caption) {
 				enyo.forEach(
 					this.$.tabs.controls,
 					function(tab){
 						if (tab.content === target.caption) {
-							tab.destroy() ;
+							targetTab = tab;
 						}
 					}
 				);
 			}
 			else if (typeof target.index !== undefined) {
-				var goner = this.$.tabs.controls[target.index];
-				goner && goner.destroy() ;
+				targetTab = this.$.tabs.controls[target.index];
 			}
 			else {
-				alert("internal error: removeTab called without index or caption");
+				alert("internal error: " + action_name+ " called without index or caption");
 			}
+			return targetTab ;
+		},
+
+		/**
+		 * @public
+		 *
+		 * Activate a tab in the tab bar. target is an object with
+		 * either a caption attribute or an index. The tab(s) matching
+		 * the caption will be activated or the tab with matching
+		 * index will be activated
+		 *
+		 * Example:
+		 *
+		 *    myTab.activate({'index':0}); // activate the leftmost tab
+		 *    myTab.activate({'caption':'foo.js'});
+		 *
+		 * Note that tabActivated event will be fired.
+		 *
+		 */
+		activate: function(target) {
+			var tab = this.resolveTab(target,'activate');
+			tab && this.$.tabs.setActive(tab);
 		},
 
 		//* @protected
