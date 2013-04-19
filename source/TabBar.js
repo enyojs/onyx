@@ -49,7 +49,13 @@ enyo.kind (
 			 *        data: { <user data passed to addTab> }
 			 *    }
 			 */
-			onTabChanged: ""
+			onTabChanged: "",
+
+			/**
+			 * Fired when a tab is removed. inEvent contains the same
+			 * data as onTabChanged
+			 */
+			onTabRemoved: ""
 		},
 
 		components: [
@@ -97,6 +103,9 @@ enyo.kind (
 
 		// debug: true,
 
+		// lastIndex is required to avoid duplicate index in the tab bar.
+		lastIndex: 0,
+
 		//* @protected
 		dlog: function () {
 			if (this.debug) {
@@ -132,9 +141,15 @@ enyo.kind (
 		 *
 		 */
 		addTab: function(inControl) {
-			var c = inControl.caption || ("Tab " + this.$.tabs.controls.length);
+			var c = inControl.caption || ("Tab " + this.lastIndex);
 			var d = inControl.data || { } ;
-			var t = this.$.tabs.createComponent({content: c, user_data: d });
+			var t = this.$.tabs.createComponent(
+				{
+					content:  c,
+					userData: d,
+					tabIndex: this.lastIndex++
+				}
+			);
 			this.dlog("addControl add tab " + c);
 			if (this.hasNode()) {
 				t.render();
@@ -160,6 +175,13 @@ enyo.kind (
 		removeTab: function(target) {
 			var tab = this.resolveTab(target,'removeTab');
 			tab && tab.destroy();
+			this.doTabRemoved(
+				{
+					index:   tab.tabIndex,
+					caption: tab.content,
+					data:    tab.userData
+				}
+			);
 		},
 
 		//@ protected
