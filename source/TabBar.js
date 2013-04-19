@@ -45,7 +45,8 @@ enyo.kind (
 			 *
 			 *    {
 			 *        index: <index of tab in tab bar>,
-			 *        caption: <caption of tab>
+			 *        caption: <caption of tab>,
+			 *        data: { <user data passed to addTab> }
 			 *    }
 			 */
 			onTabChanged: ""
@@ -123,14 +124,17 @@ enyo.kind (
 		/**
 		 * @public
 		 *
-		 * Append a new tab to the tab bar. inControl is an object with an optional
-		 * caption attribute. When not specifief the tab will have a generated content
-		 * like 'Tab 0', 'Tab 1'. etc...
+		 * Append a new tab to the tab bar. inControl is an object
+		 * with optional caption and data attributes. When not
+		 * specified the tab will have a generated caption like 'Tab
+		 * 0', 'Tab 1'. etc... data is an arbitrary object that will
+		 * be given back with onTabChanged events
 		 *
 		 */
 		addTab: function(inControl) {
 			var c = inControl.caption || ("Tab " + this.$.tabs.controls.length);
-			var t = this.$.tabs.createComponent({content: c});
+			var d = inControl.data || { } ;
+			var t = this.$.tabs.createComponent({content: c, user_data: d });
 			this.dlog("addControl add tab " + c);
 			if (this.hasNode()) {
 				t.render();
@@ -181,7 +185,13 @@ enyo.kind (
 					var orig = inEvent.originator ;
 					var i = orig.indexInContainer();
 					this.dlog("tabActivated called on index " + i ) ;
-					this.doTabChanged({index: i, caption: orig.content});
+					this.doTabChanged(
+						{
+							index: i,
+							caption: orig.content,
+							data: orig.user_data
+						}
+					);
 				}
 			}
 		}
