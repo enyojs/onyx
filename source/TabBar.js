@@ -5,28 +5,35 @@ be used by other kinds to provide a similar layout
 
 Here's an example:
 
+
 	enyo.kind({
-		  name: "myStuff",
-	);
+		  name: "myStuff"
+	});
 
 	enyo.kind({
 		name: "App",
 		fit: true,
 		components: [
 			{name:"bar",kind: "TabBar"},
-			{kind: "MyStuff"},
+			{kind: "MyStuff"}
 		],
 
 		events: {
 			onTabChanged: "switchStuff"
-		}
+		},
 
 		create: function() {
-			this.$.bar.addTab({'caption': 'hello'}) ;
-		}
+			this.$.bar.addTab(
+				{
+					'caption': 'greetings',
+					'data' : { 'msg': 'Hello World !' } // arbitrary user data
+				}
+			) ;
+		},
 
-		switchStuff: function(data) {
-			this.log("tab with caption "+ data.caption + " was tapped");
+		switchStuff: function(inSender,inEvent) {
+			this.log("Tapped tab with caption "+ inEvent.caption
+					 + " and message " + inEvent.data.msg );
 		}
 	});
 
@@ -40,14 +47,15 @@ enyo.kind (
 
 		events: {
 			/**
-			 * Fired when a tab different from the one currently selected is tapped.
-			 * inEvent contains :
-			 *
-			 *    {
-			 *        index: <index of tab in tab bar>,
-			 *        caption: <caption of tab>,
-			 *        data: { <user data passed to addTab> }
-			 *    }
+			 Fired when a tab different from the one currently selected is tapped.
+			 inEvent contains :
+
+				   {
+				       'index': 3, // index of tab in tab bar
+				       'caption': 'bar.js', // tab label
+				       'data': { 'lang': 'javascript' }
+				   }
+
 			 */
 			onTabChanged: "",
 
@@ -101,17 +109,10 @@ enyo.kind (
 			}
 		],
 
-		// debug: true,
+		debug: false,
 
 		// lastIndex is required to avoid duplicate index in the tab bar.
 		lastIndex: 0,
-
-		//* @protected
-		dlog: function () {
-			if (this.debug) {
-				this.log(arguments) ;
-			}
-		},
 
 		//* @protected
 		clientTransitionStart: function(inSender, inEvent) {
@@ -135,8 +136,8 @@ enyo.kind (
 		 *
 		 * Append a new tab to the tab bar. inControl is an object
 		 * with optional caption and data attributes. When not
-		 * specified the tab will have a generated caption like 'Tab
-		 * 0', 'Tab 1'. etc... data is an arbitrary object that will
+		 * specified the tab will have a generated caption like
+		 * 'Tab 0', 'Tab 1'. etc... data is an arbitrary object that will
 		 * be given back with onTabChanged events
 		 *
 		 */
@@ -150,7 +151,7 @@ enyo.kind (
 					tabIndex: this.lastIndex++
 				}
 			);
-			this.dlog("addControl add tab " + c);
+			this.debug && this.log("addControl add tab " + c);
 			if (this.hasNode()) {
 				t.render();
 			}
@@ -166,10 +167,10 @@ enyo.kind (
 		 * index will be destroyed.
 		 *
 		 * Example:
-		 *
-		 *    myTab.remove({'index':0}); // remove the leftmost tab
-		 *    myTab.remove({'caption':'foo.js'});
-		 *
+
+			myTab.remove({'index':0}); // remove the leftmost tab
+			myTab.remove({'caption':'foo.js'});
+
 		 */
 
 		removeTab: function(target) {
@@ -215,10 +216,10 @@ enyo.kind (
 		 * index will be activated
 		 *
 		 * Example:
-		 *
-		 *    myTab.activate({'index':0}); // activate the leftmost tab
-		 *    myTab.activate({'caption':'foo.js'});
-		 *
+
+			myTab.activate({'index':0}); // activate the leftmost tab
+			myTab.activate({'caption':'foo.js'});
+
 		 * Note that tabActivated event will be fired.
 		 *
 		 */
@@ -234,7 +235,7 @@ enyo.kind (
 				if (inEvent.originator.active) {
 					var orig = inEvent.originator ;
 					var i = orig.indexInContainer();
-					this.dlog("tabActivated called on index " + i ) ;
+					this.debug && this.log("tabActivated called on index " + i ) ;
 					this.doTabChanged(
 						{
 							index: i,
@@ -245,8 +246,6 @@ enyo.kind (
 				}
 			}
 		}
-
 	}
-
 );
 
