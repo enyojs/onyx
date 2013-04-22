@@ -198,11 +198,11 @@ enyo.kind (
 					}
 				);
 			}
-			else if (typeof target.index !== undefined) {
+			else if (typeof target.index !== 'undefined') {
 				targetTab = this.$.tabs.controls[target.index];
 			}
 			else {
-				throw new Error("internal error: " + action_name+ " called without index or caption");
+				throw new Error("internal: " + action_name+ " called without index or caption");
 			}
 			return targetTab ;
 		},
