@@ -202,7 +202,7 @@ enyo.kind (
 				targetTab = this.$.tabs.controls[target.index];
 			}
 			else {
-				alert("internal error: " + action_name+ " called without index or caption");
+				throw new Error("internal error: " + action_name+ " called without index or caption");
 			}
 			return targetTab ;
 		},
