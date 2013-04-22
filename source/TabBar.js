@@ -50,19 +50,19 @@ enyo.kind (
 			 Fired when a tab different from the one currently selected is tapped.
 			 inEvent contains :
 
-				   {
-				       'index': 3, // index of tab in tab bar
-				       'caption': 'bar.js', // tab label
-				       'data': { 'lang': 'javascript' }
-				   }
+			{
+				'index': 3, // index of tab in tab bar
+				'caption': 'bar.js', // tab label
+				'data': { 'lang': 'javascript' },
+				'next': callback // call with error message if problem
+			}
 
 			 */
 			onTabChanged: "",
 
 			/**
 			 * Fired when a tab is about to be removed. inEvent
-			 * contains the same data as onTabChanged and a next()
-			 * common-JS style callback.
+			 * contains the same data as onTabChanged.
 			 *
 			 * if (removeOk) { inEvent.next() ;}
 			 * else ( inEvent.next('not now') ;}
@@ -72,7 +72,7 @@ enyo.kind (
 
 			/**
 			 * Fired when a tab is removed. inEvent contains the same
-			 * data as onTabChanged
+			 * data as onTabChanged (minus the next callback)
 			 */
 			onTabRemoved: ""
 		},
@@ -97,7 +97,7 @@ enyo.kind (
 						kind: "onyx.RadioGroup",
 						style: "text-align: left; white-space: nowrap;",
 						controlClasses: "onyx-tabbutton",
-						onActivate: 'tabActivated'
+						onActivate: 'switchTab'
 					}
 				]
 			},
@@ -258,25 +258,37 @@ enyo.kind (
 		 */
 		activate: function(target) {
 			var tab = this.resolveTab(target,'activate');
-			tab && this.$.tabs.setActive(tab);
+			this.debug && this.log("activate called on tab", target) ;
+			tab && tab.setActive(true) ;
 		},
 
 		//* @protected
-		tabActivated: function(inSender, inEvent) {
-			// not called when a selected tab is tapped gain
+		switchTab: function(inSender, inEvent) {
+			// not called when a selected tab is tapped again
 			if (this.hasNode()) {
 				if (inEvent.originator.active) {
 					var orig = inEvent.originator ;
 					var i = orig.indexInContainer();
-					this.debug && this.log("tabActivated called on index " + i ) ;
+					var oldIndex = this.selectedId || 0 ;
+					this.selectedId = i;
+					this.debug && this.log("switchTab called on index " + i ) ;
 					this.doTabChanged(
 						{
 							index: i,
 							caption: orig.content,
-							data: orig.user_data
+							data: orig.user_data,
+							next: enyo.bind(this,'undoSwitchOnError', oldIndex)
 						}
 					);
 				}
+			}
+		},
+
+		// @protected
+		undoSwitchOnError: function(oldIndex, err) {
+			if (err) {
+				this.log("app requested to activate back tab index "+ oldIndex + " because ",err);
+				this.activate({ 'index': oldIndex } ) ;
 			}
 		}
 	}
