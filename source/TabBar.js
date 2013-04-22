@@ -60,6 +60,17 @@ enyo.kind (
 			onTabChanged: "",
 
 			/**
+			 * Fired when a tab is about to be removed. inEvent
+			 * contains the same data as onTabChanged and a next()
+			 * common-JS style callback.
+			 *
+			 * if (removeOk) { inEvent.next() ;}
+			 * else ( inEvent.next('not now') ;}
+			 *
+			 */
+			onTabRemoveRequested: "",
+
+			/**
 			 * Fired when a tab is removed. inEvent contains the same
 			 * data as onTabChanged
 			 */
@@ -183,6 +194,28 @@ enyo.kind (
 					data:    tab.userData
 				}
 			);
+		},
+
+		/**
+		 * @public
+		 *
+		 * Request to remove a tab from the tab bar. This is a bit
+		 * like removeTab, except that a onTabRemoveRequested event is
+		 * fired to let the application the possibility to cancel the
+		 * request.
+		 *
+		 */
+
+		requestRemoveTab: function(target) {
+			var tab = this.resolveTab(target,'removeTab');
+			var that = this ;
+			if (tab) {
+				target.next = function(err) {
+					if (err) { throw new Error(err);   }
+					else     { that.removeTab(target); }
+				} ;
+				this.doTabRemoveRequested( target ) ;
+			}
 		},
 
 		//@ protected
