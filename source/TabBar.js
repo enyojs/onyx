@@ -52,6 +52,7 @@ enyo.kind (
 
 			{
 				'index': 3, // index of tab in tab bar
+				'userId': 1234, // unique id in tab managed by user
 				'caption': 'bar.js', // tab label
 				'data': { 'lang': 'javascript' },
 				'next': callback // call with error message if problem
@@ -154,11 +155,11 @@ enyo.kind (
 		 */
 		addTab: function(inControl) {
 			var c = inControl.caption || ("Tab " + this.lastIndex);
-			var d = inControl.data || { } ;
 			var t = this.$.tabs.createComponent(
 				{
 					content:  c,
-					userData: d,
+					userData: inControl.data || { },
+					userId:   inControl.userId, // may be null
 					tabIndex: this.lastIndex++
 				}
 			);
@@ -191,6 +192,7 @@ enyo.kind (
 				{
 					index:   tab.tabIndex,
 					caption: tab.content,
+					userId:  tab.userId,
 					data:    tab.userData
 				}
 			);
@@ -274,10 +276,11 @@ enyo.kind (
 					this.debug && this.log("switchTab called on index " + i ) ;
 					this.doTabChanged(
 						{
-							index: i,
+							index:   i,
 							caption: orig.content,
-							data: orig.user_data,
-							next: enyo.bind(this,'undoSwitchOnError', oldIndex)
+							data:    orig.userData,
+							userId:  orig.userId,
+							next:    enyo.bind(this,'undoSwitchOnError', oldIndex)
 						}
 					);
 				}
