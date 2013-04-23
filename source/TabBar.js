@@ -223,7 +223,17 @@ enyo.kind (
 		//@ protected
 		resolveTab: function(target,action_name){
 			var targetTab ;
-			if (target.caption) {
+			if (target.userId) {
+				enyo.forEach(
+					this.$.tabs.controls,
+					function(tab){
+						if (tab.userId === target.userId) {
+							targetTab = tab;
+						}
+					}
+				);
+			}
+			else if (target.caption) {
 				enyo.forEach(
 					this.$.tabs.controls,
 					function(tab){
