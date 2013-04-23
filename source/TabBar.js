@@ -86,7 +86,11 @@ enyo.kind (
 				maxHeight: "100px",
 
 				// FIXME: may need to be revisited for desktop
-				strategyKind: "TranslateScrollStrategy",
+				// activate calls scrollIntoView, which call strategy.scroll
+				// this method is implemented *only* in TransitionScrollStrategy
+				// which may be an enyo bug (2303)
+				strategyKind: "TransitionScrollStrategy",
+				//strategyKind: "TranslateScrollStrategy",
 
 				thumb: false,
 				vertical: "hidden",
@@ -271,7 +275,10 @@ enyo.kind (
 		activate: function(target) {
 			var tab = this.resolveTab(target,'activate');
 			this.debug && this.log("activate called on tab", target) ;
-			tab && tab.setActive(true) ;
+			if (tab) {
+				tab.setActive(true) ;
+				this.$.scroller.scrollIntoView(tab);
+			}
 		},
 
 		//* @protected
