@@ -100,11 +100,12 @@ enyo.kind (
 					{
 						name: "tabs",
 						kind: "onyx.RadioGroup",
+						defaultKind: "onyx.TabBar.Item",
 						style: "text-align: left; white-space: nowrap;",
-						controlClasses: "onyx-tabbutton",
-						onActivate: 'switchTab'
+						onTabActivated: 'switchTab'
 					}
-				]
+				],
+				onScrollStop: 'showBoundaries'
 			},
 			{
 				kind: "onyx.MenuDecorator",
@@ -126,6 +127,11 @@ enyo.kind (
 		],
 
 		debug: false,
+
+		showBoundaries: function(inSender, inEvent) {
+			var snode = this.$.scroller.hasNode();
+			this.log("boundaries width", snode.clientWidth ," outer ", snode.scrollWidth ) ;
+		},
 
 		// lastIndex is required to avoid duplicate index in the tab bar.
 		lastIndex: 0,
@@ -283,25 +289,20 @@ enyo.kind (
 
 		//* @protected
 		switchTab: function(inSender, inEvent) {
-			// not called when a selected tab is tapped again
-			if (this.hasNode()) {
-				if (inEvent.originator.active) {
-					var orig = inEvent.originator ;
-					var i = orig.indexInContainer();
-					var oldIndex = this.selectedId || 0 ;
-					this.selectedId = i;
-					this.debug && this.log("switchTab called on index " + i ) ;
-					this.doTabChanged(
-						{
-							index:   i,
-							caption: orig.content,
-							data:    orig.userData,
-							userId:  orig.userId,
-							next:    enyo.bind(this,'undoSwitchOnError', oldIndex)
-						}
-					);
+			var oldIndex = this.selectedId || 0 ;
+			this.selectedId = inEvent.index;
+			this.debug && this.log("switchTab called on index " , inEvent, inSender ) ;
+			this.doTabChanged(
+				{
+					index:   inEvent.index,
+					caption: inEvent.content,
+					data:    inEvent.userData,
+					userId:  inEvent.userId,
+					next:    enyo.bind(this,'undoSwitchOnError', oldIndex)
 				}
-			}
+			);
+			this.showBoundaries();
+			return true ;
 		},
 
 		// @protected
@@ -310,7 +311,15 @@ enyo.kind (
 				this.log("app requested to activate back tab index "+ oldIndex + " because ",err);
 				this.activate({ 'index': oldIndex } ) ;
 			}
-		}
+		},
+
+		// resize stuff:
+		// use scroller's getScrollBounds to get scroll boundaries
+		resizeHandler: function() {
+			this.inherited(arguments);
+			this.showBoundaries() ;
+		},
+
 	}
 );
 
