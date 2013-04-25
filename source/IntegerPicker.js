@@ -53,11 +53,11 @@ enyo.kind({
 			this.createComponent({content: i, active: (i===this.value) ? true : false});
 		}
 	},
-	valueChanged: function(inOld) {
+    valueChanged: function(inOld) {
 		var controls = this.getClientControls();
 		var len = controls.length;
 		// Validate our value
-		this.value = this.value >= this.min && this.value <= this.max ? this.value : this.min;
+		this.value = Math.min(this.max, Math.max(this.value, this.min));
 		for (var i=0; i<len; i++) {
 			if (this.value === parseInt(controls[i].content, 10)) {
 				this.setSelected(controls[i]);
