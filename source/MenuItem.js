@@ -49,7 +49,9 @@ enyo.kind({
 	classes: "onyx-menu-item",
 	tag: "div",
 	create: function(){
+		this.silence();
 		this.inherited(arguments);
+		this.unsilence();
 		if (this.active){
 			this.bubble("onActivate");
 		}
