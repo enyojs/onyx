@@ -153,8 +153,8 @@ enyo.kind (
 			return true;
 		},
 
+		//* @public
 		/**
-		 * @public
 		 *
 		 * Append a new tab to the tab bar. inControl is an object
 		 * with optional caption and data attributes. When not
@@ -180,8 +180,8 @@ enyo.kind (
 			return t;
 		},
 
+		//* @public
 		/**
-		 * @public
 		 *
 		 * Remove a tab from the tab bar. target is an object with
 		 * either a caption attribute or an index. The tab(s) matching
@@ -208,8 +208,8 @@ enyo.kind (
 			);
 		},
 
+		//* @public
 		/**
-		 * @public
 		 *
 		 * Request to remove a tab from the tab bar. This is a bit
 		 * like removeTab, except that a onTabRemoveRequested event is
@@ -230,7 +230,7 @@ enyo.kind (
 			}
 		},
 
-		//@ protected
+		//* @protected
 		resolveTab: function(target,action_name){
 			var targetTab ;
 			if (target.userId) {
@@ -262,8 +262,8 @@ enyo.kind (
 			return targetTab ;
 		},
 
+		//* @public
 		/**
-		 * @public
 		 *
 		 * Activate a tab in the tab bar. target is an object with
 		 * either a caption attribute or an index. The tab(s) matching
@@ -305,7 +305,7 @@ enyo.kind (
 			return true ;
 		},
 
-		// @protected
+		//* @protected
 		undoSwitchOnError: function(oldIndex, err) {
 			if (err) {
 				this.log("app requested to activate back tab index "+ oldIndex + " because ",err);
