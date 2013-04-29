@@ -8,18 +8,18 @@ designed to be used only within TabBar.
 enyo.kind (
 	{
 		name: 'onyx.TabBar.Item',
+		classes: "onyx-tab-item",
 		events: {
 			onTabActivated: ''
 		},
 		components: [
 			{
-				kind: "onyx.RadioButton",
-				classes: "onyx-tabbutton",
+				kind: "Button", // no need of onyx.RadioButton
 				name: 'button' ,
 				onActivate: 'relayActivate'
 			},
 			{
-				classes: 'onyx-tabitem-gradient'
+				classes: 'onyx-tab-item-dissolve'
 			}
 		],
 		debug: false,

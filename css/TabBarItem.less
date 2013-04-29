@@ -1,6 +1,6 @@
 /* TabBarItem.css */
-@whitestrong: rgba(255,255,255,1);
-@whiteweak:   rgba(255,255,255,0);
+@tab-strong: @onyx-light-background;
+@tab-weak:   fadeout(@tab-strong,100%);
 
 .onyx-tab-item {
 
@@ -10,7 +10,8 @@
 		text-overflow: ellipsis;
 		width: 140px;
 		overflow: hidden;
-		white-space: nowrap;
+		tab--space: nowrap;
+		background-color: @tab-strong;
 	}
 }
 
@@ -18,17 +19,18 @@
 	display: inline-block;
 	height: 100%; 
 	width: 50px;
-	left: 90px;
+	top: 0;
+	right: 2px;
 	position: absolute;
 	
 	// tested 
-	background: linear-gradient(to right,@whiteweak 0%, @whitestrong 100%); /* W3C */
+	background: -webkit-gradient(linear, right top, left top, color-stop(0%,@tab-strong), color-stop(100%,@tab-weak)); /* Chrome,Safari4+ */
 
 	// untested
-	background: -moz-linear-gradient(right,  @whitestrong 0%, @whiteweak 100%); /* FF3.6+ */
-	background: -webkit-gradient(linear, right top, left top, color-stop(0%,@whitestrong), color-stop(100%,@whiteweak)); /* Chrome,Safari4+ */
-	background: -webkit-linear-gradient(left, @whiteweak,@whitestrong); /* Chrome10+,Safari5.1+ */
-	background: -o-linear-gradient(left,  @whitestrong 100%,@whiteweak 0%); /* Opera 11.10+ */
-	background: -ms-linear-gradient(left,  @whitestrong 100%,@whiteweak 0%); /* IE10+ */
+	background: linear-gradient(to right,@tab-weak 0%, @tab-strong 100%); /* W3C */
+	background: -moz-linear-gradient(right,  @tab-strong 0%, @tab-weak 100%); /* FF3.6+ */
+	background: -webkit-linear-gradient(left, @tab-weak,@tab-strong); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(left,  @tab-strong 100%,@tab-weak 0%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(left,  @tab-strong 100%,@tab-weak 0%); /* IE10+ */
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=1 ); /* IE6-9 */
 }
