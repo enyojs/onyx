@@ -504,6 +504,13 @@
   font-size: 20px;
   border-radius: 0px;
 }
+/* TabPanels.css */
+.onyx-tab-panel-scroller .enyo-touch-scroller {
+  display: inline ;
+}
+.onyx-tab-panel-scroller .enyo-touch-scroller div {
+  display: inline;
+}
 /* ToggleButton.css */
 .onyx-toggle-button {
   display: inline-block;
