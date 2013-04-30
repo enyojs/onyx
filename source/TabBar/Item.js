@@ -20,7 +20,9 @@ enyo.kind (
 			},
 			{
 				classes: 'onyx-tab-item-dissolve',
-				ontap: 'shadowRelay'
+				ontap: 'shadowRelay',
+				name: 'dissolve',
+				showing: false
 			}
 		],
 		debug: true,
@@ -61,6 +63,13 @@ enyo.kind (
 		reduce: function(coeff) {
 			this.origWidth = this.origWidth || this.getBounds().width ;
 			var width = Math.floor( this.origWidth * coeff) ;
+
+			if (coeff === 1) {
+				this.$.dissolve.hide();
+			}
+			else {
+				this.$.dissolve.show();
+			}
 
 			this.$.button.applyStyle('width', width + 'px') ;
 			this.$.button.render();
