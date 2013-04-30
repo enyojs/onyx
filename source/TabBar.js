@@ -295,7 +295,7 @@ enyo.kind (
 			this.doTabChanged(
 				{
 					index:   inEvent.index,
-					caption: inEvent.content,
+					caption: inEvent.caption,
 					data:    inEvent.userData,
 					userId:  inEvent.userId,
 					next:    enyo.bind(this,'undoSwitchOnError', oldIndex)
