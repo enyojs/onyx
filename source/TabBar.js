@@ -44,6 +44,7 @@ enyo.kind (
 		name: 'onyx.TabBar',
 		kind: "FittableColumns",
 		isPanel: true,
+		classes: "onyx-tab-bar",
 
 		events: {
 			/**
@@ -95,7 +96,7 @@ enyo.kind (
 				thumb: false,
 				vertical: "hidden",
 				horizontal: "auto",
-				classes: "onyx-tab-panel-scroller",
+				classes: "onyx-tab-bar-scroller",
 				components: [
 					{
 						name: "tabs",
