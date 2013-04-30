@@ -16,6 +16,7 @@ enyo.depends(
 	"MenuDecorator.js",
 	"Menu.js",
 	"MenuItem.js",
+	"Submenu.js",
 	"PickerDecorator.js",
 	"PickerButton.js",
 	"Picker.js",
