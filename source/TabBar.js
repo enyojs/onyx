@@ -147,6 +147,11 @@ enyo.kind (
 			return true;
 		},
 
+		rendered: function() {
+			this.inherited(arguments);
+			this.resetWidth();
+		},
+
 		//* @public
 		/**
 		 *
@@ -170,6 +175,7 @@ enyo.kind (
 			this.debug && this.log("addControl add tab " + c);
 			if (this.hasNode()) {
 				t.render();
+				this.resetWidth();
 			}
 			return t;
 		},
@@ -192,6 +198,7 @@ enyo.kind (
 		removeTab: function(target) {
 			var tab = this.resolveTab(target,'removeTab');
 			tab && tab.destroy();
+			this.resetWidth();
 			this.doTabRemoved(
 				{
 					index:   tab.tabIndex,
@@ -323,15 +330,24 @@ enyo.kind (
 					 "tab:" + tabsWidth ) ;
 			var coeff = scrolledWidth > tabsWidth ? 1
 			          :                             scrolledWidth / tabsWidth ;
-			this.log("coeff is ", coeff) ;
 			coeff = coeff < 0.5 ? 0.5 : coeff;
+			this.applyCoeff(coeff) ;
+		},
 
+		applyCoeff: function(coeff) {
+			if (this.debug) this.log("coeff is ", coeff) ;
 			enyo.forEach(
 				this.$.tabs.getControls(),
 				function(tab){
 					tab.reduce(coeff) ;
 				}
 			);
+		},
+
+		resetWidth: function() {
+			this.applyCoeff(1) ; // restore original size to all tabs
+			this.origTabWidth = this.$.tabs.getBounds().width; // measure tab width
+			this.adjustTabWidth();
 		}
 
 	}
