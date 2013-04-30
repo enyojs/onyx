@@ -105,7 +105,6 @@ enyo.kind (
 						onTabActivated: 'switchTab'
 					}
 				],
-				onScrollStop: 'showBoundaries'
 			},
 			{
 				kind: "onyx.MenuDecorator",
@@ -126,12 +125,7 @@ enyo.kind (
 			}
 		],
 
-		debug: false,
-
-		showBoundaries: function(inSender, inEvent) {
-			var snode = this.$.scroller.hasNode();
-			this.log("boundaries width", snode.clientWidth ," outer ", snode.scrollWidth ) ;
-		},
+		debug: true,
 
 		// lastIndex is required to avoid duplicate index in the tab bar.
 		lastIndex: 0,
@@ -301,7 +295,6 @@ enyo.kind (
 					next:    enyo.bind(this,'undoSwitchOnError', oldIndex)
 				}
 			);
-			this.showBoundaries();
 			return true ;
 		},
 
@@ -317,8 +310,29 @@ enyo.kind (
 		// use scroller's getScrollBounds to get scroll boundaries
 		resizeHandler: function() {
 			this.inherited(arguments);
-			this.showBoundaries() ;
+			this.adjustTabWidth() ;
 		},
+
+		origTabWidth: null,
+		adjustTabWidth: function(inSender, inEvent) {
+			var scrollWidth = this.$.scroller.hasNode().scrollWidth;
+			var scrolledWidth = this.$.scroller.getBounds().width;
+			this.origTabWidth = this.origTabWidth || this.$.tabs.getBounds().width;
+			var tabsWidth = this.origTabWidth ;
+			this.log("scroll width", scrollWidth ," scrolled ", scrolledWidth ,
+					 "tab:" + tabsWidth ) ;
+			var coeff = scrolledWidth > tabsWidth ? 1
+			          :                             scrolledWidth / tabsWidth ;
+			this.log("coeff is ", coeff) ;
+			coeff = coeff < 0.5 ? 0.5 : coeff;
+
+			enyo.forEach(
+				this.$.tabs.getControls(),
+				function(tab){
+					tab.reduce(coeff) ;
+				}
+			);
+		}
 
 	}
 );

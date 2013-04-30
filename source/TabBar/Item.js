@@ -55,6 +55,15 @@ enyo.kind (
 			}
 			// do not return true ;
 			// activate event must be propagated to my RadioGroup owner
+		},
+
+		origWidth: null,
+		reduce: function(coeff) {
+			this.origWidth = this.origWidth || this.getBounds().width ;
+			var width = Math.floor( this.origWidth * coeff) ;
+
+			this.$.button.applyStyle('width', width + 'px') ;
+			this.$.button.render();
 		}
 	}
 );
