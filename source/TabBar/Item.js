@@ -19,10 +19,11 @@ enyo.kind (
 				onActivate: 'relayActivate'
 			},
 			{
-				classes: 'onyx-tab-item-dissolve'
+				classes: 'onyx-tab-item-dissolve',
+				ontap: 'shadowRelay'
 			}
 		],
-		debug: false,
+		debug: true,
 
 		create: function() {
 			this.inherited(arguments);
@@ -30,6 +31,12 @@ enyo.kind (
 			// set up delegation
 			this.setActive = enyo.bind(this.$.button, this.$.button.setActive);
 		},
+
+		shadowRelay: function (inSender, inEvent) {
+			this.$.button.tap() ;
+			return true ;
+		},
+
 		relayActivate: function(inSender, inEvent) {
 			// not called when a selected tab is tapped again
 			if (this.$.button.hasNode()) {
