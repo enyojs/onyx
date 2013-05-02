@@ -1,21 +1,50 @@
 /* TabBarItem.css */
 @tab-strong: @onyx-light-background;
 @tab-weak:   fadeout(@tab-strong,100%);
+@tab-border: darken(@tab-strong, 40%);
+@tab-inactive: darken(@tab-strong, 10%);
+
 
 .onyx-tab-item {
 
 	position: relative;
+	//top: 2px ;
+	padding: 3px;
+	border: 1px solid @tab-border;
+	margin: 2px;
+	margin-bottom: 4px;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
+	background-color: @tab-inactive ;
+
+	&.active {
+		border-bottom: 1px solid @tab-strong;
+		margin-bottom: -2px;
+		background-color: @tab-strong;
+	}
+
+	&:hover {
+		background-color: @tab-strong;
+	}
 
 	button {
 		overflow: hidden;
+		border-style: none;
 		tab--space: nowrap;
-		background-color: @tab-strong;
+		background-color: @tab-inactive ;
+		&.active {
+			background-color: @tab-strong;
+		}
+		&:hover {
+			background-color: @tab-strong;
+		}
 	}
+
 }
 
 .onyx-tab-item-dissolve {
 	display: inline-block;
-	height: 100%; 
+	height: 90%;
 	width: 50px;
 	top: 0;
 	right: 2px;

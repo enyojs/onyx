@@ -53,6 +53,10 @@ enyo.kind (
 							userId:  this.userId
 						}
 					);
+					this.addClass('active');
+				}
+				else {
+					this.removeClass('active');
 				}
 			}
 			// do not return true ;

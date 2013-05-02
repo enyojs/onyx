@@ -104,6 +104,9 @@ enyo.kind (
 						defaultKind: "onyx.TabBar.Item",
 						style: "text-align: left; white-space: nowrap;",
 						onTabActivated: 'switchTab'
+					},
+					{
+						tag: 'hr'
 					}
 				],
 			},
@@ -174,6 +177,7 @@ enyo.kind (
 				}
 			);
 			this.debug && this.log("addControl add tab " + c);
+			t.setActive(true);
 			if (this.hasNode()) {
 				t.render();
 				this.resetWidth();
