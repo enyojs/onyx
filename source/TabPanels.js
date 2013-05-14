@@ -98,7 +98,7 @@ enyo.kind(
 			return ! inControl.isPanel ;
 		},
 		addControl: function(inControl) {
-			this.dlog("addControl called on name "+ inControl.name + " content "+inControl.content , inControl);
+			this.dlog("addControl called on name "+ inControl.name + " content "+inControl.content );
 			this.inherited(arguments);
 			if (this.isClient(inControl)) {
 				inControl._tab = this.$.bar.addTab(inControl) ;

@@ -44,7 +44,7 @@ enyo.kind (
 			if (this.$.button.hasNode()) {
 				if (inEvent.originator.active) {
 					var i = this.indexInContainer();
-					this.debug && this.log("relayActivate called index " + i , inEvent ) ;
+					this.debug && this.log("relayActivate called index " + i ) ;
 					this.doTabActivated(
 						{
 							index: i,

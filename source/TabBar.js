@@ -297,7 +297,7 @@ enyo.kind (
 		switchTab: function(inSender, inEvent) {
 			var oldIndex = this.selectedId || 0 ;
 			this.selectedId = inEvent.index;
-			this.debug && this.log("switchTab called on index " , inEvent, inSender ) ;
+			this.debug && this.log("switchTab called on index " , inEvent.index ) ;
 			this.doTabChanged(
 				{
 					index:   inEvent.index,
