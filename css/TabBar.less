@@ -1,21 +1,37 @@
 /* TabBar.css */
+
+@tab-bar-top-clearance: 3px ;
+@tab-strong: @onyx-light-background;
+@tab-border: darken(@tab-strong, 40%);
+@tab-inactive: darken(@tab-strong, 10%);
+
+
 .onyx-tab-bar {
 	background-color: @onyx-light-background;
-	padding-top: 3px;
-
+	padding-top: @tab-bar-top-clearance;
 }
 
-.onyx-tab-bar-scroller .enyo-touch-scroller {
-	display: inline ;
+.onyx-tab-bar-scroller {
+	padding-top: 2px;
 
-	div {
-		display: inline;
-		padding-top: 2px;
+	.enyo-touch-scroller {
+		> div {
+			padding: 30px 0px 3px 0px;
+			margin: 6px 0px 3px 0px;
+			width: 100%;
+		}
 	}
-	hr {
-		border: 1px solid #6D6D6D;
-		border-bottom-width: 0px ;
-		margin: auto;
-	}
+}
+
+.onyx-tab-holder {
+	display: block;
+	position: relative;
+	top:0;
+	left: 0;
+	margin: 3px 0 3px 0;
+	width: 100%;
+	border: 1px solid transparent;
+	border-bottom: 1px solid @tab-border;
+	vertical-align: baseline;
 }
 

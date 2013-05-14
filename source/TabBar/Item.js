@@ -25,7 +25,7 @@ enyo.kind (
 				showing: false
 			}
 		],
-		debug: true,
+		debug: false,
 
 		create: function() {
 			this.inherited(arguments);
@@ -65,10 +65,13 @@ enyo.kind (
 			// activate event must be propagated to my RadioGroup owner
 		},
 
-		origWidth: null,
+		_origWidth: null,
+		origWidth: function() {
+			this._origWidth = this._origWidth || this.$.button.getBounds().width ;
+			return this._origWidth ;
+		},
 		reduce: function(coeff) {
-			this.origWidth = this.origWidth || this.getBounds().width ;
-			var width = Math.floor( this.origWidth * coeff) ;
+			var width = Math.floor( this.origWidth() * coeff) ;
 
 			if (coeff === 1) {
 				this.$.dissolve.hide();
@@ -77,6 +80,7 @@ enyo.kind (
 				this.$.dissolve.show();
 			}
 
+			this.log('applyStyle width ' + width) ;
 			this.$.button.applyStyle('width', width + 'px') ;
 			this.$.button.render();
 		}

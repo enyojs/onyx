@@ -100,36 +100,34 @@ enyo.kind (
 				components: [
 					{
 						name: "tabs",
+						classes: 'onyx-tab-holder',
 						kind: "onyx.RadioGroup",
 						defaultKind: "onyx.TabBar.Item",
 						style: "text-align: left; white-space: nowrap;",
 						onTabActivated: 'switchTab'
-					},
-					{
-						tag: 'hr'
-					}
-				],
-			},
-			{
-				kind: "onyx.MenuDecorator",
-				components: [
-					{
-						kind: "onyx.Button",
-						content: "\\/" // FIXME: is ugly
-					},
-					{
-						name: "picker",
-						kind: "onyx.ContextualPopup",
-						actionButtons: [
-							{content:"Button 1", classes: "onyx-button-warning"},
-							{content:"Button 2"}
-						]
 					}
 				]
+//			},
+//			{
+//				kind: "onyx.MenuDecorator",
+//				components: [
+//					{
+//						kind: "onyx.Button",
+//						content: "\\/" // FIXME: is ugly
+//					},
+//					{
+//						name: "picker",
+//						kind: "onyx.ContextualPopup",
+//						actionButtons: [
+//							{content:"Button 1", classes: "onyx-button-warning"},
+//							{content:"Button 2"}
+//						]
+//					}
+//				]
 			}
 		],
 
-		debug: true,
+		debug: false,
 
 		// lastIndex is required to avoid duplicate index in the tab bar.
 		lastIndex: 0,
@@ -173,7 +171,8 @@ enyo.kind (
 					content:  c,
 					userData: inControl.data || { },
 					userId:   inControl.userId, // may be null
-					tabIndex: this.lastIndex++
+					tabIndex: this.lastIndex++,
+					addBefore: this.$.line
 				}
 			);
 			this.debug && this.log("addControl add tab " + c);
@@ -325,14 +324,27 @@ enyo.kind (
 			this.adjustTabWidth() ;
 		},
 
+		// compute tab width by adding width of tabs contained in tab bar.
+		computeOrigTabWidth: function() {
+			var result = 0;
+			enyo.forEach(
+				this.$.tabs.getControls(),
+				function(tab){
+					var w = tab.origWidth() ;
+					enyo.log('add ' + w) ;
+					// must add margin and padding of inner button and outer tab-item
+					result += w + 18 ;
+				}
+			);
+			this.log("computeOrigTabWidth: " + result );
+			return result;
+		},
+
 		origTabWidth: null,
 		adjustTabWidth: function(inSender, inEvent) {
-			var scrollWidth = this.$.scroller.hasNode().scrollWidth;
 			var scrolledWidth = this.$.scroller.getBounds().width;
-			this.origTabWidth = this.origTabWidth || this.$.tabs.getBounds().width;
 			var tabsWidth = this.origTabWidth ;
-			this.log("scroll width", scrollWidth ," scrolled ", scrolledWidth ,
-					 "tab:" + tabsWidth ) ;
+			this.log(" scrolled ", scrolledWidth , "tabw:" + tabsWidth ) ;
 			var coeff = scrolledWidth > tabsWidth ? 1
 			          :                             scrolledWidth / tabsWidth ;
 			coeff = coeff < 0.5 ? 0.5 : coeff;
@@ -351,7 +363,7 @@ enyo.kind (
 
 		resetWidth: function() {
 			this.applyCoeff(1) ; // restore original size to all tabs
-			this.origTabWidth = this.$.tabs.getBounds().width; // measure tab width
+			this.origTabWidth = this.computeOrigTabWidth(); // measure tab width
 			this.adjustTabWidth();
 		}
 
