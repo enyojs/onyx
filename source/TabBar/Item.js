@@ -54,9 +54,11 @@ enyo.kind (
 						}
 					);
 					this.addClass('active');
+					this.$.dissolve.addClass('active');
 				}
 				else {
 					this.removeClass('active');
+					this.$.dissolve.removeClass('active');
 				}
 			}
 			// do not return true ;
