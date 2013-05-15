@@ -105,7 +105,9 @@ enyo.kind (
 						defaultKind: "onyx.TabBar.Item",
 						style: "text-align: left; white-space: nowrap;",
 						onTabActivated: 'switchTab'
-					}
+					},
+					{ classes: "onyx-tab-line"},
+					{ classes: "onyx-tab-rug"}
 				]
 //			},
 //			{

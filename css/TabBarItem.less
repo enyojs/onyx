@@ -1,21 +1,23 @@
 /* TabBarItem.css */
 
 .onyx-tab-item {
-
-	position: relative;
 	display: inline;
-	bottom: -0.3em; // em is the only way to align the bottom bar for different browsers
 	border: 1px solid @tab-border;
 	margin: 0px 2px 0px 2px;
 	border-top-right-radius: 5px;
 	border-top-left-radius: 5px;
 	background-color: @tab-inactive ;
 	z-index: 1;
+	padding-top: 0.1em;
+	padding-bottom: 0.3em ;
 	vertical-align: baseline;
 
 	&.active {
+		position: relative;
+
 		border-bottom: 1px solid @tab-strong;
 		background-color: @tab-strong;
+		z-index: 3;
 	}
 
 	&:hover {
