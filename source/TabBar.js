@@ -14,15 +14,16 @@ Here's an example:
 		name: "App",
 		fit: true,
 		components: [
-			{name:"bar",kind: "TabBar"},
+			{name:"bar",kind: "onyx.TabBar"},
 			{kind: "MyStuff"}
 		],
 
-		events: {
+		handlers: {
 			onTabChanged: "switchStuff"
 		},
 
 		create: function() {
+			this.inherited(arguments);
 			this.$.bar.addTab(
 				{
 					'caption': 'greetings',
