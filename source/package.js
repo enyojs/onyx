@@ -38,6 +38,5 @@ enyo.depends(
 	"IntegerPicker.js",
 	"ContextualPopup.js",
 	"TabBar.js",
-	"TabBar",
-	"TabPanels.js"
+	"TabBar"
 );
