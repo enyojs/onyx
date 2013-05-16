@@ -2,6 +2,7 @@
 
 .onyx-tab-item {
 	display: inline;
+	position: relative;
 	border: 1px solid @tab-border;
 	margin: 0px 2px 0px 2px;
 	border-top-right-radius: 5px;
@@ -13,8 +14,6 @@
 	vertical-align: baseline;
 
 	&.active {
-		position: relative;
-
 		border-bottom: 1px solid @tab-strong;
 		background-color: @tab-strong;
 		z-index: 3;
