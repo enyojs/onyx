@@ -47,10 +47,10 @@ enyo.kind (
 					this.debug && this.log("relayActivate called index " + i ) ;
 					this.doTabActivated(
 						{
-							index: i,
-							caption: this.content,
-							data:    this.userData,
-							userId:  this.userId
+							index:    i,
+							caption:  this.content,
+							userData: this.userData,
+							userId:   this.userId
 						}
 					);
 					this.addClass('active');
