@@ -132,7 +132,7 @@ enyo.kind({
 	isContentOverflowing: function() {
 		if (this.$.client.hasNode()) {
 			var c$ = this.$.client.children;
-			var n = c$[c$.length-1].hasNode();
+			var n = c$.length && c$[c$.length-1].hasNode();
 			if(n) {
 				this.$.client.reflow();
 				//Workaround: scrollWidth value not working in Firefox, so manually compute

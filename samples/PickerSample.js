@@ -94,6 +94,7 @@ enyo.kind({
 	},
 	setupYear: function(inSender, inEvent) {
 		this.$.year.setContent(1900+inEvent.index);
+		return true;
 	},
 	itemSelected: function(inSender, inEvent) {
 		this.$.pickerSelection.setContent(inEvent.selected.content);
