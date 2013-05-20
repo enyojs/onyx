@@ -509,6 +509,119 @@
   font-size: 20px;
   border-radius: 0px;
 }
+/* TabBar.css */
+.onyx-tab-bar {
+  display: block;
+  position: relative;
+  z-index: 0;
+  background-color: #cacaca;
+  padding-top: 3px;
+}
+.onyx-tab-bar-scroller {
+  padding-top: 2px;
+}
+.onyx-tab-bar-scroller .enyo-touch-scroller > div {
+  padding: 3px 0px 3px 0px;
+  margin: 6px 0px 3px 0px;
+  width: 100%;
+}
+.onyx-tab-holder {
+  margin: 3px 0 3px 0;
+}
+.onyx-tab-line {
+  position: relative;
+  margin-top: -0.2em;
+  border-top: 1px solid #646464;
+  z-index: 2;
+}
+.onyx-tab-rug {
+  position: relative;
+  padding: 0.2em;
+  background-color: #cacaca;
+  z-index: 4;
+}
+/* TabBarItem.css */
+.onyx-tab-item {
+  display: inline;
+  position: relative;
+  border: 1px solid #646464;
+  margin: 0px 2px 0px 2px;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  background-color: #b1b1b1;
+  z-index: 1;
+  padding-top: 0.1em;
+  padding-bottom: 0.3em ;
+  vertical-align: baseline;
+}
+.onyx-tab-item.active {
+  border-bottom: 1px solid #cacaca;
+  background-color: #cacaca;
+  z-index: 3;
+}
+.onyx-tab-item:hover {
+  background-color: #cacaca;
+}
+.onyx-tab-item button {
+  overflow: hidden;
+  margin: 3px;
+  border: 1px solid transparent;
+  tab--space: nowrap;
+  background-color: transparent ;
+}
+.onyx-tab-item-dissolve {
+  display: inline-block;
+  height: 90%;
+  width: 2em;
+  top: 2px;
+  right: 0;
+  position: absolute;
+  background: linear-gradient(to right, #b1b1b1 0%, rgba(177, 177, 177, 0) 100%);
+  /* W3C */
+
+  background: -moz-linear-gradient(right, #b1b1b1 0%, rgba(177, 177, 177, 0) 100%);
+  /* FF3.6+ */
+
+  background: -webkit-linear-gradient(left, rgba(177, 177, 177, 0), #b1b1b1);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -webkit-gradient(linear, right top, left top, color-stop(0%, #b1b1b1), color-stop(100%, rgba(177, 177, 177, 0)));
+  /* Chrome,Safari4+ */
+
+  background: -o-linear-gradient(left, #b1b1b1 0%, rgba(177, 177, 177, 0) 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(left, rgba(177, 177, 177, 0) 0%, #b1b1b1 100%);
+  /* IE10+ */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00b1b1b1, endColorstr=#ffb1b1b1, GradientType=1);
+  /* IE6-9 */
+
+}
+.onyx-tab-item-dissolve.active,
+.onyx-tab-item-dissolve:hover {
+  background: linear-gradient(to right, #cacaca 0%, rgba(202, 202, 202, 0) 100%);
+  /* W3C */
+
+  background: -moz-linear-gradient(right, #cacaca 0%, rgba(202, 202, 202, 0) 100%);
+  /* FF3.6+ */
+
+  background: -webkit-linear-gradient(left, rgba(202, 202, 202, 0), #cacaca);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -webkit-gradient(linear, right top, left top, color-stop(0%, #cacaca), color-stop(100%, rgba(202, 202, 202, 0)));
+  /* Chrome,Safari4+ */
+
+  background: -o-linear-gradient(left, #cacaca 0%, rgba(202, 202, 202, 0) 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(left, rgba(202, 202, 202, 0) 0%, #cacaca 100%);
+  /* IE10+ */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00cacaca, endColorstr=#ffcacaca, GradientType=1);
+  /* IE6-9 */
+
+}
 /* ToggleButton.css */
 .onyx-toggle-button {
   display: inline-block;

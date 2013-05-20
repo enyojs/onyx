@@ -18,111 +18,126 @@ Here's an example:
 		});
 		new App().write();
 */
-enyo.kind({
-	name: "enyo.TabPanels",
-	kind: "Panels",
-	//* @protected
-	draggable: false,
-	tabTools: [
-		{name: "scroller", kind: "Scroller", maxHeight: "100px", strategyKind: "TranslateScrollStrategy", thumb: false, vertical: "hidden", horizontal: "auto", components: [
-			{name: "tabs", kind: "onyx.RadioGroup", style: "text-align: left; white-space: nowrap", controlClasses: "onyx-tabbutton", onActivate: "tabActivate"}
-		]},
-		{name: "client", fit: true, kind: "Panels", classes: "enyo-tab-panels", onTransitionStart: "clientTransitionStart"}
-	],
-	create: function() {
-		this.inherited(arguments);
-		this.$.client.getPanels = this.bindSafely("getClientPanels");
-		this.draggableChanged();
-		this.animateChanged();
-		this.wrapChanged();
-	},
-	initComponents: function() {
-		this.createChrome(this.tabTools);
-		this.inherited(arguments);
-	},
-	getClientPanels: function() {
-		return this.getPanels();
-	},
-	flow: function() {
-		this.inherited(arguments);
-		this.$.client.flow();
-	},
-	reflow: function() {
-		this.inherited(arguments);
-		this.$.client.reflow();
-	},
-	draggableChanged: function() {
-		this.$.client.setDraggable(this.draggable);
-		this.draggable = false;
-	},
-	animateChanged: function() {
-		this.$.client.setAnimate(this.animate);
-		this.animate = false;
-	},
-	wrapChanged: function() {
-		this.$.client.setWrap(this.wrap);
-		this.wrap = false;
-	},
-	isPanel: function(inControl) {
-		var n = inControl.name;
-		return !(n == "tabs" || n == "client" || n == "scroller");
-	},
-	addControl: function(inControl) {
-		this.inherited(arguments);
-		if (this.isPanel(inControl)) {
-			var c = inControl.caption || ("Tab " + this.$.tabs.controls.length);
-			var t = inControl._tab = this.$.tabs.createComponent({content: c});
-			if (this.hasNode()) {
-				t.render();
+
+enyo.kind(
+	{
+		name: "enyo.TabPanels",
+		kind: "Panels",
+		//* @protected
+		draggable: false,
+
+		handlers  : {
+			onTabChanged: 'switchPanel'
+		},
+
+		tabTools: [
+			{
+				kind: 'onyx.TabBar',
+				isPanel: true,
+				name: 'bar'
+			},
+			{
+				name: "client",
+				isPanel: true,
+				fit: true,
+				kind: "Panels",
+				classes: "enyo-tab-panels",
+				onTransitionStart: "clientTransitionStart"
 			}
-		}
-	},
-	removeControl: function(inControl) {
-		if (this.isPanel(inControl) && inControl._tab) {
-			inControl._tab.destroy();
-		}
-		this.inherited(arguments);
-	},
-	layoutKindChanged: function() {
-		if (!this.layout) {
-			this.layout = enyo.createFromKind("FittableRowsLayout", this);
-		}
-		this.$.client.setLayoutKind(this.layoutKind);
-	},
-	indexChanged: function() {
-		// FIXME: initialization order problem
-		if (this.$.client.layout) {
-			this.$.client.setIndex(this.index);
-		}
-		this.index = this.$.client.getIndex();
-	},
-	tabActivate: function(inSender, inEvent) {
-		if (this.hasNode()) {
-			if (inEvent.originator.active) {
-				var i = inEvent.originator.indexInContainer();
+		],
+
+		dlog: function () {
+			if (this.debug) {
+				this.log(arguments) ;
+			}
+		},
+
+		create: function() {
+			this.inherited(arguments);
+			this.dlog("create called");
+			// getPanels called on client will return panels of *this* kind
+			this.$.client.getPanels = this.bindSafely("getClientPanels");
+
+			// basically, set all these Panel parameters to false
+			this.draggableChanged();
+			this.animateChanged();
+			this.wrapChanged();
+		},
+		initComponents: function() {
+			this.dlog("initComponents called");
+			this.createChrome(this.tabTools);
+			this.inherited(arguments);
+			this.dlog("initComponents done");
+		},
+		getClientPanels: function() {
+			return this.getPanels();
+		},
+
+		flow: function() {
+			this.inherited(arguments);
+			this.$.client.flow();
+		},
+		reflow: function() {
+			this.inherited(arguments);
+			this.$.client.reflow();
+		},
+		draggableChanged: function() {
+			this.$.client.setDraggable(this.draggable);
+			this.draggable = false;
+		},
+		animateChanged: function() {
+			this.$.client.setAnimate(this.animate);
+			this.animate = false;
+		},
+		wrapChanged: function() {
+			this.$.client.setWrap(this.wrap);
+			this.wrap = false;
+		},
+
+		isClient: function(inControl) {
+			return ! inControl.isPanel ;
+		},
+		addControl: function(inControl) {
+			this.dlog("addControl called on name "+ inControl.name + " content "+inControl.content );
+			this.inherited(arguments);
+			if (this.isClient(inControl)) {
+				inControl._tab = this.$.bar.addTab(inControl) ;
+			}
+			this.dlog("addControl done");
+		},
+		removeControl: function(inControl) {
+			if (this.isClient(inControl) && inControl._tab) {
+				inControl._tab.destroy();
+			}
+			this.inherited(arguments);
+		},
+
+		// layout is a property of inherited UiComponent
+		layoutKindChanged: function() {
+			if (!this.layout) {
+				this.layout = enyo.createFromKind("FittableRowsLayout", this);
+			}
+			this.$.client.setLayoutKind(this.layoutKind);
+		},
+		indexChanged: function() {
+			// FIXME: initialization order problem
+			if (this.$.client.layout) {
+				this.$.client.setIndex(this.index);
+			}
+			this.index = this.$.client.getIndex();
+		},
+		switchPanel: function(inSender, inEvent) {
+			if (this.hasNode()) {
+				var i = inEvent.index;
+				this.dlog("switchPanel called with caption "+ inEvent.caption) ;
 				if (this.getIndex() != i) {
 					this.setIndex(i);
 				}
 			}
-		}
-	},
-	clientTransitionStart: function(inSender, inEvent) {
-		var i = inEvent.toIndex;
-		var t = this.$.tabs.getClientControls()[i];
-		if (t && t.hasNode()) {
-			this.$.tabs.setActive(t);
-			var tn = t.node;
-			var tl = tn.offsetLeft;
-			var tr = tl + tn.offsetWidth;
-			var sb = this.$.scroller.getScrollBounds();
-			if (tr < sb.left || tr > sb.left + sb.clientWidth) {
-				this.$.scroller.scrollToControl(t);
-			}
-		}
-		return true;
-	},
-	startTransition: enyo.nop,
-	finishTransition: enyo.nop,
-	stepTransition: enyo.nop,
-	refresh: enyo.nop
-});
+		},
+		startTransition: enyo.nop,
+		finishTransition: enyo.nop,
+		stepTransition: enyo.nop,
+		refresh: enyo.nop
+	}
+);
