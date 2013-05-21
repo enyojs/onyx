@@ -9,7 +9,6 @@ enyo.depends(
 	"PopupSample.js",
 	"ProgressSample.js",
 	"SliderSample.js",
-	"TabBarSample.js",
 	"ToggleButtonSample.js",
 	"ToolbarSample.js",
 	"MenuSample.js",
