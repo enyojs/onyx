@@ -9,7 +9,7 @@
                     "description": "A Pushbutton",
                     "inline": {},
                     "config": {
-                        "content": "$name",
+                        "content": "Button",
                         "kind": "onyx.Button"
                     }
                 },
@@ -50,7 +50,7 @@
                         "components": [
                             {
                                 "content": "Header",
-                                "kind": "onyx.GroupboxHeader",
+                                "kind": "onyx.GroupboxHeader"
                             },
                             {
                                 "content": "Item",
@@ -97,7 +97,7 @@
                         "kind": "onyx.InputDecorator",
                         "components": [
                             {
-                                "kind": "Input",
+                                "kind": "onyx.Input",
                                 "placeholder": "Enter text here"
                             }
                         ]
@@ -436,6 +436,9 @@
                 },
                 "selectOnFocus": {
                     "filterLevel": "useful"
+                },
+                "content": {
+                    "filterLevel": "dangerous"
                 }
             },
             "events": {
