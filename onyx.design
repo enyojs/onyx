@@ -10,7 +10,6 @@
                     "inline": {},
                     "config": {
                         "content": "$name",
-                        "isContainer": true,
                         "kind": "onyx.Button"
                     }
                 },
@@ -48,12 +47,10 @@
                     "inline": {},
                     "config": {
                         "kind": "onyx.Groupbox",
-                        "isContainer": true,
                         "components": [
                             {
                                 "content": "Header",
                                 "kind": "onyx.GroupboxHeader",
-                                "isContainer": true
                             },
                             {
                                 "content": "Item",
@@ -217,7 +214,6 @@
                     "inline": {},
                     "config": {
                         "kind": "onyx.RadioGroup",
-                        "isContainer": true,
                         "components": [
                             {
                                 "content": "RadioButton"
@@ -315,7 +311,6 @@
                     "description": "A toolbar",
                     "inline": {},
                     "config": {
-                        "isContainer": true,
                         "kind": "onyx.Toolbar"
                     }
                 },
@@ -325,7 +320,6 @@
                     "description": "A toolbar which adapts to screen width ",
                     "inline": {},
                     "config": {
-                        "isContainer": true,
                         "kind": "onyx.MoreToolbar",
                         "components": [
                             {
