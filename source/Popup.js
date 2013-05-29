@@ -34,7 +34,7 @@ enyo.kind({
 	//* @protected
 	statics: {
 		count: 0,
-		highestZIndex: 120
+		highestZ: 120
 	},
 	defaultZ: 120,
 	showingChanged: function() {
