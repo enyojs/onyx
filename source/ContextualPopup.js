@@ -432,11 +432,11 @@ enyo.kind({
 		}
 
 		var clientRect = this.getBoundingRect(this.node);
-		var innerWidth = this.getViewWidth();
+		var innerHeight = this.getViewHeight();
 
 		//adjust vertical positioning (high or low nub & popup position)
 		if (this.floating){
-			if (this.activatorOffset.top < (innerWidth/2)){
+			if (this.activatorOffset.top < (innerHeight/2)){
 				this.applyPosition({top: this.activatorOffset.top + this.activatorOffset.height/2});
 				this.addRemoveClass("high", true);
 			} else {
@@ -444,7 +444,7 @@ enyo.kind({
 				this.addRemoveClass("low", true);
 			}
 		} else {
-			if (((clientRect.top + clientRect.height) > innerWidth) && ((innerWidth - clientRect.bottom) < (clientRect.top - clientRect.height))) {
+			if (((clientRect.top + clientRect.height) > innerHeight) && ((innerHeight - clientRect.bottom) < (clientRect.top - clientRect.height))) {
 				this.applyPosition({top: clientRect.top - clientRect.height - this.activatorOffset.top - this.activatorOffset.height/2});
 				this.addRemoveClass("low", true);
 			} else {
