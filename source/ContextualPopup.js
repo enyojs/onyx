@@ -432,7 +432,7 @@ enyo.kind({
 		}
 
 		var clientRect = this.getBoundingRect(this.node);
-		var innerWidth = this.getViewWidth();
+		var innerHeight = this.getViewHeight();
 
 		//adjust vertical positioning (high or low nub & popup position)
 		if (this.floating){
