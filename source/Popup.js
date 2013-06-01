@@ -32,7 +32,10 @@ enyo.kind({
 		scrimClassName: ""
 	},
 	//* @protected
-	statics: { count: 0 },
+	statics: {
+		count: 0,
+		highestZ: 120
+	},
 	defaultZ: 120,
 	showingChanged: function() {
 		if(this.showing) {
@@ -63,7 +66,7 @@ enyo.kind({
 	},
 	getScrimZIndex: function() {
 		// Position scrim directly below popup
-		return this.findZIndex()-1;
+		return onyx.Popup.highestZ >= this._zIndex ? this._zIndex - 1 : onyx.Popup.highestZ;
 	},
 	getScrim: function() {
 		// show a transparent scrim for modal popups if scrimWhenModal is true
@@ -75,7 +78,13 @@ enyo.kind({
 	},
 	applyZIndex: function() {
 		// Adjust the zIndex so that popups will properly stack on each other.
-		this._zIndex = onyx.Popup.count * 2 + this.findZIndex() + 1;
+		this._zIndex = (onyx.Popup.count * 2) + this.findZIndex() + 1;
+		if (this._zIndex <= onyx.Popup.highestZ) {
+			this._zIndex = onyx.Popup.highestZ + 1;
+		}
+		if (this._zIndex > onyx.Popup.highestZ) {
+			onyx.Popup.highestZ = this._zIndex;
+		}
 		// leave room for scrim
 		this.applyStyle("z-index", this._zIndex);
 	},
@@ -87,6 +96,9 @@ enyo.kind({
 		} else if (this.hasNode()) {
 			// Re-use existing zIndex if it has one
 			z = Number(enyo.dom.getComputedStyleValue(this.node, "z-index")) || z;
+		}
+		if (z < this.defaultZ) {
+			z = this.defaultZ;
 		}
 		this._zIndex = z;
 		return this._zIndex;
