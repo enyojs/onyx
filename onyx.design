@@ -59,9 +59,8 @@
                     "kind": "onyx.GroupboxHeader",
                     "description": "A header for the Groupbox",
                     "config": {
-                        "content": "$name",
-                        "kind": "onyx.GroupboxHeader",
-                        "isContainer": true
+                        "content": "Header",
+                        "kind": "onyx.GroupboxHeader"
                     }
                 },
                 {
@@ -107,7 +106,7 @@
                     "kind": "onyx.Item",
                     "description": "Stackable item, for lists and menus",
                     "config": {
-                        "content": "$name",
+                        "content": "Item",
                         "kind": "onyx.Item"
                     }
                 },
@@ -210,7 +209,7 @@
                     "kind": "onyx.RadioButton",
                     "description": "An on-off button, for use with RadioGroup",
                     "config": {
-                        "content": "$name",
+                        "content": "Button",
                         "kind": "onyx.RadioButton"
                     }
                 },
