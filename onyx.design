@@ -7,7 +7,6 @@
                     "name": "onyx.Button",
                     "kind": "onyx.Button",
                     "description": "A Pushbutton",
-                    "inline": {},
                     "config": {
                         "content": "Button",
                         "kind": "onyx.Button"
@@ -17,7 +16,6 @@
                     "name": "onyx.Checkbox",
                     "kind": "onyx.Checkbox",
                     "description": "A checkbox",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.Checkbox"
                     }
@@ -26,7 +24,6 @@
                     "name": "onyx.DatePicker",
                     "kind": "onyx.DatePicker",
                     "description": "A control for choosing a date",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.DatePicker"
                     }
@@ -35,7 +32,6 @@
                     "name": "onyx.Drawer",
                     "kind": "onyx.Drawer",
                     "description": "A drawer that opens and closes",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.Drawer"
                     }
@@ -44,7 +40,6 @@
                     "name": "onyx.Groupbox",
                     "kind": "onyx.Groupbox",
                     "description": "A container for a group of controls",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.Groupbox",
                         "components": [
@@ -63,7 +58,6 @@
                     "name": "onyx.GroupboxHeader",
                     "kind": "onyx.GroupboxHeader",
                     "description": "A header for the Groupbox",
-                    "inline": {},
                     "config": {
                         "content": "$name",
                         "kind": "onyx.GroupboxHeader",
@@ -74,7 +68,6 @@
                     "name": "onyx.Icon",
                     "kind": "onyx.Icon",
                     "description": "An Icon",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.Icon"
                     }
@@ -83,7 +76,6 @@
                     "name": "onyx.IconButton",
                     "kind": "onyx.IconButton",
                     "description": "An IconButton",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.IconButton"
                     }
@@ -92,7 +84,6 @@
                     "name": "onyx.InputDecorator",
                     "kind": "onyx.InputDecorator",
                     "description": "Style an Input",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.InputDecorator",
                         "components": [
@@ -107,7 +98,6 @@
                     "name": "onyx.Input",
                     "kind": "onyx.Input",
                     "description": "Text input control",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.Input"
                     }
@@ -116,7 +106,6 @@
                     "name": "onyx.Item",
                     "kind": "onyx.Item",
                     "description": "Stackable item, for lists and menus",
-                    "inline": {},
                     "config": {
                         "content": "$name",
                         "kind": "onyx.Item"
@@ -126,7 +115,6 @@
                     "name": "onyx.MenuDecorator",
                     "kind": "onyx.MenuDecorator",
                     "description": "A Menu and activating control",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.MenuDecorator",
                         "components": [
@@ -161,7 +149,6 @@
                     "name": "onyx.PickerDecorator",
                     "kind": "onyx.PickerDecorator",
                     "description": "A Picker and activating control",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.PickerDecorator",
                         "components": [
@@ -193,7 +180,6 @@
                     "name": "onyx.ProgressBar",
                     "kind": "onyx.ProgressBar",
                     "description": "A progress bar",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.ProgressBar"
                     }
@@ -202,7 +188,6 @@
                     "name": "onyx.ProgressButton",
                     "kind": "onyx.ProgressButton",
                     "description": "A progress button",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.ProgressButton"
                     }
@@ -211,7 +196,6 @@
                     "name": "onyx.RadioGroup",
                     "kind": "onyx.RadioGroup",
                     "description": "Only one control in a group can be 'active' at a time",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.RadioGroup",
                         "components": [
@@ -225,7 +209,6 @@
                     "name": "onyx.RadioButton",
                     "kind": "onyx.RadioButton",
                     "description": "An on-off button, for use with RadioGroup",
-                    "inline": {},
                     "config": {
                         "content": "$name",
                         "kind": "onyx.RadioButton"
@@ -235,7 +218,6 @@
                     "name": "onyx.RangeSlider",
                     "kind": "onyx.RangeSlider",
                     "description": "A Slider with two knobs",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.RangeSlider"
                     }
@@ -244,7 +226,6 @@
                     "name": "onyx.RichText",
                     "kind": "onyx.RichText",
                     "description": "A Rich text input",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.RichText",
                         "style": "height: 100px"
@@ -254,7 +235,6 @@
                     "name": "onyx.Slider",
                     "kind": "onyx.Slider",
                     "description": "A Slider",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.Slider"
                     }
@@ -263,7 +243,6 @@
                     "name": "onyx.Spinner",
                     "kind": "onyx.Spinner",
                     "description": "A Spinner",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.Spinner",
                         "classes": "onyx-light"
@@ -273,7 +252,6 @@
                     "name": "onyx.TextArea",
                     "kind": "onyx.TextArea",
                     "description": "A multi-line text input",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.TextArea"
                     }
@@ -282,7 +260,6 @@
                     "name": "onyx.TimePicker",
                     "kind": "onyx.TimePicker",
                     "description": "A Picker for time",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.TimePicker"
                     }
@@ -291,7 +268,6 @@
                     "name": "onyx.ToggleButton",
                     "kind": "onyx.ToggleButton",
                     "description": "A pushbutton that toggles between active and inactive states",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.ToggleButton"
                     }
@@ -300,7 +276,6 @@
                     "name": "onyx.ToggleIconButton",
                     "kind": "onyx.ToggleIconButton",
                     "description": "A ToggleButton that toggles between active and inactive images",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.ToggleIconButton"
                     }
@@ -309,7 +284,6 @@
                     "name": "onyx.Toolbar",
                     "kind": "onyx.Toolbar",
                     "description": "A toolbar",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.Toolbar"
                     }
@@ -318,7 +292,6 @@
                     "name": "onyx.MoreToolbar",
                     "kind": "onyx.MoreToolbar",
                     "description": "A toolbar which adapts to screen width ",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.MoreToolbar",
                         "components": [
@@ -364,7 +337,6 @@
                     "name": "onyx.Grabber",
                     "kind": "onyx.Grabber",
                     "description": "Graphical 'handle' for dragging",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.Grabber"
                     }
@@ -373,7 +345,6 @@
                     "name": "onyx.TooltipDecorator",
                     "kind": "onyx.TooltipDecorator",
                     "description": "Combines a conrol (typically a button) and a tooltip describing it",
-                    "inline": {},
                     "config": {
                         "kind": "onyx.TooltipDecorator",
                         "components": [
