@@ -417,6 +417,9 @@
                 },
                 "onDisabledChange": {
                     "filterLevel": "useful"
+                },
+                "ontap": {
+                    "filterLevel": "normal"
                 }
             }
         }
