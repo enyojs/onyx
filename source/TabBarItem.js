@@ -11,6 +11,18 @@ enyo.kind ({
 	events: {
 		onTabActivated: ''
 	},
+	handlers: {
+		onmouseover: "navOver",
+		onmouseout: "navOut"
+	},
+	navOver: function(item) {
+		this.log("hovered in");
+		this.$.dissolve.addClass('onyx-tab-item-hovered');
+	},
+	navOut: function(item) {
+		this.log("hovered out");
+		this.$.dissolve.removeClass('onyx-tab-item-hovered');
+	},
 	components: [
 		{
 			kind: "Button", // no need of onyx.RadioButton

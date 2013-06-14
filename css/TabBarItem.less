@@ -60,7 +60,12 @@
 	
 	.onyx-tab-item-gradient( fadeout(@tab-inactive,100%), @tab-inactive);
 
-	&.active, &:hover {
+	&.active {
 		.onyx-tab-item-gradient( fadeout(@tab-strong,100%), @tab-strong);
 	}
+}
+
+// artificial class set on dissolve item when mouse hovers over tabitem
+.onyx-tab-item-hovered {
+		.onyx-tab-item-gradient( fadeout(@tab-strong,100%), @tab-strong);
 }
