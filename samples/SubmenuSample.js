@@ -10,10 +10,10 @@ enyo.kind({
 				{kind:"onyx.Submenu", content:"Sort by...", components:[
 					{content:"First Name"},
 					{content:"Last Name"},
-					{content:"Company"},
+					{content:"Company"}
 				]},
-				{content:"Sync"},
-			]},
+				{content:"Sync"}
+			]}
 		]},
 		{tag: "br"},
 		{classes: "onyx-sample-divider", content: "Nested Submenu"},
@@ -25,7 +25,7 @@ enyo.kind({
 				{kind:"onyx.Submenu", content:"Move to...", components:[
 					{kind:"onyx.Submenu", content:"Personal...", components:[
 						{content:"Games"},
-						{content:"Recpies"},
+						{content:"Recpies"}
 					]},
 					{kind:"onyx.Submenu", content:"Work...", components:[
 						{content:"Primary project"},
