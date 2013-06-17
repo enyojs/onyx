@@ -9,7 +9,8 @@ enyo.kind ({
 	name: 'onyx.TabBar.Item',
 	classes: "onyx-tab-item",
 	events: {
-		onTabActivated: ''
+		onTabActivated: '',
+		onTabCloseRequest: ''
 	},
 	handlers: {
 		onmouseover: "navOver",
@@ -32,6 +33,13 @@ enyo.kind ({
 			ontap: 'shadowRelay',
 			name: 'dissolve',
 			showing: false
+		},
+		{
+			kind: "Button",
+			classes: 'onyx-tab-item-close',
+			name: 'closeButton' ,
+			content: '\u274c', // Dingbat 'x'
+			ontap: 'requestClose'
 		}
 	],
 
@@ -90,6 +98,10 @@ enyo.kind ({
 		this.log('applyStyle width ' + width);
 		this.$.button.applyStyle('width', width + 'px');
 		this.$.button.render();
+	},
+
+	requestClose: function() {
+		this.doTabCloseRequest({ index: this.tabIndex });
 	}
 });
 

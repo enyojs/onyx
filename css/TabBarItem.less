@@ -9,7 +9,7 @@
 	border-top-left-radius: 5px;
 	background-color: @tab-inactive ;
 	z-index: 1;
-	padding-top: 0.2em;
+	padding-top: 0.3em;
 	padding-bottom: 0.7em ;
 	vertical-align: baseline;
 
@@ -55,7 +55,7 @@
 	height: 90%;
 	width: 2em;
 	top: 2px;
-	right: 0;
+	right: 1.2em; // to place it left of close button
 	position: absolute;
 	
 	.onyx-tab-item-gradient( fadeout(@tab-inactive,100%), @tab-inactive);
@@ -67,5 +67,23 @@
 
 // artificial class set on dissolve item when mouse hovers over tabitem
 .onyx-tab-item-hovered {
-		.onyx-tab-item-gradient( fadeout(@tab-strong,100%), @tab-strong);
+	.onyx-tab-item-gradient( fadeout(@tab-strong,100%), @tab-strong);
+}
+
+.onyx-tab-item-close {
+	font-size: @onyx-font-size-small;
+	border-radius: 1.5em;
+	margin: 3px;
+	padding-right: 0.2em ;
+	padding-top: 0em ;
+	padding-left: 0.25em ;
+	padding-bottom: 0em ;
+	text-align: center;
+
+	&:hover {
+		box-shadow: 1px 1px 1px black;
+		color: white;
+		background-color: rgb(199, 25, 25);
+		color: white ;
+	}
 }

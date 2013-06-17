@@ -46,6 +46,10 @@ enyo.kind ({
 	isPanel: true,
 	classes: "onyx-tab-bar",
 
+	checkBeforeClosing: false,
+
+	debug: false,
+
 	events: {
 		/**
 		Fired when a tab different from the one currently selected is tapped.
@@ -77,6 +81,10 @@ enyo.kind ({
 		 * data as onTabChanged (minus the next callback)
 		 */
 		onTabRemoved: ""
+	},
+
+	handlers: {
+		onTabCloseRequest: "requestTabClose"
 	},
 
 	components: [
@@ -249,6 +257,17 @@ enyo.kind ({
 			throw new Error("internal: " + action_name+ " called without index or caption");
 		}
 		return targetTab ;
+	},
+
+	//@ protected
+	requestTabClose: function(inSender,inEvent) {
+		this.debug && this.log(inEvent);
+		if (this.checkBeforeClosing) {
+			this.requestRemoveTab(inEvent) ;
+		}
+		else {
+			this.removeTab(inEvent);
+		}
 	},
 
 	//* @public
