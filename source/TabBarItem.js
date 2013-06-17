@@ -16,11 +16,9 @@ enyo.kind ({
 		onmouseout: "navOut"
 	},
 	navOver: function(item) {
-		this.log("hovered in");
 		this.$.dissolve.addClass('onyx-tab-item-hovered');
 	},
 	navOut: function(item) {
-		this.log("hovered out");
 		this.$.dissolve.removeClass('onyx-tab-item-hovered');
 	},
 	components: [
