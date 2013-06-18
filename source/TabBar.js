@@ -251,7 +251,14 @@ enyo.kind ({
 			);
 		}
 		else if (typeof target.index !== 'undefined') {
-			targetTab = this.$.tabs.controls[target.index];
+			enyo.forEach(
+				this.$.tabs.controls,
+				function(tab){
+					if (tab.tabIndex === target.index) {
+						targetTab = tab;
+					}
+				}
+			);
 		}
 		else {
 			throw new Error("internal: " + action_name+ " called without index or caption");
