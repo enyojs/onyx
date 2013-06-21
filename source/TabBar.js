@@ -215,9 +215,10 @@ enyo.kind ({
 
 		var ctrls = this.$.tabs.controls;
 		var ctrlLength = ctrls.length ;
-		var replacementTab = keepActiveTab           ? activeTab
-		                   : gonerIndex < ctrlLength ? ctrls[gonerIndex]
-                           :                           ctrls[ ctrlLength - 1 ];
+		var replacementTab
+				= keepActiveTab           ? activeTab
+				: gonerIndex < ctrlLength ? ctrls[gonerIndex]
+				:                           ctrls[ ctrlLength - 1 ];
 
 		replacementTab.setActive(true) ;
 		replacementTab.raise();
@@ -289,7 +290,7 @@ enyo.kind ({
 
 	//@ protected
 	requestTabClose: function(inSender,inEvent) {
-		this.debug && this.log(inEvent);
+		if (this.debug) { this.log(inEvent); }
 		if (this.checkBeforeClosing) {
 			this.requestRemoveTab(inEvent) ;
 		}
