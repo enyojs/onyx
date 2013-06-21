@@ -8,13 +8,15 @@ designed to be used only within TabBar.
 enyo.kind ({
 	name: 'onyx.TabBar.Item',
 	classes: "onyx-tab-item",
+	kind: 'enyo.GroupItem',
 	events: {
 		onTabActivated: '',
 		onTabCloseRequest: ''
 	},
 	handlers: {
 		onmouseover: "navOver",
-		onmouseout: "navOut"
+		onmouseout: "navOut",
+		onActivate: 'relayActivate'
 	},
 	navOver: function(item) {
 		this.$.dissolve.addClass('onyx-tab-item-hovered');
@@ -25,8 +27,7 @@ enyo.kind ({
 	components: [
 		{
 			kind: "Button", // no need of onyx.RadioButton
-			name: 'button' ,
-			onActivate: 'relayActivate'
+			name: 'button'
 		},
 		{
 			classes: 'onyx-tab-item-dissolve',
@@ -35,7 +36,6 @@ enyo.kind ({
 			showing: false
 		},
 		{
-			kind: "Button",
 			classes: 'onyx-tab-item-close',
 			name: 'closeButton' ,
 			content: '\u274c', // Dingbat 'x'
@@ -46,8 +46,6 @@ enyo.kind ({
 	create: function() {
 		this.inherited(arguments);
 		this.$.button.setContent(this.content);
-		// set up delegation
-		this.setActive = enyo.bind(this.$.button, this.$.button.setActive);
 	},
 
 	shadowRelay: function (inSender, inEvent) {
@@ -55,9 +53,19 @@ enyo.kind ({
 		return true;
 	},
 
+	raise: function() {
+		this.addClass('active');
+		this.$.dissolve.addClass('active');
+	},
+	putBack: function() {
+		this.removeClass('active');
+		this.$.dissolve.removeClass('active');
+	},
+
 	relayActivate: function(inSender, inEvent) {
 		// not called when a selected tab is tapped again
 		if (this.$.button.hasNode()) {
+			this.log('relayActivate:',inSender,inEvent);
 			if (inEvent.originator.active) {
 				var i = this.indexInContainer();
 				this.doTabActivated(
@@ -68,12 +76,10 @@ enyo.kind ({
 						userId:   this.userId
 					}
 				);
-				this.addClass('active');
-				this.$.dissolve.addClass('active');
+				this.raise();
 			}
 			else {
-				this.removeClass('active');
-				this.$.dissolve.removeClass('active');
+				this.putBack();
 			}
 		}
 		// do not return true;
@@ -100,8 +106,9 @@ enyo.kind ({
 		this.$.button.render();
 	},
 
-	requestClose: function() {
+	requestClose: function(inSender, inEvent) {
 		this.doTabCloseRequest({ index: this.tabIndex });
+		return true;
 	}
 });
 

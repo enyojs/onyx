@@ -22,7 +22,7 @@ Here's an example:
 			onTabChanged: "switchStuff"
 		},
 
-		create: function() {
+		rendered: function() {
 			this.inherited(arguments);
 			this.$.bar.addTab(
 				{
@@ -37,6 +37,11 @@ Here's an example:
 				+ " and message " + inEvent.data.msg );
 		}
 	});
+
+Tabs must be created after construction, i.e. in rendered function.
+
+If tabs are created in 'create' function, the last created tabs will
+not be selected.
 
 */
 
@@ -171,6 +176,7 @@ enyo.kind ({
 			t.render();
 			this.resetWidth();
 		}
+		t.raise();
 		return t;
 	},
 
@@ -191,18 +197,33 @@ enyo.kind ({
 
 	removeTab: function(target) {
 		var tab = this.resolveTab(target,'removeTab');
-		if (tab) {
-			tab.destroy();
-		}
+
+		if (! tab) { return; }
+
+		var activeTab = this.$.tabs.active ;
+		var keepActiveTab = activeTab !== tab ;
+		var gonerIndex = tab.indexInContainer();
+		var tabData = {
+			index:   tab.tabIndex,
+			caption: tab.content,
+			userId:  tab.userId,
+			data:    tab.userData
+		} ;
+
+		tab.destroy();
 		this.resetWidth();
-		this.doTabRemoved(
-			{
-				index:   tab.tabIndex,
-				caption: tab.content,
-				userId:  tab.userId,
-				data:    tab.userData
-			}
-		);
+
+		var ctrls = this.$.tabs.controls;
+		var ctrlLength = ctrls.length ;
+		var replacementTab = keepActiveTab           ? activeTab
+		                   : gonerIndex < ctrlLength ? ctrls[gonerIndex]
+                           :                           ctrls[ ctrlLength - 1 ];
+
+		replacementTab.setActive(true) ;
+		replacementTab.raise();
+		this.$.scroller.scrollIntoView(replacementTab);
+
+		this.doTabRemoved(tabData);
 	},
 
 	//* @public
