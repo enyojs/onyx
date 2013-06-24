@@ -11,13 +11,13 @@ enyo.kind ({
 	kind: 'enyo.GroupItem',
 	events: {
 		onTabActivated: '',
-		onTabCloseRequest: ''
+		onTabCloseRequest: '',
+		onActivate: ''
 	},
 	handlers: {
 		onmouseover: "navOver",
-		onmouseout: "navOut",
-		onActivate: 'relayActivate'
-	},
+		onmouseout: "navOut"}
+	,
 	navOver: function(item) {
 		this.$.dissolve.addClass('onyx-tab-item-hovered');
 	},
@@ -27,7 +27,8 @@ enyo.kind ({
 	components: [
 		{
 			kind: "Button", // no need of onyx.RadioButton
-			name: 'button'
+			name: 'button',
+			ontap: 'setActiveTrue'
 		},
 		{
 			classes: 'onyx-tab-item-dissolve',
@@ -62,12 +63,16 @@ enyo.kind ({
 		this.$.dissolve.removeClass('active');
 	},
 
-	relayActivate: function(inSender, inEvent) {
-		// not called when a selected tab is tapped again
-		if (this.$.button.hasNode()) {
-			this.log('relayActivate:',inSender,inEvent);
-			if (inEvent.originator.active) {
-				var i = this.indexInContainer();
+	setActiveTrue: function() {
+		this.setActive(true);
+	},
+
+	activeChanged: function(inOldValue) {
+		// called during destruction, hence the test on this.container
+		if (this.container && this.hasNode()) {
+			var i = this.indexInContainer();
+			this.log('relayActivate: index ' + i + ' active ' + this.active);
+			if (this.active) {
 				this.doTabActivated(
 					{
 						index:    i,
@@ -81,6 +86,7 @@ enyo.kind ({
 			else {
 				this.putBack();
 			}
+			this.doActivate();
 		}
 		// do not return true;
 		// activate event must be propagated to my RadioGroup owner

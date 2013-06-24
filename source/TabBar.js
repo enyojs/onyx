@@ -162,21 +162,21 @@ enyo.kind ({
 	 */
 	addTab: function(inControl) {
 		var c = inControl.caption || ("Tab " + this.lastIndex);
+		this.selectedId = this.lastIndex++ ;
 		var t = this.$.tabs.createComponent(
 			{
 				content:  c,
 				userData: inControl.data || { },
 				userId:   inControl.userId, // may be null
-				tabIndex: this.lastIndex++,
+				tabIndex: this.selectedId,
 				addBefore: this.$.line
 			}
 		);
-		t.setActive(true);
-		if (this.hasNode()) {
-			t.render();
-			this.resetWidth();
-		}
+
+		t.render();
+		this.resetWidth();
 		t.raise();
+		t.setActive(true);
 		return t;
 	},
 
@@ -325,17 +325,19 @@ enyo.kind ({
 
 	//* @protected
 	switchTab: function(inSender, inEvent) {
-		var oldIndex = this.selectedId || 0 ;
+		var oldIndex = this.selectedId ;
 		this.selectedId = inEvent.index;
-		this.doTabChanged(
-			{
-				index:   inEvent.index,
-				caption: inEvent.caption,
-				data:    inEvent.userData,
-				userId:  inEvent.userId,
-				next:    enyo.bind(this,'undoSwitchOnError', oldIndex)
-			}
-		);
+		if ( this.selectedId != oldIndex ) {
+			this.doTabChanged(
+				{
+					index:   inEvent.index,
+					caption: inEvent.caption,
+					data:    inEvent.userData,
+					userId:  inEvent.userId,
+					next:    enyo.bind(this,'undoSwitchOnError', oldIndex)
+				}
+			);
+		}
 		return true ;
 	},
 
