@@ -640,20 +640,19 @@
 }
 .onyx-tab-item-close {
   font-size: 14px;
-  border-radius: 1.5em;
-  margin: 3px 3px 3px 0;
-  padding-right: 0.2em ;
-  padding-top: 0em ;
-  padding-left: 0.25em ;
-  padding-bottom: 0em ;
+  border-radius: 1em;
+  margin: 3px;
+  padding: 0.3em ;
   text-align: center;
-  display: inline;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1em;
 }
 .onyx-tab-item-close:hover {
   box-shadow: 1px 1px 1px black;
   color: white;
   background-color: #c71919;
-  color: white ;
 }
 /* ToggleButton.css */
 .onyx-toggle-button {
