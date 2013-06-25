@@ -93,11 +93,12 @@ enyo.kind ({
 
 	_origWidth: null,
 	origWidth: function() {
-		this._origWidth = this._origWidth || this.$.button.getBounds().width;
+		this._origWidth = this._origWidth || this.getBounds().width ;
 		return this._origWidth;
 	},
 	reduce: function(coeff) {
-		var width = Math.floor( this.origWidth() * coeff);
+		var width = Math.floor( this.origWidth() * coeff )
+				- this.$.closeButton.getBounds().width -7 ;
 
 		if (coeff === 1) {
 			this.$.dissolve.hide();
