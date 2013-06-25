@@ -22,7 +22,7 @@ Here's an example:
 			onTabChanged: "switchStuff"
 		},
 
-		create: function() {
+		rendered: function() {
 			this.inherited(arguments);
 			this.$.bar.addTab(
 				{
@@ -38,6 +38,11 @@ Here's an example:
 		}
 	});
 
+Tabs must be created after construction, i.e. in rendered function.
+
+If tabs are created in 'create' function, the last created tabs will
+not be selected.
+
 */
 
 enyo.kind ({
@@ -45,6 +50,10 @@ enyo.kind ({
 	kind: "FittableColumns",
 	isPanel: true,
 	classes: "onyx-tab-bar",
+
+	checkBeforeClosing: false,
+
+	debug: false,
 
 	events: {
 		/**
@@ -77,6 +86,10 @@ enyo.kind ({
 		 * data as onTabChanged (minus the next callback)
 		 */
 		onTabRemoved: ""
+	},
+
+	handlers: {
+		onTabCloseRequest: "requestTabClose"
 	},
 
 	components: [
@@ -149,20 +162,21 @@ enyo.kind ({
 	 */
 	addTab: function(inControl) {
 		var c = inControl.caption || ("Tab " + this.lastIndex);
+		this.selectedId = this.lastIndex++ ;
 		var t = this.$.tabs.createComponent(
 			{
 				content:  c,
 				userData: inControl.data || { },
 				userId:   inControl.userId, // may be null
-				tabIndex: this.lastIndex++,
+				tabIndex: this.selectedId,
 				addBefore: this.$.line
 			}
 		);
+
+		t.render();
+		this.resetWidth();
+		t.raise();
 		t.setActive(true);
-		if (this.hasNode()) {
-			t.render();
-			this.resetWidth();
-		}
 		return t;
 	},
 
@@ -183,18 +197,34 @@ enyo.kind ({
 
 	removeTab: function(target) {
 		var tab = this.resolveTab(target,'removeTab');
-		if (tab) {
-			tab.destroy();
-		}
+
+		if (! tab) { return; }
+
+		var activeTab = this.$.tabs.active ;
+		var keepActiveTab = activeTab !== tab ;
+		var gonerIndex = tab.indexInContainer();
+		var tabData = {
+			index:   tab.tabIndex,
+			caption: tab.content,
+			userId:  tab.userId,
+			data:    tab.userData
+		} ;
+
+		tab.destroy();
 		this.resetWidth();
-		this.doTabRemoved(
-			{
-				index:   tab.tabIndex,
-				caption: tab.content,
-				userId:  tab.userId,
-				data:    tab.userData
-			}
-		);
+
+		var ctrls = this.$.tabs.controls;
+		var ctrlLength = ctrls.length ;
+		var replacementTab
+				= keepActiveTab           ? activeTab
+				: gonerIndex < ctrlLength ? ctrls[gonerIndex]
+				:                           ctrls[ ctrlLength - 1 ];
+
+		replacementTab.setActive(true) ;
+		replacementTab.raise();
+		this.$.scroller.scrollIntoView(replacementTab);
+
+		this.doTabRemoved(tabData);
 	},
 
 	//* @public
@@ -243,12 +273,30 @@ enyo.kind ({
 			);
 		}
 		else if (typeof target.index !== 'undefined') {
-			targetTab = this.$.tabs.controls[target.index];
+			enyo.forEach(
+				this.$.tabs.controls,
+				function(tab){
+					if (tab.tabIndex === target.index) {
+						targetTab = tab;
+					}
+				}
+			);
 		}
 		else {
 			throw new Error("internal: " + action_name+ " called without index or caption");
 		}
 		return targetTab ;
+	},
+
+	//@ protected
+	requestTabClose: function(inSender,inEvent) {
+		if (this.debug) { this.log(inEvent); }
+		if (this.checkBeforeClosing) {
+			this.requestRemoveTab(inEvent) ;
+		}
+		else {
+			this.removeTab(inEvent);
+		}
 	},
 
 	//* @public
@@ -277,17 +325,19 @@ enyo.kind ({
 
 	//* @protected
 	switchTab: function(inSender, inEvent) {
-		var oldIndex = this.selectedId || 0 ;
+		var oldIndex = this.selectedId ;
 		this.selectedId = inEvent.index;
-		this.doTabChanged(
-			{
-				index:   inEvent.index,
-				caption: inEvent.caption,
-				data:    inEvent.userData,
-				userId:  inEvent.userId,
-				next:    enyo.bind(this,'undoSwitchOnError', oldIndex)
-			}
-		);
+		if ( this.selectedId != oldIndex ) {
+			this.doTabChanged(
+				{
+					index:   inEvent.index,
+					caption: inEvent.caption,
+					data:    inEvent.userData,
+					userId:  inEvent.userId,
+					next:    enyo.bind(this,'undoSwitchOnError', oldIndex)
+				}
+			);
+		}
 		return true ;
 	},
 

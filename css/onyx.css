@@ -98,7 +98,7 @@
   /* border-bottom: 1px solid rgba(15, 15, 15, 0.5); */
 
   box-shadow: inset 0px 1px 0px rgba(255, 255, 255, 0.2);
-  background: #e1e1e1 url(./../images/gradient.png) repeat-x bottom;
+  background: #e1e1e1 url(../images/gradient.png) repeat-x bottom;
   background-size: contain;
   /**/
 
@@ -119,13 +119,13 @@
 */
 .onyx-button.active,
 .onyx-button.pressed {
-  background-image: url(./../images/gradient-invert.png);
+  background-image: url(../images/gradient-invert.png);
   background-position: top;
   border-top: 1px solid rgba(15, 15, 15, 0.6);
   box-shadow: inset 0px 1px 0px rgba(0, 0, 0, 0.1);
 }
 .onyx-button:active:hover:not([disabled]) {
-  background-image: url(./../images/gradient-invert.png);
+  background-image: url(../images/gradient-invert.png);
   background-position: top;
   border-top: 1px solid rgba(15, 15, 15, 0.6);
   box-shadow: inset 0px 1px 0px rgba(0, 0, 0, 0.1);
@@ -146,7 +146,7 @@
   cursor: pointer;
   height: 32px;
   width: 32px;
-  background: url(./../images/checkbox.png) no-repeat;
+  background: url(../images/checkbox.png) no-repeat;
   /* reset for ? */
 
   margin: 0px;
@@ -163,7 +163,7 @@
 }
 /* Grabber.css */
 .onyx-grabber {
-  background: url(./../images/grabbutton.png) no-repeat center;
+  background: url(../images/grabbutton.png) no-repeat center;
   width: 23px;
   height: 27px;
 }
@@ -175,7 +175,7 @@
   border-radius: 8px;
   padding: 6px;
   color: #ffffff;
-  background: #4c4c4c url(./../images/gradient.png) repeat-x 0 bottom;
+  background: #4c4c4c url(../images/gradient.png) repeat-x 0 bottom;
 }
 .onyx-popup-decorator {
   position: relative;
@@ -217,7 +217,7 @@
 
   background-color: #4c4c4c;
   border: none;
-  background: #4c4c4c url(./../images/gradient.png) repeat-x 0 10px;
+  background: #4c4c4c url(../images/gradient.png) repeat-x 0 10px;
 }
 .onyx-groupbox .onyx-input-decorator {
   display: block;
@@ -338,9 +338,8 @@
   overflow: visible;
 }
 /* Submenu.css */
-.onyx-menu .onyx-submenu {
-  background: rgba(0, 0, 0, 0.25) url(./../images/gradient-invert.png) repeat-x 0 top;
-  border: 0 1px;
+.onyx-submenu {
+  background: rgba(0, 0, 0, 0.25) url(../images/gradient-invert.png) repeat-x 0 top;
 }
 /* Picker.css */
 .onyx-picker-decorator .onyx-button {
@@ -456,7 +455,7 @@
   text-align: center;
   /**/
 
-  background: #e7e7e7 url(./../images/gradient.png) repeat-x bottom;
+  background: #e7e7e7 url(../images/gradient.png) repeat-x bottom;
   /* IE8 */
 
   border: 1px solid #333333;
@@ -478,7 +477,7 @@
 }
 .onyx-radiobutton.active {
   color: #ffffff;
-  background: #0091f2 url(./../images/gradient-invert.png) repeat-x top;
+  background: #0091f2 url(../images/gradient-invert.png) repeat-x top;
   border-top: 1px solid rgba(15, 15, 15, 0.6);
   box-shadow: inset 1px 2px 2px rgba(0, 0, 0, 0.2);
 }
@@ -515,28 +514,24 @@
   position: relative;
   z-index: 0;
   background-color: #cacaca;
-  padding-top: 3px;
+  padding-top: 1px;
 }
 .onyx-tab-bar-scroller {
   padding-top: 2px;
 }
 .onyx-tab-bar-scroller .enyo-touch-scroller > div {
   padding: 3px 0px 3px 0px;
-  margin: 6px 0px 3px 0px;
   width: 100%;
-}
-.onyx-tab-holder {
-  margin: 3px 0 3px 0;
 }
 .onyx-tab-line {
   position: relative;
-  margin-top: -0.2em;
+  margin-top: -0.1em;
   border-top: 1px solid #646464;
   z-index: 2;
 }
 .onyx-tab-rug {
   position: relative;
-  padding: 0.2em;
+  padding: 0.3em;
   background-color: #cacaca;
   z-index: 4;
 }
@@ -550,8 +545,8 @@
   border-top-left-radius: 5px;
   background-color: #b1b1b1;
   z-index: 1;
-  padding-top: 0.1em;
-  padding-bottom: 0.3em ;
+  padding-top: 0.3em;
+  padding-bottom: 0.7em ;
   vertical-align: baseline;
 }
 .onyx-tab-item.active {
@@ -566,7 +561,6 @@
   overflow: hidden;
   margin: 3px;
   border: 1px solid transparent;
-  tab--space: nowrap;
   background-color: transparent ;
 }
 .onyx-tab-item-dissolve {
@@ -574,7 +568,7 @@
   height: 90%;
   width: 2em;
   top: 2px;
-  right: 0;
+  right: 1em;
   position: absolute;
   background: linear-gradient(to right, #b1b1b1 0%, rgba(177, 177, 177, 0) 100%);
   /* W3C */
@@ -598,8 +592,7 @@
   /* IE6-9 */
 
 }
-.onyx-tab-item-dissolve.active,
-.onyx-tab-item-dissolve:hover {
+.onyx-tab-item-dissolve.active {
   background: linear-gradient(to right, #cacaca 0%, rgba(202, 202, 202, 0) 100%);
   /* W3C */
 
@@ -622,6 +615,41 @@
   /* IE6-9 */
 
 }
+.onyx-tab-item-hovered {
+  background: linear-gradient(to right, #cacaca 0%, rgba(202, 202, 202, 0) 100%);
+  /* W3C */
+
+  background: -moz-linear-gradient(right, #cacaca 0%, rgba(202, 202, 202, 0) 100%);
+  /* FF3.6+ */
+
+  background: -webkit-linear-gradient(left, rgba(202, 202, 202, 0), #cacaca);
+  /* Chrome10+,Safari5.1+ */
+
+  background: -webkit-gradient(linear, right top, left top, color-stop(0%, #cacaca), color-stop(100%, rgba(202, 202, 202, 0)));
+  /* Chrome,Safari4+ */
+
+  background: -o-linear-gradient(left, #cacaca 0%, rgba(202, 202, 202, 0) 100%);
+  /* Opera 11.10+ */
+
+  background: -ms-linear-gradient(left, rgba(202, 202, 202, 0) 0%, #cacaca 100%);
+  /* IE10+ */
+
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#00cacaca, endColorstr=#ffcacaca, GradientType=1);
+  /* IE6-9 */
+
+}
+.onyx-tab-item-close {
+  display: inline-block;
+  margin-right: 3px;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-image: url('../images/close-inactive.png');
+}
+.onyx-tab-item-close:hover {
+  background-image: url('../images/close-active.png');
+}
 /* ToggleButton.css */
 .onyx-toggle-button {
   display: inline-block;
@@ -634,7 +662,7 @@
 
   border-radius: 3px;
   box-shadow: inset 0px 1px 3px rgba(0, 0, 0, 0.4);
-  background: #8bba3d url(./../images/gradient-invert.png) repeat-x bottom;
+  background: #8bba3d url(../images/gradient-invert.png) repeat-x bottom;
   background-size: auto 100%;
   /* label */
 
@@ -652,7 +680,7 @@
   height: 30px;
   margin: 1px;
   border-radius: 3px;
-  background: #f6f6f6 url(./../images/gradient.png) repeat-x;
+  background: #f6f6f6 url(../images/gradient.png) repeat-x;
   background-size: auto 100%;
 }
 .onyx-toggle-button .onyx-toggle-button-knob {
@@ -692,7 +720,7 @@
 
   padding: 9px 8px 10px 8px;
   border: 1px solid #3A3A3A;
-  background: #4c4c4c url(./../images/gradient.png) repeat-x 0 bottom;
+  background: #4c4c4c url(../images/gradient.png) repeat-x 0 bottom;
   background-size: contain;
   color: #ffffff;
   /**/
@@ -749,7 +777,7 @@
   box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
   border: 1px solid rgba(0, 0, 0, 0.2);
   color: #ffffff;
-  background: #216593 url(./../images/gradient.png) repeat-x 0 bottom;
+  background: #216593 url(../images/gradient.png) repeat-x 0 bottom;
   border-radius: 3px;
   white-space: nowrap;
 }
@@ -806,13 +834,13 @@
   height: 8px;
   border: 1px solid rgba(15, 15, 15, 0.2);
   border-radius: 3px;
-  background: #b8b8b8 url(./../images/gradient-invert.png) repeat-x;
+  background: #b8b8b8 url(../images/gradient-invert.png) repeat-x;
   background-size: auto 100%;
 }
 .onyx-progress-bar-bar {
   height: 100%;
   border-radius: 3px;
-  background: #58abef url(./../images/gradient.png) repeat-x;
+  background: #58abef url(../images/gradient.png) repeat-x;
   background-size: auto 100%;
 }
 .onyx-progress-bar-bar.striped {
@@ -906,7 +934,7 @@
   position: relative;
   height: 40px;
   width: 40px;
-  background: url(./../images/slider-handle.png) left top no-repeat;
+  background: url(../images/slider-handle.png) left top no-repeat;
   margin: -23px -20px;
 }
 .onyx-slider-knob.active,
@@ -951,10 +979,10 @@
   width: 59px;
   height: 58px;
   display: inline-block;
-  background: url(./../images/spinner-dark.gif) no-repeat 0 0;
+  background: url(../images/spinner-dark.gif) no-repeat 0 0;
 }
 .onyx-spinner.onyx-light {
-  background: url(./../images/spinner-light.gif) no-repeat 0 0;
+  background: url(../images/spinner-light.gif) no-repeat 0 0;
 }
 /* MoreToolbar.css */
 .onyx-more-toolbar {
@@ -978,7 +1006,7 @@
   margin-bottom: 5px;
 }
 .onyx-more-button {
-  background-image: url(./../images/more.png);
+  background-image: url(../images/more.png);
   width: 32px;
   height: 32px;
 }
