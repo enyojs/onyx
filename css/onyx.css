@@ -639,20 +639,16 @@
 
 }
 .onyx-tab-item-close {
-  font-size: 14px;
-  border-radius: 1em;
-  margin: 3px;
-  padding: 0.3em ;
-  text-align: center;
   display: inline-block;
-  width: 1em;
-  height: 1em;
-  line-height: 1em;
+  margin-right: 3px;
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+  background-repeat: no-repeat;
+  background-image: url('../images/close-inactive.png');
 }
 .onyx-tab-item-close:hover {
-  box-shadow: 1px 1px 1px black;
-  color: white;
-  background-color: #c71919;
+  background-image: url('../images/close-active.png');
 }
 /* ToggleButton.css */
 .onyx-toggle-button {
