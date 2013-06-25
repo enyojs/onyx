@@ -39,7 +39,6 @@ enyo.kind ({
 		{
 			classes: 'onyx-tab-item-close',
 			name: 'closeButton' ,
-			content: '\u274c', // Dingbat 'x'
 			ontap: 'requestClose'
 		}
 	],
