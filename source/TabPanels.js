@@ -132,7 +132,9 @@ enyo.kind(
 		switchPanel: function(inSender, inEvent) {
 			if (this.hasNode()) {
 				var i = inEvent.index;
-				if (this.debug) {this.log("switchPanel called with caption "+ inEvent.caption) ;}
+				if (this.debug) {
+					this.log("switchPanel called with caption "+ inEvent.caption) ;
+				}
 				if (this.getIndex() != i) {
 					this.setIndex(i);
 				}
