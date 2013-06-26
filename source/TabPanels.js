@@ -21,7 +21,7 @@ Here's an example:
 
 enyo.kind(
 	{
-		name: "enyo.TabPanels",
+		name: "onyx.TabPanels",
 		kind: "Panels",
 		//* @protected
 		draggable: false,
