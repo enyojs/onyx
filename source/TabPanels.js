@@ -46,15 +46,9 @@ enyo.kind(
 			}
 		],
 
-		dlog: function () {
-			if (this.debug) {
-				this.log(arguments) ;
-			}
-		},
-
 		create: function() {
 			this.inherited(arguments);
-			this.dlog("create called");
+			if (this.debug) {this.log("create called");}
 			// getPanels called on client will return panels of *this* kind
 			this.$.client.getPanels = this.bindSafely("getClientPanels");
 
@@ -64,10 +58,10 @@ enyo.kind(
 			this.wrapChanged();
 		},
 		initComponents: function() {
-			this.dlog("initComponents called");
+			if (this.debug) {this.log("initComponents called");}
 			this.createChrome(this.tabTools);
 			this.inherited(arguments);
-			this.dlog("initComponents done");
+			if (this.debug) {this.log("initComponents done");}
 		},
 		getClientPanels: function() {
 			return this.getPanels();
@@ -98,12 +92,12 @@ enyo.kind(
 			return ! inControl.isPanel ;
 		},
 		addControl: function(inControl) {
-			this.dlog("addControl called on name "+ inControl.name + " content "+inControl.content );
+			if (this.debug) {this.log("addControl called on name "+ inControl.name + " content "+inControl.content );}
 			this.inherited(arguments);
 			if (this.isClient(inControl)) {
 				inControl._tab = this.$.bar.addTab(inControl) ;
 			}
-			this.dlog("addControl done");
+			if (this.debug) {this.log("addControl done");}
 		},
 		removeControl: function(inControl) {
 			if (this.isClient(inControl) && inControl._tab) {
@@ -129,7 +123,7 @@ enyo.kind(
 		switchPanel: function(inSender, inEvent) {
 			if (this.hasNode()) {
 				var i = inEvent.index;
-				this.dlog("switchPanel called with caption "+ inEvent.caption) ;
+				if (this.debug) {this.log("switchPanel called with caption "+ inEvent.caption) ;}
 				if (this.getIndex() != i) {
 					this.setIndex(i);
 				}
