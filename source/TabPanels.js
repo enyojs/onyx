@@ -91,13 +91,22 @@ enyo.kind(
 		isClient: function(inControl) {
 			return ! inControl.isPanel ;
 		},
-		addControl: function(inControl) {
-			if (this.debug) {this.log("addControl called on name "+ inControl.name + " content "+inControl.content );}
+		rendered: function() {
+			if (this.debug) {this.log("rendered start");}
 			this.inherited(arguments);
-			if (this.isClient(inControl)) {
-				inControl._tab = this.$.bar.addTab(inControl) ;
-			}
-			if (this.debug) {this.log("addControl done");}
+			var that = this ;
+			enyo.forEach(
+				this.controls,
+				function(c) {
+					if (that.isClient(c)) {
+						if (that.debug) {that.log("adding control " + c.name);}
+						that.$.bar.addTab(c) ;
+					}
+				}
+			);
+
+			this.setIndex(this.controls.length - 1);
+			if (this.debug) {this.log("rendered done");}
 		},
 		removeControl: function(inControl) {
 			if (this.isClient(inControl) && inControl._tab) {
