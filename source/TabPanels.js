@@ -120,11 +120,8 @@ enyo.kind(
 			this.$.bar.addTab(inControl);
 			this.setIndex(this.controls.length - 1);
 		},
-		removeTab: function(inControl) {
-			if (this.isClient(inControl) && inControl._tab) {
-				inControl._tab.destroy();
-			}
-			this.inherited(arguments);
+		removeTab: function(indexData) {
+			this.$.bar.removeTab(indexData);
 		},
 
 		// layout is a property of inherited UiComponent

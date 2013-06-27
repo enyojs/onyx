@@ -86,5 +86,9 @@ enyo.kind({
 		) ;
 		this.render() ;
 		this.$.dynamicTP.addTab(added);
+	},
+	killTab: function(inSender,inEvent) {
+		this.log("killing tab");
+		this.$.dynamicTP.removeTab({index: this.number-- - 2});
 	}
 });
