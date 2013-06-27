@@ -102,7 +102,7 @@ enyo.kind ({
 			// FIXME: may need to be revisited for desktop
 			// activate calls scrollIntoView, which call strategy.scroll
 			// this method is implemented *only* in TransitionScrollStrategy
-			// which may be an enyo bug (2303)
+			// which may be an enyo bug (ENYO-2303)
 			strategyKind: "TransitionScrollStrategy",
 			//strategyKind: "TranslateScrollStrategy",
 
