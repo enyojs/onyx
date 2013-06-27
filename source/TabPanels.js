@@ -91,9 +91,13 @@ enyo.kind(
 		isClient: function(inControl) {
 			return ! inControl.isPanel ;
 		},
+
+		initDone: false ,
 		rendered: function() {
+
+			if (this.initDone) { return ;}
+
 			if (this.debug) {this.log("rendered start");}
-			this.inherited(arguments);
 			var that = this ;
 			enyo.forEach(
 				this.controls,
@@ -106,9 +110,17 @@ enyo.kind(
 			);
 
 			this.setIndex(this.controls.length - 1);
+			this.initDone = true;
 			if (this.debug) {this.log("rendered done");}
+
+			// must be called at the end otherwise kind size is weird
+			this.inherited(arguments);
 		},
-		removeControl: function(inControl) {
+		addTab: function(inControl){
+			this.$.bar.addTab(inControl);
+			this.setIndex(this.controls.length - 1);
+		},
+		removeTab: function(inControl) {
 			if (this.isClient(inControl) && inControl._tab) {
 				inControl._tab.destroy();
 			}
