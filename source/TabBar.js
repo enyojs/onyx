@@ -190,8 +190,8 @@ enyo.kind ({
 	 *
 	 * Example:
 
-		myTab.remove({'index':0}); // remove the leftmost tab
-		myTab.remove({'caption':'foo.js'});
+		myTab.removeTab({'index':0}); // remove the leftmost tab
+		myTab.removeTab({'caption':'foo.js'});
 
 	 */
 
