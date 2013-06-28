@@ -19,7 +19,7 @@ enyo.kind({
 		onTabChanged: "switchStuff"
 	},
 
-	create: function() {
+	rendered: function() {
 		this.inherited(arguments);
 		this.$.bar.addTab(
 			{
@@ -75,7 +75,7 @@ enyo.kind(
 		},
 
 		number: 1,
-		create: function() {
+		rendered: function() {
 			this.inherited(arguments);
 			var date = new Date();
 			this.creationTime = date.getTime();
