@@ -70,7 +70,9 @@ enyo.kind ({
 		// called during destruction, hence the test on this.container
 		if (this.container && this.hasNode()) {
 			var i = this.indexInContainer();
-			this.log('relayActivate: index ' + i + ' active ' + this.active);
+			if (this.debug) {
+				this.log('relayActivate: index ' + i + ' active ' + this.active);
+			}
 			if (this.active) {
 				this.doTabActivated(
 					{
@@ -107,7 +109,7 @@ enyo.kind ({
 			this.$.dissolve.show();
 		}
 
-		this.log('applyStyle width ' + width);
+		if (this.debug) { this.log('applyStyle width ' + width);}
 		this.$.button.applyStyle('width', width + 'px');
 		this.$.button.render();
 	},

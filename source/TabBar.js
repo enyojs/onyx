@@ -102,7 +102,7 @@ enyo.kind ({
 			// FIXME: may need to be revisited for desktop
 			// activate calls scrollIntoView, which call strategy.scroll
 			// this method is implemented *only* in TransitionScrollStrategy
-			// which may be an enyo bug (2303)
+			// which may be an enyo bug (ENYO-2303)
 			strategyKind: "TransitionScrollStrategy",
 			//strategyKind: "TranslateScrollStrategy",
 
@@ -190,8 +190,8 @@ enyo.kind ({
 	 *
 	 * Example:
 
-		myTab.remove({'index':0}); // remove the leftmost tab
-		myTab.remove({'caption':'foo.js'});
+		myTab.removeTab({'index':0}); // remove the leftmost tab
+		myTab.removeTab({'caption':'foo.js'});
 
 	 */
 
@@ -363,12 +363,11 @@ enyo.kind ({
 			this.$.tabs.getControls(),
 			function(tab){
 				var w = tab.origWidth() ;
-				enyo.log('add ' + w) ;
 				// must add margin and padding of inner button and outer tab-item
 				result += w + 18 ;
 			}
 		);
-		this.log("computeOrigTabWidth: " + result );
+		if (this.debug) { this.log("computeOrigTabWidth: " + result );}
 		return result;
 	},
 
@@ -376,7 +375,7 @@ enyo.kind ({
 	adjustTabWidth: function(inSender, inEvent) {
 		var scrolledWidth = this.$.scroller.getBounds().width;
 		var tabsWidth = this.origTabWidth ;
-		this.log(" scrolled ", scrolledWidth , "tabw:" + tabsWidth ) ;
+		if (this.debug) { this.log(" scrolled ", scrolledWidth , "tabw:" + tabsWidth ) ;}
 		var coeff = scrolledWidth > tabsWidth ? 1 : scrolledWidth / tabsWidth ;
 		coeff = coeff < 0.5 ? 0.5 : coeff;
 		this.applyCoeff(coeff) ;

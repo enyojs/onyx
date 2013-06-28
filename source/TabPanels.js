@@ -21,7 +21,7 @@ Here's an example:
 
 enyo.kind(
 	{
-		name: "enyo.TabPanels",
+		name: "onyx.TabPanels",
 		kind: "Panels",
 		//* @protected
 		draggable: false,
@@ -46,15 +46,9 @@ enyo.kind(
 			}
 		],
 
-		dlog: function () {
-			if (this.debug) {
-				this.log(arguments) ;
-			}
-		},
-
 		create: function() {
 			this.inherited(arguments);
-			this.dlog("create called");
+			if (this.debug) {this.log("create called");}
 			// getPanels called on client will return panels of *this* kind
 			this.$.client.getPanels = this.bindSafely("getClientPanels");
 
@@ -64,10 +58,10 @@ enyo.kind(
 			this.wrapChanged();
 		},
 		initComponents: function() {
-			this.dlog("initComponents called");
+			if (this.debug) {this.log("initComponents called");}
 			this.createChrome(this.tabTools);
 			this.inherited(arguments);
-			this.dlog("initComponents done");
+			if (this.debug) {this.log("initComponents done");}
 		},
 		getClientPanels: function() {
 			return this.getPanels();
@@ -97,19 +91,64 @@ enyo.kind(
 		isClient: function(inControl) {
 			return ! inControl.isPanel ;
 		},
-		addControl: function(inControl) {
-			this.dlog("addControl called on name "+ inControl.name + " content "+inControl.content );
+
+		initDone: false ,
+		rendered: function() {
+
+			if (this.initDone) { return ;}
+
+			if (this.debug) {this.log("rendered start");}
+			var that = this ;
+			enyo.forEach(
+				this.controls,
+				function(c) {
+					if (that.isClient(c)) {
+						if (that.debug) {that.log("adding control " + c.name);}
+						that.$.bar.addTab(c) ;
+					}
+				}
+			);
+
+			this.setIndex(this.controls.length - 1);
+			this.initDone = true;
+			if (this.debug) {this.log("rendered done");}
+
+			// must be called at the end otherwise kind size is weird
 			this.inherited(arguments);
-			if (this.isClient(inControl)) {
-				inControl._tab = this.$.bar.addTab(inControl) ;
-			}
-			this.dlog("addControl done");
 		},
-		removeControl: function(inControl) {
-			if (this.isClient(inControl) && inControl._tab) {
-				inControl._tab.destroy();
-			}
-			this.inherited(arguments);
+
+		//* @public
+		/**
+		 *
+		 * Add a new control managed by the tab bar. inControl is a
+		 * control with optional caption attribute. When not specified
+		 * the tab will have a generated caption like 'Tab 0', 'Tab
+		 * 1'. etc...
+		 *
+		 */
+		addTab: function(inControl){
+			this.$.bar.addTab(inControl);
+			this.setIndex(this.controls.length - 1);
+		},
+
+		//* @public
+		/**
+		 *
+		 * Remove a tab from the tab bar. The control managed by the
+		 * tab will also be destroyed. target is an object with either
+		 * a caption attribute or an index. The tab(s) matching the
+		 * caption will be destroyed or the tab with matching index
+		 * will be destroyed.
+		 *
+		 * Example:
+
+			myTab.removeTab({'index':0}); // remove the leftmost tab
+			myTab.removeTab({'caption':'foo.js'});
+
+		 */
+
+		removeTab: function(indexData) {
+			this.$.bar.removeTab(indexData);
 		},
 
 		// layout is a property of inherited UiComponent
@@ -129,7 +168,9 @@ enyo.kind(
 		switchPanel: function(inSender, inEvent) {
 			if (this.hasNode()) {
 				var i = inEvent.index;
-				this.dlog("switchPanel called with caption "+ inEvent.caption) ;
+				if (this.debug) {
+					this.log("switchPanel called with caption "+ inEvent.caption) ;
+				}
 				if (this.getIndex() != i) {
 					this.setIndex(i);
 				}
