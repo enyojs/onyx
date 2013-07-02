@@ -250,13 +250,19 @@ enyo.kind ({
 
 	requestRemoveTab: function(target) {
 		var tab = this.resolveTab(target,'removeTab');
+		var tabData = {
+			index:   tab.tabIndex,
+			caption: tab.content,
+			userId:  tab.userId,
+			data:    tab.userData
+		} ;
 		var that = this ;
 		if (tab) {
-			target.next = function(err) {
+			tabData.next = function(err) {
 				if (err) { throw new Error(err);   }
 				else     { that.removeTab(target); }
 			} ;
-			this.doTabRemoveRequested( target ) ;
+			this.doTabRemoveRequested( tabData ) ;
 		}
 	},
 
