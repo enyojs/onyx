@@ -411,5 +411,9 @@ enyo.kind ({
 		this.applyCoeff(1) ; // restore original size to all tabs
 		this.origTabWidth = this.computeOrigTabWidth(); // measure tab width
 		this.adjustTabWidth();
+	},
+
+	isEmpty: function() {
+		return ! this.$.tabs.getControls().length ;
 	}
 });
