@@ -220,9 +220,20 @@ enyo.kind ({
 				: gonerIndex < ctrlLength ? ctrls[gonerIndex]
 				:                           ctrls[ ctrlLength - 1 ];
 
-		replacementTab.setActive(true) ;
-		replacementTab.raise();
-		this.$.scroller.scrollIntoView(replacementTab);
+		// replacementTab may be undef if all tabs were removed
+		if (replacementTab) {
+			replacementTab.setActive(true) ;
+			replacementTab.raise();
+			this.$.scroller.scrollIntoView(replacementTab);
+			this.doTabChanged(
+				{
+					index:   replacementTab.index,
+					caption: replacementTab.caption,
+					data:    replacementTab.userData,
+					userId:  replacementTab.userId
+				}
+			);
+		}
 
 		this.doTabRemoved(tabData);
 	},
@@ -239,13 +250,19 @@ enyo.kind ({
 
 	requestRemoveTab: function(target) {
 		var tab = this.resolveTab(target,'removeTab');
+		var tabData = {
+			index:   tab.tabIndex,
+			caption: tab.content,
+			userId:  tab.userId,
+			data:    tab.userData
+		} ;
 		var that = this ;
 		if (tab) {
-			target.next = function(err) {
+			tabData.next = function(err) {
 				if (err) { throw new Error(err);   }
 				else     { that.removeTab(target); }
 			} ;
-			this.doTabRemoveRequested( target ) ;
+			this.doTabRemoveRequested( tabData ) ;
 		}
 	},
 
@@ -290,7 +307,6 @@ enyo.kind ({
 
 	//@ protected
 	requestTabClose: function(inSender,inEvent) {
-		if (this.debug) { this.log(inEvent); }
 		if (this.checkBeforeClosing) {
 			this.requestRemoveTab(inEvent) ;
 		}
@@ -367,7 +383,6 @@ enyo.kind ({
 				result += w + 18 ;
 			}
 		);
-		if (this.debug) { this.log("computeOrigTabWidth: " + result );}
 		return result;
 	},
 
@@ -375,7 +390,6 @@ enyo.kind ({
 	adjustTabWidth: function(inSender, inEvent) {
 		var scrolledWidth = this.$.scroller.getBounds().width;
 		var tabsWidth = this.origTabWidth ;
-		if (this.debug) { this.log(" scrolled ", scrolledWidth , "tabw:" + tabsWidth ) ;}
 		var coeff = scrolledWidth > tabsWidth ? 1 : scrolledWidth / tabsWidth ;
 		coeff = coeff < 0.5 ? 0.5 : coeff;
 		this.applyCoeff(coeff) ;
@@ -394,5 +408,9 @@ enyo.kind ({
 		this.applyCoeff(1) ; // restore original size to all tabs
 		this.origTabWidth = this.computeOrigTabWidth(); // measure tab width
 		this.adjustTabWidth();
+	},
+
+	isEmpty: function() {
+		return ! this.$.tabs.getControls().length ;
 	}
 });
