@@ -9,7 +9,7 @@
 /* Onyx default parameters defined here */
 /* Paths */
 /* application importing Onyx Less files will have to override this  */
-/* variable. Otherwise Onyx images won't be loaded with a 404 error  */
+/* variable. Otherwise, Onyx image load will fail with a 404 error  */
 /* Fonts */
 /* ---------------------------------------*/
 /* Text Colors */
@@ -513,7 +513,7 @@
 }
 /* TabBar.css */
 .onyx-tab-bar {
-  display: block;
+  width: 100%;
   position: relative;
   z-index: 0;
   background-color: #cacaca;
