@@ -290,7 +290,6 @@ enyo.kind ({
 
 	//@ protected
 	requestTabClose: function(inSender,inEvent) {
-		if (this.debug) { this.log(inEvent); }
 		if (this.checkBeforeClosing) {
 			this.requestRemoveTab(inEvent) ;
 		}
@@ -367,7 +366,6 @@ enyo.kind ({
 				result += w + 18 ;
 			}
 		);
-		if (this.debug) { this.log("computeOrigTabWidth: " + result );}
 		return result;
 	},
 
@@ -375,7 +373,6 @@ enyo.kind ({
 	adjustTabWidth: function(inSender, inEvent) {
 		var scrolledWidth = this.$.scroller.getBounds().width;
 		var tabsWidth = this.origTabWidth ;
-		if (this.debug) { this.log(" scrolled ", scrolledWidth , "tabw:" + tabsWidth ) ;}
 		var coeff = scrolledWidth > tabsWidth ? 1 : scrolledWidth / tabsWidth ;
 		coeff = coeff < 0.5 ? 0.5 : coeff;
 		this.applyCoeff(coeff) ;
