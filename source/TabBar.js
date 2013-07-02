@@ -220,9 +220,20 @@ enyo.kind ({
 				: gonerIndex < ctrlLength ? ctrls[gonerIndex]
 				:                           ctrls[ ctrlLength - 1 ];
 
-		replacementTab.setActive(true) ;
-		replacementTab.raise();
-		this.$.scroller.scrollIntoView(replacementTab);
+		// replacementTab may be undef if all tabs were removed
+		if (replacementTab) {
+			replacementTab.setActive(true) ;
+			replacementTab.raise();
+			this.$.scroller.scrollIntoView(replacementTab);
+			this.doTabChanged(
+				{
+					index:   replacementTab.index,
+					caption: replacementTab.caption,
+					data:    replacementTab.userData,
+					userId:  replacementTab.userId
+				}
+			);
+		}
 
 		this.doTabRemoved(tabData);
 	},
