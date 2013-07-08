@@ -122,6 +122,17 @@ enyo.kind ({
 				{ classes: "onyx-tab-line"},
 				{ classes: "onyx-tab-rug"}
 			]
+		},
+		{
+			kind: "onyx.MenuDecorator",
+			name: "tabPicker",
+			components: [
+				{
+					kind: "onyx.IconButton",
+					classes: "onyx-more-button",
+					ontap: 'showPicker'
+				}
+			]
 		}
 	],
 
@@ -412,5 +423,37 @@ enyo.kind ({
 
 	isEmpty: function() {
 		return ! this.$.tabs.getControls().length ;
+	},
+
+	// Since action buttons of Contectual Popups are not dynamic, this
+	// kind is created on the fly and destroyed once the user's click
+	// on a button
+	showPicker: function() {
+		var actions = [];
+		var that = this ;
+		enyo.forEach(
+			this.$.tabs.getControls(),
+			function(tab){
+				actions.push({
+					content: tab.content,
+					ontap: enyo.bind(that, 'pickerHandler', tab)
+				}) ;
+			}
+		);
+
+		this.$.tabPicker.createComponent({
+			name: "picker",
+			kind: "onyx.ContextualPopup",
+			floating: true,classes: "onyx-button-warning",
+			style: 'display: block',
+			actionButtons: actions
+		});
+		this.render();
+	},
+
+	pickerHandler: function(tab) {
+		tab.setActive(true) ;
+		this.$.scroller.scrollIntoView(tab);
+		this.$.tabPicker.$.picker.destroy();
 	}
 });
