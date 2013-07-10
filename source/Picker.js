@@ -61,8 +61,8 @@ enyo.kind({
 	showOnTop: true,
 	initComponents: function() {
 		this.setScrolling(true);
-        this.inherited(arguments);
-    },
+		this.inherited(arguments);
+	},
 	showingChanged: function() {
 		this.getScroller().setShowing(this.showing);
 		this.inherited(arguments);
