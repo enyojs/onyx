@@ -32,7 +32,7 @@ enyo.kind ({
 		},
 		{
 			classes: 'onyx-tab-item-dissolve',
-			ontap: 'shadowRelay',
+			ontap: 'setActiveTrue',
 			name: 'dissolve',
 			showing: false
 		},
@@ -46,11 +46,6 @@ enyo.kind ({
 	create: function() {
 		this.inherited(arguments);
 		this.$.button.setContent(this.content);
-	},
-
-	shadowRelay: function (inSender, inEvent) {
-		this.$.button.tap();
-		return true;
 	},
 
 	raise: function() {
