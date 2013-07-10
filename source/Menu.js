@@ -34,7 +34,8 @@ enyo.kind({
 		//* Maximum height of the menu
 		maxHeight: 200,
 		//* Toggle scrolling
-		scrolling: true
+		scrolling: true,
+		scrollStrategyKind: "TouchScrollStrategy"
 	},
 	handlers: {
 		onActivate: "itemActivated",
@@ -42,7 +43,7 @@ enyo.kind({
 		onRequestHideMenu: "requestHide"
 	},
 	childComponents: [
-		{name: "client", kind: "enyo.Scroller", strategyKind: "TouchScrollStrategy"}
+		{name: "client", kind: "enyo.Scroller"}
 	],
 	showOnTop: false,
 	scrollerName: "client",
@@ -52,7 +53,7 @@ enyo.kind({
 	},
 	initComponents: function() {
 		if (this.scrolling) {
-			this.createComponents(this.childComponents, {isChrome: true});
+			this.createComponents(this.childComponents, {isChrome: true, strategyKind: this.scrollStrategyKind});
 		}
 		this.inherited(arguments);
 	},
