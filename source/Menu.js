@@ -35,6 +35,7 @@ enyo.kind({
 		maxHeight: 200,
 		//* Toggle scrolling
 		scrolling: true,
+		//* Scroll strategy
 		scrollStrategyKind: "TouchScrollStrategy"
 	},
 	handlers: {
