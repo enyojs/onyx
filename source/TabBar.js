@@ -130,7 +130,11 @@ enyo.kind ({
 				{
 					kind: "onyx.IconButton",
 					classes: "onyx-more-button",
-					ontap: 'showPicker'
+					ontap: "showPopupAtEvent"
+				},
+				{
+					kind: "onyx.Menu",
+					name: "popup"
 				}
 			]
 		}
@@ -345,9 +349,14 @@ enyo.kind ({
 	activate: function(target) {
 		var tab = this.resolveTab(target,'activate');
 		if (tab) {
-			tab.setActive(true) ;
-			this.$.scroller.scrollIntoView(tab);
+			this.raiseTab(tab);
 		}
+	},
+
+	raiseTab: function(tab) {
+		this.log(tab);
+		tab.setActive(true) ;
+		this.$.scroller.scrollIntoView(tab);
 	},
 
 	//* @protected
@@ -428,32 +437,36 @@ enyo.kind ({
 	// Since action buttons of Contectual Popups are not dynamic, this
 	// kind is created on the fly and destroyed once the user's click
 	// on a button
-	showPicker: function() {
-		var actions = [];
+	showPopupAtEvent: function(inSender, inEvent) {
 		var that = this ;
+		var popup = this.$.popup;
+
+		for (var name in popup.$) {
+			if (popup.$.hasOwnProperty(name) && /menuItem/.test(name)) {
+				popup.$[name].destroy();
+			}
+		}
+
+		//popup.render();
 		enyo.forEach(
 			this.$.tabs.getControls(),
 			function(tab){
-				actions.push({
+				this.log('creat button for tab' + tab.tabIndex);
+				that.$.popup.createComponent({
 					content: tab.content,
-					ontap: enyo.bind(that, 'pickerHandler', tab)
+					value: tab.tabIndex
 				}) ;
 			}
 		);
 
-		this.$.tabPicker.createComponent({
-			name: "picker",
-			kind: "onyx.ContextualPopup",
-			floating: true,classes: "onyx-button-warning",
-			style: 'display: block',
-			actionButtons: actions
-		});
+		popup.maxHeightChanged();
+		popup.showAtPosition({top: 30, right:30});
 		this.render();
+		return ;
 	},
 
-	pickerHandler: function(tab) {
-		tab.setActive(true) ;
-		this.$.scroller.scrollIntoView(tab);
-		this.$.tabPicker.$.picker.destroy();
+	popupButtonTapped: function(inSender, inEvent) {
+		this.log(inEvent);
+		this.activate({ index: inEvent.originator.tabIndex} );
 	}
 });
