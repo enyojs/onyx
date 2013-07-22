@@ -19,7 +19,7 @@ Any time  you commit  a change  to a  `.less` file,  you also  need to
 re-generate the top-level library `.css` file as follows:
 
 	cd lib/onyx/css
-	../../enyo/tools/lessc.sh ./package.js 
+	../../../enyo/tools/lessc.sh ./package.js 
 
 This command will generate a new `onyx.css`, which you should check in
 with your `.less` changes.
