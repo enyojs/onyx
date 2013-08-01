@@ -32,7 +32,7 @@ enyo.kind({
 		scrimClassName: ""
 	},
 	//* @protected
-	statics: {
+	protectedStatics: {
 		count: 0,
 		highestZ: 120
 	},
