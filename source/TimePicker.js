@@ -50,9 +50,6 @@ enyo.kind({
 	initDefaults: function() {
 		// defaults that match en_US for when g11n isn't loaded
 		var am = "AM", pm = "PM";
-		if (this.is24HrMode == null) {
-			this.is24HrMode = false;
-		}
 		// Attempt to use the g11n lib (ie assume it is loaded)
 		if (enyo.g11n) {
 			this._tf = new enyo.g11n.Fmts({locale:this.locale});
@@ -62,6 +59,9 @@ enyo.kind({
 			if (this.is24HrMode == null) {
 				this.is24HrMode = !this._tf.isAmPm();
 			}
+		}
+		else if (this.is24HrMode == null) {
+			this.is24HrMode = false;
 		}
 
 		this.setupPickers(this._tf ? this._tf.getTimeFieldOrder() : 'hma');
