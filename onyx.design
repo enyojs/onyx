@@ -422,6 +422,46 @@
                     "filterLevel": "normal"
                 }
             }
+        },
+        {
+            "type": "kind",
+            "name": "onyx.DatePicker",
+            "properties": {
+                "value": {
+                    "filterLevel": "hidden"
+                },
+                "content": {
+                    "filterLevel": "dangerous"
+                }
+            }
+        },
+        {
+            "type": "kind",
+            "name": "onyx.TimePicker",
+            "properties": {
+                "value": {
+                    "filterLevel": "hidden"
+                },
+                "content": {
+                    "filterLevel": "dangerous"
+                }
+            }
+        }
+    ],
+    "serializer": [
+        {
+            "type": "kind",
+            "name": "onyx.DatePicker",
+            "exclude": {
+                "value": true
+            }
+        },
+        {
+            "type": "kind",
+            "name": "onyx.TimePicker",
+            "exclude": {
+                "value": true
+            }
         }
     ]
 }
