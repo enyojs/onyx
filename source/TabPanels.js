@@ -16,7 +16,7 @@ Here's an example:
 				{kind: "MyLastPanel"}
 			]
 		});
-		new App().write();
+		new App().renderInto(document.body);
 */
 
 enyo.kind(
