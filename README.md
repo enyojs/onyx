@@ -15,15 +15,15 @@ To get a feel for Onyx, check out the [OnyxSampler example](http://enyojs.com/sa
 
 ## Changes
 
-Any time  you commit  a change  to a  `.less` file,  you also  need to
-re-generate the top-level library `.css` file as follows:
+Any time you commit a change to a `.less` file, you also need to regenerate the
+top-level `.css` file for the library, as follows:
 
-	cd lib/onyx/css
-	../../enyo/tools/lessc.sh ./package.js 
+    cd lib/onyx/css
+    ../../../enyo/tools/lessc.sh ./package.js 
 
-This command will generate a new `onyx.css`, which you should check in
-with your `.less` changes.
+This will generate a new `onyx.css`, which you should check in along with your
+`.less` changes.
 
-Please don't manually  edit the top-level `onyx.css`:  those should be
-treated  as output  files, and  we should  only be  making changes  to
-`.less` files and generating the `.css` file using the above command.
+Please do not edit the top-level `onyx.css` file manually.  It should be
+treated as an output file; we should make changes to `.less` files only, then
+generate the `onyx.css` file using the above command.
