@@ -126,6 +126,7 @@ enyo.kind ({
 		{
 			kind: "onyx.MenuDecorator",
 			name: "tabPicker",
+			onSelect: "popupButtonTapped",
 			components: [
 				{
 					kind: "onyx.IconButton",
@@ -467,6 +468,6 @@ enyo.kind ({
 
 	popupButtonTapped: function(inSender, inEvent) {
 		this.log(inEvent);
-		this.activate({ index: inEvent.originator.tabIndex} );
+		this.activate({ index: inEvent.originator.value } );
 	}
 });
