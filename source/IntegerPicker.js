@@ -73,6 +73,6 @@ enyo.kind({
 			this.selected.addClass("selected");
 			this.doChange({selected: this.selected, content: this.selected.content});
 		}
-		this.value = parseInt(this.selected.content, 10);
+		this.setValue(parseInt(this.selected.content, 10));
 	}
 });
