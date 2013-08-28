@@ -522,6 +522,9 @@
 .onyx-tab-bar-scroller {
   padding-top: 2px;
 }
+.onyx-tab-bar-scroller > .enyo-thumb {
+  border: 0px;
+}
 .onyx-tab-bar-scroller .enyo-touch-scroller > div {
   padding: 3px 0px 3px 0px;
   width: 100%;
@@ -548,7 +551,7 @@
   border-top-left-radius: 5px;
   background-color: #b1b1b1;
   z-index: 1;
-  padding-top: 0.3em;
+  padding-top: 0.2em;
   padding-bottom: 0.7em ;
   vertical-align: baseline;
 }
@@ -556,6 +559,7 @@
   border-bottom: 1px solid #cacaca;
   background-color: #cacaca;
   z-index: 3;
+  padding-top: 0.3em;
 }
 .onyx-tab-item:hover {
   background-color: #cacaca;
