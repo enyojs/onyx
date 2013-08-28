@@ -451,7 +451,7 @@ enyo.kind ({
 		enyo.forEach(
 			this.$.tabs.getControls(),
 			function(tab){
-				this.log('creat button for tab' + tab.tabIndex);
+				this.log('create button for tab' + tab.tabIndex);
 				that.$.popup.createComponent({
 					content: tab.content,
 					value: tab.tabIndex
