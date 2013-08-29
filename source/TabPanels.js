@@ -34,7 +34,7 @@ enyo.kind({
 	 * the tab bar.
 	 */
 	published: {
-		maxMenuHeight: null,
+		maxMenuHeight: null
 	},
 
 	tabTools: [
@@ -152,8 +152,8 @@ enyo.kind({
 	 *
 	 * Example:
 
-	 myTab.removeTab({'index':0}); // remove the leftmost tab
-	 myTab.removeTab({'caption':'foo.js'});
+		myTab.removeTab({'index':0}); // remove the leftmost tab
+		myTab.removeTab({'caption':'foo.js'});
 
 	*/
 
