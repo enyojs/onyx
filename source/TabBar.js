@@ -135,6 +135,7 @@ enyo.kind ({
 				},
 				{
 					kind: "onyx.Menu",
+					maxHeight: 600,
 					name: "popup"
 				}
 			]
