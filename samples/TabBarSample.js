@@ -47,7 +47,7 @@ enyo.kind(
 		name: "DynamicTabBar",
 		fit: true,
 		components: [
-			{name:"bar",kind: "onyx.TabBar"},
+			{name:"bar",kind: "onyx.TabBar", maxMenuHeight: 200},
 			{
 				style: "border: 2px solid grey; ",
 				components: [
