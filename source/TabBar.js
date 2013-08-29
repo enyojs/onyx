@@ -464,6 +464,7 @@ enyo.kind ({
 		popup.maxHeightChanged();
 		popup.showAtPosition({top: 30, right:30});
 		this.render();
+		this.resized(); // required for IE10 to work correctly
 		return ;
 	},
 
