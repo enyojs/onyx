@@ -55,7 +55,6 @@ enyo.kind({
 
 	create: function() {
 		this.inherited(arguments);
-		if (this.debug) {this.log("create called");}
 
 		if (this.getMaxMenuHeight()) {
 			this.maxMenuHeightChanged();
@@ -74,10 +73,8 @@ enyo.kind({
 		this.$.bar.setMaxMenuHeight(this.getMaxMenuHeight()) ;
 	},
 	initComponents: function() {
-		if (this.debug) {this.log("initComponents called");}
 		this.createChrome(this.tabTools);
 		this.inherited(arguments);
-		if (this.debug) {this.log("initComponents done");}
 	},
 	getClientPanels: function() {
 		return this.getPanels();
@@ -113,13 +110,11 @@ enyo.kind({
 
 		if (this.initDone) { return ;}
 
-		if (this.debug) {this.log("rendered start");}
 		var that = this ;
 		enyo.forEach(
 			this.controls,
 			function(c) {
 				if (that.isClient(c)) {
-					if (that.debug) {that.log("adding control " + c.name);}
 					that.$.bar.addTab(c) ;
 				}
 			}
@@ -127,7 +122,6 @@ enyo.kind({
 
 		this.setIndex(this.controls.length - 1);
 		this.initDone = true;
-		if (this.debug) {this.log("rendered done");}
 
 		// must be called at the end otherwise kind size is weird
 		this.inherited(arguments);
@@ -184,9 +178,6 @@ enyo.kind({
 	switchPanel: function(inSender, inEvent) {
 		if (this.hasNode()) {
 			var i = inEvent.index;
-			if (this.debug) {
-				this.log("switchPanel called with caption "+ inEvent.caption) ;
-			}
 			if (this.getIndex() != i) {
 				this.setIndex(i);
 			}
