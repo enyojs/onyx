@@ -88,6 +88,14 @@ enyo.kind ({
 		onTabRemoved: ""
 	},
 
+	/**
+	 * Set a maximum height for the scrollable menu that can be raised on the right of
+	 * the tab bar.
+	 */
+	published: {
+		maxMenuHeight: 600
+	},
+
 	handlers: {
 		onTabCloseRequest: "requestTabClose"
 	},
@@ -135,7 +143,6 @@ enyo.kind ({
 				},
 				{
 					kind: "onyx.Menu",
-					maxHeight: 600,
 					name: "popup"
 				}
 			]
@@ -161,6 +168,17 @@ enyo.kind ({
 		}
 		return true;
 	},
+
+	create: function () {
+		this.inherited(arguments);
+		this.maxMenuHeightChanged();
+	},
+
+	maxMenuHeightChanged: function() {
+		this.$.popup.setMaxHeight(this.getMaxMenuHeight());
+		this.log("bar menu height "+ this.getMaxMenuHeight());
+	},
+
 
 	rendered: function() {
 		this.inherited(arguments);

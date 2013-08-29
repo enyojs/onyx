@@ -30,6 +30,14 @@ enyo.kind(
 			onTabChanged: 'switchPanel'
 		},
 
+		/**
+		 * Set a maximum height for the scrollable menu that can be raised on the right of
+		 * the tab bar.
+		 */
+		published: {
+			maxMenuHeight: null,
+		},
+
 		tabTools: [
 			{
 				kind: 'onyx.TabBar',
@@ -49,6 +57,11 @@ enyo.kind(
 		create: function() {
 			this.inherited(arguments);
 			if (this.debug) {this.log("create called");}
+
+			if (this.getMaxMenuHeight()) {
+				this.maxMenuHeightChanged();
+			}
+
 			// getPanels called on client will return panels of *this* kind
 			this.$.client.getPanels = this.bindSafely("getClientPanels");
 
@@ -56,6 +69,10 @@ enyo.kind(
 			this.draggableChanged();
 			this.animateChanged();
 			this.wrapChanged();
+		},
+
+		maxMenuHeightChanged: function() {
+			this.$.bar.setMaxMenuHeight(this.getMaxMenuHeight()) ;
 		},
 		initComponents: function() {
 			if (this.debug) {this.log("initComponents called");}
