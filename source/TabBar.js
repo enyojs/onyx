@@ -176,7 +176,6 @@ enyo.kind ({
 
 	maxMenuHeightChanged: function() {
 		this.$.popup.setMaxHeight(this.getMaxMenuHeight());
-		this.log("bar menu height "+ this.getMaxMenuHeight());
 	},
 
 
@@ -374,7 +373,6 @@ enyo.kind ({
 	},
 
 	raiseTab: function(tab) {
-		this.log(tab);
 		tab.setActive(true) ;
 		this.$.scroller.scrollIntoView(tab);
 	},
@@ -400,7 +398,6 @@ enyo.kind ({
 	//* @protected
 	undoSwitchOnError: function(oldIndex, err) {
 		if (err) {
-			this.log("app requested to activate back tab index "+ oldIndex + " because ",err);
 			this.activate({ 'index': oldIndex } ) ;
 		}
 	},
@@ -471,7 +468,6 @@ enyo.kind ({
 		enyo.forEach(
 			this.$.tabs.getControls(),
 			function(tab){
-				this.log('create button for tab' + tab.tabIndex);
 				that.$.popup.createComponent({
 					content: tab.content,
 					value: tab.tabIndex
@@ -487,7 +483,6 @@ enyo.kind ({
 	},
 
 	popupButtonTapped: function(inSender, inEvent) {
-		this.log(inEvent);
 		this.activate({ index: inEvent.originator.value } );
 	}
 });
