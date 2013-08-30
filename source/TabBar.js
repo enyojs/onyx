@@ -451,8 +451,8 @@ enyo.kind ({
 		return ! this.$.tabs.getControls().length ;
 	},
 
-	// Since action buttons of Contectual Popups are not dynamic, this
-	// kind is created on the fly and destroyed once the user's click
+	// Since action buttons of Contextual Popups are not dynamic, this
+	// kind is created on the fly and destroyed once the user clicks
 	// on a button
 	showPopupAtEvent: function(inSender, inEvent) {
 		var that = this ;
