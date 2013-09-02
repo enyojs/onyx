@@ -1,3 +1,3 @@
 if (enyo && enyo.version) {
-	enyo.version.onyx = "2.3.0-pre.7-dev";
+	enyo.version.onyx = "2.3.0-pre.8-dev";
 }
