@@ -88,6 +88,14 @@ enyo.kind ({
 		onTabRemoved: ""
 	},
 
+	/**
+	 * Set a maximum height for the scrollable menu that can be raised on the right of
+	 * the tab bar.
+	 */
+	published: {
+		maxMenuHeight: 600
+	},
+
 	handlers: {
 		onTabCloseRequest: "requestTabClose"
 	},
@@ -122,6 +130,22 @@ enyo.kind ({
 				{ classes: "onyx-tab-line"},
 				{ classes: "onyx-tab-rug"}
 			]
+		},
+		{
+			kind: "onyx.MenuDecorator",
+			name: "tabPicker",
+			onSelect: "popupButtonTapped",
+			components: [
+				{
+					kind: "onyx.IconButton",
+					classes: "onyx-more-button",
+					ontap: "showPopupAtEvent"
+				},
+				{
+					kind: "onyx.Menu",
+					name: "popup"
+				}
+			]
 		}
 	],
 
@@ -144,6 +168,16 @@ enyo.kind ({
 		}
 		return true;
 	},
+
+	create: function () {
+		this.inherited(arguments);
+		this.maxMenuHeightChanged();
+	},
+
+	maxMenuHeightChanged: function() {
+		this.$.popup.setMaxHeight(this.getMaxMenuHeight());
+	},
+
 
 	rendered: function() {
 		this.inherited(arguments);
@@ -334,9 +368,13 @@ enyo.kind ({
 	activate: function(target) {
 		var tab = this.resolveTab(target,'activate');
 		if (tab) {
-			tab.setActive(true) ;
-			this.$.scroller.scrollIntoView(tab);
+			this.raiseTab(tab);
 		}
+	},
+
+	raiseTab: function(tab) {
+		tab.setActive(true) ;
+		this.$.scroller.scrollIntoView(tab);
 	},
 
 	//* @protected
@@ -360,7 +398,6 @@ enyo.kind ({
 	//* @protected
 	undoSwitchOnError: function(oldIndex, err) {
 		if (err) {
-			this.log("app requested to activate back tab index "+ oldIndex + " because ",err);
 			this.activate({ 'index': oldIndex } ) ;
 		}
 	},
@@ -412,5 +449,40 @@ enyo.kind ({
 
 	isEmpty: function() {
 		return ! this.$.tabs.getControls().length ;
+	},
+
+	// Since action buttons of Contextual Popups are not dynamic, this
+	// kind is created on the fly and destroyed once the user clicks
+	// on a button
+	showPopupAtEvent: function(inSender, inEvent) {
+		var that = this ;
+		var popup = this.$.popup;
+
+		for (var name in popup.$) {
+			if (popup.$.hasOwnProperty(name) && /menuItem/.test(name)) {
+				popup.$[name].destroy();
+			}
+		}
+
+		//popup.render();
+		enyo.forEach(
+			this.$.tabs.getControls(),
+			function(tab){
+				that.$.popup.createComponent({
+					content: tab.content,
+					value: tab.tabIndex
+				}) ;
+			}
+		);
+
+		popup.maxHeightChanged();
+		popup.showAtPosition({top: 30, right:30});
+		this.render();
+		this.resized(); // required for IE10 to work correctly
+		return ;
+	},
+
+	popupButtonTapped: function(inSender, inEvent) {
+		this.activate({ index: inEvent.originator.value } );
 	}
 });
