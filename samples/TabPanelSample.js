@@ -49,7 +49,8 @@ enyo.kind({
 		},
 		{
 			kind:"DynamicTabPanel",
-			name: 'dynamicTP'
+			name: 'dynamicTP',
+			maxMenuHeight: 200
 		},
 		{
 			kind: 'onyx.Button',

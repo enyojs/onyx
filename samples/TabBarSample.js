@@ -47,7 +47,7 @@ enyo.kind(
 		name: "DynamicTabBar",
 		fit: true,
 		components: [
-			{name:"bar",kind: "onyx.TabBar"},
+			{name:"bar",kind: "onyx.TabBar", maxMenuHeight: 200},
 			{
 				style: "border: 2px solid grey; ",
 				components: [
@@ -88,8 +88,8 @@ enyo.kind(
 			var delta = ( date.getTime() - this.creationTime ) / 1000 ;
 			this.$.bar.addTab(
 				{
-					'caption': 'Tab label ' + this.number++ ,
-					data: { msg: "tab created after " + delta + " seconds" }
+					'caption': 'Tab label ' + this.number ,
+					data: { msg: "tab " + this.number++ + " created after " + delta + " seconds" }
 				}
 			) ;
 		},
