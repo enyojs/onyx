@@ -18,7 +18,7 @@ enyo.kind({
 		{tag: "br"},
 		{kind: "onyx.Checkbox", name:"animateSetting", value:true},
 		{content:"Animated", classes:"enyo-inline onyx-sample-animate-label"},
-		{kind: "onyx.Checkbox", onchange: "sliderIncrementChanged", checked: false},
+		{name : "incrementSetting", kind: "onyx.Checkbox", onchange: "sliderIncrementChanged", checked: false},
 		{content: "increment by 7", classes:"enyo-inline"},
 		{tag: "br"},
 		{tag: "br"},
@@ -59,11 +59,13 @@ enyo.kind({
 		}
 	},
 	incValue: function() {
-		this.$.input.setValue(Math.min(parseInt(this.$.input.getValue() || 0, 10) + 10, 100));
+		var tGap = (this.$.incrementSetting.getChecked()) ? 7 : 10;	
+		this.$.input.setValue(Math.min(parseInt(this.$.input.getValue() || 0, 10) + tGap, 100));
 		this.changeValue();
 	},
 	decValue: function() {
-		this.$.input.setValue(Math.max(parseInt(this.$.input.getValue() || 0, 10) - 10, 0));
+		var tGap = (this.$.incrementSetting.getChecked()) ? 7 : 10;	
+		this.$.input.setValue(Math.max(parseInt(this.$.input.getValue() || 0, 10) - tGap, 0));
 		this.changeValue();
 	},
 	sliderChanging: function(inSender, inEvent) {
