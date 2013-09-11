@@ -83,7 +83,7 @@ enyo.kind({
 	},
 	updateRangeLabels: function(slider) {
 		slider.setStartLabel("--> " + Math.floor(slider.getRangeStart()));
-		slider.setEndLabel(Math.floor(slider.getRangeEnd()) + "<--");
+		slider.setEndLabel(Math.ceil(slider.getRangeEnd()) + "<--");
 	},
 	rangeSliderChanging: function(inSender, inEvent) {
 		this.updateRangeLabels(inSender);
