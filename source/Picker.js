@@ -1,12 +1,11 @@
 /**
-	_onyx.Picker_, a subkind of <a href="#onyx.Menu">onyx.Menu</a>, is used to
-	display	a list of items that can be selected. It is meant to be used in
-	conjunction with an	<a href="#onyx.PickerDecorator">onyx.PickerDecorator</a>.
-	The decorator loosely couples the picker with an
-	<a href="#onyx.PickerButton">onyx.PickerButton</a>--a button that, when
-	tapped, shows the picker. Once an item is selected, the list of items closes,
-	but the item stays selected and the PickerButton displays the choice that
-	was made.
+	_onyx.Picker_, a subkind of [onyx.Menu](#onyx.Menu), is used to display a list
+	of items that may be selected. It is meant to be used together with an
+	[onyx.PickerDecorator](#onyx.PickerDecorator). The decorator loosely couples
+	the picker with an [onyx.PickerButton](#onyx.PickerButton)--a button that,
+	when tapped, shows the picker. Once an item is selected, the list of items
+	closes, but the item stays selected and the PickerButton displays the choice
+	that was made.
 
 	To initialize the Picker to a particular value, set the _active_ property to
 	true for the item that should be selected.
@@ -21,13 +20,12 @@
 			]}
 		]}
 
-	Each item in the list is an <a href="#onyx.MenuItem">onyx.MenuItem</a>, so
-	an _onSelect_ event with the item can be listened to by a client application
-	to determine which picker item was selected.
+	Each item in the list is an [onyx.MenuItem](#onyx.MenuItem), so a client app
+	may listen for an _onSelect_ event with the item to determine which picker
+	item was selected.
 
 	For more information, see the documentation on
-	<a href="https://github.com/enyojs/enyo/wiki/Pickers">Pickers</a> in the
-	Enyo Developer Guide.
+	[Pickers](building-apps/controls/pickers.html) in the Enyo Developer Guide.
  */
 enyo.kind({
 	name: "onyx.Picker",

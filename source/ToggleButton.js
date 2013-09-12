@@ -1,13 +1,12 @@
 /**
-	_onyx.ToggleButton_ is a control that looks like a switch with labels for
-	two states. Each time a	ToggleButton is tapped, it switches its value and
-	fires an _onChange_ event.
+	_onyx.ToggleButton_ is a control that looks like a switch with labels for two
+	states. Each time a	ToggleButton is tapped, it switches its value and fires an
+	_onChange_ event.
 
-	To get the value of the button, call _getValue_.
+	To get the value of the button, call _getValue()_.
 
 	For more information, see the documentation on
-	[Buttons](https://github.com/enyojs/enyo/wiki/Buttons) in the Enyo Developer
-	Guide.
+	[Buttons](building-apps/controls/buttons.html) in the Enyo Developer Guide.
 */
 enyo.kind({
 	name: "onyx.ToggleButton",

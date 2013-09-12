@@ -1,11 +1,10 @@
 /**
-    _onyx.IntegerPicker_, a subkind of <a href="#onyx.Picker">onyx.Picker</a>,
-    is used to display a list of integers that can be selected, ranging from
-    _min_ to _max_. It is meant to be used in conjunction with an
-    <a href="#onyx.PickerDecorator">onyx.PickerDecorator</a>. The decorator
-    loosely couples the picker with an
-    <a href="#onyx.PickerButton">onyx.PickerButton</a>--a button that, when
-    tapped, shows the picker. Once an item is selected, the list of items
+    _onyx.IntegerPicker_, a subkind of [onyx.Picker](#onyx.Picker), is used to
+    display a list of integers that may be selected, ranging from _min_ to
+    _max_. It is meant to be used in conjunction with an
+    [onyx.PickerDecorator](#onyx.PickerDecorator). The decorator loosely couples
+    the picker with an [onyx.PickerButton](#onyx.PickerButton)--a button that,
+    when tapped, shows the picker. Once an item is selected, the list of items
     closes,	but the item stays selected and the PickerButton displays the choice
     that was made.
 
@@ -17,13 +16,12 @@
             {kind: "onyx.IntegerPicker", min: 0, max: 25, value: 5}
         ]}
 
-    Each item in the list is an <a href="#onyx.MenuItem">onyx.MenuItem</a>, so
-    an application may listen for an _onSelect_ event with the item to determine
+    Each item in the list is an [onyx.MenuItem](#onyx.MenuItem), so an
+    application may listen for an _onSelect_ event with the item to determine
     which picker item was selected.
 
     For more information, see the documentation on
-    <a href="https://github.com/enyojs/enyo/wiki/Pickers">Pickers</a> in the
-    Enyo Developer Guide.
+    [Pickers](building-apps/controls/pickers.html) in the Enyo Developer Guide.
  */
 enyo.kind({
 	name: "onyx.IntegerPicker",

@@ -4,7 +4,7 @@
 
 		{kind: "onyx.ProgressBar", progress: 10}
 
-	To animate progress changes, call the _animateProgressTo_ method:
+	To animate progress changes, call the _animateProgressTo()_ method:
 
 		this.$.progressBar.animateProgressTo(50);
 
@@ -13,9 +13,9 @@
 
 		{kind: "onyx.ProgressBar", barClasses: "onyx-dark"}
 
-	For more information, see the documentation on
-	<a href="https://github.com/enyojs/enyo/wiki/Progress-Indicators">Progress Indicators</a>
-	in the Enyo Developer Guide.
+	For more information, see the documentation on [Progress
+	Indicators](building-apps/controls/progress-indicators.html) in the Enyo
+	Developer Guide.
 */
 enyo.kind({
 	name: "onyx.ProgressBar",

@@ -1,7 +1,7 @@
 /**
-	_onyx.MoreToolbar_ extends <a href="#enyo.Control">enyo.Control</a>,
-	providing a toolbar that can adapt to different screen sizes by moving
-	overflowing controls and content into an <a href="#onyx.Menu">onyx.Menu</a>.
+	_onyx.MoreToolbar_ extends [enyo.Control](#enyo.Control), providing a toolbar
+	that can adapt to different screen sizes by moving overflowing controls and
+	content into an [onyx.Menu](#onyx.Menu).
 
 		{kind: "onyx.MoreToolbar", components: [
 			{content: "More Toolbar", unmoveable: true},
@@ -15,8 +15,7 @@
 	_unmoveable_ property to true (the default is false).
 
 	For more information, see the documentation on
-	<a href="https://github.com/enyojs/enyo/wiki/Toolbars">Toolbars</a> in the
-	Enyo Developer Guide.
+	[Toolbars](building-apps/controls/toolbars.html) in the Enyo Developer Guide.
 */
 
 enyo.kind({

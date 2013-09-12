@@ -1,11 +1,11 @@
 /**
-	_onyx.Menu_ is a subkind of <a href="#onyx.Popup">onyx.Popup</a> that
-	displays a list of <a href="#onyx.MenuItem">onyx.MenuItem</a> objects and
-	looks like a popup menu. It is meant to be used in conjunction with an
-	<a href="#onyx.MenuDecorator">onyx.MenuDecorator</a>. The decorator couples
-	the menu with an activating control, which may be a button or any other
-	control with an _onActivate_ event. When the control is activated, the menu
-	shows itself in the correct position relative to the activator.
+	_onyx.Menu_ is a subkind of [onyx.Popup](#onyx.Popup) that displays a list of
+	[onyx.MenuItem](#onyx.MenuItem") objects and looks like a popup menu. It is
+	meant to be used together with an [onyx.MenuDecorator](#onyx.MenuDecorator).
+	The decorator couples the menu with an activating control, which may be a
+	button or any other control with an _onActivate_ event. When the control is
+	activated, the menu shows itself in the correct position relative to the
+	activator.
 
 		{kind: "onyx.MenuDecorator", components: [
 			{content: "Show menu"},
@@ -19,8 +19,7 @@
 		]}
 
 	For more information, see the documentation on
-	<a href="https://github.com/enyojs/enyo/wiki/Menus">Menus</a> in the Enyo
-	Developer Guide.
+	[Menus](building-apps/controls/menus.html) in the Enyo Developer Guide.
  */
 enyo.kind({
 	name: "onyx.Menu",

@@ -1,6 +1,6 @@
 /**
-	_onyx.Popup_ is an enhanced [enyo.Popup](http://enyojs.com/api/#enyo.Popup)
-	with built-in scrim and z-index handling.
+	_onyx.Popup_ is an enhanced [enyo.Popup](#enyo.Popup) with built-in scrim and
+	z-index handling.
 
 	To avoid obscuring popup contents, scrims require the dialog to be floating;
 	otherwise, they won't render. A modal popup will get a transparent scrim
@@ -8,8 +8,7 @@
 	specify _scrim: true, scrimWhenModal: false_.
 
 	For more information, see the documentation on
-	[Popups](https://github.com/enyojs/enyo/wiki/Popups) in the Enyo Developer
-	Guide.
+	[Popups](building-apps/controls/popups.html) in the Enyo Developer Guide.
 */
 enyo.kind({
 	name: "onyx.Popup",

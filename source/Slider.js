@@ -9,9 +9,9 @@
 	an _onChange_ event is fired when the position is set, either by finishing a
 	drag or by tapping the bar.
 
-	For more information, see the documentation on
-	<a href="https://github.com/enyojs/enyo/wiki/Progress-Indicators">Progress Indicators</a>
-	in the Enyo Developer Guide.
+	For more information, see the documentation on [Progress
+	Indicators](building-apps/controls/progress-indicators.html) in the Enyo
+	Developer Guide.
 */
 enyo.kind({
 	name: "onyx.Slider",

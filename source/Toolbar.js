@@ -1,9 +1,9 @@
 /**
-	_onyx.Toolbar_ is a horizontal bar containing controls used to perform
-	common UI actions.
+	_onyx.Toolbar_ is a horizontal bar containing controls used to perform common
+	UI actions.
 
-	A Toolbar customizes the styling of the controls it hosts, including
-	buttons, icons, and inputs.
+	A toolbar customizes the styling of the controls it hosts, including buttons,
+	icons, and inputs.
 
 		{kind: "onyx.Toolbar", components: [
 			{kind: "onyx.Button", content: "Favorites"},
@@ -14,8 +14,7 @@
 		]}
 
 	For more information, see the documentation on
-	<a href="https://github.com/enyojs/enyo/wiki/Toolbars">Toolbars</a>	in the
-	Enyo Developer Guide.
+	[Toolbars](building-apps/controls/toolbars.html) in the Enyo Developer Guide.
 */
 enyo.kind({
 	name: "onyx.Toolbar",

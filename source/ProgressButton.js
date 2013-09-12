@@ -1,6 +1,6 @@
 /**
-	_onyx.ProgressButton_ is a progress bar that has a cancel button on the
-	right and may have other controls inside of it.
+	_onyx.ProgressButton_ is a progress bar that has a cancel button on the right
+	and may have other controls inside of it.
 
 		{kind: "onyx.ProgressButton"},
 		{kind: "onyx.ProgressButton", barClasses: "onyx-light", progress: 20, components: [
@@ -8,9 +8,9 @@
 			{content: "100", style: "float: right;"}
 		]}
 
-	For more information, see the documentation on
-	<a href="https://github.com/enyojs/enyo/wiki/Progress-Indicators">Progress Indicators</a>
-	in the Enyo Developer Guide.
+	For more information, see the documentation on [Progress
+	Indicators](building-apps/controls/progress-indicators.html) in the Enyo
+	Developer Guide.
 */
 enyo.kind({
 	name: "onyx.ProgressButton",
