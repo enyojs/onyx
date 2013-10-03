@@ -22,8 +22,13 @@ NOTE: Since LESS generates relative URLs, it's important to run the `lessc.sh` s
 
 Also note you only need to generate the .css file when you're ready to check in your changes.  During development, you can do all your testing modifying just LESS files if you include "less-xyz.min.js" in your app's debug.html file, which compiles the LESS client-side during loading:
 
-    <script src="enyo/tools/minifier/node_modules/less/dist/less-1.3.0e.min.js"></script>
+    <script src="enyo/tools/minifier/node_modules/less/dist/less-1.3.0.min.js"></script>
     
+Alternatively, there is also a "watch" mode for `lessc.sh`, which will automatically re-compile CSS based on any LESS dependency changes:
+
+    cd lib/onyx/css
+    ../../../enyo/tools/lessc.sh -w ./package.js
+
 Additionally, any new controls contributed should follow this basic pattern to ensure proper themability support:
 
 * Place control's .js file(s) in `lib/onyx/source` and add to `lib/onyx/source/package.js`
