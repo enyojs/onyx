@@ -521,9 +521,13 @@
 }
 .onyx-tab-bar-scroller {
   padding-top: 2px;
+  overflow: visible;
 }
 .onyx-tab-bar-scroller > .enyo-thumb {
   border: 0px;
+}
+.onyx-tab-bar-scroller .enyo-touch-scroller {
+  overflow: visible;
 }
 .onyx-tab-bar-scroller .enyo-touch-scroller > div {
   padding: 3px 0px 3px 0px;
