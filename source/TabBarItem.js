@@ -27,26 +27,26 @@ enyo.kind ({
 		this.$.dissolve.removeClass('onyx-tab-item-hovered');
 	},
 	components: [
-			{
-				kind: "Button", // no need of onyx.RadioButton
-				name: 'button',
-				ontap: 'setActiveTrue',
-				onmouseover: 'showTooltipFromTab',
-				onmouseout: 'doHideTooltip'
-			},
-			{
-				classes: 'onyx-tab-item-dissolve',
-				ontap: 'setActiveTrue',
-				name: 'dissolve',
-				showing: false,
-				onmouseover: 'showTooltipFromTab',
-				onmouseout: 'doHideTooltip'
-			},
-			{
-				classes: 'onyx-tab-item-close',
-				name: 'closeButton' ,
-				ontap: 'requestClose'
-			}
+		{
+			kind: "Button", // no need of onyx.RadioButton
+			name: 'button',
+			ontap: 'setActiveTrue',
+			onmouseover: 'showTooltipFromTab',
+			onmouseout: 'doHideTooltip'
+		},
+		{
+			classes: 'onyx-tab-item-dissolve',
+			ontap: 'setActiveTrue',
+			name: 'dissolve',
+			showing: false,
+			onmouseover: 'showTooltipFromTab',
+			onmouseout: 'doHideTooltip'
+		},
+		{
+			classes: 'onyx-tab-item-close',
+			name: 'closeButton' ,
+			ontap: 'requestClose'
+		}
 	],
 
 	create: function() {
