@@ -407,10 +407,11 @@ enyo.kind ({
 	showTooltip: function(inSender, inEvent) {
 		var t = inEvent.tooltipContent;
 		var bounds = inEvent.bounds;
-		if((t !== undefined) && (t !== "") && (t !== null)){
+		if(t){
 			if(!this.$.tooltip.showing){
 				this.$.tooltip.setContent(t);
-				this.$.tooltipDecorator.applyStyle("left", bounds.left+(bounds.width/2)+"px");
+				var leftSpace = bounds.left + ( bounds.width / 2 );
+				this.$.tooltipDecorator.applyStyle("left", leftSpace + "px");
 				this.$.tooltip.show();
 			}
 		}
