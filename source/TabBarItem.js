@@ -12,7 +12,9 @@ enyo.kind ({
 	events: {
 		onTabActivated: '',
 		onTabCloseRequest: '',
-		onActivate: ''
+		onActivate: '',
+		onShowTooltip: '',
+		onHideTooltip: ''
 	},
 	handlers: {
 		onmouseover: "navOver",
@@ -25,22 +27,26 @@ enyo.kind ({
 		this.$.dissolve.removeClass('onyx-tab-item-hovered');
 	},
 	components: [
-		{
-			kind: "Button", // no need of onyx.RadioButton
-			name: 'button',
-			ontap: 'setActiveTrue'
-		},
-		{
-			classes: 'onyx-tab-item-dissolve',
-			ontap: 'setActiveTrue',
-			name: 'dissolve',
-			showing: false
-		},
-		{
-			classes: 'onyx-tab-item-close',
-			name: 'closeButton' ,
-			ontap: 'requestClose'
-		}
+			{
+				kind: "Button", // no need of onyx.RadioButton
+				name: 'button',
+				ontap: 'setActiveTrue',
+				onmouseover: 'showTooltipFromTab',
+				onmouseout: 'doHideTooltip'
+			},
+			{
+				classes: 'onyx-tab-item-dissolve',
+				ontap: 'setActiveTrue',
+				name: 'dissolve',
+				showing: false,
+				onmouseover: 'showTooltipFromTab',
+				onmouseout: 'doHideTooltip'
+			},
+			{
+				classes: 'onyx-tab-item-close',
+				name: 'closeButton' ,
+				ontap: 'requestClose'
+			}
 	],
 
 	create: function() {
@@ -108,6 +114,10 @@ enyo.kind ({
 	requestClose: function(inSender, inEvent) {
 		this.doTabCloseRequest({ index: this.tabIndex });
 		return true;
+	},
+	
+	showTooltipFromTab: function(inSender, inEvent){
+		this.doShowTooltip({tooltipContent: this.tooltipMsg, bounds:this.getBounds()});
+		
 	}
 });
-

@@ -97,7 +97,9 @@ enyo.kind ({
 	},
 
 	handlers: {
-		onTabCloseRequest: "requestTabClose"
+		onTabCloseRequest: "requestTabClose",
+		onShowTooltip: "showTooltip",
+		onHideTooltip: "hideTooltip"
 	},
 
 	components: [
@@ -128,7 +130,10 @@ enyo.kind ({
 					onTabActivated: 'switchTab'
 				},
 				{ classes: "onyx-tab-line"},
-				{ classes: "onyx-tab-rug"}
+				{ classes: "onyx-tab-rug"},
+				{kind: "onyx.TooltipDecorator", components:[
+					{kind: "onyx.Tooltip", classes: "onyx-tab-tooltip"}
+				]}
 			]
 		},
 		{
@@ -201,6 +206,7 @@ enyo.kind ({
 			{
 				content:  c,
 				userData: inControl.data || { },
+				tooltipMsg: inControl.tooltipMsg, //may be null
 				userId:   inControl.userId, // may be null
 				tabIndex: this.selectedId,
 				addBefore: this.$.line
@@ -263,6 +269,7 @@ enyo.kind ({
 				{
 					index:   replacementTab.index,
 					caption: replacementTab.caption,
+					tooltipMsg: replacementTab.tooltipMsg,
 					data:    replacementTab.userData,
 					userId:  replacementTab.userId
 				}
@@ -287,6 +294,7 @@ enyo.kind ({
 		var tabData = {
 			index:   tab.tabIndex,
 			caption: tab.content,
+			tooltipMsg: tab.tooltipMsg,
 			userId:  tab.userId,
 			data:    tab.userData
 		} ;
@@ -386,12 +394,31 @@ enyo.kind ({
 				{
 					index:   inEvent.index,
 					caption: inEvent.caption,
+					tooltipMsg: inEvent.tooltipMsg,
 					data:    inEvent.userData,
 					userId:  inEvent.userId,
 					next:    enyo.bind(this,'undoSwitchOnError', oldIndex)
 				}
 			);
 		}
+		return true ;
+	},
+
+	showTooltip: function(inSender, inEvent) {
+		var t = inEvent.tooltipContent;
+		var bounds = inEvent.bounds;
+		if((t !== undefined) && (t !== "") && (t !== null)){
+			if(!this.$.tooltip.showing){
+				this.$.tooltip.setContent(t);
+				this.$.tooltipDecorator.applyStyle("left", bounds.left+(bounds.width/2)+"px");
+				this.$.tooltip.show();
+			}
+		}
+		return true ;
+	},
+
+	hideTooltip: function() {
+		this.$.tooltip.hide();
 		return true ;
 	},
 
