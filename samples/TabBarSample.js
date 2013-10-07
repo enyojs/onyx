@@ -24,12 +24,14 @@ enyo.kind({
 		this.$.bar.addTab(
 			{
 				'caption': 'English',
+				'tooltipMsg': 'English/Anglais',
 				'data' : { 'msg': 'Hello World !' } // arbitrary user data
 			}
 		) ;
 		this.$.bar.addTab(
 			{
 				'caption': 'Français',
+				'tooltipMsg': 'French/Français',
 				'data' : { 'msg': 'Bonjour tout le monde !' } // arbitrary user data
 			}
 		) ;
