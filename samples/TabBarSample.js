@@ -31,7 +31,7 @@ enyo.kind({
 		this.$.bar.addTab(
 			{
 				'caption': 'Français',
-				'tooltipMsg': 'Frech/Français',
+				'tooltipMsg': 'French/Français',
 				'data' : { 'msg': 'Bonjour tout le monde !' } // arbitrary user data
 			}
 		) ;
