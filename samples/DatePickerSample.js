@@ -65,7 +65,7 @@ enyo.kind({
 	],
 	initComponents: function() {
 		this.inherited(arguments);
-		this.locale = enyo.g11n.currentLocale().getLocale();
+		this.locale = ilib.getLocale();
 	},
 	pickerHandler: function(inSender, inEvent){
 		this.locale = inEvent.selected.content;
@@ -99,10 +99,10 @@ enyo.kind({
 		this.$[inEvent.name + "Value"].setContent(fmt.format(inEvent.value));
 	},
 	format: function(dateComponents) {
-		var fmt = new enyo.g11n.DateFmt({
+		var fmt = new ilib.DateFmt({
 			dateComponents: dateComponents || undefined,
 			date: 'short',
-			locale: new enyo.g11n.Locale(this.locale)
+			locale: new ilib.Locale(this.locale)
 		});
 		return fmt;
 	}

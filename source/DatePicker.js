@@ -5,7 +5,7 @@
 
 	By default, _DatePicker_ tries to determine the current locale and use its
 	rules to format the date (including the month name). In order to do this
-	successfully, the _g11n_ library must be loaded; if it is not loaded, the
+	successfully, the _ilib_ library must be loaded; if it is not loaded, the
 	control defaults to using standard U.S. date format.
 
 	The _day_ field is automatically populated with the proper number of days
@@ -53,22 +53,28 @@ enyo.kind({
 	},
 	create: function() {
 		this.inherited(arguments);
-		if (enyo.g11n) {
-			this.locale = enyo.g11n.currentLocale().getLocale();
+		if (ilib) {
+			this.locale = ilib.getLocale();
 		}
 		this.initDefaults();
 	},
 	initDefaults: function() {
-		// Fall back to en_us as default
+		// Fall back to en_US as default
 		var months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 
-		//Attempt to use the g11n lib (ie assume it is loaded)
-		if (enyo.g11n) {
-			this._tf = new enyo.g11n.Fmts({locale:this.locale});
-			months = this._tf.getMonthFields();
+		//Attempt to use the ilib library (ie assume it is loaded)
+		if (ilib) {
+			months = [];
+			this._tf = new ilib.DateFmt({locale:this.locale});
+			var mounthCount = new ilib.Cal.Gregorian().getNumMonths();
+			var fmt = new ilib.DateFmt({date: 'm', length: 'full'});
+			for (var i=0; i<mounthCount; i++) {
+				var d = new ilib.Date.GregDate({month: i+1});
+				months[i] = fmt.format(d);
+			}
 		}
 
-		this.setupPickers(this._tf ? this._tf.getDateFieldOrder() : 'mdy');
+		this.setupPickers(this._tf ? this._tf.getDateComponents() : 'mdy');
 
 		this.dayHiddenChanged();
 		this.monthHiddenChanged();
