@@ -59,9 +59,7 @@ enyo.kind({
 		this.initDefaults();
 	},
 	initDefaults: function() {
-		// Fall back to en_US as default
-		var months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-
+		var months;
 		//Attempt to use the ilib library (ie assume it is loaded)
 		if (ilib) {
 			months = [];
@@ -72,6 +70,10 @@ enyo.kind({
 				var d = new ilib.Date.GregDate({month: i+1});
 				months[i] = fmt.format(d);
 			}
+		}
+		// Fall back to en_US as default
+		else {
+			months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
 		}
 
 		this.setupPickers(this._tf ? this._tf.getDateComponents() : 'mdy');
