@@ -64,7 +64,7 @@ enyo.kind({
 		if (ilib) {
 			months = [];
 			this._tf = new ilib.DateFmt({locale:this.locale});
-			var mounthCount = new ilib.Cal.Gregorian().getNumMonths();
+			var mounthCount = this._tf.cal.getNumMonths();
 			var fmt = new ilib.DateFmt({date: 'm', length: 'full'});
 			for (var i=0; i<mounthCount; i++) {
 				var d = new ilib.Date.GregDate({month: i+1});
