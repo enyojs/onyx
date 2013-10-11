@@ -71,7 +71,7 @@ enyo.kind({
 			months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 			this.localeInfo.getMonthsOfYear = function() {
 				return months;
-			}
+			};
 		}
 
 		this.setupPickers(this._tf ? this._tf.getDateComponents() : 'mdy');
