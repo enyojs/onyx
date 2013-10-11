@@ -13,18 +13,18 @@ enyo.kind({
 				{kind: "onyx.PickerDecorator", style:"padding:10px;", onSelect: "pickerHandler", components: [
 					{content: "Pick One...", style: "width: 200px"},
 					{kind: "onyx.Picker", components: [
-						{content: 'en_us', active:true},
-						{content: 'en_ca'},
-						{content: 'en_ie'},
-						{content: 'en_gb'},
-						{content: 'en_mx'},
-						{content: 'de_de'},
-						{content: 'fr_fr'},
-						{content: 'fr_ca'},
-						{content: 'it_it'},
-						{content: 'es_es'},
-						{content: 'es_mx'},
-						{content: 'es_us'}
+						{content: 'en-US', active:true},
+						{content: 'en-CA'},
+						{content: 'en-IE'},
+						{content: 'en-GB'},
+						{content: 'en-MX'},
+						{content: 'de-DE'},
+						{content: 'fr-FR'},
+						{content: 'fr-CA'},
+						{content: 'it-IT'},
+						{content: 'es-ES'},
+						{content: 'es-MX'},
+						{content: 'es-US'}
 					]}
 				]}
 			]}

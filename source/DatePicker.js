@@ -22,7 +22,7 @@ enyo.kind({
 			creation, in which case the control will be updated to reflect the
 			new value.
 		*/
-		locale: "en_us",
+		locale: "en-US",
 		//* If true, the day field is hidden
 		dayHidden: false,
 		//* If true, the month field is hidden
@@ -64,16 +64,14 @@ enyo.kind({
 		if (ilib) {
 			months = [];
 			this._tf = new ilib.DateFmt({locale:this.locale});
-			var mounthCount = this._tf.cal.getNumMonths();
-			var fmt = new ilib.DateFmt({date: 'm', length: 'full'});
-			for (var i=0; i<mounthCount; i++) {
-				var d = new ilib.Date.GregDate({month: i+1});
-				months[i] = fmt.format(d);
-			}
+			months = this._tf.getMonthsOfYear({length: 'long'});
 		}
 		// Fall back to en_US as default
 		else {
-			months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"]
+			months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+			this.localeInfo.getMonthsOfYear = function() {
+				return months;
+			}
 		}
 
 		this.setupPickers(this._tf ? this._tf.getDateComponents() : 'mdy');
