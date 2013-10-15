@@ -13,18 +13,18 @@ enyo.kind({
 				{kind: "onyx.PickerDecorator", style:"padding:10px;", onSelect: "pickerHandler", components: [
 					{content: "Pick One...", style: "width: 200px"},
 					{kind: "onyx.Picker", components: [
-						{content: 'en_us', active:true},
-						{content: 'en_ca'},
-						{content: 'en_ie'},
-						{content: 'en_gb'},
-						{content: 'en_mx'},
-						{content: 'de_de'},
-						{content: 'fr_fr'},
-						{content: 'fr_ca'},
-						{content: 'it_it'},
-						{content: 'es_es'},
-						{content: 'es_mx'},
-						{content: 'es_us'}
+						{content: 'en-US', active:true},
+						{content: 'en-CA'},
+						{content: 'en-IE'},
+						{content: 'en-GB'},
+						{content: 'en-MX'},
+						{content: 'de-DE'},
+						{content: 'fr-FR'},
+						{content: 'fr-CA'},
+						{content: 'it-IT'},
+						{content: 'es-ES'},
+						{content: 'es-MX'},
+						{content: 'es-US'}
 					]}
 				]}
 			]}
@@ -60,7 +60,7 @@ enyo.kind({
 	],
 	initComponents: function() {
 		this.inherited(arguments);
-		this.locale = enyo.g11n.currentLocale().getLocale();
+		this.locale = ilib.getLocale();
 	},
 	pickerHandler: function(inSender, inEvent){
 		this.locale = inEvent.selected.content;
@@ -82,18 +82,18 @@ enyo.kind({
 		this.getTimes();
 	},
 	getTimes: function(){
-		var fmt = new enyo.g11n.DateFmt({
+		var fmt = new ilib.DateFmt({
 			time: "short",
-			locale: new enyo.g11n.Locale(this.locale)
+			locale: new ilib.Locale(this.locale)
 		});
 
 		this.$.timePicker1Value.setContent(fmt.format(this.$.timePicker1.getValue()));
 		this.$.timePicker2Value.setContent(fmt.format(this.$.timePicker2.getValue()));
 	},
 	updateTimeValues: function(inSender, inEvent){
-		var fmt = new enyo.g11n.DateFmt({
+		var fmt = new ilib.DateFmt({
 			time: "short",
-			locale: new enyo.g11n.Locale(this.locale)
+			locale: new ilib.Locale(this.locale)
 		});
 
 		this.$[inEvent.name + "Value"].setContent(fmt.format(inEvent.value));
