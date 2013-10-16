@@ -83,7 +83,8 @@ enyo.kind({
 	},
 	getTimes: function(){
 		var fmt = new ilib.DateFmt({
-			time: "short",
+			type: "time",
+			length: "short",
 			locale: new ilib.Locale(this.locale)
 		});
 
@@ -92,7 +93,8 @@ enyo.kind({
 	},
 	updateTimeValues: function(inSender, inEvent){
 		var fmt = new ilib.DateFmt({
-			time: "short",
+			type: "time",
+			length: "short",
 			locale: new ilib.Locale(this.locale)
 		});
 

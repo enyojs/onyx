@@ -5,7 +5,7 @@
 
 	By default, _TimePicker_ tries to determine the current locale and use its
 	rules to format the time (including AM/PM). In order to do this
-	successfully, the _g11n_ library must be loaded; if it is not loaded, the
+	successfully, the _ilib_ library must be loaded; if it is not loaded, the
 	control defaults to using standard U.S. time format.
  */
 enyo.kind({
@@ -19,7 +19,7 @@ enyo.kind({
 			creation, in which case the control will be updated to reflect the
 			new value.
 		*/
-		locale: "en_us",
+		locale: "en-US",
 		//* If true, 24-hour time is used. This is reset when locale is changed.
 		is24HrMode: null,
 		/**
@@ -42,29 +42,35 @@ enyo.kind({
 	},
 	create: function() {
 		this.inherited(arguments);
-		if (enyo.g11n) {
-			this.locale = enyo.g11n.currentLocale().getLocale();
+		if (ilib) {
+			this.locale = ilib.getLocale();
 		}
 		this.initDefaults();
 	},
 	initDefaults: function() {
-		// defaults that match en_US for when g11n isn't loaded
+		// defaults that match en_US for when ilib isn't loaded
 		var am = "AM", pm = "PM";
-		// Attempt to use the g11n lib (ie assume it is loaded)
-		if (enyo.g11n) {
-			this._tf = new enyo.g11n.Fmts({locale:this.locale});
-			am = this._tf.getAmCaption();
-			pm = this._tf.getPmCaption();
+		// Attempt to use the ilib lib (ie assume it is loaded)
+		if (ilib) {
+			this._tf = new ilib.DateFmt({locale:this.locale});
+			var objAmPm = new ilib.DateFmt({locale:this.locale, type: "time", template: "a"});
+			var timeobj = ilib.Date.newInstance({locale:this.locale, hour: 1});
+			am = objAmPm.format(timeobj);
+			timeobj.hour = 13;
+			pm = objAmPm.format(timeobj);
+
+			// am = this._tf.getAmCaption();
+			// pm = this._tf.getPmCaption();
 
 			if (this.is24HrMode == null) {
-				this.is24HrMode = !this._tf.isAmPm();
+				this.is24HrMode = (this._tf.getClock() == "24");
 			}
 		}
 		else if (this.is24HrMode == null) {
 			this.is24HrMode = false;
 		}
-
-		this.setupPickers(this._tf ? this._tf.getTimeFieldOrder() : 'hma');
+		console.log('this._tf.getTimeComponents()',this._tf.getTimeComponents(),this._tf);
+		this.setupPickers(this._tf ? this._tf.getTimeComponents() : 'hma');
 
 		var d = this.value = this.value || new Date();
 
@@ -193,8 +199,12 @@ enyo.kind({
 		//Workaround for pickers not having directly retrievable active item. Using it to find whether
 		//picker is on AM or PM (& have to check localized spelling as well)
 		try {
-			am = this._tf.getAmCaption();
-			pm = this._tf.getPmCaption();
+			// am = this._tf.getAmCaption();
+			// pm = this._tf.getPmCaption();
+			var timeobj = ilib.Date.newInstance({locale:this.locale, hour: 1});
+			am = this._tf.format(timeobj);
+			timeobj.hour = 13;
+			pm = this._tf.format(timeobj);
 		} catch (err) {
 			am = "AM";
 			pm = "PM";
