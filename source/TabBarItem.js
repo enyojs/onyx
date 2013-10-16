@@ -28,7 +28,7 @@ enyo.kind ({
 	},
 	components: [
 		{
-			kind: "Button", // no need of onyx.RadioButton
+			kind: "enyo.Button", // no need of onyx.RadioButton
 			name: 'button',
 			ontap: 'setActiveTrue',
 			onmouseover: 'showTooltipFromTab',
@@ -115,9 +115,9 @@ enyo.kind ({
 		this.doTabCloseRequest({ index: this.tabIndex });
 		return true;
 	},
-	
+
 	showTooltipFromTab: function(inSender, inEvent){
 		this.doShowTooltip({tooltipContent: this.tooltipMsg, bounds:this.getBounds()});
-		
+
 	}
 });

@@ -43,7 +43,7 @@ enyo.kind({
 	},
 	//* @protected
 	components: [
-		{name: "progressAnimator", kind: "Animator", onStep: "progressAnimatorStep", onEnd: "progressAnimatorComplete"},
+		{name: "progressAnimator", kind: "enyo.Animator", onStep: "progressAnimatorStep", onEnd: "progressAnimatorComplete"},
 		{name: "bar", classes: "onyx-progress-bar-bar"}
 	],
 	create: function() {

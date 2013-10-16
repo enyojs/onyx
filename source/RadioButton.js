@@ -7,6 +7,6 @@
 */
 enyo.kind({
 	name: "onyx.RadioButton",
-	kind: "Button",
+	kind: "enyo.Button",
 	classes: "onyx-radiobutton"
 });

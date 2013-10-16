@@ -11,7 +11,7 @@
 */
 enyo.kind({
 	name: "onyx.RadioGroup",
-	kind: "Group",
+	kind: "enyo.Group",
 	defaultKind: "onyx.RadioButton",
 	//* @protected
 	// set to true to provide radio button behavior
