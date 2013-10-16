@@ -47,7 +47,7 @@ not be selected.
 
 enyo.kind ({
 	name: 'onyx.TabBar',
-	kind: "FittableColumns",
+	kind: "enyo.FittableColumns",
 	isPanel: true,
 	classes: "onyx-tab-bar",
 
@@ -105,7 +105,7 @@ enyo.kind ({
 	components: [
 		{
 			name: "scroller",
-			kind: "Scroller",
+			kind: "enyo.Scroller",
 			fit:true,
 			maxHeight: "100px",
 

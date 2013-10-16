@@ -12,7 +12,7 @@
 */
 enyo.kind({
 	name: "onyx.Popup",
-	kind: "Popup",
+	kind: "enyo.Popup",
 	classes: "onyx-popup",
 	published: {
 		/**

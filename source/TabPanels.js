@@ -8,7 +8,7 @@ Here's an example:
 
 		enyo.kind({
 			name: "App",
-			kind: "TabPanels",
+			kind: "onyx.TabPanels",
 			fit: true,
 			components: [
 				{kind: "MyStartPanel"},
@@ -21,7 +21,7 @@ Here's an example:
 
 enyo.kind({
 	name: "onyx.TabPanels",
-	kind: "Panels",
+	kind: "enyo.Panels",
 	//* @protected
 	draggable: false,
 
