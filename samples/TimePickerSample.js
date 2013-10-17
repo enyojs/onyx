@@ -81,11 +81,12 @@ enyo.kind({
 
 		this.getTimes();
 	},
-	getTimes: function(){
+	getTimes: function() {
 		var fmt = new ilib.DateFmt({
 			type: "time",
 			length: "short",
-			locale: new ilib.Locale(this.locale)
+			locale: new ilib.Locale(this.locale),
+			timezone: "local"
 		});
 
 		this.$.timePicker1Value.setContent(fmt.format(this.$.timePicker1.getValue()));
@@ -95,7 +96,8 @@ enyo.kind({
 		var fmt = new ilib.DateFmt({
 			type: "time",
 			length: "short",
-			locale: new ilib.Locale(this.locale)
+			locale: new ilib.Locale(this.locale),
+			timezone: "local"
 		});
 
 		this.$[inEvent.name + "Value"].setContent(fmt.format(inEvent.value));

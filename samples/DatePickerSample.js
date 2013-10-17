@@ -91,18 +91,19 @@ enyo.kind({
 		this.$.datePicker1Value.setContent(fmt.format(this.$.datePicker1.getValue()));
 		this.$.datePicker2Value.setContent(fmt.format(this.$.datePicker2.getValue()));
 		// reformat the formatter to display the Date wiht only Month and year
-		fmt = this.format('my');
+		fmt = this.format("my");
 		this.$.datePicker3Value.setContent(fmt.format(this.$.datePicker3.getValue()));
 	},
 	updateDateValues: function(inSender, inEvent){
-		var fmt = inEvent.name != "datePicker3" ? this.format() :  this.format('my');
+		var fmt = inEvent.name != "datePicker3" ? this.format() :  this.format("my");
 		this.$[inEvent.name + "Value"].setContent(fmt.format(inEvent.value));
 	},
 	format: function(dateComponents) {
 		var fmt = new ilib.DateFmt({
 			dateComponents: dateComponents || undefined,
-			date: 'short',
-			locale: new ilib.Locale(this.locale)
+			date: "short",
+			locale: new ilib.Locale(this.locale),
+			timezone: "local"
 		});
 		return fmt;
 	}

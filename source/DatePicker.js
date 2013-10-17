@@ -63,7 +63,7 @@ enyo.kind({
 		//Attempt to use the ilib library (ie assume it is loaded)
 		if (ilib) {
 			months = [];
-			this._tf = new ilib.DateFmt({locale:this.locale});
+			this._tf = new ilib.DateFmt({locale:this.locale, timezone: "local"});
 			months = this._tf.getMonthsOfYear({length: 'long'});
 		}
 		// Fall back to en_US as default

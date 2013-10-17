@@ -49,18 +49,18 @@ enyo.kind({
 	},
 	initDefaults: function() {
 		// defaults that match en_US for when ilib isn't loaded
-		var am = "AM", pm = "PM";
+		// var am = "AM", pm = "PM";
+		this._strAm = "AM";
+		this._strPm = "PM";
 		// Attempt to use the ilib lib (ie assume it is loaded)
 		if (ilib) {
 			this._tf = new ilib.DateFmt({locale:this.locale});
+
 			var objAmPm = new ilib.DateFmt({locale:this.locale, type: "time", template: "a"});
 			var timeobj = ilib.Date.newInstance({locale:this.locale, hour: 1});
-			am = objAmPm.format(timeobj);
+			this._strAm = objAmPm.format(timeobj);
 			timeobj.hour = 13;
-			pm = objAmPm.format(timeobj);
-
-			// am = this._tf.getAmCaption();
-			// pm = this._tf.getPmCaption();
+			this._strPm = objAmPm.format(timeobj);
 
 			if (this.is24HrMode == null) {
 				this.is24HrMode = (this._tf.getClock() == "24");
@@ -69,7 +69,7 @@ enyo.kind({
 		else if (this.is24HrMode == null) {
 			this.is24HrMode = false;
 		}
-		console.log('this._tf.getTimeComponents()',this._tf.getTimeComponents(),this._tf);
+
 		this.setupPickers(this._tf ? this._tf.getTimeComponents() : 'hma');
 
 		var d = this.value = this.value || new Date();
@@ -95,10 +95,10 @@ enyo.kind({
 
 		// create am/pm
 		if (d.getHours() >= 12) {
-			this.$.ampmPicker.createComponents([{content: am},{content:pm, active: true}]);
+			this.$.ampmPicker.createComponents([{content: this._strAm},{content:this._strPm, active: true}]);
 		}
 		else {
-			this.$.ampmPicker.createComponents([{content: am, active: true},{content:pm}]);
+			this.$.ampmPicker.createComponents([{content: this._strAm, active: true},{content:this._strPm}]);
 		}
 		this.$.ampmPicker.getParent().setShowing(!this.is24HrMode);
 	},
@@ -195,22 +195,7 @@ enyo.kind({
 						this.value.getMilliseconds());
 	},
 	isAm: function(value){
-		var am, pm;
-		//Workaround for pickers not having directly retrievable active item. Using it to find whether
-		//picker is on AM or PM (& have to check localized spelling as well)
-		try {
-			// am = this._tf.getAmCaption();
-			// pm = this._tf.getPmCaption();
-			var timeobj = ilib.Date.newInstance({locale:this.locale, hour: 1});
-			am = this._tf.format(timeobj);
-			timeobj.hour = 13;
-			pm = this._tf.format(timeobj);
-		} catch (err) {
-			am = "AM";
-			pm = "PM";
-		}
-
-		if (value == am){
+		if (value == this._strAm){
 			return true;
 		} else {
 			return false;
