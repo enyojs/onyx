@@ -139,8 +139,10 @@ enyo.kind ({
 										},
 										{ classes: "onyx-tab-line"},
 										{ classes: "onyx-tab-rug"}
-									]}
-						]}
+									]
+								}
+							]
+						}
 					]
 				},
 				{kind: "onyx.TooltipDecorator", components:[
