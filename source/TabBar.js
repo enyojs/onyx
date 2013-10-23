@@ -125,21 +125,21 @@ enyo.kind ({
 					classes: "onyx-tab-bar-scroller",
 					components: [
 						{
-						classes: "onyx-tab-wrapper",
-						components: [
-							{
+							classes: "onyx-tab-wrapper",
 							components: [
 								{
-									name: "tabs",
-									classes: 'onyx-tab-holder',
-									kind: "onyx.RadioGroup",
-									defaultKind: "onyx.TabBar.Item",
-									style: "text-align: left; white-space: nowrap;",
-									onTabActivated: 'switchTab'
-								},
-								{ classes: "onyx-tab-line"},
-								{ classes: "onyx-tab-rug"}
-							]}
+									components: [
+										{
+											name: "tabs",
+											classes: 'onyx-tab-holder',
+											kind: "onyx.RadioGroup",
+											defaultKind: "onyx.TabBar.Item",
+											style: "text-align: left; white-space: nowrap;",
+											onTabActivated: 'switchTab'
+										},
+										{ classes: "onyx-tab-line"},
+										{ classes: "onyx-tab-rug"}
+									]}
 						]}
 					]
 				},
