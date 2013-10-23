@@ -104,37 +104,50 @@ enyo.kind ({
 
 	components: [
 		{
-			name: "scroller",
-			kind: "enyo.Scroller",
-			fit:true,
-			maxHeight: "100px",
-
-			// FIXME: may need to be revisited for desktop
-			// activate calls scrollIntoView, which call strategy.scroll
-			// this method is implemented *only* in TransitionScrollStrategy
-			// which may be an enyo bug (ENYO-2303)
-			strategyKind: "TransitionScrollStrategy",
-			//strategyKind: "TranslateScrollStrategy",
-
-			thumb: false,
-			vertical: "hidden",
-			horizontal: "auto",
-			classes: "onyx-tab-bar-scroller",
+			fit:true, 
 			components: [
 				{
-					name: "tabs",
-					classes: 'onyx-tab-holder',
-					kind: "onyx.RadioGroup",
-					defaultKind: "onyx.TabBar.Item",
-					style: "text-align: left; white-space: nowrap;",
-					onTabActivated: 'switchTab'
+					name: "scroller",
+					kind: "enyo.Scroller",
+					
+					maxHeight: "100px",
+
+					// FIXME: may need to be revisited for desktop
+					// activate calls scrollIntoView, which call strategy.scroll
+					// this method is implemented *only* in TransitionScrollStrategy
+					// which may be an enyo bug (ENYO-2303)
+					strategyKind: "TransitionScrollStrategy",
+					//strategyKind: "TranslateScrollStrategy",
+
+					thumb: false,
+					vertical: "hidden",
+					horizontal: "auto",
+					classes: "onyx-tab-bar-scroller",
+					components: [
+						{
+						classes: "onyx-tab-wrapper",
+						components: [
+							{
+							components: [
+								{
+									name: "tabs",
+									classes: 'onyx-tab-holder',
+									kind: "onyx.RadioGroup",
+									defaultKind: "onyx.TabBar.Item",
+									style: "text-align: left; white-space: nowrap;",
+									onTabActivated: 'switchTab'
+								},
+								{ classes: "onyx-tab-line"},
+								{ classes: "onyx-tab-rug"}
+							]}
+						]}
+					]
 				},
-				{ classes: "onyx-tab-line"},
-				{ classes: "onyx-tab-rug"},
 				{kind: "onyx.TooltipDecorator", components:[
 					{kind: "onyx.Tooltip", classes: "onyx-tab-tooltip"}
 				]}
 			]
+
 		},
 		{
 			kind: "onyx.MenuDecorator",
