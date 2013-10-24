@@ -514,24 +514,18 @@
 /* TabBar.css */
 .onyx-tab-bar {
   width: 100%;
-  position: relative;
   z-index: 10;
   background-color: #cacaca;
   padding-top: 1px;
 }
 .onyx-tab-bar-scroller {
   padding-top: 2px;
-  overflow: visible;
 }
 .onyx-tab-bar-scroller > .enyo-thumb {
   border: 0px;
 }
-.onyx-tab-bar-scroller .enyo-touch-scroller {
-  overflow: visible;
-}
-.onyx-tab-bar-scroller .enyo-touch-scroller > div {
+.onyx-tab-wrapper {
   padding: 3px 0px 3px 0px;
-  width: 100%;
 }
 .onyx-tab-line {
   position: relative;
