@@ -128,6 +128,8 @@ enyo.kind ({
 							classes: "onyx-tab-wrapper",
 							components: [
 								{
+									// double level of components is required to add padding
+									// at this level. This avoid "> div" in selectors
 									components: [
 										{
 											name: "tabs",
