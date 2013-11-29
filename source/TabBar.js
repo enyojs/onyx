@@ -53,7 +53,7 @@ You can also setup the TabBar so a tap on a tab will fire a
 		name: "App",
 		fit: true,
 		components: [
-			{name:"bar",kind: "onyx.TabBar", onTabSwitchRequest: true },
+			{name:"bar",kind: "onyx.TabBar", checkBeforeSwitching: true },
 			{kind: "MyStuff"}
 		],
 
