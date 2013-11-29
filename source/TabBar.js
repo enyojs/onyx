@@ -1,6 +1,9 @@
-﻿/**
+﻿/*global enyo */
+
+/**
 enyo.TabBar is a scrolled set of radio buttons that is used by TabPanels. This bar may
-be used by other kinds to provide a similar layout
+be used by other kinds to provide a similar layout. By default, a tap on a tab will
+immediately switch tab and fire a "onTabChanged" event.
 
 
 Here's an example:
@@ -43,6 +46,33 @@ Tabs must be created after construction, i.e. in rendered function.
 If tabs are created in 'create' function, the last created tabs will
 not be selected.
 
+You can also setup the TabBar so a tap on a tab will fire a
+"onTabSwitchRequest" event:
+
+ enyo.kind({
+		name: "App",
+		fit: true,
+		components: [
+			{name:"bar",kind: "onyx.TabBar", onTabSwitchRequest: true },
+			{kind: "MyStuff"}
+		],
+
+        handlers: {
+			onTabSwitchRequest: "switchStuff"
+		},
+
+        // same rendered function as above
+		switchStuff: function(inSender,inEvent) {
+			this.log("Tapped tab with caption "+ inEvent.caption
+				+ " and message " + inEvent.data.msg );
+			// do switch
+			inEvent.next();
+		}
+	});
+
+In this mode, no event is firedt *after* the actual switch.
+
+
 */
 
 enyo.kind ({
@@ -52,6 +82,7 @@ enyo.kind ({
 	classes: "onyx-tab-bar",
 
 	checkBeforeClosing: false,
+	checkBeforeSwitching: false,
 
 	debug: false,
 
@@ -98,6 +129,7 @@ enyo.kind ({
 
 	handlers: {
 		onTabCloseRequest: "requestTabClose",
+		onTabSwitchRequest: "requestTabSwitch",
 		onShowTooltip: "showTooltip",
 		onHideTooltip: "hideTooltip"
 	},
@@ -132,7 +164,7 @@ enyo.kind ({
 											kind: "onyx.RadioGroup",
 											defaultKind: "onyx.TabBar.Item",
 											style: "text-align: left; white-space: nowrap;",
-											onTabActivated: 'switchTab'
+											onTabSwitchRequest: 'requestSwitchTab'
 										},
 										{ classes: "onyx-tab-line"},
 										{ classes: "onyx-tab-rug"}
@@ -397,23 +429,40 @@ enyo.kind ({
 		this.$.scroller.scrollIntoView(tab);
 	},
 
-	//* @protected
-	switchTab: function(inSender, inEvent) {
+	//@ protected
+	requestTabSwitch: function(inSender,inEvent) {
+		var event, next;
+		var tab = inEvent.originator;
+
+		if (this.checkBeforeSwitching) {
+			// polite mode, ask before
+			event = 'onRequestTabChange';
+			// then change the tab
+			next = enyo.bind(tab, tab.setActiveTrue);
+		} else {
+			// rough mode, change the tab
+			tab.setActiveTrue();
+			event = 'onTabChanged';
+			// and then undo if necessary
+			next =  enyo.bind(this,'undoSwitchOnError', oldIndex);
+		}
+
 		var oldIndex = this.selectedId ;
 		this.selectedId = inEvent.index;
+
 		if ( this.selectedId != oldIndex ) {
-			this.doTabChanged(
+			this.bubble(
+				event,
 				{
 					index:   inEvent.index,
 					caption: inEvent.caption,
 					tooltipMsg: inEvent.tooltipMsg,
 					data:    inEvent.userData,
 					userId:  inEvent.userId,
-					next:    enyo.bind(this,'undoSwitchOnError', oldIndex)
+					next:    next
 				}
 			);
 		}
-		return true ;
 	},
 
 	showTooltip: function(inSender, inEvent) {
