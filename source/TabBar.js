@@ -47,18 +47,18 @@ If tabs are created in 'create' function, the last created tabs will
 not be selected.
 
 You can also setup the TabBar so a tap on a tab will fire a
-"onTabSwitchRequest" event:
+"onTabChangeRequest" event:
 
  enyo.kind({
 		name: "App",
 		fit: true,
 		components: [
-			{name:"bar",kind: "onyx.TabBar", checkBeforeSwitching: true },
+			{name:"bar",kind: "onyx.TabBar", checkBeforeChanging: true },
 			{kind: "MyStuff"}
 		],
 
         handlers: {
-			onTabSwitchRequest: "switchStuff"
+			onTabChangeRequest: "switchStuff"
 		},
 
         // same rendered function as above
@@ -82,7 +82,7 @@ enyo.kind ({
 	classes: "onyx-tab-bar",
 
 	checkBeforeClosing: false,
-	checkBeforeSwitching: false,
+	checkBeforeChanging: false,
 
 	debug: false,
 
@@ -101,6 +101,16 @@ enyo.kind ({
 
 		 */
 		onTabChanged: "",
+
+		/**
+		Fired when a tab different from the one currently selected is tapped
+		when checkBeforeChanging is true.
+		inEvent contains the same structure as onTabChanged event. Call next()
+		when the tab change can be completed.
+
+		 */
+
+		onTabChangeRequested: "",
 
 		/**
 		 * Fired when a tab is about to be removed. inEvent
@@ -433,9 +443,9 @@ enyo.kind ({
 		var event, next;
 		var tab = inEvent.originator;
 
-		if (this.checkBeforeSwitching) {
+		if (this.checkBeforeChanging) {
 			// polite mode, ask before
-			event = 'onRequestTabChange';
+			event = 'onTabChangeRequested';
 			// then change the tab
 			next = enyo.bind(tab, tab.setActiveTrue);
 		} else {
