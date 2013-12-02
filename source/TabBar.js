@@ -128,8 +128,6 @@ enyo.kind ({
 	},
 
 	handlers: {
-		onTabCloseRequest: "requestTabClose",
-		onTabSwitchRequest: "requestTabSwitch",
 		onShowTooltip: "showTooltip",
 		onHideTooltip: "hideTooltip"
 	},
@@ -164,7 +162,8 @@ enyo.kind ({
 											kind: "onyx.RadioGroup",
 											defaultKind: "onyx.TabBar.Item",
 											style: "text-align: left; white-space: nowrap;",
-											onTabSwitchRequest: 'requestSwitchTab'
+											onTabCloseRequest: "requestTabClose",
+											onTabSwitchRequest: 'requestTabSwitch'
 										},
 										{ classes: "onyx-tab-line"},
 										{ classes: "onyx-tab-rug"}
