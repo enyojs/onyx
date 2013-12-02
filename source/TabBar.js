@@ -463,6 +463,13 @@ enyo.kind ({
 				}
 			);
 		}
+		else {
+			// when clicking on a tab, the tab always deactivated even
+			// if user clicks on the active tab. So the activation
+			// must be put back.
+			tab.setActiveTrue();
+		}
+		return true;
 	},
 
 	showTooltip: function(inSender, inEvent) {
