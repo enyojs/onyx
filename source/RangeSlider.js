@@ -184,7 +184,6 @@ enyo.kind({
 	},
 	dragfinish: function(inSender, inEvent) {
 		this.dragging = false;
-		inEvent.preventTap();
 		var val;
 		if (inSender.name === "startKnob") {
 			val = this.calcRangeRatio(this.beginValue);

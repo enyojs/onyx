@@ -96,7 +96,6 @@ enyo.kind({
 	},
 	dragfinish: function(inSender, inEvent) {
 		this.dragging = false;
-		inEvent.preventTap();
 		this.doChange({value: this.value});
 		return true;
 	},
