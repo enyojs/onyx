@@ -1,5 +1,5 @@
 /* WARNING: This is a generated file for backward-compatibility.  Most      */
-/* usrs should instead modify LESS files.  If you choose to edit this CSS   */
+/* users should instead modify LESS files.  If you choose to edit this CSS  */
 /* directly rather than LESS files, you should make sure less.xx.yy.min.js  */
 /* is commented out in your debug.html, and run deploy.sh/bat using the     */
 /* '-c' flag to disable LESS compilation.  This will force the loader and   */
@@ -198,6 +198,10 @@
   border-radius: 0;
   margin: 0;
   font-size: 16px;
+}
+/* needed for MathJax support */
+.onyx-groupbox > script {
+  display: none;
 }
 .onyx-groupbox > *:first-child {
   border-top-color: #aaaaaa;
@@ -741,6 +745,11 @@
   margin: 4px 6px 5px;
   box-sizing: border-box;
 }
+/* needed for MathJax support */
+.onyx-toolbar-inline > script,
+.enyo-fittable-columns-layout.onyx-toolbar-inline > script {
+  display: none;
+}
 .onyx-toolbar .onyx-icon-button {
   margin: 3px 2px 1px;
 }
@@ -923,6 +932,10 @@
 }
 .onyx-progress-button-client > * {
   display: inline-block;
+}
+/* needed for MathJax support */
+.onyx-progress-button-client > script {
+  display: none;
 }
 /* Slider.css */
 .onyx-slider {
