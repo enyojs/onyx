@@ -18,34 +18,28 @@ enyo.kind({
 	name: "onyx.Button",
 	kind: "enyo.Button",
 	classes: "onyx-button enyo-unselectable",
-	//* @protected
-	create: function() {
-		//workaround for FirefoxOS which doesn't support :active:hover css selectors
-		//FirefoxOS simulator does :active:hover css selectors, so do additional srcEvent check
-		if(enyo.platform.firefoxOS) {
-			this.handlers.ondown = "fxosDown";
-			this.handlers.onenter = "fxosEnter";
-			this.handlers.ondrag = "fxosDrag";
-			this.handlers.onleave = "fxosLeave";
-			this.handlers.onup = "fxosUp";
-		}
-		this.inherited(arguments);
+	handlers: {
+		ondown: "down",
+		onenter: "enter",
+		ondrag: "drag",
+		onleave: "leave",
+		onup: "up"
 	},
-	fxosDown: function(inSender, inEvent) {
+	down: function(inSender, inEvent) {
 		this.addClass("pressed");
 		this._isInControl = true;
 	},
-	fxosEnter: function(inSender, inEvent) {
+	enter: function(inSender, inEvent) {
 		this._isInControl = true;
 	},
-	fxosDrag: function(inSender, inEvent) {
+	drag: function(inSender, inEvent) {
 		this.addRemoveClass("pressed", this._isInControl);
 	},
-	fxosLeave: function(inSender, inEvent) {
+	leave: function(inSender, inEvent) {
 		this.removeClass("pressed");
 		this._isInControl = false;
 	},
-	fxosUp: function(inSender, inEvent) {
+	up: function(inSender, inEvent) {
 		this.removeClass("pressed");
 		this._isInControl = false;
 	}

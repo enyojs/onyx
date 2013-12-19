@@ -51,15 +51,11 @@ enyo.kind({
 	],
 	create: function() {
 		this.inherited(arguments);
-		//workaround for FirefoxOS which doesn't support :active:hover css selectors
-		//FirefoxOS simulator does :active:hover css selectors, so do additional srcEvent check
-		if(enyo.platform.firefoxOS) {
-			this.moreComponents[2].ondown = "fxosDown";
-			this.moreComponents[2].onenter = "fxosEnter";
-			this.moreComponents[2].ondrag = "fxosDrag";
-			this.moreComponents[2].onleave = "fxosLeave";
-			this.moreComponents[2].onup = "fxosUp";
-		}
+
+		// add handlers for up/down events on knob for pressed state (workaround for inconsistent (timing-wise) active:hover styling)
+		this.moreComponents[2].ondown = "knobDown";
+		this.moreComponents[2].onup = "knobUp";
+
 		this.createComponents(this.moreComponents);
 		this.valueChanged();
 	},
@@ -82,6 +78,7 @@ enyo.kind({
 		if (inEvent.horizontal) {
 			inEvent.preventDefault();
 			this.dragging = true;
+			inSender.addClass("pressed");
 			return true;
 		}
 	},
@@ -98,6 +95,7 @@ enyo.kind({
 		this.dragging = false;
 		inEvent.preventTap();
 		this.doChange({value: this.value});
+		inSender.removeClass("pressed");
 		return true;
 	},
 	tap: function(inSender, inEvent) {
@@ -109,23 +107,11 @@ enyo.kind({
 			return true;
 		}
 	},
-	fxosDown: function(inSender, inEvent) {
+	knobDown: function(inSender, inEvent) {
 		this.$.knob.addClass("pressed");
-		this._isInControl = true;
 	},
-	fxosEnter: function(inSender, inEvent) {
-		this._isInControl = true;
-	},
-	fxosDrag: function(inSender, inEvent) {
-		this.$.knob.addRemoveClass("pressed", this._isInControl);
-	},
-	fxosLeave: function(inSender, inEvent) {
+	knobUp: function(inSender, inEvent) {
 		this.$.knob.removeClass("pressed");
-		this._isInControl = false;
-	},
-	fxosUp: function(inSender, inEvent) {
-		this.$.knob.removeClass("pressed");
-		this._isInControl = false;
 	},
 	//* @public
 	//* Animates to the given value.
