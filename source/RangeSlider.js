@@ -85,6 +85,11 @@ enyo.kind({
 			this.$.startKnob.createComponent({name: "startLabel", kind: "onyx.RangeSliderKnobLabel"});
 			this.$.endKnob.createComponent({name: "endLabel", kind: "onyx.RangeSliderKnobLabel"});
 		}
+		// add handlers for up/down events on knobs for pressed state (workaround for inconsistent (timing-wise) active:hover styling)
+		this.$.startKnob.ondown = "knobDown";
+		this.$.startKnob.onup = "knobUp";
+		this.$.endKnob.ondown = "knobDown";
+		this.$.endKnob.onup = "knobUp";
 	},
 	refreshRangeSlider: function() {
 		// Calculate range percentages, in order to position sliders
@@ -146,6 +151,7 @@ enyo.kind({
 		if (inEvent.horizontal) {
 			inEvent.preventDefault();
 			this.dragging = true;
+			inSender.addClass("pressed");
 			return true;
 		}
 	},
@@ -193,7 +199,14 @@ enyo.kind({
 			val = this.calcRangeRatio(this.endValue);
 			this.doChange({value: val, startChanged: false});
 		}
+		inSender.removeClass("pressed");
 		return true;
+	},
+	knobDown: function(inSender, inEvent) {
+		inSender.addClass("pressed");
+	},
+	knobUp: function(inSender, inEvent) {
+		inSender.removeClass("pressed");
 	},
 	rangeMinChanged: function() {
 		this.refreshRangeSlider();

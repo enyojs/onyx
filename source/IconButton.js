@@ -21,36 +21,12 @@ enyo.kind({
 		active: false
 	},
 	classes: "onyx-icon-button",
-	//* @protected
-	create: function() {
-		//workaround for FirefoxOS which doesn't support :active:hover css selectors
-		//FirefoxOS simulator does :active:hover css selectors, so do additional srcEvent check
-		if(enyo.platform.firefoxOS) {
-			this.handlers.ondown = "fxosDown";
-			this.handlers.onenter = "fxosEnter";
-			this.handlers.ondrag = "fxosDrag";
-			this.handlers.onleave = "fxosLeave";
-			this.handlers.onup = "fxosUp";
-		}
-		this.inherited(arguments);
-	},
-	fxosDown: function(inSender, inEvent) {
-		this.addClass("pressed");
-		this._isInControl = true;
-	},
-	fxosEnter: function(inSender, inEvent) {
-		this._isInControl = true;
-	},
-	fxosDrag: function(inSender, inEvent) {
-		this.addRemoveClass("pressed", this._isInControl);
-	},
-	fxosLeave: function(inSender, inEvent) {
-		this.removeClass("pressed");
-		this._isInControl = false;
-	},
-	fxosUp: function(inSender, inEvent) {
-		this.removeClass("pressed");
-		this._isInControl = false;
+	handlers: {
+		ondown: "down",
+		onenter: "enter",
+		ondrag: "drag",
+		onleave: "leave",
+		onup: "up"
 	},
 	rendered: function() {
 		this.inherited(arguments);
@@ -61,6 +37,24 @@ enyo.kind({
 			return true;
 		}
 		this.setActive(true);
+	},
+	down: function(inSender, inEvent) {
+		this.addClass("pressed");
+		this._isInControl = true;
+	},
+	enter: function(inSender, inEvent) {
+		this._isInControl = true;
+	},
+	drag: function(inSender, inEvent) {
+		this.addRemoveClass("pressed", this._isInControl);
+	},
+	leave: function(inSender, inEvent) {
+		this.removeClass("pressed");
+		this._isInControl = false;
+	},
+	up: function(inSender, inEvent) {
+		this.removeClass("pressed");
+		this._isInControl = false;
 	},
 	activeChanged: function() {
 		this.bubble("onActivate");
