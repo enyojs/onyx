@@ -37,22 +37,11 @@ enyo.kind({
 		{tag: "br"},
 		{content: "Other Pickers", classes:"onyx-sample-divider"},
 		{classes: "onyx-toolbar-inline", components: [
-			{content: "Date", classes: "onyx-sample-label"},
+			{content: "JS Library", classes: "onyx-sample-label"},
 			{kind: "onyx.PickerDecorator", components: [
-				{},
-				{name: "monthPicker", kind: "onyx.Picker"}
-			]},
-			{kind: "onyx.PickerDecorator", components: [
-				{style: "min-width: 60px;"},
-				{name: "dayPicker", kind: "onyx.Picker"}
-			]},
-			{classes: "onyx-toolbar-inline", style:"margin: 0px;", components: [
-				{content: "Year", classes: "onyx-sample-label"},
-				{kind: "onyx.PickerDecorator", components: [
-					{name:"yearPickerButton", style: "min-width: 80px;"},
-					{name: "yearPicker", kind: "onyx.FlyweightPicker", count: 200, onSetupItem: "setupYear", components: [
-						{name: "year"}
-					]}
+				{name:"libPickerButton", style: "min-width: 160px;"},
+				{name: "libPicker", kind: "onyx.FlyweightPicker", count: 200, onSetupItem: "setupLibs", components: [
+					{name: "lib"}
 				]}
 			]}
 		]},
@@ -74,26 +63,14 @@ enyo.kind({
 			{name:"pickerSelection", classes:"onyx-sample-result", content: "Nothing picked yet."}
 		]}
 	],
+	libs: ["Enyo", "AngularJS", "Backbone.js", "Dojo", "Ember.js", "Ext JS", "Google Web Toolkit", "Knockout", "SproutCore", "Spine", "Yahoo! Mojito", "AccDC", "Dojo Toolkit", "Glow", "jQuery", "jQuery Mobile", "midori", "MooTools", "Prototype JavaScript Framework", "YUI Library", "Ample SDK", "DHTMLX", "iX Framework", "jQuery UI", "Lively Kernel", "qooxdoo", "Script.aculo.us", "SmartClient", "D3.js", "JavaScript InfoVis Toolkit", "Kinetic.js", "Processing.js", "Raphael", "SWFObject", "Three.js", "EaseIJS", "Chaplin.js", "Echo", "JavaScriptMVC", "Rialto Toolkit", "Web Atoms JS", "FuncJS", "Google Closure Library", "Joose", "jsPHP", "MochiKit", "PDF.js", "Rico", "Socket.IO", "Spry framework", "Underscore.js", "Wakanda Framework", "Cascade Framework", "Handlebars", "Mustache", "Twitter Bootstrap", "ZURB Foundation", "Modernizr"],
 	create: function() {
 		this.inherited(arguments);
-		// month
-		var months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-		var d = new Date();
-		var i, m;
-		for (i=0; (m=months[i]); i++) {
-			this.$.monthPicker.createComponent({content: m, active: i==d.getMonth()});
-		}
-		// day
-		for (i=0; i<30; i++) {
-			this.$.dayPicker.createComponent({content: i+1, active: i==d.getDate()-1});
-		}
-		// year
-		var y = d.getYear();
-		this.$.yearPicker.setSelected(y);
-		this.$.yearPickerButton.setContent(1900+y);
+		this.$.libPicker.setSelected(0);
+		this.$.libPickerButton.setContent(this.libs[this.$.libPicker.getSelected()]);
 	},
-	setupYear: function(inSender, inEvent) {
-		this.$.year.setContent(1900+inEvent.index);
+	setupLibs: function(inSender, inEvent) {
+		this.$.lib.setContent(this.libs.length > inEvent.index ? this.libs[inEvent.index] : "JS Library " + (inEvent.index-this.libs.length));
 		return true;
 	},
 	itemSelected: function(inSender, inEvent) {
