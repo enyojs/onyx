@@ -13,25 +13,6 @@
 */
 enyo.kind({
 	name: "onyx.Icon",
-	published: {
-		//* URL specifying path to icon image
-		src: "",
-		//* When true, icon is shown as disabled.
-		disabled: false
-	},
-	classes: "onyx-icon",
-	//* @protected
-	create: function() {
-		this.inherited(arguments);
-		if (this.src) {
-			this.srcChanged();
-		}
-		this.disabledChanged();
-	},
-	disabledChanged: function() {
-		this.addRemoveClass("disabled", this.disabled);
-	},
-	srcChanged: function() {
-		this.applyStyle("background-image", "url(" + enyo.path.rewrite(this.src) + ")");
-	}
+	kind: "enyo.common.Icon",
+	classes: "onyx-icon"
 });

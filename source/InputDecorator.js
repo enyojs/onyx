@@ -25,37 +25,6 @@
 */
 enyo.kind({
 	name: "onyx.InputDecorator",
-	kind: "enyo.ToolDecorator",
-	tag: "label",
-	classes: "onyx-input-decorator",
-	published:{
-		//* Set to true to make the input look focused when it's not.
-		alwaysLooksFocused:false
-	},
-	//* @protected
-	handlers: {
-		onDisabledChange: "disabledChange",
-		onfocus: "receiveFocus",
-		onblur: "receiveBlur"
-	},
-	create:function() {
-		this.inherited(arguments);
-		this.updateFocus(false);
-	},
-	alwaysLooksFocusedChanged:function(oldValue) {
-		this.updateFocus(this.focus);
-	},
-	updateFocus:function(focus) {
-		this.focused = focus;
-		this.addRemoveClass("onyx-focused", this.alwaysLooksFocused || this.focused);
-	},
-	receiveFocus: function() {
-		this.updateFocus(true);
-	},
-	receiveBlur: function() {
-		this.updateFocus(false);
-	},
-	disabledChange: function(inSender, inEvent) {
-		this.addRemoveClass("onyx-disabled", inEvent.originator.disabled);
-	}
+	kind: "enyo.common.InputDecorator",
+	classes: "onyx-input-decorator"
 });

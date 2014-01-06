@@ -16,31 +16,6 @@
 */
 enyo.kind({
 	name: "onyx.Button",
-	kind: "enyo.Button",
-	classes: "onyx-button enyo-unselectable",
-	handlers: {
-		ondown: "down",
-		onenter: "enter",
-		ondrag: "drag",
-		onleave: "leave",
-		onup: "up"
-	},
-	down: function(inSender, inEvent) {
-		this.addClass("pressed");
-		this._isInControl = true;
-	},
-	enter: function(inSender, inEvent) {
-		this._isInControl = true;
-	},
-	drag: function(inSender, inEvent) {
-		this.addRemoveClass("pressed", this._isInControl);
-	},
-	leave: function(inSender, inEvent) {
-		this.removeClass("pressed");
-		this._isInControl = false;
-	},
-	up: function(inSender, inEvent) {
-		this.removeClass("pressed");
-		this._isInControl = false;
-	}
+	kind: "enyo.common.Button",
+	classes: "onyx-button"
 });

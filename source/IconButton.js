@@ -14,49 +14,6 @@
 */
 enyo.kind({
 	name: "onyx.IconButton",
-	kind: "onyx.Icon",
-	published: {
-		//* Used when the IconButton is part of a <a href="#enyo.Group">enyo.Group</a>, true
-		//* to indicate that this is the active button of the group, false otherwise.
-		active: false
-	},
-	classes: "onyx-icon-button",
-	handlers: {
-		ondown: "down",
-		onenter: "enter",
-		ondrag: "drag",
-		onleave: "leave",
-		onup: "up"
-	},
-	rendered: function() {
-		this.inherited(arguments);
-		this.activeChanged();
-	},
-	tap: function() {
-		if (this.disabled) {
-			return true;
-		}
-		this.setActive(true);
-	},
-	down: function(inSender, inEvent) {
-		this.addClass("pressed");
-		this._isInControl = true;
-	},
-	enter: function(inSender, inEvent) {
-		this._isInControl = true;
-	},
-	drag: function(inSender, inEvent) {
-		this.addRemoveClass("pressed", this._isInControl);
-	},
-	leave: function(inSender, inEvent) {
-		this.removeClass("pressed");
-		this._isInControl = false;
-	},
-	up: function(inSender, inEvent) {
-		this.removeClass("pressed");
-		this._isInControl = false;
-	},
-	activeChanged: function() {
-		this.bubble("onActivate");
-	}
+	kind: "enyo.common.IconButton",
+	classes: "onyx-icon onyx-icon-button"
 });

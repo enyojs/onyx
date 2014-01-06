@@ -242,12 +242,12 @@
   border-color: rgba(0, 0, 0, 0.1);
   margin: 0;
 }
-.onyx-input-decorator.onyx-focused {
+.onyx-input-decorator.enyo-focused {
   box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.3);
   border-color: rgba(0, 0, 0, 0.3);
   background-color: #ffffff;
 }
-.onyx-input-decorator.onyx-disabled {
+.onyx-input-decorator.enyo-disabled {
   /* FIXME: needed to color a disabled input placeholder. */
 
   /*-webkit-text-fill-color: #888;*/
@@ -272,10 +272,10 @@
   /* -webkit-appearance: caret;*/
 
 }
-.onyx-input-decorator.onyx-focused > input {
+.onyx-input-decorator.enyo-focused > input {
   cursor: text;
 }
-.onyx-input-decorator.onyx-disabled > input {
+.onyx-input-decorator.enyo-disabled > input {
   cursor: default;
 }
 /* Menu.css */
@@ -436,10 +436,10 @@
   /* -webkit-appearance: caret;*/
 
 }
-.onyx-input-decorator.onyx-focused > .onyx-richtext {
+.onyx-input-decorator.enyo-focused > .onyx-richtext {
   cursor: text;
 }
-.onyx-input-decorator.onyx-disabled > .onyx-richtext {
+.onyx-input-decorator.enyo-disabled > .onyx-richtext {
   cursor: default;
 }
 /* RadioButton.css */
@@ -757,7 +757,7 @@
   background-color: rgba(0, 0, 0, 0.1);
   padding: 0px 6px 5px 6px;
 }
-.onyx-toolbar .onyx-input-decorator.onyx-focused {
+.onyx-toolbar .onyx-input-decorator.enyo-focused {
   box-shadow: inset 0px 1px 4px rgba(0, 0, 0, 0.3);
   background-color: #ffffff;
 }
@@ -932,21 +932,21 @@
   position: relative;
   margin: 8px 20px;
 }
-.onyx-slider-taparea {
+.onyx-slider > .enyo-slider-taparea {
   position: absolute;
   top: -11px;
   height: 28px;
   width: 100%;
 }
-.onyx-slider-knob {
+.onyx-slider > .enyo-slider-knob {
   position: relative;
   height: 40px;
   width: 40px;
   background: url("../images/slider-handle.png") left top no-repeat;
   margin: -23px -20px;
 }
-.onyx-slider-knob.active,
-.onyx-slider-knob.pressed {
+.onyx-slider > .enyo-slider-knob.active,
+.onyx-slider > .enyo-slider-knob.pressed {
   background-position: 0 -40px;
 }
 /* RangeSlider.css */

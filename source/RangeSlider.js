@@ -65,8 +65,8 @@ enyo.kind({
 		ondown: "down"
 	},
 	moreComponents: [
-		{name: "startKnob", classes: "onyx-slider-knob"},
-		{name: "endKnob", classes: "onyx-slider-knob onyx-range-slider-knob"}
+		{name: "startKnob", classes: "enyo-slider-knob"},
+		{name: "endKnob", classes: "enyo-slider-knob onyx-range-slider-knob"}
 	],
 	create: function() {
 		this.inherited(arguments);

@@ -7,13 +7,13 @@
 	margin: 0;
 }
 
-.onyx-input-decorator.onyx-focused {
+.onyx-input-decorator.enyo-focused {
 	box-shadow: inset 0px 1px 4px rgba(0,0,0,0.3);
 	border-color: rgba(0,0,0,0.3);
 	background-color: @onyx-input-focused-background;
 }
 
-.onyx-input-decorator.onyx-disabled {
+.onyx-input-decorator.enyo-disabled {
 	/* FIXME: needed to color a disabled input placeholder. */
 	/*-webkit-text-fill-color: #888;*/
 	opacity: @onyx-disabled-opacity;
@@ -35,11 +35,11 @@
 	/* -webkit-appearance: caret;*/
 }
 
-.onyx-input-decorator.onyx-focused > input {
+.onyx-input-decorator.enyo-focused > input {
 	cursor: text;
 }
 
-.onyx-input-decorator.onyx-disabled > input {
+.onyx-input-decorator.enyo-disabled > input {
 	cursor: default;
 }
 
