@@ -102,7 +102,6 @@ enyo.kind ({
 		}
 
 		this.$.button.applyStyle('width', width + 'px');
-		this.$.button.render();
 	},
 
 	requestSwitch: function(inSender, inEvent) {
