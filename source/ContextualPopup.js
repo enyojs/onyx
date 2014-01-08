@@ -122,7 +122,7 @@ enyo.kind({
 				});
 			}, this);
 		}
-		this.hasNode() && this.$.actionButtons.render();
+		if(this.hasNode()) this.$.actionButtons.render();
 	},
 	maxHeightChanged: function() {
 		if (this.scrolling) {
