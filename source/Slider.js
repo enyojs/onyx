@@ -93,7 +93,6 @@ enyo.kind({
 	},
 	dragfinish: function(inSender, inEvent) {
 		this.dragging = false;
-		inEvent.preventTap();
 		this.doChange({value: this.value});
 		inSender.removeClass("pressed");
 		return true;
