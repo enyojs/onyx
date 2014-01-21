@@ -110,5 +110,8 @@ enyo.kind({
 	},
 	dragfinish: function(inSender, inEvent) {
 		this.dragging = false;
+		if (this.dragged) {
+			inEvent.preventTap();
+		}
 	}
 });
