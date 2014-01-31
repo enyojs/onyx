@@ -447,7 +447,6 @@ enyo.kind ({
 	},
 
 	_requestTabSwitch: function(tab) {
-		this.log(tab);
 		var event, next;
 
 		if (this.checkBeforeChanging) {
