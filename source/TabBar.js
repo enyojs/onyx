@@ -70,7 +70,7 @@ You can also setup the TabBar so a tap on a tab will fire a
 		}
 	});
 
-In this mode, no event is firedt *after* the actual switch.
+In this mode, no event is fired *after* the actual switch.
 
 
 */
@@ -119,6 +119,9 @@ enyo.kind ({
 		 * if (removeOk) { inEvent.next() ;}
 		 * else ( inEvent.next('not now') ;}
 		 *
+		 * Once a tab is removed (by calling next() ), a replacement
+		 * tab will be activated and a doTabChanged event will be
+		 * fired.
 		 */
 		onTabRemoveRequested: "",
 
@@ -318,15 +321,14 @@ enyo.kind ({
 			replacementTab.setActive(true) ;
 			replacementTab.raise();
 			this.$.scroller.scrollIntoView(replacementTab);
-			this.doTabChanged(
-				{
-					index:   replacementTab.index,
-					caption: replacementTab.caption,
-					tooltipMsg: replacementTab.tooltipMsg,
-					data:    replacementTab.userData,
-					userId:  replacementTab.userId
-				}
-			);
+
+			this.doTabChanged({
+				index:   replacementTab.tabIndex,
+				caption: replacementTab.content,
+				tooltipMsg: replacementTab.tooltipMsg,
+				data:    replacementTab.userData,
+				userId:  replacementTab.userId
+			});
 		}
 
 		this.doTabRemoved(tabData);
@@ -440,8 +442,12 @@ enyo.kind ({
 
 	//@ protected
 	requestTabSwitch: function(inSender,inEvent) {
-		var event, next;
 		var tab = inEvent.originator;
+		this._requestTabSwitch(tab);
+	},
+
+	_requestTabSwitch: function(tab) {
+		var event, next;
 
 		if (this.checkBeforeChanging) {
 			// polite mode, ask before
@@ -456,24 +462,23 @@ enyo.kind ({
 			next =  enyo.bind(this,'undoSwitchOnError', oldIndex);
 		}
 
+		var data = {
+			index:   tab.tabIndex,
+			caption: tab.content,
+			tooltipMsg: tab.tooltipMsg,
+			data:    tab.userData,
+			userId:  tab.userId
+		} ;
+
 		var oldIndex = this.selectedId ;
-		this.selectedId = inEvent.index;
+		this.selectedId = data.index;
 
 		if ( this.selectedId != oldIndex ) {
-			this.bubble(
-				event,
-				{
-					index:   inEvent.index,
-					caption: inEvent.caption,
-					tooltipMsg: inEvent.tooltipMsg,
-					data:    inEvent.userData,
-					userId:  inEvent.userId,
-					next:    next
-				}
-			);
+			data.next = next;
+			this.bubble(event, data);
 		}
 		else {
-			// when clicking on a tab, the tab always deactivated even
+			// when clicking on a tab, the tab is always deactivated even
 			// if user clicks on the active tab. So the activation
 			// must be put back.
 			tab.setActiveTrue();
@@ -588,6 +593,10 @@ enyo.kind ({
 	},
 
 	popupButtonTapped: function(inSender, inEvent) {
-		this.activate({ index: inEvent.originator.value } );
+		var target = { index: inEvent.originator.value } ;
+		var tab = this.resolveTab(target,'activate');
+		if (tab) {
+			this._requestTabSwitch(tab);
+		}
 	}
 });

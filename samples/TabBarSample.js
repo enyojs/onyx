@@ -149,6 +149,7 @@ enyo.kind({
 		// for convenienve, the same delay is applied to tabChange and close
 		// Of course, different handlers can be used.
 		onTabChangeRequested: "delayAction",
+		onTabChanged:         "updateContent",
 		onTabRemoveRequested: "delayAction"
 	},
 
@@ -176,6 +177,9 @@ enyo.kind({
 		this.$.delayPopup.hide();
 		this.$.stuff.setContent( inEvent.data.msg);
 		inEvent.next(); // call inEvent.next(error) is abort is needed
+	},
+	updateContent: function(inSender,inEvent) {
+		this.$.stuff.setContent( inEvent.data.msg);
 	}
 });
 
