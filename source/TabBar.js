@@ -70,7 +70,7 @@ You can also setup the TabBar so a tap on a tab will fire a
 		}
 	});
 
-In this mode, no event is firedt *after* the actual switch.
+In this mode, no event is fired *after* the actual switch.
 
 
 */
