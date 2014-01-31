@@ -442,8 +442,13 @@ enyo.kind ({
 
 	//@ protected
 	requestTabSwitch: function(inSender,inEvent) {
-		var event, next;
 		var tab = inEvent.originator;
+		this._requestTabSwitch(tab);
+	},
+
+	_requestTabSwitch: function(tab) {
+		this.log(tab);
+		var event, next;
 
 		if (this.checkBeforeChanging) {
 			// polite mode, ask before
@@ -458,24 +463,23 @@ enyo.kind ({
 			next =  enyo.bind(this,'undoSwitchOnError', oldIndex);
 		}
 
+		var data = {
+			index:   tab.tabIndex,
+			caption: tab.content,
+			tooltipMsg: tab.tooltipMsg,
+			data:    tab.userData,
+			userId:  tab.userId
+		} ;
+
 		var oldIndex = this.selectedId ;
-		this.selectedId = inEvent.index;
+		this.selectedId = data.index;
 
 		if ( this.selectedId != oldIndex ) {
-			this.bubble(
-				event,
-				{
-					index:   inEvent.index,
-					caption: inEvent.caption,
-					tooltipMsg: inEvent.tooltipMsg,
-					data:    inEvent.userData,
-					userId:  inEvent.userId,
-					next:    next
-				}
-			);
+			data.next = next;
+			this.bubble(event, data);
 		}
 		else {
-			// when clicking on a tab, the tab always deactivated even
+			// when clicking on a tab, the tab is always deactivated even
 			// if user clicks on the active tab. So the activation
 			// must be put back.
 			tab.setActiveTrue();
