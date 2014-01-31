@@ -594,6 +594,10 @@ enyo.kind ({
 	},
 
 	popupButtonTapped: function(inSender, inEvent) {
-		this.activate({ index: inEvent.originator.value } );
+		var target = { index: inEvent.originator.value } ;
+		var tab = this.resolveTab(target,'activate');
+		if (tab) {
+			this._requestTabSwitch(tab);
+		}
 	}
 });
