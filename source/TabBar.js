@@ -119,6 +119,9 @@ enyo.kind ({
 		 * if (removeOk) { inEvent.next() ;}
 		 * else ( inEvent.next('not now') ;}
 		 *
+		 * Once a tab is removed (by calling next() ), a replacement
+		 * tab will be activated and a doTabChanged event will be
+		 * fired.
 		 */
 		onTabRemoveRequested: "",
 
@@ -318,15 +321,14 @@ enyo.kind ({
 			replacementTab.setActive(true) ;
 			replacementTab.raise();
 			this.$.scroller.scrollIntoView(replacementTab);
-			this.doTabChanged(
-				{
-					index:   replacementTab.index,
-					caption: replacementTab.caption,
-					tooltipMsg: replacementTab.tooltipMsg,
-					data:    replacementTab.userData,
-					userId:  replacementTab.userId
-				}
-			);
+
+			this.doTabChanged({
+				index:   replacementTab.tabIndex,
+				caption: replacementTab.content,
+				tooltipMsg: replacementTab.tooltipMsg,
+				data:    replacementTab.userData,
+				userId:  replacementTab.userId
+			});
 		}
 
 		this.doTabRemoved(tabData);
