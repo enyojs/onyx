@@ -93,7 +93,7 @@ enyo.kind({
 											title: "Average",
 											floating: true,
 											actionButtons: [
-												{ content: "Press Me" }
+												{ content: "Press Me"}
 											],
 											components: [
 												{ content: "Item 1" },
@@ -248,7 +248,7 @@ enyo.kind({
 											floating: true,
 											actionButtons: [
 												{ content: "Do Nothing", classes: "onyx-button-warning" },
-												{ content: "Dismiss", name: "dismiss_button" }
+												{ content: "Dismiss", ontap: "dismissTap" }
 											],
 											components: [
 												{ content: "Item 1" },
@@ -336,15 +336,20 @@ enyo.kind({
 			]
 		}
 	],
+	dismissTap: function(inSender, inEvent)
+	{
+		enyo.log(inSender.name, "action button tapped");
+		inSender.popup.hide();
+		return true;
+	},
 	tapHandler: function (inSender, inEvent)
 	{
-		if (inEvent.actionButton) {
-			enyo.log(inEvent.popup); //info about popup it's coming from
-			enyo.log("action button index: " + inEvent.originator.index); //index of action button
+		if (inEvent.originator.actionButton) {
+			enyo.log(inEvent.originator.popup); //info about popup it's coming from
 			enyo.log("action button name: " + inEvent.originator.name); //name of action button (you can set this - see example use below)
 
 			if (inEvent.originator.name == "dismiss_button") {
-				inEvent.popup.hide();
+				inEvent.originator.popup.hide();
 			}
 		}
 	}

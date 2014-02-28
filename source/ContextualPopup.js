@@ -55,6 +55,16 @@ enyo.kind({
 		actionButtons: []
 	},
 
+	statics: {
+		subclass: function(ctor, props) {
+			var proto = ctor.prototype;
+			if (props.actionButtons) {
+				proto.kindActionButtons = props.actionButtons;
+				delete proto.actionButtons;
+			}
+		}
+	},
+
 	//layout parameters
 	vertFlushMargin:60, //vertical flush layout margin
 	horizFlushMargin:50, //horizontal flush layout margin
@@ -66,6 +76,7 @@ enyo.kind({
 		onTap: ""
 	},
 	handlers: {
+		onActivate: "childControlActivated",
 		onRequestShowMenu: "requestShow",
 		onRequestHideMenu: "requestHide"
 	},
@@ -89,28 +100,31 @@ enyo.kind({
 	titleChanged: function(){
 		this.$.title.setContent(this.title);
 	},
-	actionButtonsChanged: function(){
-		for (var i=0;i<this.actionButtons.length;i++){
-			this.$.actionButtons.createComponent({
-				kind:"onyx.Button",
-				content:this.actionButtons[i].content,
-				classes: this.actionButtons[i].classes + " onyx-contextual-popup-action-button",
-				name: this.actionButtons[i].name ?
-					this.actionButtons[i].name :
-					"ActionButton" + i,
-				index: i,
-				tap: this.actionButtons[i].ontap ?
-					this.owner.bindSafely(this.actionButtons[i].ontap) :
-					this.bindSafely(this.tapHandler)
-			});
+	actionButtonsChanged: function() {
+		if (this.actionButtons) {
+			enyo.forEach(this.actionButtons, function(button) {
+				button.kind = "onyx.Button";
+				button.classes = button.classes + " onyx-contextual-popup-action-button";
+				button.popup = this;
+				button.actionButton = true;
+				this.$.actionButtons.createComponent(button, {
+					owner: this.getInstanceOwner()
+				});
+			}, this);
+		} else if (this.kindActionButtons) {
+			enyo.forEach(this.kindActionButtons, function(button) {
+				button.kind = "onyx.Button";
+				button.classes = button.classes + " onyx-contextual-popup-action-button";
+				button.popup = this;
+				button.actionButton = true;
+				this.$.actionButtons.createComponent(button, {
+					owner: this
+				});
+			}, this);
 		}
-	},
-	tapHandler: function(inSender, inEvent){
-		//Populate event fields with origination info
-		inEvent.actionButton = true;
-		inEvent.popup = this;
-		this.bubble("ontap",inEvent);
-		return true;
+		if(this.hasNode()) {
+			this.$.actionButtons.render();
+		}
 	},
 	maxHeightChanged: function() {
 		if (this.scrolling) {
@@ -123,6 +137,9 @@ enyo.kind({
 			this.getScroller().setShowing(this.showing);
 		}
 		this.adjustPosition();
+	},
+	childControlActivated: function(inSender, inEvent) {
+		return true;
 	},
 	requestShow: function(inSender, inEvent) {
 		var n = inEvent.activator.hasNode();
