@@ -49,8 +49,9 @@ enyo.kind({
 		if (this.disabled) {
 			return true;
 		}
-		if(this._isPressed)
+		if(this._isPressed) {
 			this.addClass("pressed");
+		}
 	},
 	dragfinish: function(inSender, inEvent) {
 		if (this.disabled) {

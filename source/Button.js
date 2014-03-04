@@ -30,8 +30,9 @@ enyo.kind({
 		this._isPressed = true;
 	},
 	enter: function(inSender, inEvent) {
-		if(this._isPressed)
+		if(this._isPressed) {
 			this.addClass("pressed");
+		}
 	},
 	dragfinish: function(inSender, inEvent) {
 		this.removeClass("pressed");
