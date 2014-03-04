@@ -21,26 +21,28 @@ enyo.kind({
 	handlers: {
 		ondown: "down",
 		onenter: "enter",
-		ondrag: "drag",
+		ondragfinish: "dragfinish",
 		onleave: "leave",
 		onup: "up"
 	},
 	down: function(inSender, inEvent) {
 		this.addClass("pressed");
-		this._isInControl = true;
+		this._isPressed = true;
 	},
 	enter: function(inSender, inEvent) {
-		this._isInControl = true;
+		if(this._isPressed) {
+			this.addClass("pressed");
+		}
 	},
-	drag: function(inSender, inEvent) {
-		this.addRemoveClass("pressed", this._isInControl);
+	dragfinish: function(inSender, inEvent) {
+		this.removeClass("pressed");
+		this._isPressed = false;
 	},
 	leave: function(inSender, inEvent) {
 		this.removeClass("pressed");
-		this._isInControl = false;
 	},
 	up: function(inSender, inEvent) {
 		this.removeClass("pressed");
-		this._isInControl = false;
+		this._isPressed = false;
 	}
 });

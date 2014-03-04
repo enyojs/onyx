@@ -24,7 +24,7 @@ enyo.kind({
 	handlers: {
 		ondown: "down",
 		onenter: "enter",
-		ondrag: "drag",
+		ondragfinish: "dragfinish",
 		onleave: "leave",
 		onup: "up"
 	},
@@ -43,33 +43,35 @@ enyo.kind({
 			return true;
 		}
 		this.addClass("pressed");
-		this._isInControl = true;
+		this._isPressed = true;
 	},
 	enter: function(inSender, inEvent) {
 		if (this.disabled) {
 			return true;
 		}
-		this._isInControl = true;
+		if(this._isPressed) {
+			this.addClass("pressed");
+		}
 	},
-	drag: function(inSender, inEvent) {
+	dragfinish: function(inSender, inEvent) {
 		if (this.disabled) {
 			return true;
 		}
-		this.addRemoveClass("pressed", this._isInControl);
+		this.removeClass("pressed");
+		this._isPressed = false;
 	},
 	leave: function(inSender, inEvent) {
 		if (this.disabled) {
 			return true;
 		}
 		this.removeClass("pressed");
-		this._isInControl = false;
 	},
 	up: function(inSender, inEvent) {
 		if (this.disabled) {
 			return true;
 		}
 		this.removeClass("pressed");
-		this._isInControl = false;
+		this._isPressed = false;
 	},
 	activeChanged: function() {
 		this.bubble("onActivate");
