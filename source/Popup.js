@@ -28,14 +28,15 @@ enyo.kind({
 			is a singleton and you will be modifying the scrim instance used for
 			other popups.
 		*/
-		scrimClassName: ""
+		scrimClassName: "",
+		//* Lowest z-index that can be applied to a popup.
+		defaultZ: 120
 	},
 	//* @protected
 	protectedStatics: {
 		count: 0,
 		highestZ: 120
 	},
-	defaultZ: 120,
 	showingChanged: function() {
 		if(this.showing) {
 			onyx.Popup.count++;
