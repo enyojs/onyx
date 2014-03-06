@@ -30,7 +30,7 @@ enyo.kind({
 		*/
 		scrimClassName: "",
 		/**
-		 	Lowest z-index popups that can be applied to a popup.
+		 	Lowest z-index that can be applied to a popup.
 		 */
 		defaultZ: 120
 	},
