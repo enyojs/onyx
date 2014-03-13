@@ -13,18 +13,21 @@ enyo.kind({
 				{kind: "onyx.PickerDecorator", style:"padding:10px;", onSelect: "pickerHandler", components: [
 					{content: "Pick One...", style: "width: 200px"},
 					{kind: "onyx.Picker", components: [
-						{content: 'en_us', active:true},
-						{content: 'en_ca'},
-						{content: 'en_ie'},
-						{content: 'en_gb'},
-						{content: 'en_mx'},
-						{content: 'de_de'},
-						{content: 'fr_fr'},
-						{content: 'fr_ca'},
-						{content: 'it_it'},
-						{content: 'es_es'},
-						{content: 'es_mx'},
-						{content: 'es_us'}
+						{content: "en-US", active:true},
+						{content: "en-CA"},
+						{content: "en-IE"},
+						{content: "en-GB"},
+						{content: "en-MX"},
+						{content: "de-DE"},
+						{content: "fr-FR"},
+						{content: "fr-CA"},
+						{content: "it-IT"},
+						{content: "es-ES"},
+						{content: "es-MX"},
+						{content: "es-US"},
+						{content: "ko-KR"},
+						{content: "ja-JP"},
+						{content: "zh-HK"}
 					]}
 				]}
 			]}
@@ -65,7 +68,7 @@ enyo.kind({
 	],
 	initComponents: function() {
 		this.inherited(arguments);
-		this.locale = enyo.g11n.currentLocale().getLocale();
+		this.locale = ilib.getLocale();
 	},
 	pickerHandler: function(inSender, inEvent){
 		this.locale = inEvent.selected.content;
@@ -91,18 +94,19 @@ enyo.kind({
 		this.$.datePicker1Value.setContent(fmt.format(this.$.datePicker1.getValue()));
 		this.$.datePicker2Value.setContent(fmt.format(this.$.datePicker2.getValue()));
 		// reformat the formatter to display the Date wiht only Month and year
-		fmt = this.format('my');
+		fmt = this.format("my");
 		this.$.datePicker3Value.setContent(fmt.format(this.$.datePicker3.getValue()));
 	},
 	updateDateValues: function(inSender, inEvent){
-		var fmt = inEvent.name != "datePicker3" ? this.format() :  this.format('my');
+		var fmt = inEvent.name != "datePicker3" ? this.format() :  this.format("my");
 		this.$[inEvent.name + "Value"].setContent(fmt.format(inEvent.value));
 	},
 	format: function(dateComponents) {
-		var fmt = new enyo.g11n.DateFmt({
+		var fmt = new ilib.DateFmt({
 			dateComponents: dateComponents || undefined,
-			date: 'short',
-			locale: new enyo.g11n.Locale(this.locale)
+			date: "short",
+			locale: this.locale,
+			timezone: "local"
 		});
 		return fmt;
 	}

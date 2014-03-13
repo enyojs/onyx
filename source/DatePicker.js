@@ -5,7 +5,7 @@
 
 	By default, _DatePicker_ tries to determine the current locale and use its
 	rules to format the date (including the month name). In order to do this
-	successfully, the _g11n_ library must be loaded; if it is not loaded, the
+	successfully, the _ilib_ library must be loaded; if it is not loaded, the
 	control defaults to using standard U.S. date format.
 
 	The _day_ field is automatically populated with the proper number of days
@@ -22,7 +22,7 @@ enyo.kind({
 			creation, in which case the control will be updated to reflect the
 			new value.
 		*/
-		locale: "en_us",
+		locale: "en-US",
 		//* If true, the day field is hidden
 		dayHidden: false,
 		//* If true, the month field is hidden
@@ -53,22 +53,29 @@ enyo.kind({
 	},
 	create: function() {
 		this.inherited(arguments);
-		if (enyo.g11n) {
-			this.locale = enyo.g11n.currentLocale().getLocale();
+		if (ilib) {
+			this.locale = ilib.getLocale();
 		}
 		this.initDefaults();
 	},
 	initDefaults: function() {
-		// Fall back to en_us as default
-		var months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
-
-		//Attempt to use the g11n lib (ie assume it is loaded)
-		if (enyo.g11n) {
-			this._tf = new enyo.g11n.Fmts({locale:this.locale});
-			months = this._tf.getMonthFields();
+		var months;
+		//Attempt to use the ilib library if it is loaded
+		if (ilib) {
+			months = [];
+			this._tf = new ilib.DateFmt({locale:this.locale, timezone: "local"});
+			months = this._tf.getMonthsOfYear({length: 'long'});
+		}
+		// Fall back to en_US as default
+		else {
+			months = [undefined, "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+			this.localeInfo.getMonthsOfYear = function() {
+				return months;
+			};
 		}
 
-		this.setupPickers(this._tf ? this._tf.getDateFieldOrder() : 'mdy');
+		// use iLib's getTemplate as that returns locale-specific ordering
+		this.setupPickers(this._tf ? this._tf.getTemplate() : 'mdy');
 
 		this.dayHiddenChanged();
 		this.monthHiddenChanged();
@@ -76,7 +83,7 @@ enyo.kind({
 
 		//Fill month, year & day pickers with values
 		var d = this.value = this.value || new Date();
-		for (var i=0,m; (m=months[i]); i++) {
+		for (var i=0,m; (m=months[i + 1]); i++) {
 			this.$.monthPicker.createComponent({content: m, value:i, active: i==d.getMonth()});
 		}
 
@@ -98,17 +105,27 @@ enyo.kind({
 	setupPickers: function(ordering) {
 		var orderingArr = ordering.split("");
 		var o,f,l;
+		var createdYear = false, createdMonth = false, createdDay = false;
 		for(f = 0, l = orderingArr.length; f < l; f++) {
 			o = orderingArr[f];
-			switch (o){
+			switch (o.toLowerCase()){
 			case 'd':
-				this.createDay();
+				if (!createdDay) {
+					this.createDay();
+					createdDay = true;
+				}
 				break;
 			case 'm':
-				this.createMonth();
+				if (!createdMonth) {
+					this.createMonth();
+					createdMonth = true;
+				}
 				break;
 			case 'y':
-				this.createYear();
+				if (!createdYear) {
+					this.createYear();
+					createdYear = true;
+				}
 				break;
 			default:
 				break;
