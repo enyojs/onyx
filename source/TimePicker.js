@@ -49,7 +49,6 @@ enyo.kind({
 	},
 	initDefaults: function() {
 		// defaults that match en_US for when ilib isn't loaded
-		// var am = "AM", pm = "PM";
 		this._strAm = "AM";
 		this._strPm = "PM";
 		// Attempt to use the ilib lib (ie assume it is loaded)
