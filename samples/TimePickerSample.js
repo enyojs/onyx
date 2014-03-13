@@ -24,7 +24,10 @@ enyo.kind({
 						{content: 'it-IT'},
 						{content: 'es-ES'},
 						{content: 'es-MX'},
-						{content: 'es-US'}
+						{content: 'es-US'},
+						{content: 'ko-KR'},
+						{content: 'ja-JP'},
+						{content: 'zh-HK'}
 					]}
 				]}
 			]}
@@ -85,7 +88,7 @@ enyo.kind({
 		var fmt = new ilib.DateFmt({
 			type: "time",
 			length: "short",
-			locale: new ilib.Locale(this.locale),
+			locale: this.locale,
 			timezone: "local"
 		});
 
@@ -96,7 +99,7 @@ enyo.kind({
 		var fmt = new ilib.DateFmt({
 			type: "time",
 			length: "short",
-			locale: new ilib.Locale(this.locale),
+			locale: this.locale,
 			timezone: "local"
 		});
 
