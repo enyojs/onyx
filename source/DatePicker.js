@@ -60,7 +60,7 @@ enyo.kind({
 	},
 	initDefaults: function() {
 		var months;
-		//Attempt to use the ilib library (ie assume it is loaded)
+		//Attempt to use the ilib library if it is loaded
 		if (ilib) {
 			months = [];
 			this._tf = new ilib.DateFmt({locale:this.locale, timezone: "local"});
@@ -68,13 +68,14 @@ enyo.kind({
 		}
 		// Fall back to en_US as default
 		else {
-			months = ["JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
+			months = [undefined, "JAN", "FEB", "MAR", "APR", "MAY", "JUN", "JUL", "AUG", "SEP", "OCT", "NOV", "DEC"];
 			this.localeInfo.getMonthsOfYear = function() {
 				return months;
 			};
 		}
 
-		this.setupPickers(this._tf ? this._tf.getDateComponents() : 'mdy');
+		// use iLib's getTemplate as that returns locale-specific ordering
+		this.setupPickers(this._tf ? this._tf.getTemplate() : 'mdy');
 
 		this.dayHiddenChanged();
 		this.monthHiddenChanged();
@@ -82,7 +83,7 @@ enyo.kind({
 
 		//Fill month, year & day pickers with values
 		var d = this.value = this.value || new Date();
-		for (var i=0,m; (m=months[i]); i++) {
+		for (var i=0,m; (m=months[i + 1]); i++) {
 			this.$.monthPicker.createComponent({content: m, value:i, active: i==d.getMonth()});
 		}
 
@@ -104,17 +105,27 @@ enyo.kind({
 	setupPickers: function(ordering) {
 		var orderingArr = ordering.split("");
 		var o,f,l;
+		var createdYear = false, createdMonth = false, createdDay = false;
 		for(f = 0, l = orderingArr.length; f < l; f++) {
 			o = orderingArr[f];
-			switch (o){
+			switch (o.toLowerCase()){
 			case 'd':
-				this.createDay();
+				if (!createdDay) {
+					this.createDay();
+					createdDay = true;
+				}
 				break;
 			case 'm':
-				this.createMonth();
+				if (!createdMonth) {
+					this.createMonth();
+					createdMonth = true;
+				}
 				break;
 			case 'y':
-				this.createYear();
+				if (!createdYear) {
+					this.createYear();
+					createdYear = true;
+				}
 				break;
 			default:
 				break;

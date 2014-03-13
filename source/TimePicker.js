@@ -102,24 +102,16 @@ enyo.kind({
 		}
 		this.$.ampmPicker.getParent().setShowing(!this.is24HrMode);
 	},
-	setupPickers: function(ordering) {
-		var orderingArr = ordering.split("");
-		var o,f,l;
-		for(f = 0, l = orderingArr.length; f < l; f++) {
-			o = orderingArr[f];
-			switch (o){
-			case 'h':
-				this.createHour();
-				break;
-			case 'm':
-				this.createMinute();
-				break;
-			case 'a':
-				this.createAmPm();
-				break;
-			default:
-				break;
-			}
+	setupPickers: function(timeComponents) {
+		// order is always fixed hours, minutes, am/pm
+		if (timeComponents.indexOf('h') !== -1) {
+			this.createHour();
+		}
+		if (timeComponents.indexOf('m') !== -1) {
+			this.createMinute();
+		}
+		if (timeComponents.indexOf('a') !== -1) {
+			this.createAmPm();
 		}
 	},
 	createHour: function() {
