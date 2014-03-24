@@ -26,22 +26,37 @@ enyo.kind({
 		onup: "up"
 	},
 	down: function(inSender, inEvent) {
+		if (this.disabled) {
+			return true;
+		}
 		this.addClass("pressed");
 		this._isPressed = true;
 	},
 	enter: function(inSender, inEvent) {
+		if (this.disabled) {
+			return true;
+		}
 		if(this._isPressed) {
 			this.addClass("pressed");
 		}
 	},
 	dragfinish: function(inSender, inEvent) {
+		if (this.disabled) {
+			return true;
+		}
 		this.removeClass("pressed");
 		this._isPressed = false;
 	},
 	leave: function(inSender, inEvent) {
+		if (this.disabled) {
+			return true;
+		}
 		this.removeClass("pressed");
 	},
 	up: function(inSender, inEvent) {
+		if (this.disabled) {
+			return true;
+		}
 		this.removeClass("pressed");
 		this._isPressed = false;
 	}
