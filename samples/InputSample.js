@@ -59,12 +59,12 @@ enyo.kind({
 		this.$.result.setContent("Input: " + inSender.getValue());
 	},
 	changeFocus: function(inSender, inEvent) {
-		enyo.forEach([this.$.inputDecorator, this.$.inputDecorator2, this.$.inputDecorator3], function(inValue) {
-			inValue.setAlwaysLooksFocused(inSender.getValue());
+		enyo.forEach([this.$.inputDecorator, this.$.inputDecorator2, this.$.inputDecorator3], function(inItem) {
+			inItem.setAlwaysLooksFocused(inSender.getValue());
 			// If disabling alwaysLooksFocused, we need to blur the
 			// InputDecorator for the setting to go into effect
 			if (!inSender.getValue()) {
-				inValue.waterfall("onblur");
+				inItem.receiveBlur();
 			}
 		});
 	}
