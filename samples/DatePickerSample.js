@@ -12,7 +12,7 @@ enyo.kind({
 				{content:$L("Choose Locale:"), classes:"onyx-sample-divider"},
 				{kind: "onyx.PickerDecorator", style:"padding:10px;", onSelect: "pickerHandler", components: [
 					{content: "Pick One...", style: "width: 200px"},
-					{kind: "onyx.Picker", components: [
+					{kind: "onyx.Picker", name: "localePicker", components: [
 						{content: "en-US", active:true},
 						{content: "en-CA"},
 						{content: "en-IE"},
@@ -66,12 +66,17 @@ enyo.kind({
 			]}
 		]}
 	],
+	bindings: [
+		{from: ".$.localePicker.selected.content", to: ".locale"}
+	],
+	rendered: function() {
+		this.inherited(arguments);
+		this.pickerHandler();
+	},
 	initComponents: function() {
 		this.inherited(arguments);
-		this.locale = ilib.getLocale();
 	},
-	pickerHandler: function(inSender, inEvent){
-		this.locale = inEvent.selected.content;
+	pickerHandler: function(){
 		this.formatDate();
 		return true;
 	},
