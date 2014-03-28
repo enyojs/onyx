@@ -10,7 +10,7 @@ enyo.kind({
 		{kind: "FittableColumns", style: "padding: 10px", components:[
 			{components: [
 				{content:$L("Choose Locale:"), classes:"onyx-sample-divider"},
-				{kind: "onyx.PickerDecorator", style:"padding:10px;", onSelect: "pickerHandler", components: [
+				{kind: "onyx.PickerDecorator", style:"padding:10px;", onSelect: "localeChanged", components: [
 					{content: "Pick One...", style: "width: 200px"},
 					{kind: "onyx.Picker", name: "localePicker", components: [
 						{content: "en-US", active:true},
@@ -71,12 +71,12 @@ enyo.kind({
 	],
 	rendered: function() {
 		this.inherited(arguments);
-		this.pickerHandler();
+		this.localeChanged();
 	},
 	initComponents: function() {
 		this.inherited(arguments);
 	},
-	pickerHandler: function(){
+	localeChanged: function(){
 		this.formatDate();
 		return true;
 	},
