@@ -73,18 +73,12 @@ enyo.kind({
 		this.inherited(arguments);
 		this.localeChanged();
 	},
-	initComponents: function() {
-		this.inherited(arguments);
-	},
 	localeChanged: function(){
-		this.formatDate();
-		return true;
-	},
-	formatDate: function(){
 		this.$.datePicker1.setLocale(this.locale);
 		this.$.datePicker2.setLocale(this.locale);
 		this.$.datePicker3.setLocale(this.locale);
 		this.$.datePicker4.setLocale(this.locale);
+		return true;
 	},
 	resetDates: function(date) {
 		var d = new Date();
