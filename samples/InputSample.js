@@ -64,7 +64,7 @@ enyo.kind({
 			// If disabling alwaysLooksFocused, we need to blur the
 			// InputDecorator for the setting to go into effect
 			if (!inSender.getValue()) {
-				enyo.triggerHandler(inItem, "onblur");
+				inItem.triggerHandler("onblur");
 			}
 		});
 	}
