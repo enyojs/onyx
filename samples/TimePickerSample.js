@@ -10,9 +10,9 @@ enyo.kind({
 		{kind: "FittableColumns", style: "padding: 10px", components:[
 			{components: [
 				{content:$L("Choose Locale:"), classes:"onyx-sample-divider"},
-				{kind: "onyx.PickerDecorator", style:"padding:10px;", onSelect: "pickerHandler", components: [
+				{kind: "onyx.PickerDecorator", style:"padding:10px;", onSelect: "localeChanged", components: [
 					{content: "Pick One...", style: "width: 200px"},
-					{kind: "onyx.Picker", components: [
+					{kind: "onyx.Picker", name: "localePicker", components: [
 						{content: "en-US", active:true},
 						{content: "en-CA"},
 						{content: "en-IE"},
@@ -61,20 +61,19 @@ enyo.kind({
 			]}
 		]}
 	],
-	initComponents: function() {
+	bindings: [
+		{from: ".$.localePicker.selected.content", to: ".locale"}
+	],
+	rendered: function() {
 		this.inherited(arguments);
-		this.locale = ilib.getLocale();
+		this.localeChanged();
 	},
-	pickerHandler: function(inSender, inEvent){
-		this.locale = inEvent.selected.content;
-		this.formatTime();
-		return true;
-	},
-	formatTime: function(){
+	localeChanged: function() {
 		this.$.timePicker1.setLocale(this.locale);
 		this.$.timePicker2.setLocale(this.locale);
 		this.$.timePicker2.setIs24HrMode(true);
 		this.$.timePicker3.setLocale(this.locale);
+		return true;
 	},
 	resetTimes: function(date) {
 		var d = new Date();
