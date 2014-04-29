@@ -1,15 +1,18 @@
 /**
-	A control designed to display a group of stacked items, typically used in
-	lists. By default, items are highlighted when tapped. Set *tapHighlight* to
-	false to prevent the highlighting.
+	_onyx.Item_ is a control designed to display a group of stacked items,
+	typically in lists. By default, items are highlighted when tapped. Set
+	_tapHighlight_ to	_false_ to prevent the highlighting.
 
 		{kind: "onyx.Item", tapHighlight: false}
 */
 enyo.kind({
 	name: "onyx.Item",
 	classes: "onyx-item",
-	//* When true, the item will automatically highlight (by application of the onyx-highlight
-	//* CSS class) when tapped. Set to false to disable this behavior.
+	/**
+		If true, the item will be automatically highlighted (the _onyx-highlight_
+		CSS class will be applied) when tapped. Set to false to disable this
+		behavior.
+	*/
 	tapHighlight: true,
 	//* @protected
 	handlers: {

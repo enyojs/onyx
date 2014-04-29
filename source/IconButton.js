@@ -5,8 +5,8 @@
 	If you want to combine an icon with text inside a button, use an
 	[onyx.Icon](#onyx.Icon) inside an [onyx.Button](#onyx.Button).
 
-	The image associated with the _src_ property of the IconButton is assumed
-	to be 32x64-pixel strip with the top half showing the button's normal state
+	The image associated with the _src_ property of the IconButton is assumed to
+	be a 32x64-pixel strip, with the top half showing the button's normal state
 	and the bottom half showing its state when hovered-over or active.
 
 	For more information, see the documentation on
@@ -16,8 +16,10 @@ enyo.kind({
 	name: "onyx.IconButton",
 	kind: "onyx.Icon",
 	published: {
-		//* Used when the IconButton is part of a <a href="#enyo.Group">enyo.Group</a>, true
-		//* to indicate that this is the active button of the group, false otherwise.
+		/**
+			Used when the IconButton is part of an [enyo.Group](#enyo.Group); a value
+			of true indicates that this is the active button of the group
+		*/
 		active: false
 	},
 	classes: "onyx-icon-button",

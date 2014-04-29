@@ -24,17 +24,19 @@
 enyo.kind({
 	name: "onyx.Menu",
 	kind: "onyx.Popup",
-	//* If true, prevents controls outside the menu from receiving events while
-	//* the menu is showing
+	/**
+		If true, controls outside of the menu will not receive events while the menu
+		is showing
+	*/
 	modal: true,
 	defaultKind: "onyx.MenuItem",
 	classes: "onyx-menu",
 	published: {
-		//* Maximum height of the menu
+		//* Maximum height of the menu, in pixels
 		maxHeight: 200,
-		//* Toggle scrolling
+		//* Boolean indicating whether scrolling is enabled
 		scrolling: true,
-		//* Scroll strategy
+		//* Current scroll strategy
 		scrollStrategyKind: "TouchScrollStrategy"
 	},
 	handlers: {

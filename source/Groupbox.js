@@ -3,9 +3,8 @@
 	is designed to have container controls as its children, with each container
 	representing a row in the Groupbox.
 
-	A header may be added by specifying an
-	<a href="#onyx.GroupboxHeader">onyx.GroupboxHeader</a> as the first control
-	in the Groupbox, e.g.:
+	To add a header, specify an [onyx.GroupboxHeader](#onyx.GroupboxHeader) as the
+	first control in the Groupbox, e.g.:
 
 		{kind: "onyx.Groupbox", components: [
 			{kind: "onyx.GroupboxHeader", content: "Sounds"},
@@ -26,8 +25,9 @@ enyo.kind({
 });
 
 /**
-	A GroupboxHeader is designed to be placed inside an <a href="#onyx.Groupbox">onyx.Groupbox</a>. When a header for a group is desired,
-	make a GroupboxHeader the first control inside a Groupbox.
+	_onyx.GroupboxHeader_ is a control designed to be placed inside an
+	[onyx.Groupbox](#onyx.Groupbox). When a header is desired, make a
+	GroupboxHeader the first control inside the Groupbox.
 
 		{kind: "onyx.Groupbox", components: [
 			{kind: "onyx.GroupboxHeader", content: "Sounds"},
