@@ -1,3 +1,3 @@
 if (enyo && enyo.version) {
-	enyo.version.onyx = "2014-04-29_15-06-27";
+	enyo.version.onyx = "2014-04-29_15-13-32";
 }
