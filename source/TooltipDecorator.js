@@ -1,15 +1,15 @@
 /**
-	A control that activates an <a href="#onyx.Tooltip">onyx.Tooltip</a>. It
-	surrounds a control such as a button and displays the tooltip when the
-	control generates an _onEnter_ event:
+	_onyx.TooltipDecorator_ is a control that couples an
+	[onyx.Tooltip](#onyx.Tooltip) with an activating control, such as a button.
+	The tooltip is displayed when the activator generates an _onEnter_ event:
 
 		{kind: "onyx.TooltipDecorator", components: [
 			{kind: "onyx.Button", content: "Tooltip"},
 			{kind: "onyx.Tooltip", content: "I'm a tooltip for a button."}
 		]}
 
-	Here's an example with an <a href="#onyx.Input">onyx.Input</a> control and a
-	decorator around the input:
+	Here's an example with an [onyx.Input](#onyx.Input) control and a decorator
+	around the input:
 
 		{kind: "onyx.TooltipDecorator", components: [
 			{kind: "onyx.InputDecorator", components: [

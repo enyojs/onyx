@@ -1,7 +1,7 @@
 /**
 	_onyx.Submenu_ is a control that collapses several menu items into a drawer,
-	which can be opened and closed by tapping on its label. It is meant to be
-	placed inside an <a href="#onyx.Menu">onyx.Menu</a>.
+	which may be opened and closed by tapping on its label. It is meant to be
+	placed inside an [onyx.Menu](#onyx.Menu).
 
 		{kind: "onyx.MenuDecorator", components:[
 			{content: "Open menu"},

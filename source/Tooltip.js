@@ -1,6 +1,6 @@
 /**
-	_onyx.Tooltip_ is a kind of <a href="#onyx.Popup">onyx.Popup</a> that works
-	with an	<a href="#onyx.TooltipDecorator">onyx.TooltipDecorator</a>. It
+	_onyx.Tooltip_ is a subkind of [onyx.Popup](#onyx.Popup) that works in
+	conjunction with an [onyx.TooltipDecorator](#onyx.TooltipDecorator). It
 	automatically displays a tooltip when the user hovers over the decorator.
 	The tooltip is positioned around the decorator where there is available
 	window space.
@@ -10,19 +10,23 @@
 			{kind: "onyx.Tooltip", content: "I'm a tooltip for a button."}
 		]}
 
-	You may manually display the tooltip by calling its _show_ method.
+	You may also force a tooltip to be displayed by calling its _show()_ method.
 */
 enyo.kind({
 	name: "onyx.Tooltip",
 	kind: "onyx.Popup",
 	classes: "onyx-tooltip below left-arrow",
-	//* If true, tooltip is automatically dismissed when user stops hovering
-	//* over the decorator
+	/**
+		If true, the tooltip is automatically dismissed when user stops hovering
+		over the decorator
+	*/
 	autoDismiss: false,
-	//* Hovering over the decorator for this length of time (in milliseconds)
-	//* causes the tooltip to appear.
+	/**
+		Hovering over the decorator for this length of time (in milliseconds)
+		causes the tooltip to appear
+	*/
 	showDelay: 500,
-	//* Default margin-left value
+	//* Default _margin-left_ value
 	defaultLeft: -6,
 	//* @protected
 	handlers: {

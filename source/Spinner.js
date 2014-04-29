@@ -1,16 +1,15 @@
 /**
-	A control that displays a spinner animation to indicate that activity is
-	taking place. By default, onyx.Spinner will display a light spinner,
-	suitable for displaying against a dark background. To render a dark spinner
-	to be shown on a lighter background, add the "onyx-light" class to the
-	spinner:
+	_onyx.Spinner_ is a control that displays a spinning animation to indicate
+	that activity is taking place. By default, a light spinner, suitable for
+	displaying against a dark background, is shown. To get a dark spinner
+	(suitable for use on a lighter background), apply the _onyx-light_ CSS class:
 
 		{kind: "onyx.Spinner", classes: "onyx-light"}
 
 	Typically, a spinner is shown to indicate activity and hidden to indicate
-	that the activity has ended. The spinner animation will automatically start
-	when a spinner is shown. If you wish, you may control the animation directly
-	by calling the *start*, *stop*, and *toggle* methods.
+	that the activity has ended. The spinning animation will automatically start
+	when the spinner is shown. If you wish, you may control the animation directly
+	by calling the _start()_, _stop()_, and _toggle()_ methods.
 */
 enyo.kind({
 	name: "onyx.Spinner",

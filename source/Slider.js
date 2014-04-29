@@ -27,11 +27,17 @@ enyo.kind({
 		tappable: true
 	},
 	events: {
-		//* Fires when bar position is set. The _value_ property contains the
-		//* new position.
+		/**
+			Fires when bar position is set.
+
+			_inEvent.value_ contains the new position.
+		*/
 		onChange: "",
-		//* Fires while control knob is being dragged. The _value_ property
-		//* contains the current position.
+		/**
+			Fires while control knob is being dragged.
+			
+			_inEvent.value_ contains the current position.
+		*/
 		onChanging: "",
 		//* Fires when animation to a position finishes.
 		onAnimateFinish: ""

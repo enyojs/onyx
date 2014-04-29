@@ -1,31 +1,36 @@
 /**
-	_onyx.TimePicker_ is a group of <a href="#onyx.Picker">onyx.Picker</a>
-	controls displaying the current time. The user may change the hour, minute,
-	and AM/PM values.
+	_onyx.TimePicker_ is a group of [onyx.Picker](#onyx.Picker) controls that,
+	collectively, display the current time. The user may change the hour, minute,
+	and meridiem (AM/PM) values.
 
-	By default, _TimePicker_ tries to determine the current locale and use its
-	rules to format the time (including AM/PM). In order to do this
-	successfully, the _ilib_ library must be loaded; if it is not loaded, the
-	control defaults to using standard U.S. time format.
+	By default, _TimePicker_ tries to determine the current locale and use that
+	locale's rules to format the time (including AM/PM). In order to do this
+	successfully, the _iLib_ library must be loaded; if it is not loaded, the
+	control defaults to using standard U.S. time formatting.
  */
 enyo.kind({
 	name: "onyx.TimePicker",
 	classes: "onyx-toolbar-inline",
 	published: {
-		//* If true, control is shown as disabled, and user can't select new values
+		/**
+			If true, the control is shown as disabled and users cannot select new
+			values
+		*/
 		disabled: false,
 		/**
-			Current locale used for formatting. Can be set after control
-			creation, in which case the control will be updated to reflect the
-			new value.
+			Current locale used for formatting; may be set after control creation, in
+			which case the control will be updated to reflect the new value
 		*/
 		locale: "en-US",
-		//* If true, 24-hour time is used. This is reset when locale is changed.
+		/**
+			If true, 24-hour time is used. When the locale is changed, this value is
+			updated to reflect the new locale's rules.
+		*/
 		is24HrMode: null,
 		/**
-			The current Date object. When a Date object is passed to _setValue_,
-			the control is updated to reflect the new value. _getValue_ returns
-			a Date object.
+			Date object representing the currently-selected date/time. When a Date
+			object is passed to _setValue()_, the object is stored here and the
+			control is updated to reflect the new date/time.
 		*/
 		value: null
 	},

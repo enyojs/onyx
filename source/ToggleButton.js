@@ -12,18 +12,21 @@ enyo.kind({
 	name: "onyx.ToggleButton",
 	classes: "onyx-toggle-button",
 	published: {
-		//* Used when the ToggleButton is part of a <a href="#enyo.Group">enyo.Group</a>, true
-		//* to indicate that this is the active button of the group, false otherwise.
+		/**
+			Used when the ToggleButton is part of an [enyo.Group](#enyo.Group). A
+			value of true indicates that this is the active button of the group.
+		*/
 		active: false,
-		//* Boolean indicating whether toggle button is currently in the "on"
-		//* state
+		//* Boolean indicating whether toggle button is currently in the "on" state
 		value: false,
-		//* Label for toggle button's "on" state
+		//* Label for the "on" state
 		onContent: "On",
-		//* Label for toggle button's "off" state
+		//* Label for the "off" state
 		offContent: "Off",
-		//* If true, toggle button cannot be tapped and thus will not generate
-		//* any events
+		/**
+			If true, toggle button cannot be tapped and thus will not generate any
+			events
+		*/
 		disabled: false
 	},
 	events: {

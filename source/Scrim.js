@@ -9,7 +9,7 @@
 	_"pointer-events: auto"_ in its style properties.
 
 	You may specify the z-index at which you want the scrim to appear by calling
-	_showAtZIndex_; if you do so, you must call _hideAtZIndex_ with the same
+	_showAtZIndex()_; if you do so, you must call _hideAtZIndex()_ with the same
 	value to hide the scrim.
 */
 
@@ -19,7 +19,7 @@ enyo.kind({
 	showing: false,
 	classes: "onyx-scrim enyo-fit",
 	/**
-		If true, scrim is rendered in a floating layer outside of other
+		If true, the scrim is rendered in a floating layer outside of other
 		controls. This can be used to guarantee that the scrim will be shown
 		on top of other controls.
 	*/
@@ -50,8 +50,11 @@ enyo.kind({
 		enyo.remove(inControl, this.zStack);
 	},
 	//* @public
-	//* Shows scrim at the specified z-index. Note: If you use _showAtZIndex_,
-	//* you must call _hideAtZIndex_ to properly unwind the z-index stack.
+	/**
+		Shows scrim at the specified z-index. Note that if you call
+		_showAtZIndex()_, you must call _hideAtZIndex()_ to properly unwind the
+		z-index stack.
+	*/
 	showAtZIndex: function(inZIndex) {
 		this.addZIndex(inZIndex);
 		if (inZIndex !== undefined) {
@@ -70,7 +73,7 @@ enyo.kind({
 		}
 	},
 	//* @protected
-	// Set scrim to show at `inZIndex`
+	// Sets scrim to show at `inZIndex`
 	setZIndex: function(inZIndex) {
 		this.zIndex = inZIndex;
 		this.applyStyle("z-index", inZIndex);
