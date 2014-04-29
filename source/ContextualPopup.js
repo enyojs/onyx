@@ -1,22 +1,20 @@
 /**
-	_onyx.ContextualPopup_ is a subkind of <a href="#enyo.Popup">enyo.Popup</a>.
-	Contextual popups serve as child windows that appear near the point of
-	initiation. Use them for prompting users to select from a defined set of
-	options; for conducting other quick, single-step interactions in which
-	context should be maintained; and for presenting simple views, such as
-	previews.
+	_onyx.ContextualPopup_ is a subkind of [enyo.Popup](#enyo.Popup). Contextual
+	popups serve as child windows that appear near the point of initiation. Use
+	them to prompt users to make a selection from a defined set of options; to
+	conduct other quick, single-step interactions in which context should be
+	maintained; and to present simple views, such as previews.
 
 	A contextual popup is meant to be used in conjunction with a decorator, such
-	as an <a href="#onyx.MenuDecorator">onyx.MenuDecorator</a>. The decorator
-	couples the popup with an activating control, which may be a button or any
-	other control with an _onActivate_ event. When the control is activated, the
-	popup shows itself in the correct position relative to the activator.
+	as an [onyx.MenuDecorator](#onyx.MenuDecorator). The decorator couples the
+	popup with an activating control, which may be a button or any other control
+	with an _onActivate_ event. When the control is activated, the popup shows
+	itself in the correct position relative to the activator.
 
 	Note that, by default, the popup is not floating, so toolbars and controls
 	with high z-index values may obscure it. You may set the _floating_ property
-	to true to have the popup always appear on top; however, the popup will not
-	be in the containing document's flow and so will not scroll with the
-	document.
+	to _true_ to have the popup always appear on top; however, the popup will not
+	be in the containing document's flow and so will not scroll with the document.
 
 	In addition, while contextual popups have their own positioning logic, they
 	do not currently have their own sizing logic, so be sure to take this into
@@ -45,9 +43,9 @@ enyo.kind({
 	floating:false,
 	classes: "onyx-contextual-popup enyo-unselectable",
 	published: {
-		//* Maximum height of the menu
+		//* Maximum height of the menu, in pixels
 		maxHeight: 100,
-		//* Toggle scrolling
+		//* Boolean indicating whether scrolling is enabled
 		scrolling: true,
 		//* Popup title content
 		title: undefined,

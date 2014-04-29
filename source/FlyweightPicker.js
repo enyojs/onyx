@@ -1,16 +1,15 @@
 /**
-	_onyx.FlyweightPicker_, a subkind of <a href="#onyx.Picker">onyx.Picker</a>,
-	is a picker	that employs the flyweight pattern. It is used to display a
-	large list of selectable items.	As with
-	<a href="#enyo.FlyweightRepeater">enyo.FlyweightRepeater</a>,
+	_onyx.FlyweightPicker_, a subkind of [onyx.Picker](#onyx.Picker), is a picker
+	that employs the flyweight pattern. It is used to display a large list of
+	selectable items.	As with [enyo.FlyweightRepeater](#enyo.FlyweightRepeater),
 	the _onSetupItem_ event allows for customization of item rendering.
 
-	To initialize the FlyweightPicker to a particular value, call _setSelected_
-	with the index of the item you wish to select, and call _setContent_ with
+	To initialize the FlyweightPicker to a particular value, call _setSelected()_
+	with the index of the item you wish to select, and call _setContent()_ with
 	the item that should be shown in the activator button.
 
 	FlyweightPicker will send an _onSelect_ event with a selected item's
-	information. This can be received by a client application to determine which
+	information. This may be handled by a client application to determine which
 	item was selected.
 
 		enyo.kind({
@@ -46,20 +45,24 @@ enyo.kind({
 	kind: "onyx.Picker",
 	classes: "onyx-flyweight-picker",
 	published: {
-		//* How many rows to render
+		//* Number of rows to render
 		count: 0
 	},
 	events: {
 		/**
-			Fires when a row is being initialized. The _index_ property contains
-			the row index, while the _flyweight_ property contains the row
-			control, for decoration.
+			Fires when a row is being initialized.
+
+			_inEvent.index_ contains the row index.
+
+			_inEvent.flyweight_ contains the row control, for decoration.
 		*/
 		onSetupItem: "",
 		/**
-			Fires when an item is selected. The _content_ property contains the
-			content of the selected item, while the _selected_ property contains
-			its row index.
+			Fires when an item is selected.
+
+			_inEvent.content_ contains the content of the selected item.
+
+			_inEvent.selected_ contains the row index of the selected item.
 		*/
 		onSelect: ""
 	},

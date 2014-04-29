@@ -1,26 +1,24 @@
 /**
-	_onyx.DatePicker_ is a group of <a href="#onyx.Picker">onyx.Picker</a>
-	controls displaying the current date. The user may change the _day_,
-	_month_, and _year_ values.
+	_onyx.DatePicker_ is a group of [onyx.Picker](#onyx.Picker) controls used for
+	displaying a date. The user may change the _day_, _month_, and _year_ values.
 
-	By default, _DatePicker_ tries to determine the current locale and use its
-	rules to format the date (including the month name). In order to do this
-	successfully, the _ilib_ library must be loaded; if it is not loaded, the
-	control defaults to using standard U.S. date format.
+	By default, _DatePicker_ tries to determine the current locale and use that
+	locale's rules to format the date (including the month name). In order to do
+	this successfully, the _iLib_ library must be loaded; if it is not loaded, the
+	control defaults to using standard U.S. date formatting.
 
-	The _day_ field is automatically populated with the proper number of days
-	for the selected month and year.
+	The _day_ field is automatically populated with the proper number of days for
+	the selected month and year.
  */
 enyo.kind({
 	name: "onyx.DatePicker",
 	classes: "onyx-toolbar-inline",
 	published: {
-		//* If true, control is shown as disabled, and user can't select new values
+		//* If true, control is shown as disabled and user cannot select new values
 		disabled: false,
 		/**
-			Current locale used for formatting. Can be set after control
-			creation, in which case the control will be updated to reflect the
-			new value.
+			Current locale used for formatting; may be set after control creation, in
+			which case the control will be updated to reflect the new value
 		*/
 		locale: "en-US",
 		//* If true, the day field is hidden
@@ -34,9 +32,9 @@ enyo.kind({
 		//* Optional maximum year value
 		maxYear: 2099,
 		/**
-			The current Date object. When a Date object is passed to _setValue_,
-			the control is updated to reflect the new value. _getValue_ returns
-			a Date object.
+			Date object representing currently selected date. When a Date object is
+			passed to _setValue()_, the passed-in object is stored here and the
+			control is updated to reflect the new date.
 		*/
 		value: null
 	},

@@ -1,7 +1,7 @@
 /**
-	A box that shows or hides a check mark when clicked.
-	The onChange event is fired when it is clicked. Use getValue() to fetch
-	the checked status.
+	_onyx.Checkbox_ is a box that shows or hides a checkmark when clicked. The
+	_onChange_ event is fired when the box is clicked. Call _getValue()_ to
+	retrieve a boolean indicating whether the box is currently checked.
 
 		{kind: "onyx.Checkbox", onchange: "checkboxClicked"}
 
