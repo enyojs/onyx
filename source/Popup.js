@@ -16,12 +16,14 @@ enyo.kind({
 	classes: "onyx-popup",
 	published: {
 		/**
-			Determines whether a scrim will appear when the dialog is modal.
-			Note that modal scrims are transparent, so you won't see them.
+			Boolean that controls whether a scrim will appear when the dialog is
+			modal. Note that modal scrims are transparent, so you won't see them.
 		*/
 		scrimWhenModal: true,
-		//* Determines whether or not to display a scrim. Only displays scrims
-		//* when floating.
+		/**
+			Boolean that controls whether or not a scrim will be displayed. Scrims are
+			only displayed when the dialog is floating.
+		*/
 		scrim: false,
 		/**
 			Optional class name to apply to the scrim. Be aware that the scrim
@@ -29,7 +31,7 @@ enyo.kind({
 			other popups.
 		*/
 		scrimClassName: "",
-		//* Lowest z-index that can be applied to a popup.
+		//* Lowest z-index that may be applied to a popup
 		defaultZ: 120
 	},
 	//* @protected

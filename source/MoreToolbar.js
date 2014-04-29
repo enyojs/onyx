@@ -12,7 +12,7 @@
 		]},
 
 	You may prevent a control from being moved into the menu by setting its
-	_unmoveable_ property to true (the default is false).
+	_unmoveable_ property to _true_ (the default is _false_).
 
 	For more information, see the documentation on
 	[Toolbars](building-apps/controls/toolbars.html) in the Enyo Developer Guide.
@@ -22,9 +22,12 @@ enyo.kind({
 	name: "onyx.MoreToolbar",
 	//* @public
 	classes: "onyx-toolbar onyx-more-toolbar",
-	//* Style class to be applied to the menu
+	//* CSS class to be applied to the menu
 	menuClass: "",
-	//* Style class to be applied to individual controls moved from the toolbar to the menu
+	/**
+		CSS class to be applied to individual controls moved from the toolbar to the
+		menu
+	*/
 	movedClass: "",
 	//* @protected
 	layoutKind: "FittableColumnsLayout",
@@ -33,7 +36,7 @@ enyo.kind({
 		onHide: "reflow"
 	},
 	published: {
-		//* Layout kind that will be applied to the client controls.
+		//* Layout kind that will be applied to the client controls
 		clientLayoutKind: "FittableColumnsLayout"
 	},
 	tools: [

@@ -34,7 +34,7 @@ enyo.kind({
 		//* If true (and _showStripes_ is true), stripes shown in progress bar
 		//* are animated
 		animateStripes: true,
-		//* Value increment that a sliders can be "snapped to" in either direction
+		//* Sliders may be "snapped to" multiples of this value in either direction
 		increment: 0
 	},
 	events: {

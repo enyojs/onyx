@@ -8,7 +8,7 @@
 	that was made.
 
 	To initialize the Picker to a particular value, set the _active_ property to
-	true for the item that should be selected.
+	_true_ for the item that should be selected.
 
 		{kind: "onyx.PickerDecorator", components: [
 			{}, //this uses the defaultKind property of PickerDecorator to inherit from PickerButton
