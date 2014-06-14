@@ -56,10 +56,11 @@ enyo.kind({
 			this.bubble("onActivate");
 		}
 	},
-	tap: function(inSender) {
+	tap: function(inSender, inEvent) {
 		this.inherited(arguments);
 		this.bubble("onRequestHideMenu");
 		this.doSelect({selected:this, content:this.content});
+		inEvent.preventDefault();
 	},
 	contentChanged: function(inOld){
 		this.inherited(arguments);
