@@ -518,7 +518,7 @@ enyo.kind({
 		this.applyPosition({left: "auto"});
 		this.applyPosition({top: "auto"});
 	},
-	resizeHandler: function() {
+	handleResize: function() {
 		this.inherited(arguments);
 		this.adjustPosition();
 	},

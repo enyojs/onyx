@@ -1,4 +1,4 @@
-﻿/*global enyo */
+/*global enyo */
 
 /**
 enyo.TabBar is a scrolled set of radio buttons that is used by TabPanels. This bar may
@@ -514,7 +514,7 @@ enyo.kind ({
 
 	// resize stuff:
 	// use scroller's getScrollBounds to get scroll boundaries
-	resizeHandler: function() {
+	handleResize: function() {
 		this.inherited(arguments);
 		this.adjustTabWidth() ;
 	},
@@ -588,7 +588,7 @@ enyo.kind ({
 		popup.maxHeightChanged();
 		popup.showAtPosition({top: 30, right:30});
 		this.render();
-		this.resized(); // required for IE10 to work correctly
+		this.resize(); // required for IE10 to work correctly
 		return ;
 	},
 

@@ -78,7 +78,7 @@ enyo.kind({
 			}
 		}
 	},
-	resizeHandler: function() {
+	handleResize: function() {
 		//reset the tooltip to align its left edge with the decorator
 		this.applyPosition({'margin-left': this.defaultLeft, bottom: "auto"});
 		this.addRemoveClass("left-arrow", true);
