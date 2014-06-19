@@ -94,7 +94,7 @@ enyo.kind({
 			this.doChange({selected: this.selected, content: this.selected.content});
 		}
 	},
-	resizeHandler: function() {
+	handleResize: function() {
 		this.inherited(arguments);
 		this.adjustPosition();
 	}

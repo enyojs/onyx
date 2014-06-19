@@ -186,7 +186,7 @@ enyo.kind({
 			}
 		}
 	},
-	resizeHandler: function() {
+	handleResize: function() {
 		this.inherited(arguments);
 		this.adjustPosition();
 	},
