@@ -52,7 +52,7 @@
 		/**
 		* @private
 		*/
-		tap: function(inSender, e) {
+		tap: function (inSender, e) {
 			if (!this.disabled) {
 				this.setChecked(!this.getChecked());
 				this.bubble('onchange');

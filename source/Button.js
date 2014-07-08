@@ -51,7 +51,7 @@
 		/**
 		* @private
 		*/
-		down: function(inSender, inEvent) {
+		down: function (inSender, inEvent) {
 			if (this.disabled) {
 				return true;
 			}
@@ -62,7 +62,7 @@
 		/**
 		* @private
 		*/
-		enter: function(inSender, inEvent) {
+		enter: function (inSender, inEvent) {
 			if (this.disabled) {
 				return true;
 			}
@@ -74,7 +74,7 @@
 		/**
 		* @private
 		*/
-		dragfinish: function(inSender, inEvent) {
+		dragfinish: function (inSender, inEvent) {
 			if (this.disabled) {
 				return true;
 			}
@@ -85,7 +85,7 @@
 		/**
 		* @private
 		*/
-		leave: function(inSender, inEvent) {
+		leave: function (inSender, inEvent) {
 			if (this.disabled) {
 				return true;
 			}
@@ -95,7 +95,7 @@
 		/**
 		* @private
 		*/
-		up: function(inSender, inEvent) {
+		up: function (inSender, inEvent) {
 			if (this.disabled) {
 				return true;
 			}
