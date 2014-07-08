@@ -1,13 +1,12 @@
 (function (enyo, scope) {
+
 	/**
-	* Fires when one of the DatePicker's fields is selected.
+	* One of the DatePicker's fields is selected.
 	*
-	* _inEvent.name_ contains the name of the DatePicker that generated
-	* the event.
-	*
-	* _inEvent.value_ contains the current Date value of the control.
-	*
-	* @event onyx.DatePicker#onSelect
+	* @event onyx.DatePicker#event:onSelect
+	* @type {Object}
+	* @property {String} name - name of the DatePicker that generated the event.
+	* @property {Date} value current Date value of the control
 	* @public
 	*/
 
@@ -184,6 +183,7 @@
 		* @param  {Number} inYear
 		* @param  {Number} inMonth
 		* @return {Number} Number of days in the month/year
+		* @private
 		*/
 		monthLength: function (inYear, inMonth) {
 			// determine number of days in a particular month/year
@@ -339,6 +339,8 @@
 
 		/**
 		* Handler for the day pickers onSelect event
+		*
+		* @fires onyx.DatePicker#event:onSelect
 		* @private
 		*/
 		updateDay: function (inSender, inEvent){
@@ -352,6 +354,8 @@
 
 		/**
 		* Handler for the month pickers onSelect event
+		* 
+		* @fires onyx.DatePicker#event:onSelect
 		* @private
 		*/
 		updateMonth: function (inSender, inEvent){
@@ -365,6 +369,8 @@
 
 		/**
 		* Handler for the year pickers onSelect event
+		*
+		* @fires onyx.DatePicker#event:onSelect
 		* @private
 		*/
 		updateYear: function (inSender, inEvent){
