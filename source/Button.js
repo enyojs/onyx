@@ -1,6 +1,6 @@
 (function (enyo, scope) {
 	/**
-	* _onyx.Button_ is an [enyo.Button]{@link external:enyo.Button} with Onyx styling applied. The
+	* _onyx.Button_ is an [enyo.Button]{@link enyo.Button} with Onyx styling applied. The
 	* color of the button may be customized by specifying a background color.
 	*
 	* The *onyx-affirmative*, *onyx-negative*, and *onyx-blue* classes provide some
