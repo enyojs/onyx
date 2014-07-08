@@ -1,4 +1,12 @@
 (function (enyo, scope) {
+
+	/**
+	* Fired when the popup is tapped
+	* @todo  Should be removed? Never triggered and duplicate of ontap
+	* @event onyx.ContextualPopup#event:onTap
+	* @public
+	*/
+
 	/**
 	* _onyx.ContextualPopup_ is a subkind of [enyo.Popup]{@link enyo.Popup}. Contextual
 	* popups serve as child windows that appear near the point of initiation. Use
@@ -165,12 +173,6 @@
 		* @private
 		*/
 		events: {
-			/**
-			* Fired when the popup is tapped
-			* @todo  Should be removed? Never triggered and duplicate of ontap
-			* @event onyx.ContextualPopup#onTap
-			* @public
-			*/
 			onTap: ''
 		},
 
@@ -345,30 +347,36 @@
 		*    1. If activator is located in a corner then position using a flush style.
 		*       1. Attempt vertical first.
 		*       2. Horizontal if vertical doesn't fit.
-		*    2. If not in a corner then check if the activator is located in one of the 4 "edges" of the view & position the
-		*       following way if so:
+		*    2. If not in a corner then check if the activator is located in one of the 4 "edges" 
+		*       of the view & position the following way if so:
 		*       1.   Activator is in top edge, position popup below it.
 		*       2.  Activator is in bottom edge, position popup above it.
 		*       3. Activator is in left edge, position popup to the right of it.
 		*       4.  Activator is in right edge, position popup to the left of it.
  		*
-		* 2. Screen Size - the pop-up should generally extend in the direction where there’s room for it.
+		* 2. Screen Size - the pop-up should generally extend in the direction where there’s room
+		*    for it.
 		* 
-		*    Note: no specific logic below for this rule since it is built into the positioning functions, ie we attempt to never
-		*    position a popup where there isn't enough room for it.
+		*    Note: no specific logic below for this rule since it is built into the positioning
+		*    functions, ie we attempt to never position a popup where there isn't enough room for
+		*    it.
 		*
 		* 3. Popup Size:
+		* 
 		*    1. If popup content is wide, use top or bottom positioning.
 		*    2. If popup content is long, use horizontal positioning.
 		*
 		* 4. Favor top or bottom:
 		* 
-		*    If all the above rules have been followed and location can still vary then favor top or bottom positioning.
+		*    If all the above rules have been followed and location can still vary then favor top
+		*    or bottom positioning.
 		*
 		* 5. If top or bottom will work, favor bottom.
-		*    Note: no specific logic below for this rule since it is built into the vertical position functions, ie we attempt to
-		*    use a bottom position for the popup as much possible. Additionally within the vetical position function we center the
-		*    popup if the activator is at the vertical center of the view.
+		* 
+		*    Note: no specific logic below for this rule since it is built into the vertical
+		*    position functions, ie we attempt to use a bottom position for the popup as much 
+		*    possible. Additionally within the vetical position function we center the popup if the 
+		*    activator is at the vertical center of the view.
 		*		
 		* @private
 		*/
@@ -698,9 +706,12 @@
 		},
 
 		/**
-		* Calculates the top/left values which are relative to the viewport and not absolute of the provided Node
+		* Calculates the top/left values which are relative to the viewport and not absolute of the 
+		* provided Node
+		* 
 		* @param  {Element} inNode
-		* @return {Object}  Object containing the top, bottom, left, right, height, and width of the node
+		* @return {Object}  Object containing the top, bottom, left, right, height, and width of the
+		* 	node
 		* @private
 		*/
 		getBoundingRect:  function (inNode){
