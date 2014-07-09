@@ -38,6 +38,7 @@
 			* URL specifying path to icon image
 			* @type {String}
 			* @default  ''
+			* @memberOf onyx.Icon.prototype
 			* @public
 			*/
 			src: '',
@@ -46,6 +47,7 @@
 			* When true, icon is shown as disabled
 			* @type {Boolean}
 			* @default  false
+			* @memberOf  onyx.Icon.prototype
 			* @public
 			*/
 			disabled: false
