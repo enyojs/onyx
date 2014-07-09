@@ -38,42 +38,42 @@
 		/** @lends  onyx.InputDecorator.prototype */ {
 		
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		name: 'onyx.InputDecorator',
 		
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		kind: 'enyo.ToolDecorator',
 		
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		tag: 'label',
 		
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		classes: 'onyx-input-decorator',
 		
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		published: {
 			/**
-			 * Set to true to make the input look focused when it's not.
-			 * @type {Boolean}
-			 * @default  false
-			 * @memberOf  onyx.InputDecorator.prototype
-			 * @public
-			 */	
+			* Set to true to make the input look focused when it's not.
+			* @type {Boolean}
+			* @default  false
+			* @memberOf  onyx.InputDecorator.prototype
+			* @public
+			*/	
 			alwaysLooksFocused: false
 		},
 		
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		handlers: {
 			onDisabledChange: 'disabledChange',
 			onfocus: 'receiveFocus',
@@ -81,55 +81,55 @@
 		},
 		
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		create: function () {
 			this.inherited(arguments);
 			this.updateFocus(false);
 		},
 		
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		alwaysLooksFocusedChanged: function (oldValue) {
 			this.updateFocus(this.focus);
 		},
 		
 		/**
-		 * Updates the focus state of the control unless
-		 * {@link onyx.InputDecorator#alwaysLooksFocused} is `true`
-		 * 
-		 * @param  {Boolean} focus - Requested focus state
-		 * @private
-		 */
+		* Updates the focus state of the control unless
+		* {@link onyx.InputDecorator#alwaysLooksFocused} is `true`
+		* 
+		* @param  {Boolean} focus - Requested focus state
+		* @private
+		*/
 		updateFocus: function (focus) {
 			this.focused = focus;
 			this.addRemoveClass('onyx-focused', this.alwaysLooksFocused || this.focused);
 		},
 		
 		/**
-		 * Handler for onfocus events triggered by child components
-		 * 
-		 * @private
-		 */
+		* Handler for onfocus events triggered by child components
+		* 
+		* @private
+		*/
 		receiveFocus: function () {
 			this.updateFocus(true);
 		},
 		
 		/**
-		 * Handler for onblur events triggered by child components
-		 * 
-		 * @private
-		 */
+		* Handler for onblur events triggered by child components
+		* 
+		* @private
+		*/
 		receiveBlur: function () {
 			this.updateFocus(false);
 		},
 		
 		/**
-		 * Handler of onDisabledChange events triggered by child components
-		 * 
-		 * @private
-		 */
+		* Handler of onDisabledChange events triggered by child components
+		* 
+		* @private
+		*/
 		disabledChange: function (inSender, inEvent) {
 			this.addRemoveClass('onyx-disabled', inEvent.originator.disabled);
 		}
