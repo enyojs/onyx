@@ -154,7 +154,7 @@
 		/**
 		* Highlights the selected item with the CSS class `selected`
 		*
-		* @fires {@link onyx.Picker#event:onChange}
+		* @fires onyx.Picker#event:onChange
 		* @private
 		*/
 		selectedChanged: function (inOld) {
@@ -170,7 +170,7 @@
 		/**
 		* Handler for {@link onyx.MenuItem#event:onItemContentChange}
 		*
-		* @fires {@link onyx.Picker#event:onChange}
+		* @fires onyx.Picker#event:onChange
 		* @private
 		*/
 		itemContentChange: function (inSender, inEvent){

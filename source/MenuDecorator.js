@@ -74,7 +74,7 @@
 		/**
 		* Requests that its child menu be shown
 		*
-		* @fires {@link onyx.Menu#event:onRequestShowMenu}
+		* @fires onyx.Menu#event:onRequestShowMenu
 		* @private
 		*/
 		requestShowMenu: function () {
@@ -84,7 +84,7 @@
 		/**
 		* Requests that its child menu be hidden
 		*
-		* @fires {@link onyx.Menu#event:onRequestHideMenu}
+		* @fires onyx.Menu#event:onRequestHideMenu
 		* @private
 		*/
 		requestHideMenu: function () {

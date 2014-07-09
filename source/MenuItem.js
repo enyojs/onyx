@@ -99,8 +99,8 @@
 		/**
 		* Handler for ontap
 		*
-		* @fires {@link onyx.Menu#event:onRequestHideMenu}
-		* @fires {@link onyx.MenuItem#event:onSelect}
+		* @fires onyx.Menu#event:onRequestHideMenu
+		* @fires onyx.MenuItem#event:onSelect
 		* @private
 		*/
 		tap: function (inSender) {
@@ -112,7 +112,7 @@
 		/**
 		* Notify that this item's content has changed
 		*
-		* @fires {@link onyx.MenuItem#event:onItemContentChange}
+		* @fires onyx.MenuItem#event:onItemContentChange
 		* @private
 		*/
 		contentChanged: function (inOld) {
