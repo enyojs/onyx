@@ -29,13 +29,13 @@
 		/** @lends onyx.Groupbox.prototype */ {
 		
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		name: 'onyx.Groupbox',
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		classes: 'onyx-groupbox'
 	});
 

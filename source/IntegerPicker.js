@@ -48,30 +48,30 @@
 		*/
 		published: {
 			/**
-			 * Selected value of the picker
-			 * @type {Number}
-			 * @default  0
-			 * @memberOf  onyx.IntegerPicker.prototype
-			 * @public
-			 */
+			* Selected value of the picker
+			* @type {Number}
+			* @default  0
+			* @memberOf  onyx.IntegerPicker.prototype
+			* @public
+			*/
 			value: 0,
 
 			/**
-			 * Minimum value of the picker
-			 * @type {Number}
-			 * @default  0
-			 * @memberOf  onyx.IntegerPicker.prototype
-			 * @public
-			 */
+			* Minimum value of the picker
+			* @type {Number}
+			* @default  0
+			* @memberOf  onyx.IntegerPicker.prototype
+			* @public
+			*/
 			min: 0,
 
 			/**
-			 * Maximum value of the picker
-			 * @type {Number}
-			 * @default  9
-			 * @memberOf onyx.IntegerPicker.prototype
-			 * @public
-			 */
+			* Maximum value of the picker
+			* @type {Number}
+			* @default  9
+			* @memberOf onyx.IntegerPicker.prototype
+			* @public
+			*/
 			max: 9
 		},
 

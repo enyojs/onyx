@@ -1,13 +1,13 @@
 (function (enyo, scope) {
 
 	/**
-	 * Fires when progress bar finishes animating to a position
-	 *
-	 * @event onyx.ProgressBar#event:onAnimateProgressFinish
-	 * @type {enyo.Animator}
-	 * @todo Not sure why the animator is passed as the payload to the event ...
-	 * @public
-	 */
+	* Fires when progress bar finishes animating to a position
+	*
+	* @event onyx.ProgressBar#event:onAnimateProgressFinish
+	* @type {enyo.Animator}
+	* @todo Not sure why the animator is passed as the payload to the event ...
+	* @public
+	*/
 
 	/**
 	* _onyx.ProgressBar_ is a  control that shows the current progress of a
@@ -42,97 +42,97 @@
 		/** @lends  onyx.ProgressBar.prototype */ {
 		
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		name: 'onyx.ProgressBar',
 		
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		classes: 'onyx-progress-bar',
 		
 		/**
-		 * @lends  onyx.ProgressBar.prototype
-		 * @private
-		 */
+		* @lends  onyx.ProgressBar.prototype
+		* @private
+		*/
 		published: {
 			/**
-			 * Current position of progress bar
-			 * @type {Number}
-			 * @default  0
-			 * @public
-			 */
+			* Current position of progress bar
+			* @type {Number}
+			* @default  0
+			* @public
+			*/
 			progress: 0,
 			
 			/**
-			 * Minimum progress value (i.e., no progress made)
-			 * @type {Number}
-			 * @default  0
-			 * @public
-			 */
+			* Minimum progress value (i.e., no progress made)
+			* @type {Number}
+			* @default  0
+			* @public
+			*/
 			min: 0,
 			
 			/**
-			 * Maximum progress value (i.e., process complete)
-			 * @type {Number}
-			 * @default  100
-			 * @public
-			 */
+			* Maximum progress value (i.e., process complete)
+			* @type {Number}
+			* @default  100
+			* @public
+			*/
 			max: 100,
 
 			/**
-			 * CSS classes to apply to progress bar
-			 * @type {String}
-			 * @default  ''
-			 * @public
-			 */
+			* CSS classes to apply to progress bar
+			* @type {String}
+			* @default  ''
+			* @public
+			*/
 			barClasses: '',
 			
 			/**
-			 * If true, stripes are shown in progress bar
-			 * @type {Boolean}
-			 * @default  true
-			 * @public
-			 */
+			* If true, stripes are shown in progress bar
+			* @type {Boolean}
+			* @default  true
+			* @public
+			*/
 			showStripes: true,
 
 			/**
-			 * If true (and _showStripes_ is true), stripes shown in progress bar are animated
-			 * @type {Boolean}
-			 * @default  true
-			 * @public
-			 */
+			* If true (and _showStripes_ is true), stripes shown in progress bar are animated
+			* @type {Boolean}
+			* @default  true
+			* @public
+			*/
 			animateStripes: true,
 
 			/**
-			 * Sliders may be 'snapped to' multiples of this value in either direction
-			 * @type {Number}
-			 * @default  0
-			 * @public
-			 * @todo  This doesn't appear to be supported. Only referenced by a method which
-			 * 	itself isn't called by anthing
-			 */
+			* Sliders may be 'snapped to' multiples of this value in either direction
+			* @type {Number}
+			* @default  0
+			* @public
+			* @todo  This doesn't appear to be supported. Only referenced by a method which
+			* 	itself isn't called by anthing
+			*/
 			increment: 0
 		},
 		
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		events: {
 			onAnimateProgressFinish: ''
 		},
 		
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		components: [
 			{name: 'progressAnimator', kind: 'enyo.Animator', onStep: 'progressAnimatorStep', onEnd: 'progressAnimatorComplete'},
 			{name: 'bar', classes: 'onyx-progress-bar-bar'}
 		],
 		
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		create: function () {
 			this.inherited(arguments);
 			this.progressChanged();
@@ -142,30 +142,30 @@
 		},
 		
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		barClassesChanged: function (inOld) {
 			this.$.bar.removeClass(inOld);
 			this.$.bar.addClass(this.barClasses);
 		},
 		
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		showStripesChanged: function () {
 			this.$.bar.addRemoveClass('striped', this.showStripes);
 		},
 		
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		animateStripesChanged: function () {
 			this.$.bar.addRemoveClass('animated', this.animateStripes);
 		},
 		
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		progressChanged: function () {
 			this.progress = this.clampValue(this.min, this.max, this.progress);
 			var p = this.calcPercent(this.progress);
@@ -173,68 +173,68 @@
 		},
 
 		/**
-		 * Clamps `inValue` to the nearest {@link onyx.ProgressBar#increment} value.
-		 * 
-		 * @param  {Number} inValue - value to clamp
-		 * @return {Number}         - clamped value
-		 * @private
-		 */
+		* Clamps `inValue` to the nearest {@link onyx.ProgressBar#increment} value.
+		* 
+		* @param  {Number} inValue - value to clamp
+		* @return {Number}         - clamped value
+		* @private
+		*/
 		calcIncrement: function (inValue) {
 			return (Math.round(inValue / this.increment) * this.increment);
 		},
 
 		/**
-		 * Ensures `inValue` is between `inMin` and `inMax`
-		 * 
-		 * @param  {Number} inMin   - minimum value
-		 * @param  {Number} inMax   - maximum value
-		 * @param  {Number} inValue - value to clamp
-		 * @return {Number}         - clamped value
-		 * @private
-		 */
+		* Ensures `inValue` is between `inMin` and `inMax`
+		* 
+		* @param  {Number} inMin   - minimum value
+		* @param  {Number} inMax   - maximum value
+		* @param  {Number} inValue - value to clamp
+		* @return {Number}         - clamped value
+		* @private
+		*/
 		clampValue: function (inMin, inMax, inValue) {
 			return Math.max(inMin, Math.min(inValue, inMax));
 		},
 
 		/**
-		 * Calculates the ratio complete
-		 * 
-		 * @param  {Number} inValue - Value between `min` and `max`
-		 * @return {Number}         - Ratio complete (between 0 and 1)
-		 * @private
-		 */
+		* Calculates the ratio complete
+		* 
+		* @param  {Number} inValue - Value between `min` and `max`
+		* @return {Number}         - Ratio complete (between 0 and 1)
+		* @private
+		*/
 		calcRatio: function (inValue) {
 			return (inValue - this.min) / (this.max - this.min);
 		},
 
 		/**
-		 * Calculates the percent complete
-		 * 
-		 * @param  {Number} inValue - Value between `min` and `max`
-		 * @return {Number}         - Percent complete (between 0 and 100)
-		 * @private
-		 */
+		* Calculates the percent complete
+		* 
+		* @param  {Number} inValue - Value between `min` and `max`
+		* @return {Number}         - Percent complete (between 0 and 100)
+		* @private
+		*/
 		calcPercent: function (inValue) {
 			return this.calcRatio(inValue) * 100;
 		},
 
 		/**
-		 * Positions the progress bar at `inPercent`
-		 * 
-		 * @param  {Number} inPercent - Percent complete
-		 * @private
-		 */
+		* Positions the progress bar at `inPercent`
+		* 
+		* @param  {Number} inPercent - Percent complete
+		* @private
+		*/
 		updateBarPosition: function (inPercent) {
 			this.$.bar.applyStyle('width', inPercent + '%');
 		},
 
 		/**
-		 * Animates progress to the given value
-		 * 
-		 * @param  {Number} inValue - Desired value. Will be clamped between
-		 * 	{@link onyx.ProgressBar#min} and {@link onyx.ProgressBar#max}
-		 * @public
-		 */
+		* Animates progress to the given value
+		* 
+		* @param  {Number} inValue - Desired value. Will be clamped between
+		* 	{@link onyx.ProgressBar#min} and {@link onyx.ProgressBar#max}
+		* @public
+		*/
 		animateProgressTo: function (inValue) {
 			this.$.progressAnimator.play({
 				startValue: this.progress,
@@ -244,21 +244,21 @@
 		},
 
 		/**
-		 * Handler for {@link enyo.Animator#event:onStep}
-		 * 
-		 * @private
-		 */
+		* Handler for {@link enyo.Animator#event:onStep}
+		* 
+		* @private
+		*/
 		progressAnimatorStep: function (inSender) {
 			this.setProgress(inSender.value);
 			return true;
 		},
 
 		/**
-		 * Handler for {@link enyo.Animator#event:onEnd}
-		 * 
-		 * @fires onyx.ProgressBar#event:onAnimateProgressFinish
-		 * @private
-		 */
+		* Handler for {@link enyo.Animator#event:onEnd}
+		* 
+		* @fires onyx.ProgressBar#event:onAnimateProgressFinish
+		* @private
+		*/
 		progressAnimatorComplete: function (inSender) {
 			this.doAnimateProgressFinish(inSender);
 			return true;
