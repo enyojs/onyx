@@ -1,5 +1,22 @@
 (function (enyo, scope) {
 	/**
+	* Requests that a menu be displayed and positioned near `activator`
+	*
+	* @event onyx.Menu#event:onRequestShowMenu
+	* @type {Object}
+	* @property {enyo.Control} activator - Control near which the menu should be displayed
+	* @public
+	*/
+
+	/**
+	* Requests that a menu be hidden
+	*
+	* @event onyx.Menu#event:onRequestHideMenu
+	* @type {Object}
+	* @public
+	*/
+
+	/**
 	* _onyx.Menu_ is a subkind of {@link onyx.Popup} that displays a list of
 	* {@link onyx.MenuItem} objects and looks like a popup menu. It is
 	* meant to be used together with an {@link onyx.MenuDecorator}.
@@ -159,7 +176,7 @@
 		},
 
 		/**
-		* Handler for {@link enyo.GroupItem#event:onActivate
+		* Handler for {@link enyo.GroupItem#event:onActivate}
 		*
 		* @private
 		*/
@@ -180,7 +197,7 @@
 		},
 
 		/**
-		* Handler for onRequestShowMenu
+		* Handler for {@link onyx.Menu#event:onRequestShowMenu}
 		*
 		* @private
 		*/
@@ -325,7 +342,7 @@
 		},
 
 		/**
-		* Handler for onRequestMenuHide
+		* Handler for {@link onyx.Menu#event:onRequestMenuHide}
 		* 
 		* @private
 		*/
