@@ -2,7 +2,7 @@
 
 	/**
 	* _onyx.Scrim_ provides an overlay that will prevent taps from propagating to
-	* the controls that it covers.  A scrim may be "floating" or "non-floating". A
+	* the controls that it covers.  A scrim may be 'floating' or 'non-floating'. A
 	* floating scrim will fill the entire viewport, while a non-floating scrim
 	* will be constrained by the dimensions of its container.
 	*
@@ -24,7 +24,7 @@
 		/**
 		* @private
 		*/
-		name: "onyx.Scrim",
+		name: 'onyx.Scrim',
 
 		/** 
 		* Current visibility state of scrim
@@ -36,7 +36,7 @@
 		/**
 		* @private
 		*/
-		classes: "onyx-scrim enyo-fit",
+		classes: 'onyx-scrim enyo-fit',
 		
 		/**
 		* If true, the scrim is rendered in a floating layer outside of other
@@ -125,7 +125,7 @@
 		*/
 		setZIndex: function(inZIndex) {
 			this.zIndex = inZIndex;
-			this.applyStyle("z-index", inZIndex);
+			this.applyStyle('z-index', inZIndex);
 		},
 
 		/**
@@ -149,7 +149,7 @@
 		/**
 		* @private
 		*/
-		name: "onyx.scrimSingleton",
+		name: 'onyx.scrimSingleton',
 
 		/**
 		* @private
@@ -198,7 +198,7 @@
 		}
 	});
 
-	new onyx.scrimSingleton("onyx.scrim", {floating: true, classes: "onyx-scrim-translucent"});
-	new onyx.scrimSingleton("onyx.scrimTransparent", {floating: true, classes: "onyx-scrim-transparent"});
+	new onyx.scrimSingleton('onyx.scrim', {floating: true, classes: 'onyx-scrim-translucent'});
+	new onyx.scrimSingleton('onyx.scrimTransparent', {floating: true, classes: 'onyx-scrim-transparent'});
 
 })(enyo, this);
