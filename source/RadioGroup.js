@@ -1,19 +1,45 @@
-/**
-	_onyx.RadioGroup_ is a group of [onyx.RadioButton](#onyx.RadioButton) objects
-	laid out horizontally. Within the same radio group, tapping on one radio
-	button will release any previously-tapped radio button.
+(function (enyo, scope) {
+	/**
+	* _onyx.RadioGroup_ is a group of [onyx.RadioButton](#onyx.RadioButton) objects
+	* laid out horizontally. Within the same radio group, tapping on one radio
+	* button will release any previously-tapped radio button.
+	*
+	* ```
+	* {kind: 'onyx.RadioGroup', components: [
+	* 	{content: 'foo', active: true},
+	* 	{content: 'bar'},
+	* 	{content: 'baz'}
+	* ]}
+	* ```
+	*
+	* @class  onyx.RadioGroup
+	* @extends enyo.Group
+	* @public
+	*/
+	enyo.kind(
+		/** @lends  onyx.RadioGroup.prototype */ {
+		
+		/**
+		* @private
+		*/
+		name: 'onyx.RadioGroup',
+		
+		/**
+		* @private
+		*/
+		kind: 'enyo.Group',
+		
+		/**
+		* @private
+		*/
+		defaultKind: 'onyx.RadioButton',
+		
+		/**
+		* Set to true to provide radio button behavior
+		* 
+		* @private
+		*/
+		highlander: true
+	});
 
-		{kind: "onyx.RadioGroup", components: [
-			{content: "foo", active: true},
-			{content: "bar"},
-			{content: "baz"}
-		]}
-*/
-enyo.kind({
-	name: "onyx.RadioGroup",
-	kind: "enyo.Group",
-	defaultKind: "onyx.RadioButton",
-	//* @protected
-	// set to true to provide radio button behavior
-	highlander: true
-});
+})(enyo, this);
