@@ -62,11 +62,11 @@
 		*
 		* @private
 		*/
-		activated: function (inSender, inEvent) {
+		activated: function (sender, event) {
 			this.requestHideTooltip();
-			if (inEvent.originator.active) {
+			if (event.originator.active) {
 				this.menuActive = true;
-				this.activator = inEvent.originator;
+				this.activator = event.originator;
 				this.activator.addClass('active');
 				this.requestShowMenu();
 			}
@@ -110,7 +110,7 @@
 		*
 		* @private
 		*/
-		enter: function (inSender) {
+		enter: function (sender) {
 			if (!this.menuActive) {
 				this.inherited(arguments);
 			}
@@ -121,7 +121,7 @@
 		*
 		* @private
 		*/
-		leave: function (inSender, inEvent) {
+		leave: function (sender, event) {
 			if (!this.menuActive) {
 				this.inherited(arguments);
 			}

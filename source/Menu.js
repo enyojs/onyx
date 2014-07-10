@@ -179,8 +179,8 @@
 		*
 		* @private
 		*/
-		itemActivated: function (inSender, inEvent) {
-			inEvent.originator.setActive(false);
+		itemActivated: function (sender, event) {
+			event.originator.setActive(false);
 			return true;
 		},
 
@@ -200,9 +200,9 @@
 		*
 		* @private
 		*/
-		requestMenuShow: function (inSender, inEvent) {
+		requestMenuShow: function (sender, event) {
 			if (this.floating) {
-				var n = inEvent.activator.hasNode();
+				var n = event.activator.hasNode();
 				if (n) {
 					var r = this.activatorOffset = this.getPageOffset(n);
 					this.applyPosition({top: r.top + (this.showOnTop ? 0 : r.height), left: r.left, width: r.width});
@@ -215,15 +215,15 @@
 		/**
 		* Applies the CSS styles to position the menu
 		* 
-		* @param  {Object} inRect - Object with at least 1 position attribute
+		* @param  {Object} rect - Object with at least 1 position attribute
 		* 	(top, right, bottom, left)
 		* @private
 		* @todo Duplicate of {@link onyx.ContextualPopup#applyPosition} and possibly `setBounds()`
 		*/
-		applyPosition: function (inRect) {
+		applyPosition: function (rect) {
 			var s = '';
-			for (var n in inRect) {
-				s += (n + ':' + inRect[n] + (isNaN(inRect[n]) ? '; ' : 'px; '));
+			for (var n in rect) {
+				s += (n + ':' + rect[n] + (isNaN(rect[n]) ? '; ' : 'px; '));
 			}
 			this.addStyles(s);
 		},
@@ -231,14 +231,14 @@
 		/**
 		* Calculates the position of the popup relative to the page
 		*
-		* @param {Element} inNode
+		* @param {Element} node
 		* @return {Object} Top, left, height, and width of page
 		* @private
 		* @todo  Duplicate of {@link onyx.ContextualPopup#getPageOffset}
 		*/
-		getPageOffset: function (inNode) {
+		getPageOffset: function (node) {
 			// getBoundingClientRect returns top/left values which are relative to the viewport and not absolute
-			var r = inNode.getBoundingClientRect();
+			var r = node.getBoundingClientRect();
 
 			// IE8 doesn't return window.page{X/Y}Offset & r.{height/width}
 			// FIXME: Perhaps use an alternate universal method instead of conditionals

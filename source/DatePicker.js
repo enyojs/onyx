@@ -183,14 +183,14 @@
 		/**
 		* Determine the number of days in a particular month/year
 		* 
-		* @param  {Number} inYear
-		* @param  {Number} inMonth
+		* @param  {Number} year
+		* @param  {Number} month
 		* @return {Number} Number of days in the month/year
 		* @private
 		*/
-		monthLength: function (inYear, inMonth) {
+		monthLength: function (year, month) {
 			// determine number of days in a particular month/year
-			return 32 - new Date(inYear, inMonth, 32).getDate();
+			return 32 - new Date(year, month, 32).getDate();
 		},
 
 		/**
@@ -198,8 +198,8 @@
 		* 
 		* @private
 		*/
-		setupYear: function (inSender, inEvent) {
-			this.$.year.setContent(this.minYear+inEvent.index);
+		setupYear: function (sender, event) {
+			this.$.year.setContent(this.minYear+event.index);
 			return true;
 		},
 
@@ -351,10 +351,10 @@
 		* @fires onyx.DatePicker#event:onSelect
 		* @private
 		*/
-		updateDay: function (inSender, inEvent){
+		updateDay: function (sender, event){
 			var date = this.calcDate(this.value.getFullYear(),
 									this.value.getMonth(),
-									inEvent.selected.value);
+									event.selected.value);
 			this.doSelect({name:this.name, value:date});
 			this.setValue(date);
 			return true;
@@ -366,9 +366,9 @@
 		* @fires onyx.DatePicker#event:onSelect
 		* @private
 		*/
-		updateMonth: function (inSender, inEvent){
+		updateMonth: function (sender, event){
 			var date = this.calcDate(this.value.getFullYear(),
-									inEvent.selected.value,
+									event.selected.value,
 									this.value.getDate());
 			this.doSelect({name:this.name, value:date});
 			this.setValue(date);
@@ -381,10 +381,10 @@
 		* @fires onyx.DatePicker#event:onSelect
 		* @private
 		*/
-		updateYear: function (inSender, inEvent){
+		updateYear: function (sender, event){
 			//if the node wasn't found (issue around FlyWeightRepeater/Picker) don't update the picker
-			if (inEvent.originator.selected != -1) {
-				var date = this.calcDate(this.minYear + inEvent.originator.selected,
+			if (event.originator.selected != -1) {
+				var date = this.calcDate(this.minYear + event.originator.selected,
 										this.value.getMonth(),
 										this.value.getDate());
 				this.doSelect({name:this.name, value:date});

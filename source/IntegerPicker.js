@@ -117,7 +117,7 @@
 		/**
 		* @private
 		*/
-		valueChanged: function (inOld) {
+		valueChanged: function () {
 			var controls = this.getClientControls();
 			var len = controls.length;
 			// Validate our value
@@ -133,9 +133,9 @@
 		/**
 		* @private
 		*/
-		selectedChanged: function (inOld) {
-			if (inOld) {
-				inOld.removeClass('selected');
+		selectedChanged: function (old) {
+			if (old) {
+				old.removeClass('selected');
 			}
 			if (this.selected) {
 				this.selected.addClass('selected');

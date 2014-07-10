@@ -57,11 +57,11 @@
 	* 		this.$.yearPicker.setSelected(y);
 	* 		this.$.year.setContent(1900+y);
 	* 	},
-	* 	setupYear: function (inSender, inEvent) {
-	* 		this.$.year.setContent(1900+inEvent.index);
+	* 	setupYear: function (sender, event) {
+	* 		this.$.year.setContent(1900+event.index);
 	* 	},
-	* 	itemSelected: function (inSender, inEvent) {
-	* 		enyo.log('Picker Item Selected: ' + inEvent.selected.content);
+	* 	itemSelected: function (sender, event) {
+	* 		enyo.log('Picker Item Selected: ' + event.selected.content);
 	* 	}
 	* })
 	* ```
@@ -181,21 +181,21 @@
 		/**
 		* @private
 		*/
-		processActivatedItem: function (inItem) {
-			this.item = inItem;
+		processActivatedItem: function (item) {
+			this.item = item;
 		},
 
 		/**
 		* @fires onyx.Picker#event:onChange 
 		* @private
 		*/
-		selectedChanged: function (inOld) {
+		selectedChanged: function (old) {
 			if (!this.item) {
 				return;
 			}
-			if (inOld != null) {
+			if (old != null) {
 				this.item.removeClass('selected');
-				this.$.flyweight.renderRow(inOld);
+				this.$.flyweight.renderRow(old);
 			}
 			var n;
 			if (this.selected != null) {
@@ -212,8 +212,8 @@
 		* @fires onyx.FlyweightPicker#event:onSelect
 		* @private
 		*/
-		itemTap: function (inSender, inEvent) {
-			this.setSelected(inEvent.rowIndex);
+		itemTap: function (sender, event) {
+			this.setSelected(event.rowIndex);
 			//Send the select event that we want the client to receive.
 			this.doSelect({selected: this.item, content: this.item.content});
 		},
@@ -225,8 +225,8 @@
 		* 
 		* @private
 		*/
-		itemSelect: function (inSender, inEvent) {
-			if (inEvent.originator != this) {
+		itemSelect: function (sender, event) {
+			if (event.originator != this) {
 				return true;
 			}
 		}

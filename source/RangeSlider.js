@@ -221,29 +221,29 @@
 		},
 
 		/**
-		* Calculates the ratio complete given `inValue`
+		* Calculates the ratio complete given `value`
 		* 
-		* @param  {Number} inValue
+		* @param  {Number} value
 		* @return {Number}         - Ratio complete between 0 and 1
 		*/
-		calcKnobRatio: function (inValue) {
-			return (inValue - this.rangeMin) / (this.rangeMax - this.rangeMin);
+		calcKnobRatio: function (value) {
+			return (value - this.rangeMin) / (this.rangeMax - this.rangeMin);
 		},
 
 		/**
-		* Calculates the percentage complete given `inValue`
+		* Calculates the percentage complete given `value`
 		* 
-		* @param  {Number} inValue
+		* @param  {Number} value
 		* @return {Number}         - Percentage complete between 0 and 100
 		*/
-		calcKnobPercent: function (inValue) {
-			return this.calcKnobRatio(inValue) * 100;
+		calcKnobPercent: function (value) {
+			return this.calcKnobRatio(value) * 100;
 		},
 
 		/**
 		* @private
 		*/
-		beginValueChanged: function (sliderPos) {
+		begvalueChanged: function (sliderPos) {
 			if (sliderPos === undefined) {
 				var p = this.calcPercent(this.beginValue);
 				this.updateKnobPosition(p, this.$.startKnob);
@@ -262,19 +262,19 @@
 
 		/**
 		* Calculates the appropriate knob position during a drag event
-		* @param  {Event} inEvent - Drag event
+		* @param  {Event} event - Drag event
 		* @return {Number}        - Knob position
 		*/
-		calcKnobPosition: function (inEvent) {
-			var x = inEvent.clientX - this.hasNode().getBoundingClientRect().left;
+		calcKnobPosition: function (event) {
+			var x = event.clientX - this.hasNode().getBoundingClientRect().left;
 			return (x / this.getBounds().width) * (this.max - this.min) + this.min;
 		},
 
 		/**
 		* @private
 		*/
-		updateKnobPosition: function (inPercent, inControl) {
-			inControl.applyStyle('left', inPercent + '%');
+		updateKnobPosition: function (percent, control) {
+			control.applyStyle('left', percent + '%');
 			this.updateBarPosition();
 		},
 
@@ -298,21 +298,21 @@
 		* @return {Number}
 		* @private
 		*/
-		calcRangeRatio: function (inValue) {
-			return ((inValue / 100) * (this.rangeMax - this.rangeMin) + this.rangeMin) - (this.increment/2);
+		calcRangeRatio: function (value) {
+			return ((value / 100) * (this.rangeMax - this.rangeMin) + this.rangeMin) - (this.increment/2);
 		},
 
 		/**
 		* Ensures the active knob is on top
 		*
-		* @param {String} inControl - Name of active knob
+		* @param {String} controlName - Name of active knob
 		* @private
 		*/
-		swapZIndex: function (inControl) {
-			if (inControl === 'startKnob') {
+		swapZIndex: function (controlName) {
+			if (controlName === 'startKnob') {
 				this.$.startKnob.applyStyle('z-index', 1);
 				this.$.endKnob.applyStyle('z-index', 0);
-			} else if (inControl === 'endKnob') {
+			} else if (controlName === 'endKnob') {
 				this.$.startKnob.applyStyle('z-index', 0);
 				this.$.endKnob.applyStyle('z-index', 1);
 			}
@@ -321,18 +321,18 @@
 		/**
 		* @private
 		*/
-		down: function (inSender, inEvent) {
-			this.swapZIndex(inSender.name);
+		down: function (sender, event) {
+			this.swapZIndex(sender.name);
 		},
 
 		/**
 		* @private
 		*/
-		dragstart: function (inSender, inEvent) {
-			if (inEvent.horizontal) {
-				inEvent.preventDefault();
+		dragstart: function (sender, event) {
+			if (event.horizontal) {
+				event.preventDefault();
 				this.dragging = true;
-				inSender.addClass('pressed');
+				sender.addClass('pressed');
 				return true;
 			}
 		},
@@ -341,13 +341,13 @@
 		* @fires onyx.RangeSlider#event:onChanging
 		* @private
 		*/
-		drag: function (inSender, inEvent) {
+		drag: function (sender, event) {
 			if (this.dragging) {
-				var knobPos = this.calcKnobPosition(inEvent);
+				var knobPos = this.calcKnobPosition(event);
 				var _val, val, p;
 
-				if ((inSender.name === 'startKnob') && (knobPos >= 0)) {
-					if (((knobPos <= this.endValue) && (inEvent.xDirection === -1)) || (knobPos <= this.endValue)) {
+				if ((sender.name === 'startKnob') && (knobPos >= 0)) {
+					if (((knobPos <= this.endValue) && (event.xDirection === -1)) || (knobPos <= this.endValue)) {
 						this.setBeginValue(knobPos);
 						_val = this.calcRangeRatio(this.beginValue);
 						val = (this.increment) ? this.calcIncrement(_val+0.5*this.increment) : _val;
@@ -356,10 +356,10 @@
 						this.setRangeStart(val);
 						this.doChanging({value: val});
 					} else {
-						return this.drag(this.$.endKnob, inEvent);
+						return this.drag(this.$.endKnob, event);
 					}
-				} else if ((inSender.name === 'endKnob') && (knobPos <= 100)) {
-					if (((knobPos >= this.beginValue) && (inEvent.xDirection === 1)) || (knobPos >= this.beginValue)) {
+				} else if ((sender.name === 'endKnob') && (knobPos <= 100)) {
+					if (((knobPos >= this.beginValue) && (event.xDirection === 1)) || (knobPos >= this.beginValue)) {
 						this.setEndValue(knobPos);
 						_val = this.calcRangeRatio(this.endValue);
 						val = (this.increment) ? this.calcIncrement(_val+0.5*this.increment) : _val;
@@ -368,7 +368,7 @@
 						this.setRangeEnd(val);
 						this.doChanging({value: val});
 					} else {
-						return this.drag(this.$.startKnob, inEvent);
+						return this.drag(this.$.startKnob, event);
 					}
 				}
 				return true;
@@ -379,33 +379,33 @@
 		* @fires onyx.RangeSlider#event:onChange
 		* @private
 		*/
-		dragfinish: function (inSender, inEvent) {
+		dragfinish: function (sender, event) {
 			this.dragging = false;
-			inEvent.preventTap();
+			event.preventTap();
 			var val;
-			if (inSender.name === 'startKnob') {
+			if (sender.name === 'startKnob') {
 				val = this.calcRangeRatio(this.beginValue);
 				this.doChange({value: val, startChanged: true});
-			} else if (inSender.name === 'endKnob') {
+			} else if (sender.name === 'endKnob') {
 				val = this.calcRangeRatio(this.endValue);
 				this.doChange({value: val, startChanged: false});
 			}
-			inSender.removeClass('pressed');
+			sender.removeClass('pressed');
 			return true;
 		},
 
 		/**
 		* @private
 		*/
-		knobDown: function (inSender, inEvent) {
-			inSender.addClass('pressed');
+		knobDown: function (sender, event) {
+			sender.addClass('pressed');
 		},
 
 		/**
 		* @private
 		*/
-		knobUp: function (inSender, inEvent) {
-			inSender.removeClass('pressed');
+		knobUp: function (sender, event) {
+			sender.removeClass('pressed');
 		},
 
 		/**
@@ -439,23 +439,23 @@
 		/**
 		* Set the label of the start knob
 		* 
-		* @param {String} inContent - New knob label
+		* @param {String} content - New knob label
 		* @fires onyx.RangeSlider#event:onSetLabel
 		* @public
 		*/
-		setStartLabel: function (inContent) {
-			this.$.startKnob.waterfallDown('onSetLabel', inContent);
+		setStartLabel: function (content) {
+			this.$.startKnob.waterfallDown('onSetLabel', content);
 		},
 
 		/**
 		* Sets the label of the end knob
 		* 
-		* @param {String} inContent - New knob label
+		* @param {String} content - New knob label
 		* @fires onyx.RangeSlider#event:onSetLabel
 		* @public
 		*/
-		setEndLabel: function (inContent) {
-			this.$.endKnob.waterfallDown('onSetLabel', inContent);
+		setEndLabel: function (content) {
+			this.$.endKnob.waterfallDown('onSetLabel', content);
 		}
 	});
 
@@ -492,8 +492,8 @@
 		* 
 		* @private
 		*/
-		setLabel: function (inSender, inContent) {
-			this.setContent(inContent);
+		setLabel: function (sender, content) {
+			this.setContent(content);
 		}
 	});
 

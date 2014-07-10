@@ -57,8 +57,8 @@
 		* 
 		* @private
 		*/
-		change: function (inSender, inEvent) {
-			this.waterfallDown('onChange', inEvent);
+		change: function (sender, event) {
+			this.waterfallDown('onChange', event);
 		}
 	});
 

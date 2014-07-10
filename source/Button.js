@@ -18,7 +18,6 @@
 	*
 	* @class onyx.Button
 	* @extends enyo.Button
-	* @ui
 	* @public
 	*/
 	enyo.kind(
@@ -53,7 +52,7 @@
 		/**
 		* @private
 		*/
-		down: function (inSender, inEvent) {
+		down: function (sender, event) {
 			if (this.disabled) {
 				return true;
 			}
@@ -64,7 +63,7 @@
 		/**
 		* @private
 		*/
-		enter: function (inSender, inEvent) {
+		enter: function (sender, event) {
 			if (this.disabled) {
 				return true;
 			}
@@ -76,7 +75,7 @@
 		/**
 		* @private
 		*/
-		dragfinish: function (inSender, inEvent) {
+		dragfinish: function (sender, event) {
 			if (this.disabled) {
 				return true;
 			}
@@ -87,7 +86,7 @@
 		/**
 		* @private
 		*/
-		leave: function (inSender, inEvent) {
+		leave: function (sender, event) {
 			if (this.disabled) {
 				return true;
 			}
@@ -97,7 +96,7 @@
 		/**
 		* @private
 		*/
-		up: function (inSender, inEvent) {
+		up: function (sender, event) {
 			if (this.disabled) {
 				return true;
 			}

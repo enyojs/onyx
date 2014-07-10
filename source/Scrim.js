@@ -76,17 +76,17 @@
 		/**
 		* @private
 		*/
-		addZIndex: function (inZIndex) {
-			if (enyo.indexOf(inZIndex, this.zStack) < 0) {
-				this.zStack.push(inZIndex);
+		addZIndex: function (zIndex) {
+			if (enyo.indexOf(zIndex, this.zStack) < 0) {
+				this.zStack.push(zIndex);
 			}
 		},
 
 		/**
 		* @private
 		*/
-		removeZIndex: function (inControl) {
-			enyo.remove(inControl, this.zStack);
+		removeZIndex: function (control) {
+			enyo.remove(control, this.zStack);
 		},
 
 		/**
@@ -94,13 +94,13 @@
 		* _showAtZIndex()_, you must call _hideAtZIndex()_ to properly unwind the
 		* z-index stack.
 		* 
-		* @param  {Number} inZIndex - z-index for the scrim
+		* @param  {Number} zIndex - z-index for the scrim
 		* @public
 		*/
-		showAtZIndex: function (inZIndex) {
-			this.addZIndex(inZIndex);
-			if (inZIndex !== undefined) {
-				this.setZIndex(inZIndex);
+		showAtZIndex: function (zIndex) {
+			this.addZIndex(zIndex);
+			if (zIndex !== undefined) {
+				this.setZIndex(zIndex);
 			}
 			this.show();
 		},
@@ -108,11 +108,11 @@
 		/**
 		* Hides scrim at the specified z-index.
 		* 
-		* @param  {Number} inZIndex - z-index of the scrim
+		* @param  {Number} zIndex - z-index of the scrim
 		* @public
 		*/
-		hideAtZIndex: function (inZIndex) {
-			this.removeZIndex(inZIndex);
+		hideAtZIndex: function (zIndex) {
+			this.removeZIndex(zIndex);
 			if (!this.zStack.length) {
 				this.hide();
 			} else {
@@ -124,9 +124,9 @@
 		/**
 		* @private
 		*/
-		setZIndex: function (inZIndex) {
-			this.zIndex = inZIndex;
-			this.applyStyle('z-index', inZIndex);
+		setZIndex: function (zIndex) {
+			this.zIndex = zIndex;
+			this.applyStyle('z-index', zIndex);
 		},
 
 		/**
@@ -160,10 +160,10 @@
 		/**
 		* @private
 		*/
-		constructor: function (inName, inProps) {
-			this.instanceName = inName;
+		constructor: function (name, props) {
+			this.instanceName = name;
 			enyo.setPath(this.instanceName, this);
-			this.props = inProps || {};
+			this.props = props || {};
 		},
 
 		/**
@@ -178,9 +178,9 @@
 		/**
 		* @private
 		*/
-		showAtZIndex: function (inZIndex) {
+		showAtZIndex: function (zIndex) {
 			var s = this.make();
-			s.showAtZIndex(inZIndex);
+			s.showAtZIndex(zIndex);
 		},
 
 		/**

@@ -43,8 +43,8 @@
 	* 			]}
 	* 		]}
 	* 	],
-	* 	itemSelected: function (inSender, inEvent) {
-	* 		enyo.log('Menu Item Selected: ' + inEvent.originator.content);
+	* 	itemSelected: function (sender, event) {
+	* 		enyo.log('Menu Item Selected: ' + event.originator.content);
 	* 	}
 	* })
 	* ```
@@ -103,7 +103,7 @@
 		* @fires onyx.MenuItem#event:onSelect
 		* @private
 		*/
-		tap: function (inSender) {
+		tap: function (sender) {
 			this.inherited(arguments);
 			this.bubble('onRequestHideMenu');
 			this.doSelect({selected:this, content:this.content});
@@ -115,7 +115,7 @@
 		* @fires onyx.MenuItem#event:onItemContentChange
 		* @private
 		*/
-		contentChanged: function (inOld) {
+		contentChanged: function (old) {
 			this.inherited(arguments);
 			this.doItemContentChange({content: this.content});
 		}

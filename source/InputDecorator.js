@@ -131,8 +131,8 @@
 		* 
 		* @private
 		*/
-		disabledChange: function (inSender, inEvent) {
-			this.addRemoveClass('onyx-disabled', inEvent.originator.disabled);
+		disabledChange: function (sender, event) {
+			this.addRemoveClass('onyx-disabled', event.originator.disabled);
 		}
 	});
 

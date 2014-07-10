@@ -140,20 +140,20 @@
 		* 
 		* @private
 		*/
-		itemActivated: function (inSender, inEvent) {
-			this.processActivatedItem(inEvent.originator);
+		itemActivated: function (sender, event) {
+			this.processActivatedItem(event.originator);
 			return this.inherited(arguments);
 		},
 
 		/**
-		* If `inItem` is `active`, selects it
-		* @param {enyo.Control} inItem
+		* If `item` is `active`, selects it
+		* @param {enyo.Control} item
 		* 
 		* @private
 		*/
-		processActivatedItem: function (inItem) {
-			if (inItem.active) {
-				this.setSelected(inItem);
+		processActivatedItem: function (item) {
+			if (item.active) {
+				this.setSelected(item);
 			}
 		},
 
@@ -163,9 +163,9 @@
 		* @fires onyx.Picker#event:onChange
 		* @private
 		*/
-		selectedChanged: function (inOld) {
-			if (inOld) {
-				inOld.removeClass('selected');
+		selectedChanged: function (old) {
+			if (old) {
+				old.removeClass('selected');
 			}
 			if (this.selected) {
 				this.selected.addClass('selected');
@@ -179,8 +179,8 @@
 		* @fires onyx.Picker#event:onChange
 		* @private
 		*/
-		itemContentChange: function (inSender, inEvent){
-			if(inEvent.originator == this.selected){
+		itemContentChange: function (sender, event) {
+			if(event.originator == this.selected){
 				this.doChange({selected: this.selected, content: this.selected.content});
 			}
 		},

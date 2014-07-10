@@ -147,8 +147,8 @@
 		*
 		* @private
 		*/
-		activated: function (inSender, inEvent) {
-			this.addRemoveClass('active',inEvent.originator.active);
+		activated: function (sender, event) {
+			this.addRemoveClass('active',event.originator.active);
 		},
 
 		/**

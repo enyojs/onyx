@@ -165,26 +165,26 @@
 		/**
 		* @private
 		*/
-		updateKnobPosition: function (inPercent) {
-			this.$.knob.applyStyle('left', inPercent + '%');
+		updateKnobPosition: function (percent) {
+			this.$.knob.applyStyle('left', percent + '%');
 		},
 
 		/**
 		* @private
 		*/
-		calcKnobPosition: function (inEvent) {
-			var x = inEvent.clientX - this.hasNode().getBoundingClientRect().left;
+		calcKnobPosition: function (event) {
+			var x = event.clientX - this.hasNode().getBoundingClientRect().left;
 			return (x / this.getBounds().width) * (this.max - this.min) + this.min;
 		},
 
 		/**
 		* @private
 		*/
-		dragstart: function (inSender, inEvent) {
-			if (inEvent.horizontal) {
-				inEvent.preventDefault();
+		dragstart: function (sender, event) {
+			if (event.horizontal) {
+				event.preventDefault();
 				this.dragging = true;
-				inSender.addClass('pressed');
+				sender.addClass('pressed');
 				return true;
 			}
 		},
@@ -193,9 +193,9 @@
 		* @fires onyx.Slider#event:onChanging
 		* @private
 		*/
-		drag: function (inSender, inEvent) {
+		drag: function (sender, event) {
 			if (this.dragging) {
-				var v = this.calcKnobPosition(inEvent);
+				var v = this.calcKnobPosition(event);
 				v = (this.increment) ? this.calcIncrement(v) : v;
 				this.setValue(v);
 				this.doChanging({value: this.value});
@@ -207,20 +207,20 @@
 		* @fires onyx.Slider#event:onChange
 		* @private
 		*/
-		dragfinish: function (inSender, inEvent) {
+		dragfinish: function (sender, event) {
 			this.dragging = false;
-			inEvent.preventTap();
+			event.preventTap();
 			this.doChange({value: this.value});
-			inSender.removeClass('pressed');
+			sender.removeClass('pressed');
 			return true;
 		},
 
 		/**
 		* @private
 		*/
-		tap: function (inSender, inEvent) {
+		tap: function (sender, event) {
 			if (this.tappable) {
-				var v = this.calcKnobPosition(inEvent);
+				var v = this.calcKnobPosition(event);
 				v = (this.increment) ? this.calcIncrement(v) : v;
 				this.tapped = true;
 				this.animateTo(v);
@@ -231,28 +231,28 @@
 		/**
 		* @private
 		*/
-		knobDown: function (inSender, inEvent) {
+		knobDown: function (sender, event) {
 			this.$.knob.addClass('pressed');
 		},
 
 		/**
 		* @private
 		*/
-		knobUp: function (inSender, inEvent) {
+		knobUp: function (sender, event) {
 			this.$.knob.removeClass('pressed');
 		},
 
 		/**
 		* Animates to the given value.
 		* 
-		* @param  {Number} inValue - New value
+		* @param  {Number} value - New value
 		* @public
 		* @todo  functional overlap with {@link onyx.ProgressBar#animateProgressTo}
 		*/
-		animateTo: function (inValue) {
+		animateTo: function (value) {
 			this.$.animator.play({
 				startValue: this.value,
-				endValue: inValue,
+				endValue: value,
 				node: this.hasNode()
 			});
 		},
@@ -260,8 +260,8 @@
 		/**
 		* @private
 		*/
-		animatorStep: function (inSender) {
-			this.setValue(inSender.value);
+		animatorStep: function (sender) {
+			this.setValue(sender.value);
 			return true;
 		},
 
@@ -270,12 +270,12 @@
 		* @fires onyx.Slider#event:onAnimateFinish
 		* @private
 		*/
-		animatorComplete: function (inSender) {
+		animatorComplete: function (sender) {
 			if (this.tapped) {
 				this.tapped = false;
 				this.doChange({value: this.value});
 			}
-			this.doAnimateFinish(inSender);
+			this.doAnimateFinish(sender);
 			return true;
 		}
 	});

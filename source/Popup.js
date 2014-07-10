@@ -110,13 +110,13 @@
 		/**
 		* Toggles the display of the scrim
 		* 
-		* @param  {Boolean} inShow - Show the scrim
+		* @param  {Boolean} show - Show the scrim
 		* @private
 		*/
-		showHideScrim: function (inShow) {
+		showHideScrim: function (show) {
 			if (this.floating && (this.scrim || (this.modal && this.scrimWhenModal))) {
 				var scrim = this.getScrim();
-				if (inShow) {
+				if (show) {
 					// move scrim to just under the popup to obscure rest of screen
 					var i = this.getScrimZIndex();
 					this._scrimZ = i;

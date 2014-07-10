@@ -8,8 +8,8 @@
 	* ```
 	* {kind: 'onyx.Checkbox', onchange: 'checkboxClicked'}
 	* 
-	* checkboxClicked: function (inSender) {
-	* 	if (inSender.getValue()) {
+	* checkboxClicked: function (sender) {
+	* 	if (sender.getValue()) {
 	* 		this.log('I've been checked!');
 	* 	}
 	* }
@@ -53,7 +53,7 @@
 		/**
 		* @private
 		*/
-		tap: function (inSender, e) {
+		tap: function (sender, e) {
 			if (!this.disabled) {
 				this.setChecked(!this.getChecked());
 				this.bubble('onchange');

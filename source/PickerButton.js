@@ -39,9 +39,9 @@
 		* 
 		* @private
 		*/
-		change: function (inSender, inEvent) {
-			if (inEvent.content !== undefined){
-				this.setContent(inEvent.content);
+		change: function (sender, event) {
+			if (event.content !== undefined){
+				this.setContent(event.content);
 			}
 		}
 	});

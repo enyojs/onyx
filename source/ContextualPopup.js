@@ -292,7 +292,7 @@
 		* @todo  document why bubbling is explicitly prevented
 		* @private
 		*/
-		childControlActivated: function (inSender, inEvent) {
+		childControlActivated: function (sender, event) {
 			return true;
 		},
 
@@ -301,8 +301,8 @@
 		* 
 		* @private
 		*/
-		requestShow: function (inSender, inEvent) {
-			var n = inEvent.activator.hasNode();
+		requestShow: function (sender, event) {
+			var n = event.activator.hasNode();
 			if (n) {
 				this.activatorOffset = this.getPageOffset(n);
 			}
@@ -315,7 +315,7 @@
 		* 
 		* @private
 		*/
-		requestHide: function (inSender, inEvent) {
+		requestHide: function (sender, event) {
 			this.setShowing(false);
 		},
 
@@ -325,10 +325,10 @@
 		* @todo seems to duplicate enyo.Control.setBounds() 
 		* @private
 		*/
-		applyPosition: function (inRect) {
+		applyPosition: function (rect) {
 			var s = '';
-			for (var n in inRect) {
-				s += (n + ':' + inRect[n] + (isNaN(inRect[n]) ? '; ' : 'px; '));
+			for (var n in rect) {
+				s += (n + ':' + rect[n] + (isNaN(rect[n]) ? '; ' : 'px; '));
 			}
 			this.addStyles(s);
 		},
@@ -336,11 +336,11 @@
 		/**
 		* Calculates the position of the popup relative to the page
 		* 
-		* @param  {Element} inNode
+		* @param  {Element} node
 		* @private
 		*/
-		getPageOffset: function (inNode) {
-			var r = this.getBoundingRect(inNode);
+		getPageOffset: function (node) {
+			var r = this.getBoundingRect(node);
 
 			var pageYOffset = (window.pageYOffset === undefined) ? document.documentElement.scrollTop : window.pageYOffset;
 			var pageXOffset = (window.pageXOffset === undefined) ? document.documentElement.scrollLeft : window.pageXOffset;
@@ -726,14 +726,14 @@
 		* Calculates the top/left values which are relative to the viewport and not absolute of the 
 		* provided Node
 		* 
-		* @param  {Element} inNode
+		* @param  {Element} node
 		* @return {Object}  Object containing the top, bottom, left, right, height, and width of the
 		* 	node
 		* @private
 		*/
-		getBoundingRect:  function (inNode){
+		getBoundingRect:  function (node){
 			// getBoundingClientRect returns t
-			var o = inNode.getBoundingClientRect();
+			var o = node.getBoundingClientRect();
 			if (!o.width || !o.height) {
 				return {
 					left: o.left,

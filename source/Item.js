@@ -54,18 +54,18 @@
 		/**
 		* @private
 		*/
-		hold: function (inSender, inEvent) {
+		hold: function (sender, event) {
 			if (this.tapHighlight) {
-				onyx.Item.addRemoveFlyweightClass(this.controlParent || this, 'onyx-highlight', true, inEvent);
+				onyx.Item.addRemoveFlyweightClass(this.controlParent || this, 'onyx-highlight', true, event);
 			}
 		},
 
 		/**
 		* @private
 		*/
-		release: function (inSender, inEvent) {
+		release: function (sender, event) {
 			if (this.tapHighlight) {
-				onyx.Item.addRemoveFlyweightClass(this.controlParent || this, 'onyx-highlight', false, inEvent);
+				onyx.Item.addRemoveFlyweightClass(this.controlParent || this, 'onyx-highlight', false, event);
 			}
 		},
 
@@ -75,24 +75,24 @@
 		*/
 		statics: {
 			/**
-			* Adds or removes `inClass` to `inControl` based on `inTrueToAdd`
+			* Adds or removes `className` to `control` based on `add`
 			* 
-			* @param {enyo.Control} inControl - Control to modify
-			* @param {String} inClass     - CSS Class Name
-			* @param {Boolean} inTrueToAdd - If `true`, the class is added. If `false`, the class
+			* @param {enyo.Control} control - Control to modify
+			* @param {String} className     - CSS Class Name
+			* @param {Boolean} add          - If `true`, the class is added. If `false`, the class
 			* 	is removed
-			* @param {Object} inEvent     - Event object that triggered the call
-			* @param {Number} [inIndex]   - Index of the row in the flyweight. Retrieved from
-			* 	`inEvent` if not specified.
+			* @param {Object} event       - Event object that triggered the call
+			* @param {Number} [index]     - Index of the row in the flyweight. Retrieved from
+			* 	`event` if not specified.
 			*
 			* @public
 			*/
-			addRemoveFlyweightClass: function (inControl, inClass, inTrueToAdd, inEvent, inIndex) {
-				var flyweight = inEvent.flyweight;
+			addRemoveFlyweightClass: function (control, className, add, event, index) {
+				var flyweight = event.flyweight;
 				if (flyweight) {
-					var index = inIndex !== undefined ? inIndex : inEvent.index;
+					index = index !== undefined ? index : event.index;
 					flyweight.performOnRow(index, function () {
-						inControl.addRemoveClass(inClass, inTrueToAdd);
+						control.addRemoveClass(className, add);
 					});
 				}
 			}

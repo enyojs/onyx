@@ -151,8 +151,8 @@
 		/**
 		* @private
 		*/
-		barClassesChanged: function (inOld) {
-			this.$.bar.removeClass(inOld);
+		barClassesChanged: function (old) {
+			this.$.bar.removeClass(old);
 			this.$.bar.addClass(this.barClasses);
 		},
 
@@ -180,72 +180,72 @@
 		},
 
 		/**
-		* Clamps `inValue` to the nearest {@link onyx.ProgressBar#increment} value.
+		* Clamps `value` to the nearest {@link onyx.ProgressBar#increment} value.
 		* 
-		* @param  {Number} inValue - value to clamp
+		* @param  {Number} value - value to clamp
 		* @return {Number}         - clamped value
 		* @private
 		*/
-		calcIncrement: function (inValue) {
-			return (Math.round(inValue / this.increment) * this.increment);
+		calcIncrement: function (value) {
+			return (Math.round(value / this.increment) * this.increment);
 		},
 
 		/**
-		* Ensures `inValue` is between `inMin` and `inMax`
+		* Ensures `value` is between `min` and `max`
 		* 
-		* @param  {Number} inMin   - minimum value
-		* @param  {Number} inMax   - maximum value
-		* @param  {Number} inValue - value to clamp
+		* @param  {Number} min   - minimum value
+		* @param  {Number} max   - maximum value
+		* @param  {Number} value - value to clamp
 		* @return {Number}         - clamped value
 		* @private
 		*/
-		clampValue: function (inMin, inMax, inValue) {
-			return Math.max(inMin, Math.min(inValue, inMax));
+		clampValue: function (min, max, value) {
+			return Math.max(min, Math.min(value, max));
 		},
 
 		/**
 		* Calculates the ratio complete
 		* 
-		* @param  {Number} inValue - Value between `min` and `max`
+		* @param  {Number} value - Value between `min` and `max`
 		* @return {Number}         - Ratio complete (between 0 and 1)
 		* @private
 		*/
-		calcRatio: function (inValue) {
-			return (inValue - this.min) / (this.max - this.min);
+		calcRatio: function (value) {
+			return (value - this.min) / (this.max - this.min);
 		},
 
 		/**
 		* Calculates the percent complete
 		* 
-		* @param  {Number} inValue - Value between `min` and `max`
+		* @param  {Number} value - Value between `min` and `max`
 		* @return {Number}         - Percent complete (between 0 and 100)
 		* @private
 		*/
-		calcPercent: function (inValue) {
-			return this.calcRatio(inValue) * 100;
+		calcPercent: function (value) {
+			return this.calcRatio(value) * 100;
 		},
 
 		/**
-		* Positions the progress bar at `inPercent`
+		* Positions the progress bar at `percent`
 		* 
-		* @param  {Number} inPercent - Percent complete
+		* @param  {Number} percent - Percent complete
 		* @private
 		*/
-		updateBarPosition: function (inPercent) {
-			this.$.bar.applyStyle('width', inPercent + '%');
+		updateBarPosition: function (percent) {
+			this.$.bar.applyStyle('width', percent + '%');
 		},
 
 		/**
 		* Animates progress to the given value
 		* 
-		* @param  {Number} inValue - Desired value. Will be clamped between
+		* @param  {Number} value - Desired value. Will be clamped between
 		* 	{@link onyx.ProgressBar#min} and {@link onyx.ProgressBar#max}
 		* @public
 		*/
-		animateProgressTo: function (inValue) {
+		animateProgressTo: function (value) {
 			this.$.progressAnimator.play({
 				startValue: this.progress,
-				endValue: inValue,
+				endValue: value,
 				node: this.hasNode()
 			});
 		},
@@ -255,8 +255,8 @@
 		* 
 		* @private
 		*/
-		progressAnimatorStep: function (inSender) {
-			this.setProgress(inSender.value);
+		progressAnimatorStep: function (sender) {
+			this.setProgress(sender.value);
 			return true;
 		},
 
@@ -266,8 +266,8 @@
 		* @fires onyx.ProgressBar#event:onAnimateProgressFinish
 		* @private
 		*/
-		progressAnimatorComplete: function (inSender) {
-			this.doAnimateProgressFinish(inSender);
+		progressAnimatorComplete: function (sender) {
+			this.doAnimateProgressFinish(sender);
 			return true;
 		}
 	});
