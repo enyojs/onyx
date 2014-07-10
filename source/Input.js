@@ -16,6 +16,7 @@
 	*
 	* @class  onyx.Input
 	* @extends enyo.Input
+	* @ui
 	* @public
 	*/
 	enyo.kind(

@@ -44,6 +44,7 @@
 	*
 	* @class  onyx.Menu
 	* @extends onyx.Popup
+	* @ui
 	* @public
 	*/
 	enyo.kind(

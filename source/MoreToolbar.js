@@ -23,6 +23,7 @@
 	*
 	* @class  onyx.MoreToolbar
 	* @extends enyo.Control
+	* @ui
 	* @public
 	*/
 	enyo.kind(

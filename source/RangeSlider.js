@@ -45,6 +45,7 @@
 	* 
 	* @class  onyx.RangeSlider
 	* @extends onyx.ProgressBar
+	* @ui
 	* @public
 	*/
 	enyo.kind(
@@ -465,6 +466,7 @@
 	* 
 	* @class onyx.RangeSliderKnobValue
 	* @extends enyo.Control
+	* @ui
 	* @public
 	*/
 	enyo.kind(

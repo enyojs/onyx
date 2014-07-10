@@ -51,6 +51,7 @@
 	*
 	* @class  onyx.MenuItem
 	* @extends enyo.Button
+	* @ui
 	* @public
 	*/
 	enyo.kind(

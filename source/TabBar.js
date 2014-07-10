@@ -74,6 +74,7 @@
 	*
 	* @class  onyx.TabBar
 	* @extends enyo.FittableColumns
+	* @ui
 	* @private
 	*/
 	enyo.kind (

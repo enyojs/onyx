@@ -41,6 +41,7 @@
 	*
 	* @class  onyx.Picker
 	* @extends onyx.Menu
+	* @ui
 	* @public
 	*/
 	enyo.kind(

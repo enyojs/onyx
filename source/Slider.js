@@ -47,6 +47,7 @@
 	*
 	* @class  onyx.Slider
 	* @extends onyx.ProgressBar
+	* @ui
 	* @public
 	*/
 	enyo.kind(

@@ -24,6 +24,7 @@
 	*
 	* @class  onyx.Groupbox
 	* @extends enyo.Control
+	* @ui
 	* @public
 	*/
 	enyo.kind(
@@ -54,6 +55,7 @@
 	*
 	* @class  onyx.GroupboxHeader
 	* @extends enyo.Control
+	* @ui
 	* @public
 	*/
 	enyo.kind(

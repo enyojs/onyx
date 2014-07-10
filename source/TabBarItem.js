@@ -6,6 +6,7 @@
 	*
 	* @class  onyx.TabBar.Item
 	* @extends enyo.GroupItem
+	* @ui
 	* @private
 	*/
 	enyo.kind (

@@ -16,6 +16,7 @@
 	*
 	* @class  onyx.Scrim
 	* @extends enyo.Control
+	* @ui
 	* @public
 	*/
 	enyo.kind(

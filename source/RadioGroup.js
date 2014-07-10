@@ -15,6 +15,7 @@
 	*
 	* @class  onyx.RadioGroup
 	* @extends enyo.Group
+	* @ui
 	* @public
 	*/
 	enyo.kind(

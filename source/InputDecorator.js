@@ -33,6 +33,7 @@
 	* 
 	* @class  onyx.InputDecorator
 	* @extends enyo.ToolDecorator
+	* @ui
 	* @public
 	*/
 	enyo.kind(

@@ -16,6 +16,7 @@
 	*
 	* @class  onyx.Icon
 	* @extends enyo.Control
+	* @ui
 	* @public
 	*/
 	enyo.kind(

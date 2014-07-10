@@ -10,6 +10,7 @@
 	*
 	* @class  onyx.Drawer
 	* @extends enyo.Drawer
+	* @ui
 	* @public
 	*/
 	enyo.kind(

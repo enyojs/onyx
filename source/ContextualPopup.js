@@ -47,6 +47,7 @@
 	*
 	* @class   onyx.ContextualPopup
 	* @extends enyo.Popup
+	* @ui
 	* @public
 	*/
 

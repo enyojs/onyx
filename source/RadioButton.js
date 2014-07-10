@@ -8,6 +8,7 @@
 	*
 	* @class  onyx.RadioButton
 	* @extends enyo.Button
+	* @ui
 	* @public
 	*/
 	enyo.kind(

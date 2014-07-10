@@ -17,6 +17,7 @@
 	*
 	* @class  onyx.TextArea
 	* @extends enyo.TextArea
+	* @ui
 	* @public
 	*/
 	enyo.kind(

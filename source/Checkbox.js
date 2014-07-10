@@ -17,6 +17,7 @@
 	*
 	* @class  onyx.Checkbox
 	* @extends enyo.Checkbox
+	* @ui
 	* @public
 	*/
 	enyo.kind(

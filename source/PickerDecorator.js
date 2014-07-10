@@ -20,6 +20,7 @@
 	*
 	* @class  onyx.PickerDecorator
 	* @extends onyx.MenuDecorator
+	* @ui
 	* @public
 	*/
 	enyo.kind(

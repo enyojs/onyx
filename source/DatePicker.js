@@ -24,6 +24,7 @@
 	*
 	* @class  onyx.DatePicker
 	* @extends enyo.Control
+	* @ui
 	* @public
 	*/
 	enyo.kind(

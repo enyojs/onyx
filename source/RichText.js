@@ -17,6 +17,7 @@
 	*
 	* @class  onyx.RichText
 	* @extends enyo.RichText
+	* @ui
 	* @public
 	*/
 	enyo.kind(

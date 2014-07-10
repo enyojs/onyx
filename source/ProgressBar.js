@@ -36,6 +36,7 @@
 	*
 	* @class  onyx.ProgressBar
 	* @extends enyo.Control
+	* @ui
 	* @public
 	*/
 	enyo.kind(

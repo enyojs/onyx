@@ -22,6 +22,7 @@
 	*
 	* @class  onyx.TabPanels
 	* @extends enyo.Panels
+	* @ui
 	* @private
 	*/
 	enyo.kind(

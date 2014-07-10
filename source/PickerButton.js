@@ -11,6 +11,7 @@
 	*
 	* @class  onyx.PickerButton
 	* @extends onyx.Button
+	* @ui
 	* @public
 	*/
 	enyo.kind(

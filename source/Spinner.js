@@ -18,6 +18,7 @@
 	*
 	* @class  onyx.Spinner
 	* @extends enyo.Control
+	* @ui
 	* @public
 	*/
 	enyo.kind(

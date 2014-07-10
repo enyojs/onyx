@@ -68,6 +68,7 @@
 	*
 	* @class   onyx.FlyweightPicker
 	* @extends onyx.Picker
+	* @ui
 	* @public
 	*/
 	enyo.kind(

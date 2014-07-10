@@ -18,6 +18,7 @@
 	*
 	* @class onyx.Button
 	* @extends enyo.Button
+	* @ui
 	* @public
 	*/
 	enyo.kind(

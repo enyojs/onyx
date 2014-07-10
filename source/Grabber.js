@@ -19,6 +19,7 @@
 	*
 	* @class  onyx.Grabber
 	* @extends enyo.Control
+	* @ui
 	* @public
 	*/
 	enyo.kind(

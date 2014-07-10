@@ -29,6 +29,7 @@
 	*
 	* @class  onyx.IntegerPicker
 	* @extends onyx.Picker
+	* @ui
 	* @public
 	*/
 	enyo.kind(

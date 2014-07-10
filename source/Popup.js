@@ -14,6 +14,7 @@
 	*
 	* @class  onyx.Popup
 	* @extends enyo.Popup
+	* @ui
 	* @public
 	*/
 	enyo.kind(

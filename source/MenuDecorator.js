@@ -22,6 +22,7 @@
 	*
 	* @class  onyx.MenuDecorator
 	* @extends onyx.TooltipDecorator
+	* @ui
 	* @public
 	*/
 	enyo.kind(
