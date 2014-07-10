@@ -23,38 +23,38 @@
 		/** @lends  onyx.Spinner.prototype */ {
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		name: 'onyx.Spinner',
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		classes: 'onyx-spinner',
 
 		/**
-		 * Stops the spinner animation
-		 *
-		 * @public
-		 */
+		* Stops the spinner animation
+		*
+		* @public
+		*/
 		stop: function () {
 			this.setShowing(false);
 		},
 
 		/**
-		 * Starts the spinner animation
-		 * 
-		 * @public
-		 */
+		* Starts the spinner animation
+		* 
+		* @public
+		*/
 		start: function () {
 			this.setShowing(true);
 		},
 
 		/**
-		 * Toggles the spinner animation on or off
-		 * 
-		 * @public
-		 */
+		* Toggles the spinner animation on or off
+		* 
+		* @public
+		*/
 		toggle: function () {
 			this.setShowing(!this.getShowing());
 		}
