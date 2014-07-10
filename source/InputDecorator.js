@@ -59,6 +59,7 @@
 		classes: 'onyx-input-decorator',
 
 		/**
+		* @lends  onyx.InputDecorator.prototype
 		* @private
 		*/
 		published: {
@@ -66,7 +67,6 @@
 			* Set to true to make the input look focused when it's not.
 			* @type {Boolean}
 			* @default  false
-			* @memberOf  onyx.InputDecorator.prototype
 			* @public
 			*/	
 			alwaysLooksFocused: false

@@ -89,10 +89,17 @@
 		classes: 'onyx-flyweight-picker',
 
 		/**
+		* @lends  onyx.FlyweightPicker.prototype
 		* @private
 		*/
 		published: {
-			//* Number of rows to render
+			/**
+			* Number of rows to render
+			* 
+			* @type {Number}
+			* @default  0
+			* @public
+			*/
 			count: 0
 		},
 

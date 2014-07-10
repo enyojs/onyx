@@ -32,6 +32,7 @@
 		kind: 'onyx.Icon',
 
 		/**
+		* @lends  onyx.IconButton.prototype
 		* @private
 		*/
 		published: {
@@ -41,7 +42,6 @@
 			* 
 			* @type {Boolean}
 			* @default  false
-			* @memberOf  onyx.IconButton.prototype
 			* @public
 			*/
 			active: false

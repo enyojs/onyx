@@ -77,6 +77,7 @@
 		classes: 'onyx-menu',
 
 		/**
+		* @lends  onyx.Menu.prototype
 		* @private
 		*/
 		published: {
@@ -85,7 +86,6 @@
 			* 
 			* @type {Number}
 			* @default  200
-			* @memberOf  onyx.Menu.prototype
 			* @public
 			*/
 			maxHeight: 200,
@@ -97,7 +97,6 @@
 			* 
 			* @type {Boolean}
 			* @default  true
-			* @memberOf  onyx.Menu.prototype
 			* @public
 			*/
 			scrolling: true,
@@ -107,7 +106,6 @@
 			* 
 			* @type {String}
 			* @default  'TouchScrollStrategy'
-			* @memberOf onyx.Menu.prototype
 			* @public
 			*/
 			scrollStrategyKind: 'TouchScrollStrategy'
