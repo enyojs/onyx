@@ -1,4 +1,5 @@
 (function (enyo, scope) {
+
 	/**
 	* onyx.Submenu_ is a control that collapses several menu items into a drawer,
 	* hich may be opened and closed by tapping on its label. It is meant to be

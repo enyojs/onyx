@@ -30,29 +30,29 @@
 	*/
 	enyo.kind(
 		/** @lends  onyx.ProgressButton */ {
-		
+
 		/**
 		* @private
 		*/
 		name: 'onyx.ProgressButton',
-		
+
 		/**
 		* @private
 		*/
 		kind: 'onyx.ProgressBar',
-		
+
 		/**
 		* @private
 		*/
 		classes: 'onyx-progress-button',
-		
+
 		/**
 		* @private
 		*/
 		events: {
 			onCancel: ''
 		},
-		
+
 		/**
 		* @private
 		*/
@@ -62,7 +62,7 @@
 			{name: 'client', classes: 'onyx-progress-button-client'},
 			{kind: 'onyx.Icon', src: '$lib/onyx/images/progress-button-cancel.png', classes: 'onyx-progress-button-icon', ontap: 'cancelTap'}
 		],
-		
+
 		/**
 		* @fires onyx.ProgressButton#event:onCancel
 		* @private

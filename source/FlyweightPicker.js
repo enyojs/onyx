@@ -101,13 +101,6 @@
 		*/
 		events: {
 			onSetupItem: '',
-			/**
-				Fires when an item is selected.
-
-				_inEvent.content_ contains the content of the selected item.
-
-				_inEvent.selected_ contains the row index of the selected item.
-			*/
 			onSelect: ''
 		},
 
@@ -133,14 +126,15 @@
 		scrollerName: 'scroller',
 
 		/**
+		* Force the flyweight's client control (MenuItem is default) to activate. This will
+		* result in a call to processActivatedItem which preps our picker selection logic.
+		* This is a workaround for changes caused by ENYO-1609 which resulted in ENYO-1611.
+		* 
 		* @private
 		*/
 		initComponents: function () {
 			this.controlParentName = 'flyweight';
 	        this.inherited(arguments);
-			// Force the flyweight's client control (MenuItem is default) to activate. This will
-			// result in a call to processActivatedItem which preps our picker selection logic.
-			// This is a workaround for changes caused by ENYO-1609 which resulted in ENYO-1611.
 			this.$.flyweight.$.client.children[0].setActive(true);
 	    },
 
@@ -230,4 +224,5 @@
 			}
 		}
 	});
+
 })(enyo, this);

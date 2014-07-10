@@ -1,4 +1,5 @@
 (function (enyo, scope) {
+
 	/**
 	* _onyx.InputDecorator_ is a control that provides input styling. Any controls
 	* in the InputDecorator will appear to be inside an area styled as an	input.
@@ -36,27 +37,27 @@
 	*/
 	enyo.kind(
 		/** @lends  onyx.InputDecorator.prototype */ {
-		
+
 		/**
 		* @private
 		*/
 		name: 'onyx.InputDecorator',
-		
+
 		/**
 		* @private
 		*/
 		kind: 'enyo.ToolDecorator',
-		
+
 		/**
 		* @private
 		*/
 		tag: 'label',
-		
+
 		/**
 		* @private
 		*/
 		classes: 'onyx-input-decorator',
-		
+
 		/**
 		* @private
 		*/
@@ -70,7 +71,7 @@
 			*/	
 			alwaysLooksFocused: false
 		},
-		
+
 		/**
 		* @private
 		*/
@@ -79,7 +80,7 @@
 			onfocus: 'receiveFocus',
 			onblur: 'receiveBlur'
 		},
-		
+
 		/**
 		* @private
 		*/
@@ -87,14 +88,14 @@
 			this.inherited(arguments);
 			this.updateFocus(false);
 		},
-		
+
 		/**
 		* @private
 		*/
 		alwaysLooksFocusedChanged: function (oldValue) {
 			this.updateFocus(this.focus);
 		},
-		
+
 		/**
 		* Updates the focus state of the control unless
 		* {@link onyx.InputDecorator#alwaysLooksFocused} is `true`
@@ -106,7 +107,7 @@
 			this.focused = focus;
 			this.addRemoveClass('onyx-focused', this.alwaysLooksFocused || this.focused);
 		},
-		
+
 		/**
 		* Handler for onfocus events triggered by child components
 		* 
@@ -115,7 +116,7 @@
 		receiveFocus: function () {
 			this.updateFocus(true);
 		},
-		
+
 		/**
 		* Handler for onblur events triggered by child components
 		* 
@@ -124,7 +125,7 @@
 		receiveBlur: function () {
 			this.updateFocus(false);
 		},
-		
+
 		/**
 		* Handler of onDisabledChange events triggered by child components
 		* 
@@ -134,4 +135,5 @@
 			this.addRemoveClass('onyx-disabled', inEvent.originator.disabled);
 		}
 	});
+
 })(enyo, this);

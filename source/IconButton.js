@@ -1,4 +1,5 @@
 (function (enyo, scope) {
+
 	/**
 	* _onyx.IconButton_ is an icon that acts like a button. The icon image is
 	* specified by setting the `src` property to a URL.
@@ -19,7 +20,7 @@
 	*/
 	enyo.kind(
 		/** @lends  onyx.IconButton.prototype */ {
-			
+
 		/**
 		* @private
 		*/
@@ -72,6 +73,7 @@
 
 		/**
 		* If not {@link enyo.Control#disabled}, makes the control {@link onyx.IconButton#active} 
+		* 
 		* @private
 		*/
 		tap: function () {
@@ -144,4 +146,5 @@
 			this.bubble('onActivate');
 		}
 	});
+
 })(enyo, this);

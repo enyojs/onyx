@@ -1,4 +1,5 @@
 (function (enyo, scope) {
+
 	/**
 	* _onyx.IntegerPicker_, a subkind of {@link onyx.Picker}, is used to
 	* display a list of integers that may be selected, ranging from {@link onyx.IntegerPicker#min}
@@ -49,6 +50,7 @@
 		published: {
 			/**
 			* Selected value of the picker
+			* 
 			* @type {Number}
 			* @default  0
 			* @memberOf  onyx.IntegerPicker.prototype
@@ -58,6 +60,7 @@
 
 			/**
 			* Minimum value of the picker
+			* 
 			* @type {Number}
 			* @default  0
 			* @memberOf  onyx.IntegerPicker.prototype
@@ -67,6 +70,7 @@
 
 			/**
 			* Maximum value of the picker
+			* 
 			* @type {Number}
 			* @default  9
 			* @memberOf onyx.IntegerPicker.prototype
@@ -140,4 +144,5 @@
 			this.setValue(parseInt(this.selected.content, 10));
 		}
 	});
+
 })(enyo, this);

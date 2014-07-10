@@ -1,4 +1,5 @@
 (function (enyo, scope) {
+
 	/**
 	* _onyx.MenuDecorator_ is a control that loosely couples an
 	* {@link onyx.Menu} with an activating control, which may be a button or
@@ -25,7 +26,7 @@
 	*/
 	enyo.kind(
 		/** @lends  onyx.MenuDecorator.prototype */ {
-		
+
 		/** 
 		* @private
 		*/
@@ -126,4 +127,5 @@
 			}
 		}
 	});
+
 })(enyo, this);

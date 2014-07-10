@@ -1,4 +1,5 @@
 (function (enyo, scope) {
+
 	/**
 	* _onyx.Popup_ is an enhanced {@link enyo.Popup} with built-in scrim and
 	* z-index handling.

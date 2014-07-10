@@ -1,5 +1,5 @@
 ﻿(function (enyo, scope) {
-	
+
 	/**
 	* enyo.TabPanels is a subkind of enyo.Panels that
 	* displays a set of tabs, which allow navigation between the individual panels.

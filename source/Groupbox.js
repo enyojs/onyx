@@ -1,4 +1,5 @@
 (function (enyo, scope) {
+
 	/**
 	* _onyx.Groupbox_ displays rows of controls as a vertically-stacked group. It
 	* is designed to have container controls as its children, with each container
@@ -27,7 +28,7 @@
 	*/
 	enyo.kind(
 		/** @lends onyx.Groupbox.prototype */ {
-		
+
 		/**
 		* @private
 		*/
@@ -55,8 +56,18 @@
 	* @extends enyo.Control
 	* @public
 	*/
-	enyo.kind({
+	enyo.kind(
+		/** @lends  onyx.GroupboxHeader.prototype */ {
+
+		/**
+		* @private
+		*/
 		name: 'onyx.GroupboxHeader',
+
+		/**
+		* @private
+		*/
 		classes: 'onyx-groupbox-header'
 	});
+
 })(enyo, this);

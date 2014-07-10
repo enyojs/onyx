@@ -1,4 +1,5 @@
 (function (enyo, scope) {
+
 	/**
 	* _onyx.RichText_ is an Onyx-styled rich text control, derived from
 	* {@link enyo.RichText}. Typically, an _onyx.RichText_ is placed
@@ -20,17 +21,17 @@
 	*/
 	enyo.kind(
 		/** @lends  onyx.RichText.prototype */ {
-		
+
 		/**
 		* @private
 		*/
 		name: 'onyx.RichText',
-		
+
 		/**
 		* @private
 		*/
 		kind: 'enyo.RichText',
-		
+
 		/**
 		* @private
 		*/

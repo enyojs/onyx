@@ -1,4 +1,5 @@
 (function (enyo, scope) {
+
 	/**
 	* _onyx.Button_ is an [enyo.Button]{@link enyo.Button} with Onyx styling applied. The
 	* color of the button may be customized by specifying a background color.
@@ -58,7 +59,7 @@
 			this.addClass('pressed');
 			this._isPressed = true;
 		},
-		
+
 		/**
 		* @private
 		*/
@@ -70,7 +71,7 @@
 				this.addClass('pressed');
 			}
 		},
-		
+
 		/**
 		* @private
 		*/
@@ -81,7 +82,7 @@
 			this.removeClass('pressed');
 			this._isPressed = false;
 		},
-		
+
 		/**
 		* @private
 		*/
@@ -91,7 +92,7 @@
 			}
 			this.removeClass('pressed');
 		},
-		
+
 		/**
 		* @private
 		*/
@@ -103,4 +104,5 @@
 			this._isPressed = false;
 		}
 	});
+
 })(enyo, this);

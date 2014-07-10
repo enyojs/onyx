@@ -89,6 +89,7 @@
 		published: {
 			/**
 			* Maximum height of the menu, in pixels
+			* 
 			* @type {Number}
 			* @memberOf onyx.ContextualPopup.prototype
 			* @public
@@ -97,6 +98,7 @@
 
 			/**
 			* Boolean indicating whether scrolling is enabled
+			* 
 			* @type {Boolean}
 			* @memberOf onyx.ContextualPopup.prototype
 			* @public
@@ -105,6 +107,7 @@
 
 			/**
 			* Popup title content
+			* 
 			* @type {String}
 			* @memberOf onyx.ContextualPopup.prototype
 			* @public
@@ -113,6 +116,7 @@
 
 			/**
 			* Buttons at bottom of popup
+			* 
 			* @type {Array}
 			* @memberOf onyx.ContextualPopup.prototype
 			* @public
@@ -136,6 +140,7 @@
 
 		/**
 		* vertical flush layout margin
+		* 
 		* @type {Number}
 		* @private
 		*/
@@ -143,6 +148,7 @@
 
 		/**
 		* horizontal flush layout margin
+		* 
 		* @type {Number}
 		* @private
 		*/
@@ -150,6 +156,7 @@
 
 		/**
 		* popups wider than this value are considered wide (for layout purposes)
+		* 
 		* @type {Number}
 		* @private
 		*/
@@ -157,6 +164,7 @@
 
 		/**
 		* popups longer than this value are considered long (for layout purposes)
+		* 
 		* @type {Number}
 		* @private
 		*/
@@ -164,6 +172,7 @@
 
 		/**
 		* do not allow horizontal flush popups past spec'd amount of buffer space on left/right screen edge
+		* 
 		* @type {Number}
 		* @private
 		*/
@@ -198,6 +207,7 @@
 
 		/**
 		* Name of the Scroller component
+		* 
 		* @private
 		*/
 		scrollerName: 'client',
@@ -266,9 +276,6 @@
 		},
 
 		/**
-		* 
-		* 
-		* @method
 		* @private
 		*/
 		showingChanged: enyo.inherit(function (sup) {
@@ -291,6 +298,7 @@
 
 		/**
 		* Handles onRequestShowMenu events
+		* 
 		* @private
 		*/
 		requestShow: function (inSender, inEvent) {
@@ -304,6 +312,7 @@
 
 		/**
 		* Handles onRequestHideMenu events
+		* 
 		* @private
 		*/
 		requestHide: function (inSender, inEvent) {
@@ -312,6 +321,7 @@
 
 		/**
 		* Positions the popup
+		* 
 		* @todo seems to duplicate enyo.Control.setBounds() 
 		* @private
 		*/
@@ -325,6 +335,7 @@
 
 		/**
 		* Calculates the position of the popup relative to the page
+		* 
 		* @param  {Element} inNode
 		* @private
 		*/
@@ -338,7 +349,7 @@
 
 			return {top: r.top + pageYOffset, left: r.left + pageXOffset, height: rHeight, width: rWidth};
 		},
-		
+
 		/**
 		* Adjusts the popup position + nub location & direction
 		* 
@@ -449,9 +460,10 @@
 				//         use a bottom position for the popup as much possible.
 			}
 		},
-		
+
 		/**
 		* Moves the popup below or above the activator & verify that it fits on screen
+		* 
 		* @return {Boolean} true if vertical positioning can be used
 		* @private
 		*/
@@ -490,6 +502,7 @@
 
 		/**
 		* Implements positioning rules (rule 1.b.i & rule 1.b.ii)
+		* 
 		* @return {Boolean} true if vertical positioning is used
 		* @private
 		*/
@@ -533,6 +546,7 @@
 
 		/**
 		* Implements positioning (rule 1.a.i)
+		* 
 		* @return {Boolean} true if vertical flush positioning is used
 		* @private
 		*/
@@ -577,6 +591,7 @@
 		* Move the popup left or right of the activator & verify that it fits on screen.
 		* Precondition for {@link applyHorizontalPositioning} 
 		* and {@link applyHorizontalFlushPositioning}
+		* 
 		* @return {Boolean} true if horizontal positioning can be used
 		* @private
 		*/
@@ -617,6 +632,7 @@
 
 		/**
 		* Implements positioning (rule 1.b.iii & rule 1.b.iv)
+		* 
 		* @return {Boolean} true if using horizontal positioning
 		* @private
 		*/
@@ -658,6 +674,7 @@
 
 		/**
 		* Implements positioning (rule 1.a.ii)
+		* 
 		* @return {Boolean} true if using flush position
 		* @private
 		*/
@@ -732,6 +749,7 @@
 
 		/**
 		* Determines the view height
+		* 
 		* @return {Number} view height
 		* @private
 		*/
@@ -741,6 +759,7 @@
 
 		/**
 		* Determines the view width
+		* 
 		* @return {Number} view width
 		* @private
 		*/
@@ -750,6 +769,7 @@
 
 		/**
 		* Removes all positioning classes and resets the top and left CSS attributes
+		* 
 		* @private
 		*/
 		resetPositioning: function () {
@@ -778,4 +798,5 @@
 			this.adjustPosition();
 		}
 	});
+
 })(enyo, this);

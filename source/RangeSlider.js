@@ -49,22 +49,22 @@
 	*/
 	enyo.kind(
 		/** @lends  onyx.RangeSlider.prototype */ {
-		
+
 		/**
 		* @private
 		*/
 		name: 'onyx.RangeSlider',
-		
+
 		/**
 		* @private
 		*/
 		kind: 'onyx.ProgressBar',
-		
+
 		/**
 		* @private
 		*/
 		classes: 'onyx-slider',
-		
+
 		/**
 		* @lends  onyx.RangeSlider.prototype 
 		* @private
@@ -78,7 +78,7 @@
 			* @public
 			*/
 			rangeMin: 0,
-			
+
 			/**
 			* Maximum slider value
 			* 
@@ -126,7 +126,7 @@
 			*/
 			endValue: 0
 		},
-		
+
 		/**
 		* @private
 		*/
@@ -152,7 +152,7 @@
 		* @public
 		*/
 		showLabels: false,
-		
+
 		/**
 		* @private
 		*/
@@ -162,7 +162,7 @@
 			ondragfinish: 'dragfinish',
 			ondown: 'down'
 		},
-		
+
 		/**
 		* @private
 		*/
@@ -170,7 +170,7 @@
 			{name: 'startKnob', classes: 'onyx-slider-knob'},
 			{name: 'endKnob', classes: 'onyx-slider-knob onyx-range-slider-knob'}
 		],
-		
+
 		/**
 		* @private
 		*/
@@ -179,7 +179,7 @@
 			this.createComponents(this.moreComponents);
 			this.initControls();
 		},
-		
+
 		/**
 		* @private
 		*/
@@ -188,7 +188,7 @@
 			var p = this.calcPercent(this.beginValue);
 			this.updateBarPosition(p);
 		},
-		
+
 		/**
 		* @private
 		* @todo  Why are handlers for ondown/onup added here instead of in the components block?
@@ -206,7 +206,7 @@
 			this.$.endKnob.ondown = 'knobDown';
 			this.$.endKnob.onup = 'knobUp';
 		},
-		
+
 		/**
 		* Refreshes the knob positions
 		* 
@@ -219,7 +219,7 @@
 			this.beginValueChanged();
 			this.endValueChanged();
 		},
-		
+
 		/**
 		* Calculates the ratio complete given `inValue`
 		* 
@@ -229,7 +229,7 @@
 		calcKnobRatio: function (inValue) {
 			return (inValue - this.rangeMin) / (this.rangeMax - this.rangeMin);
 		},
-		
+
 		/**
 		* Calculates the percentage complete given `inValue`
 		* 
@@ -239,7 +239,7 @@
 		calcKnobPercent: function (inValue) {
 			return this.calcKnobRatio(inValue) * 100;
 		},
-		
+
 		/**
 		* @private
 		*/
@@ -249,7 +249,7 @@
 				this.updateKnobPosition(p, this.$.startKnob);
 			}
 		},
-		
+
 		/**
 		* @private
 		*/
@@ -259,7 +259,7 @@
 				this.updateKnobPosition(p, this.$.endKnob);
 			}
 		},
-		
+
 		/**
 		* Calculates the appropriate knob position during a drag event
 		* @param  {Event} inEvent - Drag event
@@ -269,7 +269,7 @@
 			var x = inEvent.clientX - this.hasNode().getBoundingClientRect().left;
 			return (x / this.getBounds().width) * (this.max - this.min) + this.min;
 		},
-		
+
 		/**
 		* @private
 		*/
@@ -277,7 +277,7 @@
 			inControl.applyStyle('left', inPercent + '%');
 			this.updateBarPosition();
 		},
-		
+
 		/**
 		* Updates the position of the bar between the knobs
 		* 
@@ -291,7 +291,7 @@
 				this.$.bar.applyStyle('width', barWidth + '%');
 			}
 		},
-		
+
 		/**
 		* Calculates the ratio of the value within the allowed range
 		*
@@ -301,7 +301,7 @@
 		calcRangeRatio: function (inValue) {
 			return ((inValue / 100) * (this.rangeMax - this.rangeMin) + this.rangeMin) - (this.increment/2);
 		},
-		
+
 		/**
 		* Ensures the active knob is on top
 		*
@@ -317,14 +317,14 @@
 				this.$.endKnob.applyStyle('z-index', 1);
 			}
 		},
-		
+
 		/**
 		* @private
 		*/
 		down: function (inSender, inEvent) {
 			this.swapZIndex(inSender.name);
 		},
-		
+
 		/**
 		* @private
 		*/
@@ -336,7 +336,7 @@
 				return true;
 			}
 		},
-		
+
 		/**
 		* @fires onyx.RangeSlider#event:onChanging
 		* @private
@@ -374,7 +374,7 @@
 				return true;
 			}
 		},
-		
+
 		/**
 		* @fires onyx.RangeSlider#event:onChange
 		* @private
@@ -393,49 +393,49 @@
 			inSender.removeClass('pressed');
 			return true;
 		},
-		
+
 		/**
 		* @private
 		*/
 		knobDown: function (inSender, inEvent) {
 			inSender.addClass('pressed');
 		},
-		
+
 		/**
 		* @private
 		*/
 		knobUp: function (inSender, inEvent) {
 			inSender.removeClass('pressed');
 		},
-		
+
 		/**
 		* @private
 		*/
 		rangeMinChanged: function () {
 			this.refreshRangeSlider();
 		},
-		
+
 		/**
 		* @private
 		*/
 		rangeMaxChanged: function () {
 			this.refreshRangeSlider();
 		},
-		
+
 		/**
 		* @private
 		*/
 		rangeStartChanged: function () {
 			this.refreshRangeSlider();
 		},
-		
+
 		/**
 		* @private
 		*/
 		rangeEndChanged: function () {
 			this.refreshRangeSlider();
 		},
-		
+
 		/**
 		* Set the label of the start knob
 		* 
@@ -446,7 +446,7 @@
 		setStartLabel: function (inContent) {
 			this.$.startKnob.waterfallDown('onSetLabel', inContent);
 		},
-		
+
 		/**
 		* Sets the label of the end knob
 		* 
@@ -469,24 +469,24 @@
 	*/
 	enyo.kind(
 		/** @lends  onyx.RangeSliderKnobLabel */ {
-		
+
 		/**
 		* @private
 		*/
 		name: 'onyx.RangeSliderKnobLabel',
-		
+
 		/**
 		* @private
 		*/
 		classes: 'onyx-range-slider-label',
-		
+
 		/**
 		* @private
 		*/
 		handlers: {
 			onSetLabel: 'setLabel'
 		},
-		
+
 		/**
 		* Handler {@link onyx.RangeSlider#event:onSetLabel}
 		* 

@@ -1,4 +1,5 @@
 (function (enyo, scope) {
+
 	/**
 	* _onyx.Spinner_ is a control that displays a spinning animation to indicate
 	* that activity is taking place. By default, a light spinner, suitable for

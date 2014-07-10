@@ -1,4 +1,5 @@
 (function (enyo, scope) {
+
 	/**
 	* _onyx.PickerButton_ is a button that, when tapped, shows an
 	* {@link onyx.Picker}. Once an item is selected, the list of items
@@ -14,24 +15,24 @@
 	*/
 	enyo.kind(
 		/** @lends  onyx.PickerButton.prototype */ {
-		
+
 		/**
 		* @private
 		*/
 		name: 'onyx.PickerButton',
-		
+
 		/**
 		* @private
 		*/
 		kind: 'onyx.Button',
-		
+
 		/**
 		* @private
 		*/
 		handlers: {
 			onChange: 'change'
 		},
-		
+
 		/**
 		* Handles {@link onyx.Picker#event:onChange} that is waterfalled down from
 		* {@link onyx.PickerDecorator}

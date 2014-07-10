@@ -55,17 +55,17 @@
 	*/
 	enyo.kind(
 		/** @lends  onyx.MenuItem.prototype */ {
-		
+
 		/**
 		* @private
 		*/
 		name: 'onyx.MenuItem',
-		
+
 		/**
 		* @private
 		*/
 		kind: 'enyo.Button',
-		
+
 		/**
 		* @private
 		*/
@@ -73,17 +73,17 @@
 			onSelect: '',
 			onItemContentChange: ''
 		},
-		
+
 		/**
 		* @private
 		*/
 		classes: 'onyx-menu-item',
-		
+
 		/**
 		* @private
 		*/
 		tag: 'div',
-		
+
 		/**
 		* @private
 		*/
@@ -95,7 +95,7 @@
 				this.bubble('onActivate');
 			}
 		},
-		
+
 		/**
 		* Handler for ontap
 		*
@@ -108,7 +108,7 @@
 			this.bubble('onRequestHideMenu');
 			this.doSelect({selected:this, content:this.content});
 		},
-		
+
 		/**
 		* Notify that this item's content has changed
 		*
@@ -120,4 +120,5 @@
 			this.doItemContentChange({content: this.content});
 		}
 	});
+
 })(enyo, this);

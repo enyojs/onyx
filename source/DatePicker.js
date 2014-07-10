@@ -40,14 +40,15 @@
 		classes: 'onyx-toolbar-inline',
 
 		/**
+		* @lends  onyx.DatePicker.prototype
 		* @private
 		*/
 		published: {
 			/**
 			* If true, control is shown as disabled and user cannot select new values
+			* 
 			* @type {Boolean}
 			* @default  false
-			* @memberOf  onyx.DatePicker.prototype
 			* @public
 			*/
 			disabled: false,
@@ -55,54 +56,54 @@
 			/**
 			* Current locale used for formatting; may be set after control creation, in
 			* which case the control will be updated to reflect the new value
+			* 
 			* @type {String}
 			* @default  en-US
-			* @memberOf onyx.DatePicker.prototype
 			* @public
 			*/
 			locale: 'en-US',
 
 			/**
 			* If true, the day field is hidden
+			* 
 			* @type {Boolean}
 			* @default  false
-			* @memberOf onyx.DatePicker.prototype
 			* @public
 			*/
 			dayHidden: false,
 
 			/**
 			* If true, the month field is hidden
+			* 
 			* @type {Boolean}
 			* @default false
-			* @memberOf onyx.DatePicker.prototype
 			* @public
 			*/
 			monthHidden: false,
 
 			/**
 			* If true, the year field is hidden
+			* 
 			* @type {Boolean}
 			* @default false
-			* @memberOf onyx.DatePicker.prototype
 			* @public
 			*/
 			yearHidden: false,
 
 			/**
 			* Optional minimum year value
+			* 
 			* @type {Number}
 			* @default  1900
-			* @memberOf onyx.DatePicker.prototype
 			* @public
 			*/
 			minYear: 1900,
 
 			/**
 			* Optional maximum year value
+			* 
 			* @type {Number}
 			* @default  2009
-			* @memberOf onyx.DatePicker.prototype
 			* @public
 			*/
 			maxYear: 2099,
@@ -111,9 +112,9 @@
 			* Date object representing currently selected date. When a Date object is
 			* passed to _setValue()_, the passed-in object is stored here and the
 			* control is updated to reflect the new date.
+			* 
 			* @type {Date}
 			* @default  null
-			* @memberOf onyx.DatePicker.prototype
 			* @public
 			*/
 			value: null
@@ -139,6 +140,7 @@
 
 		/**
 		* Performs initial setup of the picker including creating the necessary child controls
+		* 
 		* @private
 		*/
 		initDefaults: function () {
@@ -180,6 +182,7 @@
 
 		/**
 		* Determine the number of days in a particular month/year
+		* 
 		* @param  {Number} inYear
 		* @param  {Number} inMonth
 		* @return {Number} Number of days in the month/year
@@ -191,7 +194,8 @@
 		},
 
 		/**
-		* Handler for year enyo.FlyweightPicker#onSetupItem
+		* Handler for year {@link enyo.FlyweightPicker#onSetupItem}
+		* 
 		* @private
 		*/
 		setupYear: function (inSender, inEvent) {
@@ -201,6 +205,7 @@
 
 		/**
 		* Builds the picker components
+		* 
 		* @param  {String} ordering Representation of the picker order. Year, month, and day are
 		* 	represented as y, m, and d, respectively. For example, if `ordering` were `'ymd'`, the
 		* 	pickers would be created in that order: Year, Month, Day.
@@ -239,6 +244,7 @@
 
 		/**
 		* Creates the year picker
+		* 
 		* @private
 		*/
 		createYear: function () {
@@ -255,6 +261,7 @@
 
 		/**
 		* Creates the month picker
+		* 
 		* @private
 		*/
 		createMonth: function () {
@@ -268,6 +275,7 @@
 
 		/**
 		* Creates the day picker
+		* 
 		* @private
 		*/
 		createDay: function () {
@@ -405,6 +413,7 @@
 
 		/**
 		* Refreshes the pickers by destroying and rebuilding the components
+		* 
 		* @public
 		*/
 		refresh: function (){
@@ -413,4 +422,5 @@
 			this.render();
 		}
 	});
+
 })(enyo, this);

@@ -1,4 +1,5 @@
 (function (enyo, scope) {
+
 	/**
 	* _onyx.Icon_ is a control that displays an icon. To set the icon image, specify
 	* a URL for the image's location in the Icon's `src` property.
@@ -19,7 +20,7 @@
 	*/
 	enyo.kind(
 		/** @lends onyx.Icon.prototype */ {
-		
+
 		/**
 		* @private
 		*/
@@ -78,4 +79,5 @@
 			this.applyStyle('background-image', 'url(' + enyo.path.rewrite(this.src) + ')');
 		}
 	});
+
 })(enyo, this);

@@ -40,17 +40,17 @@
 	*/
 	enyo.kind(
 		/** @lends  onyx.ProgressBar.prototype */ {
-		
+
 		/**
 		* @private
 		*/
 		name: 'onyx.ProgressBar',
-		
+
 		/**
 		* @private
 		*/
 		classes: 'onyx-progress-bar',
-		
+
 		/**
 		* @lends  onyx.ProgressBar.prototype
 		* @private
@@ -58,22 +58,25 @@
 		published: {
 			/**
 			* Current position of progress bar
+			* 
 			* @type {Number}
 			* @default  0
 			* @public
 			*/
 			progress: 0,
-			
+
 			/**
 			* Minimum progress value (i.e., no progress made)
+			* 
 			* @type {Number}
 			* @default  0
 			* @public
 			*/
 			min: 0,
-			
+
 			/**
 			* Maximum progress value (i.e., process complete)
+			* 
 			* @type {Number}
 			* @default  100
 			* @public
@@ -82,14 +85,16 @@
 
 			/**
 			* CSS classes to apply to progress bar
+			* 
 			* @type {String}
 			* @default  ''
 			* @public
 			*/
 			barClasses: '',
-			
+
 			/**
 			* If true, stripes are shown in progress bar
+			* 
 			* @type {Boolean}
 			* @default  true
 			* @public
@@ -98,6 +103,7 @@
 
 			/**
 			* If true (and _showStripes_ is true), stripes shown in progress bar are animated
+			* 
 			* @type {Boolean}
 			* @default  true
 			* @public
@@ -106,6 +112,7 @@
 
 			/**
 			* Sliders may be 'snapped to' multiples of this value in either direction
+			* 
 			* @type {Number}
 			* @default  0
 			* @public
@@ -114,14 +121,14 @@
 			*/
 			increment: 0
 		},
-		
+
 		/**
 		* @private
 		*/
 		events: {
 			onAnimateProgressFinish: ''
 		},
-		
+
 		/**
 		* @private
 		*/
@@ -129,7 +136,7 @@
 			{name: 'progressAnimator', kind: 'enyo.Animator', onStep: 'progressAnimatorStep', onEnd: 'progressAnimatorComplete'},
 			{name: 'bar', classes: 'onyx-progress-bar-bar'}
 		],
-		
+
 		/**
 		* @private
 		*/
@@ -140,7 +147,7 @@
 			this.showStripesChanged();
 			this.animateStripesChanged();
 		},
-		
+
 		/**
 		* @private
 		*/
@@ -148,21 +155,21 @@
 			this.$.bar.removeClass(inOld);
 			this.$.bar.addClass(this.barClasses);
 		},
-		
+
 		/**
 		* @private
 		*/
 		showStripesChanged: function () {
 			this.$.bar.addRemoveClass('striped', this.showStripes);
 		},
-		
+
 		/**
 		* @private
 		*/
 		animateStripesChanged: function () {
 			this.$.bar.addRemoveClass('animated', this.animateStripes);
 		},
-		
+
 		/**
 		* @private
 		*/

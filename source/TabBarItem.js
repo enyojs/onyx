@@ -1,4 +1,5 @@
 ﻿(function (enyo, scope) {
+
 	/**
 	* onyx.TabBar.Item is a special button for TabBar. This widget is
 	* designed to be used only within TabBar.

@@ -1,4 +1,5 @@
 (function (enyo, scope) {
+
 	/**
 	* _onyx.MoreToolbar_ extends {@link enyo.Control}, providing a toolbar
 	* that can adapt to different screen sizes by moving overflowing controls and
@@ -26,17 +27,17 @@
 	*/
 	enyo.kind(
 		/** @lends  onyx.MoreToolbar.prototype */ {
-		
+
 		/**
 		* @private
 		*/
 		name: 'onyx.MoreToolbar',
-		
+
 		/**
 		* @private
 		*/
 		classes: 'onyx-toolbar onyx-more-toolbar',
-		
+
 		/**
 		* CSS class to be applied to the menu
 		* 
@@ -58,38 +59,39 @@
 		* @public
 		*/
 		movedClass: '',
-		
+
 		/**
 		* @private
 		*/
 		layoutKind: 'FittableColumnsLayout',
-		
+
 		/**
 		* @private
 		*/
 		noStretch: true,
-		
+
 		/**
 		* @private
 		*/
 		handlers: {
 			onHide: 'reflow'
 		},
-		
+
 		/**
+		* @lends  onyx.MoreToolbar.prototype
 		* @private
 		*/
 		published: {
 			/**
 			* Layout kind that will be applied to the client controls
+			* 
 			* @type {String}
 			* @default  'FittableColumnsLayout'
-			* @memberOf onyx.MoreToolbar.prototype
 			* @public
 			*/
 			clientLayoutKind: 'FittableColumnsLayout'
 		},
-		
+
 		/**
 		* @private
 		*/
@@ -100,7 +102,7 @@
 				{name: 'menu', kind: 'onyx.Menu', scrolling:false, classes: 'onyx-more-menu'}
 			]}
 		],
-		
+
 		/**
 		* @private
 		*/
@@ -112,14 +114,14 @@
 			this.inherited(arguments);
 			this.$.client.setLayoutKind(this.clientLayoutKind);
 		},
-		
+
 		/**
 		* @private
 		*/
 		clientLayoutKindChanged: function () {
 			this.$.client.setLayoutKind(this.clientLayoutKind);
 		},
-		
+
 		/**
 		* @private
 		*/
@@ -137,7 +139,7 @@
 				this.$.menu.hide();
 			}
 		},
-		
+
 		/**
 		* Handler for {@link enyo.GroupItem#event:onActivate}
 		*
@@ -148,7 +150,7 @@
 		activated: function (inSender, inEvent) {
 			this.addRemoveClass('active',inEvent.originator.active);
 		},
-		
+
 		/**
 		* Removes the next collapsible item from the toolbar and adds it to the menu
 		* 
@@ -170,7 +172,7 @@
 				return true;
 			}
 		},
-		
+
 		/**
 		* Removes the first child of the menu and adds it back to the toolbar
 		* 
@@ -208,7 +210,7 @@
 				return true;
 			}
 		},
-		
+
 		/**
 		* Pushes an item back into the toolbar if doing so doesn't cause the content to overflow
 		*
@@ -224,7 +226,7 @@
 				}
 			}
 		},
-		
+
 		/**
 		* Determines if all of the contents of the toolbar are visible
 		*
@@ -243,7 +245,7 @@
 				}
 			}
 		},
-		
+
 		/**
 		* Finds the next control (starting from the end) that can be pushed onto the menu
 		* 
@@ -263,4 +265,5 @@
 			}
 		}
 	});
+
 })(enyo, this);

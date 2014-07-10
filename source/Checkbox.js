@@ -1,4 +1,5 @@
 (function (enyo, scope) {
+
 	/**
 	* _onyx.Checkbox_ is a box that shows or hides a checkmark when clicked. The
 	* {@link enyo.Checkbox#event:onChange} event is fired when the box is clicked. Call 
@@ -67,4 +68,5 @@
 		*/
 		dragstart: enyo.nop
 	});
+
 })(enyo, this);

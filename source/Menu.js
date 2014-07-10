@@ -1,4 +1,5 @@
 (function (enyo, scope) {
+
 	/**
 	* Requests that a menu be displayed and positioned near `activator`
 	*
@@ -350,4 +351,5 @@
 			this.setShowing(false);
 		}
 	});
+
 })(enyo, this);

@@ -45,30 +45,36 @@
 	*/
 	enyo.kind(
 		/** @lends  onyx.Picker.prototype */ {
-		
+
 		/**
 		* @private
 		*/
 		name: 'onyx.Picker',
-		
+
 		/**
 		* @private
 		*/
 		kind: 'onyx.Menu',
-		
+
 		/**
 		* @private
 		*/
 		classes: 'onyx-picker enyo-unselectable',
-		
+
 		/**
+		* @lends  onyx.Picker.prototype
 		* @private
 		*/
 		published: {
-			//* Currently selected item, if any
+			/**
+			 * Currently selected item, if any
+			 * @type {onyx.MenuItem}
+			 * @default  null
+			 * @public
+			 */
 			selected: null
 		},
-		
+
 		/**
 		* @private
 		*/

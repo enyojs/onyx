@@ -28,6 +28,7 @@
 
 		/** 
 		* Current visibility state of scrim
+		* 
 		* @type {Boolean}
 		* @private
 		*/
@@ -37,7 +38,7 @@
 		* @private
 		*/
 		classes: 'onyx-scrim enyo-fit',
-		
+
 		/**
 		* If true, the scrim is rendered in a floating layer outside of other
 		* controls. This can be used to guarantee that the scrim will be shown

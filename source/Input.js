@@ -1,4 +1,5 @@
 (function (enyo, scope) {
+
 	/**
 	* _onyx.Input_ is an Onyx-styled input control, derived from
 	* {@link enyo.Input}. Typically, an _onyx.Input_ is placed inside an
@@ -19,7 +20,7 @@
 	*/
 	enyo.kind(
 		/** @lends  onyx.Input.prototype */ {
-		
+
 		/**
 		* @private
 		*/
@@ -35,4 +36,5 @@
 		*/
 		classes: 'onyx-input'
 	});
+
 })(enyo, this);

@@ -1,4 +1,5 @@
 (function (enyo, scope) {
+
 	/**
 	* _onyx.Drawer_ is now an empty kind derived from {@link enyo.Drawer}.
 	* All of its functionality has been moved into the latter kind, found in Enyo
@@ -24,4 +25,5 @@
 		*/
 		kind: 'enyo.Drawer'
 	});
+
 })(enyo, this);

@@ -1,4 +1,5 @@
 (function (enyo, scope) {
+
 	/**
 	* _onyx.Grabber_ is a control styled to indicate that an object may be grabbed
 	* and moved. It should only be used in this limited context--to indicate that
@@ -22,7 +23,7 @@
 	*/
 	enyo.kind(
 		/** @lends  onyx.Grabber.prototype */ {
-		
+
 		/**
 		* @private
 		*/
@@ -33,4 +34,5 @@
 		*/
 		classes: 'onyx-grabber'
 	});
+
 })(enyo, this);

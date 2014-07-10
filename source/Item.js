@@ -1,8 +1,9 @@
 (function (enyo, scope) {
+
 	/**
 	* _onyx.Item_ is a control designed to display a group of stacked items,
 	* typically in lists. By default, items are highlighted when tapped. Set
-	* _tapHighlight_ to	_false_ to prevent the highlighting.
+	* {@link onyx.Item#tapHighlight} to	`false` to prevent the highlighting.
 	*
 	* ```
 	* {kind: 'onyx.Item', tapHighlight: false}
@@ -24,15 +25,19 @@
 		* @private
 		*/
 		classes: 'onyx-item',
-		
+
+		/**
+		* @lends onyx.Item.prototype
+		* @private
+		*/
 		published: {
 			/**
 			* If true, the item will be automatically highlighted (the _onyx-highlight_
 			* CSS class will be applied) when tapped. Set to false to disable this
 			* behavior
+			* 
 			* @type {Boolean}
 			* @default  true
-			* @memberOf  onyx.Item.prototype
 			* @public
 			*/
 			tapHighlight: true
@@ -65,6 +70,7 @@
 		},
 
 		/**
+		* @lends  onyx.Item
 		* @private
 		*/
 		statics: {
@@ -79,7 +85,6 @@
 			* @param {Number} [inIndex]   - Index of the row in the flyweight. Retrieved from
 			* 	`inEvent` if not specified.
 			*
-			* @memberOf  onyx.Item
 			* @public
 			*/
 			addRemoveFlyweightClass: function (inControl, inClass, inTrueToAdd, inEvent, inIndex) {
