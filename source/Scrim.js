@@ -143,7 +143,8 @@
 	* @class  onyx.scrimSingleton
 	* @private
 	*/
-	enyo.kind({
+	enyo.kind(
+		/** @lends  onyx.scrimSingleton.prototype */ {
 
 		/**
 		* @private
