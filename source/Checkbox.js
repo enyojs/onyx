@@ -7,7 +7,7 @@
 	* ```
 	* {kind: 'onyx.Checkbox', onchange: 'checkboxClicked'}
 	* 
-	* checkboxClicked: function(inSender) {
+	* checkboxClicked: function (inSender) {
 	* 	if (inSender.getValue()) {
 	* 		this.log('I've been checked!');
 	* 	}

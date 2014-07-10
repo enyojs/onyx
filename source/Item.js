@@ -86,7 +86,7 @@
 				var flyweight = inEvent.flyweight;
 				if (flyweight) {
 					var index = inIndex !== undefined ? inIndex : inEvent.index;
-					flyweight.performOnRow(index, function() {
+					flyweight.performOnRow(index, function () {
 						inControl.addRemoveClass(inClass, inTrueToAdd);
 					});
 				}

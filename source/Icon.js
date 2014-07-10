@@ -56,7 +56,7 @@
 		/**
 		* @private
 		*/
-		create: function() {
+		create: function () {
 			this.inherited(arguments);
 			if (this.src) {
 				this.srcChanged();
@@ -67,14 +67,14 @@
 		/**
 		* @private
 		*/
-		disabledChanged: function() {
+		disabledChanged: function () {
 			this.addRemoveClass('disabled', this.disabled);
 		},
 
 		/**
 		* @private
 		*/
-		srcChanged: function() {
+		srcChanged: function () {
 			this.applyStyle('background-image', 'url(' + enyo.path.rewrite(this.src) + ')');
 		}
 	});

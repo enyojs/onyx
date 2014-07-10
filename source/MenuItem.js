@@ -43,7 +43,7 @@
 	* 			]}
 	* 		]}
 	* 	],
-	* 	itemSelected: function(inSender, inEvent) {
+	* 	itemSelected: function (inSender, inEvent) {
 	* 		enyo.log('Menu Item Selected: ' + inEvent.originator.content);
 	* 	}
 	* })
