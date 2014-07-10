@@ -47,7 +47,8 @@
 	* @extends onyx.ProgressBar
 	* @public
 	*/
-	enyo.kind({
+	enyo.kind(
+		/** @lends  onyx.RangeSlider.prototype */ {
 		
 		/**
 		* @private
@@ -451,6 +452,7 @@
 		* 
 		* @param {String} inContent - New knob label
 		* @fires onyx.RangeSlider#event:onSetLabel
+		* @public
 		*/
 		setEndLabel: function (inContent) {
 			this.$.endKnob.waterfallDown('onSetLabel', inContent);
