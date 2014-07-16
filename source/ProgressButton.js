@@ -19,7 +19,7 @@
 	* 	{content: '100', style: 'float: right;'}
 	* ]}
 	* ```
-	* 
+	*
 	* For more information, see the documentation on [Progress
 	* Indicators](building-apps/controls/progress-indicators.html) in the Enyo
 	* Developer Guide.

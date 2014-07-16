@@ -1,91 +1,97 @@
 (function (enyo, scope) {
+
 	/**
-	 * _onyx.TooltipDecorator_ is a control that couples an
-	 * [onyx.Tooltip](@link onyx.Tooltip) with an activating control, such as a button.
-	 * The tooltip is displayed when the activator generates an _onEnter_ event:
-	 *
-	 *  ```
-	 * 	{kind: 'onyx.TooltipDecorator', components: [
-	 * 		{kind: 'onyx.Button', content: 'Tooltip'},
-	 * 		{kind: 'onyx.Tooltip', content: 'I am a tooltip for a button.'}
-	 * 	]}
-	 * 	```
-	 *
-	 * Here is an example with an [onyx.Input](@link onyx.Input) control and a decorator
-	 * around the input:
-	 *
-	 * ```
-	 * 	{kind: 'onyx.TooltipDecorator', components: [
-	 * 		{kind: 'onyx.InputDecorator', components: [
-	 * 			{kind: 'onyx.Input', placeholder: 'Just an input...'}
-	 * 		]},
-	 * 		{kind: 'onyx.Tooltip', content: 'I am a tooltip for an input.'}
-	 * 	]}
-	 * 	```
-	 *
-	 * @class onyx.TooltipDecorator
-	 * @extends enyo.Control
-	 * @public
-	 * @ui
-	 */
+	* _onyx.TooltipDecorator_ is a control that couples an
+	* [onyx.Tooltip](@link onyx.Tooltip) with an activating control, such as a button.
+	* The tooltip is displayed when the activator generates an _onenter_ event:
+	*
+	*  ```
+	* 	{kind: 'onyx.TooltipDecorator', components: [
+	* 		{kind: 'onyx.Button', content: 'Tooltip'},
+	* 		{kind: 'onyx.Tooltip', content: 'I am a tooltip for a button.'}
+	* 	]}
+	* 	```
+	*
+	* Here is an example with an [onyx.Input](@link onyx.Input) control and a decorator
+	* around the input:
+	*
+	* ```
+	* 	{kind: 'onyx.TooltipDecorator', components: [
+	* 		{kind: 'onyx.InputDecorator', components: [
+	* 			{kind: 'onyx.Input', placeholder: 'Just an input...'}
+	* 		]},
+	* 		{kind: 'onyx.Tooltip', content: 'I am a tooltip for an input.'}
+	* 	]}
+	* 	```
+	*
+	* @ui
+	* @class onyx.TooltipDecorator
+	* @extends enyo.Control
+	* @public
+	*/
 
 	enyo.kind(
 		/** @lends onyx.Button.prototype */ {
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		name: 'onyx.TooltipDecorator',
+	
+		/**
+		* @private
+		*/
+		kind: 'enyo.Control',
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		defaultKind: 'onyx.Button',
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		classes: 'onyx-popup-decorator',
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		handlers: {
 			onenter: 'enter',
 			onleave: 'leave'
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		enter: function () {
 			this.requestShowTooltip();
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		leave: function () {
 			this.requestHideTooltip();
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		tap: function () {
 			this.requestHideTooltip();
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		requestShowTooltip: function () {
 			this.waterfallDown('onRequestShowTooltip');
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		requestHideTooltip: function () {
 			this.waterfallDown('onRequestHideTooltip');
 		}

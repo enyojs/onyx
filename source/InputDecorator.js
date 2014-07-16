@@ -10,7 +10,7 @@
 	* 	{kind: 'onyx.Input'}
 	* ]}
 	* ```
-	* 
+	*
 	* Other controls, such as buttons, may be placed to the right or left of the
 	* input control, e.g.:
 	*
@@ -21,7 +21,7 @@
 	* 	{kind: 'onyx.IconButton', src: 'cancel.png'}
 	* ]}
 	* ```
-	* 
+	*
 	* Note that the InputDecorator fits around the content inside it. If the
 	* decorator is sized, then its contents will likely need to be sized as well.
 	*
@@ -30,7 +30,7 @@
 	* 	{kind: 'onyx.Input', style: 'width: 100%;'}
 	* ]}
 	* ```
-	* 
+	*
 	* @class  onyx.InputDecorator
 	* @extends enyo.ToolDecorator
 	* @ui
@@ -69,7 +69,7 @@
 			* @type {Boolean}
 			* @default  false
 			* @public
-			*/	
+			*/
 			alwaysLooksFocused: false
 		},
 
@@ -100,7 +100,7 @@
 		/**
 		* Updates the focus state of the control unless
 		* {@link onyx.InputDecorator#alwaysLooksFocused} is `true`
-		* 
+		*
 		* @param  {Boolean} focus - Requested focus state
 		* @private
 		*/
@@ -111,7 +111,7 @@
 
 		/**
 		* Handler for onfocus events triggered by child components
-		* 
+		*
 		* @private
 		*/
 		receiveFocus: function () {
@@ -120,7 +120,7 @@
 
 		/**
 		* Handler for onblur events triggered by child components
-		* 
+		*
 		* @private
 		*/
 		receiveBlur: function () {
@@ -129,7 +129,7 @@
 
 		/**
 		* Handler of onDisabledChange events triggered by child components
-		* 
+		*
 		* @private
 		*/
 		disabledChange: function (sender, event) {

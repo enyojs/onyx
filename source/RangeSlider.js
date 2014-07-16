@@ -2,7 +2,7 @@
 
 	/**
 	* Requests that the knob label be changed
-	* 
+	*
 	* @event onyx.RangeSlider#event:onSetLabel
 	* @type {String}
 	* @public
@@ -35,14 +35,14 @@
 	* values.
 	*
 	* ```
-	* {kind: 'onyx.RangeSlider', rangeMin: 100, rangeMax: 500, 
+	* {kind: 'onyx.RangeSlider', rangeMin: 100, rangeMax: 500,
 	* 	rangeStart: 200, rangeEnd: 400, interval: 20}
 	* ```
-	* 
-	* {@link onyx.RangeSlider#event:onChanging} events are fired while the control knobs are 
-	* being dragged, and an {@link onyx.RangeSlider#event:onChange} event is fired when the 
+	*
+	* {@link onyx.RangeSlider#event:onChanging} events are fired while the control knobs are
+	* being dragged, and an {@link onyx.RangeSlider#event:onChange} event is fired when the
 	* position is set by finishing a drag.
-	* 
+	*
 	* @class  onyx.RangeSlider
 	* @extends onyx.ProgressBar
 	* @ui
@@ -67,13 +67,13 @@
 		classes: 'onyx-slider',
 
 		/**
-		* @lends  onyx.RangeSlider.prototype 
+		* @lends  onyx.RangeSlider.prototype
 		* @private
 		*/
 		published: {
 			/**
 			* Minimum slider value
-			* 
+			*
 			* @type {Number}
 			* @default  0
 			* @public
@@ -82,7 +82,7 @@
 
 			/**
 			* Maximum slider value
-			* 
+			*
 			* @type {Number}
 			* @default  100
 			* @public
@@ -90,9 +90,9 @@
 			rangeMax: 100,
 
 			/**
-			* Value of first slider, expressed as an integer between 
+			* Value of first slider, expressed as an integer between
 			* {@link onyx.RangeSlider#rangeMin} and {@link onyx.RangeSlider#rangeMax}
-			* 
+			*
 			* @type {Number}
 			* @default  0
 			* @public
@@ -100,9 +100,9 @@
 			rangeStart: 0,
 
 			/**
-			* Value of second slider, expressed as an integer between 
+			* Value of second slider, expressed as an integer between
 			* {@link onyx.RangeSlider#rangeMin} and {@link onyx.RangeSlider#rangeMax}
-			* 
+			*
 			* @type {Number}
 			* @default  100
 			* @public
@@ -111,7 +111,7 @@
 
 			/**
 			* Position of first slider, expressed as an integer between 0 and 100 (percentage)
-			* 
+			*
 			* @type {Number}
 			* @default  0
 			* @public
@@ -120,7 +120,7 @@
 
 			/**
 			* Position of second slider, expressed as an integer between 0 and 100 (percentage)
-			* 
+			*
 			* @type {Number}
 			* @default  0
 			* @public
@@ -138,7 +138,7 @@
 
 		/**
 		* If true, stripes are shown in the slider bar
-		* 
+		*
 		* @type {Boolean}
 		* @private
 		*/
@@ -148,7 +148,7 @@
 		* If true, labels are shown above each slider knob
 		*
 		* *Design-time property*
-		* 
+		*
 		* @type {Boolean}
 		* @public
 		*/
@@ -210,7 +210,7 @@
 
 		/**
 		* Refreshes the knob positions
-		* 
+		*
 		* @private
 		*/
 		refreshRangeSlider: function () {
@@ -223,7 +223,7 @@
 
 		/**
 		* Calculates the ratio complete given `value`
-		* 
+		*
 		* @param  {Number} value
 		* @return {Number}         - Ratio complete between 0 and 1
 		*/
@@ -233,7 +233,7 @@
 
 		/**
 		* Calculates the percentage complete given `value`
-		* 
+		*
 		* @param  {Number} value
 		* @return {Number}         - Percentage complete between 0 and 100
 		*/
@@ -281,7 +281,7 @@
 
 		/**
 		* Updates the position of the bar between the knobs
-		* 
+		*
 		* @private
 		*/
 		updateBarPosition: function () {
@@ -439,7 +439,7 @@
 
 		/**
 		* Set the label of the start knob
-		* 
+		*
 		* @param {String} content - New knob label
 		* @fires onyx.RangeSlider#event:onSetLabel
 		* @public
@@ -450,7 +450,7 @@
 
 		/**
 		* Sets the label of the end knob
-		* 
+		*
 		* @param {String} content - New knob label
 		* @fires onyx.RangeSlider#event:onSetLabel
 		* @public
@@ -463,7 +463,7 @@
 	/**
 	* _onyx.RangeSliderKnobLabel_ provides the labels for the knobs
 	* within a {@link onyx.RangeSlider}
-	* 
+	*
 	* @class onyx.RangeSliderKnobValue
 	* @extends enyo.Control
 	* @ui
@@ -491,7 +491,7 @@
 
 		/**
 		* Handler {@link onyx.RangeSlider#event:onSetLabel}
-		* 
+		*
 		* @private
 		*/
 		setLabel: function (sender, content) {

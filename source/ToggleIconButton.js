@@ -1,97 +1,93 @@
 (function (enyo, scope) {
 	/**
-	 * Fires when the user changes the value of the toggle button, but not
-	 * when the value is changed programmatically.
-	 *
-	 * @event onyx.ToggleIconButton#event:onChange
-	 * @type {Object}
-	 * @property {Object} sender - The [component]{@link enyo.Component} that most recently
-	 *	propagated the [event]{@link external:event}.
-	 * @property {Object} event - An [object]{@link external:Object} containing
-	 *	[event]{@link external:event} information.
-	 * @public
-	 */
+	* Fires when the user changes the value of the toggle button, but not
+	* when the value is changed programmatically.
+	*
+	* @event onyx.ToggleIconButton#event:onChange
+	* @type {Object}
+	* @property {Boolean} value - The current value of the button
+	* @public
+	*/
 
 	/**
-	 *	_onyx.ToggleIconButton_ is an icon that acts like a toggle switch. The icon
-	 *	image is specified by setting the _src_ property to a URL.
-	 *
-	 *  ```
-	 *  {kind: 'onyx.ToggleIconButton', src: 'images/search.png', ontap: 'buttonTap'}
-	 *  ```
-	 *
-	 *	The image associated with the _src_ property is assumed	to be a 32x64-pixel
-	 *	strip, with the top half showing the button's normal state and the bottom
-	 *	half showing its state when hovered-over or active.
-	 *
-	 * @class onyx.ToggleIconButton
-	 * @extends onyx.Icon
-	 * @public
-	 * @ui
-	 */
+	* _onyx.ToggleIconButton_ is an icon that acts like a toggle switch. The icon
+	* image is specified by setting the `src` property to a URL.
+	*
+	* ```
+	* {kind: 'onyx.ToggleIconButton', src: 'images/search.png', ontap: 'buttonTap'}
+	* ```
+	*
+	* The image associated with the `src` property is assumed	to be a 32x64-pixel
+	* strip, with the top half showing the button's normal state and the bottom
+	* half showing its state when hovered-over or active.
+	*
+	* @ui
+	* @class onyx.ToggleIconButton
+	* @extends onyx.Icon
+	* @public
+	*/
 
 	enyo.kind(
 		/** @lends  onyx.ToggleIconButton.prototype */ {
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		name: 'onyx.ToggleIconButton',
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		kind: 'onyx.Icon',
 
 		/**
-		 * @private
-		 */
+		* @lends enyo.ToggleIconButton.prototype
+		* @private
+		*/
 		published: {
 			/**
-			 * Used when the ToggleIconButton is part of an [enyo.Group](@link enyo.Group); set to true
-			 * to indicate that this is the active button in the group.
-			 *
-			 * @type {Boolean}
-			 * @default false
-			 * @memberof onyx.ToggleIconButton.prototype
-			 * @public
-			 */
+			* Used when the ToggleIconButton is part of an [enyo.Group](@link enyo.Group); set to true
+			* to indicate that this is the active button in the group.
+			*
+			* @type {Boolean}
+			* @default false
+			* @public
+			*/
 			active: false,
-			
+		
 			/**
-			 * Boolean indicating whether the button is currently in the 'on' state
-			 *
-			 * @type {Boolean}
-			 * @default false
-			 * @memberof onyx.ToggleIconButton.prototype
-			 * @public
-			 */
+			* Boolean indicating whether the button is currently in the 'on' state
+			*
+			* @type {Boolean}
+			* @default false
+			* @public
+			*/
 			value: false
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		events: {
 			onChange: ''
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		classes: 'onyx-icon-button onyx-icon-toggle',
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		activeChanged: function () {
 			this.addRemoveClass('active', this.value);
 			this.bubble('onActivate');
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		updateValue: function (inValue) {
 			if (!this.disabled) {
 				this.setValue(inValue);
@@ -100,32 +96,32 @@
 		},
 
 		/**
-		 * Programmatically simulates a user tap of the toggle button.
-		 *
-		 * @public
-		 */
+		* Programmatically simulates a user tap of the toggle button.
+		*
+		* @public
+		*/
 		tap: function () {
 			this.updateValue(!this.value);
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		valueChanged: function () {
 			this.setActive(this.value);
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		create: function () {
 			this.inherited(arguments);
 			this.value = Boolean(this.value || this.active);
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		rendered: function () {
 			this.inherited(arguments);
 			this.valueChanged();

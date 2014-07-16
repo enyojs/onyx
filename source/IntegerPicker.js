@@ -10,7 +10,7 @@
 	* closes,	but the item stays selected and the PickerButton displays the choice
 	* that was made.
 	*
-	* To initialize the IntegerPicker to a particular value, set the 
+	* To initialize the IntegerPicker to a particular value, set the
 	* {@link onyx.IntegerPicker#value} property to the integer that should be selected.
 	*
 	* ```
@@ -19,9 +19,9 @@
 	* 	{kind: 'onyx.IntegerPicker', min: 0, max: 25, value: 5}
 	* ]}
 	* ```
-	* 
+	*
 	* Each item in the list is an {@link onyx.MenuItem}, so an
-	* application may listen for an {@link onyx.MenItem#event:onSelect} event with the item to 
+	* application may listen for an {@link onyx.MenItem#event:onSelect} event with the item to
 	* determine which picker item was selected.
 	*
 	* For more information, see the documentation on
@@ -51,7 +51,7 @@
 		published: {
 			/**
 			* Selected value of the picker
-			* 
+			*
 			* @type {Number}
 			* @default  0
 			* @memberOf  onyx.IntegerPicker.prototype
@@ -61,7 +61,7 @@
 
 			/**
 			* Minimum value of the picker
-			* 
+			*
 			* @type {Number}
 			* @default  0
 			* @memberOf  onyx.IntegerPicker.prototype
@@ -71,7 +71,7 @@
 
 			/**
 			* Maximum value of the picker
-			* 
+			*
 			* @type {Number}
 			* @default  9
 			* @memberOf onyx.IntegerPicker.prototype

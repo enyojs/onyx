@@ -2,12 +2,12 @@
 
 	/**
 	* _onyx.Checkbox_ is a box that shows or hides a checkmark when clicked. The
-	* {@link enyo.Checkbox#event:onChange} event is fired when the box is clicked. Call 
+	* {@link enyo.Checkbox#event:onChange} event is fired when the box is clicked. Call
 	* `getValue()` toretrieve a boolean indicating whether the box is currently checked.
-	* 
+	*
 	* ```
 	* {kind: 'onyx.Checkbox', onchange: 'checkboxClicked'}
-	* 
+	*
 	* checkboxClicked: function (sender) {
 	* 	if (sender.getValue()) {
 	* 		this.log('I've been checked!');
@@ -64,7 +64,7 @@
 
 		/**
 		* Override enyo.Input dragstart handler, to allow drags to propagate for Checkbox
-		* 
+		*
 		* @private
 		*/
 		dragstart: enyo.nop

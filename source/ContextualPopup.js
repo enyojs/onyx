@@ -28,8 +28,8 @@
 	* In addition, while contextual popups have their own positioning logic, they
 	* do not currently have their own sizing logic, so be sure to take this into
 	* account when using them.
-	* 
-	* ```	
+	*
+	* ```
 	* {kind: 'onyx.MenuDecorator', components: [
 	* 	{content: 'Show Popup'},
 	* 	{kind: 'onyx.ContextualPopup',
@@ -90,7 +90,7 @@
 		published: {
 			/**
 			* Maximum height of the menu, in pixels
-			* 
+			*
 			* @type {Number}
 			* @memberOf onyx.ContextualPopup.prototype
 			* @public
@@ -99,7 +99,7 @@
 
 			/**
 			* Boolean indicating whether scrolling is enabled
-			* 
+			*
 			* @type {Boolean}
 			* @memberOf onyx.ContextualPopup.prototype
 			* @public
@@ -108,7 +108,7 @@
 
 			/**
 			* Popup title content
-			* 
+			*
 			* @type {String}
 			* @memberOf onyx.ContextualPopup.prototype
 			* @public
@@ -117,7 +117,7 @@
 
 			/**
 			* Buttons at bottom of popup
-			* 
+			*
 			* @type {Array}
 			* @memberOf onyx.ContextualPopup.prototype
 			* @public
@@ -141,7 +141,7 @@
 
 		/**
 		* vertical flush layout margin
-		* 
+		*
 		* @type {Number}
 		* @private
 		*/
@@ -149,7 +149,7 @@
 
 		/**
 		* horizontal flush layout margin
-		* 
+		*
 		* @type {Number}
 		* @private
 		*/
@@ -157,7 +157,7 @@
 
 		/**
 		* popups wider than this value are considered wide (for layout purposes)
-		* 
+		*
 		* @type {Number}
 		* @private
 		*/
@@ -165,7 +165,7 @@
 
 		/**
 		* popups longer than this value are considered long (for layout purposes)
-		* 
+		*
 		* @type {Number}
 		* @private
 		*/
@@ -173,7 +173,7 @@
 
 		/**
 		* do not allow horizontal flush popups past spec'd amount of buffer space on left/right screen edge
-		* 
+		*
 		* @type {Number}
 		* @private
 		*/
@@ -208,7 +208,7 @@
 
 		/**
 		* Name of the Scroller component
-		* 
+		*
 		* @private
 		*/
 		scrollerName: 'client',
@@ -299,7 +299,7 @@
 
 		/**
 		* Handles onRequestShowMenu events
-		* 
+		*
 		* @private
 		*/
 		requestShow: function (sender, event) {
@@ -313,7 +313,7 @@
 
 		/**
 		* Handles onRequestHideMenu events
-		* 
+		*
 		* @private
 		*/
 		requestHide: function (sender, event) {
@@ -322,8 +322,8 @@
 
 		/**
 		* Positions the popup
-		* 
-		* @todo seems to duplicate enyo.Control.setBounds() 
+		*
+		* @todo seems to duplicate enyo.Control.setBounds()
 		* @private
 		*/
 		applyPosition: function (rect) {
@@ -336,7 +336,7 @@
 
 		/**
 		* Calculates the position of the popup relative to the page
-		* 
+		*
 		* @param  {Element} node
 		* @private
 		*/
@@ -353,13 +353,13 @@
 
 		/**
 		* Adjusts the popup position + nub location & direction
-		* 
+		*
 		* ContextualPopup positioning rules:
 		* 1. Activator Location:
 		*    1. If activator is located in a corner then position using a flush style.
 		*       1. Attempt vertical first.
 		*       2. Horizontal if vertical doesn't fit.
-		*    2. If not in a corner then check if the activator is located in one of the 4 "edges" 
+		*    2. If not in a corner then check if the activator is located in one of the 4 "edges"
 		*       of the view & position the following way if so:
 		*       1.   Activator is in top edge, position popup below it.
 		*       2.  Activator is in bottom edge, position popup above it.
@@ -368,28 +368,28 @@
  		*
 		* 2. Screen Size - the pop-up should generally extend in the direction where there’s room
 		*    for it.
-		* 
+		*
 		*    Note: no specific logic below for this rule since it is built into the positioning
 		*    functions, ie we attempt to never position a popup where there isn't enough room for
 		*    it.
 		*
 		* 3. Popup Size:
-		* 
+		*
 		*    1. If popup content is wide, use top or bottom positioning.
 		*    2. If popup content is long, use horizontal positioning.
 		*
 		* 4. Favor top or bottom:
-		* 
+		*
 		*    If all the above rules have been followed and location can still vary then favor top
 		*    or bottom positioning.
 		*
 		* 5. If top or bottom will work, favor bottom.
-		* 
+		*
 		*    Note: no specific logic below for this rule since it is built into the vertical
-		*    position functions, ie we attempt to use a bottom position for the popup as much 
-		*    possible. Additionally within the vetical position function we center the popup if the 
+		*    position functions, ie we attempt to use a bottom position for the popup as much
+		*    possible. Additionally within the vetical position function we center the popup if the
 		*    activator is at the vertical center of the view.
-		*		
+		*	
 		* @private
 		*/
 		adjustPosition: function () {
@@ -464,7 +464,7 @@
 
 		/**
 		* Moves the popup below or above the activator & verify that it fits on screen
-		* 
+		*
 		* @return {Boolean} true if vertical positioning can be used
 		* @private
 		*/
@@ -503,7 +503,7 @@
 
 		/**
 		* Implements positioning rules (rule 1.b.i & rule 1.b.ii)
-		* 
+		*
 		* @return {Boolean} true if vertical positioning is used
 		* @private
 		*/
@@ -547,7 +547,7 @@
 
 		/**
 		* Implements positioning (rule 1.a.i)
-		* 
+		*
 		* @return {Boolean} true if vertical flush positioning is used
 		* @private
 		*/
@@ -590,9 +590,9 @@
 
 		/**
 		* Move the popup left or right of the activator & verify that it fits on screen.
-		* Precondition for {@link applyHorizontalPositioning} 
+		* Precondition for {@link applyHorizontalPositioning}
 		* and {@link applyHorizontalFlushPositioning}
-		* 
+		*
 		* @return {Boolean} true if horizontal positioning can be used
 		* @private
 		*/
@@ -633,7 +633,7 @@
 
 		/**
 		* Implements positioning (rule 1.b.iii & rule 1.b.iv)
-		* 
+		*
 		* @return {Boolean} true if using horizontal positioning
 		* @private
 		*/
@@ -675,7 +675,7 @@
 
 		/**
 		* Implements positioning (rule 1.a.ii)
-		* 
+		*
 		* @return {Boolean} true if using flush position
 		* @private
 		*/
@@ -724,9 +724,9 @@
 		},
 
 		/**
-		* Calculates the top/left values which are relative to the viewport and not absolute of the 
+		* Calculates the top/left values which are relative to the viewport and not absolute of the
 		* provided Node
-		* 
+		*
 		* @param  {Element} node
 		* @return {Object}  Object containing the top, bottom, left, right, height, and width of the
 		* 	node
@@ -750,7 +750,7 @@
 
 		/**
 		* Determines the view height
-		* 
+		*
 		* @return {Number} view height
 		* @private
 		*/
@@ -760,7 +760,7 @@
 
 		/**
 		* Determines the view width
-		* 
+		*
 		* @return {Number} view width
 		* @private
 		*/
@@ -770,7 +770,7 @@
 
 		/**
 		* Removes all positioning classes and resets the top and left CSS attributes
-		* 
+		*
 		* @private
 		*/
 		resetPositioning: function () {
@@ -790,7 +790,7 @@
 
 		/**
 		* Handles resize events to reposition the popup
-		* 
+		*
 		* @method
 		* @private
 		*/

@@ -1,9 +1,9 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.PickerDecorator_ is a control that loosely couples an {@link onyx.Picker} 
-	* with an activating {@link onyx.PickerButton}. The decorator must surround 
-	* both the activating button and the picker itself. When the button is activated, 
+	* _onyx.PickerDecorator_ is a control that loosely couples an {@link onyx.Picker}
+	* with an activating {@link onyx.PickerButton}. The decorator must surround
+	* both the activating button and the picker itself. When the button is activated,
 	* the picker shows itself in the correct position relative to the activator.
 	*
 	* ```
@@ -55,7 +55,7 @@
 
 		/**
 		* Handles {@link onyx.Picker#event:onChange} and waterfalls it down to children
-		* 
+		*
 		* @private
 		*/
 		change: function (sender, event) {

@@ -59,7 +59,7 @@
 
 		/**
 		* Toggles the display of the submenu
-		* 
+		*
 		* @public
 		*/
 		toggleOpen: function () {
@@ -68,7 +68,7 @@
 
 		/**
 		* Opens or closes the submenu
-		* 
+		*
 		* @param {Boolean} open - New state of the submenu
 		* @public
 		*/
@@ -78,7 +78,7 @@
 
 		/**
 		* Retrieves the current state of the submenu
-		* 
+		*
 		* @return {Boolean} - Current state of the submenu
 		* @public
 		*/

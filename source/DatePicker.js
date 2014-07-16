@@ -47,7 +47,7 @@
 		published: {
 			/**
 			* If true, control is shown as disabled and user cannot select new values
-			* 
+			*
 			* @type {Boolean}
 			* @default  false
 			* @public
@@ -57,7 +57,7 @@
 			/**
 			* Current locale used for formatting; may be set after control creation, in
 			* which case the control will be updated to reflect the new value
-			* 
+			*
 			* @type {String}
 			* @default  en-US
 			* @public
@@ -66,7 +66,7 @@
 
 			/**
 			* If true, the day field is hidden
-			* 
+			*
 			* @type {Boolean}
 			* @default  false
 			* @public
@@ -75,7 +75,7 @@
 
 			/**
 			* If true, the month field is hidden
-			* 
+			*
 			* @type {Boolean}
 			* @default false
 			* @public
@@ -84,7 +84,7 @@
 
 			/**
 			* If true, the year field is hidden
-			* 
+			*
 			* @type {Boolean}
 			* @default false
 			* @public
@@ -93,7 +93,7 @@
 
 			/**
 			* Optional minimum year value
-			* 
+			*
 			* @type {Number}
 			* @default  1900
 			* @public
@@ -102,7 +102,7 @@
 
 			/**
 			* Optional maximum year value
-			* 
+			*
 			* @type {Number}
 			* @default  2009
 			* @public
@@ -113,7 +113,7 @@
 			* Date object representing currently selected date. When a Date object is
 			* passed to _setValue()_, the passed-in object is stored here and the
 			* control is updated to reflect the new date.
-			* 
+			*
 			* @type {Date}
 			* @default  null
 			* @public
@@ -141,7 +141,7 @@
 
 		/**
 		* Performs initial setup of the picker including creating the necessary child controls
-		* 
+		*
 		* @private
 		*/
 		initDefaults: function () {
@@ -183,7 +183,7 @@
 
 		/**
 		* Determine the number of days in a particular month/year
-		* 
+		*
 		* @param  {Number} year
 		* @param  {Number} month
 		* @return {Number} Number of days in the month/year
@@ -196,7 +196,7 @@
 
 		/**
 		* Handler for year {@link enyo.FlyweightPicker#onSetupItem}
-		* 
+		*
 		* @private
 		*/
 		setupYear: function (sender, event) {
@@ -206,7 +206,7 @@
 
 		/**
 		* Builds the picker components
-		* 
+		*
 		* @param  {String} ordering Representation of the picker order. Year, month, and day are
 		* 	represented as y, m, and d, respectively. For example, if `ordering` were `'ymd'`, the
 		* 	pickers would be created in that order: Year, Month, Day.
@@ -245,7 +245,7 @@
 
 		/**
 		* Creates the year picker
-		* 
+		*
 		* @private
 		*/
 		createYear: function () {
@@ -262,7 +262,7 @@
 
 		/**
 		* Creates the month picker
-		* 
+		*
 		* @private
 		*/
 		createMonth: function () {
@@ -276,7 +276,7 @@
 
 		/**
 		* Creates the day picker
-		* 
+		*
 		* @private
 		*/
 		createDay: function () {
@@ -363,7 +363,7 @@
 
 		/**
 		* Handler for the month pickers onSelect event
-		* 
+		*
 		* @fires onyx.DatePicker#event:onSelect
 		* @private
 		*/
@@ -397,7 +397,7 @@
 		/**
 		* Creates a {@link external:Date} for the given `year`, `month`, and `date`. The time component
 		* is pulled from the current {@link value}.
-		* 
+		*
 		* @param  {Number} year
 		* @param  {Number} month
 		* @param  {Number} day
@@ -414,7 +414,7 @@
 
 		/**
 		* Refreshes the pickers by destroying and rebuilding the components
-		* 
+		*
 		* @public
 		*/
 		refresh: function (){

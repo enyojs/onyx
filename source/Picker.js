@@ -33,7 +33,7 @@
 	* 	]}
 	*
 	* Each item in the list is an {@link onyx.MenuItem}, so a client app
-	* may listen for an {@link onyx.MenuItem#event:onSelect} event with the item to determine 
+	* may listen for an {@link onyx.MenuItem#event:onSelect} event with the item to determine
 	* which picker item was selected.
 	*
 	* For more information, see the documentation on
@@ -68,11 +68,11 @@
 		*/
 		published: {
 			/**
-			 * Currently selected item, if any
-			 * @type {onyx.MenuItem}
-			 * @default  null
-			 * @public
-			 */
+			* Currently selected item, if any
+			* @type {onyx.MenuItem}
+			* @default  null
+			* @public
+			*/
 			selected: null
 		},
 
@@ -101,7 +101,7 @@
 
 		/**
 		* overrides default value from onyx.Menu
-		* 
+		*
 		* @private
 		*/
 		showOnTop: true,
@@ -127,7 +127,7 @@
 
 		/**
 		* Ensures the selected item is visible
-		* 
+		*
 		* @private
 		*/
 		scrollToSelected: function () {
@@ -136,9 +136,9 @@
 
 		/**
 		* Handler for {@link enyo.GroupItem#event:onActivate}.
-		* 
+		*
 		* Selects the activated item
-		* 
+		*
 		* @private
 		*/
 		itemActivated: function (sender, event) {
@@ -149,7 +149,7 @@
 		/**
 		* If `item` is `active`, selects it
 		* @param {enyo.Control} item
-		* 
+		*
 		* @private
 		*/
 		processActivatedItem: function (item) {
@@ -188,7 +188,7 @@
 
 		/**
 		* Handler for onresize
-		* 
+		*
 		* @private
 		*/
 		handleResize: function () {

@@ -20,9 +20,9 @@
 	* new App().renderInto(document.body);
 	* ```
 	*
+	* @ui
 	* @class  onyx.TabPanels
 	* @extends enyo.Panels
-	* @ui
 	* @private
 	*/
 	enyo.kind(
@@ -38,9 +38,9 @@
 		},
 
 		/*
-		 * Set a maximum height for the scrollable menu that can be raised on the right of
-		 * the tab bar.
-		 */
+		* Set a maximum height for the scrollable menu that can be raised on the right of
+		* the tab bar.
+		*/
 		published: {
 			maxMenuHeight: null
 		},
@@ -137,13 +137,13 @@
 
 		//* @public
 		/*
-		 *
-		 * Add a new control managed by the tab bar. inControl is a
-		 * control with optional caption attribute. When not specified
-		 * the tab will have a generated caption like 'Tab 0', 'Tab
-		 * 1'. etc...
-		 *
-		 */
+		*
+		* Add a new control managed by the tab bar. inControl is a
+		* control with optional caption attribute. When not specified
+		* the tab will have a generated caption like 'Tab 0', 'Tab
+		* 1'. etc...
+		*
+		*/
 		addTab: function (inControl){
 			this.$.bar.addTab(inControl);
 			this.setIndex(this.controls.length - 1);
@@ -151,14 +151,14 @@
 
 		//* @public
 		/*
-		 *
-		 * Remove a tab from the tab bar. The control managed by the
-		 * tab will also be destroyed. target is an object with either
-		 * a caption attribute or an index. The tab(s) matching the
-		 * caption will be destroyed or the tab with matching index
-		 * will be destroyed.
-		 *
-		 * Example:
+		*
+		* Remove a tab from the tab bar. The control managed by the
+		* tab will also be destroyed. target is an object with either
+		* a caption attribute or an index. The tab(s) matching the
+		* caption will be destroyed or the tab with matching index
+		* will be destroyed.
+		*
+		* Example:
 
 			myTab.removeTab({'index':0}); // remove the leftmost tab
 			myTab.removeTab({'caption':'foo.js'});

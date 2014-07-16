@@ -9,7 +9,7 @@
 	* ```
 	* {kind: 'onyx.Spinner', classes: 'onyx-light'}
 	* ```
-	* 
+	*
 	* Typically, a spinner is shown to indicate activity and hidden to indicate
 	* that the activity has ended. The spinning animation will automatically start
 	* when the spinner is shown. If you wish, you may control the animation directly
@@ -45,7 +45,7 @@
 
 		/**
 		* Starts the spinner animation
-		* 
+		*
 		* @public
 		*/
 		start: function () {
@@ -54,7 +54,7 @@
 
 		/**
 		* Toggles the spinner animation on or off
-		* 
+		*
 		* @public
 		*/
 		toggle: function () {

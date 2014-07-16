@@ -40,7 +40,7 @@
 			/**
 			* Used when the IconButton is part of an {@link enyo.Group}; a value
 			* of true indicates that this is the active button of the group
-			* 
+			*
 			* @type {Boolean}
 			* @default  false
 			* @public
@@ -73,8 +73,8 @@
 		},
 
 		/**
-		* If not {@link enyo.Control#disabled}, makes the control {@link onyx.IconButton#active} 
-		* 
+		* If not {@link enyo.Control#disabled}, makes the control {@link onyx.IconButton#active}
+		*
 		* @private
 		*/
 		tap: function () {

@@ -1,113 +1,102 @@
 (function (enyo, scope) {
 	/**
-	 * Fires when the user changes the value of the toggle button, but not
-	 * when the value is changed programmatically.
-	 *
-	 * _inEvent.value_ contains the value of the toggle button.
-	 *
-	 * @event onyx.ToggleButton#event:onChange
-	 * @type {Object}
-	 * @property {Object} sender - The [component]{@link enyo.Component} that most recently
-	 *	propagated the [event]{@link external:event}.
-	 * @property {Object} event - An [object]{@link external:Object} containing
-	 *	[event]{@link external:event} information.
-	 * @public
-	 */
+	* Fires when the user changes the value of the toggle button, but not
+	* when the value is changed programmatically.
+	*
+	* @event onyx.ToggleButton#event:onChange
+	* @type {Object}
+	* @property {Boolean} value - Current value of the button
+	* @public
+	*/
 
 	/**
-	 * _onyx.ToggleButton_ is a control that looks like a switch with labels for two
-	 * states. Each time a	ToggleButton is tapped, it switches its value and fires an
-	 * _onChange_ event.
-	 *
-	 * To get the value of the button, call _getValue()_.
-	 *
-	 * For more information, see the documentation on
-	 * [Buttons](building-apps/controls/buttons.html) in the Enyo Developer Guide.
-	 *
-	 * @class onyx.ToggleButton
-	 * @extends enyo.Control
-	 * @public
-	 * @ui
-	 */
+	* _onyx.ToggleButton_ is a control that looks like a switch with labels for two
+	* states. Each time a	ToggleButton is tapped, it switches its value and fires an
+	* {@link onyx.ToggleButton#event:onChange} event.
+	*
+	* For more information, see the documentation on
+	* [Buttons](building-apps/controls/buttons.html) in the Enyo Developer Guide.
+	*
+	* @ui
+	* @class onyx.ToggleButton
+	* @extends enyo.Control
+	* @public
+	*/
 	enyo.kind(
-	/** @lends  onyx.ToggleButton.prototype */ {
+		/** @lends  onyx.ToggleButton.prototype */ {
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		name: 'onyx.ToggleButton',
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		classes: 'onyx-toggle-button',
 
 		/**
-		 * @private
-		 */
+		* @lends onyx.ToggleButton.prototype
+		* @private
+		*/
 		published: {
 			/**
-			 * Used when the ToggleButton is part of an [enyo.Group](@link enyo.Group). A value
-			 * of true indicates that this is the active button of the group.
-			 *
-			 * @type {Boolean}
-			 * @default false
-			 * @memberof onyx.ToggleButton.prototype
-			 * @public
-			 */
+			* Used when the ToggleButton is part of an [enyo.Group](@link enyo.Group). A value
+			* of true indicates that this is the active button of the group.
+			*
+			* @type {Boolean}
+			* @default false
+			* @public
+			*/
 			active: false,
 
 			/**
-			 * Boolean indicating whether toggle button is currently in the 'on' state
-			 *
-			 * @type {Boolean}
-			 * @default false
-			 * @memberof onyx.ToggleButton.prototype
-			 * @public
-			 */
+			* Boolean indicating whether toggle button is currently in the 'on' state
+			*
+			* @type {Boolean}
+			* @default false
+			* @public
+			*/
 			value: false,
 
 			/**
-			 * Label for the 'on' state
-			 *
-			 * @type {String}
-			 * @default 'On'
-			 * @memberof onyx.ToggleButton.prototype
-			 * @public
-			 */
+			* Label for the 'on' state
+			*
+			* @type {String}
+			* @default 'On'
+			* @public
+			*/
 			onContent: 'On',
 
 			/**
-			 * Label for the 'off' state
-			 *
-			 * @type {String}
-			 * @default 'Off'
-			 * @memberof onyx.ToggleButton.prototype
-			 * @public
-			 */
+			* Label for the 'off' state
+			*
+			* @type {String}
+			* @default 'Off'
+			* @public
+			*/
 			offContent: 'Off',
 
 			/**
-			 * If true, toggle button cannot be tapped and thus will not generate any events
-			 *
-			 * @type {Boolean}
-			 * @default false
-			 * @memberof onyx.ToggleButton.prototype
-			 * @public
-			 */
+			* If true, toggle button cannot be tapped and thus will not generate any events
+			*
+			* @type {Boolean}
+			* @default false
+			* @public
+			*/
 			disabled: false
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		events: {
 			onChange: ''
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		handlers: {
 			ondragstart: 'dragstart',
 			ondrag: 'drag',
@@ -115,8 +104,8 @@
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		components: [
 			{name: 'contentOn', classes: 'onyx-toggle-content on'},
 			{name: 'contentOff', classes: 'onyx-toggle-content off'},
@@ -124,8 +113,8 @@
 		],
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		create: function () {
 			this.inherited(arguments);
 			this.value = Boolean(this.value || this.active);
@@ -135,16 +124,16 @@
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		rendered: function () {
 			this.inherited(arguments);
 			this.updateVisualState();
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		updateVisualState: function () {
 			this.addRemoveClass('off', !this.value);
 			this.$.contentOn.setShowing(this.value);
@@ -153,47 +142,48 @@
 		},
 
 		/**
-		 * @private
-		 */
+		* @fires onyx.ToggleButton#event:onChange
+		* @private
+		*/
 		valueChanged: function () {
 			this.updateVisualState();
 			this.doChange({value: this.value});
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		activeChanged: function () {
 			this.setValue(this.active);
 			this.bubble('onActivate');
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		onContentChanged: function () {
 			this.$.contentOn.setContent(this.onContent || '');
 			this.$.contentOn.addRemoveClass('empty', !this.onContent);
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		offContentChanged: function () {
 			this.$.contentOff.setContent(this.offContent || '');
 			this.$.contentOff.addRemoveClass('empty', !this.onContent);
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		disabledChanged: function () {
 			this.addRemoveClass('disabled', this.disabled);
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		updateValue: function (inValue) {
 			if (!this.disabled) {
 				this.setValue(inValue);
@@ -201,17 +191,17 @@
 		},
 
 		/**
-		 * Programmatically simulates a user tap of the toggle button.
-		 *
-		 * @public
-		 */
+		* Programmatically simulates a user tap of the toggle button.
+		*
+		* @public
+		*/
 		tap: function () {
 			this.updateValue(!this.value);
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		dragstart: function (inSender, inEvent) {
 			if (inEvent.horizontal) {
 				inEvent.preventDefault();
@@ -222,8 +212,8 @@
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		drag: function (inSender, inEvent) {
 			if (this.dragging) {
 				var d = inEvent.dx;
@@ -236,8 +226,8 @@
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		dragfinish: function (inSender, inEvent) {
 			this.dragging = false;
 			if (this.dragged) {

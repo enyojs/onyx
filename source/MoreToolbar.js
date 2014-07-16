@@ -14,10 +14,10 @@
 	* 	{kind: 'onyx.Button', content: 'Epsilon'}
 	* ]}
 	* ```
-	* 
+	*
 	* You may prevent a control from being moved into the menu by setting its
 	* `unmoveable` property to `true` (the default is `false`).
-	* 
+	*
 	* For more information, see the documentation on
 	* [Toolbars](building-apps/controls/toolbars.html) in the Enyo Developer Guide.
 	*
@@ -41,20 +41,20 @@
 
 		/**
 		* CSS class to be applied to the menu
-		* 
+		*
 		* *Design-time property*
 		*
 		* @type {String}
 		* @default  ''
 		* @public
-		*/ 
+		*/
 		menuClass: '',
 
 		/**
 		* CSS class to be applied to individual controls moved from the toolbar to the menu
 		*
 		* *Design-time property*
-		* 
+		*
 		* @type {String}
 		* @default  ''
 		* @public
@@ -85,7 +85,7 @@
 		published: {
 			/**
 			* Layout kind that will be applied to the client controls
-			* 
+			*
 			* @type {String}
 			* @default  'FittableColumnsLayout'
 			* @public
@@ -154,7 +154,7 @@
 
 		/**
 		* Removes the next collapsible item from the toolbar and adds it to the menu
-		* 
+		*
 		* @private
 		*/
 		popItem: function () {
@@ -176,7 +176,7 @@
 
 		/**
 		* Removes the first child of the menu and adds it back to the toolbar
-		* 
+		*
 		* @private
 		*/
 		pushItem: function () {
@@ -249,7 +249,7 @@
 
 		/**
 		* Finds the next control (starting from the end) that can be pushed onto the menu
-		* 
+		*
 		* @private
 		*/
 		findCollapsibleItem: function () {

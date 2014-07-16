@@ -3,8 +3,8 @@
 	/**
 	* _onyx.MenuDecorator_ is a control that loosely couples an
 	* {@link onyx.Menu} with an activating control, which may be a button or
-	* any other control with an {@link enyo.GroupItem#event:onActivate} event. The decorator 
-	* must surround both the activating control and the menu itself. When the menu is 
+	* any other control with an {@link enyo.GroupItem#event:onActivate} event. The decorator
+	* must surround both the activating control and the menu itself. When the menu is
 	* activated, it shows itself in the correct position relative to the activator.
 	*
 	* ```
@@ -28,7 +28,7 @@
 	enyo.kind(
 		/** @lends  onyx.MenuDecorator.prototype */ {
 
-		/** 
+		/**
 		* @private
 		*/
 		name: 'onyx.MenuDecorator',
@@ -45,7 +45,7 @@
 
 		/**
 		* selection on ios prevents tap events, so avoid.
-		* 
+		*
 		* @private
 		*/
 		classes: 'onyx-popup-decorator enyo-unselectable',
@@ -95,7 +95,7 @@
 
 		/**
 		* Handler for {@link enyo.Popup#event:onHide}
-		* 
+		*
 		* @private
 		*/
 		menuHidden: function () {

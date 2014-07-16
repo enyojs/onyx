@@ -22,7 +22,7 @@
 	/**
 	* _onyx.MenuItem_ is a button styled to look like a menu item, designed for use
 	* in an {@link onyx.Menu}. When the MenuItem is tapped, it tells the menu
-	* to hide itself and emits an {@link onyx.MenuItem#event:onSelect} event with its content 
+	* to hide itself and emits an {@link onyx.MenuItem#event:onSelect} event with its content
 	* and a reference to itself. This event and its properties may be handled by a client
 	* application to determine which menu item was selected.
 	*

@@ -38,7 +38,7 @@
 	* 	]}
 	* ]}
 	* ```
-	* 
+	*
 	* For more information, see the documentation on
 	* [Menus](building-apps/controls/menus.html) in the Enyo Developer Guide.
 	*
@@ -62,7 +62,7 @@
 
 		/**
 		* If true, controls outside of the menu will not receive events while the menu is showing
-		* 
+		*
 		* @private
 		*/
 		modal: true,
@@ -84,7 +84,7 @@
 		published: {
 			/**
 			* Maximum height of the menu, in pixels
-			* 
+			*
 			* @type {Number}
 			* @default  200
 			* @public
@@ -93,9 +93,9 @@
 
 			/**
 			* Boolean indicating whether scrolling is enabled.
-			* 
+			*
 			* *Note:* This is a design-time property and should not be set after creation.
-			* 
+			*
 			* @type {Boolean}
 			* @default  true
 			* @public
@@ -104,7 +104,7 @@
 
 			/**
 			* Current scroll strategy
-			* 
+			*
 			* @type {String}
 			* @default  'TouchScrollStrategy'
 			* @public
@@ -130,7 +130,7 @@
 
 		/**
 		* Favor showing menu on top of activating control if `true`
-		* 
+		*
 		* @type {Boolean}
 		* @private
 		*/
@@ -215,7 +215,7 @@
 
 		/**
 		* Applies the CSS styles to position the menu
-		* 
+		*
 		* @param  {Object} rect - Object with at least 1 position attribute
 		* 	(top, right, bottom, left)
 		* @private
@@ -254,7 +254,7 @@
 		/**
 		* Adjusts the menu position to fit inside the current window size.
 		* Note that we aren't currently adjusting picker scroller heights.
-		* 
+		*
 		* @private
 		*/
 		adjustPosition: function () {
@@ -333,7 +333,7 @@
 
 		/**
 		* Handler for onresize. Adjusts the position of the menu
-		* 
+		*
 		* @private
 		*/
 		handleResize: function () {
@@ -343,7 +343,7 @@
 
 		/**
 		* Handler for {@link onyx.Menu#event:onRequestMenuHide}
-		* 
+		*
 		* @private
 		*/
 		requestHide: function (){

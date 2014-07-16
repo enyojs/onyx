@@ -37,7 +37,7 @@
 		/**
 		* Handles {@link onyx.Picker#event:onChange} that is waterfalled down from
 		* {@link onyx.PickerDecorator}
-		* 
+		*
 		* @private
 		*/
 		change: function (sender, event) {

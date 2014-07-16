@@ -41,7 +41,7 @@
 			/**
 			* Boolean that controls whether or not a scrim will be displayed. Scrims are
 			* only displayed when the dialog is floating.
-			* 
+			*
 			* @type {Boolean}
 			* @default  false
 			* @public
@@ -61,7 +61,7 @@
 
 			/**
 			* Lowest z-index that may be applied to a popup
-			* 
+			*
 			* @type {Number}
 			* @default  120
 			* @public
@@ -110,7 +110,7 @@
 
 		/**
 		* Toggles the display of the scrim
-		* 
+		*
 		* @param  {Boolean} show - Show the scrim
 		* @private
 		*/
@@ -131,7 +131,7 @@
 
 		/**
 		* Calculates the z-index for the scrim so it's directly below the popup
-		* 
+		*
 		* @private
 		*/
 		getScrimZIndex: function () {
@@ -141,12 +141,12 @@
 		/**
 		* Show a transparent scrim for modal popups if {@link onyx.Popup#scrimWhenModal} is `true`
 		* if {@link onyx.Popup#scrim} is `true`, then show a regular scrim.
-		* 
+		*
 		* @return {onyx.Scrim}
 		* @private
 		*/
 		getScrim: function () {
-			// 
+			//
 			if (this.modal && this.scrimWhenModal && !this.scrim) {
 				return onyx.scrimTransparent.make();
 			}
@@ -155,7 +155,7 @@
 
 		/**
 		* Adjust the zIndex so that popups will properly stack on each other.
-		* 
+		*
 		* @private
 		*/
 		applyZIndex: function () {
@@ -172,7 +172,7 @@
 
 		/**
 		* Find the z-index for this popup, clamped by {@link onyx.Popup#defaultZ}
-		* 
+		*
 		* @return {Number} z-index value
 		* @private
 		*/

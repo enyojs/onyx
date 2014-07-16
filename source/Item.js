@@ -36,7 +36,7 @@
 			* If true, the item will be automatically highlighted (the _onyx-highlight_
 			* CSS class will be applied) when tapped. Set to false to disable this
 			* behavior
-			* 
+			*
 			* @type {Boolean}
 			* @default  true
 			* @public
@@ -77,7 +77,7 @@
 		statics: {
 			/**
 			* Adds or removes `className` to `control` based on `add`
-			* 
+			*
 			* @param {enyo.Control} control - Control to modify
 			* @param {String} className     - CSS Class Name
 			* @param {Boolean} add          - If `true`, the class is added. If `false`, the class

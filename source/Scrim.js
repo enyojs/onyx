@@ -1,4 +1,4 @@
-﻿(function (enyo, scope) {
+(function (enyo, scope) {
 
 	/**
 	* _onyx.Scrim_ provides an overlay that will prevent taps from propagating to
@@ -9,9 +9,9 @@
 	* The scrim should have a CSS class of `onyx-scrim-transparent`,
 	* `onyx-scrim-translucent`, or any other class that has
 	* `pointer-events: auto` in its style properties.
-	* 
+	*
 	* You may specify the `z-index` at which you want the scrim to appear by calling
-	* {@link onyx.Scrim#showAtZIndex}. If you do so, you must call {@link onyx.Scrim#hideAtZIndex} 
+	* {@link onyx.Scrim#showAtZIndex}. If you do so, you must call {@link onyx.Scrim#hideAtZIndex}
 	* with the same value to hide the scrim.
 	*
 	* @class  onyx.Scrim
@@ -27,9 +27,9 @@
 		*/
 		name: 'onyx.Scrim',
 
-		/** 
+		/**
 		* Current visibility state of scrim
-		* 
+		*
 		* @type {Boolean}
 		* @private
 		*/
@@ -44,7 +44,7 @@
 		* If true, the scrim is rendered in a floating layer outside of other
 		* controls. This can be used to guarantee that the scrim will be shown
 		* on top of other controls.
-		* 
+		*
 		* @type {Boolean}
 		* @default  false
 		* @public
@@ -94,7 +94,7 @@
 		* Shows scrim at the specified z-index. Note that if you call
 		* _showAtZIndex()_, you must call _hideAtZIndex()_ to properly unwind the
 		* z-index stack.
-		* 
+		*
 		* @param  {Number} zIndex - z-index for the scrim
 		* @public
 		*/
@@ -108,7 +108,7 @@
 
 		/**
 		* Hides scrim at the specified z-index.
-		* 
+		*
 		* @param  {Number} zIndex - z-index of the scrim
 		* @public
 		*/
@@ -186,7 +186,7 @@
 
 		/**
 		* In case somebody does this out of order
-		* 
+		*
 		* @private
 		*/
 		hideAtZIndex: enyo.nop,

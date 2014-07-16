@@ -4,15 +4,15 @@
 	* onyx.TabBar is a scrolled set of radio buttons that is used by TabPanels. This bar may
 	* be used by other kinds to provide a similar layout. By default, a tap on a tab will
 	* immediately switch tab and fire a 'onTabChanged' event.
-	* 
-	* 
+	*
+	*
 	* Here's an example:
-	* 
+	*
 	* ```
 	* enyo.kind({
 	* 	name: 'myStuff'
 	* });
-	* 
+	*
 	* enyo.kind({
 	* 	name: 'App',
 	* 	fit: true,
@@ -20,11 +20,11 @@
 	* 		{name:'bar',kind: 'onyx.TabBar'},
 	* 		{kind: 'MyStuff'}
 	* 	],
-	* 
+	*
 	* 	handlers: {
 	* 		onTabChanged: 'switchStuff'
 	* 	},
-	* 
+	*
 	* 	rendered: function () {
 	* 		this.inherited(arguments);
 	* 		this.$.bar.addTab({
@@ -33,17 +33,17 @@
 	* 			}
 	* 		) ;
 	* 	},
-	* 
+	*
 	* 	switchStuff: function (inSender,inEvent) {
 	* 		this.log('Tapped tab with caption '+ inEvent.caption
 	* 			+ ' and message ' + inEvent.data.msg );
 	* 	}
 	* });
 	* ```
-	* 
-	* Tabs must be created after construction, i.e. in rendered function. If tabs are created in 
+	*
+	* Tabs must be created after construction, i.e. in rendered function. If tabs are created in
 	* 'create' function, the last created tabs will not be selected.
-	* 
+	*
 	* You can also setup the TabBar so a tap on a tab will fire a
 	* 'onTabChangeRequest' event:
 	*
@@ -55,11 +55,11 @@
 	* 		{name:'bar',kind: 'onyx.TabBar', checkBeforeChanging: true },
 	* 		{kind: 'MyStuff'}
 	* 	],
-	* 
+	*
 	*     handlers: {
 	* 		onTabChangeRequest: 'switchStuff'
 	* 	},
-	* 
+	*
 	*     // same rendered function as above
 	* 	switchStuff: function (inSender,inEvent) {
 	* 		this.log('Tapped tab with caption ' + inEvent.caption
@@ -69,7 +69,7 @@
 	* 	}
 	* });
 	* ```
-	* 
+	*
 	* In this mode, no event is fired *after* the actual switch.
 	*
 	* @class  onyx.TabBar
@@ -103,7 +103,7 @@
 				'next': callback // call with error message if problem
 			}
 
-			 */
+			*/
 			onTabChanged: '',
 
 			/*
@@ -112,34 +112,34 @@
 			inEvent contains the same structure as onTabChanged event. Call next()
 			when the tab change can be completed.
 
-			 */
+			*/
 
 			onTabChangeRequested: '',
 
 			/*
-			 * Fired when a tab is about to be removed. inEvent
-			 * contains the same data as onTabChanged.
-			 *
-			 * if (removeOk) { inEvent.next() ;}
-			 * else ( inEvent.next('not now') ;}
-			 *
-			 * Once a tab is removed (by calling next() ), a replacement
-			 * tab will be activated and a doTabChanged event will be
-			 * fired.
-			 */
+			* Fired when a tab is about to be removed. inEvent
+			* contains the same data as onTabChanged.
+			*
+			* if (removeOk) { inEvent.next() ;}
+			* else ( inEvent.next('not now') ;}
+			*
+			* Once a tab is removed (by calling next() ), a replacement
+			* tab will be activated and a doTabChanged event will be
+			* fired.
+			*/
 			onTabRemoveRequested: '',
 
 			/*
-			 * Fired when a tab is removed. inEvent contains the same
-			 * data as onTabChanged (minus the next callback)
-			 */
+			* Fired when a tab is removed. inEvent contains the same
+			* data as onTabChanged (minus the next callback)
+			*/
 			onTabRemoved: ''
 		},
 
 		/*
-		 * Set a maximum height for the scrollable menu that can be raised on the right of
-		 * the tab bar.
-		 */
+		* Set a maximum height for the scrollable menu that can be raised on the right of
+		* the tab bar.
+		*/
 		published: {
 			maxMenuHeight: 600
 		},
@@ -151,7 +151,7 @@
 
 		components: [
 			{
-				fit:true, 
+				fit:true,
 				components: [
 					{
 						name: 'scroller',
@@ -250,14 +250,14 @@
 
 		//* @public
 		/*
-		 *
-		 * Append a new tab to the tab bar. inControl is an object
-		 * with optional caption and data attributes. When not
-		 * specified the tab will have a generated caption like
-		 * 'Tab 0', 'Tab 1'. etc... data is an arbitrary object that will
-		 * be given back with onTabChanged events
-		 *
-		 */
+		*
+		* Append a new tab to the tab bar. inControl is an object
+		* with optional caption and data attributes. When not
+		* specified the tab will have a generated caption like
+		* 'Tab 0', 'Tab 1'. etc... data is an arbitrary object that will
+		* be given back with onTabChanged events
+		*
+		*/
 		addTab: function (inControl) {
 			var c = inControl.caption || ('Tab ' + this.lastIndex);
 			this.selectedId = this.lastIndex++ ;
@@ -281,18 +281,18 @@
 
 		//* @public
 		/*
-		 *
-		 * Remove a tab from the tab bar. target is an object with
-		 * either a caption attribute or an index. The tab(s) matching
-		 * the caption will be destroyed or the tab with matching
-		 * index will be destroyed.
-		 *
-		 * Example:
+		*
+		* Remove a tab from the tab bar. target is an object with
+		* either a caption attribute or an index. The tab(s) matching
+		* the caption will be destroyed or the tab with matching
+		* index will be destroyed.
+		*
+		* Example:
 
 			myTab.removeTab({'index':0}); // remove the leftmost tab
 			myTab.removeTab({'caption':'foo.js'});
 
-		 */
+		*/
 
 		removeTab: function (target) {
 			var tab = this.resolveTab(target,'removeTab');
@@ -339,13 +339,13 @@
 
 		//* @public
 		/*
-		 *
-		 * Request to remove a tab from the tab bar. This is a bit
-		 * like removeTab, except that a onTabRemoveRequested event is
-		 * fired to let the application the possibility to cancel the
-		 * request.
-		 *
-		 */
+		*
+		* Request to remove a tab from the tab bar. This is a bit
+		* like removeTab, except that a onTabRemoveRequested event is
+		* fired to let the application the possibility to cancel the
+		* request.
+		*
+		*/
 
 		requestRemoveTab: function (target) {
 			var tab = this.resolveTab(target,'removeTab');
@@ -417,20 +417,20 @@
 
 		//* @public
 		/*
-		 *
-		 * Activate a tab in the tab bar. target is an object with
-		 * either a caption attribute or an index. The tab(s) matching
-		 * the caption will be activated or the tab with matching
-		 * index will be activated
-		 *
-		 * Example:
+		*
+		* Activate a tab in the tab bar. target is an object with
+		* either a caption attribute or an index. The tab(s) matching
+		* the caption will be activated or the tab with matching
+		* index will be activated
+		*
+		* Example:
 
 			myTab.activate({'index':0}); // activate the leftmost tab
 			myTab.activate({'caption':'foo.js'});
 
-		 * Note that tabActivated event will be fired.
-		 *
-		 */
+		* Note that tabActivated event will be fired.
+		*
+		*/
 		activate: function (target) {
 			var tab = this.resolveTab(target,'activate');
 			if (tab) {

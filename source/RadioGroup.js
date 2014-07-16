@@ -38,7 +38,7 @@
 
 		/**
 		* Set to true to provide radio button behavior
-		* 
+		*
 		* @private
 		*/
 		highlander: true

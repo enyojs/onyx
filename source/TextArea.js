@@ -11,13 +11,13 @@
 	* 	{kind: 'onyx.TextArea', onchange: 'inputChange'}
 	* ]}
 	* ```
-	* 
+	*
 	* For more information, see the documentation on [Text
 	* Fields](building-apps/controls/text-fields.html) in the Enyo Developer Guide.
 	*
+	* @ui
 	* @class  onyx.TextArea
 	* @extends enyo.TextArea
-	* @ui
 	* @public
 	*/
 	enyo.kind(

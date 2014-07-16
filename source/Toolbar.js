@@ -1,46 +1,46 @@
 (function (enyo, scope) {
 	/**
-	 * _onyx.Toolbar_ is a horizontal bar containing controls used to perform common
-	 * UI actions.
-	 *
-	 * A toolbar customizes the styling of the controls it hosts, including buttons,
-	 * icons, and inputs.
-	 *
-	 *  ```
-	 *	{kind: 'onyx.Toolbar', components: [
-	 *		{kind: 'onyx.Button', content: 'Favorites'},
-	 *		{kind: 'onyx.InputDecorator', components: [
-	 *			{kind: 'onyx.Input', placeholder: 'Enter a search term...'}
-	 *		]},
-	 *		{kind: 'onyx.IconButton', src: 'go.png'}
-	 *	]}
-	 *  ```
-	 *
-	 * For more information, see the documentation on
-	 * [Toolbars](building-apps/controls/toolbars.html) in the Enyo Developer Guide.
-	 *
-	 * @class onyx.Toolbar
-	 * @extends enyo.Control
-	 * @public
-	 * @ui
-	 */
+	* _onyx.Toolbar_ is a horizontal bar containing controls used to perform common
+	* UI actions.
+	*
+	* A toolbar customizes the styling of the controls it hosts, including buttons,
+	* icons, and inputs.
+	*
+	*  ```
+	*	{kind: 'onyx.Toolbar', components: [
+	*		{kind: 'onyx.Button', content: 'Favorites'},
+	*		{kind: 'onyx.InputDecorator', components: [
+	*			{kind: 'onyx.Input', placeholder: 'Enter a search term...'}
+	*		]},
+	*		{kind: 'onyx.IconButton', src: 'go.png'}
+	*	]}
+	*  ```
+	*
+	* For more information, see the documentation on
+	* [Toolbars](building-apps/controls/toolbars.html) in the Enyo Developer Guide.
+	*
+	* @ui
+	* @class onyx.Toolbar
+	* @extends enyo.Control
+	* @public
+	*/
 
 	enyo.kind(
 		/** @lends  onyx.Toolbar.prototype */ {
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		name: 'onyx.Toolbar',
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		classes: 'onyx onyx-toolbar onyx-toolbar-inline',
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		create: function (){
 			this.inherited(arguments);
 

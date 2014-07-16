@@ -11,7 +11,7 @@
 	* ```
 	* {kind: 'onyx.Icon', src: 'images/search.png'}
 	* ```
-	* 
+	*
 	* When an icon should act like a button, use an {@link onyx.IconButton}
 	*
 	* @class  onyx.Icon

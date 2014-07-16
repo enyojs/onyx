@@ -1,105 +1,104 @@
 (function (enyo, scope) {
 	/**
-	 * _onyx.Tooltip_ is a subkind of [onyx.Popup](@link onyx.Popup) that works in
-	 * conjunction with an [onyx.TooltipDecorator](@link onyx.TooltipDecorator). It
-	 * automatically displays a tooltip when the user hovers over the decorator.
-	 * The tooltip is positioned around the decorator where there is available
-	 * window space.
-	 *
-	 *  ```
-	 *	{kind: 'onyx.TooltipDecorator', components: [
-	 *		{kind: 'onyx.Button', content: 'Tooltip'},
-	 *		{kind: 'onyx.Tooltip', content: 'I am a tooltip for a button.'}
-	 *	]}
-	 *  ```
-	 *
-	 * You may also force a tooltip to be displayed by calling its _show()_ method.
-	 *
-	 * @class onyx.Tooltip
-	 * @extends onyx.Popup
-	 * @public
-	 * @ui
-	 */
-
+	* _onyx.Tooltip_ is a subkind of [onyx.Popup](@link onyx.Popup) that works in
+	* conjunction with an [onyx.TooltipDecorator](@link onyx.TooltipDecorator). It
+	* automatically displays a tooltip when the user hovers over the decorator.
+	* The tooltip is positioned around the decorator where there is available
+	* window space.
+	*
+	*  ```
+	*	{kind: 'onyx.TooltipDecorator', components: [
+	*		{kind: 'onyx.Button', content: 'Tooltip'},
+	*		{kind: 'onyx.Tooltip', content: 'I am a tooltip for a button.'}
+	*	]}
+	*  ```
+	*
+	* You may also force a tooltip to be displayed by calling its _show()_ method.
+	*
+	* @ui
+	* @class onyx.Tooltip
+	* @extends onyx.Popup
+	* @public
+	*/
 	enyo.kind(
 		/** @lends  onyx.Tooltip.prototype */ {
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		name: 'onyx.Tooltip',
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		kind: 'onyx.Popup',
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		classes: 'onyx-tooltip below left-arrow',
 
 		/**
-		 * If true, the tooltip is automatically dismissed when user stops hovering over the decorator
-		 *
-		 * @type {Boolean}
-		 * @default false
-		 * @public
-		 */
+		* If true, the tooltip is automatically dismissed when user stops hovering over the decorator
+		*
+		* @type {Boolean}
+		* @default false
+		* @public
+		*/
 		autoDismiss: false,
 
 		/**
-		 * Hovering over the decorator for this length of time (in milliseconds) causes the tooltip to appear
-		 *
-		 * @type {Number}
-		 * @default 500
-		 * @public
-		 */
+		* Hovering over the decorator for this length of time (in milliseconds) causes the tooltip to appear
+		*
+		* @type {Number}
+		* @default 500
+		* @public
+		*/
 		showDelay: 500,
 
 		/**
-		 * Default _margin-left_ value
-		 *
-		 * @type {Number}
-		 * @default -6
-		 * @public
-		 */
+		* Default _margin-left_ value
+		*
+		* @type {Number}
+		* @default -6
+		* @public
+		*/
 		defaultLeft: -6,
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		handlers: {
 			onRequestShowTooltip: 'requestShow',
 			onRequestHideTooltip: 'requestHide'
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		requestShow: function () {
 			this.showJob = setTimeout(this.bindSafely('show'), this.showDelay);
 			return true;
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		cancelShow: function () {
 			clearTimeout(this.showJob);
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		requestHide: function () {
 			this.cancelShow();
 			return this.inherited(arguments);
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		showingChanged: function () {
 			this.cancelShow();
 			this.adjustPosition(true);
@@ -107,8 +106,8 @@
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		applyPosition: function (inRect) {
 			var s = '';
 			for (var n in inRect) {
@@ -118,8 +117,8 @@
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		adjustPosition: function (belowActivator) {
 			if (this.showing && this.hasNode()) {
 				var b = this.node.getBoundingClientRect();
@@ -145,8 +144,8 @@
 		},
 
 		/**
-		 * @private
-		 */
+		* @private
+		*/
 		handleResize: function () {
 			//reset the tooltip to align its left edge with the decorator
 			this.applyPosition({'margin-left': this.defaultLeft, bottom: 'auto'});

@@ -96,7 +96,7 @@
 		published: {
 			/**
 			* Number of rows to render
-			* 
+			*
 			* @type {Number}
 			* @default  0
 			* @public
@@ -137,7 +137,7 @@
 		* Force the flyweight's client control (MenuItem is default) to activate. This will
 		* result in a call to processActivatedItem which preps our picker selection logic.
 		* This is a workaround for changes caused by ENYO-1609 which resulted in ENYO-1611.
-		* 
+		*
 		* @private
 		*/
 		initComponents: function () {
@@ -187,7 +187,7 @@
 		},
 
 		/**
-		* @fires onyx.Picker#event:onChange 
+		* @fires onyx.Picker#event:onChange
 		* @private
 		*/
 		selectedChanged: function (old) {
@@ -223,7 +223,7 @@
 		* Block all select events that aren't coming from this control. This is to prevent
 		* select events from MenuItems since they won't have the correct value in a Flyweight
 		* context.
-		* 
+		*
 		* @private
 		*/
 		itemSelect: function (sender, event) {
