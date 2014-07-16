@@ -3,7 +3,7 @@
 		"allowUnknownTags": false
 	},
 	"source": {
-		"include": ["source", "docs/external.jsdoc"],
+		"include": ["version.js", "source", "docs/external.jsdoc"],
 		"exclude": ["css", "design", "docs", "images", "samples"],
 		"includePattern": ".+\\.js(doc)?$"
 	},
