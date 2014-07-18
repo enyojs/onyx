@@ -1,6 +1,6 @@
 enyo.depends(
-	"version.js",
-	"source",
-	"css",
-	"onyx.design"
+	'version.js',
+	'source',
+	'css',
+	'onyx.design'
 );

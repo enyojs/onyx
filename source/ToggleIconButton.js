@@ -1,58 +1,132 @@
-/**
-	_onyx.ToggleIconButton_ is an icon that acts like a toggle switch. The icon
-	image is specified by setting the _src_ property to a URL.
+(function (enyo, scope) {
+	/**
+	* Fires when the user changes the value of the toggle button, but not
+	* when the value is changed programmatically.
+	*
+	* @event onyx.ToggleIconButton#event:onChange
+	* @type {Object}
+	* @property {Boolean} value - The current value of the button
+	* @public
+	*/
 
-		{kind: "onyx.ToggleIconButton", src: "images/search.png", ontap: "buttonTap"}
+	/**
+	* _onyx.ToggleIconButton_ is an icon that acts like a toggle switch. The icon
+	* image is specified by setting the `src` property to a URL.
+	*
+	* ```
+	* {kind: 'onyx.ToggleIconButton', src: 'images/search.png', ontap: 'buttonTap'}
+	* ```
+	*
+	* The image associated with the `src` property is assumed	to be a 32x64-pixel
+	* strip, with the top half showing the button's normal state and the bottom
+	* half showing its state when hovered-over or active.
+	*
+	* @ui
+	* @class onyx.ToggleIconButton
+	* @extends onyx.Icon
+	* @public
+	*/
 
-	The image associated with the _src_ property is assumed	to be a 32x64-pixel
-	strip, with the top half showing the button's normal state and the bottom
-	half showing its state when hovered-over or active.
-*/
+	enyo.kind(
+		/** @lends  onyx.ToggleIconButton.prototype */ {
 
-enyo.kind({
-	name: "onyx.ToggleIconButton",
-	kind: "onyx.Icon",
-	published: {
 		/**
-			Used when the ToggleIconButton is part of an enyo.Group; set to true
-			to indicate that this is the active button in the group.
+		* @private
 		*/
-		active: false,
-		//* Boolean indicating whether the button is currently in the "on" state
-		value: false
-	},
-	events: {
+		name: 'onyx.ToggleIconButton',
+
 		/**
-			Fires when the user changes the value of the toggle button, but not
-			when the value is changed programmatically.
+		* @private
 		*/
-		onChange: ""
-	},
-	classes: "onyx-icon-button onyx-icon-toggle",
-	//* @protected
-	activeChanged: function() {
-		this.addRemoveClass("active", this.value);
-		this.bubble("onActivate");
-	},
-	updateValue: function(inValue) {
-		if (!this.disabled) {
-			this.setValue(inValue);
-			this.doChange({value: this.value});
+		kind: 'onyx.Icon',
+
+		/**
+		* @lends enyo.ToggleIconButton.prototype
+		* @private
+		*/
+		published: {
+			/**
+			* Used when the ToggleIconButton is part of an [enyo.Group](@link enyo.Group); set to true
+			* to indicate that this is the active button in the group.
+			*
+			* @type {Boolean}
+			* @default false
+			* @public
+			*/
+			active: false,
+		
+			/**
+			* Boolean indicating whether the button is currently in the 'on' state
+			*
+			* @type {Boolean}
+			* @default false
+			* @public
+			*/
+			value: false
+		},
+
+		/**
+		* @private
+		*/
+		events: {
+			onChange: ''
+		},
+
+		/**
+		* @private
+		*/
+		classes: 'onyx-icon-button onyx-icon-toggle',
+
+		/**
+		* @private
+		*/
+		activeChanged: function () {
+			this.addRemoveClass('active', this.value);
+			this.bubble('onActivate');
+		},
+
+		/**
+		* @private
+		*/
+		updateValue: function (inValue) {
+			if (!this.disabled) {
+				this.setValue(inValue);
+				this.doChange({value: this.value});
+			}
+		},
+
+		/**
+		* Programmatically simulates a user tap of the toggle button.
+		*
+		* @public
+		*/
+		tap: function () {
+			this.updateValue(!this.value);
+		},
+
+		/**
+		* @private
+		*/
+		valueChanged: function () {
+			this.setActive(this.value);
+		},
+
+		/**
+		* @private
+		*/
+		create: function () {
+			this.inherited(arguments);
+			this.value = Boolean(this.value || this.active);
+		},
+
+		/**
+		* @private
+		*/
+		rendered: function () {
+			this.inherited(arguments);
+			this.valueChanged();
+			this.removeClass('onyx-icon');
 		}
-	},
-	tap: function() {
-		this.updateValue(!this.value);
-	},
-	valueChanged: function() {
-		this.setActive(this.value);
-	},
-	create: function() {
-		this.inherited(arguments);
-		this.value = Boolean(this.value || this.active);
-	},
-	rendered: function() {
-		this.inherited(arguments);
-		this.valueChanged();
-		this.removeClass('onyx-icon');
-	}
-});
+	});
+
+})(enyo, this);
