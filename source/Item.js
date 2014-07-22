@@ -39,6 +39,8 @@ enyo.kind({
 				flyweight.performOnRow(index, function() {
 					inControl.addRemoveClass(inClass, inTrueToAdd);
 				});
+			} else {
+				inControl.addRemoveClass(inClass, inTrueToAdd);
 			}
 		}
 	}
