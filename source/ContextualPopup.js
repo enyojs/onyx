@@ -75,7 +75,8 @@
 		autoDismiss: true,
 
 		/**
-		* @private
+		* @see enyo.Popup#floating
+		* @public
 		*/
 		floating:false,
 
