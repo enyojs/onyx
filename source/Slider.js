@@ -1,144 +1,284 @@
-/**
-	_onyx.Slider_ is a control that presents a range of selection options in the
-	form of a horizontal slider with a control knob. The knob may be tapped and
-	dragged	to the desired location.
+(function (enyo, scope) {
 
-		{kind: "onyx.Slider", value: 30}
+	/**
+	* Fires when bar position is set
+	*
+	* @event onyx.Slider#event:onChange
+	* @type {Object}
+	* @property {Number} value - New position
+	* @public
+	*/
 
-	_onChanging_ events are fired while the control knob is being dragged, and
-	an _onChange_ event is fired when the position is set, either by finishing a
-	drag or by tapping the bar.
+	/**
+	* Fires while control knob is being dragged
+	*
+	* @event onyx.Slider#event:onChanging
+	* @type {Object}
+	* @property {Number} value - Current position
+	* @public
+	*/
 
-	For more information, see the documentation on [Progress
-	Indicators](building-apps/controls/progress-indicators.html) in the Enyo
-	Developer Guide.
-*/
-enyo.kind({
-	name: "onyx.Slider",
-	kind: "onyx.ProgressBar",
-	classes: "onyx-slider",
-	published: {
-		//* Position of slider, expressed as an integer between 0 and 100,
-		//* inclusive
-		value: 0,
-		//* If true, current progress will be styled differently from rest of bar
-		lockBar: true,
-		//* If true, tapping on bar will change current position
-		tappable: true
-	},
-	events: {
+	/**
+	* Fires when animation to a position finishes.
+	*
+	* @event onyx.Slider#event:onAnimateFinish
+	* @type {enyo.Animator}
+	* @public
+	* @todo  Animator as the payload; overlap with
+	* 	{@link onyx.ProgressBar#event:onAnimateProgressFinish}
+	*/
+
+	/**
+	* _onyx.Slider_ is a control that presents a range of selection options in the
+	* form of a horizontal slider with a control knob. The knob may be tapped and
+	* dragged to the desired location.
+	*
+	* ```
+	* {kind: 'onyx.Slider', value: 30}
+	* ```
+	*
+	* {@link onyx.Slider#event:onChanging} events are fired while the control knob is being
+	* dragged, and an {@link onyx.Slider#event:onChange} event is fired when the position is set,
+	* either by finishing a drag or by tapping the bar.
+	*
+	* For more information, see the documentation on [Progress
+	* Indicators](building-apps/controls/progress-indicators.html) in the Enyo
+	* Developer Guide.
+	*
+	* @class  onyx.Slider
+	* @extends onyx.ProgressBar
+	* @ui
+	* @public
+	*/
+	enyo.kind(
+		/** @lends  onyx.Slider.prototype */ {
+
 		/**
-			Fires when bar position is set.
-
-			_inEvent.value_ contains the new position.
+		* @private
 		*/
-		onChange: "",
+		name: 'onyx.Slider',
+
 		/**
-			Fires while control knob is being dragged.
-			
-			_inEvent.value_ contains the current position.
+		* @private
 		*/
-		onChanging: "",
-		//* Fires when animation to a position finishes.
-		onAnimateFinish: ""
-	},
-	//* If true, stripes are shown in the slider bar
-	showStripes: false,
-	//* @protected
-	handlers: {
-		ondragstart: "dragstart",
-		ondrag: "drag",
-		ondragfinish: "dragfinish"
-	},
-	moreComponents: [
-		{kind: "Animator", onStep: "animatorStep", onEnd: "animatorComplete"},
-		{classes: "onyx-slider-taparea"},
-		{name: "knob", classes: "onyx-slider-knob"}
-	],
-	create: function() {
-		this.inherited(arguments);
+		kind: 'onyx.ProgressBar',
 
-		// add handlers for up/down events on knob for pressed state (workaround for inconsistent (timing-wise) active:hover styling)
-		this.moreComponents[2].ondown = "knobDown";
-		this.moreComponents[2].onup = "knobUp";
+		/**
+		* @private
+		*/
+		classes: 'onyx-slider',
 
-		this.createComponents(this.moreComponents);
-		this.valueChanged();
-	},
-	valueChanged: function() {
-		this.value = this.clampValue(this.min, this.max, this.value);
-		var p = this.calcPercent(this.value);
-		this.updateKnobPosition(p);
-		if (this.lockBar) {
-			this.setProgress(this.value);
-		}
-	},
-	updateKnobPosition: function(inPercent) {
-		this.$.knob.applyStyle("left", inPercent + "%");
-	},
-	calcKnobPosition: function(inEvent) {
-		var x = inEvent.clientX - this.hasNode().getBoundingClientRect().left;
-		return (x / this.getBounds().width) * (this.max - this.min) + this.min;
-	},
-	dragstart: function(inSender, inEvent) {
-		if (inEvent.horizontal) {
-			inEvent.preventDefault();
-			this.dragging = true;
-			inSender.addClass("pressed");
-			return true;
-		}
-	},
-	drag: function(inSender, inEvent) {
-		if (this.dragging) {
-			var v = this.calcKnobPosition(inEvent);
-			v = (this.increment) ? this.calcIncrement(v) : v;
-			this.setValue(v);
-			this.doChanging({value: this.value});
-			return true;
-		}
-	},
-	dragfinish: function(inSender, inEvent) {
-		this.dragging = false;
-		inEvent.preventTap();
-		this.doChange({value: this.value});
-		inSender.removeClass("pressed");
-		return true;
-	},
-	tap: function(inSender, inEvent) {
-		if (this.tappable) {
-			var v = this.calcKnobPosition(inEvent);
-			v = (this.increment) ? this.calcIncrement(v) : v;
-			this.tapped = true;
-			this.animateTo(v);
-			return true;
-		}
-	},
-	knobDown: function(inSender, inEvent) {
-		this.$.knob.addClass("pressed");
-	},
-	knobUp: function(inSender, inEvent) {
-		this.$.knob.removeClass("pressed");
-	},
-	//* @public
-	//* Animates to the given value.
-	animateTo: function(inValue) {
-		this.$.animator.play({
-			startValue: this.value,
-			endValue: inValue,
-			node: this.hasNode()
-		});
-	},
-	//* @protected
-	animatorStep: function(inSender) {
-		this.setValue(inSender.value);
-		return true;
-	},
-	animatorComplete: function(inSender) {
-		if (this.tapped) {
-			this.tapped = false;
+		/**
+		* @lends onyx.Slider.prototype
+		* @private
+		*/
+		published: {
+			/**
+			* Position of slider, expressed as an integer between 0 and 100, inclusive
+			*
+			* @type {Number}
+			* @default  0
+			* @public
+			*/
+			value: 0,
+
+			/**
+			* If `true`, current progress will be styled differently from rest of bar
+			*
+			* @type {Boolean}
+			* @default  true
+			* @public
+			*/
+			lockBar: true,
+
+			/**
+			* If `true`, tapping on bar will change current position
+			*
+			* @type {Boolean}
+			* @default  true
+			* @public
+			*/
+			tappable: true
+		},
+
+		/**
+		* @private
+		*/
+		events: {
+			onChange: '',
+			onChanging: '',
+			onAnimateFinish: ''
+		},
+
+		/**
+		* If true, stripes are shown in the slider bar
+		*
+		* @type {Boolean}
+		* @default  false
+		* @public
+		*/
+		showStripes: false,
+
+		/**
+		* @private
+		*/
+		handlers: {
+			ondragstart: 'dragstart',
+			ondrag: 'drag',
+			ondragfinish: 'dragfinish'
+		},
+
+		/**
+		* @private
+		*/
+		moreComponents: [
+			{kind: 'Animator', onStep: 'animatorStep', onEnd: 'animatorComplete'},
+			{classes: 'onyx-slider-taparea'},
+			{name: 'knob', classes: 'onyx-slider-knob'}
+		],
+
+		/**
+		* @private
+		*/
+		create: function () {
+			this.inherited(arguments);
+
+			// add handlers for up/down events on knob for pressed state (workaround for inconsistent (timing-wise) active:hover styling)
+			this.moreComponents[2].ondown = 'knobDown';
+			this.moreComponents[2].onup = 'knobUp';
+
+			this.createComponents(this.moreComponents);
+			this.valueChanged();
+		},
+
+		/**
+		* @private
+		*/
+		valueChanged: function () {
+			this.value = this.clampValue(this.min, this.max, this.value);
+			var p = this.calcPercent(this.value);
+			this.updateKnobPosition(p);
+			if (this.lockBar) {
+				this.setProgress(this.value);
+			}
+		},
+
+		/**
+		* @private
+		*/
+		updateKnobPosition: function (percent) {
+			this.$.knob.applyStyle('left', percent + '%');
+		},
+
+		/**
+		* @private
+		*/
+		calcKnobPosition: function (event) {
+			var x = event.clientX - this.hasNode().getBoundingClientRect().left;
+			return (x / this.getBounds().width) * (this.max - this.min) + this.min;
+		},
+
+		/**
+		* @private
+		*/
+		dragstart: function (sender, event) {
+			if (event.horizontal) {
+				event.preventDefault();
+				this.dragging = true;
+				sender.addClass('pressed');
+				return true;
+			}
+		},
+
+		/**
+		* @fires onyx.Slider#event:onChanging
+		* @private
+		*/
+		drag: function (sender, event) {
+			if (this.dragging) {
+				var v = this.calcKnobPosition(event);
+				v = (this.increment) ? this.calcIncrement(v) : v;
+				this.setValue(v);
+				this.doChanging({value: this.value});
+				return true;
+			}
+		},
+
+		/**
+		* @fires onyx.Slider#event:onChange
+		* @private
+		*/
+		dragfinish: function (sender, event) {
+			this.dragging = false;
+			event.preventTap();
 			this.doChange({value: this.value});
+			sender.removeClass('pressed');
+			return true;
+		},
+
+		/**
+		* @private
+		*/
+		tap: function (sender, event) {
+			if (this.tappable) {
+				var v = this.calcKnobPosition(event);
+				v = (this.increment) ? this.calcIncrement(v) : v;
+				this.tapped = true;
+				this.animateTo(v);
+				return true;
+			}
+		},
+
+		/**
+		* @private
+		*/
+		knobDown: function (sender, event) {
+			this.$.knob.addClass('pressed');
+		},
+
+		/**
+		* @private
+		*/
+		knobUp: function (sender, event) {
+			this.$.knob.removeClass('pressed');
+		},
+
+		/**
+		* Animates to the given value.
+		*
+		* @param  {Number} value - New value
+		* @public
+		* @todo  functional overlap with {@link onyx.ProgressBar#animateProgressTo}
+		*/
+		animateTo: function (value) {
+			this.$.animator.play({
+				startValue: this.value,
+				endValue: value,
+				node: this.hasNode()
+			});
+		},
+
+		/**
+		* @private
+		*/
+		animatorStep: function (sender) {
+			this.setValue(sender.value);
+			return true;
+		},
+
+		/**
+		* @fires onyx.Slider#event:onChange
+		* @fires onyx.Slider#event:onAnimateFinish
+		* @private
+		*/
+		animatorComplete: function (sender) {
+			if (this.tapped) {
+				this.tapped = false;
+				this.doChange({value: this.value});
+			}
+			this.doAnimateFinish(sender);
+			return true;
 		}
-		this.doAnimateFinish(inSender);
-		return true;
-	}
-});
+	});
+
+})(enyo, this);

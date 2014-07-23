@@ -1,37 +1,83 @@
-/**
-	_onyx.Icon_ is a control that displays an icon. To set the icon image, specify
-	a URL for the image's location in the Icon's _src_ property.
+(function (enyo, scope) {
 
-	In Onyx, icons have a size of 32x32 pixels. Since the icon image is applied
-	as a CSS background, the height and width of the icon must be set if an image
-	of a different size is used.
+	/**
+	* _onyx.Icon_ is a control that displays an icon. To set the icon image, specify
+	* a URL for the image's location in the Icon's `src` property.
+	*
+	* In Onyx, icons have a size of 32x32 pixels. Since the icon image is applied
+	* as a CSS background, the height and width of the icon must be set if an image
+	* of a different size is used.
+	*
+	* ```
+	* {kind: 'onyx.Icon', src: 'images/search.png'}
+	* ```
+	*
+	* When an icon should act like a button, use an {@link onyx.IconButton}
+	*
+	* @class  onyx.Icon
+	* @extends enyo.Control
+	* @ui
+	* @public
+	*/
+	enyo.kind(
+		/** @lends onyx.Icon.prototype */ {
 
-		{kind: "onyx.Icon", src: "images/search.png"}
+		/**
+		* @private
+		*/
+		name: 'onyx.Icon',
 
-	When an icon should act like a button, use an
-	[onyx.IconButton](#onyx.IconButton).
-*/
-enyo.kind({
-	name: "onyx.Icon",
-	published: {
-		//* URL specifying path to icon image
-		src: "",
-		//* When true, icon is shown as disabled
-		disabled: false
-	},
-	classes: "onyx-icon",
-	//* @protected
-	create: function() {
-		this.inherited(arguments);
-		if (this.src) {
-			this.srcChanged();
+		/**
+		* @private
+		*/
+		classes: 'onyx-icon',
+
+		/**
+		* @lends  onyx.Icon.prototype
+		* @private
+		*/
+		published: {
+			/**
+			* URL specifying path to icon image
+			* @type {String}
+			* @default  ''
+			* @public
+			*/
+			src: '',
+
+			/**
+			* When true, icon is shown as disabled
+			* @type {Boolean}
+			* @default  false
+			* @public
+			*/
+			disabled: false
+		},
+
+		/**
+		* @private
+		*/
+		create: function () {
+			this.inherited(arguments);
+			if (this.src) {
+				this.srcChanged();
+			}
+			this.disabledChanged();
+		},
+
+		/**
+		* @private
+		*/
+		disabledChanged: function () {
+			this.addRemoveClass('disabled', this.disabled);
+		},
+
+		/**
+		* @private
+		*/
+		srcChanged: function () {
+			this.applyStyle('background-image', 'url(' + enyo.path.rewrite(this.src) + ')');
 		}
-		this.disabledChanged();
-	},
-	disabledChanged: function() {
-		this.addRemoveClass("disabled", this.disabled);
-	},
-	srcChanged: function() {
-		this.applyStyle("background-image", "url(" + enyo.path.rewrite(this.src) + ")");
-	}
-});
+	});
+
+})(enyo, this);

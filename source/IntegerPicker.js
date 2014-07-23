@@ -1,76 +1,149 @@
-/**
-    _onyx.IntegerPicker_, a subkind of [onyx.Picker](#onyx.Picker), is used to
-    display a list of integers that may be selected, ranging from _min_ to
-    _max_. It is meant to be used in conjunction with an
-    [onyx.PickerDecorator](#onyx.PickerDecorator). The decorator loosely couples
-    the picker with an [onyx.PickerButton](#onyx.PickerButton)--a button that,
-    when tapped, shows the picker. Once an item is selected, the list of items
-    closes,	but the item stays selected and the PickerButton displays the choice
-    that was made.
+(function (enyo, scope) {
 
-    To initialize the IntegerPicker to a particular value, set the _value_
-    property to the integer that should be selected.
+	/**
+	* _onyx.IntegerPicker_, a subkind of {@link onyx.Picker}, is used to
+	* display a list of integers that may be selected, ranging from {@link onyx.IntegerPicker#min}
+	* to {@link onyx.IntegerPicker#max}. It is meant to be used in conjunction with an
+	* {@link onyx.PickerDecorator}. The decorator loosely couples
+	* the picker with an {@link onyx.PickerButton}--a button that,
+	* when tapped, shows the picker. Once an item is selected, the list of items
+	* closes,	but the item stays selected and the PickerButton displays the choice
+	* that was made.
+	*
+	* To initialize the IntegerPicker to a particular value, set the
+	* {@link onyx.IntegerPicker#value} property to the integer that should be selected.
+	*
+	* ```
+	* {kind: 'onyx.PickerDecorator', cozmponents: [
+	* 	{}, //this uses the defaultKind property of PickerDecorator to inherit from PickerButton
+	* 	{kind: 'onyx.IntegerPicker', min: 0, max: 25, value: 5}
+	* ]}
+	* ```
+	*
+	* Each item in the list is an {@link onyx.MenuItem}, so an
+	* application may listen for an {@link onyx.MenItem#event:onSelect} event with the item to
+	* determine which picker item was selected.
+	*
+	* For more information, see the documentation on
+	* [Pickers](building-apps/controls/pickers.html) in the Enyo Developer Guide.
+	*
+	* @class  onyx.IntegerPicker
+	* @extends onyx.Picker
+	* @ui
+	* @public
+	*/
+	enyo.kind(
+		/** @lends  onyx.IntegerPicker.prototype */ {
 
-        {kind: "onyx.PickerDecorator", components: [
-            {}, //this uses the defaultKind property of PickerDecorator to inherit from PickerButton
-            {kind: "onyx.IntegerPicker", min: 0, max: 25, value: 5}
-        ]}
+		/**
+		* @private
+		*/
+		name: 'onyx.IntegerPicker',
 
-    Each item in the list is an [onyx.MenuItem](#onyx.MenuItem), so an
-    application may listen for an _onSelect_ event with the item to determine
-    which picker item was selected.
+		/**
+		* @private
+		*/
+		kind: 'onyx.Picker',
 
-    For more information, see the documentation on
-    [Pickers](building-apps/controls/pickers.html) in the Enyo Developer Guide.
- */
-enyo.kind({
-	name: "onyx.IntegerPicker",
-	kind: "onyx.Picker",
-	published: {
-		value: 0,
-		min: 0,
-		max: 9
-	},
-	//* @protected
-	create: function() {
-		this.inherited(arguments);
-		this.rangeChanged();
-	},
-	minChanged: function() {
-		this.destroyClientControls();
-		this.rangeChanged();
-		this.render();
-	},
-	maxChanged: function() {
-		this.destroyClientControls();
-		this.rangeChanged();
-		this.render();
-	},
-	rangeChanged: function() {
-		for (var i=this.min; i<=this.max; i++) {
-			this.createComponent({content: i, active: (i===this.value) ? true : false});
-		}
-	},
-    valueChanged: function(inOld) {
-		var controls = this.getClientControls();
-		var len = controls.length;
-		// Validate our value
-		this.value = Math.min(this.max, Math.max(this.value, this.min));
-		for (var i=0; i<len; i++) {
-			if (this.value === parseInt(controls[i].content, 10)) {
-				this.setSelected(controls[i]);
-				break;
+		/**
+		* @private
+		*/
+		published: {
+			/**
+			* Selected value of the picker
+			*
+			* @type {Number}
+			* @default  0
+			* @memberOf  onyx.IntegerPicker.prototype
+			* @public
+			*/
+			value: 0,
+
+			/**
+			* Minimum value of the picker
+			*
+			* @type {Number}
+			* @default  0
+			* @memberOf  onyx.IntegerPicker.prototype
+			* @public
+			*/
+			min: 0,
+
+			/**
+			* Maximum value of the picker
+			*
+			* @type {Number}
+			* @default  9
+			* @memberOf onyx.IntegerPicker.prototype
+			* @public
+			*/
+			max: 9
+		},
+
+		/**
+		* @private
+		*/
+		create: function () {
+			this.inherited(arguments);
+			this.rangeChanged();
+		},
+
+		/**
+		* @private
+		*/
+		minChanged: function () {
+			this.destroyClientControls();
+			this.rangeChanged();
+			this.render();
+		},
+
+		/**
+		* @private
+		*/
+		maxChanged: function () {
+			this.destroyClientControls();
+			this.rangeChanged();
+			this.render();
+		},
+
+		/**
+		* @private
+		*/
+		rangeChanged: function () {
+			for (var i=this.min; i<=this.max; i++) {
+				this.createComponent({content: i, active: (i===this.value) ? true : false});
 			}
+		},
+
+		/**
+		* @private
+		*/
+		valueChanged: function () {
+			var controls = this.getClientControls();
+			var len = controls.length;
+			// Validate our value
+			this.value = Math.min(this.max, Math.max(this.value, this.min));
+			for (var i=0; i<len; i++) {
+				if (this.value === parseInt(controls[i].content, 10)) {
+					this.setSelected(controls[i]);
+					break;
+				}
+			}
+		},
+
+		/**
+		* @private
+		*/
+		selectedChanged: function (old) {
+			if (old) {
+				old.removeClass('selected');
+			}
+			if (this.selected) {
+				this.selected.addClass('selected');
+				this.doChange({selected: this.selected, content: this.selected.content});
+			}
+			this.setValue(parseInt(this.selected.content, 10));
 		}
-	},
-	selectedChanged: function(inOld) {
-		if (inOld) {
-			inOld.removeClass("selected");
-		}
-		if (this.selected) {
-			this.selected.addClass("selected");
-			this.doChange({selected: this.selected, content: this.selected.content});
-		}
-		this.setValue(parseInt(this.selected.content, 10));
-	}
-});
+	});
+
+})(enyo, this);
