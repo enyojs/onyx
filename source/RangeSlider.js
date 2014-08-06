@@ -244,7 +244,7 @@
 		/**
 		* @private
 		*/
-		begvalueChanged: function (sliderPos) {
+		beginValueChanged: function (sliderPos) {
 			if (sliderPos === undefined) {
 				var p = this.calcPercent(this.beginValue);
 				this.updateKnobPosition(p, this.$.startKnob);
