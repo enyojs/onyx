@@ -12,7 +12,8 @@
 	enyo.kind (
 		/** @lends  onyx.TabBar.Item */ {
 
-		name: 'onyx.TabBar.Item',
+		 /** Due to the recent change in enyo 2.4.0, onyx.TabBar.Item needs to be renamed to onyx.TabBarItem in order to work */
+		name: 'onyx.TabBarItem',
 		classes: "onyx-tab-item",
 		kind: 'enyo.GroupItem',
 		events: {

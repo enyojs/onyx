@@ -177,7 +177,7 @@
 												name: 'tabs',
 												classes: 'onyx-tab-holder',
 												kind: 'onyx.RadioGroup',
-												defaultKind: 'onyx.TabBar.Item',
+												defaultKind: 'onyx.TabBarItem',
 												style: 'text-align: left; white-space: nowrap;',
 												onTabCloseRequest: 'requestTabClose',
 												onTabSwitchRequest: 'requestTabSwitch'
