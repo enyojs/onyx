@@ -12,7 +12,7 @@
 	enyo.kind (
 		/** @lends  onyx.TabBar.Item */ {
 
-		name: 'onyx.TabBar.Item',
+		name: 'onyx.TabBarItem', // Due to a correction in path resolving for Enyo 2.5.0, onyx.TabBar.Item was renamed to onyx.TabBarItem
 		classes: "onyx-tab-item",
 		kind: 'enyo.GroupItem',
 		events: {
