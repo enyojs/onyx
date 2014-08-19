@@ -1,10 +1,11 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.Popup_ is an [enyo.Popup]{@link enyo.Popup} with Onyx styling applied.
+	* {@link onyx.Popup} is an {@link enyo.Popup} with Onyx styling applied.
 	*
 	* For more information, see the documentation on
-	* [Popups](building-apps/controls/popups.html) in the Enyo Developer Guide.
+	* [Popups]{@link building-apps/controls/popups.html} in the
+	* Enyo Developer Guide.
 	*
 	* @class  onyx.Popup
 	* @extends enyo.Popup

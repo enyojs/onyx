@@ -5,19 +5,18 @@
 	*
 	* @event onyx.Picker#event:onChange
 	* @type {Object}
-	* @property {enyo.Control} selected - The currently selected item
-	* @property {String} content - The content of the currently selected item
+	* @property {enyo.Control} selected - The currently selected item.
+	* @property {String} content - The content of the currently selected item.
 	* @public
 	*/
 
 	/**
-	* _onyx.Picker_, a subkind of {@link onyx.Menu}, is used to display a list
-	* of items that may be selected. It is meant to be used together with an
-	* {@link onyx.PickerDecorator}. The decorator loosely couples
-	* the picker with an {@link onyx.PickerButton}--a button that,
-	* when tapped, shows the picker. Once an item is selected, the list of items
-	* closes, but the item stays selected and the PickerButton displays the choice
-	* that was made.
+	* {@link onyx.Picker}, a subkind of {@link onyx.Menu}, is used to display a
+	* list of items that may be selected. It is meant to be used together with an
+	* {@link onyx.PickerDecorator}. The decorator loosely couples the picker with
+	* an {@link onyx.PickerButton}--a button that, when tapped, shows the picker.
+	* Once an item is selected, the list of items closes, but the item stays
+	* selected and the PickerButton displays the choice that was made.
 	*
 	* To initialize the Picker to a particular value, set the `active` property to
 	* `true` for the item that should be selected.
@@ -32,12 +31,13 @@
 	* 		]}
 	* 	]}
 	*
-	* Each item in the list is an {@link onyx.MenuItem}, so a client app
-	* may listen for an {@link onyx.MenuItem#event:onSelect} event with the item to determine
-	* which picker item was selected.
+	* Each item in the list is an {@link onyx.MenuItem}, so a client app may
+	* listen for an [onSelect]{@link onyx.MenuItem#event:onSelect} event with the
+	* item to determine which picker item was selected.
 	*
 	* For more information, see the documentation on
-	* [Pickers](building-apps/controls/pickers.html) in the Enyo Developer Guide.
+	* [Pickers]{@link building-apps/controls/pickers.html} in the
+	* Enyo Developer Guide.
 	*
 	* @class  onyx.Picker
 	* @extends onyx.Menu
@@ -91,16 +91,16 @@
 		},
 
 		/**
-		* Set to true to render the picker in a floating layer outside of other
-		* controls. This can be used to guarantee that the picker will be shown
-		* on top of other controls.
+		* When `true`, the picker is rendered in a floating layer outside of other
+		* controls. This can be used to guarantee that the picker will be shown on
+		* top of other controls.
 		*
 		* @private
 		*/
 		floating: true,
 
 		/**
-		* overrides default value from onyx.Menu
+		* Overrides default value from {@link onyx.Menu}.
 		*
 		* @private
 		*/
@@ -126,7 +126,7 @@
 		},
 
 		/**
-		* Ensures the selected item is visible
+		* Ensures that the selected item is visible.
 		*
 		* @private
 		*/
@@ -135,9 +135,8 @@
 		},
 
 		/**
-		* Handler for {@link enyo.GroupItem#event:onActivate}.
-		*
-		* Selects the activated item
+		* Handles [onActivate]{@link enyo.GroupItem#event:onActivate} event,
+		* selecting the activated item.
 		*
 		* @private
 		*/
@@ -147,7 +146,7 @@
 		},
 
 		/**
-		* If `item` is `active`, selects it
+		* If passed-in control is `active`, selects it.
 		* @param {enyo.Control} item
 		*
 		* @private
@@ -159,7 +158,7 @@
 		},
 
 		/**
-		* Highlights the selected item with the CSS class `selected`
+		* Highlights the selected item with the CSS class `'selected'`.
 		*
 		* @fires onyx.Picker#event:onChange
 		* @private
@@ -175,7 +174,8 @@
 		},
 
 		/**
-		* Handler for {@link onyx.MenuItem#event:onItemContentChange}
+		* Handles [onItemContentChange]{@link onyx.MenuItem#event:onItemContentChange}
+		* events.
 		*
 		* @fires onyx.Picker#event:onChange
 		* @private
@@ -187,7 +187,7 @@
 		},
 
 		/**
-		* Handler for onresize
+		* Handles `onresize` events.
 		*
 		* @private
 		*/

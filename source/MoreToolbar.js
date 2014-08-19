@@ -1,7 +1,7 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.MoreToolbar_ extends {@link enyo.Control}, providing a toolbar
+	* {@link onyx.MoreToolbar} extends {@link enyo.Control}, providing a toolbar
 	* that can adapt to different screen sizes by moving overflowing controls and
 	* content into an {@link onyx.Menu}.
 	*
@@ -19,7 +19,8 @@
 	* `unmoveable` property to `true` (the default is `false`).
 	*
 	* For more information, see the documentation on
-	* [Toolbars](building-apps/controls/toolbars.html) in the Enyo Developer Guide.
+	* [Toolbars]{@link building-apps/controls/toolbars.html} in the
+	* Enyo Developer Guide.
 	*
 	* @class  onyx.MoreToolbar
 	* @extends enyo.Control
@@ -40,9 +41,9 @@
 		classes: 'onyx-toolbar onyx-more-toolbar',
 
 		/**
-		* CSS class to be applied to the menu
+		* CSS class to be applied to the menu.
 		*
-		* *Design-time property*
+		* Note that this is a design-time property and should not be set after object creation.
 		*
 		* @type {String}
 		* @default  ''
@@ -51,9 +52,9 @@
 		menuClass: '',
 
 		/**
-		* CSS class to be applied to individual controls moved from the toolbar to the menu
+		* CSS class to be applied to individual controls moved from the toolbar to the menu.
 		*
-		* *Design-time property*
+		* Note that this is a design-time property and should not be set after object creation.
 		*
 		* @type {String}
 		* @default  ''
@@ -84,7 +85,7 @@
 		*/
 		published: {
 			/**
-			* Layout kind that will be applied to the client controls
+			* Layout kind that will be applied to the client controls.
 			*
 			* @type {String}
 			* @default  'FittableColumnsLayout'
@@ -142,9 +143,9 @@
 		},
 
 		/**
-		* Handler for {@link enyo.GroupItem#event:onActivate}
+		* Handles [onActivate]{@link enyo.GroupItem#event:onActivate} events.
 		*
-		* Adds the `active` CSS class to this control if the event's originator is active
+		* Adds the `'active'` CSS class to this control if the event's originator is active.
 		*
 		* @private
 		*/
@@ -153,7 +154,7 @@
 		},
 
 		/**
-		* Removes the next collapsible item from the toolbar and adds it to the menu
+		* Removes the next collapsible item from the toolbar and adds it to the menu.
 		*
 		* @private
 		*/
@@ -175,7 +176,7 @@
 		},
 
 		/**
-		* Removes the first child of the menu and adds it back to the toolbar
+		* Removes the first child of the menu and adds it back to the toolbar.
 		*
 		* @private
 		*/
@@ -213,9 +214,10 @@
 		},
 
 		/**
-		* Pushes an item back into the toolbar if doing so doesn't cause the content to overflow
+		* Pushes an item back into the toolbar if doing so doesn't cause the content
+		* to overflow.
 		*
-		* @return {Boolean} - Successfully pushed an item
+		* @return {Boolean} - Whether item was successfully pushed.
 		* @private
 		*/
 		tryPushItem: function () {
@@ -229,9 +231,9 @@
 		},
 
 		/**
-		* Determines if all of the contents of the toolbar are visible
+		* Determines whether the toolbar has content that is not visible.
 		*
-		* @return {Boolean} Some content is not visible
+		* @return {Boolean} `true` if some toolbar content is not visible.
 		* @private
 		*/
 		isContentOverflowing: function () {
@@ -248,7 +250,7 @@
 		},
 
 		/**
-		* Finds the next control (starting from the end) that can be pushed onto the menu
+		* Finds the next control (starting from the end) that can be pushed onto the menu.
 		*
 		* @private
 		*/

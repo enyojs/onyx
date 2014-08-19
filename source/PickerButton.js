@@ -1,13 +1,13 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.PickerButton_ is a button that, when tapped, shows an
-	* {@link onyx.Picker}. Once an item is selected, the list of items
-	* closes, but the item stays selected and the PickerButton displays the choice
-	* that was made.
+	* {@link onyx.PickerButton} is a button that, when tapped, shows an
+	* {@link onyx.Picker}. Once an item is selected, the list of items closes, but
+	* the item stays selected and the PickerButton displays the choice that was made.
 	*
 	* For more information, see the documentation on
-	* [Pickers](building-apps/controls/pickers.html) in the Enyo Developer Guide.
+	* [Pickers]{@link building-apps/controls/pickers.html} in the
+	* Enyo Developer Guide.
 	*
 	* @class  onyx.PickerButton
 	* @extends onyx.Button
@@ -35,8 +35,8 @@
 		},
 
 		/**
-		* Handles {@link onyx.Picker#event:onChange} that is waterfalled down from
-		* {@link onyx.PickerDecorator}
+		* Handles [onChange]{@link onyx.Picker#event:onChange} event that is waterfalled
+		* down from {@link onyx.PickerDecorator}.
 		*
 		* @private
 		*/

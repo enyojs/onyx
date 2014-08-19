@@ -1,7 +1,7 @@
 (function (enyo, scope) {
 
 	/**
-	* Fires when progress bar finishes animating to a position
+	* Fires when progress bar finishes animating to a position.
 	*
 	* @event onyx.ProgressBar#event:onAnimateProgressFinish
 	* @type {enyo.Animator}
@@ -10,29 +10,30 @@
 	*/
 
 	/**
-	* _onyx.ProgressBar_ is a  control that shows the current progress of a
+	* {@link onyx.ProgressBar} is a control that shows the current progress of a
 	* process in a horizontal bar.
 	*
 	* ```
 	* {kind: 'onyx.ProgressBar', progress: 10}
 	* ```
 	*
-	* To animate progress changes, call the {@link onyx.ProgressBar#animateProgressTo} method:
+	* To animate a progress change, call the
+	* [animateProgressTo()]{@link onyx.ProgressBar#animateProgressTo} method:
 	*
 	* ```
 	* this.$.progressBar.animateProgressTo(50);
 	* ```
 	*
 	* You may customize the color of the bar by applying a style via the
-	* {@link onyx.ProgressBar#barClasses} property, e.g.:
+	* [barClasses]{@link onyx.ProgressBar#barClasses} property, e.g.:
 	*
 	* ```
 	* {kind: 'onyx.ProgressBar', barClasses: 'onyx-dark'}
 	* ```
 	*
-	* For more information, see the documentation on [Progress
-	* Indicators](building-apps/controls/progress-indicators.html) in the Enyo
-	* Developer Guide.
+	* For more information, see the documentation on
+	* [Progress Indicators]{@link building-apps/controls/progress-indicators.html}
+	* in the Enyo Developer Guide.
 	*
 	* @class  onyx.ProgressBar
 	* @extends enyo.Control
@@ -58,7 +59,7 @@
 		*/
 		published: {
 			/**
-			* Current position of progress bar
+			* Current position of progress bar.
 			*
 			* @type {Number}
 			* @default  0
@@ -67,7 +68,7 @@
 			progress: 0,
 
 			/**
-			* Minimum progress value (i.e., no progress made)
+			* Minimum progress value (i.e., no progress made).
 			*
 			* @type {Number}
 			* @default  0
@@ -76,7 +77,7 @@
 			min: 0,
 
 			/**
-			* Maximum progress value (i.e., process complete)
+			* Maximum progress value (i.e., process complete).
 			*
 			* @type {Number}
 			* @default  100
@@ -85,7 +86,7 @@
 			max: 100,
 
 			/**
-			* CSS classes to apply to progress bar
+			* CSS classes to apply to progress bar.
 			*
 			* @type {String}
 			* @default  ''
@@ -94,7 +95,7 @@
 			barClasses: '',
 
 			/**
-			* If true, stripes are shown in progress bar
+			* When `true`, stripes are shown in progress bar.
 			*
 			* @type {Boolean}
 			* @default  true
@@ -103,7 +104,8 @@
 			showStripes: true,
 
 			/**
-			* If true (and _showStripes_ is true), stripes shown in progress bar are animated
+			* If `true` (and [showStripes]{@link onyx.ProgressBar#showStripes} is `true`),
+			* stripes shown in progress bar are animated.
 			*
 			* @type {Boolean}
 			* @default  true
@@ -112,7 +114,7 @@
 			animateStripes: true,
 
 			/**
-			* Sliders may be 'snapped to' multiples of this value in either direction
+			* Sliders may be "snapped to" multiples of this value in either direction.
 			*
 			* @type {Number}
 			* @default  0
@@ -181,10 +183,11 @@
 		},
 
 		/**
-		* Clamps `value` to the nearest {@link onyx.ProgressBar#increment} value.
+		* Clamps a specified value to the nearest [increment]{@link onyx.ProgressBar#increment}
+		* value.
 		*
-		* @param  {Number} value - value to clamp
-		* @return {Number}         - clamped value
+		* @param  {Number} value - The value to clamp.
+		* @return {Number}         - The clamped value.
 		* @private
 		*/
 		calcIncrement: function (value) {
@@ -192,12 +195,12 @@
 		},
 
 		/**
-		* Ensures `value` is between `min` and `max`
+		* Ensures that passed-in value is between the specified minimum and maximum.
 		*
-		* @param  {Number} min   - minimum value
-		* @param  {Number} max   - maximum value
-		* @param  {Number} value - value to clamp
-		* @return {Number}         - clamped value
+		* @param  {Number} min   - Minimum value.
+		* @param  {Number} max   - Maximum value.
+		* @param  {Number} value - The value to clamp.
+		* @return {Number}         - The clamped value.
 		* @private
 		*/
 		clampValue: function (min, max, value) {
@@ -205,10 +208,10 @@
 		},
 
 		/**
-		* Calculates the ratio complete
+		* Calculates the completion ratio.
 		*
-		* @param  {Number} value - Value between `min` and `max`
-		* @return {Number}         - Ratio complete (between 0 and 1)
+		* @param  {Number} value - Value between `min` and `max`.
+		* @return {Number}         - Completion ratio (between `0` and `1`).
 		* @private
 		*/
 		calcRatio: function (value) {
@@ -216,10 +219,10 @@
 		},
 
 		/**
-		* Calculates the percent complete
+		* Calculates the completion percentage.
 		*
-		* @param  {Number} value - Value between `min` and `max`
-		* @return {Number}         - Percent complete (between 0 and 100)
+		* @param  {Number} value - Value between `min` and `max`.
+		* @return {Number}         - Completion percentage (between `0` and `100`).
 		* @private
 		*/
 		calcPercent: function (value) {
@@ -227,9 +230,9 @@
 		},
 
 		/**
-		* Positions the progress bar at `percent`
+		* Positions the progress bar at specified completion percentage.
 		*
-		* @param  {Number} percent - Percent complete
+		* @param  {Number} percent - Completion percentage corresponding to desired position.
 		* @private
 		*/
 		updateBarPosition: function (percent) {
@@ -237,10 +240,10 @@
 		},
 
 		/**
-		* Animates progress to the given value
+		* Animates progress to the given value.
 		*
-		* @param  {Number} value - Desired value. Will be clamped between
-		* 	{@link onyx.ProgressBar#min} and {@link onyx.ProgressBar#max}
+		* @param  {Number} value - The desired value. Will be clamped between
+		* 	[min]{@link onyx.ProgressBar#min} and [max]{@link onyx.ProgressBar#max}.
 		* @public
 		*/
 		animateProgressTo: function (value) {
@@ -252,7 +255,7 @@
 		},
 
 		/**
-		* Handler for {@link enyo.Animator#event:onStep}
+		* Handles [onStep]{@link enyo.Animator#event:onStep} animation events.
 		*
 		* @private
 		*/
@@ -262,7 +265,7 @@
 		},
 
 		/**
-		* Handler for {@link enyo.Animator#event:onEnd}
+		* Handles [onEnd]{@link enyo.Animator#event:onEnd} animation events.
 		*
 		* @fires onyx.ProgressBar#event:onAnimateProgressFinish
 		* @private

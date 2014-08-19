@@ -1,7 +1,7 @@
 (function (enyo, scope) {
 
 	/**
-	* Fires when cancel button is tapped
+	* Fires when cancel button is tapped.
 	*
 	* @event onyx.ProgressButton#event:onCancel
 	* @type {Object}
@@ -9,8 +9,8 @@
 	*/
 
 	/**
-	* _onyx.ProgressButton_ is a progress bar that has a cancel button on the right
-	* and may have other controls inside of it.
+	* {@link onyx.ProgressButton} is an {@link onyx.ProgressBar} with a cancel
+	* button on the right; there may also be other controls inside.
 	*
 	* ```
 	* {kind: 'onyx.ProgressButton'},
@@ -20,9 +20,9 @@
 	* ]}
 	* ```
 	*
-	* For more information, see the documentation on [Progress
-	* Indicators](building-apps/controls/progress-indicators.html) in the Enyo
-	* Developer Guide.
+	* For more information, see the documentation on
+	* [Progress Indicators]{@link building-apps/controls/progress-indicators.html}
+	* in the Enyo Developer Guide.
 	*
 	* @class  onyx.ProgressButton
 	* @extends onyx.ProgressBar
