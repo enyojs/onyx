@@ -1,12 +1,12 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.Drawer_ is now an empty kind derived from {@link enyo.Drawer}.
+	* {@link onyx.Drawer} is now an empty kind derived from {@link enyo.Drawer}.
 	* All of its functionality has been moved into the latter kind, found in Enyo
-	* Core's _ui_ module.
+	* Core's `ui` module.
 	*
 	* For more information, see the documentation on
-	* [Drawers](building-apps/layout/drawers.html) in the Enyo Developer Guide.
+	* [Drawers]{@link building-apps/layout/drawers.html} in the Enyo Developer Guide.
 	*
 	* @class  onyx.Drawer
 	* @extends enyo.Drawer

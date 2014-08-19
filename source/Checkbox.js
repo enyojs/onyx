@@ -1,9 +1,10 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.Checkbox_ is a box that shows or hides a checkmark when clicked. The
-	* {@link enyo.Checkbox#event:onChange} event is fired when the box is clicked. Call
-	* `getValue()` to retrieve a boolean indicating whether the box is currently checked.
+	* {@link onyx.Checkbox} is a box that shows or hides a checkmark when clicked. The
+	* [onChange]{@link enyo.Checkbox#event:onChange} event is fired when the box is
+	* clicked. Call `getValue()` to retrieve a boolean indicating whether the box is
+	* currently checked.
 	*
 	* ```
 	* {kind: 'onyx.Checkbox', onchange: 'checkboxClicked'}
@@ -63,7 +64,8 @@
 		},
 
 		/**
-		* Override enyo.Input dragstart handler, to allow drags to propagate for Checkbox
+		* Overrides {@link enyo.Input} `dragstart` handler, to allow drags to propagate
+		* for Checkbox.
 		*
 		* @private
 		*/

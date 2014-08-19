@@ -1,25 +1,26 @@
-(function (enyo, scope) {
+﻿(function (enyo, scope) {
 
 	/**
-	* One of the DatePicker's fields is selected.
+	* Fires when one of the [DatePicker]{@link onyx.DatePicker}'s fields is selected.
 	*
 	* @event onyx.DatePicker#event:onSelect
 	* @type {Object}
-	* @property {String} name - name of the DatePicker that generated the event.
-	* @property {Date} value current Date value of the control
+	* @property {String} name - Name of the [DatePicker]{@link onyx.DatePicker} that
+	* generated the event.
+	* @property {Date} value - Current {@glossary Date} value of the control.
 	* @public
 	*/
 
 	/**
-	* _onyx.DatePicker_ is a group of [onyx.Picker]{@link onyx.Picker} controls used for
-	* displaying a date. The user may change the _day_, _month_, and _year_ values.
+	* {@link onyx.DatePicker} is a group of {@link onyx.Picker} controls used for
+	* displaying a date. The user may change the day, month, and year values.
 	*
-	* By default, _DatePicker_ tries to determine the current locale and use that
+	* By default, `DatePicker` tries to determine the current locale and use that
 	* locale's rules to format the date (including the month name). In order to do
-	* this successfully, the _iLib_ library must be loaded; if it is not loaded, the
-	* control defaults to using standard U.S. date formatting.
+	* this successfully, the [iLib]{@glossary ilib} library must be loaded; if it
+	* is not loaded, the control defaults to using standard U.S. date formatting.
 	*
-	* The _day_ field is automatically populated with the proper number of days for
+	* The `day` field is automatically populated with the proper number of days for
 	* the selected month and year.
 	*
 	* @class  onyx.DatePicker
@@ -46,7 +47,8 @@
 		*/
 		published: {
 			/**
-			* If true, control is shown as disabled and user cannot select new values
+			* If `true`, the control is shown as disabled and the user cannot select
+			* new values.
 			*
 			* @type {Boolean}
 			* @default  false
@@ -56,7 +58,7 @@
 
 			/**
 			* Current locale used for formatting; may be set after control creation, in
-			* which case the control will be updated to reflect the new value
+			* which case the control will be updated to reflect the new value.
 			*
 			* @type {String}
 			* @default  en-US
@@ -65,7 +67,7 @@
 			locale: 'en-US',
 
 			/**
-			* If true, the day field is hidden
+			* If `true`, the `day` field is hidden.
 			*
 			* @type {Boolean}
 			* @default  false
@@ -74,7 +76,7 @@
 			dayHidden: false,
 
 			/**
-			* If true, the month field is hidden
+			* If `true`, the `month` field is hidden.
 			*
 			* @type {Boolean}
 			* @default false
@@ -83,7 +85,7 @@
 			monthHidden: false,
 
 			/**
-			* If true, the year field is hidden
+			* If `true`, the `year` field is hidden.
 			*
 			* @type {Boolean}
 			* @default false
@@ -92,7 +94,7 @@
 			yearHidden: false,
 
 			/**
-			* Optional minimum year value
+			* Optional minimum year value.
 			*
 			* @type {Number}
 			* @default  1900
@@ -101,17 +103,17 @@
 			minYear: 1900,
 
 			/**
-			* Optional maximum year value
+			* Optional maximum year value.
 			*
 			* @type {Number}
-			* @default  2009
+			* @default 2099
 			* @public
 			*/
 			maxYear: 2099,
 
 			/**
 			* Date object representing currently selected date. When a Date object is
-			* passed to _setValue()_, the passed-in object is stored here and the
+			* passed to `setValue()`, the passed-in object is stored here and the
 			* control is updated to reflect the new date.
 			*
 			* @type {Date}
@@ -140,7 +142,8 @@
 		},
 
 		/**
-		* Performs initial setup of the picker including creating the necessary child controls
+		* Performs initial setup of the picker, including creation of the necessary
+		* child controls.
 		*
 		* @private
 		*/
@@ -182,7 +185,7 @@
 		},
 
 		/**
-		* Determine the number of days in a particular month/year
+		* Determines the number of days in a particular month/year.
 		*
 		* @param  {Number} year
 		* @param  {Number} month
@@ -195,7 +198,7 @@
 		},
 
 		/**
-		* Handler for year {@link enyo.FlyweightPicker#onSetupItem}
+		* Handler for year {@link enyo.FlyweightPicker#onSetupItem}.
 		*
 		* @private
 		*/
@@ -205,11 +208,12 @@
 		},
 
 		/**
-		* Builds the picker components
+		* Builds the picker components.
 		*
-		* @param  {String} ordering Representation of the picker order. Year, month, and day are
-		* 	represented as y, m, and d, respectively. For example, if `ordering` were `'ymd'`, the
-		* 	pickers would be created in that order: Year, Month, Day.
+		* @param  {String} ordering - Representation of the picker order. Year, Month, and Day
+		* are represented as `'y'`, `'m'`, and `'d'`, respectively. So, for example, if the
+		* value of `ordering` is `'ymd'`, the pickers will be created in the order: Year, Month,
+		* Day.
 		* @private
 		*/
 		setupPickers: function (ordering) {
@@ -244,7 +248,7 @@
 		},
 
 		/**
-		* Creates the year picker
+		* Creates the year picker.
 		*
 		* @private
 		*/
@@ -261,7 +265,7 @@
 		},
 
 		/**
-		* Creates the month picker
+		* Creates the month picker.
 		*
 		* @private
 		*/
@@ -275,7 +279,7 @@
 		},
 
 		/**
-		* Creates the day picker
+		* Creates the day picker.
 		*
 		* @private
 		*/
@@ -347,7 +351,7 @@
 		},
 
 		/**
-		* Handler for the day pickers onSelect event
+		* Handler for the day picker's [onSelect]{link onyx.DatePicker#event:onSelect} event.
 		*
 		* @fires onyx.DatePicker#event:onSelect
 		* @private
@@ -362,7 +366,7 @@
 		},
 
 		/**
-		* Handler for the month pickers onSelect event
+		* Handler for the month picker's [onSelect]{link onyx.DatePicker#event:onSelect} event.
 		*
 		* @fires onyx.DatePicker#event:onSelect
 		* @private
@@ -377,7 +381,7 @@
 		},
 
 		/**
-		* Handler for the year pickers onSelect event
+		* Handler for the year picker's [onSelect]{link onyx.DatePicker#event:onSelect} event.
 		*
 		* @fires onyx.DatePicker#event:onSelect
 		* @private
@@ -395,8 +399,8 @@
 		},
 
 		/**
-		* Creates a {@link external:Date} for the given `year`, `month`, and `date`. The time component
-		* is pulled from the current {@link value}.
+		* Creates a {@glossary Date} object for the given `year`, `month`, and `date`. The
+		* time component is pulled from the current [value]{@link onyx.DatePicker#value}.
 		*
 		* @param  {Number} year
 		* @param  {Number} month
@@ -413,7 +417,7 @@
 		},
 
 		/**
-		* Refreshes the pickers by destroying and rebuilding the components
+		* Refreshes the pickers by destroying and rebuilding the components.
 		*
 		* @public
 		*/

@@ -1,28 +1,28 @@
 (function (enyo, scope) {
 
 	/**
-	* Fired when the popup is tapped
-	* @todo  Should be removed? Never triggered and duplicate of ontap
+	* Fires when the popup is tapped.
+	* @todo  Should this be removed? Never triggered and duplicate of ontap
 	* @event onyx.ContextualPopup#event:onTap
 	* @public
 	*/
 
 	/**
-	* _onyx.ContextualPopup_ is a subkind of [enyo.Popup]{@link enyo.Popup}. Contextual
+	* {@link onyx.ContextualPopup} is a subkind of {@link enyo.Popup}. Contextual
 	* popups serve as child windows that appear near the point of initiation. Use
 	* them to prompt users to make a selection from a defined set of options; to
 	* conduct other quick, single-step interactions in which context should be
 	* maintained; and to present simple views, such as previews.
 	*
 	* A contextual popup is meant to be used in conjunction with a decorator, such
-	* as an [onyx.MenuDecorator]{@link onyx.MenuDecorator}. The decorator couples the
-	* popup with an activating control, which may be a button or any other control
-	* with an _onActivate_ event. When the control is activated, the popup shows
-	* itself in the correct position relative to the activator.
+	* as an {@link onyx.MenuDecorator}. The decorator couples the popup with an
+	* activating control, which may be a button or any other control with an
+	* `onActivate` event. When the control is activated, the popup shows itself in
+	* the correct position relative to the activator.
 	*
 	* Note that, by default, the popup is not floating, so toolbars and controls
-	* with high z-index values may obscure it. You may set the _floating_ property
-	* to _true_ to have the popup always appear on top; however, the popup will not
+	* with high z-index values may obscure it. You may set the `floating` property
+	* to `true` to have the popup always appear on top; however, the popup will not
 	* be in the containing document's flow and so will not scroll with the document.
 	*
 	* In addition, while contextual popups have their own positioning logic, they
@@ -45,7 +45,7 @@
 	* ]}
 	* ```
 	*
-	* @class   onyx.ContextualPopup
+	* @class onyx.ContextualPopup
 	* @extends enyo.Popup
 	* @ui
 	* @public
@@ -75,8 +75,7 @@
 		autoDismiss: true,
 
 		/**
-		* @see enyo.Popup#floating
-		* @public
+		* @private
 		*/
 		floating:false,
 
@@ -90,7 +89,7 @@
 		*/
 		published: {
 			/**
-			* Maximum height of the menu, in pixels
+			* Maximum height of the menu, in pixels.
 			*
 			* @type {Number}
 			* @memberOf onyx.ContextualPopup.prototype
@@ -99,7 +98,7 @@
 			maxHeight: 100,
 
 			/**
-			* Boolean indicating whether scrolling is enabled
+			* Whether scrolling is enabled.
 			*
 			* @type {Boolean}
 			* @memberOf onyx.ContextualPopup.prototype
@@ -108,7 +107,7 @@
 			scrolling: true,
 
 			/**
-			* Popup title content
+			* Popup title content.
 			*
 			* @type {String}
 			* @memberOf onyx.ContextualPopup.prototype
@@ -117,7 +116,7 @@
 			title: undefined,
 
 			/**
-			* Buttons at bottom of popup
+			* Buttons displayed at bottom of popup.
 			*
 			* @type {Array}
 			* @memberOf onyx.ContextualPopup.prototype
@@ -141,7 +140,7 @@
 		},
 
 		/**
-		* vertical flush layout margin
+		* Vertical flush layout margin.
 		*
 		* @type {Number}
 		* @private
@@ -149,7 +148,7 @@
 		vertFlushMargin: 60,
 
 		/**
-		* horizontal flush layout margin
+		* Horizontal flush layout margin.
 		*
 		* @type {Number}
 		* @private
@@ -157,7 +156,7 @@
 		horizFlushMargin: 50,
 
 		/**
-		* popups wider than this value are considered wide (for layout purposes)
+		* Popups wider than this value are considered wide (for layout purposes).
 		*
 		* @type {Number}
 		* @private
@@ -165,7 +164,7 @@
 		widePopup: 200,
 
 		/**
-		* popups longer than this value are considered long (for layout purposes)
+		* Popups longer than this value are considered long (for layout purposes).
 		*
 		* @type {Number}
 		* @private
@@ -173,7 +172,8 @@
 		longPopup: 200,
 
 		/**
-		* do not allow horizontal flush popups past spec'd amount of buffer space on left/right screen edge
+		* Do not allow horizontal flush popups past this amount of buffer space on
+		* left/right screen edge.
 		*
 		* @type {Number}
 		* @private
@@ -208,7 +208,7 @@
 		],
 
 		/**
-		* Name of the Scroller component
+		* Name of the Scroller component.
 		*
 		* @private
 		*/
@@ -299,7 +299,7 @@
 		},
 
 		/**
-		* Handles onRequestShowMenu events
+		* Handles `onRequestShowMenu` events.
 		*
 		* @private
 		*/
@@ -313,7 +313,7 @@
 		},
 
 		/**
-		* Handles onRequestHideMenu events
+		* Handles `onRequestHideMenu` events.
 		*
 		* @private
 		*/
@@ -322,7 +322,7 @@
 		},
 
 		/**
-		* Positions the popup
+		* Positions the popup.
 		*
 		* @todo seems to duplicate enyo.Control.setBounds()
 		* @private
@@ -336,9 +336,9 @@
 		},
 
 		/**
-		* Calculates the position of the popup relative to the page
+		* Calculates the position of the popup relative to the page.
 		*
-		* @param  {Element} node
+		* @param {Element} node
 		* @private
 		*/
 		getPageOffset: function (node) {
@@ -353,9 +353,10 @@
 		},
 
 		/**
-		* Adjusts the popup position + nub location & direction
+		* Adjusts the popup position + nub location & direction.
 		*
 		* ContextualPopup positioning rules:
+		*
 		* 1. Activator Location:
 		*    1. If activator is located in a corner then position using a flush style.
 		*       1. Attempt vertical first.
@@ -367,7 +368,7 @@
 		*       3. Activator is in left edge, position popup to the right of it.
 		*       4.  Activator is in right edge, position popup to the left of it.
  		*
-		* 2. Screen Size - the pop-up should generally extend in the direction where there’s room
+		* 2. Screen Size - the popup should generally extend in the direction where there’s room
 		*    for it.
 		*
 		*    Note: no specific logic below for this rule since it is built into the positioning
@@ -386,10 +387,10 @@
 		*
 		* 5. If top or bottom will work, favor bottom.
 		*
-		*    Note: no specific logic below for this rule since it is built into the vertical
-		*    position functions, ie we attempt to use a bottom position for the popup as much
-		*    possible. Additionally within the vetical position function we center the popup if the
-		*    activator is at the vertical center of the view.
+		*    Note: There is no specific logic below for this rule since it is built into the
+		*    vertical position functions, i.e., we attempt to use a bottom position for the popup
+		*    as much as possible. Additionally, within the vertical position function, we center
+		*    the popup if the activator is at the vertical center of the view.
 		*	
 		* @private
 		*/
@@ -464,9 +465,9 @@
 		},
 
 		/**
-		* Moves the popup below or above the activator & verify that it fits on screen
+		* Moves the popup below or above the activator and verifies that it fits onscreen.
 		*
-		* @return {Boolean} true if vertical positioning can be used
+		* @return {Boolean} `true` if vertical positioning can be used; otherwise, `false`.
 		* @private
 		*/
 		initVerticalPositioning: function () {
@@ -503,9 +504,9 @@
 		},
 
 		/**
-		* Implements positioning rules (rule 1.b.i & rule 1.b.ii)
+		* Implements positioning rules (rule 1.b.i & rule 1.b.ii).
 		*
-		* @return {Boolean} true if vertical positioning is used
+		* @return {Boolean} `true` if vertical positioning is used; otherwise, `false`.
 		* @private
 		*/
 		applyVerticalPositioning: function () {
@@ -547,9 +548,9 @@
 		},
 
 		/**
-		* Implements positioning (rule 1.a.i)
+		* Implements positioning (rule 1.a.i).
 		*
-		* @return {Boolean} true if vertical flush positioning is used
+		* @return {Boolean} `true` if vertical flush positioning is used; otherwise, `false`.
 		* @private
 		*/
 		applyVerticalFlushPositioning: function (leftFlushPt, rightFlushPt) {
@@ -590,11 +591,12 @@
 		},
 
 		/**
-		* Move the popup left or right of the activator & verify that it fits on screen.
-		* Precondition for {@link applyHorizontalPositioning}
-		* and {@link applyHorizontalFlushPositioning}
+		* Moves the popup left or right of the activator and verifies that it fits onscreen.
+		* A return value of `true` is a precondition for using
+		* [applyHorizontalPositioning()]{@link onyx.ContextualPopup#applyHorizontalPositioning} and
+		* [applyHorizontalFlushPositioning()]{@link onyx.ContextualPopup#applyHorizontalFlushPositioning}.
 		*
-		* @return {Boolean} true if horizontal positioning can be used
+		* @return {Boolean} `true` if horizontal positioning can be used; otherwise, `false`.
 		* @private
 		*/
 		initHorizontalPositioning: function () {
@@ -633,9 +635,9 @@
 		},
 
 		/**
-		* Implements positioning (rule 1.b.iii & rule 1.b.iv)
+		* Implements positioning (rule 1.b.iii & rule 1.b.iv).
 		*
-		* @return {Boolean} true if using horizontal positioning
+		* @return {Boolean} `true` if using horizontal positioning; otherwise, `false`.
 		* @private
 		*/
 		applyHorizontalPositioning: function () {
@@ -675,9 +677,9 @@
 		},
 
 		/**
-		* Implements positioning (rule 1.a.ii)
+		* Implements positioning (rule 1.a.ii).
 		*
-		* @return {Boolean} true if using flush position
+		* @return {Boolean} `true` if using flush positioning; otherwise, `false`.
 		* @private
 		*/
 		applyHorizontalFlushPositioning: function (leftFlushPt, rightFlushPt) {
@@ -725,12 +727,12 @@
 		},
 
 		/**
-		* Calculates the top/left values which are relative to the viewport and not absolute of the
-		* provided Node
+		* Calculates top/left values that are relative to the viewport and not absolute for the
+		* provided Node.
 		*
-		* @param  {Element} node
+		* @param  {Element} Node.
 		* @return {Object}  Object containing the top, bottom, left, right, height, and width of the
-		* 	node
+		* 	node.
 		* @private
 		*/
 		getBoundingRect:  function (node){
@@ -750,9 +752,9 @@
 		},
 
 		/**
-		* Determines the view height
+		* Determines the view height.
 		*
-		* @return {Number} view height
+		* @return {Number} - Height of the view.
 		* @private
 		*/
 		getViewHeight: function () {
@@ -760,9 +762,9 @@
 		},
 
 		/**
-		* Determines the view width
+		* Determines the view width.
 		*
-		* @return {Number} view width
+		* @return {Number} - Width of the view.
 		* @private
 		*/
 		getViewWidth: function () {
@@ -770,7 +772,7 @@
 		},
 
 		/**
-		* Removes all positioning classes and resets the top and left CSS attributes
+		* Removes all positioning classes and resets the `'top'` and `'left'` CSS attributes.
 		*
 		* @private
 		*/
@@ -790,7 +792,7 @@
 		},
 
 		/**
-		* Handles resize events to reposition the popup
+		* Handles `resize` events to reposition the popup.
 		*
 		* @method
 		* @private

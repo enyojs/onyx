@@ -1,11 +1,11 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.Button_ is an [enyo.Button]{@link enyo.Button} with Onyx styling applied. The
+	* {@link onyx.Button} is an {@link enyo.Button} with Onyx styling applied. The
 	* color of the button may be customized by specifying a background color.
 	*
-	* The *onyx-affirmative*, *onyx-negative*, and *onyx-blue* classes provide some
-	* built-in presets.
+	* The `'onyx-affirmative'`, `'onyx-negative'`, and `'onyx-blue'` classes provide
+	* some built-in presets.
 	* ```
 	* {kind: 'onyx.Button', content: 'Button'},
 	* {kind: 'onyx.Button', content: 'Affirmative', classes: 'onyx-affirmative'},
@@ -14,7 +14,7 @@
 	* {kind: 'onyx.Button', content: 'Custom', style: 'background-color: purple; color: #F1F1F1;'}
 	* ```
 	* For more information, see the documentation on
-	* [Buttons](building-apps/controls/buttons.html) in the Enyo Developer Guide.
+	* [Buttons]{@link building-apps/controls/buttons.html} in the Enyo Developer Guide.
 	*
 	* @class onyx.Button
 	* @extends enyo.Button
