@@ -1,9 +1,10 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.Item_ is a control designed to display a group of stacked items,
-	* typically in lists. By default, items are highlighted when tapped. Set
-	* {@link onyx.Item#tapHighlight} to	`false` to prevent the highlighting.
+	* {@link onyx.Item} is a control designed to display a group of stacked items,
+	* typically in a list. By default, items are highlighted when tapped. Set
+	* [tapHighlight]{@link onyx.Item#tapHighlight} to	`false` to prevent the
+	* highlighting.
 	*
 	* ```
 	* {kind: 'onyx.Item', tapHighlight: false}
@@ -33,9 +34,9 @@
 		*/
 		published: {
 			/**
-			* If true, the item will be automatically highlighted (the _onyx-highlight_
-			* CSS class will be applied) when tapped. Set to false to disable this
-			* behavior
+			* When `true`, the item will be automatically highlighted (the
+			* `'onyx-highlight'` CSS class will be applied) when tapped. Set to
+			* `false` to disable this behavior.
 			*
 			* @type {Boolean}
 			* @default  true
@@ -76,13 +77,13 @@
 		*/
 		statics: {
 			/**
-			* Adds or removes `className` to `control` based on `add`
+			* Modifies a control by adding or removing a CSS class.
 			*
-			* @param {enyo.Control} control - Control to modify
-			* @param {String} className     - CSS Class Name
-			* @param {Boolean} add          - If `true`, the class is added. If `false`, the class
-			* 	is removed
-			* @param {Object} event       - Event object that triggered the call
+			* @param {enyo.Control} control - The control to modify.
+			* @param {String} className     - The name of the CSS class.
+			* @param {Boolean} add          - If `true`, the CSS class will be added;
+			*		if `false`, it will be removed.
+			* @param {Object} event       - The event object that triggered the call.
 			* @param {Number} [index]     - Index of the row in the flyweight. Retrieved from
 			* 	`event` if not specified.
 			*

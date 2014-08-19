@@ -5,8 +5,8 @@
 	*
 	* @event onyx.MenuItem#event:onSelect
 	* @type {Object}
-	* @property {enyo.Control} selected - The selected menu item
-	* @property {String} content - The selected menu item's content
+	* @property {enyo.Control} selected - The selected menu item.
+	* @property {String} content - The selected menu item's content.
 	* @public
 	*/
 
@@ -15,16 +15,16 @@
 	*
 	* @event onyx.MenuItem#event:onItemContentChange
 	* @type {Object}
-	* @property {enyo.Control} content - The menu item's content
+	* @property {enyo.Control} content - The menu item's content.
 	* @public
 	*/
 
 	/**
-	* _onyx.MenuItem_ is a button styled to look like a menu item, designed for use
-	* in an {@link onyx.Menu}. When the MenuItem is tapped, it tells the menu
-	* to hide itself and emits an {@link onyx.MenuItem#event:onSelect} event with its content
-	* and a reference to itself. This event and its properties may be handled by a client
-	* application to determine which menu item was selected.
+	* {@link onyx.MenuItem} is a button styled to look like a menu item, designed
+	* for use in an {@link onyx.Menu}. When the MenuItem is tapped, it tells the
+	* menu to hide itself and emits an [onSelect]{@link onyx.MenuItem#event:onSelect}
+	* event with its content and a reference to itself. This event and its properties
+	* may be handled by a client application to determine which menu item was selected.
 	*
 	* ```
 	* enyo.kind({
@@ -98,7 +98,7 @@
 		},
 
 		/**
-		* Handler for ontap
+		* Handles `ontap` events.
 		*
 		* @fires onyx.Menu#event:onRequestHideMenu
 		* @fires onyx.MenuItem#event:onSelect
@@ -111,7 +111,7 @@
 		},
 
 		/**
-		* Notify that this item's content has changed
+		* Sends notification that the item's content has changed.
 		*
 		* @fires onyx.MenuItem#event:onItemContentChange
 		* @private

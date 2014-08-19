@@ -1,9 +1,9 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.Input_ is an Onyx-styled input control, derived from
-	* {@link enyo.Input}. Typically, an _onyx.Input_ is placed inside an
-	* {@link onyx.InputDecorator}, which provides styling, e.g.:
+	* {@link onyx.Input} is an Onyx-styled input control, derived from {@link enyo.Input}.
+	* Typically, an `onyx.Input` is placed inside an {@link onyx.InputDecorator}, which
+	* provides styling, e.g.:
 	*
 	* ```
 	* {kind: 'onyx.InputDecorator', components: [
@@ -11,8 +11,9 @@
 	* ]}
 	* ```
 	*
-	* For more information, see the documentation on [Text
-	* Fields](building-apps/controls/text-fields.html) in the Enyo Developer Guide.
+	* For more information, see the documentation on
+	* [Text Fields]{@link building-apps/controls/text-fields.html} in the
+	* Enyo Developer Guide.
 	*
 	* @class  onyx.Input
 	* @extends enyo.Input

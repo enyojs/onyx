@@ -1,31 +1,33 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.IntegerPicker_, a subkind of {@link onyx.Picker}, is used to
-	* display a list of integers that may be selected, ranging from {@link onyx.IntegerPicker#min}
-	* to {@link onyx.IntegerPicker#max}. It is meant to be used in conjunction with an
-	* {@link onyx.PickerDecorator}. The decorator loosely couples
-	* the picker with an {@link onyx.PickerButton}--a button that,
-	* when tapped, shows the picker. Once an item is selected, the list of items
-	* closes,	but the item stays selected and the PickerButton displays the choice
-	* that was made.
+	* {@link onyx.IntegerPicker}, a subkind of {@link onyx.Picker}, is used to
+	* display a list of integers that may be selected, ranging from
+	* [min]{@link onyx.IntegerPicker#min} to [max]{@link onyx.IntegerPicker#max}.
+	* It is meant to be used in conjunction with an {@link onyx.PickerDecorator}.
+	* The decorator loosely couples the picker with an {@link onyx.PickerButton}--a
+	* button that, when tapped, shows the picker. Once an item is selected, the
+	* list of items closes,	but the item stays selected and the PickerButton
+	* displays the choice that was made.
 	*
 	* To initialize the IntegerPicker to a particular value, set the
-	* {@link onyx.IntegerPicker#value} property to the integer that should be selected.
+	* [value]{@link onyx.IntegerPicker#value} property to the integer that should
+	* be selected.
 	*
 	* ```
-	* {kind: 'onyx.PickerDecorator', cozmponents: [
+	* {kind: 'onyx.PickerDecorator', components: [
 	* 	{}, //this uses the defaultKind property of PickerDecorator to inherit from PickerButton
 	* 	{kind: 'onyx.IntegerPicker', min: 0, max: 25, value: 5}
 	* ]}
 	* ```
 	*
-	* Each item in the list is an {@link onyx.MenuItem}, so an
-	* application may listen for an {@link onyx.MenItem#event:onSelect} event with the item to
-	* determine which picker item was selected.
+	* Each item in the list is an {@link onyx.MenuItem}, so an application may
+	* listen for an [onSelect]{@link onyx.MenuItem#event:onSelect} event with the
+	* item to determine which picker item was selected.
 	*
 	* For more information, see the documentation on
-	* [Pickers](building-apps/controls/pickers.html) in the Enyo Developer Guide.
+	* [Pickers]{@link building-apps/controls/pickers.html} in the
+	* Enyo Developer Guide.
 	*
 	* @class  onyx.IntegerPicker
 	* @extends onyx.Picker
@@ -50,7 +52,7 @@
 		*/
 		published: {
 			/**
-			* Selected value of the picker
+			* Selected value of the picker.
 			*
 			* @type {Number}
 			* @default  0
@@ -60,7 +62,7 @@
 			value: 0,
 
 			/**
-			* Minimum value of the picker
+			* Minimum value of the picker.
 			*
 			* @type {Number}
 			* @default  0
@@ -70,7 +72,7 @@
 			min: 0,
 
 			/**
-			* Maximum value of the picker
+			* Maximum value of the picker.
 			*
 			* @type {Number}
 			* @default  9

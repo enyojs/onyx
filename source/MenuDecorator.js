@@ -1,10 +1,10 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.MenuDecorator_ is a control that loosely couples an
-	* {@link onyx.Menu} with an activating control, which may be a button or
-	* any other control with an {@link enyo.GroupItem#event:onActivate} event. The decorator
-	* must surround both the activating control and the menu itself. When the menu is
+	* {@link onyx.MenuDecorator} is a control that loosely couples an {@link onyx.Menu}
+	* with an activating control, which may be a button or any other control with an
+	* [onActivate]{@link enyo.GroupItem#event:onActivate} event. The decorator must
+	* surround both the activating control and the menu itself. When the menu is
 	* activated, it shows itself in the correct position relative to the activator.
 	*
 	* ```
@@ -44,7 +44,7 @@
 		defaultKind: 'onyx.Button',
 
 		/**
-		* selection on ios prevents tap events, so avoid.
+		* Selection on iOS prevents tap events, so avoid.
 		*
 		* @private
 		*/
@@ -59,7 +59,7 @@
 		},
 
 		/**
-		* Handler for {@link enyo.GroupItem#event:onActivate}
+		* Handles [onActivate]{@link enyo.GroupItem#event:onActivate} events.
 		*
 		* @private
 		*/
@@ -74,7 +74,7 @@
 		},
 
 		/**
-		* Requests that its child menu be shown
+		* Requests that the child menu be shown.
 		*
 		* @fires onyx.Menu#event:onRequestShowMenu
 		* @private
@@ -84,7 +84,7 @@
 		},
 
 		/**
-		* Requests that its child menu be hidden
+		* Requests that the child menu be hidden.
 		*
 		* @fires onyx.Menu#event:onRequestHideMenu
 		* @private
@@ -94,7 +94,7 @@
 		},
 
 		/**
-		* Handler for {@link enyo.Popup#event:onHide}
+		* Handles [onHide]{@link enyo.Popup#event:onHide} events.
 		*
 		* @private
 		*/
@@ -107,7 +107,7 @@
 		},
 
 		/**
-		* Handler for onenter. Suppresses default behavior if menu is not active
+		* Handles `onenter` events. Suppresses default behavior if menu is not active.
 		*
 		* @private
 		*/
@@ -118,7 +118,7 @@
 		},
 
 		/**
-		* Handler for onleave. Suppresses default behavior if menu is not active
+		* Handles `onleave` events. Suppresses default behavior if menu is not active.
 		*
 		* @private
 		*/

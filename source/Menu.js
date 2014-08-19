@@ -1,16 +1,16 @@
 (function (enyo, scope) {
 
 	/**
-	* Requests that a menu be displayed and positioned near `activator`
+	* Requests that a menu be displayed and positioned near an activating control.
 	*
 	* @event onyx.Menu#event:onRequestShowMenu
 	* @type {Object}
-	* @property {enyo.Control} activator - Control near which the menu should be displayed
+	* @property {enyo.Control} activator - Control near which the menu should be displayed.
 	* @public
 	*/
 
 	/**
-	* Requests that a menu be hidden
+	* Requests that a menu be hidden.
 	*
 	* @event onyx.Menu#event:onRequestHideMenu
 	* @type {Object}
@@ -18,12 +18,12 @@
 	*/
 
 	/**
-	* _onyx.Menu_ is a subkind of {@link onyx.Popup} that displays a list of
-	* {@link onyx.MenuItem} objects and looks like a popup menu. It is
-	* meant to be used together with an {@link onyx.MenuDecorator}.
-	* The decorator couples the menu with an activating control, which may be a
-	* button or any other control with an {@link enyo.GroupItem#event:onActivate} event.
-	* When the control is activated, the menu shows itself in the correct position relative
+	* {@link onyx.Menu} is a subkind of {@link onyx.Popup} that displays a list of
+	* {@link onyx.MenuItem} objects and looks like a popup menu. It is meant to be
+	* used together with an {@link onyx.MenuDecorator}. The decorator couples the
+	* menu with an activating control, which may be a button or any other control
+	* with an [onActivate]{@link enyo.GroupItem#event:onActivate} event. When the
+	* control is activated, the menu shows itself in the correct position relative
 	* to the activator.
 	*
 	* ```
@@ -40,7 +40,8 @@
 	* ```
 	*
 	* For more information, see the documentation on
-	* [Menus](building-apps/controls/menus.html) in the Enyo Developer Guide.
+	* [Menus]{@link building-apps/controls/menus.html} in the
+	* Enyo Developer Guide.
 	*
 	* @class  onyx.Menu
 	* @extends onyx.Popup
@@ -61,7 +62,8 @@
 		kind: 'onyx.Popup',
 
 		/**
-		* If true, controls outside of the menu will not receive events while the menu is showing
+		* When `true`, controls outside of the menu will not receive events while
+		* the menu is showing.
 		*
 		* @private
 		*/
@@ -83,7 +85,7 @@
 		*/
 		published: {
 			/**
-			* Maximum height of the menu, in pixels
+			* Maximum height of the menu, in pixels.
 			*
 			* @type {Number}
 			* @default  200
@@ -92,9 +94,9 @@
 			maxHeight: 200,
 
 			/**
-			* Boolean indicating whether scrolling is enabled.
+			* Indicates whether scrolling is enabled.
 			*
-			* *Note:* This is a design-time property and should not be set after creation.
+			* Note that this is a design-time property and should not be set after creation.
 			*
 			* @type {Boolean}
 			* @default  true
@@ -103,7 +105,7 @@
 			scrolling: true,
 
 			/**
-			* Current scroll strategy
+			* The current scroll strategy.
 			*
 			* @type {String}
 			* @default  'TouchScrollStrategy'
@@ -129,7 +131,7 @@
 		],
 
 		/**
-		* Favor showing menu on top of activating control if `true`
+		* If `true`, menu will be shown on top of activating control, if possible.
 		*
 		* @type {Boolean}
 		* @private
@@ -176,7 +178,7 @@
 		},
 
 		/**
-		* Handler for {@link enyo.GroupItem#event:onActivate}
+		* Handles [onActivate]{@link enyo.GroupItem#event:onActivate} events.
 		*
 		* @private
 		*/
@@ -197,7 +199,7 @@
 		},
 
 		/**
-		* Handler for {@link onyx.Menu#event:onRequestShowMenu}
+		* Handles [onRequestShowMenu]{@link onyx.Menu#event:onRequestShowMenu} events.
 		*
 		* @private
 		*/
@@ -214,10 +216,10 @@
 		},
 
 		/**
-		* Applies the CSS styles to position the menu
+		* Applies CSS styles to position the menu.
 		*
-		* @param  {Object} rect - Object with at least 1 position attribute
-		* 	(top, right, bottom, left)
+		* @param  {Object} rect - Object with at least one position attribute
+		* 	(`'top'`, `'right'`, `'bottom'`, `'left'`).
 		* @private
 		* @todo Duplicate of {@link onyx.ContextualPopup#applyPosition} and possibly `setBounds()`
 		*/
@@ -230,10 +232,11 @@
 		},
 
 		/**
-		* Calculates the position of the popup relative to the page
+		* Calculates the position of the popup relative to the page.
 		*
-		* @param {Element} node
-		* @return {Object} Top, left, height, and width of page
+		* @param {Element} node - The DOM node.
+		* @return {Object} Object containing `'top'`, `'left'`, `'height'`, and
+		* `'width'` values for the page.
 		* @private
 		* @todo  Duplicate of {@link onyx.ContextualPopup#getPageOffset}
 		*/
@@ -332,7 +335,7 @@
 		},
 
 		/**
-		* Handler for onresize. Adjusts the position of the menu
+		* Handles `onresize` events, adjusting the position of the menu.
 		*
 		* @private
 		*/
@@ -342,7 +345,7 @@
 		},
 
 		/**
-		* Handler for {@link onyx.Menu#event:onRequestMenuHide}
+		* Handles [onRequestMenuHide]{@link onyx.Menu#event:onRequestMenuHide} events.
 		*
 		* @private
 		*/

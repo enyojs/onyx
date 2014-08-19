@@ -1,9 +1,9 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.InputDecorator_ is a control that provides input styling. Any controls
-	* in the InputDecorator will appear to be inside an area styled as an	input.
-	* Usually, an InputDecorator surrounds an {@link onyx.Input}.
+	* {@link onyx.InputDecorator} is a control that provides input styling. Any
+	* controls in the InputDecorator will appear to be inside an area styled as an
+	* input. Usually, an InputDecorator surrounds an {@link onyx.Input}.
 	*
 	* ```
 	* {kind: 'onyx.InputDecorator', components: [
@@ -65,7 +65,8 @@
 		*/
 		published: {
 			/**
-			* Set to true to make the input look focused when it's not.
+			* If set to `true`, the input will look focused, even when it doesn't
+			* actually have focus.
 			* @type {Boolean}
 			* @default  false
 			* @public
@@ -99,9 +100,9 @@
 
 		/**
 		* Updates the focus state of the control unless
-		* {@link onyx.InputDecorator#alwaysLooksFocused} is `true`
+		* [alwaysLooksFocused]{@link onyx.InputDecorator#alwaysLooksFocused} is `true`.
 		*
-		* @param  {Boolean} focus - Requested focus state
+		* @param  {Boolean} focus - The requested focus state.
 		* @private
 		*/
 		updateFocus: function (focus) {
@@ -110,7 +111,7 @@
 		},
 
 		/**
-		* Handler for onfocus events triggered by child components
+		* Handles `onfocus` events triggered by child components.
 		*
 		* @private
 		*/
@@ -119,7 +120,7 @@
 		},
 
 		/**
-		* Handler for onblur events triggered by child components
+		* Handles `onblur` events triggered by child components.
 		*
 		* @private
 		*/
@@ -128,7 +129,7 @@
 		},
 
 		/**
-		* Handler of onDisabledChange events triggered by child components
+		* Handles `onDisabledChange` events triggered by child components.
 		*
 		* @private
 		*/
