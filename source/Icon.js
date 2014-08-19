@@ -1,8 +1,9 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.Icon_ is a control that displays an icon. To set the icon image, specify
-	* a URL for the image's location in the Icon's `src` property.
+	* {@link onyx.Icon} is a control that displays an icon. To set the icon image,
+	* specify a URL for the image's location in the Icon's [src]{@link onyx.Icon#src}
+	* property.
 	*
 	* In Onyx, icons have a size of 32x32 pixels. Since the icon image is applied
 	* as a CSS background, the height and width of the icon must be set if an image
@@ -12,7 +13,7 @@
 	* {kind: 'onyx.Icon', src: 'images/search.png'}
 	* ```
 	*
-	* When an icon should act like a button, use an {@link onyx.IconButton}
+	* When an icon should act like a button, use an {@link onyx.IconButton}.
 	*
 	* @class  onyx.Icon
 	* @extends enyo.Control
@@ -38,7 +39,7 @@
 		*/
 		published: {
 			/**
-			* URL specifying path to icon image
+			* URL specifying path to icon image.
 			* @type {String}
 			* @default  ''
 			* @public
@@ -46,7 +47,7 @@
 			src: '',
 
 			/**
-			* When true, icon is shown as disabled
+			* If `true`, icon is shown as disabled.
 			* @type {Boolean}
 			* @default  false
 			* @public

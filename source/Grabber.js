@@ -1,7 +1,7 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.Grabber_ is a control styled to indicate that an object may be grabbed
+	* {@link onyx.Grabber} is a control styled to indicate that an object may be grabbed
 	* and moved. It should only be used in this limited context--to indicate that
 	* dragging an object will result in movement.
 	*
@@ -13,9 +13,9 @@
 	* 	]}
 	* ```
 	*
-	* When using a Grabber inside a Fittable control, be sure to set `noStretch:
-	* true` on the Fittable, or else give it an explicit height. Otherwise, the
-	* Grabber may not be visible.
+	* When using a Grabber inside a [Fittable]{@link enyo.FittableLayout} control,
+	* be sure to set `'noStretch: true'` on the Fittable, or else give it an explicit
+	* height. Otherwise, the Grabber may not be visible.
 	*
 	* @class  onyx.Grabber
 	* @extends enyo.Control

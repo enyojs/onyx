@@ -5,8 +5,8 @@
 	*
 	* @event onyx.FlyweightPicker#event:onSetupItem
 	* @type {Object}
-	* @property {Number} index - the row index
-	* @property {enyo.Control} flyweight - the row control, for decoration
+	* @property {Number} index - The row index.
+	* @property {enyo.Control} flyweight - The row control, for decoration.
 	* @see  enyo.FlyweightRepeater#event:onSetupItem
 	* @public
 	*/
@@ -16,25 +16,26 @@
 	*
 	* @event onyx.FlyweightPicker#event:onSelect
 	* @type {Object}
-	* @property {String} content - Content of the selected item
-	* @property {Number} selected - Row index of the selected item
+	* @property {String} content - Content of the selected item.
+	* @property {Number} selected - Row index of the selected item.
 	* @public
 	*/
 
 	/**
-	* _onyx.FlyweightPicker_, a subkind of {@link onyx.Picker}, is a picker
+	* {@link onyx.FlyweightPicker}, a subkind of {@link onyx.Picker}, is a picker
 	* that employs the flyweight pattern. It is used to display a large list of
-	* selectable items.	As with {@link enyo.FlyweightRepeater},
-	* the {@link onyx.FlyweightPicker#event:onSetupItem} event allows for customization of item
-	* rendering.
+	* selectable items.	As with {@link enyo.FlyweightRepeater}, the
+	* [onSetupItem]{@link onyx.FlyweightPicker#event:onSetupItem} event allows for
+	* customization of item rendering.
 	*
 	* To initialize the FlyweightPicker to a particular value, call `setSelected()`
 	* with the index of the item you wish to select, and call `setContent()` with
 	* the item that should be shown in the activator button.
 	*
-	* FlyweightPicker will send an {@link onyx.FlyweightPicker#event:onSelect} event with a selected
-	* item's information. This may be handled by a client application to determine which
-	* item was selected.
+	* When an item is selected, FlyweightPicker sends an
+	* [onSelect]{@link onyx.FlyweightPicker#event:onSelect} event with the selected
+	* item's information. This may be handled by a client application to determine
+	* which item was selected.
 	*
 	* ```
 	* enyo.kind({
@@ -95,7 +96,7 @@
 		*/
 		published: {
 			/**
-			* Number of rows to render
+			* The number of rows to render.
 			*
 			* @type {Number}
 			* @default  0
@@ -134,9 +135,10 @@
 		scrollerName: 'scroller',
 
 		/**
-		* Force the flyweight's client control (MenuItem is default) to activate. This will
-		* result in a call to processActivatedItem which preps our picker selection logic.
-		* This is a workaround for changes caused by ENYO-1609 which resulted in ENYO-1611.
+		* Force the flyweight's client control ([MenuItem]{@link onyx.MenuItem} by default)
+		* to activate. This will result in a call to `processActivatedItem()`, which preps
+		* our picker selection logic. This is a workaround for changes caused by ENYO-1609
+		* which resulted in ENYO-1611.
 		*
 		* @private
 		*/
@@ -163,7 +165,7 @@
 		},
 
 		/**
-		* Scrolls the {@link onyx.FlyweightPicker#selected selected} control into view
+		* Scrolls the [selected]{@link onyx.FlyweightPicker#selected} control into view.
 		*
 		* @public
 		*/
@@ -220,9 +222,9 @@
 		},
 
 		/**
-		* Block all select events that aren't coming from this control. This is to prevent
-		* select events from MenuItems since they won't have the correct value in a Flyweight
-		* context.
+		* Blocks all `select` events that aren't coming from this control. This is to
+		* prevent `select` events from MenuItems since they won't have the correct value
+		* in a Flyweight context.
 		*
 		* @private
 		*/

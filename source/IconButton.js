@@ -1,8 +1,9 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.IconButton_ is an icon that acts like a button. The icon image is
-	* specified by setting the `src` property to a URL.
+	* {@link onyx.IconButton} is an {@link onyx.Icon} that acts like a button. The
+	* icon image is specified by setting the [src]{@link onyx.Icon#src} property
+	* to a URL.
 	*
 	* If you want to combine an icon with text inside a button, use an
 	* {@link onyx.Icon} inside an {@link onyx.Button}.
@@ -12,7 +13,8 @@
 	* and the bottom half showing its state when hovered-over or active.
 	*
 	* For more information, see the documentation on
-	* [Buttons](building-apps/controls/buttons.html) in the Enyo Developer Guide.
+	* [Buttons]{@link building-apps/controls/buttons.html} in the
+	* Enyo Developer Guide.
 	*
 	* @class  onyx.IconButton
 	* @extends onyx.Icon
@@ -39,7 +41,7 @@
 		published: {
 			/**
 			* Used when the IconButton is part of an {@link enyo.Group}; a value
-			* of true indicates that this is the active button of the group
+			* of `true` indicates that this is the active button of the group.
 			*
 			* @type {Boolean}
 			* @default  false
@@ -73,7 +75,8 @@
 		},
 
 		/**
-		* If not {@link enyo.Control#disabled}, makes the control {@link onyx.IconButton#active}
+		* Makes the control [active]{@link onyx.IconButton#active} (if it is not
+		* [disabled]{@link enyo.IconButton#disabled}).
 		*
 		* @private
 		*/

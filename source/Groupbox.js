@@ -1,12 +1,12 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.Groupbox_ displays rows of controls as a vertically-stacked group. It
-	* is designed to have container controls as its children, with each container
+	* {@link onyx.Groupbox} displays rows of controls as a vertically-stacked group.
+	* It is designed to have container controls as its children, with each container
 	* representing a row in the Groupbox.
 	*
-	* To add a header, specify an {@link onyx.GroupboxHeader) as the
-	* first control in the Groupbox, e.g.:
+	* To add a header, specify an {@link onyx.GroupboxHeader} as the first control
+	* in the Groupbox, e.g.:
 	*
 	* ```
 	* {kind: 'onyx.Groupbox', components: [
@@ -42,8 +42,9 @@
 	});
 
 	/**
-	* _onyx.GroupboxHeader_ is a control designed to be placed inside an {@link onyx.Groupbox}.
-	* When a header is desired, make a GroupboxHeader the first control inside the Groupbox.
+	* {@link onyx.GroupboxHeader} is a control designed to be placed inside an
+	* {@link onyx.Groupbox}. When a header is desired, make a GroupboxHeader the
+	* first control inside the Groupbox.
 	*
 	* ```
 	* {kind: 'onyx.Groupbox', components: [
