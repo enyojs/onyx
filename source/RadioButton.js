@@ -1,10 +1,12 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.RadioButton_ is a radio button designed for use within an {@link onyx.RadioGroup}.
+	* {@link onyx.RadioButton} is a radio button designed for use within an
+	* {@link onyx.RadioGroup}.
 	*
 	* For more information, see the documentation on
-	* [Buttons](building-apps/controls/buttons.html) in the Enyo Developer Guide.
+	* [Buttons]{@link building-apps/controls/buttons.html} in the
+	* Enyo Developer Guide.
 	*
 	* @class  onyx.RadioButton
 	* @extends enyo.Button

@@ -1,9 +1,9 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.RadioGroup_ is a group of [onyx.RadioButton](#onyx.RadioButton) objects
-	* laid out horizontally. Within the same radio group, tapping on one radio
-	* button will release any previously-tapped radio button.
+	* {@link onyx.RadioGroup} is a group of {@link onyx.RadioButton} objects laid out
+	* horizontally. Within the same radio group, tapping on one radio button will
+	* release any previously-tapped radio button.
 	*
 	* ```
 	* {kind: 'onyx.RadioGroup', components: [
@@ -37,7 +37,7 @@
 		defaultKind: 'onyx.RadioButton',
 
 		/**
-		* Set to true to provide radio button behavior
+		* Set to `true` to provide radio button behavior.
 		*
 		* @private
 		*/

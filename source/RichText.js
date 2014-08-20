@@ -1,10 +1,9 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.RichText_ is an Onyx-styled rich text control, derived from
-	* {@link enyo.RichText}. Typically, an _onyx.RichText_ is placed
-	* inside an {@link onyx.InputDecorator}, which provides styling,
-	* e.g.:
+	* {@link onyx.RichText} is an Onyx-styled rich text control, derived from
+	* {@link enyo.RichText}. Typically, an `onyx.RichText` is placed inside an
+	* {@link onyx.InputDecorator}, which provides styling, e.g.:
 	*
 	* ```
 	* {kind: 'onyx.InputDecorator', components: [
@@ -12,8 +11,9 @@
 	* ]}
 	* ```
 	*
-	* For more information, see the documentation on [Text
-	* Fields](building-apps/controls/text-fields.html) in the Enyo Developer Guide.
+	* For more information, see the documentation on
+	* [Text Fields]{@link building-apps/controls/text-fields.html} in the
+	* Enyo Developer Guide.
 	*
 	* @class  onyx.RichText
 	* @extends enyo.RichText
