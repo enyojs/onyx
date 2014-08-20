@@ -1,9 +1,9 @@
 (function (enyo, scope) {
 
 	/**
-	* onyx.Submenu_ is a control that collapses several menu items into a drawer,
-	* hich may be opened and closed by tapping on its label. It is meant to be
-	* laced inside an [onyx.Menu](#onyx.Menu).
+	* {@link onyx.Submenu} is a control that collapses several menu items into a drawer,
+	* which may be opened and closed by tapping on its label. It is meant to be placed
+	* inside an {@link onyx.Menu}.
 	*
 	* ```
 	* {kind: 'onyx.MenuDecorator', components:[
@@ -58,7 +58,7 @@
 		},
 
 		/**
-		* Toggles the display of the submenu
+		* Toggles the submenu's open/closed state.
 		*
 		* @public
 		*/
@@ -67,9 +67,9 @@
 		},
 
 		/**
-		* Opens or closes the submenu
+		* Opens or closes the submenu.
 		*
-		* @param {Boolean} open - New state of the submenu
+		* @param {Boolean} open - `true` to open the submenu; `false` to close it.
 		* @public
 		*/
 		setOpen: function (open) {
@@ -77,9 +77,9 @@
 		},
 
 		/**
-		* Retrieves the current state of the submenu
+		* Determines whether the submenu is currently open.
 		*
-		* @return {Boolean} - Current state of the submenu
+		* @return {Boolean} - `true` if submenu is currently open; otherwise, `false`.
 		* @public
 		*/
 		getOpen: function () {

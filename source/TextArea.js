@@ -1,10 +1,9 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.TextArea_ is an Onyx-styled TextArea control, derived from
-	* [enyo.TextArea](#enyo.TextArea). Typically, an _onyx.TextArea_ is placed
-	* inside an [onyx.InputDecorator](#onyx.InputDecorator), which provides styling,
-	* e.g.:
+	* {@link onyx.TextArea} is an Onyx-styled TextArea control, derived from
+	* {@link enyo.TextArea}. Typically, an `onyx.TextArea` is placed inside an
+	* {@link onyx.InputDecorator}, which provides styling, e.g.:
 	*
 	* ```
 	* {kind: 'onyx.InputDecorator', components: [
@@ -12,8 +11,9 @@
 	* ]}
 	* ```
 	*
-	* For more information, see the documentation on [Text
-	* Fields](building-apps/controls/text-fields.html) in the Enyo Developer Guide.
+	* For more information, see the documentation on
+	* [Text Fields]{@link building-apps/controls/text-fields.html} in the
+	* Enyo Developer Guide.
 	*
 	* @ui
 	* @class  onyx.TextArea

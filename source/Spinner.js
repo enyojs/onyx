@@ -1,10 +1,10 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.Spinner_ is a control that displays a spinning animation to indicate
+	* {@link onyx.Spinner} is a control that displays a spinning animation to indicate
 	* that activity is taking place. By default, a light spinner, suitable for
 	* displaying against a dark background, is shown. To get a dark spinner
-	* (suitable for use on a lighter background), apply the `onyx-light` CSS class:
+	* (suitable for use on a lighter background), apply the `'onyx-light'` CSS class:
 	*
 	* ```
 	* {kind: 'onyx.Spinner', classes: 'onyx-light'}
@@ -13,8 +13,8 @@
 	* Typically, a spinner is shown to indicate activity and hidden to indicate
 	* that the activity has ended. The spinning animation will automatically start
 	* when the spinner is shown. If you wish, you may control the animation directly
-	* by calling the {@link onyx.Spinner#start}, {@link onyx.Spinner#stop}, and
-	* {@link onyx.Spinner#toggle} methods.
+	* by calling the [start()]{@link onyx.Spinner#start}, [stop()]{@link onyx.Spinner#stop},
+	* and [toggle()]{@link onyx.Spinner#toggle} methods.
 	*
 	* @class  onyx.Spinner
 	* @extends enyo.Control
@@ -35,7 +35,7 @@
 		classes: 'onyx-spinner',
 
 		/**
-		* Stops the spinner animation
+		* Stops the spinner animation.
 		*
 		* @public
 		*/
@@ -44,7 +44,7 @@
 		},
 
 		/**
-		* Starts the spinner animation
+		* Starts the spinner animation.
 		*
 		* @public
 		*/
@@ -53,7 +53,7 @@
 		},
 
 		/**
-		* Toggles the spinner animation on or off
+		* Toggles the spinner animation on or off.
 		*
 		* @public
 		*/

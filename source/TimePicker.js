@@ -1,27 +1,24 @@
 (function (enyo, scope) {
 	/**
-	* Fires when one of the TimePicker's fields is selected.
-	*
-	* _inEvent.name_ contains the name of the TimePicker that generated the event.
-	*
-	* _inEvent.value_ contains the current Date value of the control.
+	* Fires when one of the [TimePicker]{@link onyx.TimePicker}'s fields is selected.
 	*
 	* @event onyx.TimePicker#event:onSelect
 	* @type {Object}
-	* @property {String} name - Name of the originating control
-	* @property {Date} value  - Current value
+	* @property {String} name - Name of the [TimePicker]{@link onyx.TimePicker} that
+	* generated the event.
+	* @property {Date} value  - Current {@glossary Date} value of the control.
 	* @public
 	*/
 
 	/**
-	* _onyx.TimePicker_ is a group of [onyx.Picker](@link onyx.Picker) controls that,
+	* {@link onyx.TimePicker} is a group of {@link onyx.Picker} controls that,
 	* collectively, display the current time. The user may change the hour, minute,
 	* and meridiem (AM/PM) values.
 	*
-	* By default, _TimePicker_ tries to determine the current locale and use that
+	* By default, TimePicker tries to determine the current locale and use that
 	* locale's rules to format the time (including AM/PM). In order to do this
-	* successfully, the [iLib](@link iLib) library must be loaded; if it is not loaded, the
-	* control defaults to using standard U.S. time formatting.
+	* successfully, the [iLib]{@glossary ilib} library must be loaded; if it is
+	* not loaded, the control defaults to using standard U.S. time formatting.
 	*
 	* @ui
 	* @class onyx.TimePicker
@@ -47,7 +44,7 @@
 		*/
 		published: {
 			/**
-			* If true, the control is shown as disabled and users cannot select new values
+			* If `true`, the control is shown as disabled and users cannot select new values.
 			*
 			* @type {Boolean}
 			* @default false
@@ -57,7 +54,7 @@
 
 			/**
 			* Current locale used for formatting; may be set after control creation, in
-			* which case the control will be updated to reflect the new value
+			* which case the control will be updated to reflect the new value.
 			*
 			* @type {String}
 			* @default 'en-US'
@@ -66,7 +63,7 @@
 			locale: 'en-US',
 
 			/**
-			* If true, 24-hour time is used. When the locale is changed, this value is
+			* If `true`, 24-hour time is used. When the locale is changed, this value is
 			* updated to reflect the new locale's rules.
 			*
 			* @type {Boolean|null}
@@ -76,9 +73,9 @@
 			is24HrMode: null,
 
 			/**
-			* Date object representing the currently-selected date/time. When a Date
-			* object is passed to _setValue()_, the object is stored here and the
-			* control is updated to reflect the new date/time.
+			* {@glossary Date} object representing the currently-selected date/time.
+			* When a Date object is passed to `setValue()`, the object is stored here
+			* and the control is updated to reflect the new date/time.
 			*
 			* @type {Object|null}
 			* @default null

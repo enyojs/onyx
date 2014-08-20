@@ -1,20 +1,20 @@
 (function (enyo, scope) {
 
 	/**
-	* Fires when bar position is set
+	* Fires when bar position is set.
 	*
 	* @event onyx.Slider#event:onChange
 	* @type {Object}
-	* @property {Number} value - New position
+	* @property {Number} value - The new bar position.
 	* @public
 	*/
 
 	/**
-	* Fires while control knob is being dragged
+	* Fires while control knob is being dragged.
 	*
 	* @event onyx.Slider#event:onChanging
 	* @type {Object}
-	* @property {Number} value - Current position
+	* @property {Number} value - The current bar position.
 	* @public
 	*/
 
@@ -29,21 +29,22 @@
 	*/
 
 	/**
-	* _onyx.Slider_ is a control that presents a range of selection options in the
-	* form of a horizontal slider with a control knob. The knob may be tapped and
-	* dragged to the desired location.
+	* {@link onyx.Slider} is a control that presents a range of selection options
+	* in the form of a horizontal slider with a control knob. The knob may be
+	* tapped and dragged to the desired location.
 	*
 	* ```
 	* {kind: 'onyx.Slider', value: 30}
 	* ```
 	*
-	* {@link onyx.Slider#event:onChanging} events are fired while the control knob is being
-	* dragged, and an {@link onyx.Slider#event:onChange} event is fired when the position is set,
-	* either by finishing a drag or by tapping the bar.
+	* [onChanging]{@link onyx.Slider#event:onChanging} events are fired while the
+	* control knob is being dragged, and an [onChange]{@link onyx.Slider#event:onChange}
+	* event is fired when the position is set, either by finishing a drag or by tapping
+	* the bar.
 	*
-	* For more information, see the documentation on [Progress
-	* Indicators](building-apps/controls/progress-indicators.html) in the Enyo
-	* Developer Guide.
+	* For more information, see the documentation on
+	* [Progress Indicators]{@link building-apps/controls/progress-indicators.html}
+	* in the Enyo Developer Guide.
 	*
 	* @class  onyx.Slider
 	* @extends onyx.ProgressBar
@@ -74,7 +75,7 @@
 		*/
 		published: {
 			/**
-			* Position of slider, expressed as an integer between 0 and 100, inclusive
+			* Position of slider, expressed as an integer between `0` and `100`, inclusive.
 			*
 			* @type {Number}
 			* @default  0
@@ -83,7 +84,7 @@
 			value: 0,
 
 			/**
-			* If `true`, current progress will be styled differently from rest of bar
+			* When `true`, current progress will be styled differently from rest of bar.
 			*
 			* @type {Boolean}
 			* @default  true
@@ -92,7 +93,7 @@
 			lockBar: true,
 
 			/**
-			* If `true`, tapping on bar will change current position
+			* When `true`, tapping on bar will change current position.
 			*
 			* @type {Boolean}
 			* @default  true
@@ -111,7 +112,7 @@
 		},
 
 		/**
-		* If true, stripes are shown in the slider bar
+		* If `true`, stripes are shown in the slider bar.
 		*
 		* @type {Boolean}
 		* @default  false
@@ -246,7 +247,7 @@
 		/**
 		* Animates to the given value.
 		*
-		* @param  {Number} value - New value
+		* @param  {Number} value - The value to animate to.
 		* @public
 		* @todo  functional overlap with {@link onyx.ProgressBar#animateProgressTo}
 		*/
