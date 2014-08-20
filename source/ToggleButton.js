@@ -5,17 +5,18 @@
 	*
 	* @event onyx.ToggleButton#event:onChange
 	* @type {Object}
-	* @property {Boolean} value - Current value of the button
+	* @property {Boolean} value - Current value of the button.
 	* @public
 	*/
 
 	/**
-	* _onyx.ToggleButton_ is a control that looks like a switch with labels for two
-	* states. Each time a	ToggleButton is tapped, it switches its value and fires an
-	* {@link onyx.ToggleButton#event:onChange} event.
+	* {@link onyx.ToggleButton} is a control that looks like a switch with labels for
+	* two states. Each time a	ToggleButton is tapped, it switches its value and fires
+	* an [onChange]{@link onyx.ToggleButton#event:onChange} event.
 	*
 	* For more information, see the documentation on
-	* [Buttons](building-apps/controls/buttons.html) in the Enyo Developer Guide.
+	* [Buttons]{@link building-apps/controls/buttons.html} in the
+	* Enyo Developer Guide.
 	*
 	* @ui
 	* @class onyx.ToggleButton
@@ -41,8 +42,8 @@
 		*/
 		published: {
 			/**
-			* Used when the ToggleButton is part of an [enyo.Group](@link enyo.Group). A value
-			* of true indicates that this is the active button of the group.
+			* Used when the ToggleButton is part of an {@link enyo.Group}. A value
+			* of `true` indicates that this is the active button of the group.
 			*
 			* @type {Boolean}
 			* @default false
@@ -51,7 +52,7 @@
 			active: false,
 
 			/**
-			* Boolean indicating whether toggle button is currently in the 'on' state
+			* Indicates whether toggle button is currently in the `'on'` state.
 			*
 			* @type {Boolean}
 			* @default false
@@ -60,7 +61,7 @@
 			value: false,
 
 			/**
-			* Label for the 'on' state
+			* Label for the `'on'` state.
 			*
 			* @type {String}
 			* @default 'On'
@@ -69,7 +70,7 @@
 			onContent: 'On',
 
 			/**
-			* Label for the 'off' state
+			* Label for the `'off'` state.
 			*
 			* @type {String}
 			* @default 'Off'
@@ -78,7 +79,8 @@
 			offContent: 'Off',
 
 			/**
-			* If true, toggle button cannot be tapped and thus will not generate any events
+			* If `true`, toggle button cannot be tapped and thus will not generate any
+			* events.
 			*
 			* @type {Boolean}
 			* @default false

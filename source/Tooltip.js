@@ -1,10 +1,9 @@
 (function (enyo, scope) {
 	/**
-	* _onyx.Tooltip_ is a subkind of [onyx.Popup](@link onyx.Popup) that works in
-	* conjunction with an [onyx.TooltipDecorator](@link onyx.TooltipDecorator). It
-	* automatically displays a tooltip when the user hovers over the decorator.
-	* The tooltip is positioned around the decorator where there is available
-	* window space.
+	* {@link onyx.Tooltip} is a subkind of {@link onyx.Popup} that works in
+	* conjunction with an {@link onyx.TooltipDecorator}. It automatically displays
+	* a tooltip when the user hovers over the decorator. The tooltip is positioned
+	* around the decorator where there is available window space.
 	*
 	*  ```
 	*	{kind: 'onyx.TooltipDecorator', components: [
@@ -13,7 +12,7 @@
 	*	]}
 	*  ```
 	*
-	* You may also force a tooltip to be displayed by calling its _show()_ method.
+	* You may also force a tooltip to be displayed by calling its `show()` method.
 	*
 	* @ui
 	* @class onyx.Tooltip
@@ -39,7 +38,8 @@
 		classes: 'onyx-tooltip below left-arrow',
 
 		/**
-		* If true, the tooltip is automatically dismissed when user stops hovering over the decorator
+		* If `true`, the tooltip is automatically dismissed when user stops hovering
+		* over the decorator.
 		*
 		* @type {Boolean}
 		* @default false
@@ -48,7 +48,8 @@
 		autoDismiss: false,
 
 		/**
-		* Hovering over the decorator for this length of time (in milliseconds) causes the tooltip to appear
+		* Hovering over the decorator for this length of time (in milliseconds)
+		* causes the tooltip to appear.
 		*
 		* @type {Number}
 		* @default 500
@@ -57,7 +58,7 @@
 		showDelay: 500,
 
 		/**
-		* Default _margin-left_ value
+		* Default `'margin-left'` value.
 		*
 		* @type {Number}
 		* @default -6

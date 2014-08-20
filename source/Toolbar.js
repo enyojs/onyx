@@ -1,7 +1,7 @@
 (function (enyo, scope) {
 	/**
-	* _onyx.Toolbar_ is a horizontal bar containing controls used to perform common
-	* UI actions.
+	* {@link onyx.Toolbar} is a horizontal bar containing controls used to perform
+	* common UI actions.
 	*
 	* A toolbar customizes the styling of the controls it hosts, including buttons,
 	* icons, and inputs.
@@ -17,7 +17,8 @@
 	*  ```
 	*
 	* For more information, see the documentation on
-	* [Toolbars](building-apps/controls/toolbars.html) in the Enyo Developer Guide.
+	* [Toolbars]{@link building-apps/controls/toolbars.html} in the
+	* Enyo Developer Guide.
 	*
 	* @ui
 	* @class onyx.Toolbar

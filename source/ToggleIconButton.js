@@ -5,13 +5,13 @@
 	*
 	* @event onyx.ToggleIconButton#event:onChange
 	* @type {Object}
-	* @property {Boolean} value - The current value of the button
+	* @property {Boolean} value - The current value of the button.
 	* @public
 	*/
 
 	/**
-	* _onyx.ToggleIconButton_ is an icon that acts like a toggle switch. The icon
-	* image is specified by setting the `src` property to a URL.
+	* {@link onyx.ToggleIconButton} is an icon that acts like a toggle switch. The icon
+	* image is specified by setting the [src]{@link onyx.Icon#src} property to a URL.
 	*
 	* ```
 	* {kind: 'onyx.ToggleIconButton', src: 'images/search.png', ontap: 'buttonTap'}
@@ -46,8 +46,8 @@
 		*/
 		published: {
 			/**
-			* Used when the ToggleIconButton is part of an [enyo.Group](@link enyo.Group); set to true
-			* to indicate that this is the active button in the group.
+			* Used when the ToggleIconButton is part of an {@link enyo.Group}; set the
+			* value to `true` to indicate that this is the active button in the group.
 			*
 			* @type {Boolean}
 			* @default false
@@ -56,7 +56,7 @@
 			active: false,
 		
 			/**
-			* Boolean indicating whether the button is currently in the 'on' state
+			* Indicates whether the button is currently in the `'on'` state.
 			*
 			* @type {Boolean}
 			* @default false

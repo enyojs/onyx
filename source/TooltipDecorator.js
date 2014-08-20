@@ -1,9 +1,9 @@
 (function (enyo, scope) {
 
 	/**
-	* _onyx.TooltipDecorator_ is a control that couples an
-	* [onyx.Tooltip](@link onyx.Tooltip) with an activating control, such as a button.
-	* The tooltip is displayed when the activator generates an _onenter_ event:
+	* {@link onyx.TooltipDecorator} is a control that couples an {@link onyx.Tooltip}
+	* with an activating control, such as a button. The tooltip is displayed when the
+	* activator generates an `onenter` event:
 	*
 	*  ```
 	* 	{kind: 'onyx.TooltipDecorator', components: [
@@ -12,8 +12,8 @@
 	* 	]}
 	* 	```
 	*
-	* Here is an example with an [onyx.Input](@link onyx.Input) control and a decorator
-	* around the input:
+	* Here's an example with an {@link onyx.Input} control and an
+	* {@link onyx.InputDecorator} around the input:
 	*
 	* ```
 	* 	{kind: 'onyx.TooltipDecorator', components: [
@@ -31,7 +31,7 @@
 	*/
 
 	enyo.kind(
-		/** @lends onyx.Button.prototype */ {
+		/** @lends onyx.TooltipDecorator.prototype */ {
 
 		/**
 		* @private
