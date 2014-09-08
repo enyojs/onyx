@@ -42,7 +42,7 @@
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 /* prevent IE from inheriting line-height for these elements */
-.onyx button,
+.onyx-button,
 .onyx label,
 .onyx input {
   line-height: normal;
