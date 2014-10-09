@@ -20,10 +20,6 @@
 	* ]}
 	* ```
 	*
-	* For more information, see the documentation on
-	* [Progress Indicators]{@link building-apps/controls/progress-indicators.html}
-	* in the Enyo Developer Guide.
-	*
 	* @class  onyx.ProgressButton
 	* @extends onyx.ProgressBar
 	* @ui

@@ -31,10 +31,6 @@
 	* {kind: 'onyx.ProgressBar', barClasses: 'onyx-dark'}
 	* ```
 	*
-	* For more information, see the documentation on
-	* [Progress Indicators]{@link building-apps/controls/progress-indicators.html}
-	* in the Enyo Developer Guide.
-	*
 	* @class  onyx.ProgressBar
 	* @extends enyo.Control
 	* @ui

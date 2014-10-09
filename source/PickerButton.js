@@ -5,10 +5,6 @@
 	* {@link onyx.Picker}. Once an item is selected, the list of items closes, but
 	* the item stays selected and the PickerButton displays the choice that was made.
 	*
-	* For more information, see the documentation on
-	* [Pickers]{@link building-apps/controls/pickers.html} in the
-	* Enyo Developer Guide.
-	*
 	* @class  onyx.PickerButton
 	* @extends onyx.Button
 	* @ui

@@ -12,8 +12,8 @@
 	* ```
 	*
 	* For more information, see the documentation on
-	* [Text Fields]{@link building-apps/controls/text-fields.html} in the
-	* Enyo Developer Guide.
+	* [Text Fields]{@linkplain docs/building-apps/controls/text-fields.html} in
+	* the Enyo Developer Guide.
 	*
 	* @class  onyx.Input
 	* @extends enyo.Input

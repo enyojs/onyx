@@ -14,10 +14,6 @@
 	* two states. Each time a	ToggleButton is tapped, it switches its value and fires
 	* an [onChange]{@link onyx.ToggleButton#event:onChange} event.
 	*
-	* For more information, see the documentation on
-	* [Buttons]{@link building-apps/controls/buttons.html} in the
-	* Enyo Developer Guide.
-	*
 	* @ui
 	* @class onyx.ToggleButton
 	* @extends enyo.Control

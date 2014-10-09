@@ -35,10 +35,6 @@
 	* listen for an [onSelect]{@link onyx.MenuItem#event:onSelect} event with the
 	* item to determine which picker item was selected.
 	*
-	* For more information, see the documentation on
-	* [Pickers]{@link building-apps/controls/pickers.html} in the
-	* Enyo Developer Guide.
-	*
 	* @class  onyx.Picker
 	* @extends onyx.Menu
 	* @ui

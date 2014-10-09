@@ -42,10 +42,6 @@
 	* event is fired when the position is set, either by finishing a drag or by tapping
 	* the bar.
 	*
-	* For more information, see the documentation on
-	* [Progress Indicators]{@link building-apps/controls/progress-indicators.html}
-	* in the Enyo Developer Guide.
-	*
 	* @class  onyx.Slider
 	* @extends onyx.ProgressBar
 	* @ui

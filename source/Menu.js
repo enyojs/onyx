@@ -39,10 +39,6 @@
 	* ]}
 	* ```
 	*
-	* For more information, see the documentation on
-	* [Menus]{@link building-apps/controls/menus.html} in the
-	* Enyo Developer Guide.
-	*
 	* @class  onyx.Menu
 	* @extends onyx.Popup
 	* @ui

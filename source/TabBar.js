@@ -1,9 +1,10 @@
 (function (enyo, scope) {
 
 	/**
-	* onyx.TabBar is a scrolled set of radio buttons that is used by TabPanels. This bar may
-	* be used by other kinds to provide a similar layout. By default, a tap on a tab will
-	* immediately switch tab and fire a 'onTabChanged' event.
+	* {@link onyx.TabBar} is a scrolled set of radio buttons that is used by
+	* {@link onyx.TabPanels}. This bar may also be used by other kinds to provide
+	* a similar layout. By default, a tap on a tab will immediately switch the
+	* tab and fire an `onTabChanged` event.
 	*
 	*
 	* Here's an example:
