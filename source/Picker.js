@@ -3,7 +3,7 @@
 	/**
 	* Fires when the currently selected item changes.
 	*
-	* @event onyx.Picker#event:onChange
+	* @event onyx.Picker#onChange
 	* @type {Object}
 	* @property {enyo.Control} selected - The currently selected item.
 	* @property {String} content - The content of the currently selected item.
@@ -32,7 +32,7 @@
 	* 	]}
 	*
 	* Each item in the list is an {@link onyx.MenuItem}, so a client app may
-	* listen for an [onSelect]{@link onyx.MenuItem#event:onSelect} event with the
+	* listen for an [onSelect]{@link onyx.MenuItem#onSelect} event with the
 	* item to determine which picker item was selected.
 	*
 	* @class  onyx.Picker
@@ -131,7 +131,7 @@
 		},
 
 		/**
-		* Handles [onActivate]{@link enyo.GroupItem#event:onActivate} event,
+		* Handles [onActivate]{@link enyo.GroupItem#onActivate} event,
 		* selecting the activated item.
 		*
 		* @private
@@ -156,7 +156,7 @@
 		/**
 		* Highlights the selected item with the CSS class `'selected'`.
 		*
-		* @fires onyx.Picker#event:onChange
+		* @fires onyx.Picker#onChange
 		* @private
 		*/
 		selectedChanged: function (old) {
@@ -170,10 +170,10 @@
 		},
 
 		/**
-		* Handles [onItemContentChange]{@link onyx.MenuItem#event:onItemContentChange}
+		* Handles [onItemContentChange]{@link onyx.MenuItem#onItemContentChange}
 		* events.
 		*
-		* @fires onyx.Picker#event:onChange
+		* @fires onyx.Picker#onChange
 		* @private
 		*/
 		itemContentChange: function (sender, event) {

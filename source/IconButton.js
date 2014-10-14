@@ -143,7 +143,7 @@
 		},
 
 		/**
-		* @fires enyo.GroupItem#event:onActivate
+		* @fires enyo.GroupItem#onActivate
 		* @private
 		*/
 		activeChanged: function () {

@@ -3,7 +3,7 @@
 	* Fires when the user changes the value of the toggle button, but not
 	* when the value is changed programmatically.
 	*
-	* @event onyx.ToggleButton#event:onChange
+	* @event onyx.ToggleButton#onChange
 	* @type {Object}
 	* @property {Boolean} value - Current value of the button.
 	* @public
@@ -12,7 +12,7 @@
 	/**
 	* {@link onyx.ToggleButton} is a control that looks like a switch with labels for
 	* two states. Each time a	ToggleButton is tapped, it switches its value and fires
-	* an [onChange]{@link onyx.ToggleButton#event:onChange} event.
+	* an [onChange]{@link onyx.ToggleButton#onChange} event.
 	*
 	* @ui
 	* @class onyx.ToggleButton
@@ -140,7 +140,7 @@
 		},
 
 		/**
-		* @fires onyx.ToggleButton#event:onChange
+		* @fires onyx.ToggleButton#onChange
 		* @private
 		*/
 		valueChanged: function () {

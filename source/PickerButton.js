@@ -31,7 +31,7 @@
 		},
 
 		/**
-		* Handles [onChange]{@link onyx.Picker#event:onChange} event that is waterfalled
+		* Handles [onChange]{@link onyx.Picker#onChange} event that is waterfalled
 		* down from {@link onyx.PickerDecorator}.
 		*
 		* @private

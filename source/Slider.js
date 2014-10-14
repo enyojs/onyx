@@ -3,7 +3,7 @@
 	/**
 	* Fires when bar position is set.
 	*
-	* @event onyx.Slider#event:onChange
+	* @event onyx.Slider#onChange
 	* @type {Object}
 	* @property {Number} value - The new bar position.
 	* @public
@@ -12,7 +12,7 @@
 	/**
 	* Fires while control knob is being dragged.
 	*
-	* @event onyx.Slider#event:onChanging
+	* @event onyx.Slider#onChanging
 	* @type {Object}
 	* @property {Number} value - The current bar position.
 	* @public
@@ -21,11 +21,11 @@
 	/**
 	* Fires when animation to a position finishes.
 	*
-	* @event onyx.Slider#event:onAnimateFinish
+	* @event onyx.Slider#onAnimateFinish
 	* @type {enyo.Animator}
 	* @public
 	* @todo  Animator as the payload; overlap with
-	* 	{@link onyx.ProgressBar#event:onAnimateProgressFinish}
+	* 	{@link onyx.ProgressBar#onAnimateProgressFinish}
 	*/
 
 	/**
@@ -37,8 +37,8 @@
 	* {kind: 'onyx.Slider', value: 30}
 	* ```
 	*
-	* [onChanging]{@link onyx.Slider#event:onChanging} events are fired while the
-	* control knob is being dragged, and an [onChange]{@link onyx.Slider#event:onChange}
+	* [onChanging]{@link onyx.Slider#onChanging} events are fired while the
+	* control knob is being dragged, and an [onChange]{@link onyx.Slider#onChange}
 	* event is fired when the position is set, either by finishing a drag or by tapping
 	* the bar.
 	*
@@ -188,7 +188,7 @@
 		},
 
 		/**
-		* @fires onyx.Slider#event:onChanging
+		* @fires onyx.Slider#onChanging
 		* @private
 		*/
 		drag: function (sender, event) {
@@ -202,7 +202,7 @@
 		},
 
 		/**
-		* @fires onyx.Slider#event:onChange
+		* @fires onyx.Slider#onChange
 		* @private
 		*/
 		dragfinish: function (sender, event) {
@@ -264,8 +264,8 @@
 		},
 
 		/**
-		* @fires onyx.Slider#event:onChange
-		* @fires onyx.Slider#event:onAnimateFinish
+		* @fires onyx.Slider#onChange
+		* @fires onyx.Slider#onAnimateFinish
 		* @private
 		*/
 		animatorComplete: function (sender) {

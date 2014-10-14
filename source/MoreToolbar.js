@@ -139,7 +139,7 @@
 		},
 
 		/**
-		* Handles [onActivate]{@link enyo.GroupItem#event:onActivate} events.
+		* Handles [onActivate]{@link enyo.GroupItem#onActivate} events.
 		*
 		* Adds the `'active'` CSS class to this control if the event's originator is active.
 		*

@@ -3,7 +3,7 @@
 	/**
 	* Requests that the knob label be changed.
 	*
-	* @event onyx.RangeSlider#event:onSetLabel
+	* @event onyx.RangeSlider#onSetLabel
 	* @type {String}
 	* @public
 	* @todo  Event payload is a string rather than an object
@@ -12,7 +12,7 @@
 	/**
 	* Fires when bar position is set.
 	*
-	* @event onyx.RangeSlider#event:onChange
+	* @event onyx.RangeSlider#onChange
 	* @type {Object}
 	* @property {Number} value - The new bar position.
 	* @property {Boolean} startChanged - Indicates whether the first slider (`rangeStart`)
@@ -23,7 +23,7 @@
 	/**
 	* Fires while control knob is being dragged.
 	*
-	* @event onyx.RangeSlider#event:onChanging
+	* @event onyx.RangeSlider#onChanging
 	* @type {Object}
 	* @property {Number} value - The current bar position.
 	* @public
@@ -39,9 +39,9 @@
 	* 	rangeStart: 200, rangeEnd: 400, interval: 20}
 	* ```
 	*
-	* [onChanging]{@link onyx.RangeSlider#event:onChanging} events are fired while
+	* [onChanging]{@link onyx.RangeSlider#onChanging} events are fired while
 	* the control knobs are being dragged, and an
-	* [onchange]{@link onyx.RangeSlider#event:onChange} event is fired when the
+	* [onchange]{@link onyx.RangeSlider#onChange} event is fired when the
 	* position is set by finishing a drag.
 	*
 	* @class  onyx.RangeSlider
@@ -344,7 +344,7 @@
 		},
 
 		/**
-		* @fires onyx.RangeSlider#event:onChanging
+		* @fires onyx.RangeSlider#onChanging
 		* @private
 		*/
 		drag: function (sender, event) {
@@ -382,7 +382,7 @@
 		},
 
 		/**
-		* @fires onyx.RangeSlider#event:onChange
+		* @fires onyx.RangeSlider#onChange
 		* @private
 		*/
 		dragfinish: function (sender, event) {
@@ -446,7 +446,7 @@
 		* Sets the label for the start knob.
 		*
 		* @param {String} content - New label for start knob.
-		* @fires onyx.RangeSlider#event:onSetLabel
+		* @fires onyx.RangeSlider#onSetLabel
 		* @public
 		*/
 		setStartLabel: function (content) {
@@ -457,7 +457,7 @@
 		* Sets the label for the end knob.
 		*
 		* @param {String} content - New label for end knob.
-		* @fires onyx.RangeSlider#event:onSetLabel
+		* @fires onyx.RangeSlider#onSetLabel
 		* @public
 		*/
 		setEndLabel: function (content) {
@@ -495,7 +495,7 @@
 		},
 
 		/**
-		* Handles [onSetLabel]{@link onyx.RangeSlider#event:onSetLabel} events.
+		* Handles [onSetLabel]{@link onyx.RangeSlider#onSetLabel} events.
 		*
 		* @private
 		*/

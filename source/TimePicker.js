@@ -2,7 +2,7 @@
 	/**
 	* Fires when one of the [TimePicker]{@link onyx.TimePicker}'s fields is selected.
 	*
-	* @event onyx.TimePicker#event:onSelect
+	* @event onyx.TimePicker#onSelect
 	* @type {Object}
 	* @property {String} name - Name of the [TimePicker]{@link onyx.TimePicker} that
 	* generated the event.
@@ -245,7 +245,7 @@
 		},
 
 		/**
-		* @fires onyx.TimePicker#event:onSelect
+		* @fires onyx.TimePicker#onSelect
 		* @private
 		*/
 		updateHour: function (inSender, inEvent){
@@ -260,7 +260,7 @@
 		},
 
 		/**
-		* @fires onyx.TimePicker#event:onSelect
+		* @fires onyx.TimePicker#onSelect
 		* @private
 		*/
 		updateMinute: function (inSender, inEvent){
@@ -270,7 +270,7 @@
 		},
 
 		/**
-		* @fires onyx.TimePicker#event:onSelect
+		* @fires onyx.TimePicker#onSelect
 		* @private
 		*/
 		updateAmPm: function (inSender, inEvent){

@@ -55,7 +55,7 @@
 		},
 
 		/**
-		* Handles [onChange]{@link onyx.Picker#event:onChange} event, waterfalling
+		* Handles [onChange]{@link onyx.Picker#onChange} event, waterfalling
 		* it down to children.
 		*
 		* @private

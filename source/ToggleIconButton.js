@@ -3,7 +3,7 @@
 	* Fires when the user changes the value of the toggle button, but not
 	* when the value is changed programmatically.
 	*
-	* @event onyx.ToggleIconButton#event:onChange
+	* @event onyx.ToggleIconButton#onChange
 	* @type {Object}
 	* @property {Boolean} value - The current value of the button.
 	* @public
