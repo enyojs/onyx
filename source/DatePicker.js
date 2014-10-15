@@ -198,7 +198,7 @@
 		},
 
 		/**
-		* Handler for year {@link enyo.FlyweightPicker#onSetupItem}.
+		* Handler for year [onSetupItem]{@link onyx.FlyweightPicker#onSetupItem} event.
 		*
 		* @private
 		*/

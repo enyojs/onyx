@@ -76,7 +76,7 @@
 
 		/**
 		* Makes the control [active]{@link onyx.IconButton#active} (if it is not
-		* [disabled]{@link enyo.IconButton#disabled}).
+		* [disabled]{@link onyx.Icon#disabled}).
 		*
 		* @private
 		*/
