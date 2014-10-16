@@ -7,7 +7,7 @@
 	* @type {Object}
 	* @property {Number} index - The row index.
 	* @property {enyo.Control} flyweight - The row control, for decoration.
-	* @see  enyo.FlyweightRepeater#onSetupItem
+	* @see enyo.FlyweightRepeater.onSetupItem
 	* @public
 	*/
 
