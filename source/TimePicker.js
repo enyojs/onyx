@@ -96,8 +96,8 @@
 		*/
 		create: function () {
 			this.inherited(arguments);
-			if (ilib) {
-				this.locale = ilib.getLocale();
+			if (scope.ilib) {
+				this.locale = scope.ilib.getLocale();
 			}
 			this.initDefaults();
 		},
@@ -110,11 +110,11 @@
 			this._strAm = 'AM';
 			this._strPm = 'PM';
 			// Attempt to use the ilib lib (ie assume it is loaded)
-			if (ilib) {
-				this._tf = new ilib.DateFmt({locale:this.locale});
+			if (scope.ilib) {
+				this._tf = new scope.ilib.DateFmt({locale:this.locale});
 
-				var objAmPm = new ilib.DateFmt({locale:this.locale, type: 'time', template: 'a'});
-				var timeobj = ilib.Date.newInstance({locale:this.locale, hour: 1});
+				var objAmPm = new scope.ilib.DateFmt({locale:this.locale, type: 'time', template: 'a'});
+				var timeobj = scope.ilib.Date.newInstance({locale:this.locale, hour: 1});
 				this._strAm = objAmPm.format(timeobj);
 				timeobj.hour = 13;
 				this._strPm = objAmPm.format(timeobj);

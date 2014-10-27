@@ -135,8 +135,8 @@
 		*/
 		create: function () {
 			this.inherited(arguments);
-			if (ilib) {
-				this.locale = ilib.getLocale();
+			if (scope.ilib) {
+				this.locale = scope.ilib.getLocale();
 			}
 			this.initDefaults();
 		},
@@ -150,17 +150,14 @@
 		initDefaults: function () {
 			var months;
 			//Attempt to use the ilib library if it is loaded
-			if (ilib) {
+			if (scope.ilib) {
 				months = [];
-				this._tf = new ilib.DateFmt({locale:this.locale, timezone: 'local'});
+				this._tf = new scope.ilib.DateFmt({locale:this.locale, timezone: 'local'});
 				months = this._tf.getMonthsOfYear({length: 'long'});
 			}
 			// Fall back to en_US as default
 			else {
 				months = [undefined, 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-				this.localeInfo.getMonthsOfYear = function () {
-					return months;
-				};
 			}
 
 			// use iLib's getTemplate as that returns locale-specific ordering
