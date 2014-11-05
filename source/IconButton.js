@@ -13,7 +13,7 @@
 	* and the bottom half showing its state when hovered-over or active.
 	*
 	* For more information, see the documentation on
-	* [Buttons]{@linkplain docs/building-apps/controls/buttons.html} in the
+	* [Buttons]{@linkplain $dev-guide/building-apps/controls/buttons.html} in the
 	* Enyo Developer Guide.
 	*
 	* @class  onyx.IconButton
