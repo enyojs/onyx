@@ -286,6 +286,9 @@
 				if (this.scrolling) {
 					this.getScroller().setShowing(this.showing);
 				}
+				if (!this.showing) {
+					this.activator = this.activatorOffset = null;
+				}
 				this.adjustPosition();
 			};
 		}),
@@ -304,10 +307,7 @@
 		* @private
 		*/
 		requestShow: function (sender, event) {
-			var n = event.activator.hasNode();
-			if (n) {
-				this.activatorOffset = this.getPageOffset(n);
-			}
+			this.activator = event.activator.hasNode();
 			this.show();
 			return true;
 		},
@@ -395,8 +395,9 @@
 		* @private
 		*/
 		adjustPosition: function () {
-			if (this.showing && this.hasNode()) {
+			if (this.showing && this.hasNode() && this.activator) {
 				this.resetPositioning();
+				this.activatorOffset = this.getPageOffset(this.activator);
 				var innerWidth = this.getViewWidth();
 				var innerHeight = this.getViewHeight();
 
