@@ -2,7 +2,7 @@
 
 	/**
 	* {@link onyx.Checkbox} is a box that shows or hides a checkmark when clicked. The
-	* [onChange]{@link enyo.Checkbox#event:onChange} event is fired when the box is
+	* [onChange]{@link enyo.Checkbox#onChange} event is fired when the box is
 	* clicked. Call `getValue()` to retrieve a boolean indicating whether the box is
 	* currently checked.
 	*

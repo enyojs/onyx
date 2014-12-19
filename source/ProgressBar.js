@@ -3,7 +3,7 @@
 	/**
 	* Fires when progress bar finishes animating to a position.
 	*
-	* @event onyx.ProgressBar#event:onAnimateProgressFinish
+	* @event onyx.ProgressBar#onAnimateProgressFinish
 	* @type {enyo.Animator}
 	* @todo Not sure why the animator is passed as the payload to the event ...
 	* @public
@@ -32,7 +32,7 @@
 	* ```
 	*
 	* For more information, see the documentation on
-	* [Progress Indicators]{@link building-apps/controls/progress-indicators.html}
+	* [Progress Indicators]{@linkplain $dev-guide/building-apps/controls/progress-indicators.html}
 	* in the Enyo Developer Guide.
 	*
 	* @class  onyx.ProgressBar
@@ -255,7 +255,7 @@
 		},
 
 		/**
-		* Handles [onStep]{@link enyo.Animator#event:onStep} animation events.
+		* Handles [onStep]{@link enyo.Animator#onStep} animation events.
 		*
 		* @private
 		*/
@@ -265,9 +265,9 @@
 		},
 
 		/**
-		* Handles [onEnd]{@link enyo.Animator#event:onEnd} animation events.
+		* Handles [onEnd]{@link enyo.Animator#onEnd} animation events.
 		*
-		* @fires onyx.ProgressBar#event:onAnimateProgressFinish
+		* @fires onyx.ProgressBar#onAnimateProgressFinish
 		* @private
 		*/
 		progressAnimatorComplete: function (sender) {

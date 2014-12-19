@@ -14,7 +14,7 @@
 	* {kind: 'onyx.Button', content: 'Custom', style: 'background-color: purple; color: #F1F1F1;'}
 	* ```
 	* For more information, see the documentation on
-	* [Buttons]{@link building-apps/controls/buttons.html} in the Enyo Developer Guide.
+	* [Buttons]{@linkplain $dev-guide/building-apps/controls/buttons.html} in the Enyo Developer Guide.
 	*
 	* @class onyx.Button
 	* @extends enyo.Button

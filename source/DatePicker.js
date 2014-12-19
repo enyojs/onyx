@@ -3,7 +3,7 @@
 	/**
 	* Fires when one of the [DatePicker]{@link onyx.DatePicker}'s fields is selected.
 	*
-	* @event onyx.DatePicker#event:onSelect
+	* @event onyx.DatePicker#onSelect
 	* @type {Object}
 	* @property {String} name - Name of the [DatePicker]{@link onyx.DatePicker} that
 	* generated the event.
@@ -195,7 +195,7 @@
 		},
 
 		/**
-		* Handler for year {@link enyo.FlyweightPicker#onSetupItem}.
+		* Handler for year {@link onyx.FlyweightPicker#onSetupItem}.
 		*
 		* @private
 		*/
@@ -348,9 +348,9 @@
 		},
 
 		/**
-		* Handler for the day picker's [onSelect]{link onyx.DatePicker#event:onSelect} event.
+		* Handler for the day picker's [onSelect]{link onyx.DatePicker#onSelect} event.
 		*
-		* @fires onyx.DatePicker#event:onSelect
+		* @fires onyx.DatePicker#onSelect
 		* @private
 		*/
 		updateDay: function (sender, event){
@@ -363,9 +363,9 @@
 		},
 
 		/**
-		* Handler for the month picker's [onSelect]{link onyx.DatePicker#event:onSelect} event.
+		* Handler for the month picker's [onSelect]{link onyx.DatePicker#onSelect} event.
 		*
-		* @fires onyx.DatePicker#event:onSelect
+		* @fires onyx.DatePicker#onSelect
 		* @private
 		*/
 		updateMonth: function (sender, event){
@@ -378,9 +378,9 @@
 		},
 
 		/**
-		* Handler for the year picker's [onSelect]{link onyx.DatePicker#event:onSelect} event.
+		* Handler for the year picker's [onSelect]{link onyx.DatePicker#onSelect} event.
 		*
-		* @fires onyx.DatePicker#event:onSelect
+		* @fires onyx.DatePicker#onSelect
 		* @private
 		*/
 		updateYear: function (sender, event){

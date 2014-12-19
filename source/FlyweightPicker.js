@@ -3,18 +3,18 @@
 	/**
 	* Fires when a row is being initialized.
 	*
-	* @event onyx.FlyweightPicker#event:onSetupItem
+	* @event onyx.FlyweightPicker#onSetupItem
 	* @type {Object}
 	* @property {Number} index - The row index.
 	* @property {enyo.Control} flyweight - The row control, for decoration.
-	* @see  enyo.FlyweightRepeater#event:onSetupItem
+	* @see  enyo.FlyweightRepeater#onSetupItem
 	* @public
 	*/
 
 	/**
 	* Fires when an item is selected.
 	*
-	* @event onyx.FlyweightPicker#event:onSelect
+	* @event onyx.FlyweightPicker#onSelect
 	* @type {Object}
 	* @property {String} content - Content of the selected item.
 	* @property {Number} selected - Row index of the selected item.
@@ -25,7 +25,7 @@
 	* {@link onyx.FlyweightPicker}, a subkind of {@link onyx.Picker}, is a picker
 	* that employs the flyweight pattern. It is used to display a large list of
 	* selectable items.	As with {@link enyo.FlyweightRepeater}, the
-	* [onSetupItem]{@link onyx.FlyweightPicker#event:onSetupItem} event allows for
+	* [onSetupItem]{@link onyx.FlyweightPicker#onSetupItem} event allows for
 	* customization of item rendering.
 	*
 	* To initialize the FlyweightPicker to a particular value, call `setSelected()`
@@ -33,7 +33,7 @@
 	* the item that should be shown in the activator button.
 	*
 	* When an item is selected, FlyweightPicker sends an
-	* [onSelect]{@link onyx.FlyweightPicker#event:onSelect} event with the selected
+	* [onSelect]{@link onyx.FlyweightPicker#onSelect} event with the selected
 	* item's information. This may be handled by a client application to determine
 	* which item was selected.
 	*
@@ -189,7 +189,7 @@
 		},
 
 		/**
-		* @fires onyx.Picker#event:onChange
+		* @fires onyx.Picker#onChange
 		* @private
 		*/
 		selectedChanged: function (old) {
@@ -212,7 +212,7 @@
 		},
 
 		/**
-		* @fires onyx.FlyweightPicker#event:onSelect
+		* @fires onyx.FlyweightPicker#onSelect
 		* @private
 		*/
 		itemTap: function (sender, event) {

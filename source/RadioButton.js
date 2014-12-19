@@ -5,7 +5,7 @@
 	* {@link onyx.RadioGroup}.
 	*
 	* For more information, see the documentation on
-	* [Buttons]{@link building-apps/controls/buttons.html} in the
+	* [Buttons]{@linkplain $dev-guide/building-apps/controls/buttons.html} in the
 	* Enyo Developer Guide.
 	*
 	* @class  onyx.RadioButton

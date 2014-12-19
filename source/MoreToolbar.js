@@ -18,10 +18,6 @@
 	* You may prevent a control from being moved into the menu by setting its
 	* `unmoveable` property to `true` (the default is `false`).
 	*
-	* For more information, see the documentation on
-	* [Toolbars]{@link building-apps/controls/toolbars.html} in the
-	* Enyo Developer Guide.
-	*
 	* @class  onyx.MoreToolbar
 	* @extends enyo.Control
 	* @ui
@@ -143,7 +139,7 @@
 		},
 
 		/**
-		* Handles [onActivate]{@link enyo.GroupItem#event:onActivate} events.
+		* Handles [onActivate]{@link enyo.GroupItem#onActivate} events.
 		*
 		* Adds the `'active'` CSS class to this control if the event's originator is active.
 		*

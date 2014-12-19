@@ -3,7 +3,7 @@
 	/**
 	* Fires when the menu item is selected.
 	*
-	* @event onyx.MenuItem#event:onSelect
+	* @event onyx.MenuItem#onSelect
 	* @type {Object}
 	* @property {enyo.Control} selected - The selected menu item.
 	* @property {String} content - The selected menu item's content.
@@ -13,7 +13,7 @@
 	/**
 	* Fires when the menu item's content changes.
 	*
-	* @event onyx.MenuItem#event:onItemContentChange
+	* @event onyx.MenuItem#onItemContentChange
 	* @type {Object}
 	* @property {enyo.Control} content - The menu item's content.
 	* @public
@@ -22,7 +22,7 @@
 	/**
 	* {@link onyx.MenuItem} is a button styled to look like a menu item, designed
 	* for use in an {@link onyx.Menu}. When the MenuItem is tapped, it tells the
-	* menu to hide itself and emits an [onSelect]{@link onyx.MenuItem#event:onSelect}
+	* menu to hide itself and emits an [onSelect]{@link onyx.MenuItem#onSelect}
 	* event with its content and a reference to itself. This event and its properties
 	* may be handled by a client application to determine which menu item was selected.
 	*
@@ -100,8 +100,8 @@
 		/**
 		* Handles `ontap` events.
 		*
-		* @fires onyx.Menu#event:onRequestHideMenu
-		* @fires onyx.MenuItem#event:onSelect
+		* @fires onyx.Menu#onRequestHideMenu
+		* @fires onyx.MenuItem#onSelect
 		* @private
 		*/
 		tap: function (sender) {
@@ -113,7 +113,7 @@
 		/**
 		* Sends notification that the item's content has changed.
 		*
-		* @fires onyx.MenuItem#event:onItemContentChange
+		* @fires onyx.MenuItem#onItemContentChange
 		* @private
 		*/
 		contentChanged: function (old) {

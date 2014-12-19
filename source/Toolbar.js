@@ -16,10 +16,6 @@
 	*	]}
 	*  ```
 	*
-	* For more information, see the documentation on
-	* [Toolbars]{@link building-apps/controls/toolbars.html} in the
-	* Enyo Developer Guide.
-	*
 	* @ui
 	* @class onyx.Toolbar
 	* @extends enyo.Control

@@ -6,7 +6,7 @@
 	* the item stays selected and the PickerButton displays the choice that was made.
 	*
 	* For more information, see the documentation on
-	* [Pickers]{@link building-apps/controls/pickers.html} in the
+	* [Pickers]{@linkplain $dev-guide/building-apps/controls/pickers.html} in the
 	* Enyo Developer Guide.
 	*
 	* @class  onyx.PickerButton
@@ -35,7 +35,7 @@
 		},
 
 		/**
-		* Handles [onChange]{@link onyx.Picker#event:onChange} event that is waterfalled
+		* Handles [onChange]{@link onyx.Picker#onChange} event that is waterfalled
 		* down from {@link onyx.PickerDecorator}.
 		*
 		* @private

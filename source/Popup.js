@@ -4,7 +4,7 @@
 	* {@link onyx.Popup} is an {@link enyo.Popup} with Onyx styling applied.
 	*
 	* For more information, see the documentation on
-	* [Popups]{@link building-apps/controls/popups.html} in the
+	* [Popups]{@linkplain $dev-guide/building-apps/controls/popups.html} in the
 	* Enyo Developer Guide.
 	*
 	* @class  onyx.Popup

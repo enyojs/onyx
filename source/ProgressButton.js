@@ -3,7 +3,7 @@
 	/**
 	* Fires when cancel button is tapped.
 	*
-	* @event onyx.ProgressButton#event:onCancel
+	* @event onyx.ProgressButton#onCancel
 	* @type {Object}
 	* @public
 	*/
@@ -21,7 +21,7 @@
 	* ```
 	*
 	* For more information, see the documentation on
-	* [Progress Indicators]{@link building-apps/controls/progress-indicators.html}
+	* [Progress Indicators]{@linkplain $dev-guide/building-apps/controls/progress-indicators.html}
 	* in the Enyo Developer Guide.
 	*
 	* @class  onyx.ProgressButton
@@ -65,7 +65,7 @@
 		],
 
 		/**
-		* @fires onyx.ProgressButton#event:onCancel
+		* @fires onyx.ProgressButton#onCancel
 		* @private
 		*/
 		cancelTap: function () {

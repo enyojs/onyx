@@ -3,7 +3,7 @@
 	/**
 	* {@link onyx.MenuDecorator} is a control that loosely couples an {@link onyx.Menu}
 	* with an activating control, which may be a button or any other control with an
-	* [onActivate]{@link enyo.GroupItem#event:onActivate} event. The decorator must
+	* [onActivate]{@link enyo.GroupItem#onActivate} event. The decorator must
 	* surround both the activating control and the menu itself. When the menu is
 	* activated, it shows itself in the correct position relative to the activator.
 	*
@@ -59,7 +59,7 @@
 		},
 
 		/**
-		* Handles [onActivate]{@link enyo.GroupItem#event:onActivate} events.
+		* Handles [onActivate]{@link enyo.GroupItem#onActivate} events.
 		*
 		* @private
 		*/
@@ -76,7 +76,7 @@
 		/**
 		* Requests that the child menu be shown.
 		*
-		* @fires onyx.Menu#event:onRequestShowMenu
+		* @fires onyx.Menu#onRequestShowMenu
 		* @private
 		*/
 		requestShowMenu: function () {
@@ -86,7 +86,7 @@
 		/**
 		* Requests that the child menu be hidden.
 		*
-		* @fires onyx.Menu#event:onRequestHideMenu
+		* @fires onyx.Menu#onRequestHideMenu
 		* @private
 		*/
 		requestHideMenu: function () {
@@ -94,7 +94,7 @@
 		},
 
 		/**
-		* Handles [onHide]{@link enyo.Popup#event:onHide} events.
+		* Handles [onHide]{@link enyo.Popup#onHide} events.
 		*
 		* @private
 		*/

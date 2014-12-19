@@ -3,7 +3,7 @@
 	/**
 	* Fires when the popup is tapped.
 	* @todo  Should this be removed? Never triggered and duplicate of ontap
-	* @event onyx.ContextualPopup#event:onTap
+	* @event onyx.ContextualPopup#onTap
 	* @public
 	*/
 

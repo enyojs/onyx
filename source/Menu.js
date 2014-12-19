@@ -3,7 +3,7 @@
 	/**
 	* Requests that a menu be displayed and positioned near an activating control.
 	*
-	* @event onyx.Menu#event:onRequestShowMenu
+	* @event onyx.Menu#onRequestShowMenu
 	* @type {Object}
 	* @property {enyo.Control} activator - Control near which the menu should be displayed.
 	* @public
@@ -12,7 +12,7 @@
 	/**
 	* Requests that a menu be hidden.
 	*
-	* @event onyx.Menu#event:onRequestHideMenu
+	* @event onyx.Menu#onRequestHideMenu
 	* @type {Object}
 	* @public
 	*/
@@ -22,7 +22,7 @@
 	* {@link onyx.MenuItem} objects and looks like a popup menu. It is meant to be
 	* used together with an {@link onyx.MenuDecorator}. The decorator couples the
 	* menu with an activating control, which may be a button or any other control
-	* with an [onActivate]{@link enyo.GroupItem#event:onActivate} event. When the
+	* with an [onActivate]{@link enyo.GroupItem#onActivate} event. When the
 	* control is activated, the menu shows itself in the correct position relative
 	* to the activator.
 	*
@@ -38,10 +38,6 @@
 	* 	]}
 	* ]}
 	* ```
-	*
-	* For more information, see the documentation on
-	* [Menus]{@link building-apps/controls/menus.html} in the
-	* Enyo Developer Guide.
 	*
 	* @class  onyx.Menu
 	* @extends onyx.Popup
@@ -178,7 +174,7 @@
 		},
 
 		/**
-		* Handles [onActivate]{@link enyo.GroupItem#event:onActivate} events.
+		* Handles [onActivate]{@link enyo.GroupItem#onActivate} events.
 		*
 		* @private
 		*/
@@ -199,7 +195,7 @@
 		},
 
 		/**
-		* Handles [onRequestShowMenu]{@link onyx.Menu#event:onRequestShowMenu} events.
+		* Handles [onRequestShowMenu]{@link onyx.Menu#onRequestShowMenu} events.
 		*
 		* @private
 		*/
@@ -345,7 +341,7 @@
 		},
 
 		/**
-		* Handles [onRequestMenuHide]{@link onyx.Menu#event:onRequestMenuHide} events.
+		* Handles [onRequestMenuHide]{@link onyx.Menu#onRequestMenuHide} events.
 		*
 		* @private
 		*/
