@@ -8,7 +8,7 @@
 	*/
 
 	if (enyo && enyo.version) {
-		enyo.version.onyx = "2.5.3-pre.6";
+		enyo.version.onyx = "2.5.3-pre.8.w";
 	}
 
 })(enyo, this);
