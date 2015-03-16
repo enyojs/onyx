@@ -1,5 +1,6 @@
 enyo.kind({
 	name: 'onyx.sample.SliderSample',
+	kind: 'Scroller',
 	classes: 'onyx onyx-sample',
 	components: [
 		{classes: 'onyx-sample-divider', content: 'Sliders'},
