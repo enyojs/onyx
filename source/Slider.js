@@ -153,10 +153,19 @@
 		*/
 		valueChanged: function () {
 			this.value = this.clampValue(this.min, this.max, this.value);
-			var p = this.calcPercent(this.value);
+			if (!this.$.animator.isAnimating()) {
+				this.updateBar(this.value);
+			}
+		},
+
+		/**
+		* @private
+		*/
+		updateBar: function (value) {
+			var p = this.calcPercent(value);
 			this.updateKnobPosition(p);
 			if (this.lockBar) {
-				this.setProgress(this.value);
+				this.setProgress(value);
 			}
 		},
 
@@ -195,7 +204,7 @@
 			if (this.dragging) {
 				var v = this.calcKnobPosition(event);
 				v = (this.increment) ? this.calcIncrement(v) : v;
-				this.setValue(v);
+				this.setValue(this.clampValue(this.min, this.max, v));
 				this.doChanging({value: this.value});
 				return true;
 			}
@@ -253,13 +262,15 @@
 				endValue: value,
 				node: this.hasNode()
 			});
+
+			this.setValue(value);
 		},
 
 		/**
 		* @private
 		*/
 		animatorStep: function (sender) {
-			this.setValue(sender.value);
+			this.updateBar(sender.value);
 			return true;
 		},
 
