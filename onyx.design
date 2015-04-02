@@ -84,13 +84,6 @@
                     }
                 },
                 {
-                    "name": "Scrim",
-                    "description": "A overlay area to prevent tap events",
-                    "config": {
-                        "kind": "onyx.Scrim"
-                    }
-                },
-                {
                     "name": "Slider",
                     "description": "A slider",
                     "config": {
