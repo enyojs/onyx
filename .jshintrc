@@ -1,14 +1,9 @@
 {
-    "globals": {
-        "enyo": false,
-        "$L": false,
-        "onyx": false,
-        "ilib": false
-    },
     "es3": true,
     "evil": false,
     "regexdash": true,
     "browser": true,
+    "node": true,
     "wsh": false,
     "trailing": false,
     "sub": true,

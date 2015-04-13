@@ -1,91 +1,105 @@
-enyo.kind({
-	name: "onyx.sample.TooltipSample",
-	classes: "onyx onyx-sample",
+var
+	kind = require('enyo/kind');
+
+var
+	Button = require('onyx/Button'),
+	IconButton = require('onyx/IconButton'),
+	Input = require('onyx/Input'),
+	InputDecorator = require('onyx/InputDecorator'),
+	Menu = require('onyx/Menu'),
+	MenuDecorator = require('onyx/MenuDecorator'),
+	Toolbar = require('onyx/Toolbar'),
+	Tooltip = require('onyx/Tooltip'),
+	TooltipDecorator = require('onyx/TooltipDecorator');
+
+module.exports = kind({
+	name: 'onyx.sample.TooltipSample',
+	classes: 'onyx onyx-sample',
 	handlers: {
-		onSelect: "itemSelected"
+		onSelect: 'itemSelected'
 	},
 	components: [
-		{classes: "onyx-sample-divider", content: "Tooltips on Toolbar"},
-		{kind: "onyx.Toolbar", classes: "onyx-menu-toolbar", components: [
-			{kind: "onyx.TooltipDecorator", components: [
-				{kind: "onyx.Button", content: "Tooltip"},
-				{kind: "onyx.Tooltip", content: "I'm a tooltip for a button."}
+		{classes: 'onyx-sample-divider', content: 'Tooltips on Toolbar'},
+		{kind: Toolbar, classes: 'onyx-menu-toolbar', components: [
+			{kind: TooltipDecorator, components: [
+				{kind: Button, content: 'Tooltip'},
+				{kind: Tooltip, content: 'I\'m a tooltip for a button.'}
 			]},
-			{kind: "onyx.TooltipDecorator", components: [
-				{kind: "onyx.InputDecorator", components: [
-					{kind: "onyx.Input", style:"width:130px;", placholder: "Just an input..."}
+			{kind: TooltipDecorator, components: [
+				{kind: InputDecorator, components: [
+					{kind: Input, style: 'width: 130px;', placholder: 'Just an input...'}
 				]},
-				{kind: "onyx.Tooltip", content: "I'm a tooltip for an input."}
+				{kind: Tooltip, content: 'I\'m a tooltip for an input.'}
 			]}
 		]},
-		{tag: "br"},
-		{kind: "onyx.Toolbar", classes: "onyx-menu-toolbar", components: [
-			{kind: "onyx.MenuDecorator", components: [
-				{kind: "onyx.IconButton", src: "assets/menu-icon-bookmark.png"},
-				{kind: "onyx.Tooltip", content: "Bookmarks menu"},
-				{kind: "onyx.Menu", components: [
+		{tag: 'br'},
+		{kind: Toolbar, classes: 'onyx-menu-toolbar', components: [
+			{kind: MenuDecorator, components: [
+				{kind: IconButton, src: 'assets/menu-icon-bookmark.png'},
+				{kind: Tooltip, content: 'Bookmarks menu'},
+				{kind: Menu, components: [
 					{components: [
-						{kind: "onyx.IconButton", src: "assets/menu-icon-bookmark.png"},
-						{content: "Bookmarks"}
+						{kind: IconButton, src: 'assets/menu-icon-bookmark.png'},
+						{content: 'Bookmarks'}
 					]},
-					{content: "Favorites"},
-					{classes: "onyx-menu-divider"},
-					{content: "Recents"}
+					{content: 'Favorites'},
+					{classes: 'onyx-menu-divider'},
+					{content: 'Recents'}
 				]}
 			]},
-			{kind: "onyx.MenuDecorator", components: [
-				{content: "Bookmarks menu"},
-				{kind: "onyx.Tooltip", content: "Tap to open..."},
-				{kind: "onyx.Menu", components: [
+			{kind: MenuDecorator, components: [
+				{content: 'Bookmarks menu'},
+				{kind: Tooltip, content: 'Tap to open...'},
+				{kind: Menu, components: [
 					{components: [
-						{kind: "onyx.IconButton", src: "assets/menu-icon-bookmark.png"},
-						{content: "Bookmarks"}
+						{kind: IconButton, src: 'assets/menu-icon-bookmark.png'},
+						{content: 'Bookmarks'}
 					]},
-					{content: "Favorites"},
-					{classes: "onyx-menu-divider"},
-					{content: "Recents"}
+					{content: 'Favorites'},
+					{classes: 'onyx-menu-divider'},
+					{content: 'Recents'}
 				]}
 			]}
 		]},
-		{tag: "br"},
-		{classes: "onyx-sample-divider", content: "Tooltips on items"},
-		{kind: "onyx.TooltipDecorator", components: [
-			{kind: "onyx.Button", content: "Tooltip"},
-			{kind: "onyx.Tooltip", content: "I'm a tooltip for a button."}
+		{tag: 'br'},
+		{classes: 'onyx-sample-divider', content: 'Tooltips on items'},
+		{kind: TooltipDecorator, components: [
+			{kind: Button, content: 'Tooltip'},
+			{kind: Tooltip, content: 'I\'m a tooltip for a button.'}
 		]},
-		{tag: "br"},
-		{kind: "onyx.TooltipDecorator", components: [
-			{kind: "onyx.InputDecorator", components: [
-				{kind: "onyx.Input", style:"width:130px;", placholder: "Just an input..."}
+		{tag: 'br'},
+		{kind: TooltipDecorator, components: [
+			{kind: InputDecorator, components: [
+				{kind: Input, style: 'width: 130px;', placholder: 'Just an input...'}
 			]},
-			{kind: "onyx.Tooltip", content: "I'm a tooltip for an input."}
+			{kind: Tooltip, content: 'I\'m a tooltip for an input.'}
 		]},
-		{tag: "br"},
-		{kind: "onyx.MenuDecorator", components: [
-			{kind: "onyx.IconButton", src: "assets/menu-icon-bookmark.png"},
-			{kind: "onyx.Tooltip", content: "Bookmarks menu"},
-			{kind: "onyx.Menu", components: [
+		{tag: 'br'},
+		{kind: MenuDecorator, components: [
+			{kind: IconButton, src: 'assets/menu-icon-bookmark.png'},
+			{kind: Tooltip, content: 'Bookmarks menu'},
+			{kind: Menu, components: [
 				{components: [
-					{kind: "onyx.IconButton", src: "assets/menu-icon-bookmark.png"},
-					{content: "Bookmarks"}
+					{kind: IconButton, src: 'assets/menu-icon-bookmark.png'},
+					{content: 'Bookmarks'}
 				]},
-				{content: "Favorites"},
-				{classes: "onyx-menu-divider"},
-				{content: "Recents"}
+				{content: 'Favorites'},
+				{classes: 'onyx-menu-divider'},
+				{content: 'Recents'}
 			]}
 		]},
-		{tag: "br"},
-		{kind: "onyx.MenuDecorator", components: [
-			{content: "Bookmarks menu"},
-			{kind: "onyx.Tooltip", content: "Tap to open..."},
-			{kind: "onyx.Menu", components: [
+		{tag: 'br'},
+		{kind: MenuDecorator, components: [
+			{content: 'Bookmarks menu'},
+			{kind: Tooltip, content: 'Tap to open...'},
+			{kind: Menu, components: [
 				{components: [
-					{kind: "onyx.IconButton", src: "assets/menu-icon-bookmark.png"},
-					{content: "Bookmarks"}
+					{kind: IconButton, src: 'assets/menu-icon-bookmark.png'},
+					{content: 'Bookmarks'}
 				]},
-				{content: "Favorites"},
-				{classes: "onyx-menu-divider"},
-				{content: "Recents"}
+				{content: 'Favorites'},
+				{classes: 'onyx-menu-divider'},
+				{content: 'Recents'}
 			]}
 		]}
 	]

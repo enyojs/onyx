@@ -2,6 +2,17 @@
   "name": "onyx",
   "version": "1.0.0",
   "main": "index.js",
+  "style": [
+    "css/onyx-variables.less",
+    "css/onyx-rules.less"
+  ],
+  "assets": [
+    "images/*.png",
+    "images/*.gif"
+  ],
+  "optionalLibs": [
+    "enyo-ilib"
+  ],
   "directories": {
     "doc": "docs"
   },

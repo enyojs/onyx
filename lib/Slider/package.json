@@ -1,0 +1,6 @@
+{
+	"main": "Slider.js",
+	"style": [
+		"Slider.less"
+	]
+}

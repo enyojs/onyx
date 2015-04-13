@@ -1,0 +1,6 @@
+{
+	"main": "Item.js",
+	"style": [
+		"Item.less"
+	]
+}

@@ -1,0 +1,6 @@
+{
+	"main": "Tooltip.js",
+	"style": [
+		"Tooltip.less"
+	]
+}

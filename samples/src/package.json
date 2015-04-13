@@ -1,0 +1,14 @@
+{
+  "main": "index.js",
+  "libPath": "../../../",
+  "outdir": "../",
+  "title": "Onyx Samples",
+  "style": [
+    "*.css",
+    "*.less"
+  ],
+  "assets": [
+    "assets/*.*",
+    "assets/avatars/*"
+  ]
+}
