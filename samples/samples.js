@@ -48217,7 +48217,7 @@ var
 	GroupboxHeader = require('../../../onyx/lib/GroupboxHeader'),
 	RangeSlider = require('../../../onyx/lib/RangeSlider'),
 	Checkbox = require('../../../onyx/lib/Checkbox'),
-	Button = require('../../../onyx/lib/Button')
+	Button = require('../../../onyx/lib/Button');
 
 module.exports = kind({
 	name: 'onyx.sample.SliderSample',
@@ -49795,7 +49795,6 @@ var
 var
 	ContextualPopup = require('../../../onyx/lib/ContextualPopup'),
 	IconButton = require('../../../onyx/lib/IconButton'),
-	Menu = require('../../../onyx/lib/Menu'),
 	MenuDecorator = require('../../../onyx/lib/MenuDecorator'),
 	Toolbar = require('../../../onyx/lib/Toolbar');
 
@@ -49994,7 +49993,7 @@ module.exports = kind({
 	}
 });
 
-},{"../../../enyo/lib/Scroller":54,"../../../enyo/lib/kind":76,"../../../layout/lib/FittableColumns":89,"../../../layout/lib/FittableRows":91,"../../../onyx/lib/ContextualPopup":97,"../../../onyx/lib/IconButton":105,"../../../onyx/lib/Menu":109,"../../../onyx/lib/MenuDecorator":110,"../../../onyx/lib/Toolbar":133}],144:[function(require,module,exports){
+},{"../../../enyo/lib/Scroller":54,"../../../enyo/lib/kind":76,"../../../layout/lib/FittableColumns":89,"../../../layout/lib/FittableRows":91,"../../../onyx/lib/ContextualPopup":97,"../../../onyx/lib/IconButton":105,"../../../onyx/lib/MenuDecorator":110,"../../../onyx/lib/Toolbar":133}],144:[function(require,module,exports){
 var
 	kind = require('../../../enyo/lib/kind'),
 	Scroller = require('../../../enyo/lib/Scroller'),
@@ -50007,7 +50006,7 @@ var
 	IconButton = require('../../../onyx/lib/IconButton'),
 	Menu = require('../../../onyx/lib/Menu'),
 	MenuDecorator = require('../../../onyx/lib/MenuDecorator'),
-	MenuItem = require('../../../onyx/lib/MenuItem')
+	MenuItem = require('../../../onyx/lib/MenuItem'),
 	Toolbar = require('../../../onyx/lib/Toolbar');
 
 module.exports = kind({
@@ -50056,7 +50055,7 @@ module.exports = kind({
 		{kind: MenuDecorator, onSelect: 'itemSelected', components: [
 			{content: 'Scrolling Popup menu'},
 			{kind: Menu, components: [
-				{name: 'menuScroller', kind: 'enyo.Scroller', defaultKind: MenuItem, vertical: 'auto', classes: 'enyo-unselectable', maxHeight: '200px', strategyKind: TouchScrollStrategy, components: [
+				{name: 'menuScroller', kind: Scroller, defaultKind: MenuItem, vertical: 'auto', classes: 'enyo-unselectable', maxHeight: '200px', strategyKind: TouchScrollStrategy, components: [
 					{content: '1'},
 					{content: '2'},
 					{classes: 'onyx-menu-divider'},
@@ -50677,7 +50676,7 @@ var
 	kind = require('../../../enyo/lib/kind');
 
 var
-	FittableRows = require('../../../layout/lib/FittableRows')
+	FittableRows = require('../../../layout/lib/FittableRows');
 
 var
 	Button = require('../../../onyx/lib/Button'),
@@ -52516,4 +52515,4 @@ ready(function () {
 },{"../../../enyo/lib/Anchor":15,"../../../enyo/lib/Collection":23,"../../../enyo/lib/Control":27,"../../../enyo/lib/DataRepeater":29,"../../../enyo/lib/drag":69,"../../../enyo/lib/kind":76,"../../../enyo/lib/ready":83,"./ButtonGroupSample":136,"./ButtonSample":137,"./CheckboxSample":138,"./ContextualPopupSample":139,"./DatePickerSample":140,"./GroupboxSample":141,"./IconButtonSample":142,"./InputSample":143,"./MenuSample":144,"./MoreToolbarSample":145,"./PickerSample":146,"./PopupSample":147,"./ProgressSample":148,"./SliderSample":149,"./SpinnerSample":150,"./SubmenuSample":151,"./TabBarSample":152,"./TabPanelSample":153,"./TimePickerSample":154,"./ToggleButtonSample":155,"./ToolbarSample":156,"./TooltipSample":157}]},{},[158])
 
 
-//# sourceMappingURL=output.js.map
+//# sourceMappingURL=samples.js.map

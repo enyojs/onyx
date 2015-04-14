@@ -3,6 +3,8 @@
   "libPath": "../../../",
   "outdir": "../",
   "title": "Onyx Samples",
+  "outCssFile": "samples.css",
+  "outJsFile": "samples.js",
   "style": [
     "*.css",
     "*.less"
