@@ -1,5 +1,3 @@
-require('enyo/drag');
-
 var
 	kind = require('enyo/kind'),
 	ready = require('enyo/ready'),
