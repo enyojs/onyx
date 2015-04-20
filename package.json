@@ -17,7 +17,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/gulp"
   },
   "repository": {
     "type": "git",
@@ -25,5 +25,10 @@
   },
   "author": "",
   "license": "ISC",
-  "homepage": "https://github.com/enyojs/onyx"
+  "homepage": "https://github.com/enyojs/onyx",
+  "devDependencies": {
+    "gulp": "^3.8.11",
+    "gulp-jshint": "^1.10.0",
+    "jshint-stylish": "^1.0.1"
+  }
 }
