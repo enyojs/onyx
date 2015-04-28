@@ -1,6 +1,6 @@
 {
 	"main": "Grabber.js",
-	"style": [
+	"styles": [
 		"Grabber.less"
 	]
 }

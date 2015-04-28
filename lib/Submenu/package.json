@@ -1,6 +1,6 @@
 {
 	"main": "Submenu.js",
-	"style": [
+	"styles": [
 		"Submenu.less"
 	]
 }

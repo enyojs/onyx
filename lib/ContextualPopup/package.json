@@ -1,6 +1,6 @@
 {
 	"main": "ContextualPopup.js",
-	"style": [
+	"styles": [
 		"ContextualPopup.less"
 	]
 }

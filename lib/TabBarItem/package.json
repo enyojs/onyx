@@ -1,6 +1,6 @@
 {
 	"main": "TabBarItem.js",
-	"style": [
+	"styles": [
 		"TabBarItem.less"
 	]
 }

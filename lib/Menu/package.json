@@ -1,6 +1,6 @@
 {
 	"main": "Menu.js",
-	"style": [
+	"styles": [
 		"Menu.less"
 	]
 }

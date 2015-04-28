@@ -1,6 +1,6 @@
 {
 	"main": "RadioButton.js",
-	"style": [
+	"styles": [
 		"RadioButton.less"
 	]
 }

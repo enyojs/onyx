@@ -1,6 +1,6 @@
 {
 	"main": "Icon.js",
-	"style": [
+	"styles": [
 		"Icon.less"
 	]
 }

@@ -1,6 +1,6 @@
 {
 	"main": "ProgressBar.js",
-	"style": [
+	"styles": [
 		"ProgressBar.less"
 	]
 }

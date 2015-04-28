@@ -1,6 +1,6 @@
 {
 	"main": "GroupboxHeader.js",
-	"style": [
+	"styles": [
 		"GroupboxHeader.less"
 	]
 }

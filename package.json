@@ -2,7 +2,7 @@
   "name": "onyx",
   "version": "1.0.0",
   "main": "index.js",
-  "style": [
+  "styles": [
     "css/onyx-variables.less",
     "css/onyx-rules.less"
   ],

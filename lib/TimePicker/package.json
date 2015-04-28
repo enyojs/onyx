@@ -1,6 +1,6 @@
 {
 	"main": "TimePicker.js",
-	"style": [
+	"styles": [
 		"TimePicker.less"
 	]
 }
