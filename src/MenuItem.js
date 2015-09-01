@@ -14,7 +14,7 @@ var
 *
 * @event module:onyx/MenuItem~MenuItem#onSelect
 * @type {Object}
-* @property {enyo.Control} selected - The selected menu item.
+* @property {module:enyo/Control~Control} selected - The selected menu item.
 * @property {String} content - The selected menu item's content.
 * @public
 */
@@ -24,7 +24,7 @@ var
 *
 * @event module:onyx/MenuItem~MenuItem#onItemContentChange
 * @type {Object}
-* @property {enyo.Control} content - The menu item's content.
+* @property {module:enyo/Control~Control} content - The menu item's content.
 * @public
 */
 

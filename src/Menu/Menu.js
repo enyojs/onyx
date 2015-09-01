@@ -19,7 +19,7 @@ var
 *
 * @event module:onyx/Menu~Menu#onRequestShowMenu
 * @type {Object}
-* @property {enyo.Control} activator - Control near which the menu should be displayed.
+* @property {module:enyo/Control~Control} activator - Control near which the menu should be displayed.
 * @public
 */
 
