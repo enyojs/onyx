@@ -23,18 +23,21 @@ var
 * Unlike enyo.Panels, by default, the user cannot drag between the panels of a
 * TabPanels. This behavior may be enabled by setting _draggable_ to _true_.
 *
-* ```
-* enyo.kind({
-* 	name: 'App',
-* 	kind: 'onyx.TabPanels',
-* 	fit: true,
-* 	components: [
-* 		{kind: 'MyStartPanel'},
-* 		{kind: 'MyMiddlePanel'},
-* 		{kind: 'MyLastPanel'}
-* 	]
-* });
-* new App().renderInto(document.body);
+* ```javascript
+* var
+* kind = require('enyo/kind'),
+* TabPanels = require('onyx/TabPanels');
+*
+* module.exports = kind({
+*        name: 'App',
+*        kind: TabPanels,
+*        fit: true,
+*        components: [
+*            {name: 'MyStartPanel'},
+*            {name: 'MyMiddlePanel'},
+*            {name: 'MyLastPanel'}
+*        ]
+*    });
 * ```
 *
 * @ui
