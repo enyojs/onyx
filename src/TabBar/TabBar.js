@@ -31,17 +31,21 @@ var
 *
 * Here's an example:
 *
-* ```
-* enyo.kind({
+* ```javascript
+* var
+* 	kind = require('enyo/kind'),
+* 	TabBar = require('onyx/TabBar');
+*
+* var myStuff = kind({
 * 	name: 'myStuff'
 * });
 *
-* enyo.kind({
+* kind({
 * 	name: 'App',
 * 	fit: true,
 * 	components: [
-* 		{name:'bar',kind: 'onyx.TabBar'},
-* 		{kind: 'MyStuff'}
+* 		{name:'bar', kind: TabBar},
+* 		{kind: MyStuff}
 * 	],
 *
 * 	handlers: {
@@ -49,7 +53,7 @@ var
 * 	},
 *
 * 	rendered: function () {
-* 		this.asdfasdf(arguments);
+* 		this.inherited(arguments);
 * 		this.$.bar.addTab({
 * 				'caption': 'greetings',
 * 				'data' : { 'msg': 'Hello World !' } // arbitrary user data
@@ -70,13 +74,17 @@ var
 * You can also setup the TabBar so a tap on a tab will fire a
 * 'onTabChangeRequest' event:
 *
-* ```
-* enyo.kind({
+* ```javascript
+* var
+* 	kind = require('enyo/kind'),
+* 	TabBar = require('onyx/TabBar');
+*
+* kind({
 * 	name: 'App',
 * 	fit: true,
 * 	components: [
-* 		{name:'bar',kind: 'onyx.TabBar', checkBeforeChanging: true },
-* 		{kind: 'MyStuff'}
+* 		{name:'bar', kind: TabBar, checkBeforeChanging: true },
+* 		{kind: MyStuff}
 * 	],
 *
 *     handlers: {
