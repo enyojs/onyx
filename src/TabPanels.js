@@ -18,25 +18,26 @@ var
 	TabBar = require('onyx/TabBar');
 
 /**
-* enyo.TabPanels is a subkind of enyo.Panels that
-* displays a set of tabs, which allow navigation between the individual panels.
-* Unlike [enyo/Panels]{@link module:enyo/Panels~Panels}, by default, the user cannot drag between the panels of a
-* TabPanels. This behavior may be enabled by setting _draggable_ to _true_.
+* onyx/TabPanels is a subkind of layout/Panels that displays a set of tabs,
+* which allow navigation between the individual panels.  Unlike
+* [layout/Panels]{@link module:layout/Panels~Panels}, by default, the user
+* cannot drag between the panels of a TabPanels. This behavior may be enabled
+* by setting [draggable]{@link module:onyx/TabPanels~TabPanels#draggable} to `true`.
 *
 * ```javascript
 * var
-* kind = require('enyo/kind'),
-* TabPanels = require('onyx/TabPanels');
+*     kind = require('enyo/kind'),
+*     TabPanels = require('onyx/TabPanels');
 *
 * kind({
-*        name: 'App',
-*        kind: TabPanels,
-*        fit: true,
-*        components: [
-*            {name: 'MyStartPanel'},
-*            {name: 'MyMiddlePanel'},
-*            {name: 'MyLastPanel'}
-*        ]
+*     name: 'App',
+*     kind: TabPanels,
+*     fit: true,
+*     components: [
+*         {name: 'MyStartPanel'},
+*         {name: 'MyMiddlePanel'},
+*         {name: 'MyLastPanel'}
+*     ]
 *    });
 * ```
 *
@@ -59,7 +60,12 @@ module.exports = kind(
 	kind: Panels,
 
 	/**
-	* @private
+	* @see module:layout/Panels~Panels#draggable
+	*
+	* @type {Boolean}
+	* @default false
+	* @override
+	* @public
 	*/
 	draggable: false,
 

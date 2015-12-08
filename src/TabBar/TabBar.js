@@ -75,10 +75,6 @@ var
 * 'onTabChangeRequest' event:
 *
 * ```javascript
-* var
-* 	kind = require('enyo/kind'),
-* 	TabBar = require('onyx/TabBar');
-*
 * kind({
 * 	name: 'App',
 * 	fit: true,
@@ -87,11 +83,11 @@ var
 * 		{kind: MyStuff}
 * 	],
 *
-*     handlers: {
+* 	handlers: {
 * 		onTabChangeRequest: 'switchStuff'
 * 	},
 *
-*     // same rendered function as above
+* 	// same rendered method as above
 * 	switchStuff: function (inSender,inEvent) {
 * 		this.log('Tapped tab with caption ' + inEvent.caption
 * 			+ ' and message ' + inEvent.data.msg );
