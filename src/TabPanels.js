@@ -20,7 +20,7 @@ var
 /**
 * enyo.TabPanels is a subkind of enyo.Panels that
 * displays a set of tabs, which allow navigation between the individual panels.
-* Unlike {@link module:enyo/Panels~Panels}enyo/Panels, by default, the user cannot drag between the panels of a
+* Unlike [enyo/Panels]{@link module:enyo/Panels~Panels}, by default, the user cannot drag between the panels of a
 * TabPanels. This behavior may be enabled by setting _draggable_ to _true_.
 *
 * ```javascript
