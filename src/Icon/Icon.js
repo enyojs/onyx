@@ -19,10 +19,12 @@ var
 * as a CSS background, the height and width of the icon must be set if an image
 * of a different size is used.
 *
-* ```
-* var Icon = require('onyx/Icon');
+* ```javascript
+* 	var
+* 		kind = require('enyo/kind'),
+* 		Icon = require('onyx/Icon');
 *
-* {kind: Icon, src: 'images/search.png'}
+* 	{kind: Icon, src: 'images/search.png'}
 * ```
 *
 * When an icon should act like a button, use an {@link module:onyx/IconButton~IconButton}.

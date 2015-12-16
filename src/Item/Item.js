@@ -15,11 +15,12 @@ var
 * [tapHighlight]{@link module:onyx/Item~Item#tapHighlight} to	`false` to prevent the
 * highlighting.
 *
-* ```
-* var
-* 	Item = require('onyx/Item');
+* ```javascript
+* 	var
+* 		kind = require('enyo/kind'),
+* 		Item = require('onyx/Item');
 *
-* {kind: Item, tapHighlight: false}
+* 	{kind: Item, tapHighlight: false}
 * ```
 *
 * @class Item

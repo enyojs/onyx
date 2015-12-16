@@ -11,17 +11,18 @@ var
 
 /**
 * {@link module:onyx/Input~Input} is an Onyx-styled input control, derived from {@link module:enyo/Input~Input}.
-* Typically, an `onyx.Input` is placed inside an {@link module:onyx/InputDecorator~InputDecorator}, which
+* Typically, an `onyx/Input` is placed inside an {@link module:onyx/InputDecorator~InputDecorator}, which
 * provides styling, e.g.:
 *
-* ```
-* var
-* 	Input = require('onyx/Input'),
-* 	InputDecorator = require('onyx/InputDecorator');
+* ```javascript
+* 	var
+* 		kind = require('enyo/kind'),
+* 		Input = require('onyx/Input'),
+* 		InputDecorator = require('onyx/InputDecorator');
 *
-* {kind: InputDecorator, components: [
-* 	{kind: Input, placeholder: 'Enter some text...', onchange: 'inputChange'}
-* ]}
+* 	{kind: InputDecorator, components: [
+* 		{kind: Input, placeholder: 'Enter some text...', onchange: 'inputChange'}
+* 	]}
 * ```
 *
 * For more information, see the documentation on
