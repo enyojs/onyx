@@ -19,20 +19,21 @@ var
 * When the button is activated, the picker shows itself in the correct
 * position relative to the activator.
 *
-* ```
-* var
-* 	Picker = require('onyx/Picker'),
-* 	PickerDecorator = require('onyx/PickerDecorator');
+* ```javascript
+* 	var
+* 		kind = require('enyo/kind'),
+* 		Picker = require('onyx/Picker'),
+* 		PickerDecorator = require('onyx/PickerDecorator');
 *
-* {kind: PickerDecorator, components: [
-* 	{}, //this uses the defaultKind property of PickerDecorator to inherit from PickerButton
-* 	{kind: Picker, components: [
-* 		{content: 'Gmail', active: true},
-* 		{content: 'Yahoo'},
-* 		{content: 'Outlook'},
-* 		{content: 'Hotmail'}
+* 	{kind: PickerDecorator, components: [
+* 		{}, // this uses the defaultKind property of PickerDecorator to inherit from PickerButton
+* 		{kind: Picker, components: [
+* 			{content: 'Gmail', active: true},
+* 			{content: 'Yahoo'},
+* 			{content: 'Outlook'},
+* 			{content: 'Hotmail'}
+* 		]}
 * 	]}
-* ]}
 * ```
 *
 * @class PickerDecorator

@@ -19,21 +19,22 @@ var
 * surround both the activating control and the menu itself. When the menu is
 * activated, it shows itself in the correct position relative to the activator.
 *
-* ```
-* var
-* 	Menu = require('onyx/Menu'),
-* 	MenuDecorator = require('onyx/MenuDecorator');
+* ```javascript
+* 	var
+* 		kind = require('enyo/kind'),
+* 		Menu = require('onyx/Menu'),
+* 		MenuDecorator = require('onyx/MenuDecorator');
 *
-* {kind: MenuDecorator, components: [
-* 	{content: 'Show menu'},
-* 	{kind: Menu, components: [
-* 		{content: '1'},
-* 		{content: '2'},
-* 		{classes: 'onyx-menu-divider'},
-* 		{content: 'Label', classes: 'onyx-menu-label'},
-* 		{content: '3'},
+* 	{kind: MenuDecorator, components: [
+* 		{content: 'Show menu'},
+* 		{kind: Menu, components: [
+* 			{content: '1'},
+* 			{content: '2'},
+* 			{classes: 'onyx-menu-divider'},
+* 			{content: 'Label', classes: 'onyx-menu-label'},
+* 			{content: '3'},
+* 		]}
 * 	]}
-* ]}
 * ```
 *
 * @class MenuDecorator
