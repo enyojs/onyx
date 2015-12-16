@@ -13,16 +13,17 @@ var
 * {@link module:onyx/Groupbox~Groupbox}. When a header is desired, make a GroupboxHeader the
 * first control inside the Groupbox.
 *
-* ```
-* var
-* 	Groupbox = require('onyx/Groupbox'),
-* 	GroupboxHeader = require('onyx/GroupboxHeader');
+* ```javascript
+* 	var
+* 		kind = require('enyo/kind'),
+* 		Groupbox = require('onyx/Groupbox'),
+* 		GroupboxHeader = require('onyx/GroupboxHeader');
 *
-* {kind: Groupbox, components: [
-* 	{kind: GroupboxHeader, content: 'Sounds'},
-* 	{content: 'Yawn'},
-* 	{content: 'Beep'}
-* ]}
+* 	{kind: Groupbox, components: [
+* 		{kind: GroupboxHeader, content: 'Sounds'},
+* 		{content: 'Yawn'},
+* 		{content: 'Beep'}
+* 	]}
 * ```
 *
 * @class GroupboxHeader

@@ -44,24 +44,25 @@ var
 * do not currently have their own sizing logic, so be sure to take this into
 * account when using them.
 *
-* ```
-* var
-* 	ContextualPopup = require('onyx/ContextualPopup'),
-* 	MenuDecorator = require('onyx/MenuDecorator');
+* ```javascript
+* 	var
+* 		kind = require('enyo/kind'),
+* 		ContextualPopup = require('onyx/ContextualPopup'),
+* 		MenuDecorator = require('onyx/MenuDecorator');
 *
-* {kind: MenuDecorator, components: [
-* 	{content: 'Show Popup'},
-* 	{kind: ContextualPopup,
-* 		title: 'Sample Popup',
-* 		actionButtons: [
-* 			{content:'Button 1', classes: 'onyx-button-warning'},
-* 			{content:'Button 2'}
-* 		],
-* 		components: [
-* 			{content:'Sample component in popup'}
-* 		]
-* 	}
-* ]}
+* 	{kind: MenuDecorator, components: [
+* 		{content: 'Show Popup'},
+* 		{kind: ContextualPopup,
+* 			title: 'Sample Popup',
+* 			actionButtons: [
+* 				{content:'Button 1', classes: 'onyx-button-warning'},
+* 				{content:'Button 2'}
+* 			],
+* 			components: [
+* 				{content:'Sample component in popup'}
+* 			]
+* 		}
+* 	]}
 * ```
 *
 * @class ContextualPopup

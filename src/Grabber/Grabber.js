@@ -14,17 +14,18 @@ var
 * and moved. It should only be used in this limited context--to indicate that
 * dragging an object will result in movement.
 *
-* ```
-* var
-* 	Button = require('onyx/Button'),
-* 	Grabber = require('onyx/Grabber'),
-* 	Toolbar = require('onyx/Toolbar');
+* ```javascript
+* 	var
+* 		kind = require('enyo/kind'),
+* 		Button = require('onyx/Button'),
+* 		Grabber = require('onyx/Grabber'),
+* 		Toolbar = require('onyx/Toolbar');
 *
-* {kind: Toolbar, components: [
-* 	{kind: Grabber, ondragstart: 'grabberDragstart',
-* 		ondrag: 'grabberDrag', ondragfinish: 'grabberDragFinish'},
-* 	{kind: Button, content: 'More stuff'}
-* ]}
+* 	{kind: Toolbar, components: [
+* 		{kind: Grabber, ondragstart: 'grabberDragstart',
+* 			ondrag: 'grabberDrag', ondragfinish: 'grabberDragFinish'},
+* 		{kind: Button, content: 'More stuff'}
+* 	]}
 * ```
 *
 * When using a Grabber inside a [Fittable]{@link module:layout/FittableLayout~FittableLayout} control,
