@@ -2,6 +2,7 @@ require('onyx');
 
 /**
 * Contains the declaration for the {@link module:onyx/TabBar~TabBar} kind.
+* @wip
 * @module onyx/TabBar
 */
 
@@ -101,6 +102,7 @@ var
 *
 * @class TabBar
 * @extends module:enyo/FittableColumns~FittableColumns
+* @wip
 * @ui
 * @private
 */
