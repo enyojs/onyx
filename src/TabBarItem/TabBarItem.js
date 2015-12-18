@@ -2,6 +2,7 @@
 
 /**
 * Contains the declaration for the {@link module:onyx/TabBarItem~TabBarItem} kind.
+* @wip
 * @module onyx/TabBarItem
 */
 
@@ -16,6 +17,7 @@ var
 *
 * @class TabBarItem
 * @extends module:enyo/GroupItem~GroupItem
+* @wip
 * @ui
 * @private
 */

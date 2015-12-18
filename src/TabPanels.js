@@ -2,6 +2,7 @@
 
 /**
 * Contains the declaration for the {@link module:onyx/TabPanels~TabPanels} kind.
+* @wip
 * @module onyx/TabPanels
 */
 
@@ -41,9 +42,10 @@ var
 *    });
 * ```
 *
-* @ui
 * @class TabPanels
 * @extends module:enyo/Panels~Panels
+* @wip
+* @ui
 * @private
 */
 module.exports = kind(
