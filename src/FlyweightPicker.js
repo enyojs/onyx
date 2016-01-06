@@ -22,7 +22,7 @@ var
 * @event module:onyx/FlyweightPicker~FlyweightPicker#onSetupItem
 * @type {Object}
 * @property {Number} index - The row index.
-* @property {enyo.Control} flyweight - The row control, for decoration.
+* @property {module:enyo/Control~Control} flyweight - The row control, for decoration.
 * @see module:enyo/FlyweightRepeater~FlyweightRepeater.onSetupItem
 * @public
 */

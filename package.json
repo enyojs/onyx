@@ -1,15 +1,17 @@
 {
   "name": "onyx",
-  "version": "1.0.0",
-  "main": "index.js",
-  "styles": [
-    "css/onyx-variables.less",
-    "css/onyx-rules.less"
-  ],
   "assets": [
     "images/*.png",
     "images/*.gif"
   ],
+  "devAssets": [],
+  "styles": [
+    "css/onyx-variables.less",
+    "css/onyx-rules.less"
+  ],
+  "main": "index.js",
+  "moduleDir": "src",
+  "version": "1.0.0",
   "optionalLibs": [
     "enyo-ilib"
   ],

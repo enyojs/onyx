@@ -96,7 +96,7 @@ var Item = module.exports = kind(
 		/**
 		* Modifies a control by adding or removing a CSS class.
 		*
-		* @param {enyo.Control} control - The control to modify.
+		* @param {module:enyo/Control~Control} control - The control to modify.
 		* @param {String} className     - The name of the CSS class.
 		* @param {Boolean} add          - If `true`, the CSS class will be added;
 		*		if `false`, it will be removed.

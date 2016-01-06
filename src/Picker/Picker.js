@@ -16,7 +16,7 @@ var
 *
 * @event module:onyx/Picker~Picker#onChange
 * @type {Object}
-* @property {enyo.Control} selected - The currently selected item.
+* @property {module:enyo/Control~Control} selected - The currently selected item.`
 * @property {String} content - The content of the currently selected item.
 * @public
 */
@@ -160,7 +160,7 @@ module.exports = kind(
 
 	/**
 	* If passed-in control is `active`, selects it.
-	* @param {enyo.Control} item
+	* @param {module:enyo/Control~Control} item
 	*
 	* @private
 	*/
