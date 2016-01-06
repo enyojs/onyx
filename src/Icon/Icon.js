@@ -24,7 +24,7 @@ var
 * 		kind = require('enyo/kind'),
 * 		Icon = require('onyx/Icon');
 *
-* 	{kind: Icon, src: 'images/search.png'}
+* 	{kind: Icon, src: '@../assets/search.png'}
 * ```
 *
 * When an icon should act like a button, use an {@link module:onyx/IconButton~IconButton}.
