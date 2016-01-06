@@ -57,7 +57,7 @@
 	top: 2px;
 	right: 19px; // to place it left of close button
 	position: absolute;
-	
+
 	.onyx-tab-item-gradient( fadeout(@tab-inactive,100%), @tab-inactive);
 
 	&.active {
@@ -77,8 +77,8 @@
 	height: 16px;
 	vertical-align: middle;
 	background-repeat: no-repeat;
-	background-image: url('@{onyx-image-path}/close-inactive.png');
+	background-image: @onyx-close-inactive-image;
 	&:hover {
-		background-image: url('@{onyx-image-path}/close-active.png');
+		background-image: @onyx-close-active-image;
 	}
 }
