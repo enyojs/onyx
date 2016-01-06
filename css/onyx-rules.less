@@ -10,37 +10,37 @@
 	background-color: @onyx-background;
 	/* remove automatic tap highlight color */
 	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
 
-/* prevent IE from inheriting line-height for these elements */
-.onyx-button, .onyx label, .onyx input {
-	line-height: normal;
-}
+	/* prevent IE from inheriting line-height for these elements */
+	.onyx-button, .onyx label, .onyx input {
+		line-height: normal;
+	}
 
-.onyx-selected {
-	background-color: @onyx-selected-background;
+	.onyx-selected {
+		background-color: @onyx-selected-background;
+	}
+
+	/* some default colors */
+	.onyx-dark {
+		background-color: @onyx-dark-background;
+	}
+
+	.onyx-light {
+		background-color: @onyx-light-background;
+	}
+
+	.onyx-green {
+		background-color: #91BA07;
+	}
+
+	.onyx-red {
+		background-color: #C51616;
+	}
+
+	.onyx-blue {
+		background-color: #35A8EE;
+	}
 }
 
 /* LESS pre-calculations */
 @onyx-disabled-opacity-ie: @onyx-disabled-opacity*100;
-
-/* some default colors */
-.onyx-dark {
-	background-color: @onyx-dark-background;
-}
-
-.onyx-light {
-	background-color: @onyx-light-background;
-}
-
-.onyx-green {
-	background-color: #91BA07;
-}
-
-.onyx-red {
-	background-color: #C51616;
-}
-
-.onyx-blue {
-	background-color: #35A8EE;
-}
