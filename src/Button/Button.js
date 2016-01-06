@@ -15,15 +15,17 @@ var
 *
 * The `'onyx-affirmative'`, `'onyx-negative'`, and `'onyx-blue'` classes provide
 * some built-in presets.
-* ```
-* var
-* 	Button = require('onyx/Button');
 *
-* {kind: Button, content: 'Button'},
-* {kind: Button, content: 'Affirmative', classes: 'onyx-affirmative'},
-* {kind: Button, content: 'Negative', classes: 'onyx-negative'},
-* {kind: Button, content: 'Blue', classes: 'onyx-blue'},
-* {kind: Button, content: 'Custom', style: 'background-color: purple; color: #F1F1F1;'}
+* ```javascript
+* 	var
+* 		kind = require('enyo/kind'),
+* 		Button = require('onyx/Button');
+*
+* 	{kind: Button, content: 'Button'},
+* 	{kind: Button, content: 'Affirmative', classes: 'onyx-affirmative'},
+* 	{kind: Button, content: 'Negative', classes: 'onyx-negative'},
+* 	{kind: Button, content: 'Blue', classes: 'onyx-blue'},
+* 	{kind: Button, content: 'Custom', style: 'background-color: purple; color: #F1F1F1;'}
 * ```
 * For more information, see the documentation on
 * [Buttons]{@linkplain $dev-guide/building-apps/controls/buttons.html} in the

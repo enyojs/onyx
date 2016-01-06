@@ -23,18 +23,19 @@ var
 * that can adapt to different screen sizes by moving overflowing controls and
 * content into an {@link module:onyx/Menu~Menu}.
 *
-* ```
-* var
-* 	Button = require('onyx/Button'),
-* 	MoreToolbar = require('onyx/MoreToolbar');
+* ```javascript
+* 	var
+* 		kind = require('enyo/kind'),
+* 		Button = require('onyx/Button'),
+* 		MoreToolbar = require('onyx/MoreToolbar');
 *
-* {kind: MoreToolbar, components: [
-* 	{content: 'More Toolbar', unmoveable: true},
-* 	{kind: Button, content: 'Alpha'},
-* 	{kind: Button, content: 'Beta'},
-* 	{kind: Button, content: 'Gamma', unmoveable: true},
-* 	{kind: Button, content: 'Epsilon'}
-* ]}
+* 	{kind: MoreToolbar, components: [
+* 		{content: 'More Toolbar', unmoveable: true},
+* 		{kind: Button, content: 'Alpha'},
+* 		{kind: Button, content: 'Beta'},
+* 		{kind: Button, content: 'Gamma', unmoveable: true},
+* 		{kind: Button, content: 'Epsilon'}
+* 	]}
 * ```
 *
 * You may prevent a control from being moved into the menu by setting its

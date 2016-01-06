@@ -23,28 +23,30 @@ var
 * {@link module:onyx/ProgressBar~ProgressBar} is a control that shows the current progress of a
 * process in a horizontal bar.
 *
-* ```
-* var
-* 	ProgressBar = require('onyx/ProgressBar');
+* ```javascript
+* 	var
+* 		kind = require('enyo/kind'),
+* 		ProgressBar = require('onyx/ProgressBar');
 *
-* {kind: ProgressBar, progress: 10}
+* 	{kind: ProgressBar, progress: 10}
 * ```
 *
 * To animate a progress change, call the
 * [animateProgressTo()]{@link module:onyx/ProgressBar~ProgressBar#animateProgressTo} method:
 *
-* ```
-* this.$.progressBar.animateProgressTo(50);
+* ```javascript
+* 	this.$.progressBar.animateProgressTo(50);
 * ```
 *
 * You may customize the color of the bar by applying a style via the
 * [barClasses]{@link module:onyx/ProgressBar~ProgressBar#barClasses} property, e.g.:
 *
 * ```
-* var
-* 	ProgressBar = require('onyx/ProgressBar');
+* 	var
+* 		kind = require('enyo/kind'),
+* 		ProgressBar = require('onyx/ProgressBar');
 *
-* {kind: ProgressBar, barClasses: 'onyx-dark'}
+* 	{kind: ProgressBar, barClasses: 'onyx-dark'}
 * ```
 *
 * @class ProgressBar

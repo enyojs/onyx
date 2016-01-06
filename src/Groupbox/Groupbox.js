@@ -16,26 +16,27 @@ var
 * To add a header, specify an {@link module:onyx/GroupboxHeader~GroupboxHeader} as the first control
 * in the Groupbox, e.g.:
 *
-* ```
-* var
-* 	Groupbox = require('onyx/Groupbox'),
-* 	GroupboxHeader = require('onyx/GroupboxHeader'),
-* 	Input = require('onyx/Input'),
-* 	InputDecorator = require('onyx/InputDecorator'),
-* 	ToggleButton = require('onyx/ToggleButton');
+* ```javascript
+* 	var
+* 		kind = require('enyo/kind'),
+* 		Groupbox = require('onyx/Groupbox'),
+* 		GroupboxHeader = require('onyx/GroupboxHeader'),
+* 		Input = require('onyx/Input'),
+* 		InputDecorator = require('onyx/InputDecorator'),
+* 		ToggleButton = require('onyx/ToggleButton');
 *
-* {kind: Groupbox, components: [
-* 	{kind: GroupboxHeader, content: 'Sounds'},
-* 	{
-* 		components: [
-* 			{content: 'System Sounds'},
-* 			{kind: ToggleButton, value: true}
-* 		]
-* 	},
-* 	{kind: InputDecorator, components: [
-* 		{kind: Input}
+* 	{kind: Groupbox, components: [
+* 		{kind: GroupboxHeader, content: 'Sounds'},
+* 		{
+* 			components: [
+* 				{content: 'System Sounds'},
+* 				{kind: ToggleButton, value: true}
+* 			]
+* 		},
+* 		{kind: InputDecorator, components: [
+* 			{kind: Input}
+* 		]}
 * 	]}
-* ]}
 * ```
 *
 * @class Groupbox

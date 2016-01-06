@@ -14,43 +14,46 @@ var
 * controls in the InputDecorator will appear to be inside an area styled as an
 * input. Usually, an InputDecorator surrounds an {@link module:onyx/Input~Input}.
 *
-* ```
-* var
-* 	Input = require('onyx/Input'),
-* 	InputDecorator = require('onyx/InputDecorator');
+* ```javascript
+* 	var
+* 		kind = require('enyo/kind'),
+* 		Input = require('onyx/Input'),
+* 		InputDecorator = require('onyx/InputDecorator');
 *
-* {kind: InputDecorator, components: [
-* 	{kind: Input}
-* ]}
+* 	{kind: InputDecorator, components: [
+* 		{kind: Input}
+* 	]}
 * ```
 *
 * Other controls, such as buttons, may be placed to the right or left of the
 * input control, e.g.:
 *
-* ```
-* var
-* 	IconButton = require('onyx/IconButton'),
-* 	Input = require('onyx/Input'),
-* 	InputDecorator = require('onyx/InputDecorator');
+* ```javascript
+* 	var
+* 		kind = require('enyo/kind'),
+* 		IconButton = require('onyx/IconButton'),
+* 		Input = require('onyx/Input'),
+* 		InputDecorator = require('onyx/InputDecorator');
 *
-* {kind: InputDecorator, components: [
-* 	{kind: IconButton, src: '@./search.png'},
-* 	{kind: Input},
-* 	{kind: IconButton, src: '@./cancel.png'}
-* ]}
+* 	{kind: InputDecorator, components: [
+* 		{kind: IconButton, src: '@./search.png'},
+* 		{kind: Input},
+* 		{kind: IconButton, src: '@./cancel.png'}
+* 	]}
 * ```
 *
 * Note that the InputDecorator fits around the content inside it. If the
 * decorator is sized, then its contents will likely need to be sized as well.
 *
-* ```
-* var
-* 	Input = require('onyx/Input'),
-* 	InputDecorator = require('onyx/InputDecorator');
+* ```javascript
+* 	var
+* 		kind = require('enyo/kind'),
+* 		Input = require('onyx/Input'),
+* 		InputDecorator = require('onyx/InputDecorator');
 *
-* {kind: InputDecorator, style: 'width: 500px;', components: [
-* 	{kind: Input, style: 'width: 100%;'}
-* ]}
+* 	{kind: InputDecorator, style: 'width: 500px;', components: [
+* 		{kind: Input, style: 'width: 100%;'}
+* 	]}
 * ```
 *
 * @class InputDecorator

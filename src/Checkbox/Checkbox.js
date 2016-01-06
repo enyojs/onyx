@@ -16,17 +16,18 @@ var
 * Call `getValue()` to retrieve a boolean indicating whether the box is currently
 * checked.
 *
-* ```
-* var
-* 	Checkbox = require('onyx/Checkbox');
+* ```javascript
+* 	var
+* 		kind = require('enyo/kind'),
+* 		Checkbox = require('onyx/Checkbox');
 *
-* {kind: Checkbox, onchange: 'checkboxClicked'}
+* 	{kind: Checkbox, onchange: 'checkboxClicked'},
 *
-* checkboxClicked: function (sender) {
-* 	if (sender.getValue()) {
-* 		this.log('Someone checked me!');
+* 	checkboxClicked: function (sender) {
+* 		if (sender.getValue()) {
+* 			this.log('Someone checked me!');
+* 		}
 * 	}
-* }
 * ```
 *
 * @class Checkbox

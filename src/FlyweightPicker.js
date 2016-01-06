@@ -53,42 +53,42 @@ var
 * with the selected item's information. This may be handled by a client
 * application to determine which item was selected.
 *
-* ```
-* var
-* 	kind = require('enyo/kind');
+* ```javascript
+* 	var
+* 		kind = require('enyo/kind');
 *
-* var
-* 	FlyweightPicker = require('onyx/FlyweightPicker'),
-* 	PickerDecorator = require('onyx/PickerDecorator');
+* 	var
+* 		FlyweightPicker = require('onyx/FlyweightPicker'),
+* 		PickerDecorator = require('onyx/PickerDecorator');
 *
-* module.exports = kind(
-* 	name: 'onyx.FlyweightPickerExample',
-* 	handlers: {
-* 		onSelect: 'itemSelected'
-* 	},
-* 	components: [
-* 		{kind: PickerDecorator, components: [
-* 			{},
-* 			{name: 'yearPicker', kind: FlyweightPicker, count: 200,
-* 				onSetupItem: 'setupYear', components: [
-* 					{name: 'year'}
-* 				]
-* 			}
-* 		]}
-* 	],
-* 	create: function () {
-* 		var d = new Date();
-* 		var y = d.getYear();
-* 		this.$.yearPicker.setSelected(y);
-* 		this.$.year.setContent(1900+y);
-* 	},
-* 	setupYear: function (sender, event) {
-* 		this.$.year.setContent(1900+event.index);
-* 	},
-* 	itemSelected: function (sender, event) {
-* 		enyo.log('Picker Item Selected: ' + event.selected.content);
-* 	}
-* )
+* 	module.exports = kind(
+* 		name: 'onyx.FlyweightPickerExample',
+* 		handlers: {
+* 			onSelect: 'itemSelected'
+* 		},
+* 		components: [
+* 			{kind: PickerDecorator, components: [
+* 				{},
+* 				{name: 'yearPicker', kind: FlyweightPicker, count: 200,
+* 					onSetupItem: 'setupYear', components: [
+* 						{name: 'year'}
+* 					]
+* 				}
+* 			]}
+* 		],
+* 		create: function () {
+* 			var d = new Date();
+* 			var y = d.getYear();
+* 			this.$.yearPicker.setSelected(y);
+* 			this.$.year.setContent(1900+y);
+* 		},
+* 		setupYear: function (sender, event) {
+* 			this.$.year.setContent(1900+event.index);
+* 		},
+* 		itemSelected: function (sender, event) {
+* 			enyo.log('Picker Item Selected: ' + event.selected.content);
+* 		}
+* 	)
 * ```
 *
 * @class FlyweightPicker

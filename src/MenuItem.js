@@ -38,35 +38,35 @@ var
 * content and a reference to itself. This event and its properties may be
 * handled by a client application to determine which MenuItem was selected.
 *
-* ```
-* var
-* 	kind = require('enyo/kind');
+* ```javascript
+* 	var
+* 		kind = require('enyo/kind');
 *
-* var
-* 	Menu = require('onyx/Menu'),
-* 	MenuDecorator = require('onyx/MenuDecorator');
+* 	var
+* 		Menu = require('onyx/Menu'),
+* 		MenuDecorator = require('onyx/MenuDecorator');
 *
-* module.exports = kind(
-* 	name: 'onyx.MenuItemExample',
-* 	handlers: {
-* 		onSelect: 'itemSelected'
-* 	},
-* 	components: [
-* 		{kind: MenuDecorator, components: [
-* 			{content: 'Open Menu (floating)'},
-* 			{kind: Menu, floating: true, components: [
-* 				{content: '1'},
-* 				{content: '2'},
-* 				{classes: 'onyx-menu-divider'},
-* 				{content: 'Label', classes: 'onyx-menu-label'},
-* 				{content: '3'},
+* 	module.exports = kind(
+* 		name: 'onyx.MenuItemExample',
+* 		handlers: {
+* 			onSelect: 'itemSelected'
+* 		},
+* 		components: [
+* 			{kind: MenuDecorator, components: [
+* 				{content: 'Open Menu (floating)'},
+* 				{kind: Menu, floating: true, components: [
+* 					{content: '1'},
+* 					{content: '2'},
+* 					{classes: 'onyx-menu-divider'},
+* 					{content: 'Label', classes: 'onyx-menu-label'},
+* 					{content: '3'},
+* 				]}
 * 			]}
-* 		]}
-* 	],
-* 	itemSelected: function (sender, event) {
-* 		enyo.log('Menu Item Selected: ' + event.originator.content);
-* 	}
-* )
+* 		],
+* 		itemSelected: function (sender, event) {
+* 			enyo.log('Menu Item Selected: ' + event.originator.content);
+* 		}
+* 	)
 * ```
 *
 * @class MenuItem

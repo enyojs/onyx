@@ -25,15 +25,16 @@ var
 * {@link module:onyx/ProgressButton~ProgressButton} is an {@link module:onyx/ProgressBar~ProgressBar} with a cancel
 * button on the right; there may also be other controls inside.
 *
-* ```
-* var
-* 	ProgressButton = require('onyx/ProgressButton');
+* ```javascript
+* 	var
+* 		kind = require('enyo/kind'),
+* 		ProgressButton = require('onyx/ProgressButton');
 *
-* {kind: ProgressButton},
-* {kind: ProgressButton, barClasses: 'onyx-light', progress: 20, components: [
-* 	{content: '0'},
-* 	{content: '100', style: 'float: right;'}
-* ]}
+* 	{kind: ProgressButton},
+* 	{kind: ProgressButton, barClasses: 'onyx-light', progress: 20, components: [
+* 		{content: '0'},
+* 		{content: '100', style: 'float: right;'}
+* 	]}
 * ```
 *
 * @class ProgressButton

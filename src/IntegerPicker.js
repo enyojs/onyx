@@ -25,15 +25,16 @@ var
 * [value]{@link module:onyx/IntegerPicker~IntegerPicker#value} property to the integer that should
 * be selected.
 *
-* ```
-* var
-* 	IntegerPicker = require('onyx/IntegerPicker'),
-* 	PickerDecorator = require('onyx/PickerDecorator');
+* ```javascript
+* 	var
+* 		kind = require('enyo/kind'),
+* 		IntegerPicker = require('onyx/IntegerPicker'),
+* 		PickerDecorator = require('onyx/PickerDecorator');
 *
-* {kind: PickerDecorator, components: [
-* 	{}, //this uses the defaultKind property of PickerDecorator to inherit from PickerButton
-* 	{kind: IntegerPicker, min: 0, max: 25, value: 5}
-* ]}
+* 	{kind: PickerDecorator, components: [
+* 		{}, // this uses the defaultKind property of PickerDecorator to inherit from PickerButton
+* 		{kind: IntegerPicker, min: 0, max: 25, value: 5}
+* 	]}
 * ```
 *
 * Each item in the list is an {@link module:onyx/MenuItem~MenuItem}, so an application may
