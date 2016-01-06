@@ -29,7 +29,7 @@ var
 * var
 * 	ToggleIconButton = require('onyx/ToggleIconButton');
 *
-* {kind: ToggleIconButton, src: '@./images/search.png', ontap: 'buttonTap'}
+* {kind: ToggleIconButton, src: '@../assets/search.png', ontap: 'buttonTap'}
 * ```
 *
 * The image associated with the `src` property is assumed	to be a 32x64-pixel

@@ -30,7 +30,7 @@ var
 *		{kind: InputDecorator, components: [
 *			{kind: Input, placeholder: 'Enter a search term...'}
 *		]},
-*		{kind: IconButton, src: '@./go.png'}
+*		{kind: IconButton, src: '@../assets/go.png'}
 *	]}
 * ```
 *

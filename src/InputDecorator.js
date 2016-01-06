@@ -36,9 +36,9 @@ var
 * 		InputDecorator = require('onyx/InputDecorator');
 *
 * 	{kind: InputDecorator, components: [
-* 		{kind: IconButton, src: '@./search.png'},
+* 		{kind: IconButton, src: '@../assets/search.png'},
 * 		{kind: Input},
-* 		{kind: IconButton, src: '@./cancel.png'}
+* 		{kind: IconButton, src: '@../assets/cancel.png'}
 * 	]}
 * ```
 *
