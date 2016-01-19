@@ -55,7 +55,7 @@ module.exports = kind(
 	kind: Icon,
 
 	/**
-	* @lends module:enyo/ToggleIconButton~ToggleIconButton.prototype
+	* @lends module:onyx/ToggleIconButton~ToggleIconButton.prototype
 	* @private
 	*/
 	published: {

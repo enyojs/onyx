@@ -36,7 +36,7 @@ var
 * @public
 */
 module.exports = kind(
-	/** @lends module:enyo/Checkbox~Checkbox.prototype */ {
+	/** @lends module:onyx/Checkbox~Checkbox.prototype */ {
 
 	/**
 	* @private
