@@ -11,7 +11,7 @@ var
 
 /**
 * {@link module:onyx/TextArea~TextArea} is an Onyx-styled TextArea control, derived from
-* {@link module:enyo/TextArea~TextArea}. Typically, an `onyx.TextArea` is placed inside an
+* {@link module:enyo/TextArea~TextArea}. Typically, an `onyx/TextArea` is placed inside an
 * {@link module:onyx/InputDecorator~InputDecorator}, which provides styling, e.g.:
 *
 * ```

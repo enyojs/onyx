@@ -11,7 +11,7 @@ var
 
 /**
 * {@link module:onyx/RichText~RichText} is an Onyx-styled rich text control, derived from
-* {@link module:enyo/RichText~RichText}. Typically, an `onyx.RichText` is placed inside an
+* {@link module:enyo/RichText~RichText}. Typically, an `onyx/RichText` is placed inside an
 * {@link module:onyx/InputDecorator~InputDecorator}, which provides styling, e.g.:
 *
 * ```
