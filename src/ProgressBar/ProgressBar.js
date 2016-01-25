@@ -14,7 +14,7 @@ var
 * Fires when progress bar finishes animating to a position.
 *
 * @event module:onyx/ProgressBar~ProgressBar#onAnimateProgressFinish
-* @type {enyo.Animator}
+* @type {module:enyo/Animator~Animator}
 * @todo Not sure why the animator is passed as the payload to the event ...
 * @public
 */

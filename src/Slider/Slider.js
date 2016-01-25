@@ -34,7 +34,7 @@ var
 * Fires when animation to a position finishes.
 *
 * @event module:onyx/Slider~Slider#onAnimateFinish
-* @type {enyo.Animator}
+* @type {module:enyo/Animator~Animator}
 * @public
 * @todo  Animator as the payload; overlap with
 * 	{@link module:onyx/ProgressBar~ProgressBar#onAnimateProgressFinish}

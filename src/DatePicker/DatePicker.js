@@ -371,7 +371,7 @@ module.exports = kind(
 	},
 
 	/**
-	* Handler for the day picker's [onSelect]{link onyx.DatePicker#onSelect} event.
+	* Handler for the day picker's [onSelect]{@link module:onyx/DatePicker~DatePicker#onSelect} event.
 	*
 	* @fires module:onyx/DatePicker~DatePicker#onSelect
 	* @private
@@ -386,7 +386,7 @@ module.exports = kind(
 	},
 
 	/**
-	* Handler for the month picker's [onSelect]{link onyx.DatePicker#onSelect} event.
+	* Handler for the month picker's [onSelect]{@link module:onyx/DatePicker~DatePicker#onSelect} event.
 	*
 	* @fires module:onyx/DatePicker~DatePicker#onSelect
 	* @private
@@ -401,7 +401,7 @@ module.exports = kind(
 	},
 
 	/**
-	* Handler for the year picker's [onSelect]{link onyx.DatePicker#onSelect} event.
+	* Handler for the year picker's [onSelect]{@link module:onyx/DatePicker~DatePicker#onSelect} event.
 	*
 	* @fires module:onyx/DatePicker~DatePicker#onSelect
 	* @private
