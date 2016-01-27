@@ -10,11 +10,6 @@ var
 	Control = require('enyo/Control');
 
 var
-	ilib = require('enyo-ilib'),
-	dateFactory = require('enyo-ilib/DateFactory'),
-	DateFmt = require('enyo-ilib/DateFmt');
-
-var
 	Picker = require('onyx/Picker'),
 	PickerDecorator = require('onyx/PickerDecorator');
 
@@ -34,10 +29,8 @@ var
 * collectively, display the current time. The user may change the hour, minute,
 * and meridiem (AM/PM) values.
 *
-* By default, TimePicker tries to determine the current locale and use that
-* locale's rules to format the time (including AM/PM). In order to do this
-* successfully, the [iLib]{@glossary ilib} library must be loaded; if it is
-* not loaded, the control defaults to using standard U.S. time formatting.
+* TimePicker uses U.S. time formatting. For a locale-aware version, see
+* {@link module:onyx/IntlTimePicker~IntlTimePicker}.
 *
 * @ui
 * @class TimePicker
@@ -77,24 +70,13 @@ module.exports = kind(
 		disabled: false,
 
 		/**
-		* Current locale used for formatting; may be set after control creation, in
-		* which case the control will be updated to reflect the new value.
+		* If `true`, 24-hour time is used.
 		*
-		* @type {String}
-		* @default 'en-US'
+		* @type {Boolean}
+		* @default false
 		* @public
 		*/
-		locale: 'en-US',
-
-		/**
-		* If `true`, 24-hour time is used. When the locale is changed, this value is
-		* updated to reflect the new locale's rules.
-		*
-		* @type {Boolean|null}
-		* @default null
-		* @public
-		*/
-		is24HrMode: null,
+		is24HrMode: false,
 
 		/**
 		* {@glossary Date} object representing the currently-selected date/time.
@@ -120,9 +102,6 @@ module.exports = kind(
 	*/
 	create: function () {
 		Control.prototype.create.apply(this, arguments);
-		if (ilib) {
-			this.locale = ilib.getLocale();
-		}
 		this.initDefaults();
 	},
 
@@ -130,27 +109,9 @@ module.exports = kind(
 	* @private
 	*/
 	initDefaults: function () {
-		// defaults that match en_US for when ilib isn't loaded
-		this._strAm = 'AM';
-		this._strPm = 'PM';
-		// Attempt to use the ilib lib (ie assume it is loaded)
-		if (ilib) {
-			this._tf = new DateFmt({locale:this.locale});
+		this.setupMeridiems();
 
-			var objAmPm = new DateFmt({locale:this.locale, type: 'time', template: 'a'});
-			var timeobj = dateFactory({locale:this.locale, hour: 1});
-			this._strAm = objAmPm.format(timeobj);
-			timeobj.hour = 13;
-			this._strPm = objAmPm.format(timeobj);
-
-			if (this.is24HrMode == null) {
-				this.is24HrMode = (this._tf.getClock() == '24');
-			}
-		} else if (this.is24HrMode == null) {
-			this.is24HrMode = false;
-		}
-
-		this.setupPickers(this._tf ? this._tf.getTimeComponents() : 'hma');
+		this.setupPickers(this.getTimeFormat());
 
 		var d = this.value = this.value || new Date();
 
@@ -180,6 +141,23 @@ module.exports = kind(
 			this.$.ampmPicker.createComponents([{content: this._strAm, active: true},{content:this._strPm}]);
 		}
 		this.$.ampmPicker.getParent().setShowing(!this.is24HrMode);
+	},
+
+	/**
+	* Sets up meridiems for en-US.
+	* @private
+	*/
+	setupMeridiems: function () {
+		this._strAm = 'AM';
+		this._strPm = 'PM';
+	},
+
+	/**
+	* Returns the ordering of time components
+	* @private
+	*/
+	getTimeFormat: function () {
+		return 'hma';
 	},
 
 	/**
@@ -241,15 +219,6 @@ module.exports = kind(
 		this.$.hourPickerButton.setDisabled(this.disabled);
 		this.$.minutePickerButton.setDisabled(this.disabled);
 		this.$.ampmPickerButton.setDisabled(this.disabled);
-	},
-
-	/**
-	* @private
-	*/
-	localeChanged: function () {
-		//reset 24 hour mode when changing locales
-		this.is24HrMode = null;
-		this.refresh();
 	},
 
 	/**
