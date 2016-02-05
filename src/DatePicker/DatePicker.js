@@ -30,7 +30,7 @@ var
 * used for displaying a date. The user may change the day, month, and year values.
 *
 * By default, the control uses standard U.S. date formatting. For a locale-aware version, see
-* {@link module:enyo/DatePicker~IntlDatePicker}.
+* {@link module:onyx/i18n/DatePicker~DatePicker}.
 *
 * The `day` field is automatically populated with the proper number of days for
 * the selected month and year.

@@ -30,7 +30,7 @@ var
 * and meridiem (AM/PM) values.
 *
 * TimePicker uses U.S. time formatting. For a locale-aware version, see
-* {@link module:onyx/IntlTimePicker~IntlTimePicker}.
+* {@link module:onyx/i18n/TimePicker~TimePicker}.
 *
 * @ui
 * @class TimePicker
