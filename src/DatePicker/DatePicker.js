@@ -10,10 +10,6 @@ var
 	Control = require('enyo/Control');
 
 var
-	ilib = require('enyo-ilib'),
-	DateFmt = require('enyo-ilib/DateFmt');
-
-var
 	FlyweightPicker = require('onyx/FlyweightPicker'),
 	Picker = require('onyx/Picker'),
 	PickerDecorator = require('onyx/PickerDecorator');
@@ -30,13 +26,11 @@ var
 */
 
 /**
-* {@link module:onyx/DatePicker~DatePicker} is a group of {@link module:onyx/Picker~Picker} controls used for
-* displaying a date. The user may change the day, month, and year values.
+* {@link module:onyx/DatePicker~DatePicker} is a group of {@link module:onyx/Picker~Picker} controls
+* used for displaying a date. The user may change the day, month, and year values.
 *
-* By default, `DatePicker` tries to determine the current locale and use that
-* locale's rules to format the date (including the month name). In order to do
-* this successfully, the [iLib]{@glossary ilib} library must be loaded; if it
-* is not loaded, the control defaults to using standard U.S. date formatting.
+* By default, the control uses standard U.S. date formatting. For a locale-aware version, see
+* {@link module:onyx/i18n/DatePicker~DatePicker}.
 *
 * The `day` field is automatically populated with the proper number of days for
 * the selected month and year.
@@ -78,16 +72,6 @@ module.exports = kind(
 		* @public
 		*/
 		disabled: false,
-
-		/**
-		* Current locale used for formatting; may be set after control creation, in
-		* which case the control will be updated to reflect the new value.
-		*
-		* @type {String}
-		* @default  en-US
-		* @public
-		*/
-		locale: 'en-US',
 
 		/**
 		* If `true`, the `day` field is hidden.
@@ -158,9 +142,6 @@ module.exports = kind(
 	*/
 	create: function () {
 		Control.prototype.create.apply(this, arguments);
-		if (ilib) {
-			this.locale = ilib.getLocale();
-		}
 		this.initDefaults();
 	},
 
@@ -168,29 +149,19 @@ module.exports = kind(
 	* Performs initial setup of the picker, including creation of the necessary
 	* child controls.
 	*
+	* @override
 	* @private
 	*/
 	initDefaults: function () {
-		var months;
-		//Attempt to use the ilib library if it is loaded
-		if (ilib) {
-			months = [];
-			this._tf = new DateFmt({locale:this.locale, timezone: 'local'});
-			months = this._tf.getMonthsOfYear({length: 'long'});
-		}
-		// Fall back to en_US as default
-		else {
-			months = [undefined, 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
-		}
+		var months = this.getMonthList();
 
-		// use iLib's getTemplate as that returns locale-specific ordering
-		this.setupPickers(this._tf ? this._tf.getTemplate() : 'mdy');
+		this.setupPickers(this.getDateFormat());
 
 		this.dayHiddenChanged();
 		this.monthHiddenChanged();
 		this.yearHiddenChanged();
 
-		//Fill month, year & day pickers with values
+		// Fill month, year & day pickers with values
 		var d = this.value = this.value || new Date();
 		for (var i=0,m; (m=months[i + 1]); i++) {
 			this.$.monthPicker.createComponent({content: m, value:i, active: i==d.getMonth()});
@@ -202,6 +173,22 @@ module.exports = kind(
 		for (i=1; i<=this.monthLength(d.getYear(), d.getMonth()); i++) {
 			this.$.dayPicker.createComponent({content:i, value:i, active: i==d.getDate()});
 		}
+	},
+
+	/**
+	* Returns the list of month names
+	* @protected
+	*/
+	getMonthList: function () {
+		return [undefined, 'JAN', 'FEB', 'MAR', 'APR', 'MAY', 'JUN', 'JUL', 'AUG', 'SEP', 'OCT', 'NOV', 'DEC'];
+	},
+
+	/**
+	* Returns the default date order format
+	* @protected
+	*/
+	getDateFormat: function () {
+		return 'mdy';
 	},
 
 	/**
@@ -310,13 +297,6 @@ module.exports = kind(
 				{name: 'dayPicker', kind: Picker}
 			]}
 		);
-	},
-
-	/**
-	* @private
-	*/
-	localeChanged: function () {
-		this.refresh();
 	},
 
 	/**
