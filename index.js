@@ -4,7 +4,7 @@
 *
 * @namespace onyx
 */
-module.exports.version = "2.6.0-rc.1";
+module.exports.version = "2.6.1-pre.6";
 
 var dom = require('enyo/dom');
 dom.addBodyClass('onyx');
