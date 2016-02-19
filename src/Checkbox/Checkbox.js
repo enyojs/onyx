@@ -61,14 +61,6 @@ module.exports = kind(
 	/**
 	* @private
 	*/
-	handlers: {
-		// prevent double onchange bubble in IE
-		onclick: ''
-	},
-
-	/**
-	* @private
-	*/
 	tap: function (sender, e) {
 		if (!this.disabled) {
 			this.setChecked(!this.getChecked());

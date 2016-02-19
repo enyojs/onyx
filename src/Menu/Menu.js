@@ -259,14 +259,7 @@ module.exports = kind(
 		// getBoundingClientRect returns top/left values which are relative to the viewport and not absolute
 		var r = node.getBoundingClientRect();
 
-		// IE8 doesn't return window.page{X/Y}Offset & r.{height/width}
-		// FIXME: Perhaps use an alternate universal method instead of conditionals
-		var pageYOffset = (window.pageYOffset === undefined) ? document.documentElement.scrollTop : window.pageYOffset;
-		var pageXOffset = (window.pageXOffset === undefined) ? document.documentElement.scrollLeft : window.pageXOffset;
-		var rHeight = (r.height === undefined) ? (r.bottom - r.top) : r.height;
-		var rWidth = (r.width === undefined) ? (r.right - r.left) : r.width;
-
-		return {top: r.top + pageYOffset, left: r.left + pageXOffset, height: rHeight, width: rWidth};
+		return {top: r.top + window.pageYOffset, left: r.left + window.pageXOffset, height: r.height, width: r.width};
 	},
 
 	/**
