@@ -47,6 +47,15 @@ var Item = module.exports = kind(
 	classes: 'onyx-item',
 
 	/**
+	* Class applied by {@link module:enyo/RepeaterChildSupport~RepeaterChildSupport} when this
+	* control is included as a child of a {@link module:enyo/DataRepeater~DataRepeater}
+	*
+	* @type {String}
+	* @private
+	*/
+	selectedClass: 'enyo-selected',
+
+	/**
 	* @lends module:onyx/Item~Item.prototype
 	* @private
 	*/
