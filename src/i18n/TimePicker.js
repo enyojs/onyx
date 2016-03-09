@@ -80,12 +80,12 @@ module.exports = kind(
 	* @private
 	*/
 	setupMeridiems: function () {
-		var objAmPm = new DateFmt({locale: this.locale, type: 'time', template: 'a'}),
-			timeobj = dateFactory({locale: this.locale, hour: 1});
+		var objAmPm = new DateFmt({locale: this.locale, timezone: 'local', type: 'time', template: 'a'}),
+			timeobj = dateFactory({locale: this.locale, timezone: 'local', hour: 1});
 
 		this._strAm = objAmPm.format(timeobj);
 		// TODO: Does not support locales with more than two meridiems.  See moonstone/TimePicker
-		timeobj.hour = 13;
+		timeobj.setHours(13);
 		this._strPm = objAmPm.format(timeobj);
 
 		if (this.is24HrMode == null) {
