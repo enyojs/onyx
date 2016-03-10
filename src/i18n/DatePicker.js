@@ -1,4 +1,5 @@
 ﻿require('onyx');
+require('enyo-ilib');
 
 /**
 * Contains the declaration for the {@link module:onyx/i18n/DatePicker~DatePicker} kind.
@@ -6,10 +7,10 @@
 */
 
 var
-	kind = require('enyo/kind');
+	kind = require('enyo/kind'),
+	Signals = require('enyo/Signals');
 
 var
-	ilib = require('enyo-ilib'),
 	DateFmt = require('enyo-ilib/DateFmt');
 
 var
@@ -42,28 +43,19 @@ module.exports = kind(
 	kind: DatePicker,
 
 	/**
-	* @lends module:onyx/i18n/DatePicker~DatePicker.prototype
 	* @private
 	*/
-	published: {
-		/**
-		* Current locale used for formatting. If `null`, the value will be determined by
-		* iLib.
-		*
-		* @type {String|null}
-		* @default null
-		* @public
-		*/
-		locale: null
+	create: function () {
+		DatePicker.prototype.create.apply(this, arguments);
+		this.createComponent({kind: Signals, onlocalechange: 'localeChanged'});
 	},
 
 	/**
 	* @private
 	*/
-	create: function () {
-		this.locale = this.locale || ilib.getLocale();
-		this._tf = new DateFmt({locale: this.locale, timezone: 'local'});
-		DatePicker.prototype.create.apply(this, arguments);
+	initDefaults: function () {
+		this._tf = new DateFmt({timezone: 'local'});
+		DatePicker.prototype.initDefaults.apply(this, arguments);
 	},
 
 	/**
@@ -86,7 +78,6 @@ module.exports = kind(
 	* @private
 	*/
 	localeChanged: function () {
-		this._tf = new DateFmt({locale: this.locale, timezone: 'local'});
 		this.refresh();
 	}
 
