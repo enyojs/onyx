@@ -1,4 +1,5 @@
 require('onyx');
+require('enyo-ilib');
 
 /**
 * Contains the declaration for the {@link module:onyx/i18n/TimePicker~TimePicker} kind.
@@ -6,10 +7,10 @@ require('onyx');
 */
 
 var
-	kind = require('enyo/kind');
+	kind = require('enyo/kind'),
+	Signals = require('enyo/Signals');
 
 var
-	ilib = require('enyo-ilib'),
 	dateFactory = require('enyo-ilib/DateFactory'),
 	DateFmt = require('enyo-ilib/DateFmt');
 
@@ -45,16 +46,6 @@ module.exports = kind(
 	*/
 	published: {
 		/**
-		* Current locale used for formatting. If `null`, the value will be determined by
-		* iLib.
-		*
-		* @type {String|null}
-		* @default null
-		* @public
-		*/
-		locale: null,
-
-		/**
 		* If `true`, 24-hour time is used. If `null` or when the locale is changed, this value is
 		* updated to reflect the locale's rules.
 		*
@@ -63,16 +54,22 @@ module.exports = kind(
 		* @public
 		*/
 		is24HrMode: null
-
 	},
 
 	/**
 	* @private
 	*/
 	create: function () {
-		this.locale = this.locale || ilib.getLocale();
-		this._tf = new DateFmt({locale:this.locale, timezone: 'local'});
 		TimePicker.prototype.create.apply(this, arguments);
+		this.createComponent({kind: Signals, onlocalechange: 'localeChanged'});
+	},
+
+	/**
+	* @private
+	*/
+	initDefaults: function () {
+		this._tf = new DateFmt({timezone: 'local'});
+		TimePicker.prototype.initDefaults.apply(this, arguments);
 	},
 
 	/**
@@ -80,12 +77,12 @@ module.exports = kind(
 	* @private
 	*/
 	setupMeridiems: function () {
-		var objAmPm = new DateFmt({locale: this.locale, type: 'time', template: 'a'}),
-			timeobj = dateFactory({locale: this.locale, hour: 1});
+		var objAmPm = new DateFmt({type: 'time', template: 'a'}),
+			timeobj = dateFactory({hour: 1});
 
 		this._strAm = objAmPm.format(timeobj);
 		// TODO: Does not support locales with more than two meridiems.  See moonstone/TimePicker
-		timeobj.hour = 13;
+		timeobj.setHours(13);
 		this._strPm = objAmPm.format(timeobj);
 
 		if (this.is24HrMode == null) {
