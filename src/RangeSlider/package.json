@@ -1,0 +1,6 @@
+{
+	"main": "RangeSlider.js",
+	"styles": [
+		"RangeSlider.less"
+	]
+}

@@ -1,0 +1,6 @@
+{
+	"main": "MoreToolbar.js",
+	"styles": [
+		"MoreToolbar.less"
+	]
+}

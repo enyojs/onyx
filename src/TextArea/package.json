@@ -1,0 +1,6 @@
+{
+	"main": "TextArea.js",
+	"styles": [
+		"TextArea.less"
+	]
+}

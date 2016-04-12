@@ -1,0 +1,6 @@
+{
+	"main": "DatePicker.js",
+	"styles": [
+		"DatePicker.less"
+	]
+}

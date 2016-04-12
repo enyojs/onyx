@@ -1,0 +1,6 @@
+{
+	"main": "Picker.js",
+	"styles": [
+		"Picker.less"
+	]
+}

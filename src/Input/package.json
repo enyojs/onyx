@@ -1,0 +1,6 @@
+{
+	"main": "Input.js",
+	"styles": [
+		"Input.less"
+	]
+}

@@ -28,6 +28,11 @@ Please do not edit the top-level `onyx.css` file manually.  It should be
 treated as an output file; we should make changes to `.less` files only, then
 generate the `onyx.css` file using the above command.
 
+## Samples
+
+All samples reside in a consolidated sample app for Enyo and its libraries:
+[enyo-strawman](https://github.com/enyojs/enyo-strawman)
+
 ## Copyright and License Information
 
 Unless otherwise specified, all content, including all source code files and

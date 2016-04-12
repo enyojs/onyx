@@ -1,0 +1,35 @@
+/* Groupbox.css */
+.onyx-groupbox {
+}
+
+.onyx-groupbox > * {
+	display: block;
+	/*box-shadow: inset 0px 1px 1px rgba(255,255,255,0.5);*/
+	border-color: #aaaaaa;
+	border-style: solid;
+	border-width: 0 1px 1px 1px;
+	/*padding: 10px;*/
+	/* reset styles that make 'item' look bad if they happen to be there */
+	border-radius: 0;
+	margin: 0;
+	font-size: @onyx-groupbox-font-size;
+}
+
+/* needed for MathJax support */
+.onyx-groupbox > script {
+	display: none;
+}
+
+.onyx-groupbox > *:first-child {
+	border-top-color: #aaaaaa;
+	border-width: 1px;
+	border-radius: @onyx-groupbox-border-radius @onyx-groupbox-border-radius 0 0;
+}
+
+.onyx-groupbox > *:last-child {
+	border-radius: 0 0 @onyx-groupbox-border-radius @onyx-groupbox-border-radius;
+}
+
+.onyx-groupbox > *:first-child:last-child {
+	border-radius: @onyx-groupbox-border-radius;
+}

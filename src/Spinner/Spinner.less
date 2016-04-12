@@ -1,0 +1,13 @@
+/* Spinner.css */
+.onyx-spinner {
+	width: @onyx-spinner-image-width;
+	height: @onyx-spinner-image-height;
+	display: inline-block;
+	background: @onyx-spinner-dark-image no-repeat 0 0;
+	// The spinner is actually slightly smaller than its container. This keeps it centered.
+	background-size: 54px 55px;
+}
+
+.onyx-spinner.onyx-light {
+	background: @onyx-spinner-light-image no-repeat 0 0;
+}

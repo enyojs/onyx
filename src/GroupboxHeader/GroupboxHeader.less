@@ -1,0 +1,35 @@
+.onyx-groupbox-header {
+	padding: 2px 10px;
+	/**/
+	color: @onyx-groupbox-text-color;
+	font-size: @onyx-groupbox-header-font-size;
+	font-weight: bold;
+	text-transform: uppercase;
+	/**/
+	background-color: @onyx-groupbox-background;
+	border: none;
+	background: @onyx-groupbox-background @onyx-groupbox-gradient repeat-x 0 10px;
+}
+
+.onyx-groupbox .onyx-input-decorator {
+	display: block;
+}
+
+.onyx-groupbox > .onyx-input-decorator {
+	border-color: #aaaaaa;
+	border-width: 0 1px 1px 1px;
+	border-radius: 0;
+}
+
+.onyx-groupbox > .onyx-input-decorator:first-child {
+	border-width: 1px;
+	border-radius: @onyx-groupbox-border-radius @onyx-groupbox-border-radius 0 0;
+}
+
+.onyx-groupbox > .onyx-input-decorator:last-child {
+	border-radius: 0 0 @onyx-groupbox-border-radius @onyx-groupbox-border-radius;
+}
+
+.onyx-groupbox > .onyx-input-decorator:first-child:last-child {
+	border-radius: @onyx-groupbox-border-radius;
+}
