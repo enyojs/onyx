@@ -4,4 +4,4 @@
 *
 * @namespace onyx 
 */
-module.exports.version = "2.6.3-rc.13.s";
+module.exports.version = "2.6.3-rc.15.s";
